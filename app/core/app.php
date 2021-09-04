@@ -2,9 +2,9 @@
 
 class app
 {
-    private $controller = "seller";
+    private $controller = "home";
     private $method = "index";
-    private $params = [];
+    private $params = [];//values in the url which after controler php name and its method, stores here
 
     //get the url and run specific function inside
     public function __construct()

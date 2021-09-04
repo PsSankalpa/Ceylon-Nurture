@@ -1,20 +1,14 @@
 <?php
-class home
+class home extends Controller
 {
-    function index()
+    function index($page = '',$title = '',$subpage = '')//we can take the values in the url in by this way
     {
+        $db = new database();
+        $db->db_connect();
+        $image_class = $this->loadModel("image_class");//load the relevant model
+        //utilize the above loaded model here
         $this->view("home"); 
     }
-
-    function view($view)//reads from the views
-    {
-        if(file_exists("../app/views/". $view .".php"))//if the file is found in views
-        {
-            include "../app/views/". $view .".php";//include the obove path
-        }
-        else
-        {
-            include "../app/views/404.php";
-        }
-    }
 }
+
+?>
