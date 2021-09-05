@@ -2,7 +2,7 @@
 
 class Controller
 {
-    protected function view($view)//reads from the views
+    protected function view($view,$data = [])//reads from the views
     {
         if(file_exists("../app/views/". $view .".php"))//if the file is found in views
         {

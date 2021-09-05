@@ -3,6 +3,8 @@ class seller extends Controller
 {
     function index()
     {
-        $this->view("seller"); 
+        $data['page_title'] = "Ceylon Nurture Seller";
+
+        $this->view("seller",$data); 
     }
 }
