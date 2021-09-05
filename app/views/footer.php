@@ -12,6 +12,8 @@
     </head>
 
     <body>
-        //only the main body
+        <footer>
+            
+        </footer>
     </body>
 </html>
