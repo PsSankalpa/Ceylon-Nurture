@@ -7,6 +7,9 @@
     </head>
 
     <body>
+        <?php $this -> view ("header",$data)?>
+        
+
 
     </body>
 </html>
