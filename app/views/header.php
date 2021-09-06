@@ -7,12 +7,12 @@
         <title>
             <?php echo $data['page_title'] ?>
         </title>
-        <link rel="stylesheet" href="<?ASSETS?>css/headerStyle.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/headerStyle.css">
 
-        <!adding user logo!>
+        <!--adding user logo-->
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
-        <!adding google fonts in navbar!>
+        <!--adding google fonts in navbar-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet">

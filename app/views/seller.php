@@ -12,6 +12,8 @@
     </head>
 
     <body>
+        <?php $this->view("header",$data)?>
         //only the main body
+        <?php $this->view("footer",$data)?>1.44
     </body>
 </html>
