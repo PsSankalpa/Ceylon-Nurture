@@ -6,8 +6,8 @@ class Database
     {
         try
         {
-            $variables = DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME;//don't spaces between variables 
-            return $db = new PDO($variables,DB_USER,DB_PASS);
+            $string = DB_TYPE .":host=".DB_HOST.";dbname=".DB_NAME.";";
+			return $db = new PDO($string,DB_USER,DB_PASS);
         }catch(PDOException $e){
             die($e->getMessage());
         }
@@ -34,7 +34,12 @@ class Database
         
         if($check)
         {
-            return $data = $stm->fetchAll(PDO::FETCH_OBJ);//fetch this as pdo object 
+            $data = $stm->fetchAll(PDO::FETCH_OBJ);//fetch this as pdo object
+            if(is_array($data)&&count($data)>0 )
+            {
+                return $data;
+            }
+            return false; 
         }
         else
         {
