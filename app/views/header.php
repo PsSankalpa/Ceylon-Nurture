@@ -3,7 +3,6 @@
     <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>
             <?php echo $data['page_title'] ?>
         </title>
@@ -24,7 +23,8 @@
         <header>
         <nav class="top_nav">
             <div class="nav_item1">
-                <img class="logo" src="<?=ASSETS?>img\logo.png">               
+
+                <img class="logo" src="<?=ASSETS?>img/logo.png">               
             </div>
             <div class="nav_item2">
                 <a class="a_navitem2" href="<?=ROOT?>home">HOME</a>
@@ -35,6 +35,7 @@
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>products">PRODUCTS</a>
                 <div class="v"></div>
+
                 <a class="a_navitem2" href="<?=ROOT?>seller">SELLING</a>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>articles">ARTICLES</a>
@@ -47,3 +48,4 @@
             </div>
         </nav>
         </header>
+

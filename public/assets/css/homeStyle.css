@@ -1,0 +1,65 @@
+.bg_image_container{
+    width:100%;
+    height:100vh;
+  }
+  
+.bg_image{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+  }
+
+.body_container{
+    position:absolute;
+    top:30%;
+    width:90%;
+    left:5%;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+hr.h{
+    border: 4px solid black;
+  }
+  
+  .h1_home{
+    text-align: center;
+    font-size: 80px;
+  }
+  
+  .h5_home{
+    text-align: center;
+    font-size: 30px;
+    color:#547925;
+  }
+
+  .home_buttons{
+      display: flex;
+      gap:70px;
+      align-self: center;
+      padding-top: 50px;
+  }
+
+  .button{
+      width:120px;
+      height:50px;
+      font-size: 30px;
+      background-color: #FDDA0D;
+      color:white;
+      border:none;
+  }
+
+/*for small devices*/
+@media (min-width:768px){
+   
+}
+
+/*for medium devices*/
+@media (min-width:992px){
+
+}
+
+/*for large devices*/
+@media (min-width:1200px){
+
+}  
