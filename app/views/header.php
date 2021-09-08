@@ -23,6 +23,7 @@
         <header>
         <nav class="top_nav">
             <div class="nav_item1">
+
                 <img class="logo" src="<?=ASSETS?>img/logo.png">               
             </div>
             <div class="nav_item2">
@@ -34,6 +35,9 @@
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>products">PRODUCTS</a>
                 <div class="v"></div>
+
+                <a class="a_navitem2" href="<?=ROOT?>seller">SELLING</a>
+                <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>articles">ARTICLES</a>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>forums">FORUMS</a>
@@ -44,6 +48,4 @@
             </div>
         </nav>
         </header>
-        
-    </body>
-</html>
+

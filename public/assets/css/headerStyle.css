@@ -10,11 +10,13 @@
     display: flex;
     background: rgba(0, 0, 0, 0.5);
     position:absolute;
+
+    width: 100%;
     height: 100px;
-    width:100%;
     top:10%;
     align-items: center;
     gap:5px;
+    z-index: 5;
 }
 
 .nav_item1{
@@ -71,6 +73,19 @@
     color: #FDDA0D;
     font-size: 1.8rem;
   }
+
+  .bg_image_container{
+    width:100%;
+    height:100vh;
+  
+  }
+  
+  .bg_image{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+  }
+
 
 
 /*for medium devices*/
