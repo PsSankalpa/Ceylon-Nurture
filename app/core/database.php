@@ -2,81 +2,42 @@
 
 class Database
 {
-    public function db_connect()
-    {
-        try
-        {
-            $string = DB_TYPE .":host=".DB_HOST.";dbname=".DB_NAME.";";
-			return $db = new PDO($string,DB_USER,DB_PASS);
-        }catch(PDOException $e){
-            die($e->getMessage());
-        }
-    }
+	
+	private function connect()
+	{
+		$string = DB_TYPE . ":host=".DB_HOST.";dbname=".DB_NAME;
+		if(!$con = new PDO($string,DB_USER,DB_PASS)){
+			die("could not connect to database");
+		}
 
-    public function read($query,$data = [])
-    {
-        $db = $this->db_connect();
-        $stm = $db->prepare($query);
+		return $con;
+	}
 
-        if(count($data)==0)//use this because some queries doesn't contain variables
-        {
-            $stm = $db->query($query);
-            $check = 0;
-            if($stm)
-            {
-                $check = 1;
-            }
-        }
-        else
-        {
-            $check = $stm->execute($data);
-        }
-        
-        if($check)
-        {
-            $data = $stm->fetchAll(PDO::FETCH_OBJ);//fetch this as pdo object
-            if(is_array($data)&&count($data)>0 )
-            {
-                return $data;
-            }
-            return false; 
-        }
-        else
-        {
-            return false;
-        }
+	public function query($query,$data = array(),$data_type = "object")
+	{
 
-    }
+		$con = $this->connect();
+		$stm = $con->prepare($query);
 
-    public function write($query,$data = [])
-    {
-        $db = $this->db_connect();
-        $stm = $db->prepare($query);
+		if($stm){
+			$check = $stm->execute($data);
+			if($check){
+				if($data_type == "object"){
+					$data = $stm->fetchAll(PDO::FETCH_OBJ);
+				}else{
+					$data = $stm->fetchAll(PDO::FETCH_ASSOC);
+				}
 
-        if(count($data)==0)//use this because some queries doesn't contain variables
-        {
-            $stm = $db->query($query);
-            $check = 0;
-            if($stm)
-            {
-                $check = 1;
-            }
-        }
-        else
-        {
-            $check = $stm->execute($data);
-        }
-        
-        if($check)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+				if(is_array($data) && count($data) >0){
+					return $data;
+				}
+			}
+		}
 
-    }
+		return false;
+	}
+
+	
 }
 
 ?>
