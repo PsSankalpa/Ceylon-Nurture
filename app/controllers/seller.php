@@ -3,17 +3,26 @@ class seller extends Controller
 {
     function index()
     {
-        $data['page_title'] = "Ceylon Nurture Seller";
-        $this->view("seller",$data);
+        //$name = ['page_title']= "seller";
 
-        if(isset($_POST['registrationNumber']))
-        {
-            $seller = $this->loadModel("re_seller");
-            $seller->signup($_POST); 
-        }
+        //$sellers = $this->load_model('Sellers');
 
-        /*$user = $this->loadModel("re_seller");
-        $user->signup($_POST);*/
+        $sellers = new Sellers(); 
+        
+        
+        $arr['nameWithInitials'] = 'Piyum';
+        $arr['registrationNumber'] = '343151353';
+        $arr['tpNumber'] = '112946980';
+        $arr['nic'] = '43124b';
+        $arr['address'] = 'egsgsa gfgsg dhd';
+
+        $sellers->insert($arr);
+        //sellers->update(id,$data);
+        //sellers->delete(id);
+        $data = $sellers->findAll();
+        //$data = $sellers->where('nameWithInitials','Sankalpa');
+
+        $this->view('seller',['rows'=>$data]);
          
     }
 }
