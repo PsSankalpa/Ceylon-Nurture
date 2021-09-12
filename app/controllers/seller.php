@@ -10,14 +10,14 @@ class seller extends Controller
         $sellers = new Sellers(); 
         
         
-        $arr['nameWithInitials'] = 'Piyum';
-        $arr['registrationNumber'] = '343151353';
-        $arr['tpNumber'] = '112946980';
-        $arr['nic'] = '43124b';
-        $arr['address'] = 'egsgsa gfgsg dhd';
+        $arr['nameWithInitials'] = 'Piyum Pavithra';
+        //$arr['registrationNumber'] = '343151353';
+        //$arr['tpNumber'] = '112946980';
+        $arr['nic'] = '97584938V';
+        //$arr['address'] = 'egsgsa gfgsg dhd';
 
-        $sellers->insert($arr);
-        //sellers->update(id,$data);
+        //$sellers->insert($arr);
+        $sellers->update(2,$arr);
         //sellers->delete(id);
         $data = $sellers->findAll();
         //$data = $sellers->where('nameWithInitials','Sankalpa');

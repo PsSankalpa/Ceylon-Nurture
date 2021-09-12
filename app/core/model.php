@@ -44,17 +44,25 @@ class Model extends Database
 		return $this->query($query,$data);
 	}
 
-    /*public function update($id,$data)
+    public function update($userid,$data)
 	{
+		print_r($data);
 
-		$column = addslashes($column);//from this it check the column,sanitize iput
-		$query = "select * from $this->table where $column = :value";
-		return $this->query($query,[
-			'value'=>$value
-		]);
+		$str = "";
+		foreach($data as $key => $value)
+		{
+			$str .= $key. "=:" .$key. ",";//by putting . we add new content to the string not replace it
+		}
+        $str = trim($str,",");//trim the "," at the beginin and the end of the string
+		$data['userid'] = $userid;
+
+        $query = "update $this->table set $str where userid = :userid";
+        echo $query;
+
+		return $this->query($query,$data);
 	}
 
-    public function delete($id)
+    /*public function delete($id)
 	{
 
 		$column = addslashes($column);//from this it check the column,sanitize iput
