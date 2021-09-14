@@ -62,15 +62,13 @@ class Model extends Database
 		return $this->query($query,$data);
 	}
 
-    /*public function delete($id)
+    public function delete($userid)
 	{
 
-		$column = addslashes($column);//from this it check the column,sanitize iput
-		$query = "select * from $this->table where $column = :value";
-		return $this->query($query,[
-			'value'=>$value
-		]);
-	}*/
+		$query = "delete from $this->table where userid = :userid";
+		$data['userid'] = $userid;
+		return $this->query($query,$data);
+	}
 
 	
 }
