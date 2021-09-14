@@ -5,7 +5,14 @@
 }
 
 body{
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+.regi{
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: url(../img/A-products.jpg);
 }
 /*----------------------------------------------------------*/
 /*top part*/
@@ -21,16 +28,14 @@ body{
     display: flex;
   }
 
-  .products-section{
-      background-color: black;
-  }
+  
 
   .center {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -30%);
   }
 
   .btn-group button {
@@ -69,80 +74,105 @@ body{
 }
 
 /*-----------------------------------------------------------------------------*/
-/*for the registration popup form*/
-
-/* The popup form - hidden by default */
-.form-popup {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  border: 3px solid #f1f1f1;
-  z-index: 9;
+/*for hr and h2*/
+hr{
+  border: 2px solid #A7D129;
 }
 
-/* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: rgb(2, 2, 2);
-  color: #f1f1f1;
+h2{
+  color: #A7D129;
 }
 
-/* Full-width input fields */
-.form-container input[type=text], .form-container input[type=number] {
+/*-----------------------------------------------------------------------------*/
+/*for the registration form*/
+
+/* Style inputs, select elements and textareas */
+input[type=text], select, textarea{
   width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background-color: #c9c9c9;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-bottom: 1%;
 }
 
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=number]:focus {
-  background-color: #ddd;
-  outline: none;
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  color: #A7D129;
 }
 
-/* Set a style for the submit/login button */
-.form-container .btn {
-  background-color: #045235;
+/* Style the submit and cancel button */
+
+input[type=submit],input[type=reset],input[type=file]   {
+  background-color: #04AA6D;
   color: white;
-  padding: 16px 20px;
+  padding:20px;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
+  float: right;
+  width: 10%;
 }
 
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
+input[type=reset] {
+  background-color: crimson;
+  margin-right: 1%;
 }
 
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
+input[type=file] {
+  float: left;
+  margin-right: 1%;
+  width: 30%;
+  padding:10px;
+}
+
+
+/* Style the container */
+.container {
+  top: 50%;
+  border-radius: 5px;
+  padding: 20px;
+  background-color:rgba(13, 13, 13, 0.85);
+  z-index: 8;
+  width: 80%;
+}
+
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit],input[type=reset],input[type=file]{
+    width: 100%;
+    margin-top: 1%;
+    float:left
+  }
 }
 
 /*---------------------------------------------------------------------------*/
 
   /* On screens that are 600px or less, set the background color to olive */
-@media screen and (max-width: 600px) {
-    .btn-group button {
-        background-color: #000000;
-        border: 1px solid rgb(255, 255, 255);
-        color: white; /* White text */
-        cursor: pointer; /* Pointer/hand icon */
-        border-radius: 7%;
-        margin: 1vh;
-      }
-      .btn-group:after {
-        content: "";
-        display: flex;
-      }
-  }
+
 
