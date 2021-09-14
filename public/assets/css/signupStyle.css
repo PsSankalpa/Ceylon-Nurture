@@ -45,7 +45,7 @@ input{
     border-radius:50px;
 }
 input[type=text] {
-    color:#0000;
+    color:#ffff;
 }
 .btn:hover,
 button:hover{
@@ -74,6 +74,7 @@ a{
 .Signup-form input:focus{
     background:#979090;
     border:px solid #C4C4C4;
+    color:#ffff;
 }
 .Signup-form label{
     margin:5px 10px 5px 0;

@@ -35,7 +35,7 @@ class app
 
     private function splitURL()
     {
-        $url = isset($_GET['url'])?$_GET['url']:"home";//after the main part of the url,if there is nothing this directed to the home page(currently default)
+        $url = isset($_GET['url'])?$_GET['url']:"seller";//after the main part of the url,if there is nothing this directed to the home page(currently default)
         return explode("/", filter_var(trim($url,"/"),FILTER_SANITIZE_URL));//sanitize the url
     }
 }
