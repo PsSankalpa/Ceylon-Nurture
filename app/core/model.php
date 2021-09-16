@@ -4,7 +4,7 @@
 class Model extends Database
 {
 
-	function __construct()
+	public function __construct()
 	{
 		/*if(!property_exists($this,'table'))
         {
@@ -13,6 +13,8 @@ class Model extends Database
         //we can use above condition if we use php8 in wamp server
         !property_exists($this,'table');
 	}
+
+	public $errors = array();
 
 
 	public function where($column,$value)

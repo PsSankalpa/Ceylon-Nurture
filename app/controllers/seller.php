@@ -21,8 +21,30 @@ class seller extends Controller
 
     function registration()
     {
-        $sellers = new Sellers(); 
-        
+        $errors = array();
+        if(count($_POST)>0)
+        {
+            
+            $sellers = new sellers();//create the instance of the seller in model
+
+            if($sellers->validate($_POST))
+            {
+                $arr['nameWithInitials'] = $_POST['nameWithInitials'];
+                $arr['registrationNumber'] = $_POST['registrationNumber'];
+                $arr['tpNumber'] = $_POST['tpNumber'];
+                $arr['nic'] = $_POST['nic'];
+                $arr['address'] = $_POST['address'];
+
+                $sellers->insert($arr);
+                $this->redirect('seller/seller');
+            }
+            else{
+                $errors = $sellers->errors;
+            }
+        } 
+        $this->view('seller/sellerregi',[
+			'errors'=>$errors,
+		]);
         
         //$arr['nameWithInitials'] = 'Piyum Pavithra';
         //$arr['registrationNumber'] = '343151353';
@@ -36,7 +58,15 @@ class seller extends Controller
         //$data = $sellers->findAll();
         //$data = $sellers->where('nameWithInitials','Sankalpa');
 
-        $this->view('seller/sellerregi');
+        /* [nameWithInitials] => 
+        [registrationNumber] => 
+        [tpNumber] => 
+        [nic] => 
+        [address] => 
+        [image]  */
+
+        
+        
          
     }
 }

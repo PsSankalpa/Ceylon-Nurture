@@ -2,9 +2,10 @@
 <html>
     <head>
         <title>Seller page</title>
+        <?php $this -> view ("header")?>
     </head>
     <body>
-        <?php $this -> view ("header")?>
+        
         
 
         <?php 
