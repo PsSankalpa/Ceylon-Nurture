@@ -6,6 +6,7 @@
         <title>
             <?php echo $data['page_title'] ?>
         </title>
+        <link rel="icon" href="<?=ASSETS?>img/logo.png" type="image/x-icon" /><!--favicon-->
         <link rel="stylesheet" href="<?=ASSETS?>css/headerStyle.css">
 
         <!--adding user logo-->
