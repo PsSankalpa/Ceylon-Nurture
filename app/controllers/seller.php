@@ -9,7 +9,11 @@ class seller extends Controller
 
         $sellers = new Sellers(); 
 
+        
+
+
         $this->view('seller/seller');
+
          
     }
 

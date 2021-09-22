@@ -1,4 +1,5 @@
 <?php
+
 class sellers extends Model
 {
 	protected $prefunctions = [
@@ -158,4 +159,5 @@ class sellers extends Model
 
 	
 	}
+
 }

@@ -9,6 +9,7 @@
         </title>
 
         <link rel="stylesheet" href="<?=ASSETS?>css/signupStyle.css">
+
         <script type="text/javascript" src="<?=ASSETS?>js/sellerJs.js"></script>
 
         <link rel="stylesheet" href="<?ASSETS?>css/signupStyle.css">
