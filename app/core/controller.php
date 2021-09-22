@@ -4,6 +4,7 @@ class Controller
 {
     protected function view($view,$data = [])//reads from the views
     {
+        extract($data);
         if(file_exists("../app/views/". $view .".php"))//if the file is found in views
         {
             require "../app/views/". $view .".php";//require the obove path
@@ -23,6 +24,12 @@ class Controller
         }
 
         return false;
+    }
+
+    protected function redirect($link)
+    {
+        header("location:".ROOT.trim($link,"/"));
+        die;
     }
 }
 
