@@ -3,15 +3,13 @@
     <head>
         <title>Ceylon Nurture|Seller|Registration</title>
         <?php $this -> view ("header",$data)?>
-        
-        
     </head>
 
     <body class="regi">
 
     
     <div class="container center">
-        <h2>Update as a Seller</h2>
+        <h2>Add a Product</h2>
 
         <!--for the errors-->
         <?php if(count($errors) > 0 ):?>
@@ -29,55 +27,46 @@
 
             <div class="row">
             <div class="col-25">
-                <label for="nameWithInitials">Name With Initials</label>
+                <label for="productName">Product/Herb Name</label>
             </div>
             <div class="col-75">
-                <input type="text" value="<?=get_var('nameWithInitials')?>" id="nameWithInitials" name="nameWithInitials" placeholder="Name With Initials">
+                <input type="text" value="<?=get_var('productName')?>" id="productName" name="productName" placeholder="Product Name">
             </div>
             </div>
 
             <div class="row">
             <div class="col-25">
-                <label for="registrationNumber">Registration Number</label>
+                <label for="productPrice">Price(only add the value)</label>
             </div>
             <div class="col-75">
-                <input type="text" value="<?=get_var('registrationNumber')?>" id="registrationNumber" name="registrationNumber" placeholder="Registration Number">
+                <input type="text" value="<?=get_var('productPrice')?>" id="productPrice" name="productPrice" placeholder="Price">
             </div>
             </div>
 
             <div class="row">
             <div class="col-25">
-                <label for="tpNumber">TP Number</label>
+                <label for="description">Description</label>
             </div>
             <div class="col-75">
-            <input type="text" value="<?=get_var('tpNumber')?>" id="tpNumber" name="tpNumber" placeholder="TP Number">
+            <input type="text" value="<?=get_var('description')?>" id="description" name="description" placeholder="Description">
             </div>
             </div>
 
             <div class="row">
             <div class="col-25">
-                <label for="nic">NIC</label>
-            </div>
-            <div class="col-75">
-            <input type="text" value="<?=get_var('nic')?>" id="nic" name="nic" placeholder="NIC">
-            </div>
-            </div>
-
-            <div class="row">
-            <div class="col-25">
-                <label for="address">Address</label>
-            </div>
-            <div class="col-75">
-            <input type="text" value="<?=get_var('address')?>" id="address" name="address" placeholder="Address">
-            </div>
-            </div>
-
-            <div class="row">
-            <div class="col-25">
-                <label for="image" >Image of the Certificate</label>
+                <label for="image" >Image of the product</label>
             </div>
             <div class="col-75">
             <input type="file" id="image" value="<?=get_var('image')?>" name="image">
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+                <label for="category" >Product Category</label>
+            </div>
+            <div class="col-75">
+            <input type="text" id="category" value="<?=get_var('category')?>" name="category" placeholder="(Product/herb)">
             </div>
             </div>
 
@@ -89,6 +78,6 @@
     </div>
 
     <script type="text/javascript" src="<?=ASSETS?>js/sellerJs"></script>
-    
+
     </body>
 </html>

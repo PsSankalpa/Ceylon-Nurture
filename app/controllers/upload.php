@@ -11,13 +11,13 @@ class upload extends Controller
     function image()
     {
         //check the user before upload
-        $user = $this->loadModel("user");
+        $user = $this->load_Model("user");
         $data['page_title'] = "Ceylon Nurture product upload";
         $this->view("upload",$data); 
 
         if(isset($_POST['title']) && isset($_FILES['file']))
         {
-            $uploader = $this->loadModel("upload_file");
+            $uploader = $this->load_Model("upload_file");
             $uploader->upload($_POST,$_FILES);
         }
         

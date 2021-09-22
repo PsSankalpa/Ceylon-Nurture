@@ -8,9 +8,12 @@
     }
  }
 
- function get_file()
+ function get_file($img)
  {
-
+   if(isset($_FILES[$img]))
+    {
+        return $_FILES[$img];
+    }
  }
 
  function esc($var)
