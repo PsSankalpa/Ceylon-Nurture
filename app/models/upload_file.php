@@ -35,7 +35,11 @@ class upload_file
 
             if($_SESSION['error']=="")
             {
-                //save to the db
+               
+            }
+        }
+
+        /* //save to the db
                 $arr['title'] = $POST['title'];
                 $arr['description'] = $POST['description'];
                 $arr['date'] = date('Y-m-d H:i:s');
@@ -47,9 +51,7 @@ class upload_file
                 {
                     header("Location:".ROOT."home");
                     die;
-                }
-            }
-        }
+                }*/
 
         
     }

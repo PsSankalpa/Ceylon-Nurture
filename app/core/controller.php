@@ -28,7 +28,7 @@ class Controller
 
     protected function redirect($link)
     {
-        header("location:".ROOT."/".trim($link,"/"));
+        header("location:".ROOT.trim($link,"/"));
         die;
     }
 }
