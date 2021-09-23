@@ -10,11 +10,6 @@
 
         <link rel="stylesheet" href="<?=ASSETS?>css/signupStyle.css">
 
-        <script type="text/javascript" src="<?=ASSETS?>js/sellerJs.js"></script>
-
-        <link rel="stylesheet" href="<?ASSETS?>css/signupStyle.css">
-        <script type="text/javascript" src="<?ASSETS?>js/sellerJs.js"></script>
-
     </head>
 
     <body>
@@ -25,11 +20,13 @@
                     <div class="content">
                     <h2>Sign Up</h2>
                     <form action="" method="post">
-                        <input type="text" name="name" placeholder="Full Name" required > </br>
-                        <input type="text" name="email" placeholder="E-mail address" required > 
-                        <input type="password" name="password" placeholder="Password" required > 
-                        <input type="tel" name="phone" placeholder="Telephone Number" pattern="[0-9]{10}" required>
-                        <!--<input type="checkbox" name="conditions">-->I agree to <a href='#'>Terms of conditions and privacy policy</a></form>
+                    <input type="text" name="fname" placeholder="First Name" required > </br>
+                    <input type="text" name="lname" placeholder="Last Name" required > </br>
+                    <input type="text" name="username" placeholder="User Name" required > </br>
+                    <input type="email" name="email" placeholder="E-mail address" required > 
+                    <input type="password" name="password" placeholder="Password" required > 
+                    <input type="tel" name="phone" placeholder="Telephone Number" pattern="[0-9]{10}" required>
+                    <input type="checkbox" name="conditions">I agree to <a href='#'>Terms of conditions and privacy policy</a></form>
                         <button class="btn" type="submit">Sign Up</button>
                     </form>
                     </div>
