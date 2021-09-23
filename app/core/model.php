@@ -31,12 +31,13 @@ class Model extends Database
             $this->table = strtolower($this::class);
         }*/
         //we can use above condition if we use php8 in wamp server
-        !property_exists($this,'table');
+        !property_exists($this,'table');//to get the table value
+		!property_exists($this,'pk');//to get the primary key value
 	}
 
 	public $errors = array();
 
-
+//----------------------------------------------------------------------------------------------------------------
 	public function where($column,$value)
 	{
 
@@ -53,10 +54,11 @@ class Model extends Database
 		$query = "select * from $this->table ";
 		return $this->query($query);
 	}
+//---------------------------------------------------------------------------------------------------------------	
 	
-	//remove unwanted columns
     public function insert($data)
 	{
+		//remove unwanted columns
 		if(property_exists($this,'allowedcolumns'))
         {
             foreach($data as $key => $column)
@@ -82,12 +84,12 @@ class Model extends Database
         $values = implode(',:',$keys);//for the values
 
         $query = "insert into $this->table($columns) values (:$values)";
-        echo $query;
+        
 
 		return $this->query($query,$data);
 	}
-
-    public function update($userid,$data)
+//------------------------------------------------------------------------------------------------------------------------
+    public function update($id,$data)
 	{
 		print_r($data);
 
@@ -96,20 +98,23 @@ class Model extends Database
 		{
 			$str .= $key. "=:" .$key. ",";//by putting . we add new content to the string not replace it
 		}
+		print_r($str);
+		
         $str = trim($str,",");//trim the "," at the beginin and the end of the string
-		$data['userid'] = $userid;
+		$data['id'] = $id;
 
-        $query = "update $this->table set $str where userid = :userid";
-        echo $query;
+        $query = "update $this->table set $str where $this->pk = :id";
+        print_r($query);
+
 
 		return $this->query($query,$data);
 	}
 
-    public function delete($userid)
+    public function delete($id)
 	{
-
-		$query = "delete from $this->table where userid = :userid";
-		$data['userid'] = $userid;
+		$data['id'] = $id;
+		$query = "delete from $this->table where $this->pk = :id";
+		
 		return $this->query($query,$data);
 	}
 

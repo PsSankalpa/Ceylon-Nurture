@@ -27,7 +27,7 @@ class sellers extends Model
 		{
 			$this->errors['nameWithInitials'] = "Cannot Keep name empty";
 		}
-		elseif(!preg_match('/^[a-zA-Z\s]+$/',$DATA['nameWithInitials']))
+		elseif(!preg_match('/^[a-zA-Z\s\.]+$/',$DATA['nameWithInitials']))
 		{
 			$this->errors['nameWithInitials'] = "Only letters allowed in the name";
 		}
@@ -96,8 +96,7 @@ class sellers extends Model
 			
 			$imageFileType = strtolower(pathinfo($destination,PATHINFO_EXTENSION));
 			$uploadOk = 1;
-			$Sellers = new Sellers();
-			$results = $Sellers->images($FILES,$destination,$imageFileType,$uploadOk);
+			$results = $this->images($FILES,$destination,$imageFileType,$uploadOk);
 			if(!empty($results))
 			{
 				$this->errors['image'] =$results;

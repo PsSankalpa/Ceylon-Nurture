@@ -7,9 +7,10 @@ class seller extends Controller
 
         //$sellers = $this->load_model('Sellers');
 
-        $sellers = new Sellers(); 
+        $products = new products();
+        $data =$products->findAll(); 
 
-        $this->view('seller/seller');
+        $this->view('seller/seller',['rows'=>$data]);
          
     }
 
@@ -91,6 +92,71 @@ class seller extends Controller
         } 
         $this->view('seller/uploadProduct',[
 			'errors'=>$errors,
+		]);
+
+    }
+
+    function editProduct($productId = null)
+    {
+        $errors = array();
+        $products = new products();
+        
+        if(count($_POST)>0)
+        {
+            
+            if($products->validate($_POST,$_FILES))
+            {
+                global $des;
+                $arr['productName'] = $_POST['productName'];
+                $arr['productPrice'] = $_POST['productPrice'];
+                $arr['description'] = $_POST['description'];
+                $arr['image'] = $des;
+                $arr['category'] = $_POST['category'];
+
+
+                $products->update($productId,$arr);
+                $this->redirect('seller');
+            }
+            else{
+                $errors = $products->errors2;
+            }
+        }
+        $row =$products->where('productId',$productId); //in here row is an array
+        
+        if($row)
+        {
+            $row = $row[0];
+            unlink($row->image);
+        }
+        $this->view('seller/editProduct',[
+			'errors'=>$errors,
+            'row'=>$row,
+		]);
+
+    }
+
+    function deleteProduct($productId = null)
+    {
+        $errors = array();
+        $products = new products();
+        
+        if(count($_POST)>0)
+        {
+
+                $products->delete($productId);
+                $this->redirect('seller');
+            
+            
+        }
+        $row =$products->where('productId',$productId); //in here row is an array
+        
+        if($row)
+        {
+            $row = $row[0];
+            unlink($row->image);
+        }
+        $this->view('seller/deleteProduct',[
+            'row'=>$row,
 		]);
 
     }

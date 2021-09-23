@@ -8,7 +8,7 @@
         </title>
         <link rel="icon" href="<?=ASSETS?>img/logo.png" type="image/x-icon" /><!--favicon-->
         <link rel="stylesheet" href="<?=ASSETS?>css/headerStyle.css">
-        <link rel="stylesheet" href="<?=ASSETS?>css/seller.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/sellers.css">
         
 
         <!--adding user logo-->
