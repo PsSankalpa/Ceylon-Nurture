@@ -14,7 +14,7 @@ h2{
 }
 .Login-form{
     position:relative;
-    background-image: url("../images/img2.jpg");
+    background-image: url("../img/Ayur_1.jpg");
     background-size:100%;
     padding:60px;
     justify-content: center;
@@ -63,9 +63,6 @@ h2{
 button,
 input{
     border-radius:50px;
-}
-input[type=text] {
-    color:#0000;
 }
 .btn:hover,
 button:hover{
