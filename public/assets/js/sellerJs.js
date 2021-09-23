@@ -12,6 +12,7 @@ function registrationForm() {
   
   function closeproductForm() {
     document.getElementById("productForm").style.display = "none";
+
   }
 
   function closebutton() {
@@ -29,3 +30,4 @@ for (i = 0; i < close.length; i++) {
     setTimeout(function(){ div.style.display = "none"; }, 600);
   }
 }
+

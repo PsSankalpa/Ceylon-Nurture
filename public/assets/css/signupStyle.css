@@ -1,7 +1,7 @@
 body{
     margin:0;
     padding:0;
-    background: url("../images/img2.jpg");
+    background: url("../img/Ayur_1.jpg");
     background-size:cover;
     background-position:center;
     font-family:sans-serif;
@@ -16,7 +16,7 @@ h2{
 }
 .Signup-form{
     width:600px;
-    height:500px;
+    height:1200px;
     background:#ffff;
     top:50%;
     left:50%;
@@ -47,6 +47,10 @@ input{
 input[type=text] {
     color:#0000;
 }
+input[type=checkbox] {
+    position:relative;
+    left:160px;
+}
 .btn:hover,
 button:hover{
     transition:0.5s ease;
@@ -73,7 +77,7 @@ a{
 }
 .Signup-form input:focus{
     background:#979090;
-    border:px solid #C4C4C4;
+    border:solid #C4C4C4;
 }
 .Signup-form label{
     margin:5px 10px 5px 0;

@@ -10,8 +10,9 @@ class seller extends Controller
         $products = new products();
         $data =$products->findAll(); 
 
+
         $this->view('seller/seller',['rows'=>$data]);
-         
+       
     }
 
     //get the file destination

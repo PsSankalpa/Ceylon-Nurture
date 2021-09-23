@@ -3,6 +3,7 @@
 //main model
 class Model extends Database
 {
+
 	public function images($FILES,$destination,$imageFileType,$uploadOk)
 	{
 		$errors = "";
@@ -25,6 +26,7 @@ class Model extends Database
 	}
 
 	public function __construct()
+
 	{
 		/*if(!property_exists($this,'table'))
         {
@@ -35,9 +37,12 @@ class Model extends Database
 		!property_exists($this,'pk');//to get the primary key value
 	}
 
+
 	public $errors = array();
 
+
 //----------------------------------------------------------------------------------------------------------------
+
 	public function where($column,$value)
 	{
 
@@ -54,7 +59,9 @@ class Model extends Database
 		$query = "select * from $this->table ";
 		return $this->query($query);
 	}
+
 //---------------------------------------------------------------------------------------------------------------	
+
 	
     public function insert($data)
 	{
@@ -78,6 +85,7 @@ class Model extends Database
 				$data = $this->$funk($data);
 			}
         }
+
 
         $keys = array_keys($data);
         $columns = implode(',',$keys);//take the array of the column names and put it like in an insert query 
@@ -110,13 +118,16 @@ class Model extends Database
 		return $this->query($query,$data);
 	}
 
+
     public function delete($id)
+
 	{
 		$data['id'] = $id;
 		$query = "delete from $this->table where $this->pk = :id";
 		
 		return $this->query($query,$data);
 	}
+
 
 	
 }
