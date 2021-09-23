@@ -8,7 +8,6 @@
             <?php echo $data['page_title'] ?>
         </title>
         <link rel="stylesheet" href="<?=ASSETS?>css/loginStyle.css">
-        <script type="text/javascript" src="<?=ASSETS?>js/sellerJs.js"></script>
     </head>
 
     <body>

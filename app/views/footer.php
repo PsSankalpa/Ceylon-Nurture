@@ -7,13 +7,13 @@
         <title>
             <?php echo $data['page_title'] ?>
         </title>
-        <link rel="stylesheet" href="<?=ASSETS?>css/signInStyle.css">
-        <script type="text/javascript" src="<?=ASSETS?>js/sellerJs.js"></script>
+        <link rel="stylesheet" href="<?ASSETS?>css/sellerStyle.css">
+        <script type="text/javascript" src="<?ASSETS?>js/sellerJs.js"></script>
     </head>
 
     <body>
-        <?php $this->view("header",$data)?>
-        //only the main body
-        <?php $this->view("footer",$data)?>1.44
+        <footer>
+            
+        </footer>
     </body>
 </html>
