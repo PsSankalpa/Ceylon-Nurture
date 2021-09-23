@@ -30,7 +30,7 @@
                     <p class="account">Don't have an account? <a href="<?=ROOT?>signup">Sign Up</a></p>
                     </div>
                         <div class="form-img">
-                            <img src="../img/logo.png">
+                            <img src="<?=ASSETS?>img/logo.png">
                         </div>
                 </div>
             </div>
