@@ -10,6 +10,7 @@ class products extends Model
 		'category',
 	];
     protected $table = "products";
+	protected $pk = "productid";
 
 	public function validate($DATA,$FILES)
 	{
@@ -72,13 +73,13 @@ class products extends Model
 
             //create the destination 
             $destination = $folder . $FILES['image']['name'];
+			
 			$imageFileType = strtolower(pathinfo($destination,PATHINFO_EXTENSION));
 			$uploadOk = 1;
-			$products = new Products();
-			$results = $products->images($FILES,$destination,$imageFileType,$uploadOk);
+			$results = $this->images($FILES,$destination,$imageFileType,$uploadOk);
 			if(!empty($results))
 			{
-				$this->errors['image'] =$results;
+				$this->errors2['image'] =$results;
 			}
 			else
 			{

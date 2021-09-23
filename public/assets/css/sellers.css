@@ -199,9 +199,82 @@ input[type=file] {
     float:left
   }
 }
+/*---------------------------------------------------------------------------*/
+/*proct section*/
+.products-section{
+  background-color: black;
+}
 
 /*---------------------------------------------------------------------------*/
 
-  /* On screens that are 600px or less, set the background color to olive */
+/*for the cards*/
+/* Float four columns side by side */
+.cardcolumn {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
+  justify-content: center;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.cardrow {
+  margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.cardrow:after {
+  content: "";
+  display: table;
+  clear: both;
+  justify-content: center;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #0f8d44;
+  height: auto;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+.card img{
+  height: 15rem;
+  border-radius: 1rem;
+}
+/*buttons of the cards*/
+.cardbutton {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.cancel{
+  background-color: #f44336;
+}
+
+.cardbutton:hover{
+  opacity: 1;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+/*---------------------------------------------------------------------------*/
+
+
 
 
