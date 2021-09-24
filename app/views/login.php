@@ -7,14 +7,13 @@
         <title>
             <?php echo $data['page_title'] ?>
         </title>
-
+        <?php $this->view("header",$data)?>
         <link rel="stylesheet" href="<?=ASSETS?>css/loginStyle.css">
         <link rel="stylesheet" href="<?=ASSETS?>css/common.css">
 
     </head>
-
     <body>
-        <?php $this->view("header",$data)?>
+       
         <div class ="Login-form">
             <div class="container">
                 <div class="main">
@@ -30,7 +29,7 @@
                     <p class="account">Don't have an account? <a href="<?=ROOT?>signup">Sign Up</a></p>
                     </div>
                         <div class="form-img">
-                            <img src="../img/logo.png">
+                            <img src="<?=ASSETS?>img/logo.png">
                         </div>
                 </div>
             </div>
