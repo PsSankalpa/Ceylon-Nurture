@@ -20,6 +20,7 @@ $path = str_replace($_SERVER['DOCUMENT_ROOT'],"",$path);//contain the path for a
 
 define('ROOT',str_replace("app/core","public",$path));
 define('ASSETS',str_replace("app/core","public/assets",$path));
+define('ASSETS2',str_replace("app/core","public",$path));
 
 /*set to true to allow error reporting and set to false when you upload online to stop error repoting
 ,this show the errors*/

@@ -1,11 +1,13 @@
 <?php
 //to get add values
- function get_var($key)
+//put a default value to display in the edit mode
+ function get_var($key,$default = "")
  {
     if(isset($_POST[$key]))
     {
         return $_POST[$key];
     }
+
 
     return "";
  }
@@ -19,7 +21,10 @@
         }
     }
     
-    return "";
+
+
+    return $default;
+
  }
 
  function get_file($img)
