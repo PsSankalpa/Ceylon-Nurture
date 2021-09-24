@@ -76,9 +76,9 @@ class Model extends Database
 		//run functions before insert
 		if(!property_exists($this,'prefunctions'))
         {
-            foreach($this->prefunctions as $funk)
+            foreach($this->prefunctions as $func)
 			{
-				$data = $this->$funk($data);
+				$data = $this->$func($data);
 			}
         }
 
@@ -88,7 +88,7 @@ class Model extends Database
         $values = implode(',:',$keys);//for the values
 
         $query = "insert into $this->table($columns) values (:$values)";
-        echo $query;
+		
 
 		return $this->query($query,$data);
 	}

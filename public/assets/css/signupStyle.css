@@ -44,9 +44,7 @@ button,
 input{
     border-radius:50px;
 }
-input[type=text] {
-    color:#0000;
-}
+
 input[type=checkbox] {
     position:relative;
     left:160px;

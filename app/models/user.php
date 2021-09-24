@@ -1,83 +1,108 @@
 <?php
-
-class user
+/**
+ * User Model
+ */
+class user extends Model
 {
+    protected $allowedcolumns = [
+		'fname',
+		'lname',
+        'username',
+        'email',
+		'tpNumber',
+		'password',
+	//];
 
-    function login($POST)
+	//protected $table = "user";
+    protected $prefunctions = [
+        'make_user_id',
+        'hash_password'
+    ];
+
+    public function validate($DATA)
     {
-        $db = new Database();
+        $this->errors = array();
+        $this->errors2 = array();
 
-        $_SESSION['error'] = "";
-        if(isset($POST['username'])&&isset($POST['username']))
+        //check for firstname
+        if(empty($DATA['fname']))
+		{
+			$this->errors['fname'] = "Cannot Keep name empty";
+        }
+        elseif(!preg_match('/^[a-zA-Z]+$/',$DATA['fname'])
         {
-            $arr['username'] = $POST['username'];
-            $arr['password'] = $POST['password'];
+            $this->errors['fname'] = "The first name should contain only letters"
+        }
 
-            $query = "select # from users where username = :username && password = :password limit 1";
-            $data = $db->read($query,$arr);//return array of objects
-            if (is_array($data))//check if the data come as an array
-            {
-                //logged in, and these returned things are objects
-                $_SESSION['user_id'] = $data[0]->userid;
-                $_SESSION['user_name'] = $data[0]->username;
-                $_SESSION['user_url'] = $data[0]->url_address; 
-            }
-            else
-            {
-                $_SESSION['error'] = "please enter valid user name and password";
+        //check for lastname
+        if(empty($DATA['lname']))
+		{
+			$this->errors['lname'] = "Cannot Keep name empty";
+        }
+        elseif(!preg_match('/^[a-zA-Z]+$/',$DATA['lname'])
+        {
+            $this->errors['lname'] = "The Last name should contain only letters"
+        }
+
+        //check for username
+        if(empty($DATA['username']))
+		{
+			$this->errors['username'] = "Cannot Keep name empty";
+		}
+		elseif(!preg_match('/^[a-zA-Z\s]+$/',$DATA['username']))
+		  {
+			$this->errors['username'] = "The Username should contain only letters";
+		  }
+
+        //check for email address
+        if (empty($_POST["email"])) {
+            $emailErr = "Email is required";
+        // check if e-mail address is well-formed
+        elseif (!filter_var($DATA['email'], FILTER_VALIDATE_EMAIL)) {
+            $this->errors['email'] = "Email format is not valid";
             }
         }
-        else
+
+        //check telephone number
+		if(empty($DATA['tpNumber']))
+		{
+			$this->errors['tpNumber'] = "Cannot Keep tp number empty empty";
+		}
+		elseif(!preg_match('/^[0-9]+$/',$DATA['tpNumber']))
+		{
+			$this->errors['tpNumber'] = "Only numbers allowed in the tp number";
+		}
+		elseif(!strlen($DATA['tpNumber'])>10)
+		{
+			$this->errors['tpNumber'] = "Only 10 numbers allowed in the tp number";
+		}
+
+        //check for password
+        if(empty($DATA['password']))
+		{
+			$this->errors['password'] = "Cannot Keep name empty";
+		}
+        elseif($DATA['password'] != $DATA['password2'])
         {
-            $_SESSION['error'] = "wrong user name or password";
+            $this->errors[] = "The passwords do not match"
         }
+        //check for password length
+        if(strlen($DATA['password']) <= 8)
+		{
+			$this->errors['password'] = "Password must be at least 8 characters long ";
+		}
         
-    }
+        //check the checkbox
+		if(empty($DATA['conditions']))
+		{
+			$this->errors['conditions'] = "Cannot Keep the checkbox unticked";
+		}
 
-    function register($POST)
-    {
-        $db = new database();
-
-        $_SESSION['error'] = "";
-        if(isset($POST['username'])&&isset($POST['password']))
+        if(count($this->errors) == 0)
         {
-            $arr['username'] = $POST['username'];
-            $arr['password'] = $POST['password'];
-            $arr['email'] = $POST['email'];
-
-            $query = "insert into users (username,password,email) values(:username,:password,:email)";
-            $data = $db->write($query,$arr);//return array of objects
-            if ($data)//check if the data come as an array
-            {
-                 header("Location:".ROOT."seller");
-                 die;
-            }
-        }
-        else
-        {
-            $_SESSION['error'] = "";
-        }
-    }
-
-    function check_logged_in($POST)
-    {
-        if(isset($_SESSION['user_url']))
-        {
-            $db = new database();
-            $arr['user_url'] = $_SESSION['user_url'];
-
-            $query = "select # from users where url_address = :user_url limit 1";
-            $data = $db->read($query,$arr);//return array of objects
-            if (is_array($data))//check if the data come as an array
-            {
-                //logged in, and these returned things are objects
-                $_SESSION['user_id'] = $data[0]->userid;
-                $_SESSION['user_name'] = $data[0]->username;
-                $_SESSION['user_url'] = $data[0]->url_address; 
-
-                return true;
-            }
+            return true;
         }
         return false;
+
     }
 }

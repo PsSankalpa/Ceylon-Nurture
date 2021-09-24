@@ -43,7 +43,8 @@ class seller extends Controller
                 $arr['nic'] = htmlspecialchars($_POST['nic']);
                 $arr['address'] = htmlspecialchars($_POST['address']);
                 $arr['image'] = $des;
-
+             
+               
                 $sellers->insert($arr);
                 $this->redirect('seller');
             }
