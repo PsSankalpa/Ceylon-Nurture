@@ -38,7 +38,7 @@
                     <input type="password" value="<?=get_var('password')?>" name="password" placeholder="Password" required > 
                     <input type="password" value="<?=get_var('password2')?>" name="password2" placeholder="Re-type Password" required > 
                     <input type="checkbox" name="conditions">I agree to <a href='#'>Terms of conditions and privacy policy</a></form>
-                        <button class="btn" type="submit">Sign Up</button>
+                        <button class="btn" type="submit"><a href="<?=ROOT?>login">Sign Up </button>
                     </form>
                     </div>
                 </div>
