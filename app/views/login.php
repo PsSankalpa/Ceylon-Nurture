@@ -9,7 +9,7 @@
         </title>
         <?php $this->view("header",$data)?>
         <link rel="stylesheet" href="<?=ASSETS?>css/loginStyle.css">
-        <link rel="stylesheet" href="<?=ASSETS?>css/common.css">
+  
 
     </head>
     <body>

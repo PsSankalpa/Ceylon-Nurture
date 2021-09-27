@@ -15,7 +15,6 @@ class sellers extends Model
 		'image',
 	];
 
-
 	protected $table = "sellers";
 
 	public function validate($DATA,$FILES)

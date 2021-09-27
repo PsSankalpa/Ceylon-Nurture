@@ -78,13 +78,13 @@ class Model extends Database
         }
 
 		//run functions before insert
-		if(!property_exists($this,'prefunctions'))
-        {
-            foreach($this->prefunctions as $func)
-			{
-				$data = $this->$func($data);
-			}
-        }
+		//if(!property_exists($this,'prefunctions'))
+       // {
+       //     foreach($this->prefunctions as $func)
+		//	{
+		//		$data = $this->$func($data);
+		//	}
+      //  }
 
 
         $keys = array_keys($data);
@@ -92,7 +92,9 @@ class Model extends Database
         $values = implode(',:',$keys);//for the values
 
         $query = "insert into $this->table($columns) values (:$values)";
-
+		print_r($query);
+		print_r($data);
+	
 
 		return $this->query($query,$data);
 	}
