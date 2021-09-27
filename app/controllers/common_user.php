@@ -1,9 +1,9 @@
 <?php
-class user extends Controller
+class common_user extends Controller
 {
     function index()
     {
-        $users = new Users();
+        $common_user = new Common_User();
 
 
         $this->view('signup');
@@ -16,9 +16,9 @@ class user extends Controller
         if(count($_POST)>0)
         {
             
-            $users = new Users();//create the instance of the user in model
+            $common_user = new Common_User();//create the instance of the user in model
             
-            if($users->validate($_POST))
+            if($common_user->validate($_POST))
             {
                 global $des;
                 $arr['fname'] = htmlspecialchars($_POST['fname']);
@@ -31,11 +31,11 @@ class user extends Controller
                 $arr['conditions'] = htmlspecialchars($_POST['conditions']);
                 
 
-                $users->insert($arr);
+                $common_user->insert($arr);
                 $this->redirect('login');
             }
             else{
-                $errors = $users->errors;
+                $errors = $common_user->errors;
             }
         } 
         $this->view('signup',[

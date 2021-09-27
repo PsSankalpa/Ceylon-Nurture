@@ -1,67 +1,72 @@
 <?php
 /**
- * User Model
+ * Common User Model
  */
-class user extends Model
+class common_user extends Model
 {
-    protected $allowedcolumns = [
+ protected $allowedcolumns = [
 		'fname',
 		'lname',
         'username',
         'email',
 		'tpNumber',
 		'password',
-	//];
 
-	//protected $table = "user";
-    protected $prefunctions = [
-        'make_user_id',
-        'hash_password'
-    ];
+];
+
+	//protected $table = "common_user";
+   // protected $prefunctions = [
+       // 'make_common_user_id',
+        //'hash_password'
+   // ];
+   protected $table = "common_user";
 
     public function validate($DATA)
     {
         $this->errors = array();
-        $this->errors2 = array();
+        //$this->errors2 = array()
 
         //check for firstname
         if(empty($DATA['fname']))
 		{
-			$this->errors['fname'] = "Cannot Keep name empty";
+			$this->errors['fname'] = "Cannot Keep first name empty";
         }
-        elseif(!preg_match('/^[a-zA-Z]+$/',$DATA['fname'])
+        elseif(!preg_match('/^[a-zA-Z]+$/',$DATA['fname']))
         {
-            $this->errors['fname'] = "The first name should contain only letters"
+            $this->errors['fname'] = "The first name should contain only letters";
         }
 
         //check for lastname
         if(empty($DATA['lname']))
 		{
-			$this->errors['lname'] = "Cannot Keep name empty";
+			$this->errors['lname'] = "Cannot Keep last name empty";
         }
-        elseif(!preg_match('/^[a-zA-Z]+$/',$DATA['lname'])
+        elseif(!preg_match('/^[a-zA-Z]+$/',$DATA['lname']))
         {
-            $this->errors['lname'] = "The Last name should contain only letters"
+            $this->errors['lname'] = "The Last name should contain only letters";
         }
 
         //check for username
         if(empty($DATA['username']))
 		{
-			$this->errors['username'] = "Cannot Keep name empty";
+			$this->errors['username'] = "Cannot Keep username empty";
 		}
-		elseif(!preg_match('/^[a-zA-Z\s]+$/',$DATA['username']))
+		elseif(!preg_match('/^[a-zA-Z0-9\s]+$/',$DATA['username']))
 		  {
 			$this->errors['username'] = "The Username should contain only letters";
 		  }
 
         //check for email address
-        if (empty($_POST["email"])) {
+        if (empty($_POST["email"])) 
+        {
             $emailErr = "Email is required";
-        // check if e-mail address is well-formed
-        elseif (!filter_var($DATA['email'], FILTER_VALIDATE_EMAIL)) {
-            $this->errors['email'] = "Email format is not valid";
-            }
         }
+        // check if e-mail address is well-formed
+        elseif (!filter_var($DATA['email'], FILTER_VALIDATE_EMAIL))
+         {
+            $this->errors['email'] = "Email format is not valid";
+        }
+        
 
         //check telephone number
 		if(empty($DATA['tpNumber']))
@@ -84,7 +89,7 @@ class user extends Model
 		}
         elseif($DATA['password'] != $DATA['password2'])
         {
-            $this->errors[] = "The passwords do not match"
+            $this->errors[] = "The passwords do not match";
         }
         //check for password length
         if(strlen($DATA['password']) <= 8)
