@@ -23,9 +23,9 @@ h2{
 }
 
 .Signup-form{
-    width:600px;
+    width:1000px;
     height:600px;
-    background: linear-gradient(rgba(73, 72, 72, 0.5), rgba(73, 72, 72,0.5));
+    background: linear-gradient(rgba(73, 72, 72, 0.8), rgba(73, 72, 72,0.8));
     top:60%;
     left:50%;
     position:absolute;
