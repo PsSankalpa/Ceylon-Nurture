@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-            SignUp Page
-        </title>
+        <title>Ceylon Nurture|SignUp Page</title>
+        
         <link rel="stylesheet" href="<?=ASSETS?>css/signupStyle.css">
     </head>
     
@@ -18,7 +17,8 @@
                 <div class="main">
                     <div class="content">
                     <h2>Sign Up</h2>
-              <?php if(count($errors) > 0):?>
+
+                    <?php if(count($errors) > 0):?>
                     <div class="alertwarning">
                     <button class="closebtn" onclick="closebutton()">&times;</button>
                         <strong>Errors!</strong>
@@ -37,7 +37,7 @@
                     <input type="password" value="<?=get_var('password')?>" name="password" placeholder="Password"  > 
                     <input type="password" value="<?=get_var('password2')?>" name="password2" placeholder="Re-type Password"  > 
                     <input type="checkbox" class="checkbox" name="conditions">I agree to <a href='#'>Terms of conditions and privacy policy</a>
-                        <button class="btn">Submit</button>
+                    <button class="btn">Submit</button>
                     <!--<button class="btn" type="submit"><a href="<?=ROOT?>login">Sign Up </button>-->
                         <!--<a href="<?=ROOT?>login"><button class="">Sign Up</button></a>-->
                     </form>

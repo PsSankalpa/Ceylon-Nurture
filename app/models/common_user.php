@@ -14,7 +14,9 @@ class common_user extends Model
     ];
 
     protected $prefunctions = [
-        'make_common_user_id'];
+        'make_common_user_id',
+        'hash_password'
+    ];
  
     
 
@@ -131,6 +133,12 @@ class common_user extends Model
             $text .= $array[$random];
         }
         return $text;
+    }
+
+    public function hash_password($data)
+    {
+        $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
+        return $data;
     }
 
 }
