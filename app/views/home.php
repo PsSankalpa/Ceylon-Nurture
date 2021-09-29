@@ -24,8 +24,8 @@
                 <hr class="h">
 
                 <div class="home_buttons">
-                    <button class="button"> Sign Up </button>
-                    <button class="button"> Sign In </button>
+                <a href="<?=ROOT?>signup"><button class="button"> Sign Up </button>
+                <a href="<?=ROOT?>login"><button class="button"> Sign In </button>
                 </div>
             </div>
         </main>

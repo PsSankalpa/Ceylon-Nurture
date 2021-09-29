@@ -16,7 +16,7 @@ class signup extends Controller
                 $arr['username'] = htmlspecialchars($_POST['username']);
                 $arr['email'] = htmlspecialchars($_POST['email']);
                 $arr['tpNumber'] = htmlspecialchars($_POST['tpNumber']);
-                $arr['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $arr['password'] = $_POST['password']; 
                // $arr['date'] = date("Y-m-d H:i:s");
 
                 $common_user->insert($arr);

@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>
-            <?php echo $data['page_title'] ?>
-        </title>
-        <?php $this->view("header",$data)?>
+        Ceylon Nurture|Login Page</title>
+
         <link rel="stylesheet" href="<?=ASSETS?>css/loginStyle.css">
-  
 
     </head>
     <body>
-       
         <div class ="Login-form">
+        <div class = 'logo'>
+        <a href="<?=ROOT?>home"><img src="<?=ASSETS?>img/logo.png" alt="logo" style="width:100px;height:80px;"></a>
+        </div>
             <div class="container">
                 <div class="main">
                    <div class="content">
                    <h2>Log In</h2>
+
+                   <?php if(count($errors) > 0):?>
+                    <div class="alertwarning">
+                    <button class="closebtn" onclick="closebutton()">&times;</button>
+                        <strong>Errors!</strong>
+                        <?php foreach($errors as $error):?>
+                          <br><?=$error?>
+                        <?php endforeach;?>
+                    </div>
+                    <?php endif;?>
+
                    <form action="" method="post">
                         <input type="email" name="email" placeholder="Email-Address" required > 
                         <input type="password" name="password" placeholder="Password" required > 
                         <button class="btn" type="submit">Log In</button>
                     </form>
-                    <p class="account"><a href="#">Forgot password?</a></p>    
+                    <p class="account"><a href="<?=ROOT?>forgotPassword">Forgot password?</a></p>    
                     </br>
                     <p class="account">Don't have an account? <a href="<?=ROOT?>signup">Sign Up</a></p>
                     </div>
@@ -34,6 +42,6 @@
                 </div>
             </div>
         </div>
-    <?php $this->view("footer",$data)?>
+     <script type="text/javascript" src="<?=ASSETS?>js/sellerJs"></script>  
     </body>
 </html>

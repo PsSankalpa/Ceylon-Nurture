@@ -1,15 +1,30 @@
 <?php
 class login extends Controller
 {
-    function index($page = '',$title = '',$subpage = '')//we can take the values in the url in by this way
+    function index()
     {
-        //$db = new database();
-        //$data['results'] = $db->read("Select * from images");
-        $data['page_title'] = "Ceylon Nurture LogIn";
+        //code
+        $errors = array();
 
-        //$image_class = $this->loadModel("image_class");//load the relevant model
-        //utilize the above loaded model here
-        $this->view("login",$data); //in here put the relevent page name and the path
+        if(count($_POST) > 0)
+        {
+            $common_user = new common_user();
+            if($row = $common_user->where('email',$_POST['email']))
+            {
+                $row = $row[0];
+                if(password_verify($_POST['password'], $row->password))
+                {
+                    Auth::authenticate($row);//creating a class
+                    $this->redirect('/home2');
+                }
+            }
+            $errors['email'] = "Wrong email or password";
+
+        }
+        $this->view('login',[
+            'errors' =>$errors,
+        ]); 
     }
 }
+
 ?>
