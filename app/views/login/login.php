@@ -9,9 +9,6 @@
     </head>
     <body>
         <div class ="Login-form">
-        <div class = 'logo'>
-        <a href="<?=ROOT?>home"><img src="<?=ASSETS?>img/logo.png" alt="logo" style="width:100px;height:80px;"></a>
-        </div>
             <div class="container">
                 <div class="main">
                    <div class="content">
@@ -37,6 +34,7 @@
                     <p class="account">Don't have an account? <a href="<?=ROOT?>signup">Sign Up</a></p>
                     </div>
                         <div class="form-img">
+                        <button class="backbtn"><a href="<?=ROOT?>home">&times;</button>
                             <img src="<?=ASSETS?>img/logo.png">
                         </div>
                 </div>

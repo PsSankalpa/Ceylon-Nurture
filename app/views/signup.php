@@ -11,13 +11,11 @@
     ?>-->
 
     <body>
- 
         <div class ="Signup-form">
             <div class="container">
                 <div class="main">
                     <div class="content">
                     <h2>Sign Up</h2>
-
                     <?php if(count($errors) > 0):?>
                     <div class="alertwarning">
                     <button class="closebtn" onclick="closebutton()">&times;</button>
@@ -33,14 +31,12 @@
                     <input  type="text" value="<?=get_var('lname')?>" name="lname" placeholder="Last Name" > 
                     <input  type="text" value="<?=get_var('username')?>" name="username" placeholder="User Name"  > 
                     <input  type="email" value="<?=get_var('email')?>" name="email" placeholder="E-mail address"  >
-                    <input  type="tel" value="<?=get_var('tpNumber')?>" name="tpNumber" placeholder="Telephone Number" pattern="[0-9]{10}" > 
+                    <input  type="tel" value="<?=get_var('tpNumber')?>" name="tpNumber" placeholder="Telephone Number" > 
                     <input type="password" value="<?=get_var('password')?>" name="password" placeholder="Password"  > 
                     <input type="password" value="<?=get_var('password2')?>" name="password2" placeholder="Re-type Password"  > 
-                    <input type="checkbox" class="checkbox" name="conditions">I agree to <a href='#'>Terms of conditions and privacy policy</a>
+                  <!--  <button class="backbtn"><a href="<?=ROOT?>home">&times;</button>-->
                     <button class="btn">Submit</button>
-                    <!--<button class="btn" type="submit"><a href="<?=ROOT?>login">Sign Up </button>-->
-                        <!--<a href="<?=ROOT?>login"><button class="">Sign Up</button></a>-->
-                    </form>
+                </form>
                     </div>
                 </div>
             </div>

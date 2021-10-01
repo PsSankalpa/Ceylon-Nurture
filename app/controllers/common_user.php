@@ -1,5 +1,49 @@
 <?php
-class common_user extends Controller
+class Common_User extends Controller
+{
+    function index()
+    {
+      
+    if(!Auth::logged_in())
+       {
+          $this->redirect('login/login');
+
+        }
+
+       $common_user = new common_user();
+        $data = $common_user->findAll();
+
+        $this->view("common_user",['rows'=>$data]); //in here put the relevent page name and the path
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*class common_user extends Controller
 {
     function index()
     {
@@ -43,4 +87,4 @@ class common_user extends Controller
 		]);
 
 
-}
+}*/

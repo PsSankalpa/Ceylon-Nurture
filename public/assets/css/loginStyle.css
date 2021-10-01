@@ -8,7 +8,7 @@ body{
 }
 h2{
     font-family:'Raleway';
-    font-size: 3em;
+    font-size: 4em;
     color:#228B22;
     text-align:center;
 }
@@ -37,6 +37,7 @@ h2{
     box-shadow:2px 9px 49px -17p;
     border-top-left-radius:8px;
     border-bottom-left-radius:8px;
+    height:500px;
 }
 .form-img{
     flex-basis:50%;
@@ -46,11 +47,12 @@ h2{
     border-top-right-radius:8px;
     border-bottom-right-radius:8px;
     align-items:center;
-  
+    height:500px;
+
 }
 .form-img img{
     max-width:100%;
-    align-items: center;
+    position:relative;right:-10px;top:-65px;
 }
 .account{
     color:rgb(10, 10, 10);
@@ -123,7 +125,13 @@ a{
   .closebtn:hover {
     color: black;
   }
-  .logo{
-      padding:5px;
+  
+  .backbtn{
+    background-color: #f44336;
+    color: white;
+    font-size: 18px;
+    position:relative;right:-285px;top:-65px;
+    padding:10px 12px;
+    width:50px;
   }
 
