@@ -21,7 +21,7 @@ class login extends Controller
             $errors['email'] = "Wrong email or password";
 
         }
-        $this->view('login',[
+        $this->view('login/login',[
             'errors' =>$errors,
         ]); 
     }

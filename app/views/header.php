@@ -8,8 +8,7 @@
             Home
         </title>
         <link rel="icon" href="<?=ASSETS?>img/logo.png" type="image/x-icon" /><!--favicon-->
-        <link rel="stylesheet" href="<?=ASSETS?>css/headerStyle.css">
-        <link rel="stylesheet" href="<?=ASSETS?>css/sellers.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/headerStyl.css">
         
 
 
@@ -36,7 +35,7 @@
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>about">ABOUT</a>
                 <div class="v"></div>
-                <a class="a_navitem2" href="<?=ROOT?>channeling">CHANNELING</a>
+                <a class="a_navitem2" href="<?=ROOT?>doctor">CHANNELING</a>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>products">PRODUCTS</a>
                 <div class="v"></div>
@@ -50,7 +49,21 @@
             <div class="nav_item3">
                 <i class="fas fa-user-circle fa-10x" id="login_logo"></i>
                 <a class="a_navitem3" href="<?=ROOT?>login"> Log In</a>  
+                
             </div>
+
+            <div class="dropdown">
+                <button class="dropbtn"><?=Auth::getfname()?>  
+                <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                <a href="#">Dashboard</a>
+                <a href="#">My Account</a>
+                <a href="<?=ROOT?>logout">Log Out</a>
+                </div>
+            </div> 
+</div>
+
         </nav>
         </header>
 

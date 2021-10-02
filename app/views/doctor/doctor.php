@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            <?php echo $data['page_title'] ?>
+            Doctor Home Page
         </title>
 
         <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
@@ -22,12 +22,10 @@
                 <h1 class="h1_home">CEYLON NURTURE</h1>
                 <h5 class="h5_home">Ayurvedha Under One Roof</h5>
                 <hr class="h">
-
-                <!--<div class="home_buttons">
-                <a href="<?=ROOT?>signup"><button class="button"> Sign Up </button>
-                <a href="<?=ROOT?>login"><button class="button"> Sign In </button>
-                </div>-->
+                <div class="home_buttons">
+                <a href="<?=ROOT?>doctor/doctorAccount"><button class="button"> Appointments </button>
             </div>
+
         </main>
 
 

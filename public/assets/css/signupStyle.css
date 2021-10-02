@@ -23,9 +23,9 @@ h2{
 }
 
 .Signup-form{
-    width:1000px;
+    width:850px;
     height:600px;
-    background: linear-gradient(rgba(73, 72, 72, 0.8), rgba(73, 72, 72,0.8));
+    background:#ffff; /*linear-gradient(rgba(73, 72, 72, 0.8), rgba(73, 72, 72,0.8));*/
     top:60%;
     left:50%;
     position:absolute;
@@ -51,24 +51,27 @@ h2{
     text-align:left;
     padding:14px 20px;
     width:100%;
-    background:#f1f0f0;
+    background:#b6b4b4;
     border-radius:50px;
 
 }
 .Signup-form input:focus{
     background:#979090;
 }
+input.checkbox{
+    float:left;
+}
 
 .btn{
     font-size:18px;
     color:#ffff;
-    width:75%;
+    width:50%;
     background:#228B22;
     border-radius:50px;
     padding:14px 15px;
     font-weight:500;
     transition:0.3s ease;
-    float: center;
+    position:relative;left:180px;
 }
 .btn:hover{
     background:#40d840
@@ -94,6 +97,15 @@ h2{
     background-color: #f44336;
     transition: 0.3s;
     width:25%;
+  }
+.backbtn{
+    background-color: #f44336;
+    color: white;
+    font-size: 18px;
+    position:relative;right:-780px;top:-500px;
+    padding:10px 12px;
+    width:50px;
+    border-radius: 20%;
   }
   
   .closebtn:hover {

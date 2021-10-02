@@ -59,6 +59,11 @@ class common_user extends Model
 		  {
 			$this->errors['username'] = "The Username should contain only letters";
 		  }
+        //check if username exists
+        if ($this->where('username',$data['username'])) 
+        {
+            $this->errors['username'] = "The username already existing";
+        }
 
         //check for email address
         if (empty($_POST["email"])) 
@@ -69,6 +74,12 @@ class common_user extends Model
         elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL))
          {
             $this->errors['email'] = "Email format is not valid";
+        }
+
+        //check if email exists
+        if ($this->where('email',$data['email'])) 
+        {
+            $this->errors['email'] = "The email already existing";
         }
         
 
@@ -101,7 +112,7 @@ class common_user extends Model
 			$this->errors['password'] = "Password must be at least 8 characters long ";
 		}
         
-        //check the checkbox
+        /*check the checkbox
 		if(empty($data['conditions']))
 		{
 			$this->errors['conditions'] = "Cannot Keep the checkbox unticked";
@@ -111,7 +122,7 @@ class common_user extends Model
         {
             return true;
         }
-        return false;
+        return false;*/
 
     }
 

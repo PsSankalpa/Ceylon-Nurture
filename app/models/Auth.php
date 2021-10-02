@@ -40,6 +40,17 @@ class  Auth
         return false;
     }
 
+    public static function __callStatic($method,$params)
+    {
+        $prop = strtolower(str_replace("get","",$method));
+
+        if(isset($_SESSION['COMMON_USER']))
+        {
+            return $_SESSION['COMMON_USER']->$prop;
+        }
+        return 'User';
+    }
+
 }
 
 
