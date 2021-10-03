@@ -9,6 +9,8 @@
         </title>
         <link rel="icon" href="<?=ASSETS?>img/logo.png" type="image/x-icon" /><!--favicon-->
         <link rel="stylesheet" href="<?=ASSETS?>css/headerStyl.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/common.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/sellers.css">
         
 
 
