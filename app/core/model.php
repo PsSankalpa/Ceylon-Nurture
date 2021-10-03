@@ -13,7 +13,7 @@ class Model extends Database
 			$errors = "Sorry, file already exists.";
 			$uploadOk = 0;
 		}
-		elseif($FILES["image"]["size"] > 500000){
+		elseif($FILES["image"]["size"] > 5000000){
 			$errors = "Sorry, your file is too large.";//check file size
 			$uploadOk = 0;
 		}
@@ -24,8 +24,8 @@ class Model extends Database
 		
 		return $errors;
 	}
-
-	public function __construct()
+//----------------------------------------------------------------------------------------------------------------
+public function __construct()
 
 	{
 		/*if(!property_exists($this,'table'))
@@ -52,6 +52,7 @@ class Model extends Database
 			'value'=>$value
 		]);
 	}
+//----------------------------------------------------------------------------------------------------------------
 
 	public function findAll()
 	{

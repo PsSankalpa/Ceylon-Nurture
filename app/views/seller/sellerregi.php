@@ -3,8 +3,9 @@
     <head>
         <title>Ceylon Nurture|Seller|Registration</title>
         <?php $this -> view ("header",$data)?>
-        
-        
+        <link rel="stylesheet" href="<?=ASSETS?>css/sellers.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/sellerStyl.css">
+
     </head>
 
     <body class="regi">

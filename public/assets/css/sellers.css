@@ -12,21 +12,23 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url(../img/A-products.jpg);
+  position: relative;
+  background-image: url("../img/products.jpg");
+
 }
 
 /*----------------------------------------------------------*/
 /*top part*/
 .upperpart {
-    position: relative;
-    opacity: 0.9;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100%;
-    width: 100%;
-    display: flex;
+  /* Set a specific height */
+  min-height: 80vh; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../img/products.jpg");
   }
 
   
@@ -36,7 +38,7 @@ body{
     top: 70%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -30%);
+    transform: translate(-50%, 30%);
   }
 
   .btn-group button {
@@ -169,6 +171,33 @@ input[type=file] {
   transition: 0.3s;
 }
 
+/*for grid of the container*/
+.seller-grid-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.seller-grid-container > div {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.seller-grid-container > h2 {
+  text-align: center;
+}
+
+h3,h4{
+  color:#A7D129;
+  text-align: center;
+}
+
+.seller-grid-container p{
+  color:#A7D129;
+  text-align: justify;
+}
+
 
 /* Floating column for labels: 25% width */
 .col-25 {
@@ -203,6 +232,7 @@ input[type=file] {
 /*proct section*/
 .products-section{
   background-color: black;
+  border-color: #A7D129;
 }
 
 /*---------------------------------------------------------------------------*/

@@ -123,12 +123,12 @@ class seller extends Controller
                 $errors = $products->errors2;
             }
         }
-        $row =$products->where('productId',$productId); //in here row is an array
+        $row =$products->where('productid',$productId); //in here row is an array
         
         if($row)
         {
             $row = $row[0];
-            unlink($row->image);
+            //unlink($row->image);
         }
         $this->view('seller/editProduct',[
 			'errors'=>$errors,
@@ -150,8 +150,8 @@ class seller extends Controller
             
             
         }
-        $row =$products->where('productId',$productId); //in here row is an array
-        
+        $row =$products->where('productid',$productId); //in here row is an array
+        $data =$products->where('productid',$productId);
         if($row)
         {
             $row = $row[0];
@@ -159,8 +159,23 @@ class seller extends Controller
         }
         $this->view('seller/deleteProduct',[
             'row'=>$row,
+            'rows'=>$data,
 		]);
 
+    }
+
+    function productDetails($productId = null)
+    {
+        //$name = ['page_title']= "seller";
+
+        //$sellers = $this->load_model('Sellers');
+
+        $products = new products();
+        $data =$products->where('productId',$productId); 
+
+
+        $this->view('seller/ProductDetails',['rows'=>$data]);
+       
     }
 
 }
