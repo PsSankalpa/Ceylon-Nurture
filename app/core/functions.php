@@ -9,7 +9,7 @@
     }
 
 
-    return "";
+    return $default;
  }
  function get_select($key,$value)
  {
