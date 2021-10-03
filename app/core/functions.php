@@ -9,7 +9,7 @@
     }
 
 
-    return "";
+    return $default;//return the value from the database,if any
  }
  function get_select($key,$value)
  {
