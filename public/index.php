@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();//from this session will start
 
 require "../app/init.php";
 

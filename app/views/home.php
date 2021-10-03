@@ -2,15 +2,15 @@
 <html>
     <head>
         <title>
-            <?php echo $data['page_title'] ?>
+            Landing
+            <?php $this -> view ("header",$data)?>
+            <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
         </title>
-
-        <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
 
     </head>
 
     <body>
-        <?php $this -> view ("header",$data)?>
+        
         
         <div class="bg_image_container">
         <img class="bg_image" src="<?=ASSETS?>img/home.jpg">
@@ -29,8 +29,6 @@
                 </div>
             </div>
         </main>
-
-
 
     </body>
 </html>
