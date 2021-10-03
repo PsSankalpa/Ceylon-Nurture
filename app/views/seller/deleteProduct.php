@@ -3,6 +3,7 @@
     <head>
         <title>Ceylon Nurture|Seller|Registration</title>
         <?php $this -> view ("header",$data)?>
+        <link rel="stylesheet" href="<?=ASSETS?>css/sellers.css">
     </head>
 
     <body class="regi">
@@ -17,7 +18,7 @@
 
         <hr>
         <form class="regi_form" enctype="multipart/form-data" method="POST">
-
+        <?php foreach ($rows as $row):?>
             <div class="row">
             <div class="col-25">
                 <label for="productName">Product/Herb Name</label>
@@ -30,13 +31,13 @@
 
             <div class="row">
             <div class="col-25">
-                <label for="productPrice">Price(only add the value)</label>
+                <label for="productPrice">Price</label>
             </div>
             <div class="col-75">
                 <input disabled type="text" value="<?=get_var('productPrice',$row->productPrice)?>" id="productPrice" name="productPrice" placeholder="Price">
             </div>
             </div>
-        
+            <?php endforeach;?>
             <div class="row">
             <input type="submit" value="Delete">
             <input type="reset" value="Reset">

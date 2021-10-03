@@ -4,6 +4,8 @@
  */
 class common_user extends Model
 {
+    protected $table = "common_user";
+
     protected $allowedcolumns = [
 		'fname',
 		'lname',
@@ -19,9 +21,6 @@ class common_user extends Model
     ];
  
     
-
-   protected $table = "common_user";
-
    //protected $prefunctions = ['make_common_user_id'];
  
 

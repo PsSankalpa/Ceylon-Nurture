@@ -2,9 +2,7 @@
 
 class sellers extends Model
 {
-	protected $prefunctions = [
-		'check_image',
-	];
+	
 
 	protected $allowedcolumns = [
 		'nameWithInitials',

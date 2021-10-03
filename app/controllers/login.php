@@ -12,10 +12,14 @@ class login extends Controller
             if($row = $common_user->where('email',$_POST['email']))
             {
                 $row = $row[0];
+                print_r("$row");
+                die;
                 if(password_verify($_POST['password'], $row->password))
                 {
-                    Auth::authenticate($row);//creating a class
-                    $this->redirect('home/home2');
+
+                    Auth::authenticate($row);//creating a class,by putting "::" this run in static mode,from this we authinticate the user
+                    $this->redirect('home/home2');//in here we put the controller claas or it's function
+
                 }
             }
             $errors['email'] = "Wrong email or password";

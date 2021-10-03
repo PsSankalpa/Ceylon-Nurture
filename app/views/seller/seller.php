@@ -14,13 +14,12 @@
             //print_r($data['rows']);
 	    ?>
         
-        <div class="">
-
-            <img src="<?=ASSETS?>img/products.jpg" alt="top-image" class="upperpart">
+        <div class="upperpart">
             <div class="buttons_section mg1 btn-group center">
                         <a href="<?=ROOT?>seller/registration"><button class="">Register</button></a>
                         <a href="<?=ROOT?>seller/uploadProduct"><button class="">Add Proucts</button></a>
             </div>
+        </div>
 
         <div class="products-section">
             <div class="cardrow">
@@ -32,7 +31,9 @@
                                 <h3><?=$row->productName?> </h3>
                                 <p><?="RS.".$row->productPrice?> </p>
                                 <div class="div">
-                                <button class="cardbutton">View Infomation</button>
+                                    <a href="<?=ROOT?>/seller/productDetails/<?=$row->productid?>">
+                                        <button class="cardbutton">View Infomation</button>
+                                    </a>
                                 </div>
                                 <a href="<?=ROOT?>/seller/editProduct/<?=$row->productid?>">
                                     <button class="cardbutton">Edit</button>
