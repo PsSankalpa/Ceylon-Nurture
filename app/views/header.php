@@ -26,6 +26,10 @@
     </head>
 
     <body>
+        <?php
+        $_SESSION START
+        ?>
+        
         <header>
         <nav class="top_nav">
             <div class="nav_item1">
