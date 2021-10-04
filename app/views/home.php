@@ -3,7 +3,7 @@
     <head>
         <title>
             Landing
-            <?php $this -> view ("header",$data)?>
+            <?php $this -> view ("header")?>
             <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
         </title>
 
@@ -28,8 +28,6 @@
                 <a href="<?=ROOT?>login/login"><button class="button"> Sign In </button>
                 </div>
             </div>
-        </main>
-
+        </main>      
     </body>
 </html>
-

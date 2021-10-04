@@ -25,9 +25,12 @@
                     <?php endif;?>
 
                    <form action="" method="post">
-                        <input type="email" name="email" placeholder="Email-Address" required > 
-                        <input type="password" name="password" placeholder="Password" required > 
+
+                        <input type="email" name="email" value="<?=get_var('email')?>" placeholder="Email-Address"> 
+                        <input type="password" name="password" value="<?=get_var('email')?>" placeholder="Password">
+
                         <button class="btn" type="submit">Log In</button>
+
                     </form>
                     <p class="account"><a href="<?=ROOT?>forgotPassword">Forgot password?</a></p>    
                     </br>

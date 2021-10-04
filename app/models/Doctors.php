@@ -105,6 +105,7 @@ class doctors extends Model
 				$doctor = new doctor();
 				$doctor->get_destination($destination);//send the address of the file path to doctor controller to save in the database 
 			}
+		}
 
 		if(count($this->errors) == 0)
 		{
@@ -145,17 +146,15 @@ class doctors extends Model
 				$doctor = new doctor();
 				$doctor->get_destination($destination);//send the address of the file path to doctor controller to save in the database 
 			}
+		}
 
 		if(count($this->errors) == 0)
 		{
-			
 			move_uploaded_file($FILES['image']['tmp_name'], $destination);
 			return true;
 		}
 
 		return false;
-
-        
 	}
 
 }

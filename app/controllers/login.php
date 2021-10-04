@@ -12,8 +12,6 @@ class login extends Controller
             if($row = $common_user->where('email',$_POST['email']))
             {
                 $row = $row[0];
-                print_r("$row");
-                die;
                 if(password_verify($_POST['password'], $row->password))
                 {
 

@@ -31,7 +31,11 @@ body{
   background-image: url("../img/products.jpg");
   }
 
-  
+  @media only screen and (max-device-width: 900px) {
+    .upperpart {
+      background-attachment: scroll;
+    }
+  }
 
   .center {
     position: absolute;
