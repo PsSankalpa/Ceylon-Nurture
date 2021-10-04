@@ -116,13 +116,13 @@ class common_user extends Model
 		if(empty($data['conditions']))
 		{
 			$this->errors['conditions'] = "Cannot Keep the checkbox unticked";
-		}
+		}*/
 
         if(count($this->errors) == 0)
         {
             return true;
         }
-        return false;*/
+        return false;
 
     }
 

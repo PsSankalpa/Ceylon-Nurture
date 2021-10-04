@@ -24,6 +24,10 @@
     </head>
 
     <body>
+        <?php
+        $_SESSION START
+        ?>
+        
         <header>
         <nav class="top_nav">
             <div class="nav_item1">
@@ -31,7 +35,7 @@
                 <img class="logo" src="<?=ASSETS?>img/logo.png">               
             </div>
             <div class="nav_item2">
-                <a class="a_navitem2" href="<?=ROOT?>home">HOME</a>
+                <a class="a_navitem2" href="<?=ROOT?>home/home2">HOME</a>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>about">ABOUT</a>
                 <div class="v"></div>
