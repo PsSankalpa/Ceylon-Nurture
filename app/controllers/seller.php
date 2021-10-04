@@ -98,7 +98,7 @@ class seller extends Controller
 
     }
 
-    function editProduct($productId = null)
+    function editProduct($productid = null)
     {
         $errors = array();
         $products = new products();
@@ -116,14 +116,14 @@ class seller extends Controller
                 $arr['category'] = $_POST['category'];
 
 
-                $products->update($productId,$arr);
+                $products->update($productid,$arr);
                 $this->redirect('seller');
             }
             else{
                 $errors = $products->errors2;
             }
         }
-        $row =$products->where('productid',$productId); //in here row is an array
+        $row =$products->where('productid',$productid); //in here row is an array
         
         if($row)
         {

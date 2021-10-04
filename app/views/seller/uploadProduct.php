@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ceylon Nurture|Seller|Registration</title>
+        <title>Ceylon Nurture|Seller|uploadProduct</title>
         <?php $this -> view ("header",$data)?>
     </head>
 

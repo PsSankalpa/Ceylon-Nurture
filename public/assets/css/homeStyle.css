@@ -49,6 +49,57 @@ hr.h{
       border:none;
   }
 
+  .bg_image1{
+    min-height: 95vh; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    position: relative;
+    background-image: url("../img/home.jpg");
+  }
+
+  @media only screen and (max-device-width: 900px) {
+    .bg_image1 {
+      background-attachment: scroll;
+    }
+  }
+
+  /*for choices*/
+  .decission{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+  }
+  .choices{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .itembox1 {
+    background-color: #f1f1f1;
+    padding: 10px;
+    flex: 50%;
+    align-items: center;
+  }
+  .itembox2 {
+    background-color: #f1f1f1;
+    padding: 10px;
+    flex: 33%;
+  }
+
+  @media (max-width: 800px) {
+    .itembox1 .itembox2 {
+      flex: 100%;
+    }
+  }
+
 /*for small devices*/
 @media (min-width:768px){
    

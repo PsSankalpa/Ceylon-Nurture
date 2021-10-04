@@ -3,8 +3,6 @@
     <head>
         <title>Ceylon Nurture|Seller|Registration</title>
         <?php $this -> view ("header",$data)?>
-        <link rel="stylesheet" href="<?=ASSETS?>css/common.css">
-        <link rel="stylesheet" href="<?=ASSETS?>css/sellers.css">
     </head>
 
     <body class="regi">
@@ -14,7 +12,7 @@
         <h2>Edit the Product</h2>
 
         <?php if($row):?>
-          <?php print_r($row->productName);?>  
+            <?php print_r($row);?>
         <!--for the errors-->
         <?php if(count($errors) > 0 ):?>
         <div class="alertwarning">

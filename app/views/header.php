@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>
-
             Home
         </title>
         <link rel="icon" href="<?=ASSETS?>img/logo.png" type="image/x-icon" /><!--favicon-->
-        <link rel="stylesheet" href="<?=ASSETS?>css/headerStyl.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/headerStyle.css">
         <link rel="stylesheet" href="<?=ASSETS?>css/common.css">
         <link rel="stylesheet" href="<?=ASSETS?>css/sellers.css">
         
@@ -26,9 +25,7 @@
     </head>
 
     <body>
-        <?php
-        $_SESSION START
-        ?>
+    
         
         <header>
         <nav class="top_nav">
@@ -52,14 +49,16 @@
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>forums">FORUMS</a>
             </div>
+            <?php if(!Auth::logged_in()):?>
             <div class="nav_item3">
                 <i class="fas fa-user-circle fa-10x" id="login_logo"></i>
                 <a class="a_navitem3" href="<?=ROOT?>login"> Log In</a>  
-                
             </div>
+            <?php endif;?>
 
+            <?php if(Auth::logged_in()):?>
             <div class="dropdown">
-                <button class="dropbtn"><?=Auth::getfname()?>  
+                <button class="dropbtn"><?=Auth::fname()?>  
                 <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
@@ -68,8 +67,12 @@
                 <a href="<?=ROOT?>logout">Log Out</a>
                 </div>
             </div> 
-</div>
+            <?php endif;?>
 
         </nav>
         </header>
+
+    </body>
+
+</html>
 
