@@ -52,40 +52,38 @@ class  Auth
         return 'User';
     }
 
-    public function finduser()
+    public function finduser($sellerid = [],$doctorid = [],$patientid = [],$userid)
     {
-        $seller = new sellers();
-        $doctor = new doctors();
-        $patient = new patients();
+        
+        $userid = $_SESSION['COMMON_USER']->userid;
+        
         if(isset($_SESSION['COMMON_USER']))
         {
-            $userid = $_SESSION['COMMON_USER']->userid;
-
-            if($seller->where('userid',$userid))
+            if($sellerid == $userid )
             {
                 return "seller";
             }
-            elseif($doctor->where('userid',$userid))
+            elseif($doctorid == $userid)
             {
                 return "doctor";
             }
-            elseif($patient->where('userid',$userid))
+            elseif($patientid == $userid)
             {
                 return "patient";
             }
-            elseif( ($doctor->where('userid',$userid)) && ($seller->where('userid',$userid)) )
+            elseif( ($doctorid && ($sellerid) == $userid ))
             {
                 return "doctorAndSeller";
             }
-            elseif( ($doctor->where('userid',$userid)) && ($patient->where('userid',$userid)) )
+            elseif( ($doctorid && $patientid) == $userid )
             {
                 return "doctorAndPatient";
             }
-            elseif( ($seller->where('userid',$userid)) && ($patient->where('userid',$userid)) )
+            elseif( ($sellerid && $patientid) == $userid )
             {
                 return "sellerAndPatient";
             }
-            elseif( ($seller->where('userid',$userid)) && ($patient->where('userid',$userid)) && ($doctor->where('userid',$userid)))
+            elseif( ($sellerid && $patientid && $doctorid) == $userid)
             {
                 return "allUser";
             }

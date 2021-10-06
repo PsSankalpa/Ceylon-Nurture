@@ -35,6 +35,7 @@ class seller extends Controller
             if($sellers->validate($_POST,$_FILES))
             {
                 global $des;
+                $arr['userid'] = Auth::userid();
                 $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
                 $arr['registrationNumber'] = htmlspecialchars($_POST['registrationNumber']);
                 $arr['tpNumber'] = htmlspecialchars($_POST['tpNumber']);
@@ -53,19 +54,6 @@ class seller extends Controller
         $this->view('seller/sellerregi',[
 			'errors'=>$errors,
 		]);
-
-        //$sellers->insert($arr);
-        //$sellers->update(2,$arr);
-        //sellers->delete(id);
-        //$data = $sellers->findAll();
-        //$data = $sellers->where('nameWithInitials','Sankalpa');
-
-        /* [nameWithInitials] => 
-        [registrationNumber] => 
-        [tpNumber] => 
-        [nic] => 
-        [address] => 
-        [image]  */ 
     }
 
     function uploadProduct()

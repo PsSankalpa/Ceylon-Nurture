@@ -5,6 +5,7 @@ class sellers extends Model
 	
 
 	protected $allowedcolumns = [
+		'userid',
 		'nameWithInitials',
 		'registrationNumber',
 		'tpNumber',

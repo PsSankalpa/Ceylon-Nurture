@@ -3,10 +3,9 @@
     <head>
         <title>
             Landing
-            <?php $this -> view ("header")?>
-            <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
         </title>
-
+        <?php $this -> view ("header")?>
+        <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
     </head>
 
     <body>
