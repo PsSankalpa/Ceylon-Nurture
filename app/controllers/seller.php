@@ -53,19 +53,6 @@ class seller extends Controller
         $this->view('seller/sellerregi',[
 			'errors'=>$errors,
 		]);
-
-        //$sellers->insert($arr);
-        //$sellers->update(2,$arr);
-        //sellers->delete(id);
-        //$data = $sellers->findAll();
-        //$data = $sellers->where('nameWithInitials','Sankalpa');
-
-        /* [nameWithInitials] => 
-        [registrationNumber] => 
-        [tpNumber] => 
-        [nic] => 
-        [address] => 
-        [image]  */ 
     }
 
     function uploadProduct()

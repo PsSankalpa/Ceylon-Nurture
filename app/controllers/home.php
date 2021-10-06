@@ -9,11 +9,10 @@ class home extends Controller
          //  $this->redirect();
 
       // }
+      $this->view('home',[
+    
+      ]);
 
-        $common_user = new common_user();
-        $this->view('home',[
-        
-        ]);
     }
 
     function home2()
