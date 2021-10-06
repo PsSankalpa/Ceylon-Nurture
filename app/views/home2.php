@@ -19,7 +19,7 @@
             </div>
 
          <?php if(!empty($data)):?>
-            <?php if($data = "seller"):?>
+            <?php if($data == "seller"):?>
                 <div class="choice">
                     <div class="itembox1">
                         <button>Register as a Doctor</button>
@@ -28,7 +28,7 @@
                         <button>Register as a Patient</button>
                     </div>
                 </div>
-            <?php elseif($data = "doctor"):?>
+            <?php elseif($data == "doctor"):?>
                 <div class="choice">
                     <div class="itembox1">
                         <button>Register as a Patient</button>
@@ -37,7 +37,7 @@
                         <button>Register as a Seller</button>
                     </div>
                 </div>
-            <?php elseif($data = "patient"):?>
+            <?php elseif($data == "patient"):?>
                 <div class="choice">
                     <div class="itembox1">
                         <button>Register as a Doctor</button>
@@ -46,25 +46,25 @@
                         <button>Register as a Seller</button>
                     </div>
                 </div>
-            <?php elseif($data = "doctorAndSeller"):?>
+            <?php elseif($data == "doctorAndSeller"):?>
                 <div class="choice">
                     <div class="itembox1">
                         <button>Register as a patient</button>
                     </div>
                 </div>
-            <?php elseif($data = "doctorAndPatient"):?>
+            <?php elseif($data == "doctorAndPatient"):?>
                 <div class="choice">
                     <div class="itembox1">
                         <button>Register as a Seller</button>
                     </div>
                 </div>
-            <?php elseif($data = "sellerAndPatient"):?>
+            <?php elseif($data == "sellerAndPatient"):?>
                 <div class="choice">
                 <div class="itembox1">
                         <button>Register as a Doctor</button>
                     </div>
                 </div>
-            <?php else:?>
+            <?php elseif($data == "none"):?>
                 <div class="choice">
                     <div class="itembox2">
                         <button>Register as a Doctor</button>
