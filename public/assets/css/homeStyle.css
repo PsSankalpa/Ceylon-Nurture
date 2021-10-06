@@ -37,7 +37,7 @@ hr.h{
       display: flex;
       gap:70px;
       align-self: center;
-      padding-top: 50px;
+      padding-top: 80px;
   }
 
   .button{
@@ -47,6 +47,19 @@ hr.h{
       background-color: #FDDA0D;
       color:white;
       border:none;
+  }
+
+  .button_patient{
+    width:250px;
+    height:70px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #FDDA0D;
+    color:black;
+    border:3px solid black;
+}
+  .button_patient:hover{
+    background-color: #547925;
   }
 
   .bg_image1{

@@ -10,8 +10,6 @@
 
         <link rel="icon" href="<?=ASSETS?>img/logo.png" type="image/x-icon" /><!--favicon-->
         <link rel="stylesheet" href="<?=ASSETS?>css/headerStyle.css">
-        <link rel="stylesheet" href="<?=ASSETS?>css/common.css">
-        <link rel="stylesheet" href="<?=ASSETS?>css/sellers.css">
         
         <!--adding user logo-->
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
@@ -38,7 +36,7 @@
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>about">ABOUT</a>
                 <div class="v"></div>
-                <a class="a_navitem2" href="<?=ROOT?>doctor">CHANNELING</a>
+                <a class="a_navitem2" href="<?=ROOT?>channeling">CHANNELING</a>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>products">PRODUCTS</a>
                 <div class="v"></div>

@@ -64,7 +64,9 @@
                         <button>Register as a Doctor</button>
                     </div>
                 </div>
+
             <?php elseif($data == "none"):?>
+
                 <div class="choice">
                     <div class="itembox2">
                         <button>Register as a Doctor</button>
