@@ -89,6 +89,10 @@ class  Auth
             {
                 return "allUser";
             }
+            else
+            {
+                return "none";
+            }
         }
     }
 
