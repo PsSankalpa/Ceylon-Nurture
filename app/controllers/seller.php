@@ -35,6 +35,7 @@ class seller extends Controller
             if($sellers->validate($_POST,$_FILES))
             {
                 global $des;
+                $arr['userid'] = Auth::userid();
                 $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
                 $arr['registrationNumber'] = htmlspecialchars($_POST['registrationNumber']);
                 $arr['tpNumber'] = htmlspecialchars($_POST['tpNumber']);

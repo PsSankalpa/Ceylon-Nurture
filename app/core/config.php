@@ -43,7 +43,7 @@ function errorHandler($errno, $errstr, $errfile, $errline) {
 
     $date = date("Y-m-d");
     $str = $errno .":". $errstr . " in " . $errfile . " at line " . $errline . "\n";
-    file_put_contents("app/errorLog/" . $date . ".txt",$str,FILE_APPEND);//errorlog is the file were erors save,
+    file_put_contents("errorLog/" . $date . ".txt",$str,FILE_APPEND);//errorlog is the file were erors save,
 }
 // Set user-defined error handler function
 set_error_handler("errorHandler");
