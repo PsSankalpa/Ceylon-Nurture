@@ -9,6 +9,45 @@
     </head>
 
     <body>
+        <header>
+        <?php if(!empty($data)):?>
+            <?php if($data == "seller"):?>
+                <div class="home_buttons_top">
+                        <div><button class="home_button_top">Be a Doctor</button></div>
+                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
+                </div>
+
+            <?php elseif($data == "doctor"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
+                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
+                </div>
+
+            <?php elseif($data == "patient"):?>
+                <div class="home_buttons_top">
+                        <div><button class="home_button_top">Be a Doctor</button></div>
+                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
+                </div>
+
+            <?php elseif($data == "doctorAndSeller"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
+                </div>
+
+            <?php elseif($data == "doctorAndPatient"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
+                </div>
+
+            <?php elseif($data == "sellerAndPatient"):?>
+                <div class="home_buttons_top">
+                        <div><button class="home_button_top">Be a Doctor</button></div>
+                </div>
+
+                <?php endif;?>
+        <?php endif;?>
+        </header>
+        
     <div class="bg_image_container">
         <img class="bg_image" src="<?=ASSETS?>img/home.jpg">
     </div>
@@ -20,52 +59,52 @@
                 <hr class="h">
             
 
-         <?php if(!empty($data)):?>
+        <?php if(!empty($data)):?>
             <?php if($data == "seller"):?>
-                <div class="choice">
-                    <div class="itembox1">
-                        <button class=button>Register as a Doctor</button>
-                    </div>
-                    <div class="itembox1">
-                        <button>Register as a Patient</button>
-                    </div>
+                <div class="home_buttons">
+                <button class="button_patient"> Add products </button>
                 </div>
+
             <?php elseif($data == "doctor"):?>
-                <div class="choice">
-                    <div class="itembox1">
-                        <button>Register as a Patient</button>
-                    </div>
-                    <div class="itembox1">
-                        <button>Register as a Seller</button>
-                    </div>
+                <div class="home_buttons">
+                <button class="button_patient"> Appointments </button>
                 </div>
-            <?php elseif($data == "patient"):?>
-                <div class="choice">
-                    <div class="itembox1">
-                        <button>Register as a Doctor</button>
-                    </div>
-                    <div class="itembox1">
-                        <button>Register as a Seller</button>
-                    </div>
+
+                <?php elseif($data == "patient"):?>
+
+                <div class="home_buttons">
+                <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button>
                 </div>
+
             <?php elseif($data == "doctorAndSeller"):?>
-                <div class="choice">
-                    <div class="itembox1">
-                        <button>Register as a patient</button>
-                    </div>
+
+                <div class="home_buttons">
+                <button class="button_patient"> Appointments </button>
+                <button class="button_patient"> Add products </button>
                 </div>
+
             <?php elseif($data == "doctorAndPatient"):?>
-                <div class="choice">
-                    <div class="itembox1">
-                        <button>Register as a Seller</button>
-                    </div>
+
+                <div class="home_buttons">
+                ><button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button>
                 </div>
+
             <?php elseif($data == "sellerAndPatient"):?>
-                <div class="choice">
-                <div class="itembox1">
-                        <button>Register as a Doctor</button>
-                    </div>
+
+                <div class="home_buttons">
+                <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button>
+                <button class="button_patient"> Add products </button>
                 </div>
+
+            <?php elseif($data == "allUser"):?>
+
+                <div class="home_buttons">
+                <button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button>
+                <button class="button_patient"> Add products </button>
+                </div>
+
 
             <?php elseif($data == "none"):?>
 
@@ -80,7 +119,7 @@
                     </div>
                     <div class="itembox2">
                         <div><p>Are You a Seller? </p></div>
-                        <div><button class="home_button">Register as a Seller</button></div>
+                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button">Register as a Seller</button></a></div>
                     </div>
                 </div>
             <?php endif;?>

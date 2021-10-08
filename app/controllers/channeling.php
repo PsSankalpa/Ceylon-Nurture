@@ -9,6 +9,7 @@ class channeling extends Controller
         {
          $this->redirect('login/login');
         }
+        
         else{
         $this->view("patient/channeling"); //in here put the relevent page name and the path
         }

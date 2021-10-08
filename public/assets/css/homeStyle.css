@@ -47,6 +47,7 @@ hr.h{
       background-color: #FDDA0D;
       color:black;
       border:3px solid black;
+      border-radius: 15px;
   }
 
   .button:hover{
@@ -136,6 +137,33 @@ hr.h{
   .home_button:hover{
   background-color: #547925;
   }
+
+  .home_button_top{
+    width:100px;
+    height:30px;
+    font-size: 15px;
+    color:black;
+    border:none;
+  }
+
+  .home_button_top:hover{
+  background-color: #547925;
+  }
+
+  .home_buttons_top{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top:0px;
+    right: 0px;
+    gap:0;
+    background-color: rgba(252, 252, 252, 0.705);
+    border-radius: 10px;
+
+
+  }
+
+
 
   @media (max-width: 800px) {
     
