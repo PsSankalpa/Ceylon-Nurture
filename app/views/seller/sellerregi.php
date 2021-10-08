@@ -3,8 +3,7 @@
     <head>
         <title>Ceylon Nurture|Seller|Registration</title>
         <?php $this -> view ("header",$data)?>
-        <link rel="stylesheet" href="<?=ASSETS?>css/sellers.css">
-        <link rel="stylesheet" href="<?=ASSETS?>css/sellerStyl.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/registrationform.css">
 
     </head>
 
@@ -12,7 +11,7 @@
 
     
     <div class="container center">
-        <h2>Update as a Seller</h2>
+        <h1>Update as a Seller</h1>
 
         <!--for the errors-->
         <?php if(count($errors) > 0 ):?>

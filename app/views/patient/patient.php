@@ -11,7 +11,17 @@
 
     <body>
         
-        
+    <?php if($data == "patient"):?>
+                <div class="choice">
+                    <div class="itembox1">
+                        <button>Register as a Doctor</button>
+                    </div>
+                    <div class="itembox1">
+                        <button>Register as a Seller</button>
+                    </div>
+                </div>
+    <?php endif;?>
+
         <div class="bg_image_container">
         <img class="bg_image" src="<?=ASSETS?>img/home.jpg">
         </div>

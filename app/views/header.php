@@ -32,7 +32,7 @@
                 <img class="logo" src="<?=ASSETS?>img/logo.png">               
             </div>
             <div class="nav_item2">
-                <a class="a_navitem2" href="<?=ROOT?>home/home2">HOME</a>
+                <a class="a_navitem2" href="<?=ROOT?>home/home">HOME</a>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>about">ABOUT</a>
                 <div class="v"></div>

@@ -2,7 +2,7 @@
 
 class app
 {
-    private $controller = "home";
+    private $controller = "landing";
     private $method = "index";
     private $params = [];//values in the url which after controler php name and its method, stores here
 
@@ -38,7 +38,7 @@ class app
 
     private function splitURL()
     {
-        $url = isset($_GET['url'])?$_GET['url']:"home";//after the main part of the url,if there is nothing this directed to the home page(currently default)
+        $url = isset($_GET['url'])?$_GET['url']:"landing";//after the main part of the url,if there is nothing this directed to the home page(currently default)
         return explode("/", filter_var(trim($url,"/"),FILTER_SANITIZE_URL));//sanitize the url
     }
 }
