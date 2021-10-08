@@ -84,7 +84,7 @@ class sellers extends Model
 		else
         {
             //upload the file to following dir
-            $folder = "seller_certificates/";
+            $folder = "medical_records/";
             if(!file_exists($folder))//if dir doesn't exist,create it like below with file permissions
             {
                 mkdir($folder,0777,true);

@@ -5,8 +5,12 @@ class channeling extends Controller
     {
       
        $channeling = new channeling();
-        //$data = $common_user->findAll();
-
+        if(!Auth::logged_in())
+        {
+         $this->redirect('login/login');
+        }
+        else{
         $this->view("patient/channeling"); //in here put the relevent page name and the path
+        }
     }
 }

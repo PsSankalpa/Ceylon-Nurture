@@ -1,5 +1,5 @@
 <?php
-class home extends Controller
+class landing extends Controller
 {
     function index()
     {
@@ -9,13 +9,13 @@ class home extends Controller
          //  $this->redirect();
 
       // }
-      $this->view('home',[
+      $this->view('landing',[
     
       ]);
 
     }
 
-    function home2()
+    function home()
     {
       
         if(!Auth::logged_in())
@@ -65,7 +65,7 @@ class home extends Controller
             $Auth = new Auth;
             $data = $Auth->finduser($sellerid,$doctorid,$patientid,$userid);
             
-            $this->view('home2',[
+            $this->view('home',[
 			    'data'=>$data,
             
 		    ]); //in here put the relevent page name and the path
