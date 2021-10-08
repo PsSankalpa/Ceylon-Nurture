@@ -45,7 +45,7 @@ class seller extends Controller
              
                
                 $sellers->insert($arr);
-                $this->redirect('seller');
+                $this->redirect('home/home');
             }
             else{
                 $errors = $sellers->errors;

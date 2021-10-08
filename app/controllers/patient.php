@@ -1,7 +1,7 @@
 <?php
 class patient extends Controller
 {
-    function index()
+    /*function index()
     {
       
        $patient = new patient();
@@ -9,7 +9,7 @@ class patient extends Controller
 
         $this->view("patient/patient",['rows'=>$data]); //in here put the relevent page name and the path
     } 
-
+*/
     function registration()
     {
         $errors = array();
@@ -30,7 +30,7 @@ class patient extends Controller
              
                
                 $patients->insert($arr);
-                $this->redirect('home');
+                $this->redirect('home/home');
             }
             else{
                 $errors = $patients->errors;
