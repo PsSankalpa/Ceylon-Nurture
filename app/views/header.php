@@ -40,7 +40,7 @@
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>doctor">CHANNELING</a>
                 <div class="v"></div>
-                <a class="a_navitem2" href="<?=ROOT?>products">PRODUCTS</a>
+                <a class="a_navitem2" href="<?=ROOT?>header/viewPoducts">PRODUCTS</a>
                 <div class="v"></div>
 
                 <a class="a_navitem2" href="<?=ROOT?>seller">SELLING</a>

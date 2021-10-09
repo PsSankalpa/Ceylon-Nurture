@@ -16,7 +16,7 @@ class Model extends Database
 		elseif($FILES["image"]["size"] > 5000000){
 			$errors = "Sorry, your file is too large.";//check file size
 			$uploadOk = 0;
-		}
+		}	
 		elseif($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif"){
 			$errors = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";// Allow certain file formats
 			$uploadOk = 0;
@@ -35,6 +35,7 @@ public function __construct()
         //we can use above condition if we use php8 in wamp server
         !property_exists($this,'table');//to get the table value
 		!property_exists($this,'pk');//to get the primary key value
+		!property_exists($this,'pk2');//to get the foriegn key value
 	}
 
 

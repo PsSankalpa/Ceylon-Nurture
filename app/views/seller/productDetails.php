@@ -23,7 +23,10 @@
 
             <div>
                 <h4>Price : <?="RS.".$row->productPrice?></h4>
+                <p><?=$row->sellerName?></p>
                 <p><?=$row->description?></p>
+                <p><?=$row->address?></p>
+                <p><?=$row->tpNumber?></p>
             </div>
 
         </div>

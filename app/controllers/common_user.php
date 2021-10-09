@@ -1,5 +1,5 @@
 <?php
-class Common_User extends Controller
+class commonUser extends Controller
 {
     function index()
     {
@@ -13,7 +13,18 @@ class Common_User extends Controller
        $common_user = new common_user();
         //$data = $common_user->findAll();
 
-        $this->view("common_user",['rows'=>$data]); //in here put the relevent page name and the path
+        $this->view("common_user"); //in here put the relevent page name and the path
+    }
+
+    function viewPoducts()
+    {
+      
+        $products = new products();
+        $data =$products->findAll(); 
+
+
+        $this->view('commonUser/ProductsView',['rows'=>$data]);
+       
     }
 }
 

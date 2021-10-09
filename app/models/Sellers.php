@@ -3,12 +3,12 @@
 class sellers extends Model
 {
 	
-
 	protected $allowedcolumns = [
 		'userid',
 		'nameWithInitials',
 		'registrationNumber',
 		'tpNumber',
+		'tpNumber2',
 		'nic',
 		'address',
 		'image',
@@ -70,7 +70,7 @@ class sellers extends Model
 		{
 			$this->errors['address'] = "Cannot Keep address empty";
 		}
-		elseif(!preg_match('/^[A-Za-z0-9\-\/,.]+$/',$DATA['address']))
+		elseif(!preg_match('/^[A-Za-z0-9\-\/,.\s]+$/',$DATA['address']))
 		{
 			$this->errors['address'] = "Cannot allowed symbols in the address";
 		}
