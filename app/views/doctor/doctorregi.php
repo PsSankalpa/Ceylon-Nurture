@@ -1,88 +1,95 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Doctor's Form</title>
+<title>Ceylon Nurture|Doctor|Registration</title>
 <?php $this -> view ("header",$data)?>
-<link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/doctorFormStyle.css">
+<link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/registrationform.css">
 </head>
-<body>
-    <div class="background">
-    <hr>
-    <h1>Update as a Doctor</h1>
+
+<body class="regi">
+
     
-        <div class="container">
-            <form action="" method="post">
-                <div class="row">
-                    <div class="headings">
-                    <label for="name">Name with Initials</label>
-                   <!-- <select name="name" id="name" onchange="titleChange()">
-                    <option value="Mr." selected>Dr.</option>
-                    <option value="Mr.">Mr.</option>
-                    <option value="Mrs.">Mrs.</option>
-                    <option value="Miss.">Miss.</option>
-                    </select>-->
-                    </div>
-                    <div class="data">
-                        <input type="text" value="<?=get_var('nameWithInitials')?>" id="name" name="name" placeholder="Name with Initials">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="headings">
-                    <label for="gender">Gender</label>
-                    </div>
-                    <div class="radio-toolbar">
-                        <input type="radio" id="male" name="gender" value="Male">
-                        <label for="male">Male</label>
-                        <input type="radio" id="female" name="gender" value="Female">
-                        <label for="female">Female</label>
-                        <input type="radio" id="other" name="gender" value="Other">
-                        <label for="other">Other</label>
-                    </div>   
-                </div>
-                <div class="row">
-                    <div class="headings">
-                    <label for="DOB">Date of Birth</label>
-                    </div>
-                    <div class="data">
-                        <input type="date" value="<?=get_var('dob')?>" id="dob" name="dob">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="headings">
-                    <label for="regNo">Registration Number</label>
-                    </div>
-                    <div class="data">
-                        <input type="text" value="<?=get_var('registrationNumber')?>" id="name" name="name" placeholder="Fill your Medical Registration Number">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="headings">
-                    <label for="specialities">Specialities</label>
-                    </div>
-                    <div class="data">
-                        <input type="text" value="<?=get_var('specialities')?>"  id="specialities" name="specialities" placeholder="Any Speciality">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="headings">
-                    <label for="profilepic">Profile Photo</label>
-                    </div>
-                    <div class="data">
-                        <input type="file" value="<?=get_var('profilePhoto')?>" id="profilepic" name="filename">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="headings">
-                    <label for="qualifications"> Qualifications</label>
-                    </div>
-                    <div class="data">
-                        <input type="file" value="<?=get_var('qualifications')?>"  id="profilepic" name="filename"> <!-- (Add your relevant medical certificates)-->
-                    </div>
-                </div>
-                <div class="submitbtn">
-                    <input style="float:right; margin-right:20px;" type="submit">
-                </div>
-            </form> 
+    <div class="container center">
+        <h1>Update as a Doctor</h1>
+
+         <!--for the errors-->
+         <?php if(count($errors) > 0 ):?>
+        <div class="alertwarning">
+        <button class="closebtn" onclick="closebutton()">&times;</button>   
+            <strong>Error!</strong> 
+            <?php foreach($errors as $error ):?>
+                <br /><?=$error?>
+            <?php endforeach;?>
         </div>
+        <?php endif;?>
+
+        <hr>
+        <form class="regi_form" enctype="multipart/form-data" method="POST">
+
+            <div class="row">
+            <div class="col-25">
+                <label for="nameWithInitials">Name With Initials</label>
+            </div>
+
+            <div class="col-75">
+                <input type="text" value="<?=get_var('nameWithInitials')?>" id="nameWithInitials" name="nameWithInitials" placeholder="Name With Initials">
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+                <label for="gender">Gender</label>
+            </div>
+
+            <div class="col-75">
+            <p class="gender">
+                <input type="radio" name="gender" value="male">Male
+                <input type="radio" name="gender" value="female">Female</p>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+                <label for="DOB">Date Of Birth</label>
+            </div>
+            <div class="col-75">
+            <input type="date" id="dob" name="dob" >
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+                <label for="regNo">Registration Number</label>
+            </div>
+            <div class="col-75">
+            <input type="text" value="<?=get_var('registrationNumber')?>" id="registrationNumber" name="registrationNumber" placeholder="Fill your Medical Registration Number">
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+                <label for="specialities">Specialities</label>
+            </div>
+            <div class="col-75">
+            <input type="text" value="<?=get_var('specialities')?>" id="specialities" name="specialities" placeholder="Specialities">
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+                <label for="image" >Qualifications</label>
+            </div>
+            <div class="col-75">
+            <input type="file" id="image" value="<?=get_var('image')?>" name="image">
+            </div>
+            </div>
+
+            <div class="row">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+            </div>
+        </form>
     </div>
-</body>
+    </body>
 </html>
+

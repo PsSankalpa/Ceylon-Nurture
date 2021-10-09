@@ -13,7 +13,7 @@
         <?php if(!empty($data)):?>
             <?php if($data == "seller"):?>
                 <div class="home_buttons_top">
-                        <div><button class="home_button_top">Be a Doctor</button></div>
+                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></div>
                         <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
                 </div>
 
@@ -25,7 +25,7 @@
 
             <?php elseif($data == "patient"):?>
                 <div class="home_buttons_top">
-                        <div><button class="home_button_top">Be a Doctor</button></div>
+                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></div>
                         <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
                 </div>
 
@@ -41,7 +41,7 @@
 
             <?php elseif($data == "sellerAndPatient"):?>
                 <div class="home_buttons_top">
-                        <div><button class="home_button_top">Be a Doctor</button></div>
+                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></div>
                 </div>
 
                 <?php endif;?>
