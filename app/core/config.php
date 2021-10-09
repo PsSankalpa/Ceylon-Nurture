@@ -39,7 +39,7 @@ else
 function errorHandler($errno, $errstr, $errfile, $errline) {
     echo "<b>error:</b> [$errno] $errstr<br>";
     echo " Error on line $errline in $errfile<br>";
-    define('PHPERR','true');
+    //define('PHPERR','true');
 
     $date = date("Y-m-d");
     $str = $errno .":". $errstr . " in " . $errfile . " at line " . $errline . "\n";
