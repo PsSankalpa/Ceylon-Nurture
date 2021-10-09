@@ -3,6 +3,7 @@
     <head>
         <title>Ceylon Nurture|Seller|uploadProduct</title>
         <?php $this -> view ("header",$data)?>
+        <link rel="stylesheet" href="<?=ASSETS?>css/registrationform.css">
     </head>
 
     <body class="regi">

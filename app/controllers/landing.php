@@ -60,7 +60,8 @@ class landing extends Controller
             else{
                $patientid = "";
             }
-
+            print_r($patientid);
+            
             $data ="none";
             $Auth = new Auth;
             $data = $Auth->finduser($sellerid,$doctorid,$patientid,$userid);

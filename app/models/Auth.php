@@ -61,36 +61,34 @@ class  Auth
         {
             if($sellerid == $userid )
             {
-                return "seller";
+                $data = "seller";
             }
-            elseif($doctorid == $userid)
+            if($doctorid == $userid)
             {
-                return "doctor";
+                $data = "doctor";
             }
-            elseif($patientid == $userid)
+            if($patientid == $userid)
             {
-                return "patient";
+                $data = "patient";
             }
-            elseif( ($doctorid && ($sellerid) == $userid ))
+            if( ($doctorid == $userid) &&($sellerid == $userid ))
             {
-                return "doctorAndSeller";
+                $data = "doctorAndSeller";
             }
-            elseif( ($doctorid && $patientid) == $userid )
+            if( ($doctorid == $userid )&& ($patientid == $userid ))
             {
-                return "doctorAndPatient";
+                $data = "doctorAndPatient";
             }
-            elseif( ($sellerid && $patientid) == $userid )
+            if( ($sellerid == $userid) && ($patientid == $userid ))
             {
-                return "sellerAndPatient";
+                $data = "sellerAndPatient";
             }
-            elseif( ($sellerid && $patientid && $doctorid) == $userid)
+            if(($sellerid == $userid)&& ($patientid == $userid)&& ($doctorid == $userid))
             {
-                return "allUser";
+                $data = "allUser";
             }
-            else
-            {
-                return "none";
-            }
+            
+            return $data;
         }
     }
 
