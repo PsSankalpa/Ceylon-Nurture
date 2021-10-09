@@ -65,8 +65,7 @@ class landing extends Controller
             $data ="none";
             $Auth = new Auth;
             $data = $Auth->finduser($sellerid,$doctorid,$patientid,$userid);
-            print_r($data);
-            die;
+            
             $this->view('home',[
 			    'data'=>$data,
             
