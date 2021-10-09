@@ -43,6 +43,8 @@
 
                 <a class="a_navitem2" href="<?=ROOT?>seller">SELLING</a>
                 <div class="v"></div>
+                <a class="a_navitem2" href="<?=ROOT?>appointments">APPOINTMENTS</a>
+                <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>articles">ARTICLES</a>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>forums">FORUMS</a>

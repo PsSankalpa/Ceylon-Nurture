@@ -33,8 +33,7 @@ class doctor extends Controller
                 $arr['dob'] = htmlspecialchars($_POST['dob']);
                 $arr['registrationNumber'] = htmlspecialchars($_POST['registrationNumber']);
                 $arr['specialities'] = htmlspecialchars($_POST['specialities']);
-                $arr['profilePhoto'] = $des;
-                $arr['Qualifications'] = $des;
+                $arr['qualifications'] = $des;
              
                
                 $doctors->insert($arr);
@@ -48,6 +47,59 @@ class doctor extends Controller
 			'errors'=>$errors,
 		]);
     }
+     //get the file destination
+    function get_destination($destination)
+    {
+         global $des;
+         $des =$destination;
+         return $des;
+    }
+
+    function account()
+    {
+      
+       $account = new account();
+        
+
+        $this->view("doctor/doctorAccount",$data); //in here put the relevent page name and the path
+    }
+
+   
+
+    function addSchedule()
+    {
+        $errors = array();
+        
+        if(count($_POST)>0)
+        {
+            $schedules = new schedules();
+
+            if($schedules->validate($_POST,$_FILES))
+            {
+                global $des;
+                $arr['slot'] = $_POST['slot'];
+                $arr['date'] = $_POST['date'];
+                $arr['arrivalTime'] = $_POST['arrivalTime'];
+                $arr['arrivalTime'] = $_POST['arrivalTime'];
+                $arr['departureTime'] = $_POST['departureTime'];
+                $arr['noOfPatient'] = $_POST['noOfPatient'];
+                $arr['timePerPatient'] = $_POST['timePerPatient'];
+                $arr['doctorCharge'] = $_POST['doctorCharge'];
+                $arr['doctorNote'] = $_POST['doctorNote'];
+               
+                $schedules->insert($arr);
+                $this->redirect('doctor/addSchedule');
+            }
+            else{
+                $errors = $schedules->errors2;
+            }
+        } 
+        $this->view('doctor/addSchedule',[
+			'errors'=>$errors,
+		]);
+
+    }
+
 
 
 }
