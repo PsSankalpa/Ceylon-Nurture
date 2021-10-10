@@ -38,7 +38,6 @@ class header extends Controller
         else{
            $patientid = "";
         }
-        print_r($patientid);
         
         $data ="none";
         $Auth = new Auth;
