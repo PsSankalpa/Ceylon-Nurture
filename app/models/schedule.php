@@ -17,6 +17,8 @@ class schedule extends Model
 
 	public function validate($DATA,$FILES)
 	{
+        print_r($DATA);
+       
         //-------------------------------------------------------------------------------------------------------------------------------------
 		//for schedule
         $this->errors2 = array();
@@ -33,7 +35,7 @@ class schedule extends Model
 		//for dateofSlot
 		if(empty($DATA['dateofSlot']))
 		{
-			$this->errors2['dateofSlot'] = "Cannot Keep dateofSlot empty";
+			$this->errors2['dateofSlot'] = "Cannot Keep Date of Slot empty";
 		}
 		
 
@@ -41,9 +43,9 @@ class schedule extends Model
 		if(empty($DATA['arrivalTime']))
 		{
 		}
-		elseif(!preg_match('/^[0-9]+$/',$DATA['arrivalTime']))
+		elseif(!preg_match("#(([0-1])|([1-12]).([0-5])([0-9]))#", $DATA['arrivalTime']))
 		{
-			$this->errors2['arrivalTime'] = "Only numbers allowed in the arrival time";
+			$this->errors2['arrivalTime'] = "Wrong Time Format in Arrival Time";
 		}
 
         //Validations for Departure Time
@@ -51,9 +53,9 @@ class schedule extends Model
 		{
 			$this->errors2['departureTime'] = "Cannot Keep Departure Time empty";
 		}
-		elseif(!preg_match('/^[0-9]+$/',$DATA['departureTime']))
+        elseif(!preg_match("#(([0-1])|([1-12]).([0-5])([0-9]))#", $DATA['departureTime']))
 		{
-			$this->errors2['departureTime'] = "Only numbers allowed in the Departure Time";
+			$this->errors2['departureTimearrivalTime'] = "Wrong Time Format in Departure Time";
 		}
 
         //Validations for No of Patients
@@ -67,13 +69,13 @@ class schedule extends Model
 		}
 
         //Validations for Time Per Patient
-        if(empty($DATA['noOfPatient']))
+        if(empty($DATA['timePerPatient']))
 		{
-			$this->errors2['noOfPatient'] = "Cannot Keep No of Patients empty";
+			$this->errors2['timePerPatient'] = "Cannot Keep No of Patients empty";
 		}
-		elseif(!preg_match('/^[0-9]+$/',$DATA['noOfPatient']))
+		elseif(!preg_match("#(([0-1])|([1-12]).([0-5])([0-9]))#", $DATA['timePerPatient']))
 		{
-			$this->errors2['noOfPatient'] = "Only numbers allowed in No of Patients";
+			$this->errors2['timePerPatient'] = "Wrong Time Format in Time Per Patient";
 		}
 
         //Validations for Doctor Charge
@@ -92,7 +94,7 @@ class schedule extends Model
 			$this->errors2['doctorNote'] = "Cannot Keep Doctor Note empty";
 		}
 
-        if(count($this->errors) == 0)
+        if(count($this->errors2) == 0)
         {
             return true;
         }

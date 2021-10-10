@@ -4,6 +4,7 @@ class doctors extends Model
 {
 
 	protected $allowedcolumns = [
+		'userid',
 		'nameWithInitials',
 		'gender',
         'dob',
@@ -18,8 +19,6 @@ class doctors extends Model
 	public function validate($DATA,$FILES)
 	{
 		$this->errors = array();
-		$this->errors2 = array();
-		//validations
 		//validations for name
 		if(empty($DATA['nameWithInitials']))
 		{

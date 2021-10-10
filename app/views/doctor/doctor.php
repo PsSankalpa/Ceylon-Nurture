@@ -23,7 +23,7 @@
                 <h5 class="h5_home">Ayurvedha Under One Roof</h5>
                 <hr class="h">
                 <div class="home_buttons">
-                <a href="<?=ROOT?>doctor/appointments"><button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
             </div>
 
         </main>

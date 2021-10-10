@@ -22,8 +22,21 @@
             </ul>
         </div>
             <div class="container3">
+
+                <!--for the errors-->
+                <?php if(count($errors) > 0 ):?>
+                <div class="alertwarning">
+                <button class="closebtn" onclick="closebutton()">&times;</button>   
+                    <strong>Error!</strong> 
+                    <?php foreach($errors as $error ):?>
+                        <br /><?=$error?>
+                    <?php endforeach;?>
+                </div>
+                <?php endif;?>
+
                     <div class="row">
-                        <input type="view" value="View Slots">
+                    <a href="<?=ROOT?>doctor/editSchedule"><button class="">View Slots</button></a>
+                        <!--<input type="view" value="View Slots">-->
                         <input type="add" value="Add a New Slot">
                     </div>
                 <form class="regi_form" enctype="multipart/form-data" method="POST">
@@ -33,7 +46,7 @@
                             <label for="Slot Number">Slot Number</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" value="" id="slotNumber" name="slotNumber" placeholder="Slot 01">
+                            <input type="text" value="<?=get_var('slotNumber')?>" id="slotNumber" name="slotNumber" placeholder="Slot 01">
                         </div>
                     </div>
 
@@ -42,7 +55,7 @@
                             <label for="Date of the slot">Date of the Slot</label>
                         </div>
                         <div class="col-75">
-                            <input type="date" value="" id="dateofSlot" name="dateofSlot" placeholder="15/12/2021">
+                            <input type="date" value="<?=get_var('dateofSlot')?>" id="dateofSlot" name="dateofSlot" placeholder="15/12/2021">
                         </div>
                     </div>
 
@@ -51,7 +64,7 @@
                             <label for="Arrival Time">Arrival Time</label>
                         </div>
                         <div class="col-75">
-                        <input type="text" value="" id="arrivalTime" name="arrivalTime" placeholder="8.00 am">
+                        <input type="text" value="<?=get_var('arrivalTime')?>" id="arrivalTime" name="arrivalTime" placeholder="8.00 am">
                         </div>
                     </div>
 
@@ -60,7 +73,7 @@
                             <label for="Departure Time">Departure Time</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" value="" id="departureTime" name="departureTime" placeholder="12.00 pm">
+                            <input type="text" value="<?=get_var('departureTime')?>" id="departureTime" name="departureTime" placeholder="12.00 pm">
                         </div>
                     </div>
 
@@ -69,7 +82,7 @@
                             <label for="No of patients">No of patients</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" value="" id="noOfPatient" name="noOfPatient" placeholder="16">
+                            <input type="text" value="<?=get_var('noOfPatient')?>" id="noOfPatient" name="noOfPatient" placeholder="16">
                         </div>
                     </div>
 
@@ -78,7 +91,7 @@
                             <label for="Time per patient" >Time per patient</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="timePerientPat" value="" name="timePerPatient" placeholder="15 ">
+                            <input type="text" id="timePerPatient" value="<?=get_var('timePerPatient')?>" name="timePerPatient" placeholder="15 ">
                         </div>
                     </div>
 
@@ -87,7 +100,7 @@
                             <label for="Doctor Charge" >Doctor Charge</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="doctorCharge" value="" name="doctorCharge" placeholder="2500">
+                            <input type="text" id="doctorCharge" value="<?=get_var('doctorCharge')?>" name="doctorCharge" placeholder="2500">
                         </div>
                     </div>
 
@@ -96,14 +109,13 @@
                             <label for="Doctor's Note" >Doctor's Note</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="doctorNote" value="" name="doctorNote" placeholder="Note">
+                            <input type="text" id="doctorNote" value="<?=get_var('doctorNote')?>" name="doctorNote" placeholder="Note">
                         </div>
                     </div>
 
                     <div class="row">
-                        <input type="submit" value="Schedule" button onclick="myFunction()">
+                        <input type="submit" value="Schedule">
 
- 
                     </div>
                 </form>
             </div>    
