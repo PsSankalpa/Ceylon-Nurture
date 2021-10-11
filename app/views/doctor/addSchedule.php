@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Doctor's Schedule</title>
-
+<?php $this -> view ("header",$data)?>
 <link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/addSchedule.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -15,7 +15,7 @@
           
             <ul>
                 <li><a href="#account"><i class="fa fa-fw fa-home"></i>My Account</a></li>
-                <li><a class="active" href="#schedule"><i class="fa fa-fw fa-book"></i>Schedule</a></li>
+                <li><a class="active" href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>Schedule</a></li>
                 <li><a href="#feedback"><i class="fa fa-fw fa-comment"></i>Feedback</a></li>
                 <li><a  href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>Appointments</a></li>
                 <li><a href="#book"><i class="fa fa-fw fa-book"></i>Reports</a></li>
@@ -35,9 +35,8 @@
                 <?php endif;?>
 
                     <div class="row">
-                    <a href="<?=ROOT?>doctor/editSchedule"><button class="">View Slots</button></a>
-                        <!--<input type="view" value="View Slots">-->
-                        <input type="add" value="Add a New Slot">
+                    <a href="<?=ROOT?>doctor/viewSchedule"><button class="viewbtn">View Slots</button></a>
+                    <a href="<?=ROOT?>doctor/addSchedule"><button class="addbtn">Add Slots</button></a>
                     </div>
                 <form class="regi_form" enctype="multipart/form-data" method="POST">
 
@@ -46,7 +45,7 @@
                             <label for="Slot Number">Slot Number</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" value="<?=get_var('slotNumber')?>" id="slotNumber" name="slotNumber" placeholder="Slot 01">
+                            <input type="text" value="<?=get_var('slotNumber')?>" id="slotNumber" name="slotNumber" placeholder="01">
                         </div>
                     </div>
 
@@ -64,7 +63,7 @@
                             <label for="Arrival Time">Arrival Time</label>
                         </div>
                         <div class="col-75">
-                        <input type="text" value="<?=get_var('arrivalTime')?>" id="arrivalTime" name="arrivalTime" placeholder="8.00 am">
+                        <input type="text" value="<?=get_var('arrivalTime')?>" id="arrivalTime" name="arrivalTime" placeholder="8.00 ">
                         </div>
                     </div>
 
@@ -73,7 +72,7 @@
                             <label for="Departure Time">Departure Time</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" value="<?=get_var('departureTime')?>" id="departureTime" name="departureTime" placeholder="12.00 pm">
+                            <input type="text" value="<?=get_var('departureTime')?>" id="departureTime" name="departureTime" placeholder="12.00 ">
                         </div>
                     </div>
 
@@ -118,6 +117,7 @@
 
                     </div>
                 </form>
-            </div>    
+                <script type="text/javascript" src="<?=ASSETS?>js/sellerJs.js"></script>
+
     </div> 
 </body>
