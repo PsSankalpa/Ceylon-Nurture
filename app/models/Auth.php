@@ -58,6 +58,7 @@ class  Auth
         $userid = $_SESSION['COMMON_USER']->userid;
         $data='none';
         
+        $data="none";
         if(isset($_SESSION['COMMON_USER']))
         {
             if($sellerid == $userid )

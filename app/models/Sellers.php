@@ -8,7 +8,6 @@ class sellers extends Model
 		'nameWithInitials',
 		'registrationNumber',
 		'tpNumber',
-		'tpNumber2',
 		'nic',
 		'address',
 		'image',
