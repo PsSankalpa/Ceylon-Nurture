@@ -43,7 +43,7 @@
 
                 <a class="a_navitem2" href="<?=ROOT?>seller">SELLING</a>
                 <div class="v"></div>
-                <a class="a_navitem2" href="<?=ROOT?>articles">ARTICLES</a>
+                <a class="a_navitem2" href="<?=ROOT?>header/viewArticles">ARTICLES</a>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?=ROOT?>forums">FORUMS</a>
             </div>
