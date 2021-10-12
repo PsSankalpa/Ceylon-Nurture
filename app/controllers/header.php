@@ -54,6 +54,18 @@ class header extends Controller
         $this->view('commonUser/ProductsView',['rows'=>$data]);
        
     }
+
+    function viewArticles()
+    {
+      
+        $article = new article();
+        $data =$article->findAll(); 
+
+        $this->view('commonUser/articlesView',[
+           'rows'=>$data,
+         ]);
+       
+    }
 }
 
 ?>

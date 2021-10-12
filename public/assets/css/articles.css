@@ -1,0 +1,248 @@
+*{
+    padding: 0;
+	  margin: 0;
+		box-sizing: border-box;
+}
+.a-body{
+    background-image: url("../img/wooden-background-with-leaves-copy-space_23-2148252369.jpg");
+    background-size: cover;
+}
+
+.carousel{
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+    top: 10%;
+    margin: 11rem auto;
+    margin-bottom: 0;
+    height: 35rem;
+}
+
+.carousel__track-container{
+    background-color:rgba(0, 0, 0, 0.6);
+    width: 98%;
+		margin: auto;
+		display: flex;
+		align-items: center;
+		overflow-x: auto;
+}
+.carousel__track-container::-webkit-scrollbar{
+  display: none;
+}
+
+.article-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+    min-width: 24%;
+    max-width: 300px;
+    margin: 0.5rem 1rem 0 0 ;
+    text-align: center;
+    font-family: arial;
+    background-color: black;
+    vertical-align: middle;
+    max-height: 150vh;
+    border-radius: 0.3rem;
+		position: relative;
+		left: 0;
+		transition: 0.5s;
+  }
+  .article-card p{
+    text-align: center;
+    margin: 0.5rem;
+    margin-top: 0;
+  }
+  .article-card picture{
+    width: 100%;
+    height: 70%;
+    padding: 20px;
+    /*background: green;*/
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .article-card picture img{
+    width: 100%;
+  }
+  .article-card h1{
+      color : #F4C931;
+  } 
+  .article-card p{
+    color : white;
+}   
+  .article-card  button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #4C673B;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  
+  .article-card  button:hover {
+    opacity: 0.7;
+  }
+/*-------------------------------------------*/
+/*slide show*/
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    z-index: 3;
+  }
+  /* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  /* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  /* On smaller screens, decrease text size */
+@media only screen and (max-width: 900px) {
+    .prev, .next,.text {
+      font-size: 11px
+    }
+    h1{
+      font-size: 20px;
+    }
+    p{
+      font-size: 10px;
+    }
+    .article-card{
+      min-width: 49%;
+      margin: 0 10px 0 0 ;
+    }
+    .article-card button{
+      font-size: 10px;
+    }
+  }
+/*--------------------------------------------------------------------------------------*/
+/*article details*/
+.article{
+  display: -webkit-flex;
+  display: flex;
+  background-color: rgba(0,0,0,0.7);
+  margin-top: 15%;
+  margin-bottom: 2%;
+}
+.a-image{
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background:#4C673B;
+  padding: 20px;
+  margin: 1rem;
+}
+.a-image img{
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 20px;
+}
+.a-image h3{
+  color: #F4C931;
+  text-align: center;
+}
+.details{
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  padding: 10px;
+  margin: 1rem;
+}
+
+.filterDiv{
+  float: left;
+  color: #ffffff;
+  text-align: center;
+  margin: 2px;
+  margin-top: 1rem;
+  display: none;
+}
+
+.container {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.show {
+  display: block;
+}
+
+.btn:hover {
+  background-color: #F4C931;
+  color: #4C673B;
+}
+
+.btn.active {
+  background-color: #F4C931;
+  color: #4C673B;
+  font-weight: bold;
+}
+
+.back {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 1rem;
+  height: 2rem;
+  width: 2rem;
+  line-height: 20px;
+  cursor: pointer;
+  background-color: #F4C931;
+  transition: 0.3s;
+  bottom: 0;
+}
+.back a{
+  font-style:none;
+}
+.back:hover {
+  color: black;
+}
+
+/*for review*/
+.pro-image{
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 20px;
+  margin: 1rem;
+}
+.review{
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background: gray;
+  padding: 10px;
+  margin: 1rem;
+}
+@media (max-width: 900px) {
+  .article {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}

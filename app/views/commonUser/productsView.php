@@ -32,12 +32,6 @@
                                         <button class="cardbutton">View Infomation</button>
                                     </a>
                                 </div>
-                                <a href="<?=ROOT?>/seller/editProduct/<?=$row->productid?>">
-                                    <button class="cardbutton">Edit</button>
-                                </a>
-                                <a href="<?=ROOT?>seller/deleteProduct/<?=$row->productid?>">
-                                    <button class="cardbutton cancel">Delete</button>
-                                </a>
                             </div>
                         </div>
                         <?php endforeach;?>
