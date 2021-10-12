@@ -8,7 +8,6 @@ class sellers extends Model
 		'nameWithInitials',
 		'registrationNumber',
 		'tpNumber',
-		'tpNumber2',
 		'nic',
 		'address',
 		'image',
@@ -84,7 +83,7 @@ class sellers extends Model
 		else
         {
             //upload the file to following dir
-            $folder = "medical_records/";
+            $folder = "seller_certificates/";
             if(!file_exists($folder))//if dir doesn't exist,create it like below with file permissions
             {
                 mkdir($folder,0777,true);
