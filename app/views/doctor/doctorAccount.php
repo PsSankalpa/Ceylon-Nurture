@@ -13,10 +13,9 @@
                     <h4><b>Dr.W.M.S.Perera</b></h4>
          
             <ul>
-                <li><a class="active" href="#account"><i class="fa fa-fw fa-home"></i>My Account</a></li>
-                <li><a href="<?=ROOT?>doctor/schedule"><i class="fa fa-fw fa-book"></i>Schedule</a></li>
+                <li><a class="active" href="<?=ROOT?>doctor/addschedule"> <i class="fa fa-fw fa-home"></i>My Account</a></li>
                 <li><a href="#feedback"><i class="fa fa-fw fa-comment"></i>Feedback</a></li>
-                <li><a href="#calendar"><i class="fa fa-fw fa-calendar"></i>Appointments</a></li>
+                <li><a href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>Appointments</a></li>
                 <li><a href="#book"><i class="fa fa-fw fa-book"></i>Reports</a></li>
             </ul>
         </div>

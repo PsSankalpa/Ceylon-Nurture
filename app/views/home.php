@@ -67,7 +67,7 @@
 
             <?php elseif($data == "doctor"):?>
                 <div class="home_buttons">
-                <button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
                 </div>
 
                 <?php elseif($data == "patient"):?>
@@ -79,14 +79,14 @@
             <?php elseif($data == "doctorAndSeller"):?>
 
                 <div class="home_buttons">
-                <button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
                 <button class="button_patient"> Add products </button>
                 </div>
 
             <?php elseif($data == "doctorAndPatient"):?>
 
                 <div class="home_buttons">
-                ><button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
                 <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button>
                 </div>
 
@@ -100,7 +100,7 @@
             <?php elseif($data == "allUser"):?>
 
                 <div class="home_buttons">
-                <button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
                 <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button>
                 <button class="button_patient"> Add products </button>
                 </div>
@@ -111,7 +111,7 @@
                 <div class="home_buttons">
                     <div class="itembox2">
                         <div><p>Are You a Doctor? </p></div>
-                        <div><button class="home_button" >Register as a Doctor</button></div>
+                        <div><a href="<?=ROOT?>doctor/registration"><button class="home_button" >Register as a Doctor</button></a></div>
                     </div>
                     <div class="itembox2">
                         <div><p>Are You a Patient? </p></div>
