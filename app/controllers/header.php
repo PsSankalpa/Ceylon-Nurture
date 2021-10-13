@@ -4,44 +4,11 @@ class header extends Controller
 {
     function index()
     {
-        $seller = new sellers();
-        $doctor = new doctors();
-        $patient = new patients();
-        $userid = Auth::userid();
-
-        //sellerid
-        if(!empty($row = $seller->where('userid',$userid) ))
-        {
-           $row = $row[0];
-           $sellerid = $row->userid;
-        }
-        else{
-           $sellerid = "";
-        }
-
-        //dotctorid
-        if(!empty($row2 = $doctor->where('userid',$userid) ))
-        {
-           $row2 = $row2[0];
-           $doctorid = $row2->userid;
-        }
-        else{
-           $doctorid = "";
-        }
-
-        //patientid
-        if(!empty($row3 = $patient->where('userid',$userid) ))
-        {
-           $row3 = $row3[0];
-           $patientid = $row3->userid;
-        }
-        else{
-           $patientid = "";
-        }
         
+        //changed here
         $data ="none";
         $Auth = new Auth;
-        $data = $Auth->finduser($sellerid,$doctorid,$patientid,$userid);
+        $data = $Auth->finduser();
     }
     
     function viewPoducts()
@@ -57,13 +24,31 @@ class header extends Controller
 
     function viewArticles()
     {
-      
-        $article = new article();
-        $data =$article->findAll(); 
+      $userid = Auth::userid();
+      $doctor = new doctors();
+      if(Auth::logged_in())
+      {
+         //changed here
+            $Auth = new Auth;
+            $data2 = $Auth->finduser();
+            $article = new article();
+            $data =$article->findAll(); 
 
-        $this->view('commonUser/articlesView',[
+            $this->view('commonUser/articlesView',[
+            'rows'=>$data,
+            'rows2'=>$data2,
+            ]);
+      }
+      else{
+         $article = new article();
+         $data =$article->findAll(); 
+         $data2 = "";
+         $this->view('commonUser/articlesView',[
            'rows'=>$data,
+           'rows2'=>$data2,
          ]);
+      }
+        
        
     }
 }
