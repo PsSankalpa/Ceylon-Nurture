@@ -196,10 +196,6 @@ class seller extends Controller
 
     function productDetails($productId = null)
     {
-        if(!Auth::logged_in())
-        {
-         $this->redirect('login/login');
-        }
 
         $products = new products();
         $data =$products->where('productId',$productId); 

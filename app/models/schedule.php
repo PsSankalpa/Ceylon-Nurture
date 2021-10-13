@@ -11,13 +11,16 @@ class schedule extends Model
 		'timePerPatient',
 		'doctorCharge',
         'doctorNote',
+		'doctorName',
+		'doctorid',
 	];
     protected $table = "schedule";
 	protected $pk = "scheduleid";
+	protected $pk2 = "doctorid";
 
 	public function validate($DATA,$FILES)
 	{
-        print_r($DATA);
+       //print_r($DATA);
        
         //-------------------------------------------------------------------------------------------------------------------------------------
 		//for schedule

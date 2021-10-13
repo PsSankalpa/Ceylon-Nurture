@@ -12,9 +12,9 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 20;
-    width:100% ;
-    height: 150px;
-    position:relative;top:-23px;right:20px
+    width:230px;
+    height: 550px;
+    position:relative;top:-5px;right:30px
   }
   
   li a {
@@ -24,8 +24,7 @@ ul {
     padding: 15px 10px;
     text-decoration: none;
     background-color: #4C673B;
-    opacity:100%;
-    height:40px;
+    height:70px;
     text-align: center;
   }
   
@@ -47,6 +46,7 @@ ul {
     width: 1000px;
     height: 550px;
     margin:auto;
+    position:relative;top:150px
 }
 .container2 {
     border-radius: 5px;
@@ -58,11 +58,11 @@ ul {
 }
 .container3 {
     border-radius: 5px;
-    background-color: #4d4a4ada;
+    background-color: rgb(12, 12, 12);
     padding: 10px 10px;
-    width: 700px;
-    height: 500px;
-    position:relative;right:-250px;top:-550px;
+    width: 710px;
+    height: 510px;
+    position:relative;right:-250px;top:-535px;
 }
 .regi_form{
   position:relative;top:50px;
@@ -76,39 +76,39 @@ img{
     opacity: 100%;
 
 }
-
-
-input[type=view]{
-  background-color:#F4C931;
-  color: #ffff;
-  padding:10px;
-  border: none;
-  cursor: pointer;
-  float: right;
-  width: 18%;
-  position:relative;
-  margin-left: 20px;
-  align-content: center;
+/*view and add button*/
+.viewbtn{
+  background-color: #F4C931;
+  color: white;
+  padding: 10px;
+  position:relative;right:-590px;top:20px;
 }
-input[type=add]{
+.addbtn{
   background-color: #8d7a34;
-  color: #ffff;
-  padding:10px;
-  border: none;
-  cursor: pointer;
-  float: right;
-  width: 18%;
-  position:relative;
-  margin-left: 20px;
+  color: white;
+  padding: 10px;
+  position:relative;right:-400px;top:20px;
 }
 
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 50%;
+  background-color: rgb(12, 12, 12);
+  position:relative;top:-15px;
+}
 
-
+/*schedule section
+.schedule-section{
+  background-color: black;
+  border-color: #A7D129;
+}*/
 /*for the cards*/
 /* Float four columns side by side */
 .cardcolumn {
     float: left;
-    width: 33%;
+    width: 25%;
     padding: 0 10px;
     justify-content: center;
   }
@@ -131,31 +131,24 @@ input[type=add]{
     box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2); /* this adds the "card" effect */
     padding: 16px;
     text-align: center;
-    background-color: #0f8d44;
+    background-color: #a5eba3;
     height: auto;
     margin: 1rem;
     border-radius: 1rem;
   }
-  .card img{
-    height: 15rem;
-    border-radius: 1rem;
-  }
+  
   /*buttons of the cards*/
   .cardbutton {
-    background-color: #4CAF50;
+    background-color: #228B22;
     border: none;
     color: white;
     padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    opacity: 0.8;
-  }
-  .cancel{
-    background-color: #f44336;
+    border-radius: 10px;
+    width:100%;
   }
   
   .cardbutton:hover{

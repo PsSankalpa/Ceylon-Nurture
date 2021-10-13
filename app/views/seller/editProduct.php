@@ -12,7 +12,6 @@
         <h2>Edit the Product</h2>
 
         <?php if($row):?>
-            <?php print_r($row);?>
         <!--for the errors-->
         <?php if(count($errors) > 0 ):?>
         <div class="alertwarning">
