@@ -10,8 +10,15 @@
     </head>
     <body class="a-body">
 
+    <?php if($rows2):?>
+        <?php if( ($rows2 == "doctor")||($rows2 == "doctorAndSeller")||($rows2 == "doctorAndPatient")||($rows2 == "allUser") ):?>
+            <div class="access-buttons">
+                <button class="my-A">My Articles</button>
+                <button class="add-A">Add Article</button>
+            </div>
+        <?php endif;?>
+    <?php endif;?>
         <div class="carousel">
-
             <div class="carousel__track-container">
             <span class="prev carousel__button-prev" onclick = "left_mover(0)">&#10094;</span>
                 <?php if($rows):?>

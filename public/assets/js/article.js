@@ -1,42 +1,5 @@
-/*const track = document.querySelector('.carousel__track');//look the entire doc and serch for this class name
-const slides = Array.from(track.children);
-const nextButton = document.querySelector('.carousel__button-next');
-const prevButton = document.querySelector('.carousel__button-prev');
-const dotNav = document.querySelector('.carousel__nav');
-const dots = Array.from(dotNav.children);
-
-const track2 = document.querySelector('.article-card'); //look the entire doc and serch for this class name
-const card = Array.from(track2.children);
-// to check card width
-const slideWidth = slides[0].getBoundingClientRect().width;
-const cardWidth = card[0].getBoundingClientRect().width;
-
-//arange slides next toeach other
-var num = card.length
-var n;
-/*for(n=0;n<num;n++)
-{
-    slides[n].style.left = cardWidth*n+"px";  
-}*/
-/*const setSlidePosition = (card,index) => {
-    card.style.left = cardWidth * index + "px";
-}
-slides.forEach(setSlidePosition);
-console.log(nextButton);
-
-//when click left move left
-
-//when click right move right
-nextButton.addEventListener('click', e=> {
-    const currentSlide = track.querySelector('current-slide');
-    const nextSlide = currentSlide.nextElementSibling;
-    //move the slide
-
-})
-//when click nav indicator move to that slide
-
-*/
-
+//--------------------------------------------------------------------------------------------
+//for carousel
 let span = document.getElementsByTagName('span');
 	let article = document.getElementsByClassName('article-card');
     console.log(article);

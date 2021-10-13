@@ -52,8 +52,42 @@ class  Auth
         return 'User';
     }
 
-    public function finduser($sellerid = [],$doctorid = [],$patientid = [],$userid)
+    public function finduser()
     {
+        $seller = new sellers();
+        $doctor = new doctors();
+        $patient = new patients();
+        $userid = Auth::userid();
+
+        //sellerid
+        if(!empty($row = $seller->where('userid',$userid) ))
+        {
+           $row = $row[0];
+           $sellerid = $row->userid;
+        }
+        else{
+           $sellerid = "";
+        }
+
+        //dotctorid
+        if(!empty($row2 = $doctor->where('userid',$userid) ))
+        {
+           $row2 = $row2[0];
+           $doctorid = $row2->userid;
+        }
+        else{
+           $doctorid = "";
+        }
+
+        //patientid
+        if(!empty($row3 = $patient->where('userid',$userid) ))
+        {
+           $row3 = $row3[0];
+           $patientid = $row3->userid;
+        }
+        else{
+           $patientid = "";
+        }
         
         $userid = $_SESSION['COMMON_USER']->userid;
 
