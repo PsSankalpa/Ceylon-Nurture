@@ -58,9 +58,6 @@ h2{
 .Signup-form input:focus{
     background:#979090;
 }
-input.checkbox{
-    float:left;
-}
 
 .btn{
     font-size:18px;

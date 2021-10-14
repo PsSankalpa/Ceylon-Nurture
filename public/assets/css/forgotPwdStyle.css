@@ -14,7 +14,7 @@ h2{
 }
 .ForgotPwd-form{
     position:relative;
-    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../images/img2.jpg");
+    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../img/img2.jpg");
     background-size:100%;
     padding:30px;
     justify-content: center;

@@ -10,11 +10,14 @@ class doctors extends Model
         'dob',
         'registrationNumber',
 		'specialities',
-		'profilePhoto',
-		'qualifications',
+		'hospital',
+		'city',
+		'address',
+		'image',
 	];
 
 	protected $table = "doctors";
+	protected $pk = "userid";
 
 	public function validate($DATA,$FILES)
 	{
@@ -57,7 +60,25 @@ class doctors extends Model
 		//validation for Specialities
 		if(empty($DATA['specialities']))
 		{
-			$this->errors['specialities'] = "Cannot Keep specialities number empty";
+			$this->errors['specialities'] = "Cannot Keep specialities  empty";
+		}
+
+		//validation for Hospital
+		if(empty($DATA['hospital']))
+		{
+			$this->errors['hospital'] = "Cannot Keep hospital  empty";
+		}
+
+		//validation for City
+		if(empty($DATA['city']))
+		{
+			$this->errors['city'] = "Cannot Keep city  empty";
+		}
+
+		//validation for Address
+		if(empty($DATA['address']))
+		{
+			$this->errors['address'] = "Cannot Keep address  empty";
 		}
 		
         //validation for Qualifications

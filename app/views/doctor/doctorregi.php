@@ -77,6 +77,33 @@
 
             <div class="row">
             <div class="col-25">
+                <label for="Hospital">Hospital</label>
+            </div>
+            <div class="col-75">
+            <input type="text" value="<?=get_var('hospital')?>" id="hospital" name="hospital" placeholder="Hospital">
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+                <label for="City">City</label>
+            </div>
+            <div class="col-75">
+            <input type="text" value="<?=get_var('city')?>" id="city" name="city" placeholder="City">
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+                <label for="Address">Address</label>
+            </div>
+            <div class="col-75">
+            <input type="text" value="<?=get_var('address')?>" id="address" name="address" placeholder="Address">
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
                 <label for="image" >Qualifications</label>
             </div>
             <div class="col-75">

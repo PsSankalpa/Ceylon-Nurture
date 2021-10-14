@@ -27,6 +27,14 @@ class login extends Controller
             'errors' =>$errors,
         ]); 
     }
-}
 
+    function forgotPassword()
+    {
+      
+        $common_user = new common_user();
+
+        $this->view("login/forgotPassword"); //in here put the relevent page name and the path
+    }
+
+}
 ?>

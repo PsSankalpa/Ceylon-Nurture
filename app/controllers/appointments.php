@@ -11,7 +11,13 @@ class appointments extends Controller
         }
         
         else{
-        $this->view("doctor/appointments"); //in here put the relevent page name and the path
-        }
+        $doctors = new doctors();
+        $data2 = $doctors->findAll();
+
+         $this->view('doctor/appointments',[
+			'row'=>$data2,
+		]);//in here put the relevent page name and the path
+        
     }
+}
 }

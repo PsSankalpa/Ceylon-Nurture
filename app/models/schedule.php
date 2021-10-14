@@ -16,7 +16,7 @@ class schedule extends Model
 	];
     protected $table = "schedule";
 	protected $pk = "scheduleid";
-	protected $pk2 = "doctorid";
+	protected $pk2 = "userid";
 
 	public function validate($DATA,$FILES)
 	{

@@ -14,7 +14,7 @@
                     <h4><b>Dr.W.M.S.Perera</b></h4>
           
             <ul>
-                <li><a href="#account"><i class="fa fa-fw fa-home"></i>My Account</a></li>
+                <li><a href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-home"></i>My Account</a></li>
                 <li><a class="active" href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>Schedule</a></li>
                 <li><a href="#feedback"><i class="fa fa-fw fa-comment"></i>Feedback</a></li>
                 <li><a href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>Appointments</a></li>
@@ -112,7 +112,7 @@
             </div>
             <div class="row">
             <a href="<?=ROOT?>doctor/viewSchedule/<?=$row->scheduleid?>"> 
-            <input type="reset" value="Cancel">
+            <input type="reset" value="Cancel" right:30px>
             </a>
 
             <input type="submit" value="Update">
