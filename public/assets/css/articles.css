@@ -7,13 +7,46 @@
     background-image: url("../img/wooden-background-with-leaves-copy-space_23-2148252369.jpg");
     background-size: cover;
 }
+.main-container{
+  margin: 11rem auto;
+}
+/*-----------------------------------------------------------------------------------------*/
+/*access buttons*/
+.access-buttons{
+  position: relative;
+  display: flex;
+  float: right;
+  cursor: pointer;
+  margin: 1rem;
+  align-items: center;
+  z-index: 4;
+}
+.access-buttons button{
+  border: none;
+  outline: 0;
+  padding: 12px;
+  margin: 0.8rem;
+  color: white;
+  background-color: #4C673B;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  width: 100%;
+}
+.access-buttons a{
+  margin: 1rem;
+  cursor: pointer;
+}
+.access-buttons button:hover {
+  color:#F4C931;
+  opacity: 0.8;
+}
 
 .carousel{
     max-width: 100%;
     position: relative;
     margin: auto;
-    top: 10%;
-    margin: 11rem auto;
     margin-bottom: 0;
     height: 35rem;
 }
@@ -90,7 +123,7 @@
 .prev, .next {
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: 75%;
     width: auto;
     padding: 16px;
     margin-top: -22px;
@@ -138,6 +171,25 @@
   background-color: rgba(0,0,0,0.7);
   margin-top: 15%;
   margin-bottom: 2%;
+}
+.Mbtns{
+  position: relative;
+  bottom: 0;
+  right: 0;
+
+}
+.article-details{
+  display: flex;
+  flex-direction:column;
+}
+.editbtn{
+  margin: 1rem;
+}
+.deletebtn button{
+  background-color: #EF0707;
+}
+.editbtn:hover,.deletebtn:hover{
+  opacity: 0.9;
 }
 .a-image{
   -webkit-flex: 1;
@@ -215,7 +267,8 @@
   cursor: pointer;
   background-color: #F4C931;
   transition: 0.3s;
-  bottom: 0;
+  top: 0;
+  margin-top: 0;
 }
 .back a{
   font-style:none;
@@ -243,6 +296,195 @@
 @media (max-width: 900px) {
   .article {
     -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+/*--------------------------------------------------------------------------------------*/
+/*manage articles*/
+.m-articles{
+  background:rgba(16, 14, 14, 0.85);
+  margin: 11rem 1rem;
+}
+
+.A-btns{
+  right: 0;
+}
+
+.addArticles{
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Add styles to the form container */
+.form-container {
+  width: 97.5%;
+  padding: 1rem;
+  background-color: #F6D971;
+  position: relative;
+  color:black;
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border-radius: 0.4rem;
+}
+
+/* Full-width input fields */
+.form-container input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background-color: #c9c9c9;
+}
+.form-container textarea{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background-color: #c9c9c9;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus{
+  background-color: #ddd;
+  outline: none;
+}
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #045235;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+  /* Floating column for labels: 25% width */
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  /* Floating column for inputs: 75% width */
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  input[type=submit],input[type=reset],input[type=file]   {
+    background-color: #228B22;
+    color: white;
+    padding:20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    width: 10%;
+  }
+  
+  input[type=reset],input[type=submit]{
+    width:100px;
+    height:40px;
+    font-size: 18px;
+    border-radius: 100px;
+    padding-block: 2px;
+    
+
+}
+  input[type=reset] {
+    background-color: crimson;
+    margin-right: 1%;
+    
+  }
+
+  
+  input[type=file] {
+    float: left;
+    margin-right: 1%;
+    width: 30%;
+    padding:10px;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 1000px) {
+    .col-25, .col-75, input[type=submit],input[type=reset],input[type=file]{
+      width: 100%;
+      margin-top: 1%;
+      float:left
+    }
+    .form-container {
+      width: 95%;
+    }
+  }
+
+/*my articles*/
+.myArticles{
+  width: 100%;
+}
+
+.articles-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+}
+.articles-row .image{
+  max-width: 20rem;
+  width: 15rem;
+  flex: 20%;
+}
+.articles-row .image img{
+  width: 8rem;
+}
+.articles-row .article-name{
+  text-align: center;
+  align-items: center;
+  flex: 50%;
+  padding: 2rem;
+}
+.articles-row .viewbtn{
+  flex: 20%;
+  padding: 1rem;
+}
+
+.viewbtn{
+  float: right;
+  width: 50%;
+}
+
+.A-btn{
+  background-color: #228B22;
+  color: white;
+  padding:20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.A-btn:hover{
+  background-color: #F4C931;
+  color:black;
+}
+@media (max-width: 600px) {
+  .articles-row {
     flex-direction: column;
   }
 }

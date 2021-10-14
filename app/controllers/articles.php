@@ -13,12 +13,15 @@ class articles extends Controller
     {
       
         $article = new article();
-        $data =$article->where('articleid',$articleid);  
+        $data =$article->where('articleid',$articleid); 
+        $Auth = new Auth;
+        $data2 = $Auth->finduser(); 
 
         //print_r("$data");
         //die;
         $this->view('articles/articleDetails',[
             'rows'=>$data,
+            'data2'=>$data2,
         ]);
        
     }
