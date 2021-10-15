@@ -7,9 +7,9 @@ class header extends Controller
         
         //changed here
         $data ="none";
-        $Auth = new Auth;
-        $data = $Auth->finduser();
-    }
+        
+        
+     }
     
     function viewPoducts()
     {

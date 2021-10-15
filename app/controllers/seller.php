@@ -8,12 +8,18 @@ class seller extends Controller
          $this->redirect('login/login');
         }
 
+        $Auth = new Auth;
+        $data2 = $Auth->finduser();
+
         $products = new products();
         $userid = Auth::userid();
         $data = $products->where('sellerid',$userid); 
 
 
-        $this->view('seller/seller',['rows'=>$data]);
+        $this->view('seller/seller',[
+            'rows'=>$data,
+            'data2'=>$data2
+        ]);
        
     }
 
@@ -156,7 +162,10 @@ class seller extends Controller
         if($row)
         {
             $row = $row[0];
-            unlink($row->image);
+            if(file_exists($row->image)){
+                unlink($row->image);
+            }
+            
         }
         $this->view('seller/editProduct',[
 			'errors'=>$errors,

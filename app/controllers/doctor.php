@@ -154,6 +154,7 @@ class doctor extends Controller
         $errors = array();
         $doctors = new doctors();
         
+
         if(count($_POST)>0)
         {
             //print_r($data);
@@ -189,9 +190,13 @@ class doctor extends Controller
             $schedule = new schedule();
             $doctor = new doctors();
             $userid = Auth::userid();
+
             //$row = $doctor->where('userid',$userid); 
             if(!empty($row = $doctor->where('userid',$userid) ))
             //if(!empty($row))
+
+            
+
             {
                $row = $row[0];
                $nameWithInitials= $row->nameWithInitials;
@@ -338,6 +343,7 @@ class doctor extends Controller
 		]);
 
     }
+
       //function to view appointments
     function appointments($scheduleid = null)
     {
@@ -364,6 +370,62 @@ class doctor extends Controller
         $this->view('doctor/reports',[
            // 'rows'=>$data,
         ]); 
+    }
+
+
+
+    function myArticles()
+    {
+        $Auth = new Auth;
+        $data2 = $Auth->finduser(); 
+        if(!Auth::logged_in())
+        {
+         $this->redirect('login/login');
+        }
+        if((!$data2 == "doctor") || (!$data2 == "doctorAndSeller") || (!$data2 == "doctorAndPatient") || (!$data2 == "allUser"))
+        {
+            $this->redirect('login/login');
+        }
+
+        $doctorid = Auth::userid();
+        $article = new article();
+        $data =$article->where('doctorid',$doctorid); 
+        $this->view('articles/manageArticles',[
+			'data'=>$data,
+		]);
+    }
+
+    function editArticles($articleid)
+    {
+        $Auth = new Auth;
+        $data2 = $Auth->finduser(); 
+        if(!Auth::logged_in())
+        {
+         $this->redirect('login/login');
+        }
+        elseif((!$data2 == "doctor") || (!$data2 == "doctorAndSeller") || (!$data2 == "doctorAndPatient") || (!$data2 == "allUser"))
+        {
+            $this->redirect('login/login');
+        }
+        
+        $articles = new article();
+
+        if(count($_POST)>0)
+        {
+            if($articles->validate())
+            {
+                $this->redirect('doctor/myArticles');
+            }
+            
+        }
+        $data =$articles->where('articleid',$articleid); 
+        if($data)
+        {
+            $data = $data[0];
+        }
+        $this->view('articles/editArticles',[
+            'data'=>$data,
+        ]);  
     }
 
 }
