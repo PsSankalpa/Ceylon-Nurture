@@ -18,22 +18,22 @@
                 <li><a class="active" href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>Schedule</a></li>
                 <li><a href="#feedback"><i class="fa fa-fw fa-comment"></i>Feedback</a></li>
                 <li><a href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>Appointments</a></li>
-                <li><a href="#book"><i class="fa fa-fw fa-book"></i>Reports</a></li>
+                <li><a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>Reports</a></li>
             </ul>
         </div>
         <?php if($row):?>
             <div class="container3">
                 <form class="regi_form" enctype="multipart/form-data" method="POST">
-                    <h2>Do you want to delete the Slot <?=get_var('slotNumber',$row->slotNumber)?> of the schedule?</h2>
+                    <h2>Do you want to delete the account of <?=get_var('nameWithInitials',$row->nameWithInitials)?> from the system?</h2>
                     <input type="hidden" name="id">
                     <hr>
                     <br>
-                    <p>Deleting your slot will remove all your information of your schedule from our database.</p>
+                    <p>Deleting your Account will remove all your information of your account from our database.</p>
                     <h3><b>This cannot be undone</b></h3>
                     <div class="row">
                         <input class="yesbtn" type="submit" value="Delete">
 
-                        <a href="<?=ROOT?>doctor/viewSchedule/<?=$row->scheduleid?>">
+                        <a href="<?=ROOT?>doctor/viewSchedule/<?=$row->userid?>">
                             <input class="nobtn" type="reset" value="Reset">
                         </a>
 
@@ -41,7 +41,7 @@
                 </div>  
                 </form>
         <?php else:?>
-            Schhedule was not found
+            Account not Found
         <?php endif;?>
         </div>
 

@@ -36,7 +36,7 @@
                     <input type="password" value="<?=get_var('password2')?>" name="password2" placeholder="Re-type Password"  > 
                   <!--  <button class="backbtn"><a href="<?=ROOT?>home">&times;</button>-->
                     <button class="btn">Submit</button>
-                    
+                    <button class="backbtn"><a href="<?=ROOT?>home">&times;</button>
                 </form>
                     </div>
                 </div>

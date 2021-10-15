@@ -9,8 +9,12 @@ class doctor extends Controller
          $this->redirect('login/login');
         }
 
-       $common_user = new common_user();
-        $data = $common_user->findAll();
+        $schedule = new schedule();
+        $userid = Auth::userid();
+        $data = $schedule->where('doctorid',$userid); 
+
+        //$common_user = new common_user(); ////Find all function which should be deleted
+        //$data = $common_user->findAll();
 
         $this->view("doctor/doctor",$data); //in here put the relevent page name and the path
     }
@@ -18,6 +22,11 @@ class doctor extends Controller
     //function for registration
     function registration()
     {
+        if(!Auth::logged_in())
+        {
+         $this->redirect('login/login');
+        }
+
         $errors = array();
         if(count($_POST)>0)
         {
@@ -37,11 +46,8 @@ class doctor extends Controller
                 $arr['city'] = htmlspecialchars($_POST['city']);
                 $arr['address'] = htmlspecialchars($_POST['address']);
                 $arr['image'] = $des;
-
                 //print_r($arr);
                 //die;
-             
-               
                 $doctors->insert($arr);
                 $this->redirect('doctor');
             }
@@ -60,6 +66,13 @@ class doctor extends Controller
          $des =$destination;
          return $des;
     }
+    //get the file destination of the image2
+    /*function get_destination($destination)
+    {
+         global $des2;
+         $des2 =$destination2;
+         return $des2;
+    }*/
 
     //function to view account
     function viewAccount($userid=[])
@@ -81,7 +94,7 @@ class doctor extends Controller
     //function to edit account
     function editAccount($userid = null)
     {
-        if(!Auth::logged_in())
+        if(!Auth::logged_in())  //checking if the user is logged in if not redirect to the login page
         {
          $this->redirect('login/login');
         }
@@ -95,6 +108,7 @@ class doctor extends Controller
             if($doctors->validate($_POST,$_FILES))
             {
                 global $des;
+                //global $des2;
                 $arr['userid'] = AUTH::userid();
                 $arr['nameWithInitials'] = $_POST['nameWithInitials'];
                 $arr['gender'] = $_POST['gender'];
@@ -105,6 +119,7 @@ class doctor extends Controller
                 $arr['city'] = $_POST['city'];
                 $arr['address'] = $_POST['address'];
                 $arr['image'] = $des;
+               // $arr['image2'] = $des2;
 
                 $doctors->update($userid,$arr);
                 $this->redirect('doctor/viewAccount');
@@ -146,8 +161,7 @@ class doctor extends Controller
             //die;
                 $doctors->delete($userid);
                 $this->redirect('doctor/viewAccount');
-            
-            
+          
         }
         $row =$doctors->where('userid',$userid); //in here row is an array
          if($row)
@@ -164,6 +178,11 @@ class doctor extends Controller
     //function to add schedule
     function addSchedule()
     {
+        if(!Auth::logged_in())
+        {
+         $this->redirect('login/login');
+        }
+
         $errors = array();
         
         if(count($_POST)>0)
@@ -171,22 +190,26 @@ class doctor extends Controller
             $schedule = new schedule();
             $doctor = new doctors();
             $userid = Auth::userid();
+
+            //$row = $doctor->where('userid',$userid); 
             if(!empty($row = $doctor->where('userid',$userid) ))
+            //if(!empty($row))
+
+            
+
             {
                $row = $row[0];
                $nameWithInitials= $row->nameWithInitials;
-               $city = $row->city;
+              $city = $row->city;
             }
             else{
                 $nameWithInitials = "";
                 $city = "";
             }
-            //print_r($_POST);
-  
-            $schedule = new schedule();
-
+           // print_r($_POST);
             if($schedule->validate($_POST,$_FILES))
             {
+               
                 $arr['slotNumber'] = $_POST['slotNumber'];
                 $arr['dateofSlot'] = $_POST['dateofSlot'];
                 $arr['arrivalTime'] = $_POST['arrivalTime'];
@@ -195,39 +218,45 @@ class doctor extends Controller
                 $arr['timePerPatient'] = $_POST['timePerPatient'];
                 $arr['doctorCharge'] = $_POST['doctorCharge'];
                 $arr['doctorNote'] = $_POST['doctorNote'];
-                $arr['DoctorName'] = $nameWithInitials;
-                $arr['doctorid'] = Auth::userid();
-              
-                //print_r($arr);
-            
-
+                //$arr['DoctorName'] = $nameWithInitials;
+                //$arr['city'] = $city;
+                $arr['doctorid'] = Auth::userid(); 
+               // print_r($arr);
                 $schedule->insert($arr);
                 $this->redirect('doctor/viewSchedule');
             }
             else{
-                $errors = $schedule->errors2;
+                $errors = $schedule->errors2;    
             }
         } 
         $this->view('doctor/addSchedule',[
 			'errors'=>$errors,
+            //'row' =>$row,
 		]);
-
     }
 
     //function to view schedule
     function viewSchedule($scheduleid = null)
     {
+        //$doctorid = Auth::userid();
+       
         $errors = array();
         $schedule = new schedule();
         
-        $row =$schedule->where('scheduleid',$scheduleid); //in here row is an array
-        $data2 = $schedule->findAll();
-        
+        $row =$schedule->where('scheduleid',$scheduleid);
+        $data2 = $schedule->findAll(); //in here row is an array
+        //$row =$schedule->where('doctorid',$doctorid); // ps changed to remove the slots when another user loged in
+        //if($row)
+        //{
+           // $row = $row[0];
+         
+       // }
         $this->view('doctor/viewSchedule',[
 			'errors'=>$errors,
-            'row'=>$row,
+            //'row'=>$row,
             'data2'=>$data2,
 		]);
+       
 
     }
       //function to edit schedule
@@ -246,6 +275,7 @@ class doctor extends Controller
             
             if($schedule->validate($_POST,$_FILES))
             {
+                
                 $arr['slotNumber'] = $_POST['slotNumber'];
                 $arr['dateofSlot'] = $_POST['dateofSlot'];
                 $arr['arrivalTime'] = $_POST['arrivalTime'];
@@ -273,10 +303,9 @@ class doctor extends Controller
         $this->view('doctor/editSchedule',[
 			'errors'=>$errors,
             'row'=>$row,
+
 		]);
-
     }
-
     function scheduleDetails($scheduleid = null)
     {
     
@@ -314,6 +343,36 @@ class doctor extends Controller
 		]);
 
     }
+
+      //function to view appointments
+    function appointments($scheduleid = null)
+    {
+      $errors = array();
+      $schedule = new schedule();
+      
+      $data2 =$schedule->where('scheduleid',$scheduleid); //in here row is an array
+      $data2 = $schedule->findAll();
+      
+      $this->view('doctor/appointments',[
+        'errors'=>$errors,
+        //'row'=>$row,
+        'data2'=>$data2,
+    ]);
+    }
+
+    function reports($reportsid = null)
+    {
+        //$reports = new reports();
+        //$data =$reports->where('reportsid',$reportsid);  
+
+        //print_r("$data");
+        //die;
+        $this->view('doctor/reports',[
+           // 'rows'=>$data,
+        ]); 
+    }
+
+
 
     function myArticles()
     {
@@ -368,5 +427,6 @@ class doctor extends Controller
             'data'=>$data,
         ]);  
     }
+
 }
 ?>

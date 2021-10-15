@@ -27,12 +27,12 @@
                    <form action="" method="post">
 
                         <input type="email" name="email" value="<?=get_var('email')?>" placeholder="Email-Address"> 
-                        <input type="password" name="password" value="<?=get_var('email')?>" placeholder="Password">
+                        <input type="password" name="password" value="<?=get_var('password')?>" placeholder="Password">
 
                         <button class="btn" type="submit">Log In</button>
 
                     </form>
-                    <p class="account"><a href="<?=ROOT?>forgotPassword">Forgot password?</a></p>    
+                    <p class="account"><a href="<?=ROOT?>login/forgotPassword">Forgot password?</a></p>    
                     </br>
                     <p class="account">Don't have an account? <a href="<?=ROOT?>signup">Sign Up</a></p>
                     </div>

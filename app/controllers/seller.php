@@ -111,6 +111,9 @@ class seller extends Controller
                 $arr['tpNumber'] = Auth::tpNumber();
                 $arr['sellerid'] = Auth::userid();
 
+                print_r($arr);
+                die;
+                
                 $products->insert($arr);
                 $this->redirect('seller/seller');
             }

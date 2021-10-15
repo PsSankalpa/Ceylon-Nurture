@@ -1,0 +1,78 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Raleway'; 
+}
+h2{
+    font-family:'Raleway';
+    font-size: 40px;
+    color:#228B22;
+    text-align:center;
+    padding-bottom: 20px;
+    padding-top:0px;
+}
+
+p{
+    font-family:'Raleway';
+    font-size: 18px;
+    font-weight: bold;
+    text-align:center;
+    padding-bottom: 10px;
+    padding-top:10px;
+
+
+}
+.OTP-Message{
+    position:relative;
+    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../img/img2.jpg");
+    background-size:100%;
+    padding:125px;
+    justify-content: center;
+    align-items:center;
+}
+.container{
+    max-width:600px;
+    max-height:600px;
+    margin:0 auto;
+}
+.OTP-Message .main{
+    position:relative;
+    display:flex;
+    margin:60px 0;
+}
+.content{
+    flex-basis:100%;
+    padding:3em 2em;
+    background:#F4F2F2;
+    border-color: #979090;
+    border-style: double;
+    box-shadow:2px 9px 49px -17p;
+    border-top-left-radius:8px;
+    border-bottom-left-radius:8px;
+    border-top-right-radius:8px;
+    border-bottom-right-radius:8px;
+}
+
+.btn:hover,
+button:hover{
+    transition:0.5s ease;
+}
+.OTP-Message button{
+    font-size:18px;
+    color:#ffff;
+    width:30%;
+    background:#228B22;
+    border:none;
+    padding:12px 15px;
+    margin-top: 20px;
+    font-weight:500;
+    transition:0.3s ease;
+    float:right;
+}
+.OTP-Message button:hover{
+    background:#40d840
+}
+

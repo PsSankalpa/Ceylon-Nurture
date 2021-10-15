@@ -27,6 +27,39 @@ class login extends Controller
             'errors' =>$errors,
         ]); 
     }
-}
 
+    function forgotPassword()
+    {
+      
+        $common_user = new common_user();
+
+        $this->view("login/forgotPassword"); //in here put the relevent page name and the path
+    }
+
+    function resetPassword()
+    {
+      
+        $common_user = new common_user();
+
+        $this->view("login/resetPassword"); //in here put the relevent page name and the path
+    }
+
+    function otpCodeSent()
+    {
+      
+        $common_user = new common_user();
+
+        $this->view("login/otpCodeSent"); //in here put the relevent page name and the path
+    }
+
+    function otpVerification()
+    {
+      
+        $common_user = new common_user();
+
+        $this->view("login/otpVerification"); //in here put the relevent page name and the path
+    }
+
+
+}
 ?>
