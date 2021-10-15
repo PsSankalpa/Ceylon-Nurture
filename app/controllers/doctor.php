@@ -171,7 +171,7 @@ class doctor extends Controller
             $schedule = new schedule();
             $doctor = new doctors();
             $userid = Auth::userid();
-            if(!empty($row = $doctors->where('userid',$userid) ))
+            if(!empty($row = $doctor->where('userid',$userid) ))
             {
                $row = $row[0];
                $nameWithInitials= $row->nameWithInitials;
