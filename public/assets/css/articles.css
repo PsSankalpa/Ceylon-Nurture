@@ -5,7 +5,7 @@
 }
 .a-body{
     background-image: url("../img/wooden-background-with-leaves-copy-space_23-2148252369.jpg");
-    background-size: cover;
+    background-size: 100% 100%;
 }
 .main-container{
   margin: 11rem auto;
