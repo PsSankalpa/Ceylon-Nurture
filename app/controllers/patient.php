@@ -1,15 +1,15 @@
 <?php
 class patient extends Controller
 {
-    /*function index()
+    function index()
     {
       
        $patient = new patient();
         //$data = $common_user->findAll();
 
-        $this->view("patient/patient",['rows'=>$data]); //in here put the relevent page name and the path
+       // $this->view("patient/patient",['rows'=>$data]); //in here put the relevent page name and the path
     } 
-*/
+
     function registration()
     {
         $errors = array();
