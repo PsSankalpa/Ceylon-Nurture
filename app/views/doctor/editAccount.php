@@ -24,7 +24,7 @@
                 <li><a href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>Schedule</a></li>
                 <li><a href="#feedback"><i class="fa fa-fw fa-comment"></i>Feedback</a></li>
                 <li><a href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>Appointments</a></li>
-                <li><a href="#book"><i class="fa fa-fw fa-book"></i>Reports</a></li>
+                <li><a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>Reports</a></li>
             </ul>
         </div>
             <div class="container3">
@@ -126,6 +126,15 @@
             <input type="file" value="<?=get_var('image')?>" name="image">
             </div>
             </div>
+
+            <!--<div class="row">
+            <div class="col-25">
+                <label for="Profile Pic">Profile Pic</label>
+            </div>
+            <div class="col-75">
+            <input type="file" value="<?=get_var('image2')?>" name="image2">
+            </div>
+            </div>-->
 
             <div class="row">
             <input type="submit" value="Submit">

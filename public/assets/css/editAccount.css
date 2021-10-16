@@ -5,7 +5,7 @@ body{
 h4{
    color:rgb(17, 109, 30);
    text-align: center;
-   position:relative;top:-40px;
+   position:relative;top:-15px;
 }
 h2{
     color:rgb(17, 109, 30);
@@ -21,18 +21,17 @@ ul {
     position:relative;top:-5px;right:30px
   }
   
-li a {
-        display: block;
-        color: rgb(253, 252, 252);
-        padding-top: 10px;
-        padding: 15px 10px;
-        text-decoration: none;
-        background-color: #4C673B;
-        height:60px;
-        width:190px;
-        text-align: center;
-        position:relative;right:-20px;top:-30px;
-
+  li a {
+    display: block;
+    color: rgb(253, 252, 252);
+    padding-top: 45px;
+    padding: 15px 10px;
+    text-decoration: none;
+    background-color: #4C673B;
+    height:70px;
+    width: 190px;
+    text-align: center;
+    position:relative;right:-15px;top:-5px;
   }
   
   li a.active {
@@ -73,14 +72,20 @@ li a {
     
 }
 .regi_form{
-    position:relative;top:20px;right:-50px;
-    }
-.profilepic{
+  position:relative;top:20px;right:-50px;
+}
+img{
+  border-radius: 50%;
+  height:150px;
+  width:15px;
+  opacity: 100%;
+}
+/*.profilepic{
     height:150px;
     width:150px;
     border-radius: 50%;
     opacity: 100%;
-  }
+  }*/
   .certificate{
     height:100px;
     width:5px;

@@ -27,7 +27,7 @@
                    <form action="" method="post">
 
                         <input type="email" name="email" value="<?=get_var('email')?>" placeholder="Email-Address"> 
-                        <input type="password" name="password" value="<?=get_var('email')?>" placeholder="Password">
+                        <input type="password" name="password" value="<?=get_var('password')?>" placeholder="Password">
 
                         <button class="btn" type="submit">Log In</button>
 

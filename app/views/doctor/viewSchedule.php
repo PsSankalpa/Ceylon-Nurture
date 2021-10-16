@@ -12,28 +12,36 @@
 
                 <img src="<?=ASSETS?>img/avatar.png" alt="Person" style="width:100%">
                     <h4><b>Dr.W.M.S.Perera</b></h4>
+
+                    <!--<?php if($row):?>
+                        <h4><?=$row->nameWithInitials?> </h4>
+                    <?php endif;?>-->
           
             <ul>
                 <li><a href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-home"></i>My Account</a></li>
                 <li><a class="active" href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>Schedule</a></li>
                 <li><a href="#feedback"><i class="fa fa-fw fa-comment"></i>Feedback</a></li>
                 <li><a href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>Appointments</a></li>
-                <li><a href="#book"><i class="fa fa-fw fa-book"></i>Reports</a></li>
+                <li><a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>Reports</a></li>
             </ul>
         </div>
             <div class="container3">
             <div style="height:500px;width:700px;border:solid 2px orange;overflow:scroll;overflow-x:hidden;overflow-y:scroll;">
                     <div class="header">
+                    </div>
+                    <div>
                     <a href="<?=ROOT?>doctor/viewSchedule"><button class="viewbtn">View Slots</button></a>
                     <a href="<?=ROOT?>doctor/addSchedule"><button class="addbtn">Add Slots</button></a>
-                    </div> 
-                    <div class="products-section">
+                    <input type="date" id="date" name="date">
+                    <button class="filter">Filter</button>
+                    </div>                   
             <div class="cardrow">
                 <?php if($data2):?>
                     <?php foreach ($data2 as $data):?>
                         <div class="cardcolumn">
                             <div class="card">
                             <h3><?="Slot-".$data->slotNumber?> </h3>
+                            <h4><?= $data->dateofSlot?> </h4>
                             <p><?="Patients-".$data->noOfPatient?> </p>
                                 <div class="div">
                                     <a href="<?=ROOT?>/doctor/scheduleDetails/<?=$data->scheduleid?>">
@@ -43,8 +51,9 @@
                             </div>
                         </div>
                         <?php endforeach;?>
+                   
                 <?php else:?>
-                    <h4>No Products Yet</h4>
+                    <h4>No Schedules Yet</h4>
  			    <?php endif;?>
             </div>
         </div>

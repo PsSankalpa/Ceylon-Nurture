@@ -11,12 +11,13 @@ class schedule extends Model
 		'timePerPatient',
 		'doctorCharge',
         'doctorNote',
-		'doctorName',
+		//'doctorName',
 		'doctorid',
 	];
     protected $table = "schedule";
 	protected $pk = "scheduleid";
-	protected $pk2 = "userid";
+	//protected $pk2 = "userid";
+	protected $pk2 = "doctorid";
 
 	public function validate($DATA,$FILES)
 	{
@@ -28,7 +29,7 @@ class schedule extends Model
 		//for slotNumber
 		if(empty($DATA['slotNumber']))
 		{
-			$this->errors2['slotNumber'] = "Cannot Keep Product name empty";
+			$this->errors2['slotNumber'] = "Cannot Keep Slot Number name empty";
 		}
 		elseif(!preg_match('/^[0-9]+$/',$DATA['slotNumber']))
 		{

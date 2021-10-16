@@ -13,7 +13,7 @@
                         <form action="includes/forgotPasword.inc.php" method="post">
                         <input type="text" name="name" placeholder="User Name" required > 
                         <input type="email" name="email" placeholder="Email- Address" required > 
-                        <button class="btn" type="submit"><a href="resetPassword.php">Submit</a></button>
+                        <button class="btn" type="submit"><a href="<?=ROOT?>login/resetPassword">Submit</a></button>
                         </form>
                         </div>
                             <div class="form-img">

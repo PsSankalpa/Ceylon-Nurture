@@ -12,9 +12,9 @@
         <div class="container2">
 
       
-                <div class="profilepic">
+                    <!--<img src="<?=ASSETS2.$data2->image2?>" alt="Person" style="width:100%">-->
                     <img src="<?=ASSETS?>img/avatar.png" alt="Person" style="width:100%">
-                </div>
+                
    
         <?php if($data2):?>
         <?php foreach ($data2 as $data2):?>
@@ -26,7 +26,7 @@
                 <li><a href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>Schedule</a></li>
                 <li><a href="#feedback"><i class="fa fa-fw fa-comment"></i>Feedback</a></li>
                 <li><a href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>Appointments</a></li>
-                <li><a href="#book"><i class="fa fa-fw fa-book"></i>Reports</a></li>
+                <li><a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>Reports</a></li>
             </ul>
         </div>
             <div class="container3">
