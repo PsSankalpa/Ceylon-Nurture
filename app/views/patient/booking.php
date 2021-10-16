@@ -46,10 +46,12 @@
                 </div>
             </form>
                 <form class=scheduling_form>
+
+                
                 <div class="item1">
                 <div class="doc_image_container"><img class="doctor_image" src="<?=ASSETS?>img/doctor1.jpg"></div>
                 <div class="doc_details_container"><h2>Dr.Thush Perera</h2><br><h4>Hospital:<br>Speciality:</h4></div>
-                <div class="button_container"><button class="book_now">Book Now</button></div>
+                <div class="button_container"><button class="book_now"><a href="<?=ROOT?>booking/payment">Book Now</a></button></div>
                 </div>
                 <hr class="h1">
 
