@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Doctor's Appointments</title>
+<title>Doctor's Appointments Details</title>
 <?php $this -> view ("header",$data)?>
 <link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/appointments.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,27 +22,27 @@
                 </ul>
             </div>
                 <div class="container3">
-                    <div style="height:500px;width:700px;border:solid 2px orange;overflow:scroll;overflow-x:hidden;overflow-y:scroll;">
-                        <div>
-                            <input type="date" id="date" name="date">
-                            <button class="filter">Filter</button>
-                        </div> 
-
-                        <div class="slot-container">
-                            <div class="slot">Time Slot 01</div>
-                            <div class="time">8.00am - 12.00pm</div>
-                            <div class="patients">16 patients</div>  
-                            <a href="<?=ROOT?>doctor/viewAppointments"><button class="cardbutton">View Information</button></a>
-                        </div>
-
-                        <div class="slot-container">
-                            <div class="slot">Time Slot 02</div>
-                            <div class="time">4.00am - 7.00pm</div>
-                            <div class="patients">12 patients</div>  
-                            <a href="<?=ROOT?>doctor/viewAppointments"><button class="cardbutton">View Information</button></a>
-                        </div>
-                    </div>    
-                </div> 
+                    <div class="box">
+                        <div class="date">15/11/2021</div>
+                        <div class="time">8.00 am</div>
+                        <div class="patients">Natasha Perera</div>
+                            <h3>Diagonsis for Arthritis</h3>
+                    </div>
+                    <div class="box2">
+                        <div class="date">15/11/2021</div>
+                        <h3>Doctor Name - Sanath Perera</h3>
+                        <p>Speciality - Internal Medicine</p> 
+                        <p>Hospital - Osu Sewana Hospital</p>
+                        <hr><br>
+                        <h3>Name of the Patient - Natasha Perera</h3>
+                        <p>Telephone - 0761234567</p> 
+                        <p>DOB - 20/10/1990</p> 
+                        <p>Symptoms - Arthritis</p> 
+                        <hr><br>
+                        <p>Invoice No - 003442543656</p> 
+                        <p>Total Payment - Rs.3200</p> 
+                    </div>
+                </div>
         </div>
     </div>
 </body>

@@ -12,7 +12,7 @@ h4{
 ul {
   list-style-type: none;
   margin: 0;
-  padding: 20;
+  padding: 10;
   width:230px;
   height: 550px;
   position:relative;top:-5px;right:30px
@@ -26,8 +26,9 @@ li a {
   text-decoration: none;
   background-color: #4C673B;
   height:70px;
+  width: 190px;
   text-align: center;
-  position:relative;right:0px;top:-15px;
+  position:relative;right:-20px;top:10px;
 }
 
 li a.active {
@@ -68,21 +69,16 @@ li a:hover:not(.active) {
     
 }
 .profilepic{
-  border-radius: 50%;
+  border-radius:50%;
   height:150px;
-  width:15px;
+  width:150px;
   opacity: 100%;
 }
-/*.profilepic{
-    height:150px;
-    width:150px;
-    border-radius: 50%;
-    opacity: 100%;
-  }*/
-  .certificate{
-    height:50px;
-    width:3px;
-    opacity: 100%;
+
+.certificate{
+  height:50px;
+  width:3px;
+  opacity: 100%;
   }
 /*css for the form*/
 label {

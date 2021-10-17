@@ -8,15 +8,17 @@ class doctor extends Controller
         {
          $this->redirect('login/login');
         }
+        $Auth = new Auth;
+        $data2 = $Auth->finduser();
 
         $schedule = new schedule();
         $userid = Auth::userid();
         $data = $schedule->where('doctorid',$userid); 
 
-        //$common_user = new common_user(); ////Find all function which should be deleted
-        //$data = $common_user->findAll();
-
-        $this->view("doctor/doctor",$data); //in here put the relevent page name and the path
+        $this->view("doctor/doctor",[
+            'rows'=>$data,
+            'data2'=>$data2
+        ]); //in here put the relevent page name and the path
     }
 
     //function for registration
@@ -32,7 +34,7 @@ class doctor extends Controller
         {
             
             $doctors = new doctors();//create the instance of the doctor in model
-            
+
             if($doctors->validate($_POST,$_FILES))
             {
                 global $des;
@@ -46,8 +48,7 @@ class doctor extends Controller
                 $arr['city'] = htmlspecialchars($_POST['city']);
                 $arr['address'] = htmlspecialchars($_POST['address']);
                 $arr['image'] = $des;
-                //print_r($arr);
-                //die;
+               
                 $doctors->insert($arr);
                 $this->redirect('doctor');
             }
@@ -77,17 +78,22 @@ class doctor extends Controller
     //function to view account
     function viewAccount($userid=[])
     {
+        //$doctorid = Auth::userid();
+
         $errors = array();
         $doctors = new doctors();
         
-
-        $row =$doctors->where('userid',$userid); //in here row is an array
-        $data2 = $doctors->findAll();
-        
+        $userid = Auth::userid();
+        $rows = $doctors->where('userid',$userid);//in here row is an array
+       //$data2 = $doctors->findAll();
+        if($rows)
+        {
+            $rows = $rows[0];
+        }
         $this->view('doctor/viewAccount',[
 			'errors'=>$errors,
-            'row'=>$row,
-            'data2'=>$data2,
+            'rows'=>$rows,
+            //'data2'=>$data2,
 		]);
 
     }
@@ -135,7 +141,9 @@ class doctor extends Controller
         if($row)
         {
             $row = $row[0];
+            if(file_exists($row->image)){
             unlink($row->image);
+            }
        
         }
         $this->view('doctor/editAccount',[
@@ -194,13 +202,10 @@ class doctor extends Controller
             //$row = $doctor->where('userid',$userid); 
             if(!empty($row = $doctor->where('userid',$userid) ))
             //if(!empty($row))
-
-            
-
             {
                $row = $row[0];
                $nameWithInitials= $row->nameWithInitials;
-              $city = $row->city;
+               $city = $row->city;
             }
             else{
                 $nameWithInitials = "";
@@ -238,14 +243,14 @@ class doctor extends Controller
     //function to view schedule
     function viewSchedule($scheduleid = null)
     {
-        //$doctorid = Auth::userid();
+        $doctorid = Auth::userid();
        
         $errors = array();
         $schedule = new schedule();
         
-        $row =$schedule->where('scheduleid',$scheduleid);
-        $data2 = $schedule->findAll(); //in here row is an array
-        //$row =$schedule->where('doctorid',$doctorid); // ps changed to remove the slots when another user loged in
+        //$rows =$schedule->where('scheduleid',$scheduleid);
+        //$rows = $schedule->findAll(); //in here row is an array
+        $rows =$schedule->where('doctorid',$doctorid); // ps changed to remove the slots when another user loged in
         //if($row)
         //{
            // $row = $row[0];
@@ -253,8 +258,8 @@ class doctor extends Controller
        // }
         $this->view('doctor/viewSchedule',[
 			'errors'=>$errors,
-            //'row'=>$row,
-            'data2'=>$data2,
+            'rows'=>$rows,
+            
 		]);
        
 
@@ -343,35 +348,37 @@ class doctor extends Controller
 		]);
 
     }
-
-      //function to view appointments
-    function appointments($scheduleid = null)
-    {
-      $errors = array();
-      $schedule = new schedule();
-      
-      $data2 =$schedule->where('scheduleid',$scheduleid); //in here row is an array
-      $data2 = $schedule->findAll();
-      
-      $this->view('doctor/appointments',[
-        'errors'=>$errors,
-        //'row'=>$row,
-        'data2'=>$data2,
-    ]);
-    }
-
-    function reports($reportsid = null)
+    function reports()
     {
         //$reports = new reports();
-        //$data =$reports->where('reportsid',$reportsid);  
+        $this->view('doctor/reports',
+        ); 
+    }
+    function reportDetails()
+    {   
+  
+      $this->view("doctor/reportDetails");
+    }
+    
+     //function to view appointments
+    function viewAppointments()
+    {  
 
-        //print_r("$data");
-        //die;
-        $this->view('doctor/reports',[
-           // 'rows'=>$data,
-        ]); 
+    $this->view("doctor/viewAppointments");
     }
 
+     //function to view appointment details
+    function appointmentDetails()
+    {   
+  
+      $this->view("doctor/appointmentDetails");
+    }
+    //function to view feedback
+    function feedback()
+    {   
+  
+      $this->view("doctor/feedback");
+    }
 
 
     function myArticles()

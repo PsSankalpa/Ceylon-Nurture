@@ -7,6 +7,20 @@ h4{
    color:rgb(17, 109, 30);
    text-align: center;
 }
+h3{
+  color:rgb(250, 250, 250);
+text-align: center;
+  font-size: 20px;
+}
+p{
+  text-align: center;
+  font-weight: bold;
+  color:#ffff;
+}
+h2{
+  color:#17e710;
+  position:relative;top:-48px;right:-380px
+}
 
 ul {
     list-style-type: none;
@@ -57,13 +71,80 @@ ul {
     position:relative;left:-10px;top:-10px
 }
 .container3 {
+    display: flex;
     border-radius: 5px;
-    background-color: rgb(12, 12, 12);
+    background-color: rgba(12, 12, 12, 0.664);
     padding: 10px 10px;
     width: 710px;
     height: 510px;
     position:relative;right:-250px;top:-535px;
-}   
+}
+.box{
+  background-color: rgb(8, 8, 8);
+  width: 170px;
+  height: 190px;
+  margin: 60px;
+}
+
+.box2{
+  background-color:#4C673B;
+  width: 300px;
+  height: 300px;
+  margin: 60px;
+}
+
+.row1{
+    width: 710px;
+    background-color: rgb(8, 8, 8);
+    height: 110px;
+    position:relative;top:50px;
+}
+.slot{
+    background-color: #F4C931;
+    border-color:#f53a0b;
+    border-style:double;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bolder;
+    padding:10px;
+}
+.time{
+    border-color:#f53a0b;
+    border-style:outset;
+    color:#f53a0b;
+    text-align: center;
+    font-size: 15px;
+    padding:10px; 
+}
+.date{
+  background-color: #F4C931;
+  padding:15px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.patients{
+    text-align: center;
+    color:#198615;
+    padding:10px;
+}
+.cardbutton{
+    background-color: #014d08;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    padding:5px;
+    font-weight: bolder;
+}
+.slot-container {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 15px;
+    background-color: rgb(8, 8, 8);
+    padding: 10px;
+  }
+     
 img{
     border-radius: 50%;
     height:150px;
@@ -71,28 +152,18 @@ img{
     opacity: 100%;
 
 }
-/*view and add button*/
-.viewbtn{
-  background-color: #F4C931;
-  color: white;
-  padding: 10px;
-  position:relative;right:-590px;top:5px;
-}
-.addbtn{
-  background-color: #8d7a34;
-  color: white;
-  padding: 10px;
-  position:relative;right:-400px;top:5px;
-}
 
 input[type=date]{
   background-color: #F4C931;
   padding: 10px;
-  position:relative;right:150px;top:5px;
+  position:relative;right:-10px;top:5px;
+  margin-bottom: 20px;
+
+
 }
 .filter{
   background-color: #8d7a34;
-  position:relative;right:150px;top:5px;
+  position:relative;right:-20px;top:5px;
   padding:5px;
 }
 
@@ -111,7 +182,7 @@ input[type=date]{
   border-color: #A7D129;
 }*/
 /*for the cards*/
-/* Float four columns side by side */
+/* Float four columns side by side 
 .cardcolumn {
     float: left;
     width: 25%;
@@ -119,12 +190,12 @@ input[type=date]{
     justify-content: center;
   }
   
-  /* Remove extra left and right margins, due to padding in columns */
+  /* Remove extra left and right margins, due to padding in columns 
   .cardrow {
     margin: 0 -5px;
   }
   
-  /* Clear floats after the columns */
+  /* Clear floats after the columns 
   .cardrow:after {
     content: "";
     display: table;
@@ -132,18 +203,18 @@ input[type=date]{
     justify-content: center;
   }
   
-  /* Style the counter cards */
+  /* Style the counter cards 
   .card {
-    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2); /* this adds the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2); /* this adds the "card" effect 
     padding: 16px;
     text-align: center;
     background-color: #a5eba3;
     height: auto;
     margin: 1rem;
     border-radius: 1rem;
-  }
+  }*/
   
-  /*buttons of the cards*/
+  /*buttons of the cards
   .cardbutton {
     background-color: #228B22;
     border: none;
@@ -159,5 +230,5 @@ input[type=date]{
   
   .cardbutton:hover{
     opacity: 1;
-  }
+  }*/
   
