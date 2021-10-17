@@ -20,8 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet">
-
-    <script type="text/javascript" src="<? ASSETS ?>js/sellerJs.js"></script>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
 </head>
 
 <body>
@@ -72,7 +71,7 @@
                     </button>
                     <div class="dropdown-content">
                         <a href="#">Dashboard</a>
-                        <a href="#">My Account</a>
+                        <a href="<?=ROOT?>myAccount/index>">My Account</a>
                         <a href="<?= ROOT ?>logout">Log Out</a>
                     </div>
                 </div>
