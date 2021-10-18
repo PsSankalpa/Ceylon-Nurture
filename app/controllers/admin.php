@@ -3,15 +3,44 @@ class admin extends Controller
 {
     function index()
     {
-      
-       $admin = new admin();
+        if(!Auth::logged_in_admin())  
+        {
+          $this->redirect('login/login');
+        }
+        else
+        {
+            $admin = new admin();
+       
         //$data = $common_user->findAll();
-        $db=new Database();
+        //$db=new Database();
 
-        $data= $db->query("select * from common_user");
+        //$data= $db->query("select * from common_user");
+       //$this->load_model('common_user');
+        //$data=$common_user->findAll();
+
+       // $data=$common_user->where('fname','cham');
     
-        $this->view("admin/admin",['rows'=>$data]); //in here put the relevent page name and the path
+        //$common_user->insert($data);
+        //$common_user->update(id,$data);
+        //$common_user->delete(id);
+
+        //$this->view("admin/admin");//,['rows'=>$data]); //in here put the relevent page name and the path
+        $common_user = new common_user();
+        //userid=null
+        $userid=1;
+        $data=$common_user->where('userid',$userid);
         
+        $this->view("admin/admin",['rows'=>$data]);
+        }
+        
+
+        //$Auth = new Auth;
+        //$userid=Auth::userid();
+
+        //$data = $Auth->finduser();
+        $this->view("admin/admin",['data'=>$data]);
+
+
         
     }
 
@@ -43,4 +72,13 @@ class admin extends Controller
         ]);
 
     }
+
+   /* function findUser($userid=null)
+    {
+        $common_user = new common_user();
+        $userid=1;
+        $data=$common_user->where('userid',$userid);
+        
+        $this->view("admin/admin",['rows'=>$data]);
+    }*/
 }

@@ -17,11 +17,28 @@ class login extends Controller
 
                     Auth::authenticate($row);//creating a class,by putting "::" this run in static mode,from this we authinticate the user
                     $this->redirect('landing/home');//in here we put the controller claas or it's function
+                    die;
+                }
+            }
+            
+
+            $admin = new admin();
+            if($row = $admin->where('email',$_POST['email']))
+            {
+                $row = $row[0];
+               // print_r($row);
+              //  print_r($_POST['email']);
+                if($row=$admin->where('password',$_POST['password']))
+                {
+                    Auth::authenticate2($row);//creating a class,by putting "::" this run in static mode,from this we authinticate the user
+                    $this->redirect('admin/admin');//in here we put the controller claas or it's function
 
                 }
             }
+
             $errors['email'] = "Wrong email or password";
 
+            
         }
         $this->view('login/login',[
             'errors' =>$errors,

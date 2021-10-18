@@ -11,12 +11,23 @@ class  Auth
         $_SESSION['COMMON_USER'] = $row;//create an object COMMON USER and store entire details of that user
     }
 
+    public static function authenticate2($row)
+    {
+        //code
+        $_SESSION['ADMIN'] = $row;//create an object ADMIN and store entire details of that user
+    }
+
     public static function logout()
     {
         //code
         if(isset($_SESSION['COMMON_USER']))
         {
             unset($_SESSION['COMMON_USER']);
+        }
+
+        if(isset($_SESSION['ADMIN']))
+        {
+            unset($_SESSION['ADMIN']);
         }
     }
 
@@ -30,6 +41,16 @@ class  Auth
         return false;
     }
 
+    public static function logged_in_admin()//to check user is logged in
+    {
+    if(isset($_SESSION['ADMIN']))
+    {
+        return true;
+    }
+    return false;
+    }
+
+
     public static function common_user()
     {
      
@@ -37,20 +58,44 @@ class  Auth
         {
             return $_SESSION['COMMON_USER']->fname;
         }
+        
         return false;
     }
+
+    public static function admin()
+    {
+     
+        if(isset($_SESSION['ADMIN']))
+        {
+            return $_SESSION['ADMIN']->fname;
+        }
+        
+        return false;
+    }
+
+    
 
     public static function __callStatic($method,$params)//to call a method that not exist in Auth,params is an array
     {
         //$prop = strtolower(str_replace("get","",$method));//from this remove get and take the column name in the table in lower case
 
         $prop = $method;
+        
         if(isset($_SESSION['COMMON_USER']))
         {
             return $_SESSION['COMMON_USER']->$prop;
+            die;
         }
+        if(isset($_SESSION['ADMIN']))
+        {
+            return $_SESSION['ADMIN']->$prop;
+        }
+
         return 'User';
+
     }
+
+   
 
     public function finduser()
     {
