@@ -22,20 +22,19 @@
                 
                 <a class="a_navitem2" href="<?=ROOT?>forums">Notifications</a>
             </div>
-            <?php if(!Auth::logged_in()):?>
+            <?php if(!Auth::logged_in_admin()):?>
             <div class="nav_item3">
                 <i class="fas fa-user-circle fa-10x" id="login_logo"></i>
                 <a class="a_navitem3" href="<?=ROOT?>login"> Log In</a>  
             </div>
             <?php endif;?>
 
-            <?php if(Auth::logged_in()):?>
+            <?php if(Auth::logged_in_admin()):?>
             <div class="dropdown">
                 <button class="dropbtn"><?=Auth::fname()?>  
                 <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                <a href="#">Dashboard</a>
                 <a href="#">My Account</a>
                 <a href="<?=ROOT?>logout">Log Out</a>
                 </div>
@@ -162,7 +161,11 @@
         </div>  
         
         <div class="content3">
-           
+        
+        <?php foreach ($rows as $row):?>
+
+              
+                
 
             <div class="heading">
                 <div class="heading_1">Name of the user</div>
@@ -171,7 +174,47 @@
             </div>
             <hr class="h1">
             <div class="line1">
-                <div class="heading_1" >M.K.T.Perera</div>
+                <div class="heading_1" > <?=$row->fname?><?=$row->lname?></div>
+
+                <?php if(!empty($data)):?>
+                    <?php if($data == "seller"):?>
+                        <div class="heading_2">seller</div>
+
+                    <?php elseif($data == "doctor"):?>
+                        <div class="heading_2">doctor</div>
+
+                    <?php elseif($data == "patient"):?>
+                        <div class="heading_2">patient</div>
+
+                    <?php elseif($data == "doctorAndSeller"):?>
+                        <div class="heading_2">doctorAndSeller</div>
+
+                    <?php elseif($data == "doctorAndPatient"):?>
+                        <div class="heading_2">doctorAndPatient</div>
+
+                    <?php elseif($data == "sellerAndPatient"):?>
+                        <div class="heading_2">sellerAndPatient</div>
+
+                    <?php elseif($data == "allUser"):?>
+                        <div class="heading_2">All Users</div>
+
+
+                    <?php elseif($data == "none"):?>
+                        <div class="heading_2">Common USer</div>
+
+
+                    <?php endif;?>
+                <?php endif;?>
+
+
+                <div class="heading_3">
+                    <button class="button1">View</button>
+                    <button class="button1">Update</button>
+                    <button class="button1">Delete</button>
+                </div>
+            </div>
+            <div class="line1">
+                <div class="heading_1" ><?=$row->fname?></div>
                 <div class="heading_2">Doctor</div>
                 <div class="heading_3">
                     <button class="button1">View</button>
@@ -180,7 +223,7 @@
                 </div>
             </div>
             <div class="line1">
-                <div class="heading_1" >M.K.T.Perera</div>
+                <div class="heading_1" ><?=$row->fname?></div>
                 <div class="heading_2">Doctor</div>
                 <div class="heading_3">
                     <button class="button1">View</button>
@@ -188,15 +231,7 @@
                     <button class="button1">Delete</button>
                 </div>
             </div>
-            <div class="line1">
-                <div class="heading_1" >M.K.T.Perera</div>
-                <div class="heading_2">Doctor</div>
-                <div class="heading_3">
-                    <button class="button1">View</button>
-                    <button class="button1">Update</button>
-                    <button class="button1">Delete</button>
-                </div>
-            </div>
+            <?php endforeach;?>
 
 
         </div>
