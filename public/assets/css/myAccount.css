@@ -13,7 +13,9 @@ body{
   padding: 1rem;
   margin-bottom: 1rem;
 }
-
+.pro-img1{
+  width: 20%;
+}
 .main-profile{
   background-color: rgba(13, 13, 13, 0.8);
   width: 100%;

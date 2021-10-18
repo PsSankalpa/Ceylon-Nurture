@@ -10,7 +10,7 @@ class myAccount extends Controller
 
         $Auth = new Auth;
         $data = $Auth->finduser();
-
+        
         $sellers = new sellers();
         $doctor = new doctors();
         $patient = new patients();
@@ -40,7 +40,7 @@ class myAccount extends Controller
 
 
         $this->view('profile/myAccount',[
-            //'rows'=>$data,
+            'row'=>$data,
             'data1'=>$data1,
             'data2'=>$data2,
             'data3'=>$data3,

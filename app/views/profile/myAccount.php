@@ -54,6 +54,7 @@
                     <a href="<?= ROOT ?>/myAccount/editCommonUser"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
                     <a href=""><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
                 </div>
+                <?php if (($row == "seller") || ($row == "doctorAndSeller") || ($row == "sellerAndPatient") || ($row == "allUser")) : ?>
                 <!----------------------seller---------------------------------------------------------------------------->
                 <hr class="mg2 hr1 txt-col2">
                 <h3 class="txt-col1">Seller Section</h3>
@@ -102,13 +103,15 @@
                         <label for="image">Seller certificate</label>
                     </div>
                     <div class="col-50">
-                        <label for="image">First Name</label>
+                        <img class="pro-img1" src="<?= ASSETS2 . $data1->image ?> ">
                     </div>
                 </div>
                 <div class="m-btns">
                     <a href="<?= ROOT ?>/myAccount/editSeller"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
                     <a href=""><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
                 </div>
+                <?php endif;?>
+                <?php if (($row == "doctor") || ($row == "doctorAndSeller") || ($row == "doctorAndPatient") || ($row == "allUser")) : ?>
                 <!--------------------------doctor------------------------------------------------------------------------>
                 <hr class="mg2 hr1 txt-col2">
                 <h3 class="txt-col1">Doctor Section</h3>
@@ -181,13 +184,15 @@
                         <label for="image">Certificate</label>
                     </div>
                     <div class="col-50">
-                        <label for="image">First Name</label>
+                        <img class="pro-img1" src="<?= ASSETS2 . $data2->image ?> ">
                     </div>
                 </div>
                 <div class="m-btns">
                     <a href="<?= ROOT ?>/myAccount/editDoctor"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
                     <a href=""><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
                 </div>
+                <?php endif;?>
+                <?php if (($row == "patient") || ($row == "doctorAndSeller") || ($row == "sellerAndPatient") || ($row == "allUser")) : ?>
                 <!------------------------patient-------------------------------------------------------------------------->
                 <hr class="mg2 hr1 txt-col2">
                 <h3 class="txt-col1">Patient Section</h3>
@@ -228,13 +233,14 @@
                         <label for="image">Image</label>
                     </div>
                     <div class="col-50">
-                        <label for="image">First Name</label>
+                        <img class="pro-img1" src="<?= ASSETS2 . $data3->image ?> ">
                     </div>
                 </div>
                 <div class="m-btns">
                     <a href="<?= ROOT ?>/myAccount/editPatient"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
                     <a href=""><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
                 </div>
+                <?php endif;?>
                 <!-------------------------------------------------------------------------------------------------->
             </div>
             
