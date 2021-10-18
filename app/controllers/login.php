@@ -6,7 +6,16 @@ class login extends Controller
         //code
         $errors = array();
 
-        if(count($_POST) > 0)
+        if((count($_POST) > 0)&&((Auth::logged_in())||(Auth::logged_in_admin())))
+        {
+            //$errors='Already Logged In.Please Log out to Login again';
+            echo '<script type="text/javascript">  window.onload = function(){
+                alert("Please Log out First!");
+              }</script>';
+            //echo "<script>window.alert('Please Log out First!')</script>";//,['errors' =>$errors, ]);
+        }
+
+        if((count($_POST) > 0)&&(!Auth::logged_in())&&(!Auth::logged_in_admin()))
         {
             $common_user = new common_user();
             if($row = $common_user->where('email',$_POST['email']))

@@ -24,7 +24,7 @@ class common_user extends Model
    //protected $prefunctions = ['make_common_user_id'];
  
 
-    public function validate($data)
+    public function validate($data,$id='')
     {
         $this->errors = array();
         //$this->errors2 = array()
@@ -59,9 +59,18 @@ class common_user extends Model
 			$this->errors['username'] = "The Username should contain only letters";
 		  }
         //check if username exists
-        if ($this->where('username',$data['username'])) 
-        {
-            $this->errors['username'] = "The username already existing";
+        if(trim($id) == ''){
+            if ($this->where('username',$data['username'])) 
+            {
+                $this->errors['username'] = "The username already existing";
+            }
+        }
+        else{
+            if ($this->query ("select username from $this->table where username=:username && common_user_id !=userid",['username'=>$data['username'],'userid'=>$id])) 
+                {
+                    $this->errors['username'] = "The username already existing";
+                }
+
         }
 
         //check for email address
@@ -76,9 +85,18 @@ class common_user extends Model
         }
 
         //check if email exists
-        if ($this->where('email',$data['email'])) 
-        {
-            $this->errors['email'] = "The email already existing";
+        if(trim($id) == ''){
+            if ($this->where('email',$data['email']))
+                {
+                    $this->errors['email'] = "The email already existing";
+                }
+        }
+        else{
+            if ($this->query ("select email from $this->table where email=:email && common_user_id !=userid",['email'=>$data['email'],'userid'=>$id])) 
+                {
+                    $this->errors['email'] = "The email already existing";
+                }
+
         }
         
 
