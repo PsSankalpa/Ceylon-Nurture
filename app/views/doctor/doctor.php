@@ -13,7 +13,7 @@
         <?php $this -> view ("header",$data)?>
         
         <div class="bg_image_container">
-        <img class="bg_image" src="<?=ASSETS?>img/home.jpg">
+            <img class="bg_image" src="<?=ASSETS?>img/home.jpg">
         </div>
 
         <main>
@@ -23,13 +23,10 @@
                 <h5 class="h5_home">Ayurvedha Under One Roof</h5>
                 <hr class="h">
                 <div class="home_buttons">
-                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
+                    <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
+                </div>
             </div>
-
         </main>
-
-
-
     </body>
 </html>
 

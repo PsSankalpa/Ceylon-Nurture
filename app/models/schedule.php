@@ -12,19 +12,18 @@ class schedule extends Model
 		'doctorCharge',
         'doctorNote',
 		//'doctorName',
+		//'city',
 		'doctorid',
 	];
     protected $table = "schedule";
 	protected $pk = "scheduleid";
-	//protected $pk2 = "userid";
 	protected $pk2 = "doctorid";
 
 	public function validate($DATA,$FILES)
 	{
-       //print_r($DATA);
        
-        //-------------------------------------------------------------------------------------------------------------------------------------
 		//for schedule
+		
         $this->errors2 = array();
 		//for slotNumber
 		if(empty($DATA['slotNumber']))

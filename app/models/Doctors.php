@@ -14,10 +14,12 @@ class doctors extends Model
 		'city',
 		'address',
 		'image',
+		'doctorid'
 	];
 
 	protected $table = "doctors";
 	protected $pk = "userid";
+	//protected $pk2 = "doctorid";
 
 	public function validate($DATA,$FILES)
 	{
