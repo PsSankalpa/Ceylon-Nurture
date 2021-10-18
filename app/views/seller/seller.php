@@ -38,14 +38,14 @@
                             <p><?= "RS." . $row->productPrice ?> </p>
                             <div class="div">
                                 <a href="<?= ROOT ?>/seller/productDetails/<?= $row->productid ?>">
-                                    <button class="cardbutton">View Infomation</button>
+                                    <button class="cardbutton view">View Infomation</button>
                                 </a>
                             </div>
                             <a href="<?= ROOT ?>/seller/editProduct/<?= $row->productid ?>">
-                                <button class="cardbutton">Edit</button>
+                                <button class="cardbutton btn1">Edit</button>
                             </a>
                             <a href="<?= ROOT ?>seller/deleteProduct/<?= $row->productid ?>">
-                                <button class="cardbutton cancel">Delete</button>
+                                <button class="cardbutton cancel btn1">Delete</button>
                             </a>
                         </div>
                     </div>
