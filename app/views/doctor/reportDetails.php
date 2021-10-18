@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Report Details</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0;">
 <link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/reports.css">
 </head>
 <body>
@@ -15,7 +16,7 @@
                             <label for="Name of the Doctor">Name of the Doctor</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="nameWithInitials" name="nameWithInitials" placeholder="W.M.S.Perera">
+                            <h3>W.M.S.Perera</h3>
                         </div>
                         </div>
                     <div class="row">
@@ -23,7 +24,7 @@
                             <label for="Specialities">Specialities</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="specialities" name="specialities" placeholder="Internal Medicine">
+                            <h3>Internal Medicine</h3>
                         </div>
                     </div>
                     <h2>Patient Details</h2>
@@ -32,7 +33,7 @@
                             <label for="Name of the Patient">Name of the Patient</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="nameofPatient" name="nameofPatient" placeholder="Natasha Perera">
+                            <h3>Natasha Perera</h3>
                         </div>
                         </div>
                     <div class="row">
@@ -40,7 +41,7 @@
                             <label for="Symptoms">Symptoms</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="symptoms" name="symptoms" placeholder="Arthritis">
+                            <h3>Arthritis</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -48,7 +49,7 @@
                             <label for="National ID">National ID</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="NIC" name="NIC" placeholder="9660166939V">
+                            <h3>96601669393</h3>
                         </div>
                         </div>
                     <div class="row">
@@ -56,7 +57,7 @@
                             <label for="Telephone">Telephone</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="teleNo" name="teleNo" placeholder="0777439535">
+                            <h3>0777439535</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -64,7 +65,7 @@
                             <label for="Prescription">Prescription</label>
                         </div>
                         <div class="col-75">
-                                <img src="<?=ASSETS?>/img/pdf.png">
+                                <img src="<?=ASSETS?>/img/pdf.png" class="prescription" width="50" height="50">
                         </div>
                     </div>
                 </form>
@@ -77,7 +78,7 @@
                             <label for="Hospital">Hospital</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="hospital" name="hospital" placeholder="Osu Deepa Hospital">
+                            <h3>Osu Deepa Hospital</h3>
                         </div>
                         </div>
                     <div class="row">
@@ -85,7 +86,7 @@
                             <label for="Date">Date</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="date" name="date" placeholder="15/11/2021">
+                            <h3>15/11/2021</h3>
                         </div>
                     </div>
                     <h2>Payment Details</h2>
@@ -94,7 +95,7 @@
                             <label for="Doctor Charges">Doctor Charges</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="doctorCharge" name="doctorCharge" placeholder="Rs.2500">
+                            <h3>Rs.2500</h3>
                         </div>
                         </div>
                     <div class="row">
@@ -102,7 +103,7 @@
                             <label for="Hospital Charges">Hospital Charges</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="hospitalCharge" name="hospitalCharge" placeholder="Rs.500">
+                            <h3>Rs.500</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -110,7 +111,7 @@
                             <label for="Commission">Commission</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="commission" name="commission" placeholder="Rs.200">
+                            <h3>Rs.200</h3>
                         </div>
                         </div>
                     <div class="row">
@@ -118,7 +119,7 @@
                             <label for="Total Amount">Total Amount</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="total" name="total" placeholder="Rs.3200">
+                            <h3>Rs.3200</h3>
                         </div>
                     </div>
                 </form>

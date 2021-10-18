@@ -3,23 +3,23 @@
 <title>Doctor's Schedule</title>
 <?php $this -> view ("header",$data)?>
 <meta name="viewport" content="width=device-width; initial-scale=1.0;">
-<link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/addSchedule.css">
+<link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="background">
-        <div class="container1">
+    <div class="container1">
         <div class="sidebar">
         <img src="<?=ASSETS?>img/avatar.png" alt="Person" class="pro-pic" width="200" height="100">
         <h4><b>Dr.W.M.S.Perera</b></h4>
-        <a href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-home"></i>  My Account</a>
-        <a class="active" href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>  Schedule</a>
-        <a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>  Feedback</a>
-        <a  href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>  Appointments</a>
-        <a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>  Reports</a>
+        <li><a href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-home"></i>  My Account</a></li>
+            <a class="active" href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>  Schedule</a></li>
+            <a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>  Feedback</a></li>
+            <a  href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>  Appointments</a></li>
+            <a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>  Reports</a></li>
         </div>
         <div class="container3">
-          <!--for the errors-->
+          <!--for the errors
             <?php if(count($errors) > 0 ):?>
             <div class="alertwarning">
                 <button class="closebtn" onclick="closebutton()">&times;</button>   
@@ -28,7 +28,7 @@
                 <br /><?=$error?>
                 <?php endforeach;?>
             </div>
-            <?php endif;?>
+            <?php endif;?>-->
                 <div class="row">
                     <a href="<?=ROOT?>doctor/viewSchedule"><button class="viewbtn">View Slots</button></a>
                     <a href="<?=ROOT?>doctor/addSchedule"><button class="addbtn">Add Slots</button></a>

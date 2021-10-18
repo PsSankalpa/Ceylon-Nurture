@@ -52,8 +52,10 @@
                 <?php endif;?>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?= ROOT ?>header/viewArticles">ARTICLES</a>
+                <?php if(($data == "doctor") || ($data == "doctorAndSeller") || ($data == "doctorAndPatient") || ($data == "allUser")):?>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?= ROOT ?>appointments">APPOINTMENTS</a>
+                <?php endif;?>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?= ROOT ?>forums">FORUMS</a>
             </div>
