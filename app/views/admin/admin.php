@@ -162,76 +162,33 @@
         
         <div class="content3">
         
-        <?php foreach ($rows as $row):?>
-
-              
-                
-
             <div class="heading">
                 <div class="heading_1">Name of the user</div>
-                <div class="heading_2">Categories</div>
+                <!--<div class="heading_2">Categories</div>!-->
                 <div class="heading_3">Options</div>
             </div>
             <hr class="h1">
+
+            <?php foreach ($rows as $row):?>
             <div class="line1">
-                <div class="heading_1" > <?=$row->fname?><?=$row->lname?></div>
-
-                <?php if(!empty($data)):?>
-                    <?php if($data == "seller"):?>
-                        <div class="heading_2">seller</div>
-
-                    <?php elseif($data == "doctor"):?>
-                        <div class="heading_2">doctor</div>
-
-                    <?php elseif($data == "patient"):?>
-                        <div class="heading_2">patient</div>
-
-                    <?php elseif($data == "doctorAndSeller"):?>
-                        <div class="heading_2">doctorAndSeller</div>
-
-                    <?php elseif($data == "doctorAndPatient"):?>
-                        <div class="heading_2">doctorAndPatient</div>
-
-                    <?php elseif($data == "sellerAndPatient"):?>
-                        <div class="heading_2">sellerAndPatient</div>
-
-                    <?php elseif($data == "allUser"):?>
-                        <div class="heading_2">All Users</div>
-
-
-                    <?php elseif($data == "none"):?>
-                        <div class="heading_2">Common USer</div>
-
-
-                    <?php endif;?>
-                <?php endif;?>
-
-
+                <div class="heading_1" >
+                     <div class="row_user"><h4><?=$row->fname?> <?=$row->lname?></h4><br><br></div>
+                     <div class="row_user"><h5>First Name: </h5><p><?=$row->fname?></p><br></div>
+                    <div class="row_user"><h5>Last Name: </h5><p><?=$row->lname?></p><br></div>
+                    <div class="row_user"><h5>User Name: </h5><p><?=$row->username?></p><br></div>
+                    <div class="row_user"><h5>Email: </h5><p><?=$row->email?></p><br></div>
+                    <div class="row_user"><h5>Telephone Number: </h5><p><?=$row->tpNumber?></p><br></div>
+                </div>
+                <div class="heading_2"></div>
                 <div class="heading_3">
-                    <button class="button1">View</button>
-                    <button class="button1">Update</button>
-                    <button class="button1">Delete</button>
+                <a href="<?=ROOT?>admin/updateUser/<?=$row->userid?>"><button class="button1">Update</button></a>
+                <a href="<?=ROOT?>admin/deleteUser/<?=$row->userid?>"><button class="button1">Delete</button></a>
                 </div>
             </div>
-            <div class="line1">
-                <div class="heading_1" ><?=$row->fname?></div>
-                <div class="heading_2">Doctor</div>
-                <div class="heading_3">
-                    <button class="button1">View</button>
-                    <button class="button1">Update</button>
-                    <button class="button1">Delete</button>
-                </div>
-            </div>
-            <div class="line1">
-                <div class="heading_1" ><?=$row->fname?></div>
-                <div class="heading_2">Doctor</div>
-                <div class="heading_3">
-                    <button class="button1">View</button>
-                    <button class="button1">Update</button>
-                    <button class="button1">Delete</button>
-                </div>
-            </div>
+            <hr class="h2">
             <?php endforeach;?>
+
+            </div>
 
 
         </div>

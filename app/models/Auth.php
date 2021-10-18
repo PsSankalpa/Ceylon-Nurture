@@ -86,12 +86,12 @@ class  Auth
             return $_SESSION['COMMON_USER']->$prop;
             die;
         }
-        if(isset($_SESSION['ADMIN']))
-        {
-            return $_SESSION['ADMIN']->$prop;
-        }
+        //if(isset($_SESSION['ADMIN']))
+        //{
+        //    return $_SESSION['ADMIN']->$prop;
+//}
 
-        return 'User';
+        return 'Admin';
 
     }
 
@@ -173,6 +173,8 @@ class  Auth
             return $data;
         }
     }
+
+   
 
 }
 
