@@ -1,80 +1,64 @@
-body{
-    background-image:url("../img/home.jpg");
-    background-size:100%;
-}
-h4{
-   color:rgb(17, 109, 30);
-   text-align: center;
-   position:relative;top:-1px;
-
-}
-
-ul {
-  list-style-type: none;
+body {
   margin: 0;
-  padding: 10;
-  width:230px;
-  height: 550px;
-  position:relative;top:-5px;right:30px
+  font-family: "Lato", sans-serif;
+  background-image:url("../img/home.jpg");
+  background-size: cover;
+}
+.container1 {
+  border-radius: 5px;
+  background-color: #c0bebeec;
+  padding: 10px 10px;
+  width: 1000px;
+  height: 650px;
+  margin:50px auto;
+  position:relative;right:-50px;top:150px
+}
+.pro-pic {
+  width: 100%;
+  padding:20px;
+  height: auto;
+}
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #141414;
+  position: relative;
+  height: 620px;
 }
 
-li a {
+.sidebar a {
   display: block;
-  color: rgb(253, 252, 252);
-  padding-top: 45px;
-  padding: 15px 10px;
+  color: #4C673B;
+  padding:30px;
   text-decoration: none;
-  background-color: #4C673B;
-  height:70px;
-  width: 190px;
-  text-align: center;
-  position:relative;right:-20px;top:10px;
 }
-
-li a.active {
+ 
+.sidebar a.active {
   background-color: #0a3804;
   color: white;
-  text-align: center;
 }
 
-li a:hover:not(.active) {
+.sidebar a:hover:not(.active) {
   background-color: rgb(29, 92, 45);
   color: white;
+}
+h4{
+  color:#265a07;
   text-align: center;
   }
-  .container1 {
-    border-radius: 5px;
-    background-color: #c0bebeec;
-    padding: 10px 10px;
-    width: 1000px;
-    height: 550px;
-    margin:50px;
-    position:relative;right:-150px;top:150px
-  }
-.container2 {
-    border-radius: 5px;
-    background-color: #141414;
-    padding: 10px 10px;
-    width: 190px;
-    height: 550px;
-    position:relative;left:-10px;top:-10px
-}
+/*Container two css*/
 .container3 {
-    border-radius: 5px;
-    background-color: #4d4a4ada;
-    padding: 10px 10px;
-    width: 750px;
-    height: 535px;
-    position:relative;right:-220px;top:-550px;
-    
+  border-radius: 5px;
+  background-color: rgb(12, 12, 12);
+  padding: 10px 10px;
+  width: 700px;
+  height: 620px;
+  position:relative;right:-550px;top:-620px;
 }
-.profilepic{
-  border-radius:50%;
-  height:150px;
-  width:150px;
-  opacity: 100%;
-}
-
+.regi_form{
+  position:relative;top:20px;right:-50px;
+  }
 .certificate{
   height:50px;
   width:3px;

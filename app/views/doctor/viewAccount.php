@@ -3,30 +3,26 @@
     <head>
         <title>Ceylon Nurture|Doctor|Account Details</title>
         <?php $this -> view ("header",$data)?>
+        <meta name="viewport" content="width=device-width; initial-scale=1.0;">
         <link rel="stylesheet" href="<?=ASSETS?>css/viewAccount.css">
     </head>
 
     <body>
     <div class="background">
         <div class="container1">
-            <div class="container2">
-
-                        <div class="profilepic">
-                        <img src="<?=ASSETS?>/img/avatar.png" alt="Person" style="width:100%">
-                        </div>
-    
+        <div class="sidebar">
+        <img src="<?=ASSETS?>img/avatar.png" alt="Person" class="pro-pic" width="200" height="100">
                     <?php if($rows):?>
                     <?php foreach ($rows as $row):?>
                     <h4><?=$rows->nameWithInitials?></h4>
     
             
-                <ul>
-                    <li><a class="active" href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-home"></i>My Account</a></li>
-                    <li><a href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>Schedule</a></li>
-                    <li><a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>Feedback</a></li>
-                    <li><a href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>Appointments</a></li>
-                    <li><a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>Reports</a></li>
-                </ul>
+        <a href="<?=ROOT?>profile/editDoctor"><i class="fa fa-fw fa-home"></i>  My Account</a>
+        <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>  Schedule</a>
+        <a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>  Feedback</a>
+        <a  class="active" href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>  Appointments</a>
+        <a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>  Reports</a>
+        </div>
             </div>
             <div class="container3">
                 <form class="regi_form" enctype="multipart/form-data" method="POST">
@@ -99,9 +95,7 @@
                             <label for="Qualifications">Qualifications</label>
                         </div>
                         <div class="col-75">
-                            <div class="certificate">
-                                <img src="<?=ASSETS2.$rows->image?>" style="width:3000%">
-                            </div>
+                                <img src="<?=ASSETS2.$rows->image?>" class="certificate" style="width:3000%">
                         </div>
                     </div>
                     <?php endforeach;?>

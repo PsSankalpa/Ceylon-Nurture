@@ -135,9 +135,7 @@ class doctor extends Controller
             }
         }
         $row =$doctors->where('userid',$userid); 
-       // print_r($row);
-       //in here row is an array
-        
+       // print_r($row);      
         if($row)
         {
             $row = $row[0];
@@ -171,7 +169,8 @@ class doctor extends Controller
                 $this->redirect('doctor/viewAccount');
           
         }
-        $row =$doctors->where('userid',$userid); //in here row is an array
+        $row =$doctors->where('userid',$userid);
+        //$data2 = $doctors->findAll();
          if($row)
         {
             $row = $row[0];
@@ -378,6 +377,11 @@ class doctor extends Controller
     {   
   
       $this->view("doctor/feedback");
+    }
+    function responsive()
+    {   
+  
+      $this->view("doctor/responsive");
     }
 
 

@@ -1,76 +1,74 @@
-body{
-    background-image:url("../img/home.jpg");
-    background-size:100%;
-    background-repeat: no-repeat;
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  background-image:url("../img/home.jpg");
+  background-size: cover;
+}
+.container1 {
+  border-radius: 5px;
+  background-color: #c0bebeec;
+  padding: 10px 10px;
+  width: 1000px;
+  height: 650px;
+  margin:50px auto;
+  position:relative;right:-50px;top:150px
+}
+.pro-pic {
+  width: 100%;
+  padding:20px;
+  height: auto;
+}
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #141414;
+  position: relative;
+  height: 620px;
+}
+
+.sidebar a {
+  display: block;
+  color: #4C673B;
+  padding:30px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #0a3804;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: rgb(29, 92, 45);
+  color: white;
 }
 h4{
-   color:rgb(17, 109, 30);
-   text-align: center;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 20;
-    width:230px;
-    height: 550px;
-    position:relative;top:-5px;right:30px
-  }
-  
-  li a {
-    display: block;
-    color: rgb(253, 252, 252);
-    padding-top: 45px;
-    padding: 15px 10px;
-    text-decoration: none;
-    background-color: #4C673B;
-    height:70px;
-    text-align: center;
-  }
-  
-  li a.active {
-    background-color: #0a3804;
-    color: white;
-    text-align: center;
-  }
-  
-  li a:hover:not(.active) {
-    background-color: rgb(29, 92, 45);
-    color: white;
-    text-align: center;
-  }
-  .container1 {
-    border-radius: 5px;
-    background-color: #c0bebeec;
-    padding: 10px 10px;
-    width: 1000px;
-    height: 550px;
-    margin:50px;
-    position:relative;right:-150px;top:150px
-  }
-.container2 {
-    border-radius: 5px;
-    background-color: #141414;
-    padding: 10px 10px;
-    width: 190px;
-    height: 550px;
-    position:relative;left:-10px;top:-10px
+  color:#265a07;
+  text-align: center;
 }
 .container3 {
-    border-radius: 5px;
-    background-color: rgb(12, 12, 12);
-    padding: 10px 10px;
-    width: 710px;
-    height: 510px;
-    position:relative;right:-250px;top:-535px;
-}   
-img{
-    border-radius: 50%;
-    height:150px;
-    width:15px;
-    opacity: 100%;
-
+  border-radius: 5px;
+  background-color: rgb(12, 12, 12);
+  padding: 10px 10px;
+  width: 730px;
+  height: 620px;
+  position:relative;right:-250px;top:-620px;
+} 
+.header {
+  height:600px;
+  width:730px;
+  border:solid 3px rgb(26, 85, 3);
+  overflow:scroll;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: rgb(10, 10, 10);
+  position:relative;top:0px;
 }
+
 /*view and add button*/
 .viewbtn{
   background-color: #F4C931;
@@ -93,23 +91,10 @@ input[type=date]{
 .filter{
   background-color: #8d7a34;
   position:relative;right:150px;top:5px;
-  padding:5px;
+  padding:10px;
+  margin-bottom: 5px;
 }
 
-.header {
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  width: 50%;
-  background-color: rgb(71, 68, 68);
-  position:relative;top:-15px;
-}
-
-/*schedule section
-.schedule-section{
-  background-color: black;
-  border-color: #A7D129;
-}*/
 /*for the cards*/
 /* Float four columns side by side */
 .cardcolumn {
@@ -159,5 +144,75 @@ input[type=date]{
   
   .cardbutton:hover{
     opacity: 1;
+  }
+  /*Making the page mobile responsive*/
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .container1 {
+        width: 100%;
+        height: 1600px;
+        position: relative;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .container3 {
+        width: 100%;
+        height: auto;
+        position: relative;right:0px;top:-10px
+      
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .filter,.addbtn,.viewbtn,.header,input[type=date]{
+      width: 50%;
+      margin-top: 1%;
+      float:left;
+      position:relative;right:0px;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .header {
+      width: 106%;
+      height: auto;
+      position: relative;right:10px;top:-50px;
+      border:solid 3px rgb(26, 85, 3);
+      z-index: 1;
+      overflow:scroll;
+      overflow-x:scroll;
+      overflow-y:scroll;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .cardcolumn{
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .card{
+      height: 150px;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .cardbutton{
+      width: 50%;
+      margin-top: 1%;
+      float:center;
+      position:relative;right:0px;
+    }
   }
   

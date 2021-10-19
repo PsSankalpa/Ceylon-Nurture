@@ -87,7 +87,7 @@
 
                 <div class="home_buttons">
 
-                <button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
                 <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button></a>
 
                 </div>
@@ -104,7 +104,7 @@
                 <div class="home_buttons">
 
 
-                <button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
                 <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button></a>
 
                 <button class="button_patient"> Add products </button>

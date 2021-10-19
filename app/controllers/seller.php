@@ -53,7 +53,7 @@ class seller extends Controller
                 $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
                 $arr['registrationNumber'] = htmlspecialchars($_POST['registrationNumber']);
                 $arr['tpNumber'] = htmlspecialchars($_POST['tpNumber']);
-                $arr['tpNumber2'] = Auth::tpNumber();
+                //$arr['tpNumber2'] = Auth::tpNumber();
                 $arr['nic'] = htmlspecialchars($_POST['nic']);
                 $arr['address'] = htmlspecialchars($_POST['address']);
                 $arr['image'] = $des;

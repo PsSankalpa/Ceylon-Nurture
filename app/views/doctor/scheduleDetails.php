@@ -3,27 +3,20 @@
     <head>
         <title>Ceylon Nurture|Doctor|Schedule Details</title>
         <?php $this -> view ("header",$data)?>
+        <meta name="viewport" content="width=device-width; initial-scale=1.0;">
         <link rel="stylesheet" href="<?=ASSETS?>css/scheduleDetails.css">
     </head>
     <body>
     <div class="background">
         <div class="container1">
-            <div class="container2">
-                    <img src="<?=ASSETS?>img/avatar.png" alt="Person" style="width:100%">
-
-                <!-- <?php if($rows):?>
-                     <?php foreach ($rows as $row):?>
-                    <h4><?=$row->nameWithInitials?> </h4>
-                    <?php endforeach;?>
-                        <?php endif;?>-->
-                    <h4><b>Dr.W.M.S.Perera</b></h4>
-                <ul>
-                    <li><a href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-home"></i>My Account</a></li>
-                    <li><a class="active" href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>Schedule</a></li>
-                    <li><a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>Feedback</a></li>
-                    <li><a href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>Appointments</a></li>
-                    <li><a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>Reports</a></li>
-                </ul>
+        <div class="sidebar">
+                <img src="<?=ASSETS?>img/avatar.png" alt="Person" class="pro-pic" width="200" height="100">
+                <h4><b>Dr.W.M.S.Perera</b></h4>
+                <a href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-home"></i>  My Account</a>
+                <a class="active" href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>  Schedule</a>
+                <a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>  Feedback</a>
+                <a  href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>  Appointments</a>
+                <a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>  Reports</a>
             </div>
             <div class="container3">
                 <form class="regi_form" enctype="multipart/form-data" method="POST">

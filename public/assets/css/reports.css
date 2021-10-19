@@ -1,78 +1,65 @@
-body{
-    background-image:url("../img/home.jpg");
-    background-size:100%;
-    background-repeat: no-repeat;
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  background-image:url("../img/home.jpg");
+  background-size: cover;
 }
-h4{
-   color:rgb(17, 109, 30);
-   text-align: center;
+.container1 {
+  border-radius: 5px;
+  background-color: #c0bebeec;
+  padding: 10px 10px;
+  width: 1000px;
+  height: 650px;
+  margin:50px auto;
+  position:relative;right:-50px;top:150px
+}
+.pro-pic {
+  width: 100%;
+  padding:20px;
+  height: auto;
+}
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #141414;
+  position: relative;
+  height: 620px;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 20;
-    width:230px;
-    height: 550px;
-    position:relative;top:-5px;right:30px
-  }
-  
-  li a {
-    display: block;
-    color: rgb(253, 252, 252);
-    padding-top: 45px;
-    padding: 15px 10px;
-    text-decoration: none;
-    background-color: #4C673B;
-    height:70px;
-    text-align: center;
-  }
-  
-  li a.active {
-    background-color: #0a3804;
-    color: white;
-    text-align: center;
-  }
-  
-  li a:hover:not(.active) {
-    background-color: rgb(29, 92, 45);
-    color: white;
-    text-align: center;
-  }
-  .container1 {
-    border-radius: 5px;
-    background-color: #c0bebeec;
-    padding: 10px 10px;
-    width: 1000px;
-    height: 550px;
-    margin:50px;
-    position:relative;right:-150px;top:150px
-  }
-.container2 {
-    border-radius: 5px;
-    background-color: #141414;
-    padding: 10px 10px;
-    width: 190px;
-    height: 550px;
-    position:relative;left:-10px;top:-10px
+.sidebar a {
+  display: block;
+  color: #4C673B;
+  padding:30px;
+  text-decoration: none;
 }
+ 
+.sidebar a.active {
+  background-color: #0a3804;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: rgb(29, 92, 45);
+  color: white;
+}
+h4{
+  color:#265a07;
+  text-align: center;
+  }
+/*Container two css*/
 .container3 {
-    border-radius: 5px;
-    background-color: rgb(12, 12, 12);
-    padding: 10px 10px;
-    width: 710px;
-    height: 510px;
-    position:relative;right:-250px;top:-535px;
-}    
-.img2{
-    height:60px;
-    width:50px;
-}
-img{
-  border-radius: 50%;
-  height:150px;
-  width:15px;
-}
+  border-radius: 5px;
+  background-color: rgb(12, 12, 12);
+  padding: 10px 10px;
+  width: 700px;
+  height: 620px;
+  position:relative;right:-250px;top:-620px;
+} 
+.prescription{
+  width: 80px;
+  height: 80px;
+}   
 input[type=date]{
     background-color: #F4C931;
     padding: 10px;
@@ -80,7 +67,7 @@ input[type=date]{
    margin-bottom: 15px;
 }
 label{
-    color:aliceblue;
+    color:rgb(173, 173, 173);
 }
 .report-container {
     display: grid;
@@ -108,22 +95,27 @@ label{
     font-weight: bolder;
     position:relative;right:-12px;
 }
-  .header {
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    width: 50%;
-    background-color: rgb(71, 68, 68);
-    position:relative;top:-15px;
-  }
+.header {
+  height:600px;
+  width:730px;
+  border:solid 3px rgb(26, 85, 3);
+  overflow:scroll;
+  overflow-x:scroll;
+  overflow-y:scroll;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: rgb(10, 10, 10);
+  position:relative;top:0px;
+}
   .container{
     border-radius: 5px;
     background-color: #0a0a0acc;
     padding: 10px 10px;
     width: 1000px;
-    height: 600px;
+    height: 700px;
     margin:50px;
-    position:relative;left:90px;
+    position:relative;left:170px;
 
   }
   h1{
@@ -137,7 +129,8 @@ label{
   .column {
     flex: 50%;
     padding: 10px;
-    height: 580px; 
+    height: 680px; 
+    width:500px;
     background-color:#0a0a0acc;
   }
   h2{
@@ -151,12 +144,12 @@ label{
     font-weight: bold;
     padding: 10px;
     border-radius: 25%;
-    position:relative;right:-400px;top:15px;
+    position:relative;right:-350px;top:15px;
   }
-  input[type=text]{
-    padding: 6px;
+  h3{
     margin-top: 10px;
-}
+    color:#ffff;
+  }
 /* Floating column for labels: 25% width */
 .col-25 {
   float: left;
@@ -172,4 +165,103 @@ label{
   margin-top: 15px;
   position:relative;right:-100px;
   }
+  /*Making the page mobile responsive*/
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+@media screen and (max-width: 700px) {
+  .container1 {
+      width: 100%;
+      height: auto;
+      position: relative;
+  }
+}
+@media screen and (max-width: 700px) {
+  .container3 {
+      width: 100%;
+      height: auto;
+      position: relative;right:0px;top:-10px
+    
+  }
+}
+@media screen and (max-width: 1000px) {
+  .cardbutton,input[type=date]{
+    width: 100%;
+    margin-top: 1%;
+    float:left;
+    position:relative;right:0px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .report-container{
+    width: 150%;
+    margin-top: 1%;
+    float:left;
+    position:relative;right:0px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .report-container div{
+    width: 100%;
+    margin-top: 1%;
+    float:left;
+    position:relative;right:0px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .cardbutton{
+    font-size: 10px;
+    padding:2px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .col-25, .col-75,.backbtn,input[type=date]{
+    width: 100%;
+    margin-top: 1%;
+    float:left;
+    position:relative;right:0px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .container {
+      width: 100%;
+      height: auto;
+      position: relative;right:0px;top:-10px
+    
+  }
+}
+@media screen and (max-width: 700px) {
+  .regi_form {
+    width: 100%;
+    position:relative;right:0px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .row,.column{
+    width: 100%;
+    position:relative;right:0px;
+  }
+}
+@media screen and (max-width: 700px) {
+  h3{
+  font-size: 12px;
+  }
+}
+
+
+
+
   
