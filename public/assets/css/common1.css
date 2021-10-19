@@ -83,3 +83,11 @@
     background-color:green ;
 }
 
+.btn1{
+    background-color: green;
+    width: 30%;
+    border-style: none;
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+}
+

@@ -56,6 +56,8 @@
                 <a class="a_navitem2" href="<?= ROOT ?>appointments">APPOINTMENTS</a>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?= ROOT ?>forums">FORUMS</a>
+                <div class="v"></div>
+                <a class="a_navitem2" href="<?= ROOT ?>header/makeDonations">Donations</a>
             </div>
             <?php if (!Auth::logged_in()) : ?>
                 <div class="nav_item3">
