@@ -3,34 +3,30 @@
     <head>
         <title>Ceylon Nurture|Doctor|Eddit Account</title>
         <?php $this -> view ("header",$data)?>
+        <meta name="viewport" content="width=device-width; initial-scale=1.0;">
         <link rel="stylesheet" href="<?=ASSETS?>css/editAccount.css">
     </head>
 
     <body>
     <div class="background">
         <div class="container1">
-            <div class="container2">
-
-                <div id="profile-img">
-                    <img src="<?=ASSETS?>img/avatar.png" alt="Person" style="width:100%">
-                </div><br>
-
-                <?php if($row):?>
+             <div class="sidebar">
+            <img src="<?=ASSETS?>img/avatar.png" alt="Person" class="pro-pic" width="200" height="100">
+            <?php if($row):?>
                     <h4><?=$row->nameWithInitials?> </h4>
-                <?php endif;?>
-                
-                    <ul>
-                        <li><a class="active" href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-home"></i>My Account</a></li>
-                        <li><a href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>Schedule</a></li>
-                        <li><a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>Feedback</a></li>
-                        <li><a href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>Appointments</a></li>
-                        <li><a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>Reports</a></li>
-                    </ul>
-            </div>
+            <?php endif;?>
+                    
+            
+        <a class="active" href="<?=ROOT?>profile/myAccount"><i class="fa fa-fw fa-home"></i>  My Account</a>
+        <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>  Schedule</a>
+        <a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>  Feedback</a>
+        <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>  Appointments</a>
+        <a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>  Reports</a>
+        </div>
             <div class="container3">
                 <?php if($row):?> 
                     <form class="regi_form" enctype="multipart/form-data" method="POST">
-                        <h2>Edit the Schedule</h2>
+                        <h2>Edit the Account</h2>
                         <hr>
                         
                         <!--for the errors-->

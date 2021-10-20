@@ -39,16 +39,24 @@ class doctor extends Controller
             {
                 global $des;
                 $arr['userid'] = AUTH::userid();
-                $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
-                $arr['gender'] = htmlspecialchars($_POST['gender']);
-                $arr['dob'] = htmlspecialchars($_POST['dob']);
+                $arr['nameWithInitials'] = Auth::nameWithInitials();
+                $arr['gender'] = Auth::gender();
+                $arr['dob'] = Auth::dob();
                 $arr['registrationNumber'] = htmlspecialchars($_POST['registrationNumber']);
                 $arr['specialities'] = htmlspecialchars($_POST['specialities']);
                 $arr['hospital'] = htmlspecialchars($_POST['hospital']);
                 $arr['city'] = htmlspecialchars($_POST['city']);
                 $arr['address'] = htmlspecialchars($_POST['address']);
                 $arr['image'] = $des;
+                //$arr['image'] = $des2;
+                
+                //$orig_file = $_FILES["avatar"]["tmp_name"];
+               // $target_dir = 'doctor_profilepic/';
+               // $destination = $target_dir . basename($_FILES["avatar"]["name"]);
+               // move_uploaded_file($orig_file,$destination) //moving the file
                
+               // exit(); //Stop uploading the image for the database
+
                 $doctors->insert($arr);
                 $this->redirect('doctor');
             }
@@ -67,7 +75,8 @@ class doctor extends Controller
          $des =$destination;
          return $des;
     }
-    //get the file destination of the image2
+    
+     //get the file destination of the image2
     /*function get_destination($destination)
     {
          global $des2;
@@ -116,9 +125,9 @@ class doctor extends Controller
                 global $des;
                 //global $des2;
                 $arr['userid'] = AUTH::userid();
-                $arr['nameWithInitials'] = $_POST['nameWithInitials'];
-                $arr['gender'] = $_POST['gender'];
-                $arr['dob'] = $_POST['dob'];
+                $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
+                $arr['gender'] = htmlspecialchars($_POST['gender']);
+                $arr['dob'] = htmlspecialchars($_POST['dob']);
                 $arr['registrationNumber'] = $_POST['registrationNumber'];
                 $arr['specialities'] = $_POST['specialities'];
                 $arr['hospital'] = $_POST['hospital'];
@@ -222,6 +231,7 @@ class doctor extends Controller
                 $arr['timePerPatient'] = $_POST['timePerPatient'];
                 $arr['doctorCharge'] = $_POST['doctorCharge'];
                 $arr['doctorNote'] = $_POST['doctorNote'];
+                $arr['DoctorName'] = Auth::nameWithInitials();
                 //$arr['DoctorName'] = $nameWithInitials;
                 //$arr['city'] = $city;
                 $arr['doctorid'] = Auth::userid(); 
@@ -378,13 +388,6 @@ class doctor extends Controller
   
       $this->view("doctor/feedback");
     }
-    function responsive()
-    {   
-  
-      $this->view("doctor/responsive");
-    }
-
-
     function myArticles()
     {
         $Auth = new Auth;

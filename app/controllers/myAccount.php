@@ -69,7 +69,7 @@ class myAccount extends Controller
 		]);
     }
 
-    function editDoctor()
+    /*function editDoctor($userid = null)
     {
         $doctor = new doctors();
         $userid = Auth::userid();
@@ -77,7 +77,97 @@ class myAccount extends Controller
         if($data2)
         {
             $data2 = $data2[0];
+            if(file_exists($data2->image)){
+            unlink($data2->image);
+            }
         }
+        $errors = array();
+        if(count($_POST)>0)
+        {
+            if($doctor->validate($_POST,$_FILES))
+            {
+                global $des;
+                //global $des2;
+                $arr['userid'] = AUTH::userid();
+                $arr['nameWithInitials'] = $_POST['nameWithInitials'];
+                $arr['gender'] = $_POST['gender'];
+                $arr['dob'] = $_POST['dob'];
+                $arr['registrationNumber'] = $_POST['registrationNumber'];
+                $arr['specialities'] = $_POST['specialities'];
+                $arr['hospital'] = $_POST['hospital'];
+                $arr['city'] = $_POST['city'];
+                $arr['address'] = $_POST['address'];
+                $arr['image'] = $des;
+               // $arr['image2'] = $des2;
+
+                $doctor->update($userid,$arr);
+                $this->redirect('profile/myAccount');
+            }
+            else{
+                $errors = $doctor->errors;
+            }
+        }
+        $this->view('profile/editDoctor',[
+			'errors'=>$errors,
+            'row'=>$data2
+		]);
+    }*/
+    /*function editDoctor($userid = null)
+    {
+        $doctor = new doctors();
+        //$userid = Auth::userid();
+
+        $errors = array();
+        if(count($_POST)>0)
+        {
+            if($doctor->validate($_POST,$_FILES))
+            {
+                global $des;
+                //global $des2;
+                $arr['userid'] = AUTH::userid();
+                $arr['nameWithInitials'] = $_POST['nameWithInitials'];
+                $arr['gender'] = $_POST['gender'];
+                $arr['dob'] = $_POST['dob'];
+                $arr['registrationNumber'] = $_POST['registrationNumber'];
+                $arr['specialities'] = $_POST['specialities'];
+                $arr['hospital'] = $_POST['hospital'];
+                $arr['city'] = $_POST['city'];
+                $arr['address'] = $_POST['address'];
+                $arr['image'] = $des;
+               // $arr['image2'] = $des2;
+
+                $doctor->update($userid,$arr);
+                $this->redirect('profile/myAccount');
+            }
+            else{
+                $errors = $doctor->errors;
+            }
+        }
+        $data2 = $doctor->where('userid',$userid);
+
+        if($data2)
+        {
+            $data2 = $data2[0];
+            if(file_exists($data2->image)){
+            unlink($data2->image);
+            }
+        }
+        $this->view('profile/editDoctor',[
+			'errors'=>$errors,
+            'row'=>$data2
+		]);
+    }*/
+    function editDoctor()
+    {
+        $userid = Auth::userid();
+        $doctor = new doctors();
+        $data2 = $doctor->where('userid',$userid); 
+
+        if($data2)
+        {
+            $data2 = $data2[0];
+        }
+
         $errors = array();
         if(count($_POST)>0)
         {
@@ -85,7 +175,7 @@ class myAccount extends Controller
         }
         $this->view('profile/editDoctor',[
 			'errors'=>$errors,
-            'row'=>$data2
+            'row'=>$data2,
 		]);
     }
 

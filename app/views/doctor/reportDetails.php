@@ -65,7 +65,7 @@
                             <label for="Prescription">Prescription</label>
                         </div>
                         <div class="col-75">
-                                <img src="<?=ASSETS?>/img/pdf.png" class="prescription" width="50" height="50">
+                                <img src="<?=ASSETS?>/img/prescription.png" class="prescription" width="50" height="50">
                         </div>
                     </div>
                 </form>
@@ -126,6 +126,7 @@
                 <a href="<?=ROOT?>doctor/reports">
                     <button class="backbtn">Back</button>
                 </a>
+                <button class="pdf">Generate PDF</button>
             </div>
         </div>
 

@@ -11,8 +11,10 @@
                         <div class="content">
                         <h2>Reset Your Password</h2>
                         <hr>
-                        <p>Send a code to your email address ...... to reset your password</p>
-                       <!-- <img src="./images/user.png" style="width:200px">-->
+                        <div class="row1">
+                        <label for="email">Email Address</label>
+                        <input type="text" id="email" name="email" placeholder="Email Address">
+                        </div>
                         <hr>
                         <div class="two-buttons">
                         <button class="btn" type="submit"><a href="<?=ROOT?>login/otpCodeSent">Continue</a></button>

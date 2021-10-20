@@ -24,28 +24,30 @@ h2{
 
 .Signup-form{
     width:850px;
-    height:600px;
+    height:750px;
     background:#ffff; /*linear-gradient(rgba(73, 72, 72, 0.8), rgba(73, 72, 72,0.8));*/
     top:60%;
     left:50%;
     position:absolute;
     transform:translate(-50%,-60%);
     border-radius: 6%;
+    position:relative;top:500px;
     
     
 }
 .Signup-form .main{
-    position:relative;
+    position:relative;top:-100px;
     display:flex;
     margin:05px 0;
 }
 .container{
     max-width:800px;
     margin:0 auto;
+    position:relative;top:100px;
 }
 
 
-.Signup-form input{
+input, select{
     margin-bottom:15px;
     font-stretch:16px;
     text-align:left;
@@ -99,7 +101,7 @@ h2{
     background-color: #df1c0e;
     color: white;
     font-size: 18px;
-    position:relative;right:-620px;top:-500px;
+    position:relative;right:-620px;top:-750px;
     padding:10px 12px;
     width:50px;
     border-radius: 20%;

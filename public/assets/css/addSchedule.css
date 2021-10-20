@@ -120,7 +120,7 @@ input[type=submit]{
   cursor: pointer;
   float: right;
   width: 15%;
-  position:relative;top:-60px;right:55px;
+  position:relative;top:20px;right:75px;
 }
 .doctor-grid-container {
   display: grid;
