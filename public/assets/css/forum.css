@@ -1,0 +1,268 @@
+.body_container_main{
+    position: absolute;
+    top:30%;
+    left:2.5%;
+    right: 2.5%;
+    width:95%;
+    gap:10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff9a;
+    
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #4C673B;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  width:300px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #F4C931;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #4DAD11;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
+.body_content{
+  display: flex;
+  margin-left: 85%;
+  width:15%;
+  justify-content: space-between;
+}
+
+.body_container_main_sub{
+  background-color: rgba(255, 255, 255, 0.678);
+  width:80%;
+  margin-left:20%;
+}
+
+.body_content1{
+    margin-top:10px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(124, 122, 122, 0.726);
+    
+}
+
+.line1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.reply_button{
+  width:6%;
+  text-align: center;
+  margin-left:94%;
+}
+
+.regi{
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  background-image: url("../img/forum2.jpg");
+  
+
+}
+
+  h1{
+      color:#228B22;
+  }
+
+ /* Style the container */
+  .container {
+    top: 50%;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.637);
+    z-index: 8;
+    width: 80%;
+    transition: 0.3s;
+    display: flex;
+    flex-direction:column;
+    gap:20px;
+}
+.center {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, 30%);
+}
+
+  .alertwarning{
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    background-color: #f44336;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+
+  /* Style inputs, select elements and textareas */
+input[type=text],input[type=date] ,select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-bottom: 1%;
+  }
+  
+  /* Style the label to display next to the inputs */
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  input[type=radio]{
+      width:5%;
+  }
+
+  .gender{
+      font-size: 20px;
+  }
+  /* Style the submit and cancel button */
+  
+  input[type=submit],input[type=reset],input[type=file]   {
+    background-color: #228B22;
+    color: white;
+    padding:20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    width: 10%;
+  }
+  
+  input[type=reset],input[type=submit]{
+    width:100px;
+    height:40px;
+    font-size: 18px;
+    border-radius: 100px;
+    padding-block: 2px;
+    
+
+}
+  input[type=reset] {
+    background-color: crimson;
+    margin-right: 1%;
+    
+  }
+
+  
+  input[type=file] {
+    float: left;
+    margin-right: 1%;
+    width: 30%;
+    padding:10px;
+  }
+  
+  /*for grid of the container*/
+  .seller-grid-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  
+  .seller-grid-container > div {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .seller-grid-container > h2 {
+    text-align: center;
+  }
+  
+  h3,h4{
+    color:#A7D129;
+    text-align: center;
+  }
+  
+  .seller-grid-container p{
+    color:#A7D129;
+    text-align: justify;
+  }
+  
+  
+  /* Floating column for labels: 25% width */
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  /* Floating column for inputs: 75% width */
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit],input[type=reset],input[type=file]{
+      width: 100%;
+      margin-top: 1%;
+      float:left
+    }
+  }
