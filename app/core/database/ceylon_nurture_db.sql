@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 21, 2021 at 03:36 AM
--- Server version: 5.7.31
--- PHP Version: 7.4.9
+-- Generation Time: Oct 20, 2021 at 05:40 PM
+-- Server version: 8.0.27
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,13 +29,13 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
-  `adminid` int(11) NOT NULL AUTO_INCREMENT,
-  `fname` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `lname` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `adminid` int NOT NULL AUTO_INCREMENT,
+  `fname` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `lname` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`adminid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -45,19 +45,19 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE IF NOT EXISTS `articles` (
-  `articleid` int(11) NOT NULL AUTO_INCREMENT,
-  `articleName` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `uses` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `sideEffects` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `precautions` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `interactions` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `dosing` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `doctorid` int(11) NOT NULL,
+  `articleid` int NOT NULL AUTO_INCREMENT,
+  `articleName` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `uses` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `sideEffects` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `precautions` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `interactions` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `dosing` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `doctorid` int NOT NULL,
   PRIMARY KEY (`articleid`),
   KEY `doctorid` (`doctorid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `articles`
@@ -77,22 +77,22 @@ INSERT INTO `articles` (`articleid`, `articleName`, `description`, `uses`, `side
 
 DROP TABLE IF EXISTS `channeling`;
 CREATE TABLE IF NOT EXISTS `channeling` (
-  `channelingid` int(11) NOT NULL AUTO_INCREMENT,
-  `doctorName` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `patientName` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `recordNumber` int(11) NOT NULL,
+  `channelingid` int NOT NULL AUTO_INCREMENT,
+  `doctorName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `patientName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `recordNumber` int NOT NULL,
   `amount` double NOT NULL,
   `date` date NOT NULL,
-  `category` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `DoctorID` int(11) NOT NULL,
-  `PatientID` int(11) NOT NULL,
-  `scheduleID` int(11) NOT NULL,
+  `category` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `DoctorID` int NOT NULL,
+  `PatientID` int NOT NULL,
+  `scheduleID` int NOT NULL,
   PRIMARY KEY (`channelingid`),
   KEY `DoctorID` (`DoctorID`),
   KEY `PatientID` (`PatientID`),
   KEY `scheduleID` (`scheduleID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -102,19 +102,19 @@ CREATE TABLE IF NOT EXISTS `channeling` (
 
 DROP TABLE IF EXISTS `channeling_history`;
 CREATE TABLE IF NOT EXISTS `channeling_history` (
-  `historyID` int(11) NOT NULL AUTO_INCREMENT,
+  `historyID` int NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
-  `category` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `recordNumber` int(11) NOT NULL,
-  `doctorID` int(11) NOT NULL,
-  `patientID` int(11) NOT NULL,
-  `channelingID` int(11) NOT NULL,
+  `category` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `recordNumber` int NOT NULL,
+  `doctorID` int NOT NULL,
+  `patientID` int NOT NULL,
+  `channelingID` int NOT NULL,
   PRIMARY KEY (`historyID`),
   KEY `channelingID` (`channelingID`),
   KEY `DoctorID` (`doctorID`),
   KEY `PatientID` (`patientID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -124,15 +124,15 @@ CREATE TABLE IF NOT EXISTS `channeling_history` (
 
 DROP TABLE IF EXISTS `commission`;
 CREATE TABLE IF NOT EXISTS `commission` (
-  `feesID` int(11) NOT NULL AUTO_INCREMENT,
+  `feesID` int NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `amount` double NOT NULL,
-  `userName` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `commissionNumber` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `userName` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `commissionNumber` int NOT NULL,
+  `userID` int NOT NULL,
   PRIMARY KEY (`feesID`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -142,19 +142,19 @@ CREATE TABLE IF NOT EXISTS `commission` (
 
 DROP TABLE IF EXISTS `common_user`;
 CREATE TABLE IF NOT EXISTS `common_user` (
-  `userid` int(11) NOT NULL AUTO_INCREMENT,
-  `nameWithInitials` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `fname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `lname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `gender` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `userid` int NOT NULL AUTO_INCREMENT,
+  `nameWithInitials` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `fname` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `lname` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `gender` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `dob` date NOT NULL,
-  `common_user_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `tpNumber` int(11) NOT NULL,
-  `password` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `common_user_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `tpNumber` int NOT NULL,
+  `password` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `common_user`
@@ -168,7 +168,8 @@ INSERT INTO `common_user` (`userid`, `nameWithInitials`, `fname`, `lname`, `user
 (5, '', 'Zen', 'Singh', 'ZenS', '', '0000-00-00', 'zl79aHzFCxD71JmcekpQMt5o7HHS9ADH3uw2d4YIXBfUFoMdIm', 'zen@gmail.com', 761234566, '$2y$10$bsff4dG.wEcGkQ.jLh8q..r5VY7KYsGb/eFdlprdRWvSHOo/j8eba'),
 (6, '', 'Sanath', 'Perera', 'SanathP', '', '0000-00-00', '8mixHJLXTH3kN3O8zJc2mHw2ZTNRuCruEsNW8BprnhyJ1eWVfw', 'sanath@gmail.com', 761234566, '$2y$10$orsCbxjYk71gFRyXv.Vw0uWB9gUCqcJVd/HbzoYS9bIZRrOavrDra'),
 (7, '', 'Nihal', 'Kumara', 'NihalK', '', '0000-00-00', 'TfBsSZfbHPPRXqRssQ9JCKmO2EoQqzrwCJEjC0El9hWuVyIgcG', 'nihal@gmail.com', 711234567, '$2y$10$E18n2ToCZcKHBnM9ruNdJu0npjtMb5OdW1RXAfj9quStKNfvViDpC'),
-(8, 'J.Mary Kyle', 'Mary', 'Kyle', 'MaryK', 'Female', '1995-03-13', 'jsTrFLP5M0UJNEP7uNerOsFXHeuyH5xj9i1EecrGkZksiyDQgb', 'maryk@gmail.com', 711234567, '$2y$10$SjeB8q3wk04mXcQrkp9WwepXbNY6uF2BgEM4r65H9HcsYpG/QESB.');
+(8, 'J.Mary Kyle', 'Mary', 'Kyle', 'MaryK', 'Female', '1995-03-13', 'jsTrFLP5M0UJNEP7uNerOsFXHeuyH5xj9i1EecrGkZksiyDQgb', 'maryk@gmail.com', 711234567, '$2y$10$SjeB8q3wk04mXcQrkp9WwepXbNY6uF2BgEM4r65H9HcsYpG/QESB.'),
+(9, 'dvsd', 'Piyume', 'Dil', 'Cham Dil', 'Female', '2021-10-07', '5jEl0j2FUFg4shZJ14GBtdCRHoa6iMYXKQivBIXmTHzRVeOpM5', 'cham.dil@gmail.com', 2147483647, '$2y$10$0/VwHSLHmUsdUaxYK7RLxu.0PUhzVgq8PGGqGlwzMukyLWsouQ9Le');
 
 -- --------------------------------------------------------
 
@@ -178,16 +179,16 @@ INSERT INTO `common_user` (`userid`, `nameWithInitials`, `fname`, `lname`, `user
 
 DROP TABLE IF EXISTS `doctorforum`;
 CREATE TABLE IF NOT EXISTS `doctorforum` (
-  `forumID` int(11) NOT NULL AUTO_INCREMENT,
-  `userName` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `forumID` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date` date NOT NULL,
-  `description` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `replyID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `replyID` int NOT NULL,
+  `userID` int NOT NULL,
   PRIMARY KEY (`forumID`),
   KEY `doctorforum_ibfk_1` (`replyID`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -197,18 +198,18 @@ CREATE TABLE IF NOT EXISTS `doctorforum` (
 
 DROP TABLE IF EXISTS `doctors`;
 CREATE TABLE IF NOT EXISTS `doctors` (
-  `userid` int(11) NOT NULL,
-  `nameWithInitials` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `gender` text COLLATE utf8_unicode_ci NOT NULL,
+  `userid` int NOT NULL,
+  `nameWithInitials` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `gender` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `dob` date NOT NULL,
-  `registrationNumber` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `specialities` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `hospital` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `city` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `address` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `registrationNumber` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `specialities` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `hospital` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `city` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `doctors`
@@ -228,15 +229,38 @@ INSERT INTO `doctors` (`userid`, `nameWithInitials`, `gender`, `dob`, `registrat
 
 DROP TABLE IF EXISTS `donations`;
 CREATE TABLE IF NOT EXISTS `donations` (
-  `feesID` int(11) NOT NULL AUTO_INCREMENT,
+  `feesID` int NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `amount` double NOT NULL,
-  `userName` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `donationNumber` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `userName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `donationNumber` int NOT NULL,
+  `userID` int NOT NULL,
   PRIMARY KEY (`feesID`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forumdoctor`
+--
+
+DROP TABLE IF EXISTS `forumdoctor`;
+CREATE TABLE IF NOT EXISTS `forumdoctor` (
+  `name` text NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `tpNumber` int NOT NULL,
+  `location` varchar(100) NOT NULL,
+  `forumDoctorid` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`forumDoctorid`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `forumdoctor`
+--
+
+INSERT INTO `forumdoctor` (`name`, `description`, `tpNumber`, `location`, `forumDoctorid`) VALUES
+('Chamodi Dilshani', 'amazing doctor', 2147483647, 'Colombo 5', 2);
 
 -- --------------------------------------------------------
 
@@ -246,17 +270,17 @@ CREATE TABLE IF NOT EXISTS `donations` (
 
 DROP TABLE IF EXISTS `herbsforum`;
 CREATE TABLE IF NOT EXISTS `herbsforum` (
-  `forumID` int(11) NOT NULL AUTO_INCREMENT,
-  `userName` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `forumID` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date` date NOT NULL,
-  `description` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `replyID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `replyID` int NOT NULL,
+  `userID` int NOT NULL,
   PRIMARY KEY (`forumID`),
   KEY `herbsforum_ibfk_1` (`replyID`),
   KEY `herbsforum_ibfk_2` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -266,14 +290,14 @@ CREATE TABLE IF NOT EXISTS `herbsforum` (
 
 DROP TABLE IF EXISTS `patients`;
 CREATE TABLE IF NOT EXISTS `patients` (
-  `userid` int(11) NOT NULL,
-  `nameWithInitials` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `gender` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `userid` int NOT NULL,
+  `nameWithInitials` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `DOB` date NOT NULL,
-  `nic` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `nic` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `patients`
@@ -292,19 +316,19 @@ INSERT INTO `patients` (`userid`, `nameWithInitials`, `gender`, `DOB`, `nic`, `i
 
 DROP TABLE IF EXISTS `paymenthistory`;
 CREATE TABLE IF NOT EXISTS `paymenthistory` (
-  `paymentHistoryNumber` int(11) NOT NULL AUTO_INCREMENT,
+  `paymentHistoryNumber` int NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
-  `channelingID` int(11) NOT NULL,
-  `paymentID` int(11) NOT NULL,
+  `channelingID` int NOT NULL,
+  `paymentID` int NOT NULL,
   `amount` double NOT NULL,
-  `userName` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `doctorID` int(11) NOT NULL,
-  `patientID` int(11) NOT NULL,
+  `userName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `doctorID` int NOT NULL,
+  `patientID` int NOT NULL,
   PRIMARY KEY (`paymentHistoryNumber`),
   KEY `doctorID` (`doctorID`),
   KEY `patientID` (`patientID`),
   KEY `channelingID` (`channelingID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -314,19 +338,19 @@ CREATE TABLE IF NOT EXISTS `paymenthistory` (
 
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
-  `productid` int(11) NOT NULL AUTO_INCREMENT,
-  `productName` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `productPrice` int(11) NOT NULL,
-  `description` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `category` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `sellerName` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `tpNumber` int(11) NOT NULL,
-  `sellerid` int(11) NOT NULL,
+  `productid` int NOT NULL AUTO_INCREMENT,
+  `productName` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `productPrice` int NOT NULL,
+  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `category` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `sellerName` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `tpNumber` int NOT NULL,
+  `sellerid` int NOT NULL,
   PRIMARY KEY (`productid`),
   KEY `sellerid` (`sellerid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `products`
@@ -345,17 +369,17 @@ INSERT INTO `products` (`productid`, `productName`, `productPrice`, `description
 
 DROP TABLE IF EXISTS `productsforum`;
 CREATE TABLE IF NOT EXISTS `productsforum` (
-  `forumID` int(11) NOT NULL AUTO_INCREMENT,
-  `userName` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `forumID` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date` date NOT NULL,
-  `description` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `replyID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `replyID` int NOT NULL,
+  `userID` int NOT NULL,
   PRIMARY KEY (`forumID`),
   KEY `replyID` (`replyID`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -365,11 +389,11 @@ CREATE TABLE IF NOT EXISTS `productsforum` (
 
 DROP TABLE IF EXISTS `pwdreset`;
 CREATE TABLE IF NOT EXISTS `pwdreset` (
-  `pwdResetId` int(11) NOT NULL AUTO_INCREMENT,
-  `pwdResetEmail` text COLLATE utf8mb4_bin NOT NULL,
-  `pwdResetSelector` text COLLATE utf8mb4_bin NOT NULL,
-  `pwdResetToken` longtext COLLATE utf8mb4_bin NOT NULL,
-  `pwdResetExpires` text COLLATE utf8mb4_bin NOT NULL,
+  `pwdResetId` int NOT NULL AUTO_INCREMENT,
+  `pwdResetEmail` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `pwdResetSelector` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `pwdResetToken` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `pwdResetExpires` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`pwdResetId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -381,15 +405,15 @@ CREATE TABLE IF NOT EXISTS `pwdreset` (
 
 DROP TABLE IF EXISTS `registration_fees`;
 CREATE TABLE IF NOT EXISTS `registration_fees` (
-  `feesID` int(11) NOT NULL AUTO_INCREMENT,
+  `feesID` int NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `amount` double NOT NULL,
-  `userName` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `registration_Number` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `userID` int(11) NOT NULL,
+  `userName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `registration_Number` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `userID` int NOT NULL,
   PRIMARY KEY (`feesID`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -399,12 +423,12 @@ CREATE TABLE IF NOT EXISTS `registration_fees` (
 
 DROP TABLE IF EXISTS `reply`;
 CREATE TABLE IF NOT EXISTS `reply` (
-  `replyId` int(11) NOT NULL AUTO_INCREMENT,
-  `userName` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `replyId` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date` date NOT NULL,
-  `userId` int(11) NOT NULL,
+  `userId` int NOT NULL,
   PRIMARY KEY (`replyId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -414,15 +438,15 @@ CREATE TABLE IF NOT EXISTS `reply` (
 
 DROP TABLE IF EXISTS `reviews`;
 CREATE TABLE IF NOT EXISTS `reviews` (
-  `reviewid` int(11) NOT NULL AUTO_INCREMENT,
-  `review` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `reviewerid` int(11) NOT NULL,
-  `reviewerName` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `articleID` int(11) NOT NULL,
+  `reviewid` int NOT NULL AUTO_INCREMENT,
+  `review` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `reviewerid` int NOT NULL,
+  `reviewerName` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `articleID` int NOT NULL,
   PRIMARY KEY (`reviewid`),
   KEY `reviewerid` (`reviewerid`),
   KEY `articleID` (`articleID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -432,19 +456,19 @@ CREATE TABLE IF NOT EXISTS `reviews` (
 
 DROP TABLE IF EXISTS `schedule`;
 CREATE TABLE IF NOT EXISTS `schedule` (
-  `scheduleid` int(11) NOT NULL AUTO_INCREMENT,
-  `slotNumber` int(11) NOT NULL,
+  `scheduleid` int NOT NULL AUTO_INCREMENT,
+  `slotNumber` int NOT NULL,
   `dateofSlot` date NOT NULL,
   `arrivalTime` time(6) NOT NULL,
   `departureTime` time(6) NOT NULL,
-  `noOfPatient` int(11) NOT NULL,
+  `noOfPatient` int NOT NULL,
   `timePerPatient` time(6) NOT NULL,
   `doctorCharge` decimal(65,0) NOT NULL,
-  `doctorNote` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `doctorid` int(11) NOT NULL,
+  `doctorNote` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `doctorid` int NOT NULL,
   PRIMARY KEY (`scheduleid`),
   KEY `doctorid` (`doctorid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `schedule`
@@ -465,15 +489,15 @@ INSERT INTO `schedule` (`scheduleid`, `slotNumber`, `dateofSlot`, `arrivalTime`,
 
 DROP TABLE IF EXISTS `sellers`;
 CREATE TABLE IF NOT EXISTS `sellers` (
-  `userid` int(11) NOT NULL,
-  `nameWithInitials` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `registrationNumber` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `tpNumber` int(11) NOT NULL,
-  `nic` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `address` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `userid` int NOT NULL,
+  `nameWithInitials` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `registrationNumber` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `tpNumber` int NOT NULL,
+  `nic` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(70) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sellers`

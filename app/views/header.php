@@ -57,7 +57,7 @@
                 <a class="a_navitem2" href="<?= ROOT ?>appointments">APPOINTMENTS</a>
                 <?php endif;?>
                 <div class="v"></div>
-                <a class="a_navitem2" href="<?= ROOT ?>forums">FORUMS</a>
+                <a class="a_navitem2" href="<?= ROOT ?>forum">FORUMS</a>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?= ROOT ?>header/makeDonations">Donations</a>
             </div>

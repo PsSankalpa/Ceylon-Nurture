@@ -82,7 +82,7 @@ class admin extends Controller
     function updateUser($userid=null)
     {
         $common_user = new common_user();
-        $userid=trim($userid==''); Auth::getUser_id() : $userid;
+        $userid=trim($userid=='') ? Auth::getUser_id() : $userid;
 
         $errors = array();
         if(count($_POST) > 0)
