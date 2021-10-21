@@ -1,9 +1,10 @@
 //--------------------------------------------------------------------------------------------
 //for carousel
 let span = document.getElementsByTagName('span');
-let article = document.getElementsByClassName('article-card');
-console.log(article);
-let article_page = Math.ceil(article.length / 4);
+let product = document.getElementsByClassName('product')
+let product_page = Math.ceil(product.length / 4);
+let length1 = product.length;
+
 let l = 0;
 let movePer = 25.34;
 let maxMove = 203;
@@ -16,26 +17,36 @@ if (mob_view.matches) {
 
 let right_mover = () => {
 	l = l + movePer;
-	if (article == 1) { l = 0; }
-	for (const i of article) {
-		if (l > maxMove) { l = l - movePer; }
+	console.log(l);
+	console.log(product);
+	if (product == 1) {
+		 l = 0; 
+		}
+	for (const i of product) {
+		if (l > maxMove) {
+			 l = l - movePer;
+			 console.log(l);
+			 }
 		i.style.left = '-' + l + '%';
 	}
 
 }
 let left_mover = () => {
 	l = l - movePer;
-	if (l <= 0) { l = 0; }
-	for (const i of article) {
-		if (article_page > 1) {
+	console.log(l);
+	if (l <= 0) { 
+		l = 0;
+	 }
+	for (const i of product) {
+		if (product_page >= 1) {
 			i.style.left = '-' + l + '%';
 		}
 	}
 }
-//span[1].onclick = ()=>{right_mover();}
-//span[0].onclick = ()=>{left_mover();}
+span[1].onclick = () => { right_mover(); }
+span[0].onclick = () => { left_mover(); }
 
-
+console.log(l);
 //------------------------------------------------------------
 //for article details
 filterSelection("Overview");
@@ -67,9 +78,9 @@ function filterSelection(c) {
 			console.log(c);
 		}
 	}
-	
 
-	console.log(x[x.length - 1]);
+
+	//console.log(x[x.length - 1]);
 }
 
 function articleAddClass(element, name) {

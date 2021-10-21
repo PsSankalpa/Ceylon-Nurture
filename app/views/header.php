@@ -20,7 +20,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -58,8 +59,10 @@
                 <?php endif;?>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?= ROOT ?>forums">FORUMS</a>
+                <?php if (Auth::logged_in()) : ?>
                 <div class="v"></div>
                 <a class="a_navitem2" href="<?= ROOT ?>header/makeDonations">Donations</a>
+                <?php endif; ?>
             </div>
             <?php if (!Auth::logged_in()) : ?>
                 <div class="nav_item3">

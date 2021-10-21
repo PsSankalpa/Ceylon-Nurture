@@ -4,7 +4,8 @@
 <head>
     <title>Articles Page</title>
     <?php $this->view("header") ?>
-
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= ASSETS ?>css/common.css">
     <link rel="stylesheet" href="<?= ASSETS ?>css/articles.css">
 
@@ -14,25 +15,24 @@
 
     <div class="main-container">
         <div>
-        <?php if ($rows2) : ?>
-            <?php if (($rows2 == "doctor") || ($rows2 == "doctorAndSeller") || ($rows2 == "doctorAndPatient") || ($rows2 == "allUser")) : ?>
-                <div class="access-buttons">
-                    <a href="<?= ROOT ?>/doctor/myArticles"><button class="my-A">My Articles</button></a>
-                    <a href="<?= ROOT ?>/docotr/myArticles"><button class="add-A">Add Article</button></a>
-                </div>
+            <?php if ($rows2) : ?>
+                <?php if (($rows2 == "doctor") || ($rows2 == "doctorAndSeller") || ($rows2 == "doctorAndPatient") || ($rows2 == "allUser")) : ?>
+                    <div class="access-buttons">
+                        <a href="<?= ROOT ?>/doctor/myArticles"><button class="my-A">My Articles</button></a>
+                        <a href="<?= ROOT ?>/docotr/myArticles"><button class="add-A">Add Article</button></a>
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
-        <?php endif; ?>
         </div>
 
-        <div class="carousel">
-            <div class="carousel__track-container">
-                <span class="prev carousel__button-prev" onclick="left_mover(0)">&#10094;</span>
+            <section>
+                <span class="prev carousel__button-prev">&#10094;</span>
                 <?php if ($rows) : ?>
                     <?php foreach ($rows as $row) : ?>
-                        <div class="article-card">
+                        <div class="article-card product">
                             <h1><?= $row->articleName ?></h1>
                             <picture>
-                                <img src="<?= ASSETS2 . $row->image ?>" alt="Denim Jeans" style="width:100%">
+                                <img src="<?= ASSETS2 . $row->image ?>" alt="A-herb" style="width:100%">
                             </picture>
                             <br>
                             <p><?= $row->description ?></p>
@@ -42,19 +42,8 @@
                 <?php else : ?>
                     <h4>No Articles Yet</h4>
                 <?php endif; ?>
-                <span class="next carousel__button-next" onclick="right_mover(1)">&#10095;</span>
-            </div>
-        </div>
-
-
-
-        <div class="carousel__nav">
-            <?php if ($rows) : ?>
-                <?php for ($n = 0; $n < count($rows); $n++) { ?>
-                    <button class="carousel__indicator dot"></button>
-                <?php }; ?>
-            <?php endif; ?>
-        </div>
+                <span class="next carousel__button-next">&#10095;</span>
+            </section>
 
     </div>
     <script type="text/javascript" src="<?= ASSETS ?>js/article.js"></script>
