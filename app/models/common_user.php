@@ -7,9 +7,12 @@ class common_user extends Model
     protected $table = "common_user";
 
     protected $allowedcolumns = [
+        'nameWithInitials',
 		'fname',
 		'lname',
         'username',
+        'gender',
+        'dob',
         'email',
 		'tpNumber',
 		'password',
@@ -19,15 +22,20 @@ class common_user extends Model
         'make_common_user_id',
         'hash_password'
     ];
- 
-    
-   //protected $prefunctions = ['make_common_user_id'];
- 
 
     public function validate($data,$id='')
     {
         $this->errors = array();
-        //$this->errors2 = array()
+
+        //validations for namewithInitials
+        if(empty($data['nameWithInitials']))
+        {
+            $this->errors['nameWithInitials'] = "Cannot Keep Name With Initials empty";
+        }
+        elseif(!preg_match('/^[a-zA-Z\s\.]+$/',$data['nameWithInitials']))
+        {
+            $this->errors['nameWithInitials'] = "Only letters allowed in the Name With Initials";
+        }
 
         //check for firstname
         if(empty($data['fname']))
@@ -72,6 +80,27 @@ class common_user extends Model
                 }
 
         }
+
+        //validation for gender
+        if(empty($data['gender']))
+		{
+			$this->errors['gender'] = "Cannot Keep Gender empty";
+		}
+	
+        //validation for DOB
+		if(empty($data['dob']))
+		{
+			$this->errors['dob'] = "Cannot Keep Date of Birth empty";
+		}
+		/*elseif (intval($parts[3]) < 1821)
+		{
+			$this->errors['dob'] = "Please check whether your birth year is reasonable";
+		}
+		elseif(intval($parts[3]) > 2001)
+		{
+			$this->errors['dob'] = "Please check whether your age is above 20 ";
+		}*/
+		
 
         //check for email address
         if (empty($_POST["email"])) 

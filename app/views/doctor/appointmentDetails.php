@@ -31,7 +31,7 @@
                         <p>Speciality - Internal Medicine</p> 
                         <p>Hospital - Osu Sewana Hospital</p>
                         <hr><br>
-                        <h3>Name of the Patient - Natasha Perera</h3>
+                        <h3>Patient Name - Natasha Perera</h3>
                         <p>Telephone - 0761234567</p> 
                         <p>DOB - 20/10/1990</p> 
                         <p>Symptoms - Arthritis</p> 

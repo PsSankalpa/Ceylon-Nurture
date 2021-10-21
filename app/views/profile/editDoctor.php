@@ -44,8 +44,7 @@
 
             <div class="col-75">
             <p class="gender">
-                <input type="radio" name="gender" value="male">Male
-                <input type="radio" name="gender" value="female">Female</p>
+            <input type="text" value="<?=get_var('gender',$row->gender)?>" id="gender" name="gender" placeholder="Gender">
             </div>
             </div>
 
@@ -54,7 +53,7 @@
                 <label for="DOB">Date Of Birth</label>
             </div>
             <div class="col-75">
-            <input type="date" id="dob" name="dob" >
+            <input type="text" value="<?=get_var('dob',$row->dob)?>" id="dob" name="dob" placeholder="Date of Birth">
             </div>
             </div>
 
