@@ -11,7 +11,7 @@
                         <div class="content">
                         <h2>Forgot Password</h2>
                         <form action="includes/forgotPasword.inc.php" method="post">
-                        <input type="text" name="name" placeholder="User Name" required > 
+                        <h3>Enter the Email Address</h3>
                         <input type="email" name="email" placeholder="Email- Address" required > 
                         <button class="btn" type="submit"><a href="<?=ROOT?>login/resetPassword">Submit</a></button>
                         </form>

@@ -24,7 +24,8 @@
         <?php endif;?>
         <hr>
         <form class="regi_form" enctype="multipart/form-data" method="POST">
-            <div class="row">
+            
+           <!-- <div class="row">
                 <div class="col-25">
                     <label for="nameWithInitials">Name With Initials</label>
                 </div>
@@ -52,7 +53,7 @@
             <div class="col-75">
             <input type="date" id="dob" name="dob" >
             </div>
-            </div>
+            </div>-->
 
             <div class="row">
             <div class="col-25">
@@ -105,6 +106,16 @@
             </div>
             <div class="col-75">
             <input type="file" id="image" value="<?=get_var('image')?>" name="image">
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+                <label for="image" >Upload Profile Picture(Optional)</label>
+            </div>
+            <div class="col-75">
+            <input type="file" accept="image/*" id="avatar" class="custom-file-input" value="<?=get_var('image')?>" name="avatar">
+            <label class="custom-file-label" >(Optional)</label>
             </div>
             </div>
 

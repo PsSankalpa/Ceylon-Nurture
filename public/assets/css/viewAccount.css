@@ -47,6 +47,11 @@ h4{
   color:#265a07;
   text-align: center;
   }
+h3{
+  color:#fafcf9;
+  font-weight: lighter;
+  font-size: 15px;
+}
 /*Container two css*/
 .container3 {
   border-radius: 5px;
@@ -54,14 +59,14 @@ h4{
   padding: 10px 10px;
   width: 700px;
   height: 620px;
-  position:relative;right:-550px;top:-620px;
+  position:relative;right:-500px;top:-540px;
 }
 .regi_form{
   position:relative;top:20px;right:-50px;
   }
 .certificate{
-  height:50px;
-  width:3px;
+  height:130px;
+  width:100px;
   opacity: 100%;
   }
 /*css for the form*/
@@ -76,7 +81,7 @@ label {
   float: left;
   width: 25%;
   margin-top: 5px;
-  position:relative;right:-50px;
+  position:relative;right:0px;
   }
   
   /* Floating column for inputs: 75% width */
@@ -84,7 +89,7 @@ label {
   float: left;
   width: 75%;
   margin-top: 15px;
-  position:relative;right:-30px;
+  position:relative;right:-100px;
   }
   
   /* Clear floats after the columns */

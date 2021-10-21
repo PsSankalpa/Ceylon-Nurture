@@ -146,6 +146,12 @@ label{
     border-radius: 25%;
     position:relative;right:-350px;top:15px;
   }
+  .pdf{
+    background-color: #dd240b;
+    color:#ffff;
+    padding: 10px;
+    position:relative;right:-290px;top:75px;
+  }
   h3{
     margin-top: 10px;
     color:#ffff;
