@@ -45,7 +45,7 @@ let left_mover = () => {
 }
 span[1].onclick = () => { right_mover(); }
 span[0].onclick = () => { left_mover(); }
-
+//js code changed
 console.log(l);
 //------------------------------------------------------------
 //for article details
