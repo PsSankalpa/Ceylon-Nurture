@@ -109,7 +109,7 @@
             </div>
             </div>
 
-            <div class="row">
+           <!-- <div class="row">
             <div class="col-25">
                 <label for="image" >Upload Profile Picture(Optional)</label>
             </div>
@@ -117,7 +117,7 @@
             <input type="file" accept="image/*" id="avatar" class="custom-file-input" value="<?=get_var('image')?>" name="avatar">
             <label class="custom-file-label" >(Optional)</label>
             </div>
-            </div>
+            </div>-->
 
             <div class="row">
             <input type="submit" value="Submit">

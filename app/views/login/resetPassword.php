@@ -10,15 +10,14 @@
                     <div class="main">
                         <div class="content">
                         <h2>Reset Your Password</h2>
-                        <hr>
+                        <hr><br>
                         <div class="row1">
                         <label for="email">Email Address</label>
                         <input type="text" id="email" name="email" placeholder="Email Address">
-                        </div>
+                        </div><br>
                         <hr>
                         <div class="two-buttons">
-                        <button class="btn" type="submit"><a href="<?=ROOT?>login/otpCodeSent">Continue</a></button>
-                        <button class="btn" type="submit"><a href="<?=ROOT?>login/forgotPassword">Not You</a></button>
+                        <button class="btn" type="submit"><a href="<?=ROOT?>login/otpCodeSent">Send Password Reset Link</a></button>
                         </div>
                     </div>
                 </div>
