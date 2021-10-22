@@ -95,9 +95,7 @@ class seller extends Controller
                 $nameWithInitials = "";
                 $address = "";
             }
-
-            Print_r($_POST);
-            
+          
             if($products->validate($_POST,$_FILES))
             {
                 global $des;
@@ -110,9 +108,6 @@ class seller extends Controller
                 $arr['address'] = $address;
                 $arr['tpNumber'] = Auth::tpNumber();
                 $arr['sellerid'] = Auth::userid();
-
-                print_r($arr);
-                die;
                 
                 $products->insert($arr);
                 $this->redirect('seller/seller');
