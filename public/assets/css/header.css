@@ -6,8 +6,10 @@
 
 .top_nav {
     overflow: hidden;
-    background-color: #333;
+    background-color: rgba(10, 10, 10, 0.719);
     z-index: 5;
+    margin-top:30px;
+
   }
   
   .top_nav a {
@@ -21,6 +23,7 @@
     justify-content: center;
   }
 
+ 
   .logo{
     width: 4rem;
     height: 5rem;
@@ -53,6 +56,14 @@
   .last{
       margin-right: 2rem;
   }
+
+ 
+  #login_logo{
+    color: #FDDA0D;
+    font-size: 2rem;
+  }
+
+  
   
   .dropdown .dropbtn {
     font-size: 17px;    
@@ -108,6 +119,11 @@
     .top_nav a.icon {
       float: right;
       display: block;
+    }
+
+    .top_nav {
+      background-color: rgb(10, 10, 10);
+  
     }
   }
   

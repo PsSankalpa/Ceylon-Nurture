@@ -15,7 +15,7 @@
         <div class="container center_channeling">
             <h1>Channel a Doctor</h1>
 
-            <form class="regi_form" enctype="multipart/form-data" method="POST">
+            <form class="regi_form" enctype="multipart/form-data" method="POST"action="<?=ROOT?>booking"> >
 
             <div class="row">
             <div class="col-25">
@@ -66,7 +66,7 @@
             </div>
             <br>
             <div class="row">
-            <a href="<?=ROOT?>booking"><input type="submit" value="Search"></a>
+            <a href="<?=ROOT?>booking"><input type="submit" value="Search"/></a>
             <input type="reset" value="Reset">
             </div>
         </form>             
