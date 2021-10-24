@@ -7,10 +7,8 @@
 
     </head>
 
-    <body>
-    <div class="bg_image_container">
-        <img class="bg_image" src="<?=ASSETS?>img/admin.jpg">
-    </div>
+    <body class="bg">
+   
 
         <div class ="addNewUser_content">
                     <h2> Add New User</h2>
@@ -25,9 +23,16 @@
                     <?php endif;?>
 
                     <form class="addNewUser_form" method="post">
+                    <input  type="text" value="<?=get_var('nameWithInitials')?>" name="nameWithInitials" placeholder="Name with Initials"  > 
                     <input  type="text" value="<?=get_var('fname')?>" name="fname" placeholder="First Name"  > 
                     <input  type="text" value="<?=get_var('lname')?>" name="lname" placeholder="Last Name" > 
                     <input  type="text" value="<?=get_var('username')?>" name="username" placeholder="User Name"  > 
+                    <select name="gender">
+                        <option>--Select a Gender--</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    <input type="date" value="<?=get_var('dob')?>" id="dob" name="dob" >
                     <input  type="email" value="<?=get_var('email')?>" name="email" placeholder="E-mail address"  >
                     <input  type="tel" value="<?=get_var('tpNumber')?>" name="tpNumber" placeholder="Telephone Number" > 
                     <input type="password" value="<?=get_var('password')?>" name="password" placeholder="Password"  > 

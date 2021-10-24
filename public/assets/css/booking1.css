@@ -1,0 +1,81 @@
+
+
+
+.scheduling_form{
+  padding-top:1%;
+  font-size: 18px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  column-gap: 3px;
+  justify-content: center;
+  color:white;
+  width:100%;
+  gap:30px;
+  
+
+}
+.item1{
+  padding-top:1%;
+  font-size: 13px;
+  align-items: center;
+  display: flex;
+  column-gap: 3px;
+  justify-content: space-between;
+  color:white;
+  width:70%;
+  
+}
+.doctor_image{
+  height:100%;
+  width:100%;
+}
+
+.doc_image_container{
+  height:100px;
+  width:100px;
+}
+
+.book_now{
+  width: 100px;
+  height:40px;
+  background-color:#4C673B;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top:5px;
+  border:none;   
+}
+
+.book_now:hover{
+  background-color:#547925;
+
+}
+
+hr.h{
+  border: 2px solid white;
+  margin:10px;
+  width:100%;
+}
+
+hr.h1{
+  border: 1px solid white;
+  margin:10px;
+  width:90%;
+}
+
+h2{
+  color:rgb(154, 156, 11);
+}
+
+@media screen and (max-width: 600px) {
+  
+
+  .item1{
+    flex-direction: column;
+    gap:8px;
+  }
+
+
+
+}

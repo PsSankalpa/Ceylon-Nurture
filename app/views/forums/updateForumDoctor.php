@@ -12,7 +12,7 @@
    
     
     <div class="container center">
-        <h1>Add to Forum</h1>
+        <h1>Update Forum</h1>
         
         <?php if(count($errors) > 0):?>
                     <div class="alertwarning">

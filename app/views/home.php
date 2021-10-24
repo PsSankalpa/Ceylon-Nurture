@@ -8,7 +8,7 @@
         <?php $this -> view ("header")?>
     </head>
 
-    <body>
+    <body class="bg">
         <header>
         <?php if(!empty($data)):?>
             <?php if($data == "seller"):?>
@@ -48,17 +48,15 @@
         <?php endif;?>
         </header>
         
-    <div class="bg_image_container">
-        <img class="bg_image" src="<?=ASSETS?>img/home.jpg">
-    </div>
-            <div class="body_container">
+    
+            <div class="body_container center">
                 
                 <hr class="h">
                 <h1 class="h1_home">CEYLON NURTURE</h1>
                 <h5 class="h5_home">Ayurvedha Under One Roof</h5>
                 <hr class="h">
             
-
+        <div class="homebuttons_container">
         <?php if(!empty($data)):?>
             <?php if($data == "seller"):?>
                 <div class="home_buttons">
@@ -130,6 +128,8 @@
             <?php endif;?>
 
             <?php endif;?>
+
+            </div>
             </div>
     </body>
 </html>

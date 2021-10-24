@@ -8,10 +8,9 @@
     </head>
 
     <body class="bg">
-    
-
+   
         <div class ="addNewUser_content">
-                    <h2> Delete User</h2>
+                    <h2> View User</h2>
                    
 
                     <?php if($row):?>
@@ -28,16 +27,15 @@
                     <input disabled type="date" value="<?=get_var('dob',$row->dob)?>" id="dob" name="dob" > 
                     <input disabled  type="email" value="<?=get_var('email',$row->email)?>" name="email" placeholder="E-mail address"  >
                     <input disabled type="tel" value="<?=get_var('tpNumber',$row->tpNumber)?>" name="tpNumber" placeholder="Telephone Number" > 
-                    <input  class="addUserButton" type="submit" value="Delete User">
                     <button  class="addUserButton" onclick="goBack()"> Back </button>
+                    </form>
 
-                </form>
                 <?php else:?>
                     The User is not Found!
                 <?php endif;?>
                     </div>
      
-        <script type="text/javascript" src="<?=ASSETS?>js/sellerJs"></script>   
+        <script type="text/javascript" src="<?=ASSETS?>js/sellerJs"></script>  
         
         <script>
             function goBack() {

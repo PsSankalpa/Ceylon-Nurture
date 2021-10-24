@@ -8,15 +8,12 @@
         <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
     </head>
 
-    <body>
+    <body class="bg">
         
-        
-        <div class="bg_image_container">
-        <img class="bg_image" src="<?=ASSETS?>img/home.jpg">
-        </div>
+       
 
-        <main>
-            <div class="body_container">
+        <main >
+            <div class="body_container center">
                 <hr class="h">
                 <h1 class="h1_home">CEYLON NURTURE</h1>
                 <h5 class="h5_home">Ayurvedha Under One Roof</h5>

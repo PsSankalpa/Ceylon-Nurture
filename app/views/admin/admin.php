@@ -5,14 +5,14 @@
             Admin
         </title>
         <link rel="stylesheet" href="<?=ASSETS?>css/headerStyle.css">
-        <link rel="stylesheet" href="<?=ASSETS?>css/adminStyle1.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/adminStyle.css">
 
 
 
 
     </head>
 
-    <body>
+    <body class='bg'>
     <header>
         <nav class="top_nav_admin">
             <div class="nav_item1">
@@ -44,13 +44,12 @@
         </nav>
         </header>
         
-        <div class="bg_image_container">
-        <img class="bg_image" src="<?=ASSETS?>img/admin.jpg">
-        </div>
+        
 
         <div class="sidebar">
+            
         <div class="nav_item_admin">
-        <img class="logo_admin" src="<?=ASSETS?>img/logo.png">               
+        <a href="<?=ROOT?>landing"><img class="logo_admin" src="<?=ASSETS?>img/logo.png"></a>               
         </div>
 
         <div class="tablinks" onclick="openCard(event, 'dashboard')" id="defaultOpen">Dashboard</div>
@@ -63,9 +62,15 @@
         <div class="tablinks" onclick="openCard(event, 'forums')">Forums</div>
         <div class="tablinks" onclick="openCard(event, 'reports')">Reports</div>
 
+        <div class="logout">
+            <?php if(Auth::logged_in_admin()):?>
+                <a href="<?=ROOT?>logout">Log Out</a>
+            <?php endif;?>
+
+        </div>
         </div>
 
-        <div  id="dashboard" class="tabcontent">
+        <div  id="dashboard" class="tabcontent center">
         <div class="content1">
         <div class="card">
                 <div class="card1"> <div class="card_number">10</div></div>
@@ -91,20 +96,20 @@
                 <div class="cards2">
                 <div class="card_content1">
 
-        <div class="cards2-1">
-                <div class=""><div >Total Revenue</div>
-                <div class="">10,000</div></div>
-        </div>
-        <div class="cards2-1">
-                <div class=""><div >Total Cost</div>
-                <div class="">5,000</div></div>
-        </div>
-        <div class="cards2-1">
-                <div class=""><div >Total Profit</div>
-                <div class="">5,000</div></div>
-        </div>
+                    <div class="cards2-1">
+                    <div class=""><div >Total Revenue</div>
+                    <div class="">10,000</div></div>
+                    </div>
+                    <div class="cards2-1">
+                    <div class=""><div >Total Cost</div>
+                    <div class="">5,000</div></div>
+                    </div>
+                    <div class="cards2-1">
+                    <div class=""><div >Total Profit</div>
+                    <div class="">5,000</div></div>
+                    </div>
                 </div>
-                <div ><img class="chart2" src="https://miro.medium.com/max/1400/1*bFUKtr4h4mzmY5uHuEz_zA.png"/></div>
+                    <div ><img class="chart2" src="https://miro.medium.com/max/1400/1*bFUKtr4h4mzmY5uHuEz_zA.png"/></div>
             </div>
         </div>
         
@@ -112,7 +117,7 @@
             </div>
         </div>
 
-        <div id="users" class="tabcontent">
+        <div id="users" class="tabcontent center_users">
         <div class="content">
         <div class="content1">
         <div class="card">
@@ -172,15 +177,16 @@
             <?php foreach ($rows as $row):?>
             <div class="line1">
                 <div class="heading_1" >
-                     <div class="row_user"><h4><?=$row->fname?> <?=$row->lname?></h4><br><br></div>
-                     <div class="row_user"><h5>First Name: </h5><p><?=$row->fname?></p><br></div>
+                    <div class="row_user"><h4><?=$row->fname?> <?=$row->lname?></h4><br><br></div>
+                    <!--<div class="row_user"><h5>First Name: </h5><p><?=$row->fname?></p><br></div>
                     <div class="row_user"><h5>Last Name: </h5><p><?=$row->lname?></p><br></div>
                     <div class="row_user"><h5>User Name: </h5><p><?=$row->username?></p><br></div>
                     <div class="row_user"><h5>Email: </h5><p><?=$row->email?></p><br></div>
-                    <div class="row_user"><h5>Telephone Number: </h5><p><?=$row->tpNumber?></p><br></div>
+                    <div class="row_user"><h5>Telephone Number: </h5><p><?=$row->tpNumber?></p><br></div>-->
                 </div>
                 <div class="heading_2"></div>
                 <div class="heading_3">
+                <a href="<?=ROOT?>admin/ViewUser/<?=$row->userid?>"><button class="button1">View</button></a>
                 <a href="<?=ROOT?>admin/updateUser/<?=$row->userid?>"><button class="button1">Update</button></a>
                 <a href="<?=ROOT?>admin/deleteUser/<?=$row->userid?>"><button class="button1">Delete</button></a>
                 </div>
@@ -193,13 +199,13 @@
 
         </div>
 
-        <div id="feedbacks" class="tabcontent">
-        <div id="channeling" class="tabcontent">
-        <div id="products" class="tabcontent">
-        <div id="payments" class="tabcontent">
-        <div id="articles" class="tabcontent">
-        <div id="forums" class="tabcontent">
-        <div id="reports" class="tabcontent">
+        <div id="feedbacks" class="tabcontent center">
+        <div id="channeling" class="tabcontent center">
+        <div id="products" class="tabcontent center">
+        <div id="payments" class="tabcontent center">
+        <div id="articles" class="tabcontent center">
+        <div id="forums" class="tabcontent center">
+        <div id="reports" class="tabcontent center">
 
 
         
