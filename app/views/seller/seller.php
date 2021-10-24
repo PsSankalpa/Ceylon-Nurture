@@ -61,3 +61,24 @@
 </body>
 
 </html>
+
+<!--
+    <div id="id01" class="modal_dele">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close_dele" title="Close Modal">×</span>
+            <form class="modal-content_dele" action="">
+                <div class="container_dele">
+                    <h1 class="d-topic">Delete Product</h1>
+                    <p class="d-detail">Are you sure you want to delete this product?</p>
+                    <input type="hidden" name="id" value="product">
+
+                    <div class="clearfix_dele">
+                    <button onclick="document.getElementById('id01').style.display='none'" class="cancelbtn_dele">Cancel</button>
+                    <a href="<?= ROOT ?>seller/deleteProduct/<?= $row->productid ?>">
+                    <button value="Delete" class="deletebtn_dele">Delete</button>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+-->
