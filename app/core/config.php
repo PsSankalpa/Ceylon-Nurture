@@ -35,18 +35,50 @@ else
     ini_set("display_errors",0);
 }
 
-/* A user-defined error handler function
-function errorHandler($errno, $errstr, $errfile, $errline) {
-    echo "<b>error:</b> [$errno] $errstr<br>";
-    echo " Error on line $errline in $errfile<br>";
-    //define('PHPERR','true');
 
-    //$date = date("Y-m-d");
-    //$str = $errno .":". $errstr . " in " . $errfile . " at line " . $errline . "\n";
-    //file_put_contents("errorLog/" . $date . ".txt",$str,FILE_APPEND);//errorlog is the file were erors save,
+// Create a custom error handler
+function custom_error($error_no, $error, $filename, $linenumber)
+{
+    // get today date, saving logs for each day
+    $today = date("Y-m-d");
+ 
+    // Creating array for possible errors
+    $error_levels = array(
+        "1" => "Fatal error",
+        "2" => "Warning",
+        "8" => "Error",
+        "1024" => "Custom error"
+    );
+     
+    // Getting name of error by error level
+    $str = $error_levels[$error_no] . ": ";
+ 
+    // Display file name where error occurred
+    $str .= $error . " in " . $filename;
+ 
+    // Show line number which causes error
+    $str .= " at " . $linenumber;
+ 
+    // Moving to next line
+    $str .= "\n";
+ 
+    // Display error in browser
+    //echo $str;
+ 
+    // save the $str value in file
+    file_put_contents("error_logs/" . $today . ".txt", $str, FILE_APPEND);
+
+    //send email of the error
+    $to = "ceylonnurture@gmail.com";
+    $subject = "Page Error ".$error_levels[$error_no];
+    $txt = $str;
+    $headers = "From: Ceylon Nurture";
+
+    //mail($to,$subject,$txt,$headers);
 }
-// Set user-defined error handler function
-set_error_handler("errorHandler");*/
+
+// Tells PHP to use custom error handler for errors
+set_error_handler("custom_error");
 
 
 ?>
