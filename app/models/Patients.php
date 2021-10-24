@@ -6,38 +6,19 @@ class patients extends Model
 
 	protected $allowedcolumns = [
 		'userid',
-		'nameWithInitials',
-		'gender',
-		'DOB',
 		'nic',
 		'image',
 	];
 
 	protected $table = "patients";
+	protected $pk = "userid";
+	protected $pk2 = "patientid";
 
 	public function validate($DATA,$FILES)
 	{
 		$this->errors = array();
-		$this->errors2 = array();
 		//validations
-		//for name
-		if(empty($DATA['nameWithInitials']))
-		{
-			$this->errors['nameWithInitials'] = "Cannot Keep name empty";
-		}
-		elseif(!preg_match('/^[a-zA-Z\s\.]+$/',$DATA['nameWithInitials']))
-		{
-			$this->errors['nameWithInitials'] = "Only letters allowed in the name";
-		}
-
-
-		//for gender number
-		if(empty($DATA['gender']))
-		{
-			$this->errors['gender'] = "Cannot Keep gender empty";
-		}
 		
-
 		//for NIC
 		if(empty($DATA['nic']))
 		{
@@ -47,13 +28,6 @@ class patients extends Model
 		{
 			$this->errors['nic'] = "Cannot allowed symbols in the nic number";
 		}
-
-		//for DOB
-		if(empty($DATA['DOB']))
-		{
-			$this->errors['DOB'] = "Cannot Keep date of birth empty";
-		}
-		
 		
 		//for image
 		

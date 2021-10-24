@@ -6,7 +6,7 @@ class forum extends Controller
     {
         $forumdoctor = new forumdoctor();
         //$data =$forumdoctor->where('forumDoctorid',$forumDoctorid);
-
+        
         $data=$forumdoctor->findAll();
         
         //print_r($data);
@@ -19,6 +19,12 @@ class forum extends Controller
     }
 
     function addForumDoctor(){
+
+        if(!((Auth::logged_in()) || (Auth::logged_in_admin()) ))
+        {
+         $this->redirect('login/login');
+        }
+
 
         $errors = array();
         if(count($_POST) > 0)
@@ -46,14 +52,16 @@ class forum extends Controller
         $this->view("forums/addForumDoctor",[
             'errors'=>$errors,
          ]);
+
+        
     }
 
     function updateForumDoctor($forumDoctorid=null){
 
-        //if(!Auth::logged_in())
-		//{
-		//	$this->redirect('login/login');
-		//}
+        if(!((Auth::logged_in()) || (Auth::logged_in_admin()) ))
+        {
+         $this->redirect('login/login');
+        }
 
         $forumdoctor = new forumdoctor();
 
@@ -83,6 +91,11 @@ class forum extends Controller
     }
 
     function deleteForumDoctor($forumDoctorid=null){
+
+        if(!((Auth::logged_in()) || (Auth::logged_in_admin()) ))
+        {
+         $this->redirect('login/login');
+        }
 
         $forumdoctor = new forumdoctor();
 

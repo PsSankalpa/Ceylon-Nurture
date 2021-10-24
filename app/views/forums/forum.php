@@ -5,17 +5,14 @@
             Landing
         </title>
         <?php $this -> view ("header")?>
-        <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
         <link rel="stylesheet" href="<?=ASSETS?>css/forum.css">
 
     </head>
 
-    <body>
+    <body class="bg">
         
         
-        <div class="bg_image_container">
-        <img class="bg_image" src="<?=ASSETS?>img/forum.jpg">
-        </div>
+       
 
         <main>
             <div class="body_container_main">
@@ -29,9 +26,9 @@
 <!------------------------------------------------------------------------------------------------------------->
                     <div id="doctor" class="tabcontent">
 
-                        <div class="body_content">
-                            <div> Search </div>
-                            <div> <a href="<?=ROOT?>forum/addForumDoctor"><button>Add to forums</button></a></div>
+                        <div  class="body_content">
+                            <div><input type=search class="search" placeholder="Search"> </div>
+                            <div> <a href="<?=ROOT?>forum/addForumDoctor"><button class="add">Add to forums</button></a></div>
                         </div>
 
                         <div class="body_container_main_sub">
@@ -43,16 +40,24 @@
 
                                     <div class="line1">
 
-                                        <h3 > <?=esc($row->name)?> </h3>
-                                        <div> availability</div>
+                                        <h3> <?=esc($row->name)?> </h3>
+                                        <div class="available"> Available 
+                                            <label class="switch">
+                                            <input disabled type="checkbox" checked>
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </div>
                                     </div>
+                                    <br>
+                                    <div class="line2"><?=esc($row->description)?> </div><br> 
+                                    <div class="line3">Contact Number: <?=esc($row->tpNumber)?></div>
+                                    <div class="line3">Location: <?=esc($row->location)?></div>
 
-                                    <div class="line2"><?=esc($row->description)?> <?=esc($row->tpNumber)?></div>
-                                    <div class="line3"><?=esc($row->location)?></div>
-                                    <a href="<?=ROOT?>forum/updateForumDoctor/<?=$row->forumDoctorid?>"><button class="reply_button">Update</button></a>
-                                    <a href="<?=ROOT?>forum/deleteForumDoctor/<?=$row->forumDoctorid?>"><button class="reply_button">Delete</button></a>
-
-                                    <button class="reply_button">reply</button>
+                                    <div class="forum_buttons">
+                                    <a href="<?=ROOT?>forum/updateForumDoctor/<?=$row->forumDoctorid?>"><button class="forum_button update">Update</button></a>
+                                    <a href="<?=ROOT?>forum/deleteForumDoctor/<?=$row->forumDoctorid?>"><button class="forum_button delete">Delete</button></a>
+                                    <button class="forum_button">reply</button>
+                                    </div>
 
 
                                 </div>
