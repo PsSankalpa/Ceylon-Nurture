@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            Landing
+            Forum
         </title>
         <?php $this -> view ("header")?>
         <link rel="stylesheet" href="<?=ASSETS?>css/forum.css">
