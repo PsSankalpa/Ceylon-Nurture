@@ -78,7 +78,7 @@ function custom_error($error_no, $error, $filename, $linenumber)
 }
 
 // Tells PHP to use custom error handler for errors
-set_error_handler("custom_error");
+//set_error_handler("custom_error");
 
 
 ?>
