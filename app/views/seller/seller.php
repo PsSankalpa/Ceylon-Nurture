@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="<?= ASSETS ?>css/common.css">
     <link rel="stylesheet" href="<?= ASSETS ?>css/sellers.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -33,20 +34,24 @@
                 <?php foreach ($rows as $row) : ?>
                     <div class="cardcolumn">
                         <div class="card">
-                            <img src="<?= ASSETS2 . $row->image ?> ">
-                            <h3><?= $row->productName ?> </h3>
-                            <p><?= "RS." . $row->productPrice ?> </p>
-                            <div class="div">
-                                <a href="<?= ROOT ?>/seller/productDetails/<?= $row->productid ?>">
-                                    <button class="cardbutton view">View Infomation</button>
+                            <div class="img-content">
+                                <img src="<?= ASSETS2 . $row->image ?> ">
+                            </div>
+                            <div class="card-content">
+                                <h3><?= $row->productName ?> </h3>
+                                <p><?= "RS." . $row->productPrice ?> </p>
+                                <div class="div">
+                                    <a href="<?= ROOT ?>/seller/productDetails/<?= $row->productid ?>">
+                                        <button class="cardbutton view">View Infomation</button>
+                                    </a>
+                                </div>
+                                <a href="<?= ROOT ?>/seller/editProduct/<?= $row->productid ?>">
+                                    <button class="cardbutton btn1">Edit</button>
+                                </a>
+                                <a href="<?= ROOT ?>seller/deleteProduct/<?= $row->productid ?>">
+                                    <button class="cardbutton cancel btn1">Delete</button>
                                 </a>
                             </div>
-                            <a href="<?= ROOT ?>/seller/editProduct/<?= $row->productid ?>">
-                                <button class="cardbutton btn1">Edit</button>
-                            </a>
-                            <a href="<?= ROOT ?>seller/deleteProduct/<?= $row->productid ?>">
-                                <button class="cardbutton cancel btn1">Delete</button>
-                            </a>
                         </div>
                     </div>
                 <?php endforeach; ?>
