@@ -1,12 +1,4 @@
-.regi{
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  position: relative;
-  background-image: url("../img/channeling.jpg");
-  
 
-}
 
 h1{
     color:#2cc92c;
@@ -45,7 +37,7 @@ h1{
   top:0;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, 10%);
+  transform: translate(-50%, 0%);
 }
 
 .center_errorpage {
@@ -153,7 +145,7 @@ input[type=reset],input[type=submit]{
 
 }
 input[type=reset] {
-  background-color: crimson;
+  background-color: rgb(170, 60, 82);
   margin-right: 1%;
   
 }

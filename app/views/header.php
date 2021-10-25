@@ -12,6 +12,8 @@
     <link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
     <!--favicon-->
     <link rel="stylesheet" href="<?= ASSETS ?>css/header.css">
+    <link rel="stylesheet" href="<?= ASSETS ?>css/commonStyle.css">
+
 
     <!--adding user logo-->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
