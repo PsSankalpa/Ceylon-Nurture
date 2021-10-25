@@ -8,27 +8,19 @@ body{
     background-color: rgb(255, 255, 255);
 }
 
-.regi{
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  position: relative;
-  background-image: url("../img/products.jpg");
-
-}
-
 /*----------------------------------------------------------*/
 /*top part*/
 .upperpart {
   /* Set a specific height */
-  min-height: 80vh; 
+  min-height: 80vh;
+  top: 0;
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("../img/products.jpg");
+  background-image: url("../img/Ayur_1.jpg");
   }
 
   @media only screen and (max-device-width: 900px) {
@@ -39,10 +31,11 @@ body{
 
   .center {
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, 30%);
+    margin-bottom: 1rem;
   }
 
   .btn-group button {
@@ -163,43 +156,23 @@ input[type=file] {
   padding:10px;
 }
 
-
+/* ------------------------------------------------------------------------------------ */
 /* Style the container */
 .container {
-  top: 50%;
+  top: 20%;
   border-radius: 5px;
   padding: 20px;
-  background-color:rgba(13, 13, 13, 0.85);
+  background-color:#1894B4;
   z-index: 8;
   width: 80%;
   transition: 0.3s;
 }
-
-/*for grid of the container*/
-.seller-grid-container {
-  display: grid;
-  grid-template-columns: 20% 80%;
-  grid-gap: 10px;
-  padding: 10px;
-}
-
-.seller-grid-container > div {
-  text-align: center;
-  padding: 20px 0;
-}
-
-.seller-grid-container > h2 {
+.container h2{
+  color: #75E6DA;
   text-align: center;
 }
-
-h3,h4{
-  color:#A7D129;
-  text-align: center;
-}
-
-.seller-grid-container p{
-  color:#A7D129;
-  text-align: justify;
+.container h3,h4, p{
+  color: #05445E;
 }
 
 
@@ -208,6 +181,8 @@ h3,h4{
   float: left;
   width: 25%;
   margin-top: 6px;
+  justify-content: center;
+  text-align: center;
 }
 
 /* Floating column for inputs: 75% width */
@@ -231,12 +206,14 @@ h3,h4{
     margin-top: 1%;
     float:left
   }
+  .container{
+    margin-bottom: 1rem;
+  }
 }
 /*---------------------------------------------------------------------------*/
 /*proct section*/
 .products-section{
-  background-color: black;
-  border-color: #A7D129;
+  background-color: #D4F1F4;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -250,12 +227,12 @@ h3,h4{
   justify-content: center;
 }
 .div{
-  padding: 0.2rem;
+  margin: auto;
 }
 /* Remove extra left and right margins, due to padding in columns */
 .cardrow {
-  margin: 0 -5px;
-  width: 100%;
+  margin: 0 auto;
+  width: 60%;
 }
 
 /* Clear floats after the columns */
@@ -268,41 +245,65 @@ h3,h4{
 
 /* Style the counter cards */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2); /* this adds the "card" effect */
-  padding: 10px;
+  box-shadow: 0 10px 20px 0 rgba(255, 255, 255, 0.2); /* this adds the "card" effect */
   text-align: center;
-  background-color: #0f8d44;
+  background-image: linear-gradient(to right, #1894B4 , #05445E);
   height: auto;
-  margin: 1rem;
+  margin: 0.3rem;
   border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 0.2rem;
+}
+
+.card-content h3{
+  color:#75E6DA;
+}
+
+.card-content p{
+  color:#75E6DA;
+}
+
+.img-content{
+  overflow: hidden;
 }
 .card img{
   width: 100%;
-  border-radius: 0.5rem;
-  max-height: 25rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  max-height: 18rem;
+  transition: transform .2s; /* Animation */
 }
-.view{
-  width: 100%;
-}
-.btn1{
-  width: 40%;
+.card img:hover{
+  transform: scale(1.2);
 }
 /*buttons of the cards*/
 .cardbutton {
-  background-color: #4CAF50;
+  background-color: #75E6DA;
   border: none;
-  color: white;
+  color: #05445E;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 4px 0;
   cursor: pointer;
   opacity: 0.8;
 }
+.view{
+  width: 95%;
+  margin-bottom: 0;
+}
+.btn1{
+  width: 46%;
+  margin-bottom: 1rem;
+}
+
 .cancel{
   background-color: #f44336;
+}
+
+.view2{
+  margin-bottom: 1rem;
 }
 
 .cardbutton:hover{
@@ -318,19 +319,26 @@ h3,h4{
   }
   .cardcolumn{
     width: 50%;
+    padding: 2px;
   }
 
   .card img{
     width: 100%;
+    height: 6rem;
   }
   .card {
-    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2); /* this adds the "card" effect */
     padding: 2px;
     text-align: center;
-    background-color: #0f8d44;
     height: auto;
-    margin: 4px;
+    margin: 2px;
     font-size: 14px;
+  }
+  .card-content h3{
+    font-size: small;
+  }
+
+  .card-content p{
+    font-size: smaller;
   }
   .div{
     font-size: 8px;
@@ -343,6 +351,9 @@ h3,h4{
   }
   .view{
     width: 100%;
+  }
+  .view2{
+    margin-bottom: 1rem;
   }
   .btn1{
     width: 50%;
