@@ -9,7 +9,7 @@ body {
   background-color: #c0bebeec;
   padding: 10px 10px;
   width: 1000px;
-  height: 650px;
+  height: auto;
   margin:50px auto;
   position:relative;right:-50px;top:150px
 }
