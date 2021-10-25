@@ -1,0 +1,3 @@
+Error: Undefined variable: rows in C:\wamp\www\Grp12\app\views\forums\forum.php at 36
+Error: Undefined variable: rows in C:\wamp\www\Grp12\app\views\forums\forum.php at 36
+Error: Undefined variable: row in C:\wamp\www\Grp12\app\views\doctor\addSchedule.php at 15
