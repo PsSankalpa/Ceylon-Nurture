@@ -456,4 +456,44 @@ hr {
     width: 80%;
   }
 }
+/*---------------------------------------------------------------------------*/
+/*products slideshow*/
+.slider-frame{
+  overflow: hidden;
+  height: 200rem;
+  width: 80%;
+  margin-top: 2rem;
+}
 
+@-webkit-keyframes slide_animations{
+  0%{left: 0px;}
+  10%{left: 0px;}
+  20%{left: 1200px;}
+  30%{left: 12000px;}
+  40%{left: 2400px;}
+  50%{left: 2400px;}
+  60%{left: 1200px;}
+  70%{left: 1200px;}
+  80%{left: 0px;}
+  90%{left: 0px;}
+  100%{left: 0px;}
+}
+
+.slide-images{
+  width: 3600px;
+  height: 800px;
+  position: relative;
+  -webkit-animation-name: slide_animations;
+  -webkit-animation-duration: 33s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-play-state: running;
+}
+
+.img-container{
+  height: 20rem;
+  width: 100%;
+  position: relative;
+  float: left;
+}
+ 

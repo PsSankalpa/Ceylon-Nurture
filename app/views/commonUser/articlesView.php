@@ -19,7 +19,7 @@
                 <?php if (($rows2 == "doctor") || ($rows2 == "doctorAndSeller") || ($rows2 == "doctorAndPatient") || ($rows2 == "allUser")) : ?>
                     <div class="access-buttons">
                         <a href="<?= ROOT ?>/doctor/myArticles"><button class="my-A">My Articles</button></a>
-                        <a href="<?= ROOT ?>/docotr/myArticles"><button class="add-A">Add Article</button></a>
+                        <a href="<?= ROOT ?>/doctor/myArticles"><button class="add-A">Add Article</button></a>
                     </div>
                 <?php endif; ?>
             <?php endif; ?>
@@ -34,7 +34,6 @@
                             <picture>
                                 <img src="<?= ASSETS2 . $row->image ?>" alt="A-herb" style="width:100%">
                             </picture>
-                            <br>
                             <p><?= $row->description ?></p>
                             <p><a href="<?= ROOT ?>/articles/articleDetails/<?= $row->articleid ?>"><button>View Information</button></a></p>
                         </div>

@@ -48,7 +48,6 @@
                     <div class="inner_content_image">
                         <img class="landing_image" src="<?=ASSETS?>img/home.jpg">
                     </div>
-
                 </div>
             </section>
 
@@ -90,6 +89,7 @@
                         <a href="<?=ROOT?>channeling"><button class="button_typeB">Channeling</button></a>
                     </div>
 
+
                     <?php elseif($data == "doctorAndSeller"):?>
                     <div class="inner_content_card">
                         <h2 class="h2">Welcome Doctor</h2><br>
@@ -101,6 +101,7 @@
                         <p>You can add Products from here</p><br>
                         <a href="<?= ROOT ?>seller/uploadProduct"><button class="button_typeB">Add Products</button></a>
                     </div>
+
 
                     <?php elseif($data == "sellerAndPatient"):?>
                     <div class="inner_content_card">
@@ -138,6 +139,7 @@
                         <a href="<?=ROOT?>doctor/registration"><button class="button_typeB">Register as a Doctor</button></a>
                     </div>
 
+
                     <div class="inner_content_card">
                         <h2 class="h2">Are you a Patient ?</h2><br>
                         <p>Every doctor you see on the platform is highly qualified to provide the best care possible.</p><br>
@@ -160,6 +162,11 @@
 <!---------------------------------------------------------------------------------------------->
             <section id="articles">
                 <div class="contentC">
+
+
+                <a href="<?=ROOT?>docDashboard"><button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button></a>
+
 
 
                 </div>

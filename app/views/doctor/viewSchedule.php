@@ -3,7 +3,7 @@
 <title>View Schedule</title>
 <?php $this -> view ("header",$data)?>
 <meta name="viewport" content="width=device-width; initial-scale=1.0;">
-<link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/viewSchedule.css">
+<link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/Schedule.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -11,11 +11,10 @@
         <div class="container1">
             <div class="sidebar">
                 <img src="<?=ASSETS?>img/avatar.png" alt="Person" class="pro-pic" width="200" height="100">
-                <!--<h4><b>Dr.W.M.S.Perera</b></h4>-->
-                <?php if($rows):?>
-                    <h4><?=$rows->nameWithInitials?> </h4>
+                <?php if($data):?>
+                    <h4><?=$data[0]->nameWithInitials?> </h4>
                 <?php endif;?>
-                
+
                 <a href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-home"></i>  My Account</a>
                 <a class="active" href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>  Schedule</a>
                 <a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>  Feedback</a>
@@ -32,8 +31,8 @@
                             <button class="filter">Filter</button>
                         </div>                   
                         <div class="cardrow">
-                            <?php if($rows):?>
-                            <?php foreach ($rows as $row):?>
+                            <?php if($row):?>
+                            <?php foreach ($row as $row):?>
                                 <div class="cardcolumn">
                                     <div class="card">
                                         <h3><?="Slot-".$row->slotNumber?> </h3>

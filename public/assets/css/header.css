@@ -148,6 +148,10 @@
       right: 0;
       top: auto;
     }
+
+    #login_logo{
+      display: none;
+    }
   }
   
   @media screen and (max-width: 1200px) {

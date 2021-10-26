@@ -83,6 +83,17 @@ class doctor extends Controller
          $des2 =$destination2;
          return $des2;
     }*/
+       //function of the Doctor Dashboard
+       function docDashboard()
+       { 
+          $doctorid = Auth::userid();
+          $doctor = new doctors();
+          $data =$doctor->where('userid',$doctorid);  
+   
+           $this->view("doctor/docDashboard",[
+               'data'=>$data,
+           ]); 
+       }
 
     //function to view account
     function viewAccount($userid=[])
@@ -185,8 +196,12 @@ class doctor extends Controller
             $row = $row[0];
             unlink($row->image);
         }
+        $doctorid = Auth::userid();
+        $doctor = new doctors();
+        $data =$doctor->where('userid',$doctorid);
         $this->view('doctor/deleteAccount',[
             'row'=>$row,
+            'data'=>$data,
 		]);
 
     }
@@ -206,19 +221,7 @@ class doctor extends Controller
             $schedule = new schedule();
             $doctor = new doctors();
             $userid = Auth::userid();
-
             //$row = $doctor->where('userid',$userid); 
-            if(!empty($row = $doctor->where('userid',$userid) ))
-            //if(!empty($row))
-            {
-               $row = $row[0];
-               $nameWithInitials= $row->nameWithInitials;
-               $city = $row->city;
-            }
-            else{
-                $nameWithInitials = "";
-                $city = "";
-            }
            // print_r($_POST);
             if($schedule->validate($_POST,$_FILES))
             {
@@ -231,7 +234,6 @@ class doctor extends Controller
                 $arr['timePerPatient'] = $_POST['timePerPatient'];
                 $arr['doctorCharge'] = $_POST['doctorCharge'];
                 $arr['doctorNote'] = $_POST['doctorNote'];
-                $arr['DoctorName'] = Auth::nameWithInitials();
                 //$arr['DoctorName'] = $nameWithInitials;
                 //$arr['city'] = $city;
                 $arr['doctorid'] = Auth::userid(); 
@@ -243,9 +245,13 @@ class doctor extends Controller
                 $errors = $schedule->errors2;    
             }
         } 
+        $doctorid = Auth::userid();
+        $doctor = new doctors();
+        $row =$doctor->where('userid',$doctorid);
+
         $this->view('doctor/addSchedule',[
 			'errors'=>$errors,
-            //'row' =>$row,
+             'row' =>$row,
 		]);
     }
 
@@ -256,22 +262,22 @@ class doctor extends Controller
        
         $errors = array();
         $schedule = new schedule();
+        $doctor = new doctors();
+        $data =$doctor->where('userid',$doctorid);
         
         //$rows =$schedule->where('scheduleid',$scheduleid);
-        //$rows = $schedule->findAll(); //in here row is an array
-        $rows =$schedule->where('doctorid',$doctorid); // ps changed to remove the slots when another user loged in
-        //if($row)
-        //{
-           // $row = $row[0];
-         
-       // }
+        $row =$schedule->where('doctorid',$doctorid); // ps changed to remove the slots when another user loged in
+      /*if($row)
+        {
+            $row = $row[0];
+        }*/
+
         $this->view('doctor/viewSchedule',[
 			'errors'=>$errors,
-            'rows'=>$rows,
+            'row'=>$row,
+            'data'=>$data,
             
 		]);
-       
-
     }
       //function to edit schedule
     function editSchedule($scheduleid = null)
@@ -314,9 +320,13 @@ class doctor extends Controller
         {
             $row = $row[0];
         }
+        $doctorid = Auth::userid();
+        $doctor = new doctors();
+        $data =$doctor->where('userid',$doctorid);
         $this->view('doctor/editSchedule',[
 			'errors'=>$errors,
             'row'=>$row,
+            'data'=>$data,
 
 		]);
     }
@@ -326,8 +336,14 @@ class doctor extends Controller
         $schedule = new schedule();
         $data =$schedule->where('scheduleId',$scheduleid); 
 
+        $doctorid = Auth::userid();
+        $doctor = new doctors();
+        $row =$doctor->where('userid',$doctorid);
 
-        $this->view('doctor/scheduleDetails',['rows'=>$data]);
+        $this->view('doctor/scheduleDetails',[
+            'rows'=>$data,
+            'row'=>$row,
+        ]);
        
     }
 
@@ -352,41 +368,71 @@ class doctor extends Controller
         {
             $row = $row[0];
         }
+        $doctorid = Auth::userid();
+        $doctor = new doctors();
+        $data =$doctor->where('userid',$doctorid);
+
         $this->view('doctor/deleteSchedule',[
             'row'=>$row,
+            'data'=>$data,
 		]);
 
     }
     function reports()
     {
+        $doctorid = Auth::userid();
+        $doctor = new doctors();
+        $data =$doctor->where('userid',$doctorid);
         //$reports = new reports();
-        $this->view('doctor/reports',
-        ); 
+        $this->view('doctor/reports',[
+            'data'=>$data,
+        ]); 
     }
     function reportDetails()
-    {   
-  
-      $this->view("doctor/reportDetails");
+    {  
+      $doctorid = Auth::userid();
+      $doctor = new doctors();
+      $data =$doctor->where('userid',$doctorid);  
+
+        $this->view("doctor/reportDetails",[
+            'data'=>$data,
+        ]); 
     }
     
      //function to view appointments
     function viewAppointments()
-    {  
+    { 
+       $doctorid = Auth::userid();
+       $doctor = new doctors();
+       $data =$doctor->where('userid',$doctorid);  
 
-    $this->view("doctor/viewAppointments");
+        $this->view("doctor/viewAppointments",[
+            'data'=>$data,
+        ]); 
     }
 
      //function to view appointment details
     function appointmentDetails()
-    {   
+    {
+       $doctorid = Auth::userid();
+       $doctor = new doctors();
+       $data =$doctor->where('userid',$doctorid);    
   
-      $this->view("doctor/appointmentDetails");
+        $this->view("doctor/appointmentDetails",[
+            'data'=>$data,
+        ]); 
     }
     //function to view feedback
     function feedback()
     {   
+        $doctorid = Auth::userid();
+        $doctor = new doctors();
+        $data =$doctor->where('userid',$doctorid);  
   
-      $this->view("doctor/feedback");
+        $this->view("doctor/feedback",[
+            'data'=>$data,
+        ]); 
+
     }
     function myArticles()
     {

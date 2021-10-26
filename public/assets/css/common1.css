@@ -92,19 +92,36 @@
 }
 
 /*theme colors*/
+/*babay blue-background*/
 .t-color-1{
     color:#D4F1F4;
 }
-
+/*blue green-buttons*/
 .t-color-2{
     color:#75E6DA;
 }
-
+/*blue grotto-paragraphs,labels*/
 .t-color-2{
     color:#1894B4;
 }
-
+/*navy blue-headings*/
 .t-color-4{
     color:#05445E;
+}
+
+.blue-green{
+    color: #21B6A8;
+}
+
+.neon-green{
+    color: #A3EBB1;
+}
+
+.kelly-green{
+    color: #18A558;
+}
+
+.bg-col5{
+    background-color: #e3f5f8;;
 }
 

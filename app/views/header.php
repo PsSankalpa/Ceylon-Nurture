@@ -61,9 +61,12 @@
                 <a class="a_navitem2 items" href="<?= ROOT ?>forum">FORUMS</a>
                 <?php if (Auth::logged_in()) : ?>
                 <div class="v"></div>
+
+
                 <a class="a_navitem2 items" href="<?= ROOT ?>header/makeDonations">DONATIONS</a>
                 <?php endif; ?>
             
+
             <?php if (!Auth::logged_in()) : ?>
                 <div class="nav_item3 items last">
                     <i class="fas fa-user-circle fa-10x" id="login_logo"></i>

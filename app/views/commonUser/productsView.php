@@ -16,8 +16,18 @@
     //print_r($data['rows']);
     ?>
 
-    <div class="upperpart">
-
+    <div class="slider-frame">
+        <div class="slide-images">
+            <div class="img-container">
+                <img src="<?=ASSETS?>img/slide1.png" alt="img 1">
+            </div>
+            <div class="img-container">
+                <img src="<?=ASSETS?>img/slide2.jpg" alt="img 1">
+            </div>
+            <div class="img-container">
+                <img src="<?=ASSETS?>img/slide3.jpg" alt="img 1">
+            </div>
+        </div>
     </div>
 
     <div class="products-section">

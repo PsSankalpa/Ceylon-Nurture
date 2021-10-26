@@ -8,6 +8,7 @@ class common_user extends Model
 
     protected $allowedcolumns = [
         'nameWithInitials',
+        'verify_token',
 		'fname',
 		'lname',
         'username',
