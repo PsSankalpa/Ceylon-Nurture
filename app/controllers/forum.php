@@ -14,7 +14,6 @@ class forum extends Controller
         $this->view("forums/forum",['rows'=>$data]);
     
         
-        $this->view("forums/forum");  
     
     }
 

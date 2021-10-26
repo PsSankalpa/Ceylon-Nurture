@@ -28,11 +28,21 @@
                             <li>Find Ayurvedic Products</li>
                             <li>Read articles about Medicinal Herbs</li>
                         </ul>
+                        <?php if (!Auth::logged_in()) : ?>
 
                             <div class="inner_content_button">
-                                <button class="button">Sign Up</button>
-                                <button class="button_typeA" >Log In </button>
+                                <a href="<?=ROOT?>signup"><button class="button">Sign Up</button></a>
+                                <a href="<?= ROOT ?>login"> <button class="button_typeA" >Log In </button></a>
                             </div>
+
+                        <?php elseif (Auth::logged_in()) : ?>
+
+                            <div class="inner_contentA">
+                                <h2 class=welcome_h2> Hi <?=ucfirst( Auth::fname()) ?>,</h2> <p class="welcome">Hope you would have an amazing experience with us </p>
+                            </div>
+
+                        <?php endif;?>
+
                     </div>
 
                     <div class="inner_content_image">

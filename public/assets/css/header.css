@@ -94,16 +94,16 @@
   }
   
   .top_nav a:hover{
-    color:#05445E; 
+    color:#189AB4; 
   } 
   
   .dropdown:hover .dropbtn {
     color:#05445E;
-    background-color: #75E6DA;
+    background-color: #189AB4;
   }
   
   .dropdown-content a:hover {
-    background-color: #75E6DA;
+    background-color: #189AB4;
     color: #05445E;
   }
   
@@ -111,7 +111,7 @@
     display: block;
   }
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1200px) {
     .top_nav a:not(:first-child), .dropdown .dropbtn {
       display: none;
     }
@@ -150,7 +150,7 @@
     }
   }
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1200px) {
     .top_nav.responsive {position: relative;}
     .top_nav.responsive .icon {
       position: absolute;
