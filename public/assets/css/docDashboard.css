@@ -190,17 +190,25 @@ p{
   padding:20px;
 }
 
-.viewbtn{
+.dashviewbtn{
   float:right;
   background-color: #75E6DA;
   padding: 3px 10px;
   cursor:pointer;
   font-size:15px;
   color:#05445E;
-
-
-
+  margin-right:2%;
+  margin-top:-2%;
 }
+.appviewbtn{
+  float:right;
+  background-color: #75E6DA;
+  padding: 3px 10px;
+  cursor:pointer;
+  font-size:15px;
+  color:#05445E;
+}
+
 .box-4{
   position:relative;right:-10px;top:10px;
   width:96.5%;
@@ -213,20 +221,40 @@ p{
   width:95%;
   height:auto;
 } 
-input[type=date]{
+.dash input[type=date]{
+  float:right;
   background:#75e6dba2;
   padding: 5px;
   border: 1px solid #05445E;
   border-radius: 4px;
   box-sizing: border-box;
-  margin-left: 4%;
+  margin-right: 80%;
 }
-.filterbtn{
+.dash .filterbtn{
   float:left;
   background-color: #75E6DA;
   padding: 3px 10px;
   font-size:15px;
   cursor:pointer;
+  margin-left: 4%;
+}
+.appoint input[type=date]{
+  float:right;
+  background:#75e6dba2;
+  padding: 5px;
+  border: 1px solid #05445E;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-right: 10%;
+}
+.appoint .filterbtn{
+  float:right;
+  background-color: #75E6DA;
+  padding: 3px 10px;
+  font-size:15px;
+  cursor:pointer;
+  margin-left: -10%;
+  margin-right:2%;
 }
 table{
   border-collapse:collapse;
@@ -246,6 +274,12 @@ th{
   border-bottom:1px solid #81818149;
   
 }
+/*changes for appointment page*/
+.data{
+  color:#05435ea2;
+  font-weight:bold;
+}
+
 /*Making the page mobile responsive*/
 @media screen and (max-height: 400px) {
   .sidenav {padding-top: 15px;}
@@ -343,11 +377,18 @@ th{
     overflow-x:scroll;
     overflow-y:scroll;
     font-size:15px;
+    margin-top:5%;
   }
 }
 @media screen and (max-width: 400px) {
-  input[type=date],.viewbtn,.filterbtn{
-    width:20%;
+  .appoint .filterbtn,.appoint input[type=date]{
+    margin-top:5%;
+    margin-left:4%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .viewbtn{
+    width:80%;
     margin:auto;
   }
 }

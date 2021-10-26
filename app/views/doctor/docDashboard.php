@@ -23,7 +23,6 @@
         <span class="slide">
         <a href="<?=ROOT?>home/home" class="previous">&#8249;</a>
           <a href="#" onclick="openSlideMenue()">
-        
             <i class="fa fa-fw fa-bars"></i>
           </a>
           <span class="nav">Dashboard</span>
@@ -95,18 +94,18 @@
               </div>
             </div>
               <div class="clearfix"></div>
-              
                 <div class="col-div-8">
-                  <h3>My Appointments</h3>
+                <h3>My Appointments</h3>
+                <div class="dash">
+                  <input type="date" id="date" name="date">
+                  <button class="filterbtn">Filter</button>
+          
                   <div class="box-8">
+                  <a href="<?=ROOT?>appointments"><button class="dashviewbtn">View</button></a></br>
                   <div class="content-box">
-                    <div>
-                      <input type="date" id="date" name="date">
-                      <button class="filterbtn">Filter</button>
-                    <button class="viewbtn">View</button>
-                    </div>
                     <div style="overflow-x:auto;,overflow-y:auto;">
                     <table>
+                   
                       <tr>
                         <th>Name</th>
                         <th>NIC No</th>

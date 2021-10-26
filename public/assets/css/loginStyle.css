@@ -2,38 +2,39 @@
     padding:0;
     margin:0;
     box-sizing: border-box;
+    background-size: cover;
+    overflow: hidden;
 }
 body{
-    font-family: 'Raleway'; 
+    font-family: Arial, Helvetica, sans-serif;
+    line-height:1.5;
 }
 h2{
-    font-family:'Raleway';
     font-size: 4em;
-    color:#228B22;
+    color:#05445E;
     text-align:center;
 }
 .Login-form{
-    position:relative;
-    background-image: url("../img/Ayur_1.jpg");
+    background-image: url("../img/6.jpg");
     background-size:100%;
-    padding:60px;
+    padding:30px;
     justify-content: center;
     align-items:center;
 }
 .container{
+   margin:auto;
+    height:auto;
     max-width:800px;
-    margin:0 auto;
 }
 
 .Login-form .main{
-    position:relative;
     display:flex;
-    margin:40px 0;
+    margin:0 0;
 }
 .content{
     flex-basis:50%;
-    padding:5em 3em;
-    background:#ffff;
+    padding:3em 3em;
+    background:#D4F1F4;
     box-shadow:2px 9px 49px -17p;
     border-top-left-radius:8px;
     border-bottom-left-radius:8px;
@@ -41,7 +42,7 @@ h2{
 .form-img{
     flex-basis:50%;
     padding:8%;
-    background:#ffff;
+    background:#D4F1F4;
     background-size:cover;
     border-top-right-radius:8px;
     border-bottom-right-radius:8px;
@@ -49,8 +50,9 @@ h2{
 
 }
 .form-img img{
-    max-width:100%;
-    position:relative;right:-10px;top:-65px;
+    width:150%;
+    height:100%;
+    transform:translate(-15%, -10%);
 }
 .account{
     color:rgb(10, 10, 10);
@@ -60,8 +62,9 @@ h2{
     text-align:center;
 }
 
-a{
+a:visited{
     text-decoration:none;
+    color:#05445E;
 }
 .Login-form form{
     margin:30px 0;
@@ -75,32 +78,33 @@ a{
     width:100%;
     display:inline-block;
     box-sizing:border-box;
-    background:#b6b4b4;
+    background:#05435e6b;
+    border: 2px solid #05445E;
     transition:0.3s ease;
     border-radius:50px;
 }
 .Login-form input:focus{
-    background:#979090;
+    background:#D4F1F4;
     border:solid #ffff;
 }
 .btn{
     font-size:18px;
-    color:#ffff;
+    color:#05445E;
+    font-weight: bold;
     width:100%;
-    background:#228B22;
+    background-color:#75E6DA;
     border-radius:50px;
     padding:14px 15px;
-    font-weight:500;
     transition:0.3s ease;
 }
 .btn:hover{
-    background:#40d840;
+    background-color: white;
     transition:0.5s ease;
 }
 
 .alertwarning{
     padding: 20px;
-    background-color: #f44336;
+    background-color:#05445E;
     color: white;
     opacity: 1;
     transition: opacity 0.6s;
@@ -110,26 +114,27 @@ a{
   .closebtn {
     margin-left: 15px;
     color: white;
-    font-weight: bold;
     float: right;
     font-size: 22px;
-    line-height: 20px;
+    line-height: 10px;
     cursor: pointer;
-    background-color: #f44336;
+    background-color: #05445E;
     transition: 0.3s;
     width:25%;
   }
   
   .closebtn:hover {
-    color: black;
+    color: white;
   }
   
   .backbtn{
-    background-color: #f44336;
-    color: white;
-    font-size: 18px;
+    background-color: #D4F1F4;
+    color: #05445E;
+    font-weight: bolder;
+    font-size: 22px;
     position:relative;right:-285px;top:-65px;
-    padding:10px 12px;
+    padding:5px 12px;
     width:50px;
+    border-top-right-radius:8px;
   }
 

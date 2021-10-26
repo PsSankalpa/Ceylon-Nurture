@@ -34,11 +34,11 @@
                     </form>
                     <p class="account"><a href="<?=ROOT?>password_reset">Forgot password?</a></p>    
                     </br>
-                    <p class="account">Don't have an account? <a href="<?=ROOT?>signup">Sign Up</a></p>
+                    <p class="account"><b>Don't have an account?</b> <a href="<?=ROOT?>signup">Sign Up</a></p>
                     </div>
                         <div class="form-img">
                         <button class="backbtn"><a href="<?=ROOT?>home">&times;</button>
-                            <img src="<?=ASSETS?>img/logo.png">
+                            <img src="<?=ASSETS?>img/8.png">
                         </div>
                 </div>
             </div>
