@@ -5,7 +5,7 @@
     <title>Articles Page</title>
     <?php $this->view("header") ?>
 
-    <link rel="stylesheet" href="<?= ASSETS ?>css/common.css">
+    <link rel="stylesheet" href="<?= ASSETS ?>css/commonStyle.css">
     <link rel="stylesheet" href="<?= ASSETS ?>css/articles.css">
 
 </head>

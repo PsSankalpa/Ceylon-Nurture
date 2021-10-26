@@ -111,7 +111,7 @@
     display: block;
   }
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1200px) {
     .top_nav a:not(:first-child), .dropdown .dropbtn {
       display: none;
     }
@@ -148,9 +148,13 @@
       right: 0;
       top: auto;
     }
+
+    #login_logo{
+      display: none;
+    }
   }
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1200px) {
     .top_nav.responsive {position: relative;}
     .top_nav.responsive .icon {
       position: absolute;
