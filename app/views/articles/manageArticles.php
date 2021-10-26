@@ -26,6 +26,7 @@
                         <div class="article-name"><?= $data->articleName ?></div>
                         <div class="viewbtn"><a href="<?= ROOT ?>/articles/articleDetails/<?= $data->articleid ?>"><button class="A-btn">View</button></a></div>
                     </div>
+                    <hr class="a-hr">
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
