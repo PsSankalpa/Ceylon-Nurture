@@ -49,12 +49,32 @@ class admin extends Controller
         
     }
 
+    function viewUser($userid=null){
+
+        $common_user = new common_user();
+        //userid=null
+        //$userid=1;
+        $data=$common_user->findAll();//where('userid',$userid);
+        
+        
+        $row=$common_user->where('userid',$userid);
+        if($row)
+        {
+            $row=$row[0];
+        }
+
+        $this->view("admin/viewUser",[
+            'rows'=>$data,
+            'row'=>$row,
+        ]);
+    }
+
     function addNewUser()
     {
         $errors = array();
         if(count($_POST) > 0)
         {
-            show($POST);
+            //show($POST);
 
             $common_user = new common_user();
             if($common_user->validate($_POST))
@@ -82,12 +102,19 @@ class admin extends Controller
     function updateUser($userid=null)
     {
         $common_user = new common_user();
-        $userid=trim($userid==''); Auth::getUser_id() : $userid;
+        $userid=trim($userid=='') ? Auth::getUser_id() : $userid;
 
         $errors = array();
         if(count($_POST) > 0)
         {
+            //if(trim($_POST['password']) == "")
+            //{
+            //    unset($_POST['password']);
+            //    unset($_POST['password2']);
 
+            //}
+
+            print_r($userid);
             if($common_user->validate($_POST,$userid))
             {
                 
@@ -114,32 +141,27 @@ class admin extends Controller
 		]);
     }
 
-    function deleteUser()
+    function deleteUser($userid=null)
     {
-        $errors = array();
+        $common_user = new common_user();
+
         if(count($_POST) > 0)
         {
-            $common_user = new common_user();
 
-            if($common_user->validate($_POST))
-            {
-                
-                 
-               // $arr['date'] = date("Y-m-d H:i:s");
-
-               
-                $common_user->delete($id);
+                $common_user->delete($userid);
                 $this->redirect('admin/admin');
-            }else
-            {
-                //errors
-               $errors = $common_user->errors;
-            }
+        }
+
+        $row=$common_user->where('userid',$userid);
+        if($row)
+        {
+            $row=$row[0];
         }
 
         $this->view('admin/deleteUser',[
-			'errors'=>$errors,
-		]);
+            'row'=>$row,
+
+        ]);
        
     }
 

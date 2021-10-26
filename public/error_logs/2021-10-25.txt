@@ -1,0 +1,1 @@
+Error: Undefined variable: rows in C:\wamp\www\Grp12\app\views\forums\forum.php at 36

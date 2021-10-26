@@ -14,7 +14,7 @@
     <div class="form">
         <form method="post" class="payform" action="https://sandbox.payhere.lk/pay/checkout">
             <input type="hidden" name="merchant_id" value="1218919"> <!-- Replace your Merchant ID -->
-            <input type="hidden" name="return_url" value="http://localhost/Grp12/public/payments">
+            <input type="hidden" name="return_url" value="http://localhost/Grp12/public/header/makeDonations">
             <input type="hidden" name="cancel_url" value="http://localhost/Grp12/public/landing/home ">
             <input type="hidden" name="notify_url" value="http://sample.com/notify">
                 

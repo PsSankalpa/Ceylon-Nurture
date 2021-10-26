@@ -4,133 +4,177 @@
         <title>
             Home   
         </title>
+        <link rel="stylesheet" href="<?=ASSETS?>css/commonStyle.css">
         <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
+
         <?php $this -> view ("header")?>
     </head>
 
-    <body>
-        <header>
-        <?php if(!empty($data)):?>
-            <?php if($data == "seller"):?>
-                <div class="home_buttons_top">
-                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></a></div>
-                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
-                </div>
+    <body id="body">
+     <main>
+         <div class="page_content">
 
-            <?php elseif($data == "doctor"):?>
-                <div class="home_buttons_top">
-                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
-                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
-                </div>
+<!----------------------------------------------------------------------------------------------> 
+             <section id="showcase">
+                <div class="contentA">
 
-            <?php elseif($data == "patient"):?>
-                <div class="home_buttons_top">
-                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></a></div>
-                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
-                </div>
+                    <div class="inner_content">
+                        <h1 class="h1">Ayurvedha Under One Roof</h1><br>
+                        <p>Online Ayurvedic Platform where you can,</p>
+                        
+                        <ul>
+                            <li>Consult Ayurvedic Doctors</li>
+                            <li>Share Knowledge about Ayrvedic Doctors,Herbs and Products</li>
+                            <li>Find Ayurvedic Products</li>
+                            <li>Read articles about Medicinal Herbs</li>
+                        </ul>
 
-            <?php elseif($data == "doctorAndSeller"):?>
-                <div class="home_buttons_top">
-                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
-                </div>
+                            <div class="inner_content_button">
+                                <button class="button">Sign Up</button>
+                                <button class="button_typeA" >Log In </button>
+                            </div>
+                    </div>
 
-            <?php elseif($data == "doctorAndPatient"):?>
-                <div class="home_buttons_top">
-                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
+                    <div class="inner_content_image">
+                        <img class="landing_image" src="<?=ASSETS?>img/home.jpg">
+                    </div>
                 </div>
+            </section>
 
-            <?php elseif($data == "sellerAndPatient"):?>
-                <div class="home_buttons_top">
-                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></a></div>
+<!----------------------------------------------------------------------------------------------> 
+            <?php if (Auth::logged_in()) : ?>
+            <section id="registration">
+                <div class="contentB">
+                <?php if(!empty($data)):?>
+                    <?php if($data == "doctor"):?>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Doctor</h2><br>
+                        <p>Check your Appointments</p><br>
+                        <a href="<?=ROOT?>appointments"><button class="button_typeB">Appointments</button></a>
+                    </div>
+
+                    <?php elseif($data == "patient"):?>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Patient</h2><br>
+                        <p>Channel a Doctor with us</p><br>
+                        <a href="<?=ROOT?>channeling"><button class="button_typeB">Channeling</button></a>
+                    </div>
+
+                    <?php elseif($data == "seller"):?>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Seller</h2><br>
+                        <p>You can add Products from here</p><br>
+                        <a href="<?= ROOT ?>seller/uploadProduct"><button class="button_typeB">Add Products</button></a>
+                    </div>
+
+                    <?php elseif($data == "doctorAndPatient"):?>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Doctor</h2><br>
+                        <p>Check your Appointments</p><br>
+                        <a href="<?=ROOT?>appointments"><button class="button_typeB">Appointments</button></a>
+                    </div>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Patient</h2><br>
+                        <p>Channel a Doctor with us</p><br>
+                        <a href="<?=ROOT?>channeling"><button class="button_typeB">Channeling</button></a>
+                    </div>
+
+
+                    <?php elseif($data == "doctorAndSeller"):?>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Doctor</h2><br>
+                        <p>Check your Appointments</p><br>
+                        <a href="<?=ROOT?>appointments"><button class="button_typeB">Appointments</button></a>
+                    </div>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Seller</h2><br>
+                        <p>You can add Products from here</p><br>
+                        <a href="<?= ROOT ?>seller/uploadProduct"><button class="button_typeB">Add Products</button></a>
+                    </div>
+
+
+                    <?php elseif($data == "sellerAndPatient"):?>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Patient</h2><br>
+                        <p>Channel a Doctor with us</p><br>
+                        <a href="<?=ROOT?>channeling"><button class="button_typeB">Channeling</button></a>
+                    </div>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Seller</h2><br>
+                        <p>You can add Products from here</p><br>
+                        <a href="<?= ROOT ?>seller/uploadProduct"><button class="button_typeB">Add Products</button></a>
+                    </div>
+
+                    <?php elseif($data == "allUser"):?>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Doctor</h2><br>
+                        <p>Check your Appointments</p><br>
+                        <a href="<?=ROOT?>appointments"><button class="button_typeB">Appointments</button></a>
+                    </div>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Patient</h2><br>
+                        <p>Channel a Doctor with us</p><br>
+                        <a href="<?=ROOT?>channeling"><button class="button_typeB">Channeling</button></a>
+                    </div>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Welcome Seller</h2><br>
+                        <p>You can add Products from here</p><br>
+                        <a href="<?= ROOT ?>seller/uploadProduct"><button class="button_typeB">Add Products</button></a>
+                    </div>
+                    
+                    <?php elseif($data == "none"):?>
+                    <div class="inner_content_card">
+                        <h2 class="h2">Are you a Doctor ?</h2><br>
+                        <p>Your Patients are here with us.</p><br>
+                        <a href="<?=ROOT?>doctor/registration"><button class="button_typeB">Register as a Doctor</button></a>
+                    </div>
+
+
+                    <div class="inner_content_card">
+                        <h2 class="h2">Are you a Patient ?</h2><br>
+                        <p>Every doctor you see on the platform is highly qualified to provide the best care possible.</p><br>
+                        <a href="<?=ROOT?>patient/registration"><button class="button_typeB">Register as a Patient</button></a>
+                    </div>
+
+                    <div class="inner_content_card">
+                        <h2 class="h2">Are you a Seller ?</h2><br>
+                        <p>Expand your customer base with us.</p><br>
+                        <a href="<?=ROOT?>seller/registration"><button class="button_typeB">Register as a Seller</button></a>
+                    </div>
+                    <?php endif;?>
+                    <?php endif;?>
+
+
                 </div>
+            </section>
+            <?php endif; ?>
 
-                <?php endif;?>
-        <?php endif;?>
-        </header>
-        
-    <div class="bg_image_container">
-        <img class="bg_image" src="<?=ASSETS?>img/home.jpg">
-    </div>
-            <div class="body_container">
+<!---------------------------------------------------------------------------------------------->
+            <section id="articles">
+                <div class="contentC">
+
+
+                <a href="<?=ROOT?>docDashboard"><button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button></a>
+
+
+
+                </div>
+            </section>      
+
+<!---------------------------------------------------------------------------------------------->
+            <section id="aboutUs">
+                <div class="contentD">
+
+                    <h2>About Us</h2><br>
+                    <p>We provide our service as an online platform to enhance the Sri Lankan Ayurvedic treatments among people.</p>
                 
-                <hr class="h">
-                <h1 class="h1_home">CEYLON NURTURE</h1>
-                <h5 class="h5_home">Ayurvedha Under One Roof</h5>
-                <hr class="h">
-            
-
-        <?php if(!empty($data)):?>
-            <?php if($data == "seller"):?>
-                <div class="home_buttons">
-                <button class="button_patient"> Add products </button>
                 </div>
+            </section>
 
-            <?php elseif($data == "doctor"):?>
-                <div class="home_buttons">
-                <a href="<?=ROOT?>docDashboard"><button class="button_patient"> Appointments </button>
-                </div>
+<!---------------------------------------------------------------------------------------------->
+         </div>
 
-                <?php elseif($data == "patient"):?>
-
-                <div class="home_buttons">
-                <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button></a>
-                </div>
-
-            <?php elseif($data == "doctorAndSeller"):?>
-
-                <div class="home_buttons">
-                <a href="<?=ROOT?>docDashboard"><button class="button_patient"> Appointments </button>
-                <button class="button_patient"> Add products </button>
-                </div>
-
-            <?php elseif($data == "doctorAndPatient"):?>
-
-                <div class="home_buttons">
-
-                <a href="<?=ROOT?>docDashboard"><button class="button_patient"> Appointments </button>
-                <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button></a>
-
-                </div>
-
-            <?php elseif($data == "sellerAndPatient"):?>
-
-                <div class="home_buttons">
-                <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button></a>
-                <button class="button_patient"> Add products </button>
-                </div>
-
-            <?php elseif($data == "allUser"):?>
-
-                <div class="home_buttons">
-
-
-                <a href="<?=ROOT?>docDashboard"><button class="button_patient"> Appointments </button>
-                <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button></a>
-
-                <button class="button_patient"> Add products </button>
-                </div>
-
-
-            <?php elseif($data == "none"):?>
-
-                <div class="home_buttons">
-                    <div class="itembox2">
-                        <div><p>Are You a Doctor? </p></div>
-                        <div><a href="<?=ROOT?>doctor/registration"><button class="home_button" >Register as a Doctor</button></a></div>
-                    </div>
-                    <div class="itembox2">
-                        <div><p>Are You a Patient? </p></div>
-                        <div><a href="<?=ROOT?>patient/registration"> <button class = "home_button">Register as a patient</button></a></div>
-                    </div>
-                    <div class="itembox2">
-                        <div><p>Are You a Seller? </p></div>
-                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button">Register as a Seller</button></a></div>
-                    </div>
-                </div>
-            <?php endif;?>
-
-            <?php endif;?>
-            </div>
+     </main> 
     </body>
 </html>
-

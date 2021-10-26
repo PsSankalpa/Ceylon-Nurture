@@ -13,6 +13,7 @@ class admin extends Model
 		'password',
     ];
 
+	  protected $pk = "adminid";
     
 }
    

@@ -9,13 +9,24 @@ class landing extends Controller
          //  $this->redirect();
 
       // }
-      $this->view('landing',[
+      if(Auth::logged_in()){
+      $Auth = new Auth;
+          $data = $Auth->finduser();
+           
+          
+          $this->view('home',[
+			    'data'=>$data,
+        ]);
+      }
+      else{
+        $this->view('home');
+      }      
     
-      ]);
+     
 
     }
 
-    function home()
+    /*function home()
     {
       
         if(!Auth::logged_in())
@@ -35,7 +46,7 @@ class landing extends Controller
         function findUser()
         {
 
-        }
+        }*/
 
 }
 ?>

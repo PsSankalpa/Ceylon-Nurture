@@ -4,75 +4,94 @@
   <meta charset="UTF-8">
   <title>
             <?php $this -> view ("header")?>
-            <link rel="stylesheet" href="<?=ASSETS?>css/booking.css">
+            <link rel="stylesheet" href="<?=ASSETS?>css/booking1.css">
+            <link rel="stylesheet" href="<?=ASSETS?>css/channeling1.css">
+
         </title>
 
 </head>
-<body>
-    <main>
-        <div class="bg_image_container">
-            <img class="bg_image" src="<?=ASSETS?>img/channeling.jpg">
-        </div>
+<body class="regi">
 
-        <div class="channeling_search">
-            <h1>Ayurveda Doctors</h1>
-            <form class="search_form">
-                <div class=row>
-                    <div><label for="doctor_name">Name of the Doctor:</label></div>
-                    <div><input type="text" id="doctor_name" name="doctor_name" placeholder="Enter Doctor's Name" > </div>
-                </div>
+        <div class="container center_booking">
+            <h1>Channel a Doctor</h1>
 
-                <div class=row>
-                    <div><label for="specialized_category">Specialized Category</label></div>
-                    <div><select id="specialized_category" name="specialized_category">
-                        <option value ="b">b</option>
-                        <option value selected="a">a</option>
-                    </select></div>
-                </div>
-                <div class=row>
-                    <div><label for="hospital">Hospital</label></div>
-                    <div><select id="hospital" name="hospital">
-                        <option value ="b">b</option>
-                        <option value ="a">a</option >
-                    </select></div>
-                </div>
-                <div class=row>
-                    <div><label for="date">Date</label></div>
-                    <div><input type="date" id="date" name="date" ></div>
-                </div>
+            <form class="regi_form" enctype="multipart/form-data" method="POST">
 
-                <div>
-                <input type="submit"  value="search">
-                </div>
-            </form>
-                <form class=scheduling_form>
+            <div class="row">
+            <div class="col-25">
+                <label for="name">Name of the Doctor</label>
+            </div>
 
-                
-                <div class="item1">
-                <div class="doc_image_container"><img class="doctor_image" src="<?=ASSETS?>img/doctor1.jpg"></div>
-                <div class="doc_details_container"><h2>Dr.Thush Perera</h2><br><h4>Hospital:<br>Speciality:</h4></div>
-                <div class="button_container"><button class="book_now"><a href="<?=ROOT?>booking/payment">Book Now</a></button></div>
-                </div>
-                <hr class="h1">
+            <div class="col-75">
+                <input type="text" value="<?=get_var('name')?>" id="name" name="name" placeholder="Name of the Doctor">
+            </div>
+            </div>
 
-                <div class="item1">
-                <div class="doc_image_container"><img class="doctor_image" src="<?=ASSETS?>img/doctor1.jpg"></div>
-                <div class="doc_details_container"><h2>Dr.Thush Perera</h2><br><h4>Hospital:<br>Speciality:</h4></div>
-                <div class="button_container"><button class="book_now">Book Now</button></div>
-                </div>
+            <div class="row">
+            <div class="col-25">
+                <label for="speciality">Speciality</label>
+            </div>
 
-               
+            <div class="col-75">
+            <select name="speciality">
+                <option>--Select Speciality--</option>
+                        <option>Ayurvedha Panchakrama Prathikara</option>
+                        <option>General Physician</option>
+                </select>
+            </div>
+            </div>
 
-               
+            <div class="row">
+            <div class="col-25">
+                <label for="hospital">Hospital</label>
+            </div>
+
+            <div class="col-75">
+            <select name="hospital">
+                <option>--Select Hospital--</option>
+                        <option>Arogya Hospital</option>
+                        <option>Osu Sewana</option>
+                </select>
+            </div>
+            </div>
 
 
+            <div class="row">
+            <div class="col-25">
+                <label for="date">Date</label>
+            </div>
+            <div class="col-75">
+            <input type="date" id="date" name="date" >
+            </div>
+            </div>
+            <br>
+            <div class="row">
+            <a href="<?=ROOT?>booking"><input type="submit" value="Search"></a>
+            </div>
+        </form>             
 
-            </form>
+        <hr>
+        <?php foreach ($rows as $row):?>
+
+        <form class=scheduling_form enctype="multipart/form-data">
 
    
-            </form>
+            <div class="item1">
+            <div class="doc_image_container"><img class="doctor_image" src="<?=ASSETS?>img/doctor.jpg"></div>
+
+            <div class="doc_details_container"><h2><?=$row->nameWithInitials?> </h2><br>
+            <h4>Hospital:<?=$row->hospital?> <br>Speciality:<?=$row->specialities?> </h4></div>
+
+            <div class="button_container"><button class="book_now"><a href="<?=ROOT?>booking/payment">Book Now</a></button></div>
+            </div>
+            <hr class="h1">
+            <?php endforeach;?>
+
+        </form>
+
+
+   
         </div>
-    </main>
 
 
 </body>

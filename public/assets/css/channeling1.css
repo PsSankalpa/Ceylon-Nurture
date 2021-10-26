@@ -1,0 +1,216 @@
+
+
+h1{
+    color:#2cc92c;
+}
+
+/* Style the container */
+.container {
+  top: 50%;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.849);
+  z-index: 8;
+  width: 80%;
+  transition: 0.3s;
+  display: flex;
+  flex-direction:column;
+  gap:20px;
+}
+.center {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, 30%);
+}
+
+.center_channeling{
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, 30%);
+}
+.center_booking{
+  position: absolute;
+  top:0;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, 0%);
+}
+
+.center_errorpage {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, 30%);
+  align-items: center;
+  padding: 50px;
+}
+
+.errorpage_body{
+  color:chartreuse;
+  font-weight: bold;
+  text-align: center;
+}
+
+.errorpage_button{
+  background-color:rgb(153, 13, 13);
+  border-radius: 100px;
+  align-self: center;
+  text-align: center;
+  width:150px;
+  height:50px;
+  border:none;
+  margin-top: 50px;
+  color:white;
+}
+ 
+.errorpage_button:hover{
+  background-color: rgb(197, 13, 13);
+  border:2px solid white;
+}
+
+.alertwarning{
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  background-color: #f44336;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+/* Style inputs, select elements and textareas */
+input[type=text],input[type=date] ,select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgb(170, 166, 166);
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-bottom: 1%;
+  background-color: rgba(128, 128, 128, 0.753);
+  color:black;
+}
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+/* Style the submit and cancel button */
+
+input[type=submit],input[type=reset]  {
+  background-color: #228B22;
+  color: white;
+  padding:20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  width: 10%;
+}
+
+input[type=reset],input[type=submit]{
+  width:100px;
+  height:40px;
+  font-size: 18px;
+  border-radius: 100px;
+  padding-block: 2px;
+  
+
+}
+input[type=reset] {
+  background-color: rgb(170, 60, 82);
+  margin-right: 1%;
+  
+}
+
+/*for grid of the container*/
+.grid-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.grid-container > h2 {
+  text-align: center;
+}
+
+.grid-container p{
+  color:#A7D129;
+  text-align: justify;
+}
+
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+} 
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit],input[type=reset],input[type=file]{
+    width: 100%;
+    margin-top: 1%;
+    float:left
+  }
+
+  .center_channeling{
+    top:0;
+  }
+  .center_booking{
+    top:0;
+  }
+  
+  .center_errorpage {
+    top: 150px;
+  }
+ 
+}
+ 

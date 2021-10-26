@@ -1,0 +1,2 @@
+
+Error: Undefined variable: row in C:\wamp\www\Grp12\app\views\commonUser\productsView.php at 23

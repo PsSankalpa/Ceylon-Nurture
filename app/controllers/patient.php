@@ -22,9 +22,6 @@ class patient extends Controller
             {
                 global $des;
                 $arr['userid'] = Auth::userid();
-                $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
-                $arr['gender'] = htmlspecialchars($_POST['gender']);
-                $arr['DOB'] = htmlspecialchars($_POST['DOB']);
                 $arr['nic'] = htmlspecialchars($_POST['nic']);
                 $arr['image'] = $des;
              
