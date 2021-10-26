@@ -20,14 +20,14 @@
                 
             <h2 class="h2p txt-col1">Item Details</h2><br>
             <div class="p-details row">
-                <label for="paymentType" class="col-3"><h3 class="txt-col1">Paymen Type</h3></label><br>
+                <label for="paymentType" class="col-3"><h3 class="txt-col1">Payment Type</h3></label><br>
                 <input type="hidden" name="order_id" value="ItemNo12345">
                 <input type="text" class="col-3 p-in" name="items" value="Donations"><br>
                 <input type="text" class="col-3 p-in" name="currency" value="LKR">
                 <input type="text" class="col-3 p-in" name="amount">
             </div>
             <div class="user-detail row">
-                <br><br><h3 class="txt-col1">Customer Detail</h3><br>
+                <br><br><h3 class="txt-col1">Customer Details</h3><br>
                 <div class="row2">
                     <input type="text" name="first_name" class="col-3 p-in" value="<?= get_var('first_name', $data->fname) ?>">
                     <input type="text" name="last_name" class="col-3 p-in" value="<?= get_var('last_name', $data->lname) ?>">

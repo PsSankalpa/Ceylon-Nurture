@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<!--<html>
     <head>
         <title>Ceylon Nurture|Doctor|Account Details</title>
         <?php $this -> view ("header",$data)?>
@@ -14,8 +14,7 @@
             <img src="<?=ASSETS?>img/avatar.png" alt="Person" class="pro-pic" width="200" height="100">
             <?php if($rows):?>
                     <h4><?=$rows->nameWithInitials?> </h4>
-            <?php foreach ($rows as $row):?>
-            
+                     
         <a class="active" href="<?=ROOT?>profile/myAccount"><i class="fa fa-fw fa-home"></i>  My Account</a>
         <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>  Schedule</a>
         <a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>  Feedback</a>
@@ -96,8 +95,7 @@
                         <div class="col-75">
                                 <img src="<?=ASSETS2.$rows->image?>" class="certificate">
                         </div>
-                    </div>
-                    <?php endforeach;?>
+                    </div>                 
                     <?php endif;?>
                 </form>
                 <div class="row">
@@ -112,4 +110,4 @@
         </div>
     </div>
     </body>
-</html>
+</html>-->

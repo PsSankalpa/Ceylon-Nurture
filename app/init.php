@@ -10,6 +10,8 @@ require "../app/core/controller.php";
 require "../app/core/app.php";
 
 
+
+
 //from below function it search for the relevant model file which called by relevant controller file 
 spl_autoload_register(function($class_name)
 {

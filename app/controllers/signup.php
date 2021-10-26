@@ -11,11 +11,9 @@ class signup extends Controller
 
             if($common_user->validate($_POST))
             {
-                
-                 
+    
                // $arr['date'] = date("Y-m-d H:i:s");
-
-               
+                
                 $common_user->insert($_POST);
                 $this->redirect('login');
             }else

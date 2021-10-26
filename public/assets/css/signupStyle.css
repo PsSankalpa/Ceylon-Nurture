@@ -5,11 +5,8 @@
 }
 body{
     margin:0;
-    padding:0;
     background: url("../img/Ayur_1.jpg");
-    background-size:130%;
-    padding:30px;
-    background-position:center;
+    background-size: cover;
     font-family:sans-serif;
 }
 
@@ -24,7 +21,6 @@ h2{
 
 .Signup-form{
     width:850px;
-    height:750px;
     background:#ffff; /*linear-gradient(rgba(73, 72, 72, 0.8), rgba(73, 72, 72,0.8));*/
     top:60%;
     left:50%;
@@ -61,7 +57,7 @@ input, select{
     background:#979090;
 }
 
-.btn{
+.submitbtn{
     font-size:18px;
     color:#ffff;
     width:50%;
@@ -72,7 +68,7 @@ input, select{
     transition:0.3s ease;
     position:relative;left:180px;
 }
-.btn:hover{
+.submitbtn:hover{
     background:#40d840
 }
 
@@ -115,6 +111,44 @@ input, select{
     color:rgb(21, 59, 129);
     text-decoration: none;
 }
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    input, select{
+      width: 100%;
+      margin-top: 1%;
+      float:left
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .Signup-form{
+      width: 100%;
+      margin-top: 1%;
+      height:auto;
+
+    }
+  }
+  @media screen and (max-width: 600px) {
+    body{
+      width: 100%;
+      height:200%;
+      margin-top: 1%;
+      float:left
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .btn{
+      width: 100%;
+      margin-top: 1%;
+      position:relative;right:150px;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .backbtn{
+      width: 10%;
+      margin-top: 1%;
+      position:relative;right:-370px;top:-790px;
+    }
+  }
 
 
 
