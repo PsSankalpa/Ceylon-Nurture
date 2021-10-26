@@ -61,14 +61,15 @@ class login extends Controller
 
         $this->view("login/forgotPassword"); //in here put the relevent page name and the path
     }
-
-    function resetPassword()
+   /* function resetPassword()
     {
       
-        $common_user = new common_user();
+        //S$common_user = new common_user();
+        //$resetPassword = new resetPassword();
 
         $this->view("login/resetPassword"); //in here put the relevent page name and the path
-    }
+    }*/
+ 
 
     function otpCodeSent()
     {
@@ -78,12 +79,12 @@ class login extends Controller
         $this->view("login/otpCodeSent"); //in here put the relevent page name and the path
     }
 
-    function otpVerification()
+    function changePassword()
     {
       
         $common_user = new common_user();
 
-        $this->view("login/otpVerification"); //in here put the relevent page name and the path
+        $this->view("login/changePassword"); //in here put the relevent page name and the path
     }
 
 

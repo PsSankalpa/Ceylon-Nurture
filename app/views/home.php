@@ -67,7 +67,7 @@
 
             <?php elseif($data == "doctor"):?>
                 <div class="home_buttons">
-                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>docDashboard"><button class="button_patient"> Appointments </button>
                 </div>
 
                 <?php elseif($data == "patient"):?>
@@ -79,7 +79,7 @@
             <?php elseif($data == "doctorAndSeller"):?>
 
                 <div class="home_buttons">
-                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>docDashboard"><button class="button_patient"> Appointments </button>
                 <button class="button_patient"> Add products </button>
                 </div>
 
@@ -87,7 +87,7 @@
 
                 <div class="home_buttons">
 
-                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>docDashboard"><button class="button_patient"> Appointments </button>
                 <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button></a>
 
                 </div>
@@ -104,7 +104,7 @@
                 <div class="home_buttons">
 
 
-                <a href="<?=ROOT?>appointments"><button class="button_patient"> Appointments </button>
+                <a href="<?=ROOT?>docDashboard"><button class="button_patient"> Appointments </button>
                 <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button></a>
 
                 <button class="button_patient"> Add products </button>

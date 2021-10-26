@@ -2,13 +2,9 @@
 <html>
     <head>
         <title>Ceylon Nurture|SignUp Page</title>
-        
+        <meta name="viewport" content="width=device-width; initial-scale=1.0;">
         <link rel="stylesheet" href="<?=ASSETS?>css/signupStyle.css">
     </head>
-    
-   <!-- <?php
-    print_r($errors)
-    ?>-->
 
     <body>
         <div class ="Signup-form">
@@ -41,7 +37,7 @@
                     <input  type="tel" value="<?=get_var('tpNumber')?>" name="tpNumber" placeholder="Telephone Number" > 
                     <input type="password" value="<?=get_var('password')?>" name="password" placeholder="Password"  > 
                     <input type="password" value="<?=get_var('password2')?>" name="password2" placeholder="Re-type Password"  > 
-                    <button class="btn">Submit</button>
+                    <button class="submitbtn">Submit</button>
                     <button class="backbtn"><a href="<?=ROOT?>home">&times;</button>
                 </form>
                     </div>

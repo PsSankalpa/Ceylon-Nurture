@@ -32,7 +32,7 @@
                         <button class="btn" type="submit">Log In</button>
 
                     </form>
-                    <p class="account"><a href="<?=ROOT?>login/forgotPassword">Forgot password?</a></p>    
+                    <p class="account"><a href="<?=ROOT?>password_reset">Forgot password?</a></p>    
                     </br>
                     <p class="account">Don't have an account? <a href="<?=ROOT?>signup">Sign Up</a></p>
                     </div>

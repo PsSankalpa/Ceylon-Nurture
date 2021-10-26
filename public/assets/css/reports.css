@@ -171,6 +171,7 @@ label{
   margin-top: 15px;
   position:relative;right:-100px;
   }
+  
   /*Making the page mobile responsive*/
 @media screen and (max-width: 700px) {
   .sidebar {

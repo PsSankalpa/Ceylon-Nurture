@@ -5,6 +5,7 @@ body {
   background-size: cover;
 }
 .container1 {
+  margin-top: 20%;
   border-radius: 5px;
   background-color: #c0bebeec;
   padding: 10px 10px;
