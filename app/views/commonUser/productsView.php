@@ -16,16 +16,32 @@
     //print_r($data['rows']);
     ?>
 
-    <div class="slider-frame">
-        <div class="slide-images">
-            <div class="img-container">
-                <img src="<?=ASSETS?>img/slide1.png" alt="img 1">
+    <div class="top-container">
+
+        <div class="slide-show">
+            <div class="slider-frame">
+                <div class="slide-images">
+                    <div class="img-container">
+                        <img src="<?= ASSETS ?>img/slide1.png" alt="img 1">
+                    </div>
+                    <div class="img-container">
+                        <img src="<?= ASSETS ?>img/slide2.jpg" alt="img 2">
+                    </div>
+                    <div class="img-container">
+                        <img src="<?= ASSETS ?>img/1.jpg" alt="img 3">
+                    </div>
+                </div>
             </div>
-            <div class="img-container">
-                <img src="<?=ASSETS?>img/slide2.jpg" alt="img 1">
+        </div>
+
+        <div class="product-btns">
+            <div id="img-p"  class="pro-btn c-btns">
+                <div class="img-s"><img src="<?= ASSETS ?>img/pro-btn.jpg" alt="img 1"></div>
+                <button id="btns-p">Products</button>
             </div>
-            <div class="img-container">
-                <img src="<?=ASSETS?>img/slide3.jpg" alt="img 1">
+            <div id="img-p" class="herb-btn c-btns">
+                <div class="img-s"><img  src="<?= ASSETS ?>img/herb-btn.jpg" alt="img 2"></div>
+                <button id="btns-p">Herbs</button>
             </div>
         </div>
     </div>
@@ -36,7 +52,7 @@
                 <?php foreach ($rows as $row) : ?>
                     <div class="cardcolumn">
                         <div class="card">
-                            <img src="<?= ASSETS2 . $row->image ?> ">
+                            <div class="img-content"><img src="<?= ASSETS2 . $row->image ?> "></div>
                             <div class="card-content">
                                 <h3><?= $row->productName ?> </h3>
                                 <p><?= "RS." . $row->productPrice ?> </p>
