@@ -1,103 +1,89 @@
 *{
-    padding:0;
-    margin:0;
     box-sizing: border-box;
+    background-size: cover;
 }
 body{
-    margin:0;
-    background: url("../img/Ayur_1.jpg");
+    background: url("../img/7.jpg");
+    background-size:100%;
     background-size: cover;
-    font-family:sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height:1.5;
 }
 
 h2{
-    font-family:'Raleway';
     font-size: 40px;
-    color:#14af14;
+    color:#05445E;
     text-align:center;
-    margin-top:3px;
  
 }
-
 .Signup-form{
+    background-color:#D4F1F4;
     width:850px;
-    background:#ffff; /*linear-gradient(rgba(73, 72, 72, 0.8), rgba(73, 72, 72,0.8));*/
-    top:60%;
-    left:50%;
-    position:absolute;
-    transform:translate(-50%,-60%);
+    margin-left: 18%;
+    justify-content: center;
+    align-items:center;
     border-radius: 6%;
-    position:relative;top:500px;
-    
-    
-}
-.Signup-form .main{
-    position:relative;top:-100px;
-    display:flex;
-    margin:05px 0;
 }
 .container{
     max-width:800px;
-    margin:0 auto;
-    position:relative;top:100px;
+    margin:auto;
 }
-
-
 input, select{
     margin-bottom:15px;
     font-stretch:16px;
     text-align:left;
     padding:14px 20px;
     width:100%;
-    background:#b6b4b4;
+    background:#05435e6b;
+    border: 2px solid #05445E;
     border-radius:50px;
 
 }
-.Signup-form input:focus{
-    background:#979090;
+.Signup-form input:focus,select:focus{
+  background:#D4F1F4;
+  border:solid rgb(156, 156, 156);
 }
 
 .submitbtn{
     font-size:18px;
-    color:#ffff;
-    width:50%;
-    background:#228B22;
+    font-weight: bold;
+    color:#05445E;
+    width:100%;
+    background-color:#75E6DA;
     border-radius:50px;
     padding:14px 15px;
-    font-weight:500;
     transition:0.3s ease;
-    position:relative;left:180px;
 }
 .submitbtn:hover{
-    background:#40d840
+  background-color: white;
+  transition:0.5s ease;
 }
 
 .alertwarning{
-    padding: 20px;
-    background-color: #f44336;
-    color: white;
-    opacity: 1;
-    transition: opacity 0.6s;
-    margin-bottom: 15px;
-  }
-  
-  .closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    background-color: #f44336;
-    transition: 0.3s;
-    width:25%;
-  }
+  padding: 20px;
+  background-color:#05445E;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  float: right;
+  font-size: 22px;
+  line-height: 10px;
+  cursor: pointer;
+  background-color: #05445E;
+  transition: 0.3s;
+  width:25%;
+}
 .backbtn{
-    background-color: #df1c0e;
-    color: white;
+    color: #05445E;
+    background-color: #D4F1F4;
     font-size: 18px;
-    position:relative;right:-620px;top:-750px;
+
     padding:10px 12px;
     width:50px;
     border-radius: 20%;
@@ -122,31 +108,27 @@ input, select{
   @media screen and (max-width: 600px) {
     .Signup-form{
       width: 100%;
-      margin-top: 1%;
       height:auto;
-
+      margin-left: 0%;
     }
   }
   @media screen and (max-width: 600px) {
     body{
       width: 100%;
-      height:200%;
-      margin-top: 1%;
-      float:left
+      height:auto;
+      padding:1%;
     }
   }
-  @media screen and (max-width: 1000px) {
-    .btn{
+  @media screen and (max-width: 600px) {
+    .submitbtn{
       width: 100%;
-      margin-top: 1%;
-      position:relative;right:150px;
     }
   }
   @media screen and (max-width: 600px) {
     .backbtn{
-      width: 10%;
+      width: -50%;
       margin-top: 1%;
-      position:relative;right:-370px;top:-790px;
+
     }
   }
 
