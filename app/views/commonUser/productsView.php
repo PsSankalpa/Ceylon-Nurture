@@ -28,7 +28,7 @@
                         <img src="<?= ASSETS ?>img/slide2.jpg" alt="img 2">
                     </div>
                     <div class="img-container">
-                        <img src="<?= ASSETS ?>img/1.jpg" alt="img 3">
+                        <img src="<?= ASSETS ?>img/5.jpg" alt="img 3">
                     </div>
                 </div>
             </div>
@@ -71,6 +71,10 @@
         </div>
     </div>
 
+    <!--footer-->
+    <?php $this->view("footer") ?>
+    <!--end of footer-->
+    
     <script type="text/javascript" src="<?= ASSETS ?>js/sellerJs.js"></script>
 
 </body>

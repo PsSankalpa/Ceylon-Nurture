@@ -14,6 +14,10 @@
   padding-top: 2.5rem;
 }
 
+.h1{
+  color: #05445E;
+}
+
 .welcome{
   font-size: 20px;
   color:#3ecfe9;
@@ -32,12 +36,20 @@
   gap:0.2rem;
   padding:20px 10px;
   text-align: center;
+  height: 40%;
 }
 
 .inner_content_image{
   width:65%;
 }
 
+.top-video {
+  max-width: 100%;
+  width: 65%;
+  height: auto;
+  margin: 3rem auto;
+  margin-left: 25%;
+}
 
 li{
   text-align: left;
@@ -97,6 +109,11 @@ li{
     width:100%;
   }
 
+  .top-video {
+    margin: 1rem auto;
+    width: 100%;
+  }
+
   li{
     margin-left: 12%;
   }
@@ -123,6 +140,58 @@ li{
     padding:1rem;
   }
 }
+/*-------------------------------------------------------------------*/
+/*for contact us form*/
+
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.container {
+  border-radius: 5px;
+  padding: 10px;
+  margin: auto;
+  background-image: url(../img/contact-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 4rem;
+}
+
+@-webkit-keyframes logo_animation{
+  0%{left:0rem; right:0rem;}
+  25%{left:2rem; right:0rem;}
+  50%{left:2rem; right:0rem;}
+  75%{left:0rem; right:3rem;}
+  100%{left:0rem; right:2rem;}
+}
+
+.cont-img{
+  position: relative;
+  -webkit-animation-name: logo_animation;
+  -webkit-animation-duration: 8s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-play-state: running;
+}
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+/*-------------------------------------------------------------------*/
+/*end of the contact form*/
 
 @media screen and (max-width: 1200px)
 {
