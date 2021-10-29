@@ -2,12 +2,13 @@
     padding:0;
     margin:0;
     box-sizing: border-box;
-    background-size: cover;
     overflow: hidden;
+    background-size: cover;
 }
 body{
     font-family: Arial, Helvetica, sans-serif;
     line-height:1.5;
+    background-size:50%;
 }
 h2{
     font-size: 4em;
@@ -15,25 +16,28 @@ h2{
     text-align:center;
 }
 .Login-form{
-    background-image: url("../img/6.jpg");
-    background-size:100%;
-    padding:30px;
+    background-image: url("../img/qq.jpg");
+    min-height:100vh;
+    z-index:0;
+    padding:40px;
+    display:grid;
     justify-content: center;
+    grid-template-rows: 1fr auto 1fr;
     align-items:center;
 }
 .container{
-   margin:auto;
-    height:auto;
+   margin:0 auto;
     max-width:800px;
 }
 
 .Login-form .main{
+    position:relative;
     display:flex;
-    margin:0 0;
+    margin:30px 0;
 }
 .content{
     flex-basis:50%;
-    padding:3em 3em;
+    padding:2em 2em;
     background:#D4F1F4;
     box-shadow:2px 9px 49px -17p;
     border-top-left-radius:8px;
@@ -41,18 +45,16 @@ h2{
 }
 .form-img{
     flex-basis:50%;
-    padding:8%;
     background:#D4F1F4;
     background-size:cover;
     border-top-right-radius:8px;
     border-bottom-right-radius:8px;
     align-items:center;
+    display:grid;
 
 }
 .form-img img{
-    width:150%;
-    height:100%;
-    transform:translate(-15%, -10%);
+    max-width:100%;
 }
 .account{
     color:rgb(10, 10, 10);
@@ -78,7 +80,7 @@ a:visited{
     width:100%;
     display:inline-block;
     box-sizing:border-box;
-    background:#05435e6b;
+    background:#05435e44;
     border: 2px solid #05445E;
     transition:0.3s ease;
     border-radius:50px;
@@ -132,9 +134,25 @@ a:visited{
     color: #05445E;
     font-weight: bolder;
     font-size: 22px;
-    position:relative;right:-285px;top:-65px;
+    position:relative;right:-350px;top:-10px;
     padding:5px 12px;
     width:50px;
     border-top-right-radius:8px;
+  }
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 736px) {
+    .Login-form .main{
+      flex-direction: column;
+    }
+    .form-img, .form-img{
+       display:none;
+    }
+    .content{
+        padding:3em 2em;
+        border-radius:0;
+        border-radius: 8px;
+      
+
+    }
   }
 

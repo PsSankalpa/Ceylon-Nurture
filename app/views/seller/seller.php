@@ -6,6 +6,7 @@
     <?php $this->view("header") ?>
 
     <link rel="stylesheet" href="<?= ASSETS ?>css/common.css">
+    <link rel="stylesheet" href="<?= ASSETS ?>css/commonStyle.css">
     <link rel="stylesheet" href="<?= ASSETS ?>css/sellers.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -18,7 +19,39 @@
     ?>
 
     <div class="upperpart">
-        <div class="buttons_section mg1 btn-group center">
+
+        <div class="name-section">
+            <div class="seller-name">
+                <div class="name1">
+                    <?php if($data3):?>
+                        <h1 class="s-name1">Hello <?= $data3[0]->nameWithInitials ?></h1>
+                    <?php else:?>
+                        <h1 class="s-name1">Not Registered YSet</h1>
+                    <?php endif;?>
+                </div>
+                <div class="img-seller1">
+                    <img class="seller-img" src="<?= ASSETS ?>img/seller2-.png" alt="seller">
+                </div>
+            </div>
+        </div>
+        <div class="stat-section">
+            <div class="stats">
+                <div class="p-count con">
+                    <h2 class="count">Product Count</h2>
+                    <h2 class="pcount"><?= $data4?></h2>
+                </div>
+                <div class="h-count con">
+                    <h2 class="count">Herbs Count</h2>
+                    <h2 class="pcount"><?= $data5?></h2>
+                </div>
+                <div class="summary con">
+                    <h2 class="count">Summary</h2>
+                    <h2 class="pcount"><?= $data6?></h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons_section mg1 btn-group center2">
             <?php if ((!$data2 == "seller") || (!$data2 == "doctorAndSeller") || (!$data2 == "sellerAndPatient") || (!$data2 == "allUser")) : ?>
                 <a href="<?= ROOT ?>seller/registration"><button class="">Register</button></a>
             <?php endif; ?>
@@ -61,6 +94,9 @@
         </div>
     </div>
 
+    <!--footer-->
+    <?php $this->view("footer") ?>
+    <!--end of footer-->
     <script type="text/javascript" src="<?= ASSETS ?>js/sellerJs.js"></script>
 
 </body>

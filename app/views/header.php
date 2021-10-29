@@ -55,7 +55,7 @@
                 <a class="a_navitem2 items" href="<?= ROOT ?>header/viewArticles">ARTICLES</a>
                 <?php if(($data == "doctor") || ($data == "doctorAndSeller") || ($data == "doctorAndPatient") || ($data == "allUser")):?>
                 <div class="v"></div>
-                <a class="a_navitem2 items" href="<?= ROOT ?>appointments">APPOINTMENTS</a>
+                <a class="a_navitem2 items" href="<?= ROOT ?>doctor/docDashboard">APPOINTMENTS</a>
                 <?php endif;?>
                 <div class="v"></div>
                 <a class="a_navitem2 items" href="<?= ROOT ?>forum">FORUMS</a>
@@ -80,7 +80,6 @@
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
-                        <a href="#">Dashboard</a>
                         <a href="<?=ROOT?>myAccount/index>">My Account</a>
                         <a href="<?= ROOT ?>logout">Log Out</a>
                     </div>

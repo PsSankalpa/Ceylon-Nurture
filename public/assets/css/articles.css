@@ -20,7 +20,7 @@
   cursor: pointer;
   margin: 1rem;
   align-items: center;
-  z-index: 4;
+
 }
 .access-buttons button{
   border: none;
@@ -35,6 +35,7 @@
   font-size: 18px;
   width: 100%;
   border-radius: 10px;
+  border: 2px solid #D4F1F4;
 }
 .access-buttons a{
   margin: 1rem;
@@ -54,14 +55,15 @@
 }
 
 section{
-    background-color:#D4F1F4;
+    background-color:#07616b;
     width: 98%;
 		margin: auto;
 		display: flex;
 		align-items: center;
 		overflow-x: auto;
     margin-top: 10%;
-    margin-bottom: 2%;
+    margin-bottom: 6%;
+    padding: 1rem;
 }
 section::-webkit-scrollbar{
   display: none;
@@ -85,8 +87,13 @@ section::-webkit-scrollbar{
     margin-bottom: 1rem;
     color: #1894B4;
     border-radius: 10px;
-    border:3px solid #189AB4;;
+    border:3px solid #189AB4;
+    transition: transform .2s; /* Animation */
   }
+  .article-card:hover{
+    transform: scale(1.05);
+  }
+
   .article-card p{
     text-align: center;
     margin: 0.5rem;
@@ -134,7 +141,7 @@ section::-webkit-scrollbar{
 .prev, .next {
     cursor: pointer;
     position: absolute;
-    top: 75%;
+    top: 80%;
     width: auto;
     padding: 16px;
     margin-top: -22px;
@@ -162,10 +169,10 @@ section::-webkit-scrollbar{
     }
     section{
       margin-top: 15%;
-      margin-bottom: 2rem;
+      margin-bottom: 5rem;
     }
     .prev,.next{
-      top: 60%;
+      top: 80%;
     }
     .article-card picture{
       height: 25rem;
@@ -217,6 +224,7 @@ section::-webkit-scrollbar{
 .article-details{
   display: flex;
   flex-direction:column;
+  width: 100%;
 }
 .editbtn,.deletebtn{
   margin: 1rem;
@@ -359,19 +367,24 @@ section::-webkit-scrollbar{
 /*--------------------------------------------------------------------------------------*/
 /*manage articles*/
 .m-articles{
-  background:#05445E;
+  background:#1894B4;
   margin: 5% auto;
   padding: 10px;
 }
 
 .tabcontent{
-  color:#1894B4;
+  color:#75E6DA;
   font-weight: bold;
   font-size: 1.5rem;
 }
 
 .articles-row{
   padding: 10px;
+  transition: 0.4s;
+}
+
+.articles-row:hover{
+  background: #05445E;
 }
 
 .a-hr{

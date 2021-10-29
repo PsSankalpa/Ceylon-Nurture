@@ -62,7 +62,7 @@
 }
 
 .txt-col1{
-    color:#F4C931;
+    color:#05445E;
 }
 .txt-col2{
     color:  #4C673B;
@@ -77,14 +77,15 @@
     background-color:#4C673B ;
 }
 .bg-col3{
-    background-color:crimson ;
+    background-color:#D4F1F4 ;
 }
 .bg-col4{
-    background-color:green ;
+    background-color:#75E6DA;
 }
 
 .btn1{
-    background-color: green;
+    background-color: #75E6DA;
+    color: #05445E;
     width: 30%;
     border-style: none;
     padding: 0.4rem;
@@ -122,6 +123,6 @@
 }
 
 .bg-col5{
-    background-color: #e3f5f8;;
+    background-color: #e3f5f8;
 }
 

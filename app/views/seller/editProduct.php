@@ -83,6 +83,10 @@
         <?php endif;?>
     </div>
 
+    <!--footer-->
+    <?php $this->view("footer") ?>
+    <!--end of footer-->
+
     <script type="text/javascript" src="<?=ASSETS?>js/sellerJs"></script>
 
     </body>

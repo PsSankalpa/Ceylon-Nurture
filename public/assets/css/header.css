@@ -7,6 +7,12 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    
+  }
+
+  /*to remove margin tp when scrolling*/
+  .mg-tp-rm{
+    margin-top: 0;
   }
   
   .top_nav a {
@@ -110,7 +116,9 @@
   .dropdown:hover .dropdown-content {
     display: block;
   }
-  
+
+  /*--------------------------------------------------------------------------------------*/
+ 
   @media screen and (max-width: 1200px) {
     .top_nav a:not(:first-child), .dropdown .dropbtn {
       display: none;
@@ -153,6 +161,14 @@
       display: none;
     }
   }
+
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: 0.3s;
+  }
+
   
   @media screen and (max-width: 1200px) {
     .top_nav.responsive {position: relative;}

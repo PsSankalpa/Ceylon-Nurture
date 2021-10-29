@@ -10,15 +10,49 @@ class seller extends Controller
 
         $Auth = new Auth;
         $data2 = $Auth->finduser();
+        $type = "Product";
+        $type2 = "Herb";
 
         $products = new products();
         $userid = Auth::userid();
-        $data = $products->where('sellerid',$userid); 
+        $data = $products->where('sellerid',$userid);
+        $sellers = new sellers(); 
+        $data3 = $sellers->where('userid',$userid);
+
+        if($z1=$products->where2('sellerid',$userid,'category',$type))
+        {
+            $data4 = count($z1);
+        }
+        else{
+            $data4 = 0;
+        }
+
+        if($z2 = $products->where2('sellerid',$userid,'category',$type2))
+        {
+            $data5 = count($z2);
+        }
+        else{
+            $data5 = 0;
+        }
+
+        if($z3=$products->where('sellerid',$userid))
+        {
+            $data6 = count($z3);
+        }
+        else{
+            $data6 = 0;
+        }
+        //print_r($data5);
+        //die;
 
 
         $this->view('seller/seller',[
             'rows'=>$data,
-            'data2'=>$data2
+            'data2'=>$data2,
+            'data3'=>$data3,
+            'data4'=>$data4,
+            'data5'=>$data5,
+            'data6'=>$data6,
         ]);
        
     }

@@ -5,6 +5,7 @@
         Ceylon Nurture|Login Page</title>
 
         <link rel="stylesheet" href="<?=ASSETS?>css/loginStyle.css">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0;">
 
     </head>
     <body>
@@ -37,7 +38,7 @@
                     <p class="account"><b>Don't have an account?</b> <a href="<?=ROOT?>signup">Sign Up</a></p>
                     </div>
                         <div class="form-img">
-                        <button class="backbtn"><a href="<?=ROOT?>home">&times;</button>
+                        <button class="backbtn"><a href="<?=ROOT?>home">&times;</a></button>
                             <img src="<?=ASSETS?>img/8.png">
                         </div>
                 </div>

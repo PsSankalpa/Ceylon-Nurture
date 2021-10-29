@@ -1,84 +1,137 @@
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
-  background-image:url("../img/home.jpg");
-  background-size: cover;
+  background-color: #D4F1F4;
 }
-.container1 {
-  border-radius: 5px;
-  background-color: #c0bebeec;
-  padding: 10px 10px;
-  width: 1000px;
-  height: 650px;
-  margin:50px auto;
-  position:relative;right:-50px;top:150px
+.clearfix{
+  clear:both;
+  overflow: auto;
 }
-.pro-pic {
-  width: 100%;
-  padding:20px;
-  height: auto;
+.previous {
+  background-color: #f9fafa;
+  color: #75E6DA;
+  width:1%;
+  margin-top:-10px;
 }
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #141414;
-  position: relative;
-  height: 620px;
+.logo{
+  margin-top:-50px;
+  margin-left: 1rem;
+  font-weight:bold;
+  color:white;
+  margin-bottom: 3rem;
+  font-size:22px;
 }
-
-.sidebar a {
-  display: block;
-  color: #4C673B;
-  padding:30px;
+.logo span{
+  color:#D4F1F4;
+  text-align: center;
+}
+.sidenav {
+  height:100%;
+  width:0;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+  background-color: #05435ec0;
+  overflow:hidden;
+  transition:0.5s;
+  padding-top:30px;
+}
+.sidenav a{
+  padding:30px 30px;
   text-decoration: none;
+  font-size:20px;
+  color:#000000;
+  display:block;
+  transition:0.3s;
 }
- 
-.sidebar a.active {
-  background-color: #0a3804;
-  color: white;
+.sidenav a:hover{
+  color:#f1f1f1;
+  background-color: #1b203d;
+}
+.close{
+  position:absolute;
+  top:1%;
+  right:1%;
+}
+.slide a{
+  color:#05445E;
+  font-size: 30px;
+
+}
+p{
+  color:#05445E;
+  font-weight:bold;
+  margin-left: 20px;
+  font-size: 15px;
+}
+.profile p{
+  margin-top: 5px;
+  margin-left: 30%;
+}
+.nav{
+  color:#05445E;
+  font-size: 30px;
+  margin:auto;
 }
 
-.sidebar a:hover:not(.active) {
-  background-color: rgb(29, 92, 45);
-  color: white;
-}
 h4{
   color:#265a07;
   text-align: center;
   }
-/*Container two css*/
-.container3 {
-  border-radius: 5px;
-  background-color: rgb(12, 12, 12);
-  padding: 10px 10px;
-  width: 700px;
-  height: 620px;
-  position:relative;right:-250px;top:-620px;
+  h5{
+    color:#05435ea2;
+    font-weight:bolder;
+    padding-top: 3%;
+  }
+.container3{
+  width:51%;
+  margin-top: -100%;
+  margin:auto;
+  height:auto;
+  background-color:#f0f6f7;
 }
-.regi_form{
-  position:relative;top:20px;right:-50px;
-  }
-input[type=text],[type=date] , select, textarea{
-  width: 50%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-bottom: 1%;
-  }
+
+input{
+  margin-bottom:15px;
+  font-stretch:16px;
+  text-align:left;
+  padding:14px 20px;
+  width:90%;
+  margin-left: 5%;
+  background:#05435e44;
+  border: 2px solid #05445E;
+  border-radius:50px;
+
+}
 /*view and add button*/
 .viewbtn{
-  background-color: #8d7a34;
-  color: white;
-  padding: 10px;
-  position:relative;right:-590px;top:8px;
+  width:5rem;
+  height:2.5rem;
+  background-color:#75E6DA;
+  border:none;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: 14px;
+  color:#05445E;
+
 }
-.addbtn{
-  background-color: #F4C931;
-  color: white;
-  padding: 10px;
-  position:relative;right:-400px;top:8px;
+.viewbtn:hover,.addbtn:hover,.btn:hover{
+  color: #fafdfd80;
+}
+.btn{
+  float:right;
+  width:5rem;
+  height:2.5rem;
+  margin-left:2%;
+  margin-bottom:1%;
+  background-color:#75E6DA;
+  border:none;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: 14px;
+  color:#05445E;
+
 }
 /*error button*/
 .alertwarning{
@@ -107,20 +160,35 @@ input[type=text],[type=date] , select, textarea{
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
-  color: #A7D129;
+  color: #05445E;
   font-weight:700;
+  padding-left: 10%;
+  font-size: 15px;
 }
 /* Style the submit and cancel button */
-input[type=submit]{
-  background-color: #228B22;
-  color: white;
-  padding:20px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  float: right;
-  width: 15%;
-  position:relative;top:20px;right:75px;
+.row input[type=submit]{
+  font-size:18px;
+  margin-left: 25%;
+  text-align: center;
+  font-weight: bold;
+  color:#05445E;
+  width:50%;
+  background-color:#75E6DA;
+  border-radius:50px;
+  padding:14px 15px;
+  transition:0.3s ease;
+}
+input[type=reset]{
+  font-size:18px;
+  text-align: center;
+    font-weight: bold;
+    color:#05445E;
+    width:50%;
+    background-color:#75E6DA;
+    border-radius:50px;
+    padding:14px 15px;
+    transition:0.3s ease;
+    transform:translate(45%, -10%);
 }
 .doctor-grid-container {
   display: grid;
@@ -136,23 +204,23 @@ input[type=submit]{
   text-align: center;
 } 
 h3,h4{
-  color:#A7D129;
+  color:#05445E;
   text-align: center;
 } 
 .doctor-grid-container p{
-  color:#A7D129;
+  color:#05445E;
   text-align: justify;
 }
 /* Floating column for labels: 25% width */
 .col-25 {
   float: left;
-  width: 25%;
+  width: 35%;
   margin-top: 6px;
 } 
 /* Floating column for inputs: 75% width */
 .col-75 {
   float: left;
-  width: 75%;
+  width: 65%;
   margin-top: 6px;
 } 
 /* Clear floats after the columns */
@@ -161,6 +229,105 @@ h3,h4{
   display: table;
   clear: both;
 }
+/*View Schedule*/
+.cardcolumn {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+  justify-content: center;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.cardrow {
+  margin: 0 -5px;
+  background-color: #f0f6f7;
+  width: auto;
+  height:50%;
+  overflow: scroll;
+}
+
+/* Clear floats after the columns */
+.cardrow:after {
+  content: "";
+  display: table;
+  clear: both;
+  justify-content: center;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2); /* this adds the "card" effect */
+  padding: 18px;
+  text-align: center;
+  background-color: #b2ebf1;;
+  height: auto;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+/*buttons of the cards*/
+.cardbutton {
+  background-color: #05445E;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  width:100%;
+}
+
+.cardbutton:hover{
+  opacity: 1;
+}
+input[type=date]{
+  background-color: #75e6db81;
+  border :1px solid #05445E;
+  width:30%;
+  padding: 10px;
+
+}
+.filter{
+  background-color: #75e6db80;
+  border-radius:5px;
+  padding:10px;
+  margin-bottom: 5px;
+}
+.deletebtn{
+  background-color: #b2ebf1;
+  color: #05445E;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 25%;
+  cursor: pointer;
+  width:20%;
+  transform:translate(-80%, -10%);
+  margin-top: 10%;
+
+}
+
+.nobtn{
+  background-color: #b2ebf1;
+  color: #05445E;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 25%;
+  cursor: pointer;
+  width:20%;
+  transform:translate(40%, -10%);
+  margin-top: 10%;
+
+}
+.container4{
+  width:51%;
+  margin-top: -100%;
+  margin:auto;
+  height:300px;
+  background-color:#f0f6f7;
+}
+
 /*Making the page mobile responsive*/
 @media screen and (max-width: 700px) {
   .sidebar {
@@ -194,15 +361,39 @@ h3,h4{
   }
 }
 @media screen and (max-width: 1000px) {
-  .col-25, .col-75,.addbtn,.viewbtn,input[type=submit],input[type=text],input[type=date]{
-    width: 100%;
+  .col-25, .col-75,.addbtn,.viewbtn,input[type=text],input[type=date]{
+    width: 90%;
     margin-top: 1%;
-    float:left;
+    margin-left:5%;
+    float:center;
     position:relative;right:0px;
   }
   .regi_form {
     width: 100%;
     position:relative;right:0px;
+  }
+}
+@media screen and (max-width: 700px) {
+  input[type=submit]{
+      width: 100%;
+      height: auto;
+
+    
+  }
+}
+@media screen and (max-width: 700px) {
+  .cardcolumn {
+    float: left;
+    width: 10%;
+    padding: 0 10px;
+    justify-content: center;
+  }
+  .filter{
+    background-color: #75e6db80;
+    border-radius:5px;
+    margin-left:10%;
+    padding:10px;
+    margin-bottom: 5px;
   }
 }
 

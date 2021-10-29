@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?= ASSETS ?>css/myAccount.css">
     <link rel="stylesheet" href="<?= ASSETS ?>css/common1.css">
     <link rel="stylesheet" href="<?= ASSETS ?>css/payments.css">
+    <link rel="stylesheet" href="<?= ASSETS ?>css/commonStyle.css">
 
 </head>
 
@@ -17,33 +18,42 @@
             <input type="hidden" name="return_url" value="http://localhost/Grp12/public/header/makeDonations">
             <input type="hidden" name="cancel_url" value="http://localhost/Grp12/public/landing/home ">
             <input type="hidden" name="notify_url" value="http://sample.com/notify">
-                
-            <h2 class="h2p txt-col1">Item Details</h2><br>
+
+            <h2 class="h2p txt-col1 topics">Item Details</h2><br>
             <div class="p-details row">
-                <label for="paymentType" class="col-3"><h3 class="txt-col1">Payment Type</h3></label><br>
-                <input type="hidden" name="order_id" value="ItemNo12345">
-                <input type="text" class="col-3 p-in" name="items" value="Donations"><br>
-                <input type="text" class="col-3 p-in" name="currency" value="LKR">
-                <input type="text" class="col-3 p-in" name="amount">
+                <h3 class="h2p txt-col1 topics">Payment Type</h3>
+                <div class="p-inputs">
+                    <input type="hidden" name="order_id" value="ItemNo12345">
+                    <input type="text" class="col-3 p-in" name="items" value="Donations"><br>
+                    <input type="text" class="col-3 p-in" name="currency" value="LKR">
+                    <input type="text" class="col-3 p-in" name="amount">
+                </div>
             </div>
             <div class="user-detail row">
-                <br><br><h3 class="txt-col1">Customer Details</h3><br>
-                <div class="row2">
-                    <input type="text" name="first_name" class="col-3 p-in" value="<?= get_var('first_name', $data->fname) ?>">
-                    <input type="text" name="last_name" class="col-3 p-in" value="<?= get_var('last_name', $data->lname) ?>">
-                </div>
-                <div class="row2">
-                    <input type="text" name="email" class="col-3 p-in" value="<?= get_var('email', $data->email) ?>">
-                    <input type="text" name="phone" class="col-3 p-in" value="<?= "0".get_var('phone', $data->tpNumber) ?>">
+                <br><br>
+                <h3 class="txt-col1 topics">Customer Details</h3><br>
+                <div class="p-inputs">
+                    <div class="row2">
+                        <input type="text" name="first_name" class="col-3 p-in" value="<?= get_var('first_name', $data->fname) ?>">
+                        <input type="text" name="last_name" class="col-3 p-in" value="<?= get_var('last_name', $data->lname) ?>">
+                    </div>
+                    <div class="row2">
+                        <input type="text" name="email" class="col-3 p-in" value="<?= get_var('email', $data->email) ?>">
+                        <input type="text" name="phone" class="col-3 p-in" value="<?= "0" . get_var('phone', $data->tpNumber) ?>">
+                    </div>
                 </div>
             </div>
 
             <input type="hidden" name="address" value="No.1, Galle Road">
             <input type="hidden" name="city" value="Colombo">
-            <input type="hidden" name="country" value="Sri Lanka"><br><br> 
+            <input type="hidden" name="country" value="Sri Lanka"><br><br>
             <input type="submit" class="col-2 btn1 btn" value="Pay Now">
         </form>
     </div>
+
+    <!--footer-->
+    <?php $this->view("footer") ?>
+    <!--end of footer-->
 </body>
 
 </html>
