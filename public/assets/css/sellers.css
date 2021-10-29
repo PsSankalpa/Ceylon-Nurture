@@ -76,6 +76,15 @@ body{
   }
 
   /*button group*/
+  .center2 {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, 30%);
+    margin-bottom: 1rem; 
+  }
+
   .center1 {
     position: absolute;
     top: 80%;
@@ -83,6 +92,21 @@ body{
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, 30%);
     margin-bottom: 1rem;
+  }
+  
+/*-----------------deatils section-------------------*/
+  .details1{
+    text-align: left;
+    padding: 1rem;
+  }
+
+  .contact-details1{
+    position:absolute;
+    top: 80%;
+    right: 2%;
+  }
+  .normal-details{
+    text-align: left;
   }
 
   .btn-group button {
@@ -148,8 +172,34 @@ body{
       top: 60%;
       left: 50%;
       -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, 10%);
+      margin-bottom: 40%;
+    }
+    .center2 {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, 30%);
-      margin-bottom: 1rem;
+      margin-bottom: 1rem; 
+    }
+
+    /*---------------details section-------------*/
+    .contact-details1{
+      position: inherit;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .contact-details1 p{
+      text-align: center;
+      top: 100%;
+    }
+  
+    .normal-details{
+      text-align: center;
+    }
+    .container{
+      margin-bottom: 20%;
     }
   }
 
@@ -296,15 +346,16 @@ input[type=file] {
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .col-25, .col-75, input[type=submit],input[type=reset],input[type=file]{
     width: 100%;
     margin-top: 1%;
     float:left
   }
   .container{
-    margin-bottom: 1rem;
+    margin-bottom: 40%;
   }
+
 }
 /*---------------------------------------------------------------------------*/
 /*proct section*/
@@ -409,7 +460,7 @@ input[type=file] {
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .column {
     width: 100%;
     display: block;
@@ -455,6 +506,10 @@ input[type=file] {
   }
   .btn1{
     width: 50%;
+  }
+  .cardrow {
+    margin: 0 auto;
+    width: 80%;
   }
 }
 /*---------------------------------------------------------------------------*/
@@ -567,8 +622,8 @@ hr {
 /*products slideshow*/
 .slide-show{
   display: flex;
-  flex: 70%;
-  padding: 1rem;
+  flex: 50%;
+  padding: 0.5rem;
 }
 .slider-frame{
   overflow: hidden;
