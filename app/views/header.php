@@ -80,7 +80,6 @@
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
-                        <a href="#">Dashboard</a>
                         <a href="<?=ROOT?>myAccount/index>">My Account</a>
                         <a href="<?= ROOT ?>logout">Log Out</a>
                     </div>
