@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding:0;
-overflow:hidden;
+  overflow:hidden;
   font-family: "Lato", sans-serif;
   background-color: #D4F1F4;
 }
@@ -67,7 +67,7 @@ overflow:hidden;
   transition: margin-left 0.7s;
 
 }
-.container1{
+/*.container1{
   margin-left:1%;
   background-color: #fffdfd;
   border-radius: 25px;
@@ -77,16 +77,35 @@ overflow:hidden;
 .container1 img{
   width:38%;
   transform:translate(185%, -103%);
+}*/
+.container1{
+  justify-content:center;
+  display: flex;
+  flex-direction:row;
+  width:80%;
+  height: 7rem;
+  background-color:#fcfdfd;
+  border-radius: 25px;
+}
+.inner_content{
+  justify-content: left;
+  width:45%;
+}
+.inner_content_image img{
+  margin-top: -18%;
+  margin-right:-14%;
+  width:55%;
+  float:right;
 }
  h4{
   color:#05445E;
-  padding-left: 35%;
+  text-align:center;
 }
 h1{
   text-align:justify;
   color:#05445E;
   padding-left: 10%;
-  padding-top: 5%;
+  padding-top: 1%;
   
 }
 h3{
@@ -197,8 +216,7 @@ p{
   cursor:pointer;
   font-size:15px;
   color:#05445E;
-  margin-right:2%;
-  margin-top:-2%;
+  border-radius: 8px;
 }
 .appviewbtn{
   float:right;
@@ -207,6 +225,7 @@ p{
   cursor:pointer;
   font-size:15px;
   color:#05445E;
+  border-radius: 8px;
 }
 
 .box-4{
@@ -221,6 +240,7 @@ p{
   width:95%;
   height:auto;
 } 
+/*
 .dash input[type=date]{
   float:right;
   background:#75e6dba2;
@@ -229,6 +249,7 @@ p{
   border-radius: 4px;
   box-sizing: border-box;
   margin-right: 80%;
+   border-radius: 8px;
 }
 .dash .filterbtn{
   float:left;
@@ -237,28 +258,15 @@ p{
   font-size:15px;
   cursor:pointer;
   margin-left: 4%;
-}
-.appoint input[type=date]{
-  float:right;
-  background:#75e6dba2;
-  padding: 5px;
-  border: 1px solid #05445E;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-right: 10%;
-}
-.appoint .filterbtn{
-  float:right;
-  background-color: #75E6DA;
-  padding: 3px 10px;
-  font-size:15px;
-  cursor:pointer;
-  margin-left: -10%;
-  margin-right:2%;
-}
+  border-radius: 8px;
+}*/
+
 table{
   border-collapse:collapse;
   width:100%;
+  overflow: auto;
+  overflow-x:scroll;
+  overflow-y:scroll;
  
 }
 td{
@@ -278,6 +286,79 @@ th{
 .data{
   color:#05435ea2;
   font-weight:bold;
+}
+.appoint input[type=date],.appoint input[type=text]{
+  float:right;
+  background:#75e6dba2;
+  padding: 5px;
+  border: 1px solid #05445E;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-right: 10%;
+  border-radius: 8px;
+}
+.appoint .filterbtn{
+  float:right;
+  background-color: #75E6DA;
+  padding: 3px 10px;
+  font-size:15px;
+  cursor:pointer;
+  margin-left: -10%;
+  margin-right:2%;
+  border-radius: 8px;
+}
+/*changes for schedule page*/
+.container3{
+  width:50%;
+  margin-top: -100%;
+  margin:auto;
+  height:auto;
+  background-color:#f0f6f7;
+}
+div .regi_form{
+  display:block;
+  width:850px;
+  border-radius: 6%;
+}
+form{
+  display: inline-block;
+  margin:auto;
+  text-align: left;
+}
+.regi_form input{
+  background:#05435e6b;
+  border: 2px solid #05445E;
+  width:100%;
+  border-radius:50px;
+  padding:10px 10px;
+}
+.regi_form input:focus{
+  background:#D4F1F4;
+  border:solid #ffff;
+}
+label {
+  padding: 1px 1px 12px 0;
+  display: inline-block;
+  color: #05445E;
+  font-weight:700;
+}
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+} 
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+} 
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /*Making the page mobile responsive*/
@@ -306,18 +387,17 @@ th{
 }
 
 @media screen and (max-width: 600px) {
-  .container1 img{
-    width:50%;
-    transform:translate(110%, -140%);
-
-   
+  .inner_content_image img{
+    width:100%;
+    margin-right:-5%;
   }
 }
 @media screen and (max-width: 600px) {
   h4{
   margin:auto;
   text-align: center;
-  padding-top: 10%;
+  padding-top: 20%;
+
   }
 }
 @media screen and (max-width: 600px) {
@@ -381,9 +461,17 @@ th{
   }
 }
 @media screen and (max-width: 400px) {
-  .appoint .filterbtn,.appoint input[type=date]{
-    margin-top:5%;
-    margin-left:4%;
+  .appoint input[type=date],.appoint input[type=text]{
+    margin-left:3%;
+    margin-right:12%;
+    width:30%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+.dash input[type=date]{
+    float:right;
+    margin-left:50%;
   }
 }
 @media screen and (max-width: 400px) {

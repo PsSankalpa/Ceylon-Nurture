@@ -4,25 +4,43 @@
         <title>Ceylon Nurture|Doctor|Schedule Details</title>
         <?php $this -> view ("header",$data)?>
         <meta name="viewport" content="width=device-width; initial-scale=1.0;">
-        <link rel="stylesheet" href="<?=ASSETS?>css/scheduleDetails.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/addSchedule.css">
+    <script>
+      function openSlideMenue(){
+        document.getElementById('mySidenav').style.width = '250px';
+        document.getElementById('content').style.marginLeft = '250px';
+    }
+    function closeSlideMenue(){
+        document.getElementById('mySidenav').style.width = '0';
+        document.getElementById('content').style.marginLeft = '0';
+    }
+    </script>
     </head>
-    <body>
-    <div class="background">
-        <div class="container1">
-        <div class="sidebar">
-                <img src="<?=ASSETS?>img/avatar.png" alt="Person" class="pro-pic" width="200" height="100">
-               
-                <?php if($row):?>
-                    <h4><?=$row[0]->nameWithInitials?> </h4>
-                <?php endif;?>
-
-                <a href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-home"></i>  My Account</a>
-                <a class="active" href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>  Schedule</a>
-                <a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>  Feedback</a>
-                <a  href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>  Appointments</a>
-                <a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>  Reports</a>
-            </div>
-            <div class="container3">
+    <body class="bg">
+    <div id="content">
+        <span class="slide">
+        <a href="<?=ROOT?>doctor/docDashboard" class="previous">&#8249;</a>
+          <a href="#" onclick="openSlideMenue()">
+        
+            <i class="fa fa-fw fa-bars"></i>
+          </a>
+          <span class="nav">View Schedule Details</span></br>
+        </span>
+        </br>  
+        <div id="mySidenav" class="sidenav">
+          <a href="#" class="close" onclick="closeSlideMenue()">
+            <i class="fa fa-fw fa-times"></i>
+          </a>
+          <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
+          <a  href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-user icons"></i> &nbsp;&nbsp; My Account</a>
+          <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
+          <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
+          <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
+          <a  href="<?=ROOT?>appointments"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
+          <a  href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="container3">
                 <form class="regi_form" enctype="multipart/form-data" method="POST">
                     <?php if($rows):?>
                     <?php foreach ($rows as $row):?>
@@ -31,7 +49,7 @@
                             <label for="Slot Number">Slot Number</label>
                         </div>
                         <div class="col-75">
-                            <h3><?="Slot-".$row->slotNumber?> </h3>
+                            <h5><?="Slot-".$row->slotNumber?> </h5>
                         </div>
                     </div>
                     <div class="row">
@@ -39,7 +57,7 @@
                             <label for="Date of the Slot">Date of the Slot</label>
                         </div>
                         <div class="col-75">
-                            <h3><?=$row->dateofSlot?> </h3>
+                            <h5><?=$row->dateofSlot?> </h5>
                         </div>
                     </div>
                     <div class="row">
@@ -47,7 +65,7 @@
                             <label for="Arrival Time">Arrival Time</label>
                         </div>
                         <div class="col-75">
-                            <h3><?=$row->arrivalTime?> </h3>
+                            <h5><?=$row->arrivalTime?> </h5>
                         </div>
                     </div>
                     <div class="row">
@@ -55,7 +73,7 @@
                             <label for="Departure Time">Departure Time</label>
                         </div>
                         <div class="col-75">
-                            <h3><?=$row->departureTime?> </h3>
+                            <h5><?=$row->departureTime?> </h5>
                         </div>
                     </div>
                     <div class="row">
@@ -63,7 +81,7 @@
                             <label for="No of patients">No of patients</label>
                         </div>
                         <div class="col-75">
-                            <h3><?=$row->noOfPatient." patients"?> </h3>
+                            <h5><?=$row->noOfPatient." patients"?> </h5>
                         </div>
                     </div>
                     <div class="row">
@@ -71,7 +89,7 @@
                             <label for="Time per patient">Time per patient</label>
                         </div>
                         <div class="col-75">
-                            <h3><?=$row->timePerPatient."mins"?> </h3>
+                            <h5><?=$row->timePerPatient."mins"?> </h5>
                         </div>
                     </div>
                     <div class="row">
@@ -79,7 +97,7 @@
                             <label for="Doctor Charge">Doctor Charge</label>
                         </div>
                         <div class="col-75">
-                            <h3><?="Rs.".$row->doctorCharge?> </h3>
+                            <h5><?="Rs.".$row->doctorCharge?> </h5>
                         </div>
                     </div>
                     <div class="row">
@@ -87,7 +105,7 @@
                             <label for="Doctor's Note">Doctor's Note</label>
                         </div>
                         <div class="col-75">
-                            <h3><?=$row->doctorNote?> </h3>
+                            <h5><?=$row->doctorNote?> </h5>
                         </div>
                     </div>
                     <?php endforeach;?>
@@ -95,13 +113,13 @@
                 </form>
                 <div class="row">
                     <a href="<?=ROOT?>doctor/viewSchedule/<?=$row->scheduleid?>">
-                        <button class="backbtn">Back</button>
+                        <button class="btn">Back</button>
                     </a>
                     <a href="<?=ROOT?>doctor/editSchedule/<?=$row->scheduleid?>">
-                        <button class="editbtn">Edit Slot</button>
+                        <button class="btn">Edit Slot</button>
                     </a>
                     <a href="<?=ROOT?>doctor/deleteSchedule/<?=$row->scheduleid?>">
-                        <button class="deletebtn">Delete Slot</button>
+                        <button class="btn">Delete Slot</button>
                     </a>
                 </div>
             </div>

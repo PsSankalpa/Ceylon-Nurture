@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 ?>
 
 <html>
@@ -31,21 +31,23 @@ session_start();
                         
                         <div class="content">
                        
-                        <form action="./controller/resetPassword.php" method="post">
+                        <form action="" method="post">
                         </br>
                         <h4>Enter New Password</h4>
                         <input type="hidden" name="password_token" value="<?php if (isset($_GET['token'])){
                             echo $_GET['token'];
                         }?>">
-                        <input type="text" name="e-mail" class="email" placeholder="Email" value="<?php if (isset($_GET['email'])){
+                        <input type="text" name="email" class="email" placeholder="Email" value="<?php if (isset($_GET['email'])){
                             echo $_GET['email'];
                         }?>" required>
                         <input type="password" name="new_password" placeholder="New Password" required > 
                         <input type="password" name="confirm_password" placeholder="Confirm Password" required > 
                         
                         <div class="two-buttons">
-                        <button class="btn" type="submit" name="password_update">Update</a></button>
-                        </div>
+                        <a href="<?= ROOT ?>changePassword/newPassword">
+                            <button class="btn" type="submit" name="password_update">Update</button>
+                        </a>
+                    </div>
                     </div>
                 </div>
             </div>
