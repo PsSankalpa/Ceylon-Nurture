@@ -118,9 +118,12 @@ input[type=reset]:hover{
   color:white;
   width:95%;
   margin: auto;
-  background-color: rgba(255, 255, 255, 0.486);
+  background-color: rgba(255, 255, 255, 0.699);
   border-radius: 20px;
   gap:25px;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+
   
 
 }
@@ -155,11 +158,7 @@ input[type=reset]:hover{
 
 }
 
-hr.h{
-  border: 2px solid white;
-  margin:10px;
-  width:100%;
-}
+
 
 hr.h1{
   border: 1px solid white;
@@ -229,16 +228,11 @@ h2{
   }
 
   .scheduling_form{
-    margin-bottom: 10px;
     width:100%;
 
   }
 
-  hr.h1{
-    border: none;
-    margin:10px;
-    width:90%;
-  }
+
 
   input[type=submit],input[type=reset]  {
     width:5.25rem;
