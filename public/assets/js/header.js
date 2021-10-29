@@ -7,3 +7,20 @@ function myFunction() {
       x.className = "top_nav";
     }
   }
+
+
+/*window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myTopnav");
+var sticky = header.offsetTop;
+var mg_rm = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+    header.classList.add("mg-tp-rm");
+  } else {
+    header.classList.remove("sticky");
+    header.classList.remove("mg-tp-rm");
+  }
+}*/

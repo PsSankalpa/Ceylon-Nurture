@@ -11,27 +11,74 @@ body{
 /*----------------------------------------------------------*/
 /*top part*/
 .upperpart {
-  /* Set a specific height */
-  min-height: 80vh;
-  top: 0;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("../img/Ayur_1.jpg");
+    width: 100%;
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+  }
+/*for seller name section*/
+  .name-section{
+    width: 80%;
+    margin: 6% auto;
+    margin-bottom: 1%;
+  }
+  .seller-name{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10rem;
+    background-color: #D4F1F4;
+    border-radius: 1rem;
   }
 
-  @media only screen and (max-device-width: 900px) {
-    .upperpart {
-      background-attachment: scroll;
-    }
+  .name1{
+    flex: 70%;
+    text-align: center;
+  }
+  .s-name1{
+    margin-top: 3% ;
+    text-align: center;
   }
 
-  .center {
+  .img-seller1{
+    flex: 20%;
+  }
+  .seller-img{
+    z-index: 4;
+    transform: translate(-0%, -40%);
+  -ms-transform: translate(-0%, -40%);
+  }
+
+  /*for summary section*/
+  .stat-section{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0% auto;
+  }
+  .stats{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .con{
+    flex: 100%;
+    margin: 0.5rem;
+    width: 100%;
+    height: 10rem;
+    background-color: #D4F1F4;
+    border-radius: 1rem;
+    padding: 0.1rem;
+  }
+
+  .count{
+    margin-top: 2rem;
+  }
+
+  /*button group*/
+  .center1 {
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, 30%);
@@ -39,9 +86,9 @@ body{
   }
 
   .btn-group button {
-    background-color: #000000;
-    border: 1px solid rgb(255, 255, 255);
-    color: white; /* White text */
+    background-color: #75E6DA;
+    border: 1px solid #05445E;
+    color: #1894B4; /* White text */
     padding: 10px 24px; /* padding */
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
@@ -55,13 +102,58 @@ body{
     clear: both;
     display: table;
   }
-  
-  
-  
+   
   /* Add a background color on hover */
   .btn-group button:hover {
-    background-color: #636363;
+    background-color: #D4F1F4;
   }
+
+  @media only screen and (max-device-width: 900px) {
+    .upperpart {
+      height: 15rem;
+    }
+    .name-section{
+      width: 80%;
+      margin: 7% auto;
+    }
+    .seller-name{
+      height: 4rem;
+    }
+    .s-name1{
+      font-size: small;
+      margin-top: 6% ;
+    }
+    .img-seller1{
+      flex: 30%;
+    }
+    .seller-img{
+      width: 100%;
+    }
+    /*summary part*/
+    .count{
+      margin-top: 10px;
+      font-size: 8px;
+    }
+    .con{
+      height: 4rem;
+      border-radius: 1rem;
+      padding: 0.1rem;
+    }
+    .pcount{
+      font-size: 15px;
+    }
+
+    .center1 {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, 30%);
+      margin-bottom: 1rem;
+    }
+  }
+
+
 /*--------------------------------------------------------------------------*/
   .up-form label{
       color: blanchedalmond;
@@ -73,15 +165,16 @@ body{
     background-color: cadetblue;
 }
 
+.regi_form{
+  margin-bottom: 6%;
+}
+
 /*-----------------------------------------------------------------------------*/
 /*for hr and h2*/
 hr{
   border: 2px solid #A7D129;
 }
 
-h2{
-  color: #A7D129;
-}
 
 /*----------------------------------------------------------*/
 /*for error popup*/
@@ -102,7 +195,7 @@ h2{
   font-size: 22px;
   line-height: 20px;
   cursor: pointer;
-  background-color: #f44336;
+  background-color: #D4F1F4;
   transition: 0.3s;
 }
 
@@ -162,17 +255,20 @@ input[type=file] {
   top: 20%;
   border-radius: 5px;
   padding: 20px;
-  background-color:#1894B4;
-  z-index: 8;
+  background-color:#e3f5f8;
   width: 80%;
   transition: 0.3s;
+  margin-bottom: 6%;
 }
 .container h2{
-  color: #75E6DA;
+  color: #05445E;
   text-align: center;
 }
-.container h3,h4, p{
+.container h3,h4{
   color: #05445E;
+}
+.container p{
+  color: #1894B4;
 }
 
 
@@ -214,6 +310,8 @@ input[type=file] {
 /*proct section*/
 .products-section{
   background-color: #D4F1F4;
+  margin-bottom: 5%;
+  padding: 1rem;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -269,7 +367,7 @@ input[type=file] {
 .card img{
   width: 100%;
   border-radius: 0.5rem 0.5rem 0 0;
-  max-height: 18rem;
+  max-height: 16rem;
   transition: transform .2s; /* Animation */
 }
 .card img:hover{
@@ -299,7 +397,7 @@ input[type=file] {
 }
 
 .cancel{
-  background-color: #f44336;
+  background-color: #D4F1F4;
 }
 
 .view2{

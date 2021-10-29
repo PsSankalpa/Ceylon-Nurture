@@ -1,0 +1,33 @@
+/*for the footer*/
+ /*for the footer*/
+ .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+/*footer part*/
+.footer {
+  margin-top: 5rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #05445E;
+  text-align: center;
+  padding: 1rem;
+}
+  /*end of the footer*/
+  @media screen and (max-width: 1200px) {
+  .footer {
+    margin-top: 1rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #05445E;
+    text-align: center;
+    padding: 0.4rem;
+    font-size: 10px;
+  }
+}
