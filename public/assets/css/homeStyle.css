@@ -85,7 +85,11 @@ li{
   padding:3rem;
   border-radius: 10px;
 }
-
+.inner_content_card:hover{
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(1.05);
+}
 .h2{
   color:white;
 }

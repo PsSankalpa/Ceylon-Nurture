@@ -91,7 +91,6 @@
 
                     <div class="button_container"><a href="<?=ROOT?>channeling/doctors/<?=$row->userid?>"><input type="submit" value="Book Now"></a></div>
                     </div>
-                    <hr class="h1">
                     </form>
 
                     <?php endforeach;?>

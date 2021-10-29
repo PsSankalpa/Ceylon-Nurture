@@ -107,16 +107,16 @@
                                         <div class="cardName"> General Physician</div>
                                     </div>
                                     <div class="iconBox">
-                                        <img class="doctor" src="<?=ASSETS?>img/profile_picture1.jpg">
+                                        <img class="doctor" src="<?=ASSETS?>img/doctor7.png">
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div>
-                                        <div class="numbers">Dr.Sunil Perera</div>
+                                        <div class="numbers">Dr.Keerth Silva</div>
                                         <div class="cardName"> General Physician</div>
                                     </div>
                                     <div class="iconBox">
-                                        <img class="doctor" src="<?=ASSETS?>img/profile_picture1.jpg">
+                                        <img class="doctor" src="<?=ASSETS?>img/doctor8.jpg">
                                     </div>
                                  </div>
                             </div>

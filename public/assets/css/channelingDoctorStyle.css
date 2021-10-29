@@ -7,7 +7,7 @@
 }
 
 .search_container{
-    background-color: #75E6DA;
+    background-color: #75e6db9a;
     border-radius: 10px;
     width:85%;
     margin: auto;
@@ -33,9 +33,11 @@
 .slots{
     display: flex;
     flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.514);
+    padding-bottom: 10px;
+
 }
 .slot{
-    background-color: white;
     width:90%;
     border-radius: 10px;
     border-top-left-radius:20px ;
@@ -43,15 +45,19 @@
     display: flex;
     flex-direction: column;
     padding-bottom: 5px;
+
+
+
 }
 
 .slotHead{
-    background-color: #1fbbdaad;
-    border-radius: 20px;
     padding:2px 20px;
     display: flex;
     justify-content: space-between;
     font-weight: bold;
+    border:2px solid #75E6DA;
+    background-color: #b9eff5d0;
+
 }
 
 .iconBox{
@@ -73,18 +79,22 @@
     grid-template-columns: repeat(4,1fr);
     grid-gap:10px;
     padding:10px;
+
 }
 
 .card{
     display: flex;
     flex-direction: column;
-    background-color: #b9eff5;
     border-radius: 10px;
     padding:12px 5px;
     margin-top: 10px;
     align-items: center;
     font-weight: bold;
     gap: 7px;
+    border:2px solid #75E6DA;
+    background-color: white;
+
+
 }
 
 label {
@@ -101,8 +111,9 @@ label {
     width: 95%;
     margin: auto;
     border-radius: 5px;
-    color: green;
+    color: rgb(0, 0, 0);
     font-size: 15px;
+    font-weight: lighter;
   }
   
   
@@ -168,16 +179,16 @@ label {
   }
 
   .bookSlotButton{
-    width:7.25rem;
-    height:2.5rem;
+    width:6.5rem;
+    height:2.25rem;
     background-color:#19aecc;
     border:none;
-    border-radius: 1.5rem;
+    border-radius: 10px;
     font-weight: bold;
     font-size: large;
     vertical-align: middle;
     font-size: 14px;
-    margin-top: 15px;
+    margin-top: 14px;
     color:#05445E;
   }
 
@@ -187,7 +198,7 @@ label {
   }
 
   .time{
-      font-size: 17px;
+      font-size: 18px;
   }
   
   .availability{
