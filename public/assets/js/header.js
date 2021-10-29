@@ -1,4 +1,4 @@
-window.onscroll = function() {
+/*window.onscroll = function() {
   var header = document.getElementById("myTopnav");
   var sticky = header.offsetTop;
   var mg_rm = header.offsetTop;
@@ -10,7 +10,7 @@ window.onscroll = function() {
     header.classList.remove("sticky");
     header.classList.remove("mg-tp-rm");
   }
-}
+}*/
 
 function myFunction() {
     var x = document.getElementById("myTopnav");
