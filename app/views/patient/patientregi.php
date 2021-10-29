@@ -4,14 +4,16 @@
         <title>Ceylon Nurture|Patient|Registration</title>
         <?php $this -> view ("header",$data)?>
         <link rel="stylesheet" href="<?=ASSETS?>css/registrationform.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/commonStyle.css">
+
 
     </head>
 
-    <body class="regi">
+    <body id="body">
 
     
     <div class="container center">
-        <h1>Update as a Patient</h1>
+        <h1 class="h1">Update as a Patient</h1>
 
         <!--for the errors-->
         <?php if(count($errors) > 0 ):?>
@@ -50,6 +52,8 @@
             <input type="reset" value="Reset">
             </div>
         </form>
+
+
     </div>
     <script type="text/javascript" src="<?=ASSETS?>js/sellerJs"></script>
 

@@ -1,20 +1,61 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>
+            Home   
+        </title>
+        <link rel="stylesheet" href="<?=ASSETS?>css/commonStyle.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
 
-<head>
-    <title>
-        Home
-    </title>
-    <link rel="stylesheet" href="<?= ASSETS ?>css/commonStyle.css">
-    <link rel="stylesheet" href="<?= ASSETS ?>css/homeStyle.css">
-    <link rel="stylesheet" href="<?= ASSETS ?>css/registrationform.css">
+        <?php $this -> view ("header")?>
+    </head>
 
-    <?php $this->view("header") ?>
-</head>
+    <body id="body">
 
-<body id="body">
-    <main>
-        <div class="page_content">
+    <header>
+        <?php if(!empty($data)):?>
+            <?php if($data == "seller"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></a></div>
+                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
+                </div>
+
+            <?php elseif($data == "doctor"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
+                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
+                </div>
+
+            <?php elseif($data == "patient"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></a></div>
+                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
+                </div>
+
+            <?php elseif($data == "doctorAndSeller"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
+                </div>
+
+            <?php elseif($data == "doctorAndPatient"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
+                </div>
+
+            <?php elseif($data == "sellerAndPatient"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></a></div>
+                </div>
+
+
+                <?php endif;?>
+        <?php endif;?>
+        </header>
+     <main>
+         <div class="page_content">
+
+<!----------------------------------------------------------------------------------------------> 
+           
 
             <!---------------------------------------------------------------------------------------------->
             <section id="showcase">

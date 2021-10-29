@@ -4,10 +4,12 @@
         <title>Ceylon Nurture|Patient|Registration</title>
         <?php $this -> view ("header",$data)?>
         <link rel="stylesheet" href="<?=ASSETS?>css/forum.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/registrationForm.css">
+
 
     </head>
 
-    <body class="regi">
+    <body id="body">
 
    
     

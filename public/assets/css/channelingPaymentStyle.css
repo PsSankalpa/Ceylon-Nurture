@@ -1,0 +1,88 @@
+.paymentInvoice{
+    display: flex;
+    width:70%;
+    margin: auto;
+    flex-direction: column;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding:20px;
+    margin-bottom: 20px;
+
+
+}
+.label{
+    font-weight: bold;
+}
+
+.doctor{
+    display: flex;
+    width:100%;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 20px;
+}
+
+.regi_form{
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:20px;
+    align-content: center;
+}
+
+.col-25{
+    font-size: 18px;
+}
+
+.col{
+    background-color: rgba(199, 194, 194, 0.527);
+    padding:5px;
+    border:none;
+}
+
+input[type=text]{
+    width:90%;
+    background-color: rgb(199, 194, 194);
+    padding:5px;
+    border: 1px solid black;
+
+
+
+}
+
+
+
+.patientPayment{
+    display: flex;
+    margin-top: 20px;
+  
+}
+
+.patient{
+    width:50%;
+}
+
+.payment{
+    width:50%;
+}
+
+.payButton{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttonA{
+    width:9.25rem;
+    height:2.5rem;
+    background-color:#75E6DA;
+    border:none;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: large;
+    color:#05445E;
+}
+
+.buttonA:hover{
+    background-color: #189AB4;
+}

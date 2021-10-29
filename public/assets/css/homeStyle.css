@@ -20,12 +20,12 @@
 
 .welcome{
   font-size: 20px;
-  color:#3ecfe9;
+  color:#0E86D4;
 }
 
 .welcome_h2{
   font-size: 30px;
-  color:#12caeb;
+  color:#0E86D4;
 }
 
 .inner_contentA{
@@ -98,12 +98,37 @@ li{
 
 }
 
+.home_button_top{
+  width:100px;
+  height:30px;
+  font-size: 15px;
+  color:black;
+  border:none;
+  background-color: #7599e6;
+
+}
+
+.home_button_top:hover{
+background-color:#189AB4;
+}
+
+.home_buttons_top{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top:0px;
+  right: 0px;
+  gap:1px;
+  border-radius: 10px;
+  bottom: 2px;
+
+
+}
+
 
 @media screen and (max-width: 600px)
 {
-  .contentA{
-    flex-direction:column;
-  }
+
 
   .inner_content{
     width:100%;
@@ -196,7 +221,7 @@ li{
 @media screen and (max-width: 1200px)
 {
   .contentA{
-    flex-direction:column;
+    gap: 1rem;
   }
 
   .inner_content{
@@ -213,7 +238,6 @@ li{
 
   .inner_content_button{
     margin-top: 2rem;
-    flex-direction: column;
     gap:1.25rem;
   }
   
@@ -227,6 +251,19 @@ li{
     width:90%;
     margin: auto;
     padding:1rem;
+  }
+
+  
+
+  
+
+  
+}
+
+@media screen and (max-width: 800px)
+{
+  .contentA{
+    flex-direction: column;
   }
 }
 

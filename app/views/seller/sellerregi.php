@@ -7,11 +7,11 @@
 
     </head>
 
-    <body class="regi">
+    <body id="body">
 
     
     <div class="container center">
-        <h1>Update as a Seller</h1>
+        <h1 class="h1">Update as a Seller</h1>
 
         <!--for the errors-->
         <?php if(count($errors) > 0 ):?>

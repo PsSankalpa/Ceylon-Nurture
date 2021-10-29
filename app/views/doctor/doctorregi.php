@@ -6,11 +6,11 @@
 <link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/registrationform.css">
 </head>
 
-<body class="regi">
+<body id="body">
 
     
     <div class="container center">
-        <h1>Update as a Doctor</h1>
+        <h1 class="h1">Update as a Doctor</h1>
 
          <!--for the errors-->
          <?php if(count($errors) > 0 ):?>
