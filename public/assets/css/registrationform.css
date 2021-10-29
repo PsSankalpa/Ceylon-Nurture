@@ -15,23 +15,23 @@
 
  /* Style the container */
   .container {
-    top: 50%;
+    top: 40%;
     border-radius: 5px;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.637);
-    z-index: 8;
     width: 80%;
     transition: 0.3s;
     display: flex;
     flex-direction:column;
     gap:20px;
+    margin-bottom: 5rem;
 }
 .center {
     position: absolute;
     top: 70%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, 30%);
+    transform: translate(-50%, 20%);
 }
 
   .alertwarning{

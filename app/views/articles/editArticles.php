@@ -24,7 +24,7 @@
                                 <label for="herbname">Herb Name</label>
                             </div>
                             <div class="col-75">
-                                <input type="text" value="<?=get_var('herbname',$data->articleName)?>" id="herbname" name="herbname" placeholder="Product Name">
+                                <input type="text" value="<?= get_var('herbname', $data->articleName) ?>" id="herbname" name="herbname" placeholder="Product Name">
                             </div>
                         </div>
 
@@ -33,7 +33,7 @@
                                 <label for="description">Description</label>
                             </div>
                             <div class="col-75">
-                                <input type="text" value="<?=get_var('description',$data->description)?>" id="description" name="description" placeholder="description">
+                                <input type="text" value="<?= get_var('description', $data->description) ?>" id="description" name="description" placeholder="description">
                             </div>
                         </div>
 
@@ -42,7 +42,7 @@
                                 <label for="description">Uses</label>
                             </div>
                             <div class="col-75">
-                                <input type="text" value="<?=get_var('uses',$data->uses)?>" id="uses" name="uses" placeholder="uses">
+                                <input type="text" value="<?= get_var('uses', $data->uses) ?>" id="uses" name="uses" placeholder="uses">
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                                 <label for="uses">Uses</label>
                             </div>
                             <div class="col-75">
-                                <input type="text" value="<?=get_var('uses',$data->uses)?>" id="uses" name="uses" placeholder="uses">
+                                <input type="text" value="<?= get_var('uses', $data->uses) ?>" id="uses" name="uses" placeholder="uses">
                             </div>
                         </div>
 
@@ -60,7 +60,7 @@
                                 <label for="descripsideEffects">Side effects</label>
                             </div>
                             <div class="col-75">
-                                <input type="text" value="<?=get_var('sideEffects',$data->sideEffects)?>" id="sideEffects" name="sideEffects" placeholder="sideEffects">
+                                <input type="text" value="<?= get_var('sideEffects', $data->sideEffects) ?>" id="sideEffects" name="sideEffects" placeholder="sideEffects">
                             </div>
                         </div>
 
@@ -69,7 +69,7 @@
                                 <label for="precautions">Precautions</label>
                             </div>
                             <div class="col-75">
-                                <input type="text" value="<?=get_var('precautions',$data->precautions)?>" id="precautions" name="precautions" placeholder="precautions">
+                                <input type="text" value="<?= get_var('precautions', $data->precautions) ?>" id="precautions" name="precautions" placeholder="precautions">
                             </div>
                         </div>
 
@@ -78,7 +78,7 @@
                                 <label for="interactions">Interactions</label>
                             </div>
                             <div class="col-75">
-                                <input type="text" value="<?=get_var('interactions',$data->interactions)?>" id="interactions" name="interactions" placeholder="interactions">
+                                <input type="text" value="<?= get_var('interactions', $data->interactions) ?>" id="interactions" name="interactions" placeholder="interactions">
                             </div>
                         </div>
 
@@ -87,7 +87,7 @@
                                 <label for="dosing">Dosing</label>
                             </div>
                             <div class="col-75">
-                                <input type="text" value="<?=get_var('dosing',$data->dosing)?>" id="dosing" name="dosing" placeholder="dosing">
+                                <input type="text" value="<?= get_var('dosing', $data->dosing) ?>" id="dosing" name="dosing" placeholder="dosing">
                             </div>
                         </div>
 
@@ -96,7 +96,7 @@
                                 <label for="image">Image of the herb</label>
                             </div>
                             <div class="col-75">
-                                <input type="file" id="image" value="<?=get_var('image')?>" name="image">
+                                <input type="file" id="image" value="<?= get_var('image') ?>" name="image">
                             </div>
                         </div>
 
@@ -113,6 +113,9 @@
     </div>
     </div>
 
+    <!--footer-->
+    <?php $this->view("footer") ?>
+    <!--end of footer-->
     <script type="text/javascript" src="<?= ASSETS ?>js/article.js"></script>
 </body>
 

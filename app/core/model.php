@@ -53,6 +53,19 @@ public function __construct()
 			'value'=>$value
 		]);
 	}
+
+	//below query is for use when we need to find a row that matchs two columns
+	public function where2($column1,$value1,$column2,$value2)
+	{
+
+		$column1 = addslashes($column1);//from this it check the column,sanitize iput
+		$column2 = addslashes($column2);//from this it check the column,sanitize iput
+		$query = "select * from $this->table where $column1 = :value1 AND $column2 = :value2" ;
+		return $this->query($query,[
+			'value1'=>$value1,
+			'value2'=>$value2
+		]);
+	}
 //----------------------------------------------------------------------------------------------------------------
 
 	public function findAll()
