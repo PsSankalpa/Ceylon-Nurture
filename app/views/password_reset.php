@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    //  session_start();
 ?>
 <html>
     <head>
@@ -23,13 +23,13 @@
                             <h5><?= $_SESSION['status']; ?></h5>
                             </div>
                             <?php
-                            unset($SESSION['status']);
+                            // unset($SESSION['status']);
                         }
                     ?>
 
                         <h2>Forgot Password</h2>
                         <hr><br>
-                        <form action="./contoller/password_reset_code.php" method="POST">
+                        <form action="" method="POST">
                         <div class="row1">
                         <label for="email">Email Address</label>
                         <input type="text" id="email" name="email" placeholder="Enter Email Address">
@@ -37,7 +37,7 @@
                         <hr>
                         <div class="two-buttons">
                         <a href="login/login.php"><button type="button" class="back">Back</button></a>
-                        <button type="submit" name="password_reset_link" class="btn" type="submit">Send Password Reset Link</button>
+                        <button type="submit" name="password_reset_link" class="btn" required >Send Password Reset Link</button>
                         </div>
                     </div>
                 </div>

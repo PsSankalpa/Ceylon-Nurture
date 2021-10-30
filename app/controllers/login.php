@@ -61,13 +61,13 @@ class login extends Controller
 
         $this->view("login/forgotPassword"); //in here put the relevent page name and the path
     }
-   /* function resetPassword()
+   /* function password_reset()
     {
       
         //S$common_user = new common_user();
-        //$resetPassword = new resetPassword();
+        $password_reset = new password_reset();
 
-        $this->view("login/resetPassword"); //in here put the relevent page name and the path
+        $this->view("password_reset"); //in here put the relevent page name and the path
     }*/
  
 

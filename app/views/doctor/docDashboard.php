@@ -63,9 +63,13 @@
               </div>
             </div>
               <div class="container1">
+                <div class="inner_content">
                   <h1>Welcome,Dr.<?=Auth::fname()?>  </h1> 
                   <h4>Have a nice day at work</h4>
+                </div>
+                <div class="inner_content_image">
                   <img src="<?=ASSETS?>img/d3.png"> 
+                </div>
               </div>
             
             <div class="clearfix"></div>
@@ -96,45 +100,48 @@
               <div class="clearfix"></div>
                 <div class="col-div-8">
                 <h3>My Appointments</h3>
-                <div class="dash">
+                <!--<div class="dash">
                   <input type="date" id="date" name="date">
                   <button class="filterbtn">Filter</button>
-          
+                    </div>-->
                   <div class="box-8">
                   <a href="<?=ROOT?>appointments"><button class="dashviewbtn">View</button></a></br>
                   <div class="content-box">
-                    <div style="overflow-x:auto;,overflow-y:auto;">
+                    <!--<div style="overflow-x:auto;,overflow-y:auto;">-->
                     <table>
                    
                       <tr>
-                        <th>Name</th>
-                        <th>NIC No</th>
-                        <th>Slot No</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Telephone No</th>
-                        <th>Symptoms</th>
-                        <th>Payment</th>
+                        <th>PatientNo</th>
+                          <th>Date</th>
+                            <th>Time</th>
+                            <th>Slot No</th>
+                            <th>Name</th>
+                            <th>NIC No</th>
+                            <th>Telephone No</th>
+                            <th>Symptoms</th>
+                            <th>Payment</th>
                       </tr>
                       <tr>
-                        <td>Natasha Perera</td>
-                        <td>971234567V</td>
-                        <td>Slot 01</td>
-                        <td>16/11/2021</td>
-                        <td>8.00am</td>
-                        <td>0711234567</td>
-                        <td>Arthritis</td>
-                        <td>Rs.3200</td>
+                      <td class="data">01</td>
+                        <td class="data">16/11/2021</td>
+                        <td class="data">8.00am</td>
+                        <td class="data">Slot 01</td>
+                        <td class="data">Natasha Perera</td>
+                        <td class="data">971234567V</td>
+                        <td class="data">0711234567</td>
+                        <td class="data">Arthritis</td>
+                        <td class="data">Rs.3200</td>
                       </tr>
                       <tr>
-                        <td>Sisiliya Kumari</td>
-                        <td>871234127V</td>
-                        <td>Slot 01</td>
-                        <td>16/11/2021</td>
-                        <td>8.15am</td>
-                        <td>0711234567</td>
-                        <td>Gastritis</td>
-                        <td>Rs.2200</td>
+                      <td class="data">02</td>
+                        <td class="data">16/11/2021</td>
+                        <td class="data">8.15am</td>
+                        <td class="data">Slot 01</td>
+                        <td class="data">Sisiliya Kumari</td>
+                        <td class="data">871234127V</td>
+                        <td class="data">0711234567</td>
+                        <td class="data">Gastritis</td>
+                        <td class="data">Rs.2200</td>
                       </tr>
                     </table>
                   </div>

@@ -164,10 +164,9 @@
                 <div class="contentC">
 
 
-                <a href="<?=ROOT?>docDashboard"><button class="button_patient"> Appointments </button>
-                <a href="<?=ROOT?>channeling"><button class="button_patient"> Channel a Doctor </button></a>
 
 
+                
 
                 </div>
             </section>      

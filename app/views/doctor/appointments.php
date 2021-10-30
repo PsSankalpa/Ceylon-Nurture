@@ -26,9 +26,9 @@
         
             <i class="fa fa-fw fa-bars"></i>
           </a>
-          <span class="nav">Appointments Slots</span></br>
+          <span class="nav">Appointment Slots</span></br>
         </span>
-                      
+        </br>  
         <div id="mySidenav" class="sidenav">
           <a href="#" class="close" onclick="closeSlideMenue()">
             <i class="fa fa-fw fa-times"></i>
@@ -65,14 +65,14 @@
                                 <td class="data">Slot 01</td>
                                 <td class="data">8.00am - 12.00pm</td>
                                 <td class="data">16</th>
-                                <td class="data"><a href="<?=ROOT?>doctor/viewAppointments"><button class="appviewbtn">View Information</button></a></td>
+                                <td class="data"><a href="<?=ROOT?>doctor/appointmentDetails"><button class="appviewbtn">View Information</button></a></td>
                             </tr>
                             <tr>
                                 <td class="data">16/11/2021</td>
                                 <td class="data">Slot 02</td>
                                 <td class="data">4.00pm - 7.00pm</td>
-                                <td class="data">16</th>
-                                <td class="data"><a href="<?=ROOT?>doctor/viewAppointments"><button class="appviewbtn">View Information</button></a></td>
+                                <td class="data">12</th>
+                                <td class="data"><a href="<?=ROOT?>doctor/appointmentDetails"><button class="appviewbtn">View Information</button></a></td>
                             </tr>
                         </table>
                         </div>
