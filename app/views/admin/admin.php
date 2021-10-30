@@ -15,8 +15,8 @@
            <div class="navigation">
                <ul>
                     <li>
-                        <a href="#">
-                            <span class="icon"></span>
+                    <a href="<?= ROOT ?>home/home">
+                            <span class="icon"><img class="logo" src="<?= ASSETS ?>img/logo.png"></span>
                             <span class="title"><h2> Ceylon Nurture </h2></span>
                         </a>
 
@@ -47,7 +47,7 @@
                         </a>    
                     </li>
                     <li>
-                        <a href="<?=ROOT?>header/viewPoducts">
+                        <a href="<?=ROOT?>admin/products">
                             <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                             <span class="title">Products</span>
                         </a>    

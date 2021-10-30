@@ -23,10 +23,10 @@
 }
 .center {
     position: absolute;
-    top: 70%;
+    top: 5%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, 20%);
+    transform: translate(-50%, 10%);
 }
 
   .alertwarning{
@@ -55,7 +55,7 @@
   }
 
   /* Style inputs, select elements and textareas */
-input[type=text],input[type=date] ,select, textarea{
+input[type=text],input[type=date],input[type=email],input[type=tel],input[type=password] ,select, textarea{
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
