@@ -118,6 +118,50 @@
 
                 </div>
 
+                <div class="cardBox">
+                    <div class="card">
+                        <div>
+                            <div class="numbers"> 30</div>
+                            <div class="cardName">Doctors</div>
+                        </div>
+                        <div class="iconBox">
+                        <i class="fas fa-user-md"></i>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div>
+                            <div class="numbers"> 100</div>
+                            <div class="cardName">Patients</div>
+                        </div>
+                        <div class="iconBox">
+                        <i class="fas fa-user-injured"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div>
+                            <div class="numbers">50</div>
+                            <div class="cardName">Sellers</div>
+                        </div>
+                        <div class="iconBox">
+                        <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div>
+                            <div class="numbers">180</div>
+                            <div class="cardName">Common Users</div>
+                            <div class="cardName"><a href="<?=ROOT?>admin/add?>"><button class="button_typeB">Add a User</button></a></div>
+                        </div>
+                        <div class="iconBox">
+                        <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                                            
+                </div>
+
                 <div class="detailsA">
                    
                 <div class="upcomingChanneling">
@@ -153,8 +197,8 @@
                                    <td><?=$row->gender?></td>
                                    <td>
                                        <div class="user_buttons">
-                                            <div class="user_edit"><i class="fas fa-user-edit"></i></div>
-                                            <div class="user_delete"><i class="fas fa-user-minus"></i></div>
+                                            <div class="user_edit"><a href="<?=ROOT?>admin/update/<?=$row->userid?>"><i class="fas fa-user-edit"></i></a></div>
+                                            <div class="user_delete"><a href="<?=ROOT?>admin/delete/<?=$row->userid?>"><i class="fas fa-user-minus"></i></a></div>
                                         </div>
                                    </td>
 

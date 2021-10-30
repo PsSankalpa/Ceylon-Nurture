@@ -54,122 +54,6 @@ class admin extends Controller
         
     }
 
-    function viewUser($userid=null){
-
-        $common_user = new common_user();
-        //userid=null
-        //$userid=1;
-        $data=$common_user->findAll();//where('userid',$userid);
-        
-        
-        $row=$common_user->where('userid',$userid);
-        if($row)
-        {
-            $row=$row[0];
-        }
-
-        $this->view("admin/viewUser",[
-            'rows'=>$data,
-            'row'=>$row,
-        ]);
-    }
-
-    function addNewUser()
-    {
-        $errors = array();
-        if(count($_POST) > 0)
-        {
-            //show($POST);
-
-            $common_user = new common_user();
-            if($common_user->validate($_POST))
-            {
-                
-                 
-               // $arr['date'] = date("Y-m-d H:i:s");
-
-               
-                $common_user->insert($_POST);
-                $this->redirect('admin/admin');
-            }else
-            {
-                //errors
-               $errors = $common_user->errors;
-            }
-        }
-        
-        $this->view('admin/addNewUser',[
-           'errors'=>$errors,
-        ]);
-
-    }
-
-    function updateUser($userid=null)
-    {
-        $common_user = new common_user();
-        $userid=trim($userid=='') ? Auth::getUser_id() : $userid;
-
-        $errors = array();
-        if(count($_POST) > 0)
-        {
-            //if(trim($_POST['password']) == "")
-            //{
-            //    unset($_POST['password']);
-            //    unset($_POST['password2']);
-
-            //}
-
-            print_r($userid);
-            if($common_user->validate($_POST,$userid))
-            {
-                
-                 
-               // $arr['date'] = date("Y-m-d H:i:s");
-
-               
-                $common_user->update($userid,$_POST);
-                $this->redirect('admin/admin');
-            }else
-            {
-                //errors
-               $errors = $common_user->errors;
-            }
-        }
-        $row=$common_user->where('userid',$userid);
-        if($row)
-        {
-            $row=$row[0];
-        }
-        $this->view('admin/updateUser',[
-			'row'=>$row,
-            'errors'=>$errors,
-		]);
-    }
-
-    function deleteUser($userid=null)
-    {
-        $common_user = new common_user();
-
-        if(count($_POST) > 0)
-        {
-
-                $common_user->delete($userid);
-                $this->redirect('admin/admin');
-        }
-
-        $row=$common_user->where('userid',$userid);
-        if($row)
-        {
-            $row=$row[0];
-        }
-
-        $this->view('admin/deleteUser',[
-            'row'=>$row,
-
-        ]);
-       
-    }
-
     function channeling(){
 
         $this->view("admin/adminChanneling");
@@ -209,6 +93,102 @@ class admin extends Controller
             'row'=>$row,
         ]);
 
+    }
+
+    function add()
+    {
+        $errors = array();
+        if(count($_POST) > 0)
+        {
+            //show($POST);
+
+            $common_user = new common_user();
+            if($common_user->validate($_POST))
+            {
+                
+                 
+               // $arr['date'] = date("Y-m-d H:i:s");
+
+               
+                $common_user->insert($_POST);
+                $this->redirect('admin/users');
+            }else
+            {
+                //errors
+               $errors = $common_user->errors;
+            }
+        }
+        
+        $this->view('admin/adminAddUser',[
+           'errors'=>$errors,
+        ]);
+
+    }
+
+    function update($userid=null){
+        $common_user = new common_user();
+        $userid=trim($userid=='') ? Auth::getUser_id() : $userid;
+
+        $errors = array();
+        if(count($_POST) > 0)
+        {
+            //if(trim($_POST['password']) == "")
+            //{
+            //    unset($_POST['password']);
+            //    unset($_POST['password2']);
+
+            //}
+
+            if($common_user->validate($_POST,$userid))
+            {
+                
+                 
+               // $arr['date'] = date("Y-m-d H:i:s");
+
+               
+                $common_user->update($userid,$_POST);
+                $this->redirect('admin/users');
+            }else
+            {
+                //errors
+               $errors = $common_user->errors;
+            }
+        }
+        $row=$common_user->where('userid',$userid);
+        if($row)
+        {
+            $row=$row[0];
+        }
+        $this->view('admin/adminUpdateUser',[
+			'row'=>$row,
+            'errors'=>$errors,
+		]);
+    }
+
+    function delete($userid=null)
+    {
+        $common_user = new common_user();
+        $userid=trim($userid=='') ? Auth::getUser_id() : $userid;
+
+
+        if(count($_POST) > 0)
+        {
+
+                $common_user->delete($userid);
+                $this->redirect('admin/users');
+        }
+
+        $row=$common_user->where('userid',$userid);
+        if($row)
+        {
+            $row=$row[0];
+        }
+
+        $this->view('admin/adminDeleteUser',[
+            'row'=>$row,
+
+        ]);
+       
     }
 
 
