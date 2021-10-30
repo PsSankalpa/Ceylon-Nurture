@@ -191,6 +191,26 @@ class admin extends Controller
 
     }
 
+    function users($userid=null){
+        $common_user = new common_user();
+        //userid=null
+        //$userid=1;
+        $data=$common_user->findAll();//where('userid',$userid);
+        
+        
+        $row=$common_user->where('userid',$userid);
+        if($row)
+        {
+            $row=$row[0];
+        }
+
+        $this->view("admin/adminUsers",[
+            'rows'=>$data,
+            'row'=>$row,
+        ]);
+
+    }
+
 
 
 
