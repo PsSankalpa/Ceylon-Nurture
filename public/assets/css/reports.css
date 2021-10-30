@@ -1,125 +1,34 @@
 body {
   margin: 0;
+  padding:0;
+ overflow: auto;
+
   font-family: "Lato", sans-serif;
-  background-image:url("../img/home.jpg");
-  background-size: cover;
-}
-.container1 {
-  border-radius: 5px;
-  background-color: #c0bebeec;
-  padding: 10px 10px;
-  width: 1000px;
-  height: 650px;
-  margin:50px auto;
-  position:relative;right:-50px;top:150px
-}
-.pro-pic {
-  width: 100%;
-  padding:20px;
-  height: auto;
-}
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #141414;
-  position: relative;
-  height: 620px;
-}
+  background-color: #D4F1F4;
 
-.sidebar a {
-  display: block;
-  color: #4C673B;
-  padding:30px;
-  text-decoration: none;
 }
- 
-.sidebar a.active {
-  background-color: #0a3804;
-  color: white;
-}
-
-.sidebar a:hover:not(.active) {
-  background-color: rgb(29, 92, 45);
-  color: white;
-}
-h4{
-  color:#265a07;
-  text-align: center;
-  }
-/*Container two css*/
-.container3 {
-  border-radius: 5px;
-  background-color: rgb(12, 12, 12);
-  padding: 10px 10px;
-  width: 700px;
-  height: 620px;
-  position:relative;right:-250px;top:-620px;
-} 
 .prescription{
   width: 80px;
   height: 80px;
 }   
-input[type=date]{
-    background-color: #F4C931;
-    padding: 10px;
-    position:relative;right:0px;top:5px;
-   margin-bottom: 15px;
-}
 label{
-    color:rgb(173, 173, 173);
+  padding: 1px 1px 12px 0;
+  display: inline-block;
+  color: #05445E;
+  font-weight:12px;
+  
 }
-.report-container {
-    display: grid;
-    padding-top: 10px;
-    grid-template-columns: auto auto auto auto auto;
-    grid-template-rows: 50px 30px;
-    grid-gap: 5px;
-    background-color: #aeaeb1;
-    padding: 5px;
-}
-.report-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 10px 5;
-    font-size: 15px;
-  }
-  .cardbutton{
-    background-color: #014d08;
-    text-align: center;
-    border-radius: 25%;
-    color:#ffff;
-    cursor: pointer;
-    font-size: 15px;
-    padding:5px;
-    font-weight: bolder;
-    position:relative;right:-12px;
-}
-.header {
-  height:600px;
-  width:730px;
-  border:solid 3px rgb(26, 85, 3);
-  overflow:scroll;
-  overflow-x:scroll;
-  overflow-y:scroll;
-  top: 0;
-  z-index: 1;
-  width: 100%;
-  background-color: rgb(10, 10, 10);
-  position:relative;top:0px;
-}
+
   .container{
     border-radius: 5px;
-    background-color: #0a0a0acc;
+   background-color: #1fadbd;
     padding: 10px 10px;
-    width: 1000px;
-    height: 700px;
-    margin:50px;
-    position:relative;left:170px;
-
+    width: 80%;
+    height: auto;
+    margin-left: 20%;
   }
   h1{
-    color:#049b13;
+    color:#05445E;
     text-align: center;
   }
   /*Creating two colums*/
@@ -128,41 +37,44 @@ label{
   }
   .column {
     flex: 50%;
-    padding: 10px;
-    height: 680px; 
+    padding:  15px;
+    height: auto;
     width:500px;
-    background-color:#0a0a0acc;
+    background-color:#f1f1f1;
   }
   h2{
-    color:#f3ef04;
-    text-align: center;
+    color:#05445E;
+    margin-left:10%;
   }
   .backbtn{
-    background-color: #dd240b;
+    background-color: #75E6DA;
+    border-color: #05445E;
     cursor: pointer;
-    color:#ffff;
+    color:#05445E;
     font-weight: bold;
     padding: 10px;
     border-radius: 25%;
-    position:relative;right:-350px;top:15px;
+
   }
   .pdf{
-    background-color: #dd240b;
+    background-color: #dd240b9c;
     color:#ffff;
     padding: 10px;
-    position:relative;right:-290px;top:75px;
+    float: left;
+
   }
   h3{
     margin-top: 10px;
-    color:#ffff;
+    color:#818181;
   }
 /* Floating column for labels: 25% width */
 .col-25 {
   float: left;
   width: 25%;
-  margin-top: 30px;
+  margin-top:20px;
   position:relative;right:-50px;
-  }
+
+} 
   
   /* Floating column for inputs: 75% width */
   .col-75 {
@@ -171,100 +83,59 @@ label{
   margin-top: 15px;
   position:relative;right:-100px;
   }
-  
+  /* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
   /*Making the page mobile responsive*/
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
-}
 
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
-}
-@media screen and (max-width: 700px) {
-  .container1 {
-      width: 100%;
-      height: auto;
-      position: relative;
-  }
-}
-@media screen and (max-width: 700px) {
-  .container3 {
-      width: 100%;
-      height: auto;
-      position: relative;right:0px;top:-10px
-    
-  }
-}
 @media screen and (max-width: 1000px) {
-  .cardbutton,input[type=date]{
+  input[type=date]{
     width: 100%;
     margin-top: 1%;
-    float:left;
+    float:left;;
     position:relative;right:0px;
   }
-}
-@media screen and (max-width: 1000px) {
-  .report-container{
-    width: 150%;
-    margin-top: 1%;
-    float:left;
-    position:relative;right:0px;
-  }
-}
-@media screen and (max-width: 700px) {
-  .report-container div{
-    width: 100%;
-    margin-top: 1%;
-    float:left;
-    position:relative;right:0px;
-  }
-}
-@media screen and (max-width: 700px) {
-  .cardbutton{
-    font-size: 10px;
-    padding:2px;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .col-25, .col-75,.backbtn,input[type=date]{
-    width: 100%;
-    margin-top: 1%;
-    float:left;
-    position:relative;right:0px;
+  .backbtn{
+    width:20%;
   }
 }
 @media screen and (max-width: 700px) {
   .container {
-      width: 100%;
+      width: 75%;
       height: auto;
-      position: relative;right:0px;top:-10px
-    
+      margin-top: 10%;
+      margin-left:0%;
+  }
+  .col-75{
+    margin-left: 0%;
   }
 }
 @media screen and (max-width: 700px) {
   .regi_form {
     width: 100%;
-    position:relative;right:0px;
   }
 }
 @media screen and (max-width: 700px) {
-  .row,.column{
+  .row{
     width: 100%;
-    position:relative;right:0px;
+  }
+  .column{
+width:30%;
   }
 }
 @media screen and (max-width: 700px) {
-  h3{
+  h3,label{
   font-size: 12px;
+  }
+  h2{
+    font-size: 15px;
+    margin-left: 0%;
+  }
+  h1{
+    font-size: 15px;
   }
 }
 

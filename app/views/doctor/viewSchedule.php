@@ -33,7 +33,6 @@
             <i class="fa fa-fw fa-times"></i>
           </a>
           <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
-          <a  href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-user icons"></i> &nbsp;&nbsp; My Account</a>
           <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
@@ -43,13 +42,16 @@
         <div class="clearfix"></div>
         <div class="container3">
                 <div class="header">
-                        <div>
-                        <a href="<?=ROOT?>doctor/addSchedule"><button class="viewbtn">Add Slots</button></a>
+                        <div class="header-container">
+                          <div class="button-container">
+                            <a href="<?=ROOT?>doctor/addSchedule"><button class="viewbtn">Add Slots</button></a>
                             <a href="<?=ROOT?>doctor/viewSchedule"><button class="viewbtn">View Slots</button></a>
-                       
-                            <input type="date" id="date" name="date">
-                            <button class="filter">Filter</button>
-                               
+                          </div>
+                            <div class="date-container">
+                              <input type="date" id="date" name="date">   
+                              <button class="filterA">Filter</button>    
+                            </div>
+                          </div>
                         <div class="cardrow">
                             <?php if($row):?>
                             <?php foreach ($row as $row):?>
