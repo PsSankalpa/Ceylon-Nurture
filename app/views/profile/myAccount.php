@@ -197,30 +197,7 @@
                     <!------------------------patient-------------------------------------------------------------------------->
                     <hr class="mg2 hr1 txt-col2">
                     <h3 class="txt-col1">Patient Section</h3>
-                    <div class="row p2">
-                        <div class="col-25">
-                            <label for="nameWithInitials">Name with Initials</label>
-                        </div>
-                        <div class="col-50">
-                            <label for="nameWithInitials"><?= $data3->nameWithInitials ?></label>
-                        </div>
-                    </div>
-                    <div class="row p2">
-                        <div class="col-25">
-                            <label for="gender">Gender</label>
-                        </div>
-                        <div class="col-50">
-                            <label for="gender"><?= $data3->gender ?></label>
-                        </div>
-                    </div>
-                    <div class="row p2">
-                        <div class="col-25">
-                            <label for="dob">D.O.B</label>
-                        </div>
-                        <div class="col-50">
-                            <label for="dob"><?= $data3->DOB ?></label>
-                        </div>
-                    </div>
+                
                     <div class="row p2">
                         <div class="col-25">
                             <label for="nic">nic</label>

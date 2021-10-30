@@ -4,12 +4,13 @@
         <title>Ceylon Nurture|Seller|uploadProduct</title>
         <?php $this -> view ("header",$data)?>
         <link rel="stylesheet" href="<?=ASSETS?>css/registrationform.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/sellers.css">
     </head>
 
     <body class="regi">
 
     
-    <div class="container center">
+    <div class="container1 center3">
         <h2>Add a Product</h2>
 
         <!--for the errors-->

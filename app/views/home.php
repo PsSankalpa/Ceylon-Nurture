@@ -233,17 +233,17 @@
         </div>
         <!---------------------------------------------------------------------------------------------->
 
-        <div class="container">
-            <div style="text-align:center">
+        <div class="container1">
+            <div class="topic1">
                 <h2>Contact Us</h2>
                 <p>Swing by for a cup of coffee, or leave us a message:</p>
             </div>
-            <div class="row">
-                <div class="column">
+            <div class="row1">
+                <div class="column1">
                     <img class="cont-img" src="<?= ASSETS ?>/img/contactform-img.png" style="width:100%">
                 </div>
-                <div class="column">
-                    <form action="/action_page.php">
+                <div class="column1">
+                    <form action="">
                         <label for="fname">First Name</label>
                         <input type="text" id="fname" name="firstname" placeholder="Your name..">
                         <label for="lname">Last Name</label>
