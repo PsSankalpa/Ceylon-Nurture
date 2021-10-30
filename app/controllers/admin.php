@@ -75,6 +75,18 @@ class admin extends Controller
 
     }
 
+    function reports(){
+        $products=new products;
+
+        $data=$products->findAll();
+        $this->view("admin/adminReports",[
+            'rows'=>$data,
+        ]
+        );
+
+
+    }
+
     function products(){
         $products=new products;
 

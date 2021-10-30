@@ -76,11 +76,10 @@
                 <div class="overview">
 
                    <div class="top">
-                       <h3>Payments</h3>
+                       <h3>Reports</h3>
                    </div>
 
                    <div class="topbar_side heading">
-                   <i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i>
                    </div>
 
                 </div>
@@ -88,7 +87,8 @@
                    
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
-                            <h3>Recent Payments</h3>
+                            <h3>Channeling</h3>
+                            <div class="report"><a class="btn">View Report</a><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
                         </div><br>
                         <table>
                            <thead>
@@ -96,40 +96,83 @@
                                    <td>Name of the Doctor</td>
                                    <td>Patient Name</td>
                                    <td>Date</td>
+                                   <td>Time</td>
+                                   <td>Location</td>
                                    <td>Doctor Charges</td>
                                    <td>Commission</td>
-                                   <td>Total Payment</td>
                                </tr>
                            </thead> 
                            <tbody>
                                <tr>
                                    <td>Dr.Sunil Perera</td>
                                    <td>Manel Perera</td>
-                                   <td>29/10/2021</td>
-                                   <td>LKR 2500</td>
-                                   <td>LKR 200</td>
-                                   <td> LKR 2700</td>
+                                   <td>05/11/2021</td>
+                                   <td>09:00 am</td>
+                                   <td>General Hospital,Colombo 05</td>
+                                   <td> LKR 2500</td>
+                                   <td> LKR 200</td>
                                </tr>
                                
                                    <td>Dr.Sunil Perera</td>
                                    <td>Neth Perera</td>
-                                   <td>25/10/2021</td>
-                                   <td>LKR 2800</td>
-                                   <td>LKR 200</td>
-                                   <td> LKR 3000 </td>
+                                   <td>06/11/2021</td>
+                                   <td>10:00 am</td>
+                                   <td>Weda Madura, Gampaha</td>
+                                   <td> LKR 2800</td>
+                                   <td> LKR 200</td>
                                </tr>
                                
                            </tbody>
                         </table>
                     </div>
-   
-                    
-
-                </div>
 
 
                 
             </div>
+
+            <div class="detailsA">
+                   
+                   <div class="upcomingChanneling">
+                           <div class="cardHeader">
+                               <h3>Payments</h3>
+                               <div class="report"><a class="btn">View Report</a><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
+                           </div><br>
+                           <table>
+                              <thead>
+                                  <tr>
+                                      <td>Doctor Name</td>
+                                      <td>Date</td>
+                                      <td>Doctor Charges</td>
+                                      <td>Commission</td>
+                                      <td>Amount</td>
+                                  </tr>
+                              </thead> 
+                              <tbody>
+                                  <tr>
+                                      <td>Dr.Sunil Perera</td>
+                                      <td>05/11/2021</td>
+                                      <td> LKR 2500</td>
+                                      <td> LKR 200</td>
+                                      <td> LKR 2700</td>
+
+                                  </tr>
+                                  
+                                      <td>Dr.Keerthi Perera</td>
+                                      <td>06/11/2021</td>
+                                      <td> LKR 2800</td>
+                                      <td> LKR 200</td>
+                                      <td> LKR 3000</td>
+
+                                  </tr>
+                                  
+                              </tbody>
+                           </table>
+                       </div>
+      
+                       
+   
+                   </div>
+
     
         </div>
 
