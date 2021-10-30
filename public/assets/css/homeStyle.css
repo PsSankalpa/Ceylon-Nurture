@@ -173,27 +173,68 @@ background-color:#189AB4;
 /*for contact us form*/
 
 /* Create two columns that float next to eachother */
-.column {
+.container1 {
+  border-radius: 5px;
+  padding: 10px;
+  width: 80%;
+  margin: 6% auto;
+  margin-top: 2%;
+  background-image: url(../img/contact-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+.column1 {
   float: left;
-  width: 50%;
+  flex: 50%;
   margin-top: 6px;
   padding: 20px;
 }
 
 /* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.row1{
+  display: flex;
+  flex-direction: row;
 }
-.container {
-  border-radius: 5px;
-  padding: 10px;
-  margin: auto;
-  background-image: url(../img/contact-bg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-bottom: 4rem;
+
+.column1 input[type=text]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-bottom: 1%;
+}
+.column1 textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-bottom: 1%;
+}
+
+.column1 input[type=submit]{
+  width:9.25rem;
+  height:2.5rem;
+  background-color:#75E6DA;
+  border:none;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: large;
+  color:#05445E;
+  vertical-align: middle;
+  font-size: 15px;
+  float: right;
+}
+
+input[type=submit]:hover{
+  background-color: #1debd6;
+  border:2px solid rgba(255, 255, 255, 0.959); 
 }
 
 @-webkit-keyframes logo_animation{
@@ -213,10 +254,15 @@ background-color:#189AB4;
   -webkit-animation-play-state: running;
 }
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column, input[type=submit] {
+@media screen and (max-width: 1200px) {
+  .column1 input[type=submit] {
     width: 100%;
     margin-top: 0;
+  }
+
+  .row1{
+    display: flex;
+    flex-direction: column;
   }
 }
 /*-------------------------------------------------------------------*/

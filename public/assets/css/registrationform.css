@@ -115,8 +115,6 @@ input[type=text],input[type=date] ,select, textarea{
     vertical-align: middle;
     font-size: 15px;
     float: right;
-
-
 }
 
 input[type=reset]:hover{

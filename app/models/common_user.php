@@ -95,7 +95,7 @@ class common_user extends Model
 	
         //validation for DOB
         $y=date("Y");
-        $parts=0;
+       
 		if(empty($data['dob']))
 		{
 			$this->errors['dob'] = "Cannot Keep Date of Birth empty";
@@ -110,6 +110,8 @@ class common_user extends Model
 		//	$this->errors['dob'] = "Please check whether your age is above 20 ";
 		//}
 		
+		
+	
 
 
         //check for email address

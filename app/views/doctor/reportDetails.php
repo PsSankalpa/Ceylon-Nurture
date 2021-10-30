@@ -2,12 +2,13 @@
 <head>
 <title>Report Details</title>
 <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
 <link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/reports.css">
 </head>
 <body>
-<div class="background">
+<button class="backbtn"><a href="<?=ROOT?>doctor/reports">&times;</a></button>
     <div class="container">
-        <div class="row">
+        <div class="row">     
             <div class="column">
             <h1>Appointment Report</h1>
                 <form class="regi_form" enctype="multipart/form-data" method="POST">
@@ -71,7 +72,9 @@
                 </form>
             </div>
             <div class="column">
+                <div></div>
             <h1>15/11/2021</h1>
+          
                 <form class="regi_form" enctype="multipart/form-data" method="POST">
                     <div class="row">
                         <div class="col-25">
@@ -123,9 +126,6 @@
                         </div>
                     </div>
                 </form>
-                <a href="<?=ROOT?>doctor/reports">
-                    <button class="backbtn">Back</button>
-                </a>
                 <button class="pdf">Generate PDF</button>
             </div>
         </div>
