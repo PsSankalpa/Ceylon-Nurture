@@ -6,8 +6,8 @@
 <link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/registrationform.css">
 </head>
 
-<body id="body">
 
+<body id="body">
     
     <div class="container center">
         <h1 class="h1">Update as a Doctor</h1>

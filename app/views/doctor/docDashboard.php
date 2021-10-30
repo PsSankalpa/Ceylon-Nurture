@@ -38,7 +38,6 @@
         <!--<p class="logo"><span>Ceylon Nurture</span></p>-->
          
           <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
-          <a  href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-user icons"></i> &nbsp;&nbsp; My Account</a>
           <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
@@ -107,7 +106,7 @@
                   <div class="box-8">
                   <a href="<?=ROOT?>appointments"><button class="dashviewbtn">View</button></a></br>
                   <div class="content-box">
-                    <!--<div style="overflow-x:auto;,overflow-y:auto;">-->
+                   <div style="overflow-y:auto;">
                     <table>
                    
                       <tr>
