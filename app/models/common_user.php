@@ -101,14 +101,14 @@ class common_user extends Model
 			$this->errors['dob'] = "Cannot Keep Date of Birth empty";
 		}
         
-		elseif (intval($parts[3]) < 1821)
-		{
-			$this->errors['dob'] = "Please check whether your birth year is reasonable";
-		}
-		elseif(intval($parts[3]) > 2001)
-		{
-			$this->errors['dob'] = "Please check whether your age is above 20 ";
-		}
+		//elseif (intval($parts[3]) < 1821)
+		//{
+		//	$this->errors['dob'] = "Please check whether your birth year is reasonable";
+		//}
+		//elseif(intval($parts[3]) > 2001)
+		//{
+		//	$this->errors['dob'] = "Please check whether your age is above 20 ";
+		//}
 		
 
 

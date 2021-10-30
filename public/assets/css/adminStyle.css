@@ -247,6 +247,10 @@ h6{
 
 }
 
+.detailsA .upcomingChanneling{
+    overflow-x:auto;
+}
+
 .cardHeader{
     display: flex;
     justify-content: space-between;
@@ -471,6 +475,8 @@ h6{
     width:90%;
     margin:auto;
     margin-top: 20px;
+    margin-bottom:20px;
+
   
   }
   .detailsA table{
@@ -506,6 +512,20 @@ h6{
   
     text-align: center;
     padding-right: 20px;
+  }
+
+  /*users*/
+  .user_buttons{
+      display: flex;
+      gap:15px;
+      font-size: 20px;
+  }
+
+  .user_edit{
+      color:green;
+  }
+  .user_delete{
+      color:red;
   }
 
 @media (max-width:1200px){

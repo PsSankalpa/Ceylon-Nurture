@@ -29,7 +29,7 @@
                         </a>    
                     </li>
                     <li>
-                        <a href="#">
+                    <a href="<?=ROOT?>admin/users">
                             <span class="icon"><i class="fas fa-users"></i></span>
                             <span class="title">Users</span>
                         </a>    

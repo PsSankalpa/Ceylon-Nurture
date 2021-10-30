@@ -224,7 +224,7 @@
                 <div class="contentD">
 
                     <h2>About Us</h2><br>
-                    <p>We provide our service as an online platform to enhance the Sri Lankan Ayurvedic treatments among people.</p>
+                    <p>The main goal of this online Ayurvedic platform is to provide patients an easy way to channel ayurvedic doctors, find ayurvedic herbs and to find ayurvedic products.Here we give the opportunity to the sellers to market their products through our platform and the doctors can register with our system to make it easy to join with their patients.</p>
 
                 </div>
             </section>
