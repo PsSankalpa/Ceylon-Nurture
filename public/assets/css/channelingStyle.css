@@ -1,0 +1,246 @@
+
+.button_top{
+display: flex;
+width:100%;
+justify-content: flex-end;
+padding:20px 30px;;
+}
+
+.topButton{
+  height:2.5rem;
+  background-color:#7599e6;
+  border:none;
+  padding:5px 10px;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: large;
+  color:#05445E;
+  vertical-align: middle;
+  font-size: 15px;
+}
+
+.topButton:hover{
+  background-color:#3d73e7;
+  border:1px solid #D4F1F4;
+  color:white;
+
+}
+
+.booking{
+  display: flex;
+  margin-top: 10px;
+  width:100%;
+}
+
+.col-25, .col-75, input[type=submit],input[type=reset],input[type=file]{
+  width: 100%;
+  margin-top: 1%;
+  float:left;
+}
+
+.search{
+  display: flex;
+  flex-direction: column;
+  width:35%;
+  align-items: center;
+}
+
+input[type=text],input[type=date] ,select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgb(170, 166, 166);
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-bottom: 1%;
+  background-color: rgb(252, 248, 248);
+  color:black;
+}
+
+/* Style the label to display next to the inputs */
+.label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  color: #05445E;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+
+/* Style the submit and cancel button */
+
+input[type=submit],input[type=reset]  {
+  width:7.25rem;
+  height:2.5rem;
+  background-color:#75E6DA;
+  border:none;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: large;
+  color:#05445E;
+  vertical-align: middle;
+  font-size: 15px;
+  float: right;
+}
+
+input[type=reset]:hover{
+  background-color:#75E6DA ;
+  border:2px solid rgba(255, 255, 255, 0.959);
+
+}
+
+  input[type=submit]:hover{
+    background-color: #1debd6;
+    border:2px solid rgba(255, 255, 255, 0.959);
+
+
+}
+
+  input[type=reset] {
+    background-color: #D4F1F4;
+    border:2px solid #75E6DA;
+    margin-right: 1%;
+  }
+
+.schedule{
+  width:65%;
+  margin:10px;
+}
+
+
+.scheduling_form{
+  padding-top:20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color:white;
+  width:95%;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.699);
+  border-radius: 20px;
+  gap:25px;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+
+  
+
+}
+.item{
+  padding-top:1%;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  column-gap: 3px;
+  justify-content: space-between;
+  width:80%;
+  font-size:15px;
+  color: #189AB4;
+  text-align: center;
+  font-weight: bold;
+  
+}
+.doctor_image{
+  height:100%;
+  width:100%;
+}
+
+.doc_image_container{
+  height:100px;
+  width:100px;
+}
+
+
+
+.book_now:hover{
+  background-color:#547925;
+
+}
+
+
+
+hr.h1{
+  border: 1px solid white;
+  margin:10px;
+  width:90%;
+}
+
+h2{
+  color:rgb(154, 156, 11);
+}
+
+
+@media (max-width:1500px){
+  .scheduling_form{
+    justify-content: space-between;
+    
+  }
+
+  .button_container{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+}
+
+@media screen and (max-width: 1000px) {
+  .item{
+    width:95%;
+    
+  }
+
+  .search{
+    width:40%;
+  }
+
+  .schedule{
+    width:60%;
+  }
+
+  .regi_form{
+    width:95%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  
+
+  .item1{
+    flex-direction: column;
+    gap:8px;
+  }
+
+  .booking{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search{
+    width: 100%;;
+  }
+
+  .schedule{
+    width:95%;
+    margin:auto;
+    margin-top: 20px;
+  }
+
+  .scheduling_form{
+    width:100%;
+
+  }
+
+
+
+  input[type=submit],input[type=reset]  {
+    width:5.25rem;
+    font-size: 13px;
+  }
+
+  
+ 
+
+
+}

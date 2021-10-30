@@ -1,23 +1,21 @@
 body{
-  background: url("../img/Environment-earth_crop.jpg");
-  background-size: cover;
+  background:#D4F1F4;
 }
 
 .profile{
-  background-color: rgba(13, 13, 13, 0.8);
+  background-color: #c5eff7;
   width: 100%;
-  color: white;
+  color: #1894B4;
   position: relative;
-  margin-top: 15rem;
+  margin: 5% auto;
   height: auto;
   padding: 1rem;
-  margin-bottom: 1rem;
 }
 .pro-img1{
   width: 20%;
 }
 .main-profile{
-  background-color: rgba(13, 13, 13, 0.8);
+  background-color: #e3f5f8;
   width: 100%;
   padding: 0.5rem;
 }
@@ -62,11 +60,13 @@ body{
   float: right;
   margin: 0.2rem;
   border-radius: 0.3rem;
-  border-style: none;
+  border: 2px solid #05445E;
 }
 .editbtn:hover,.deletebtn:hover{
   opacity: 1;
-  color: whitesmoke;
+  color: #1894B4;
+  background-color: #05445E;
+  border: 2px solid #1894B4;
 }
 
 .row::after {
@@ -142,7 +142,7 @@ body{
 
 /* Style the horizontal ruler */
 hr {
-  border: 1px solid #f1f1f1;
+  border: 1px solid #1894B4;
   margin-bottom: 25px;
 }
  

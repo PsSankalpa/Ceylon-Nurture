@@ -1,15 +1,17 @@
 <?php
 class admin extends Controller
 {
-    function index()
+    function index($adminid=null)
     {
         if(!Auth::logged_in_admin())  
         {
           $this->redirect('login/login');
         }
         else
-        {
+        {   
             $admin = new admin();
+
+          // $data2=$admin->where('adminid',$adminid);
        
         //$data = $common_user->findAll();
         //$db=new Database();
@@ -30,7 +32,10 @@ class admin extends Controller
         //$userid=1;
         $data=$common_user->findAll();//where('userid',$userid);
         
-        $this->view("admin/admin",['rows'=>$data]);
+        $this->view("admin/admin",[
+            'rows'=>$data,
+            //'data'=>$data2,
+        ]);
         
         }
         
@@ -164,6 +169,28 @@ class admin extends Controller
         ]);
        
     }
+
+    function channeling(){
+
+        $this->view("admin/adminChanneling");
+
+
+    }
+
+    function payments(){
+
+        $this->view("admin/adminpayments");
+
+
+    }
+
+    function feedbacks(){
+
+        $this->view("admin/adminFeedbacks");
+
+
+    }
+
 
 
 

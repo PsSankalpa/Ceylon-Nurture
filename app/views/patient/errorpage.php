@@ -6,7 +6,9 @@
 
             
             <?php $this -> view ("header")?>
-            <link rel="stylesheet" href="<?=ASSETS?>css/channeling1.css">
+            <link rel="stylesheet" href="<?=ASSETS?>css/channelingStyle.css">
+            <link rel="stylesheet" href="<?=ASSETS?>css/commonStyle.css">
+
 
 
 </head>
@@ -21,7 +23,7 @@
 
     <div class="container center_errorpage">
         <h2 class="errorpage_body"> Please Update your account as a patient to Consult Doctors </h2>
-        <a href="<?=ROOT?>patient/registration"><button class="errorpage_button"> Update as a Patient </button></a>
+        <a href="<?=ROOT?>patient/registration"><button class="button"> Update as a Patient </button></a>
     </div>
 
 </body>

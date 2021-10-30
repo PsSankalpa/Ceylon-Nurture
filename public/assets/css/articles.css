@@ -380,6 +380,7 @@ section::-webkit-scrollbar{
 
 .articles-row{
   padding: 10px;
+  transition: 0.4s;
 }
 
 .articles-row:hover{

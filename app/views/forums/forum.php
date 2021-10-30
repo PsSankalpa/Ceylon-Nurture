@@ -85,7 +85,61 @@
 <!------------------------------------------------------------------------------------------------------------->
 
                     <div id="herb" class="tabcontent">
-                   
+                        <div class=container>
+
+                            <div  class="body_content">
+                                <div> <a href="<?=ROOT?>forum/addForumDoctor"><button class="add">Start a new discussion<i class="fas fa-long-arrow-alt-right"></i></button></a></div><br>
+                                <div> <button class="add A"> <i class="far fa-comment-alt"></i>All discussions</button></a></div>
+                                <div> <button class="add A"><i class="fas fa-forward"></i> Newest discussions</button></a></div>
+                                <div> <button class="add A"><i class="fas fa-certificate"></i> Verified discussions</button></a></div>
+                                <div> <button class="add A"><i class="far fa-star"></i> Following</button></a></div>
+                                <div> <button class="add A"><i class="far fa-comment-dots"></i> Feedbacks</button></a></div>
+
+
+                            </div>
+
+                            <div class="body_container_main_sub">
+                                        <div class='body_container'>
+                                            
+                                            <div class='body_container1'>
+                                                <div class="user">
+                                                    <div class="user_image"><img class="profile_pic" src="<?=ASSETS?>img/profile_picture1.jpg"/></div>
+                                                    <!--<img src="https://img.icons8.com/fluency/48/000000/edit-user-male.png"/>-->
+                                                    <div class="user_name">Peter</div>
+                                                </div>
+                                            </div>
+                                            <div class = 'body_container2'>
+                                                <div class="line1">
+                                                    <h3> Ashwagandha </h3>
+                                                    <div class="available"> 
+                                                        <button class="forum_button view">View Article</button> 
+                                                    </div>
+                                                </div>
+                                                
+                                                <br>
+                                                <div class="line2"><p style="text-align:left;">Ashwagandha is a very good herb for stress. you have to take it twice a day. i have those herbs in my garden. please contact me if you want it.</p> </div><br> 
+                                                <div class="line3"><p style="text-align:left;">Contact Number: 0777986455 </p></div>
+                                                <div class="image"><img class="forum_image" src="<?=ASSETS?>img/forum1.jpeg"/></div><br>
+
+                                                <div class="line3"><p style="text-align:left; color:green;">Verified Content <br>Checked by:Dr.Thush Perera<br>General Physician</p></div>
+
+
+
+                                                <div class="forum_buttons">
+                                                <a href="<?=ROOT?>forum/updateForumDoctor/<?=$row->forumDoctorid?>"><button class="forum_button update">Update</button></a>
+                                                <a href="<?=ROOT?>forum/deleteForumDoctor/<?=$row->forumDoctorid?>"><button class="forum_button delete">Delete</button></a>
+                                                <button class="forum_button">reply</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                            </div>
+
+
+
+                        </div>
                         
 
                     </div>
@@ -94,6 +148,59 @@
 
                     <div id="product" class="tabcontent">
                     
+                    <div class=container>
+
+                            <div  class="body_content">
+                                <div> <a href="<?=ROOT?>forum/addForumDoctor"><button class="add">Start a new discussion<i class="fas fa-long-arrow-alt-right"></i></button></a></div><br>
+                                <div> <button class="add A"> <i class="far fa-comment-alt"></i>All discussions</button></a></div>
+                                <div> <button class="add A"><i class="fas fa-forward"></i> Newest discussions</button></a></div>
+                                <div> <button class="add A"><i class="fas fa-certificate"></i> Verified discussions</button></a></div>
+                                <div> <button class="add A"><i class="far fa-star"></i> Following</button></a></div>
+                                <div> <button class="add A"><i class="far fa-comment-dots"></i> Feedbacks</button></a></div>
+
+
+                            </div>
+
+                            <div class="body_container_main_sub">
+                                        <div class='body_container'>
+                                            
+                                            <div class='body_container1'>
+                                                <div class="user">
+                                                    <div class="user_image"><img class="profile_pic" src="<?=ASSETS?>img/profile_picture1.jpg"/></div>
+                                                    <!--<img src="https://img.icons8.com/fluency/48/000000/edit-user-male.png"/>-->
+                                                    <div class="user_name">Peter</div>
+                                                </div>
+                                            </div>
+                                            <div class = 'body_container2'>
+                                                <div class="line1">
+                                                    <h3> Ashwagandha Root Powder </h3>
+                                                    <div class="available">
+                                                    <button class="forum_button view">View Product</button>  
+                                                    </div>
+                                                </div>
+                                                
+                                                <br>
+                                                <div class="line2"><p style="text-align:left;">Spring Valley Ashwagandha Root Powder Vegetarian Capsules are dietary supplements that may promote general wellness. </p> </div><br> 
+                                                <div style="width:250px;" class="image"><img class="forum_image" src="<?=ASSETS?>img/forum2.jpeg"/></div><br>
+
+
+
+
+                                                <div class="forum_buttons">
+                                                <a href="<?=ROOT?>forum/updateForumDoctor/<?=$row->forumDoctorid?>"><button class="forum_button update">Update</button></a>
+                                                <a href="<?=ROOT?>forum/deleteForumDoctor/<?=$row->forumDoctorid?>"><button class="forum_button delete">Delete</button></a>
+                                                <button class="forum_button">reply</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                            </div>
+
+
+
+                        </div>
                         
 
                 </div>

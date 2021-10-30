@@ -1,20 +1,61 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>
+            Home   
+        </title>
+        <link rel="stylesheet" href="<?=ASSETS?>css/commonStyle.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
 
-<head>
-    <title>
-        Home
-    </title>
-    <link rel="stylesheet" href="<?= ASSETS ?>css/commonStyle.css">
-    <link rel="stylesheet" href="<?= ASSETS ?>css/homeStyle.css">
-    <link rel="stylesheet" href="<?= ASSETS ?>css/registrationform.css">
+        <?php $this -> view ("header")?>
+    </head>
 
-    <?php $this->view("header") ?>
-</head>
+    <body id="body">
 
-<body id="body">
-    <main>
-        <div class="page_content">
+    <header>
+        <?php if(!empty($data)):?>
+            <?php if($data == "seller"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></a></div>
+                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
+                </div>
+
+            <?php elseif($data == "doctor"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
+                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
+                </div>
+
+            <?php elseif($data == "patient"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></a></div>
+                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
+                </div>
+
+            <?php elseif($data == "doctorAndSeller"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>patient/registration"> <button class="home_button_top">Be a Patient</button></a></div>
+                </div>
+
+            <?php elseif($data == "doctorAndPatient"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>seller/registration"><button class="home_button_top">Be a Seller</button></a></div>
+                </div>
+
+            <?php elseif($data == "sellerAndPatient"):?>
+                <div class="home_buttons_top">
+                        <div><a href="<?=ROOT?>doctor/registration"> <button class="home_button_top">Be a Doctor</button></a></div>
+                </div>
+
+
+                <?php endif;?>
+        <?php endif;?>
+        </header>
+     <main>
+         <div class="page_content">
+
+<!----------------------------------------------------------------------------------------------> 
+           
 
             <!---------------------------------------------------------------------------------------------->
             <section id="showcase">
@@ -192,27 +233,21 @@
         </div>
         <!---------------------------------------------------------------------------------------------->
 
-        <div class="container">
-            <div style="text-align:center">
+        <div class="container1">
+            <div class="topic1">
                 <h2>Contact Us</h2>
                 <p>Swing by for a cup of coffee, or leave us a message:</p>
             </div>
-            <div class="row">
-                <div class="column">
+            <div class="row1">
+                <div class="column1">
                     <img class="cont-img" src="<?= ASSETS ?>/img/contactform-img.png" style="width:100%">
                 </div>
-                <div class="column">
-                    <form action="/action_page.php">
+                <div class="column1">
+                    <form action="">
                         <label for="fname">First Name</label>
                         <input type="text" id="fname" name="firstname" placeholder="Your name..">
                         <label for="lname">Last Name</label>
                         <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                        <label for="country">Country</label>
-                        <select id="country" name="country">
-                            <option value="australia">Australia</option>
-                            <option value="canada">Canada</option>
-                            <option value="usa">USA</option>
-                        </select>
                         <label for="subject">Subject</label>
                         <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
                         <input type="submit" value="Submit">

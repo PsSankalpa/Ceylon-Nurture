@@ -1,25 +1,38 @@
 .payform{
-    background: rgba(13, 13, 13, 0.85);
-    color: aliceblue;
+    background: #e3f5f8;
+    color: #1894B4;
     width:60%;
-    margin: 15rem auto;
-    margin-bottom: 1rem;
+    margin: 5% auto;
     justify-content: center;
     align-items: center;
+    padding: 0.5rem;
+    border: 2px solid #05445E;
+    border-radius: 1rem;
+}
+
+.topics{
+    text-align: center;
+    margin: 2px auto;
 }
 
 .row{
     width: 100%;
     margin: 1rem auto;
     align-items: center;
-    margin-left: 25%;
 }
-
+.p-details{
+    margin: 1rem auto;
+}
+.p-inputs{
+    align-items: center;
+    margin: 4px auto;
+    margin-left: 33%;
+}
 .payform .btn{
     margin-left: 35%;
     margin-bottom: 1rem;
     opacity: 0.8;
-    color: gold;
+    color: #05445E;
 }
 .payform .btn:hover{
     opacity: 1;
@@ -38,6 +51,9 @@ input[type=text]{
 }
 
 @media screen and (max-width: 600px) {
+    .payform{
+        margin-bottom: 15%;
+    }
     .row{
         margin-left: 5%;
         font-size: 10px;
@@ -45,5 +61,14 @@ input[type=text]{
     input[type=text]{
         width: 40%;
         font-size: 10px;
+    }
+    .p-inputs{
+        align-items: center;
+        margin: 4px auto;
+        margin-left: 10%;
+    }
+    .payform .btn{
+        width: 50%;
+        margin-left: 25%;
     }
 }

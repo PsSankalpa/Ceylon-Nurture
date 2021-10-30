@@ -4,12 +4,13 @@
         <title>Ceylon Nurture|Seller|Registration</title>
         <?php $this -> view ("header",$data)?>
         <link rel="stylesheet" href="<?=ASSETS?>css/sellers.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/registrationform.css">
     </head>
 
     <body class="regi">
 
     
-    <div class="container center">
+    <div class="container1 center3">
         <h2>Are you want to delete the Product</h2>
 
         <?php if($row):?>
