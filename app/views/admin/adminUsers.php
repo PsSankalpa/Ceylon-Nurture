@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            Admin Dashboard   
+        Users
         </title>
         <link rel="stylesheet" href="<?=ASSETS?>css/commonStyle.css">
         <link rel="stylesheet" href="<?=ASSETS?>css/adminStyle.css">
@@ -29,7 +29,7 @@
                         </a>    
                     </li>
                     <li>
-                        <a href="#">
+                    <a href="<?=ROOT?>admin/users">
                             <span class="icon"><i class="fas fa-users"></i></span>
                             <span class="title">Users</span>
                         </a>    
@@ -47,7 +47,7 @@
                         </a>    
                     </li>
                     <li>
-                        <a href="<?=ROOT?>header/viewPoducts">
+                        <a href="<?=ROOT?>admin/products">
                             <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                             <span class="title">Products</span>
                         </a>    
@@ -109,7 +109,7 @@
                 <div class="overview">
 
                    <div class="toggle">
-                       <h4>Channeling</h4>
+                       <h4>Users</h4>
                    </div>
 
                    <div class="topbar_side heading">

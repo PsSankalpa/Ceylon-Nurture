@@ -29,7 +29,7 @@
                         </a>    
                     </li>
                     <li>
-                        <a href="#">
+                    <a href="<?=ROOT?>admin/users">
                             <span class="icon"><i class="fas fa-users"></i></span>
                             <span class="title">Users</span>
                         </a>    
@@ -47,7 +47,7 @@
                         </a>    
                     </li>
                     <li>
-                        <a href="<?=ROOT?>header/viewPoducts">
+                        <a href="<?=ROOT?>admin/products">
                             <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                             <span class="title">Products</span>
                         </a>    

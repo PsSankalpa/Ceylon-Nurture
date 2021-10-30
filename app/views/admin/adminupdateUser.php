@@ -12,7 +12,7 @@
     <button class="backbtn"><a href="<?=ROOT?>home">&times;</a></button>
 
     <div class="container center">
-            <div class="container">
+            <div class="containerA">
                 <div class="main">
                     <div class="content"> 
                         <h2>Update User</h2>
@@ -39,6 +39,9 @@
                             <input type="date" value="<?=get_var('dob',$row->dob)?>" id="dob" name="dob" >
                             <input  type="email" value="<?=get_var('email',$row->email)?>" name="email" placeholder="E-mail address"  >
                             <input  type="tel" value="<?=get_var('tpNumber',$row->tpNumber)?>" name="tpNumber" placeholder="Telephone Number" > 
+                            <!--<input type="password" value="<?=get_var('password')?>"  id="psw" name="password" placeholder="Password"  > 
+                            
+                            <input type="password" value="<?=get_var('password2')?>" name="password2" placeholder="Re-type Password"  >-->
                             <input class="addUserButton" type="submit" value="Update User">
                           
                         </form>

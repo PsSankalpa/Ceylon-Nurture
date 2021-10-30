@@ -12,7 +12,7 @@
     <button class="backbtn"><a href="<?=ROOT?>home">&times;</a></button>
 
     <div class="container center">
-            <div class="container">
+            <div class="containerA">
                 <div class="main">
                     <div class="content"> 
                         <h2>Add User</h2>
