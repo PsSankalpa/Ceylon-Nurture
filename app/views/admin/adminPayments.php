@@ -14,14 +14,14 @@
        <div class="container">
            <div class="navigation">
                <ul>
-                    <li>
-                        <a href="#">
-                            <span class="icon"></span>
+               <li>
+                    <a href="<?= ROOT ?>home/home">
+                            <span class="icon"><img class="logo" src="<?= ASSETS ?>img/logo.png"></span>
                             <span class="title"><h2> Ceylon Nurture </h2></span>
                         </a>
 
                     </li>
-                    <a href="#">
+                    <a href="<?=ROOT?>admin">
                     <li>
                     <a href="<?=ROOT?>admin">
                             <span class="icon"><i class="fas fa-home"></i></span>
@@ -71,7 +71,7 @@
                         </a>    
                     </li>
                     <li>
-                        <a href="#">
+                    <a href="<?=ROOT?>admin/reports">
                             <span class="icon"><i class="far fa-chart-bar"></i></span>
                             <span class="title">Reports</span>
                         </a>    
@@ -109,11 +109,11 @@
                 <div class="overview">
 
                    <div class="toggle">
-                       <h4>Channeling</h4>
+                       <h4>Payments</h4>
                    </div>
 
                    <div class="topbar_side heading">
-                       Calendar
+                   <i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i>
                    </div>
 
                 </div>
@@ -123,7 +123,6 @@
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
                             <h3>Payments</h3>
-                            <a href="#" class="btn">View All</a>
                         </div><br>
                         <table>
                            <thead>

@@ -71,7 +71,7 @@
                         </a>    
                     </li>
                     <li>
-                        <a href="#">
+                    <a href="<?=ROOT?>admin/reports">
                             <span class="icon"><i class="far fa-chart-bar"></i></span>
                             <span class="title">Reports</span>
                         </a>    
@@ -113,8 +113,8 @@
                    </div>
 
                    <div class="topbar_side heading">
-                       Calendar
-                   </div>
+                   <i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i>
+                    </div>
 
                 </div>
 

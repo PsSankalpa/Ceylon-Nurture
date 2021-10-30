@@ -113,4 +113,12 @@ class channeling extends Controller
         $this-> view("patient/patientPayments");
 
     }
+
+    function reports()
+    {
+
+        $this-> view("patient/patientReports");
+
+    }
+
 }

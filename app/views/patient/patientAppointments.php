@@ -39,7 +39,7 @@
                         </a>    
                     </li>
                     <li>
-                        <a href="<?=ROOT?>channeling/patient">
+                    <a href="<?=ROOT?>channeling/reports">
                             <span class="icon"><i class="far fa-chart-bar"></i></span>
                             <span class="title">Reports</span>
                         </a>    
@@ -80,7 +80,7 @@
                    </div>
 
                    <div class="topbar_side heading">
-                       Calendar
+                   <i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i>
                    </div>
 
                 </div>

@@ -35,7 +35,7 @@
                         </a>    
                     </li>
                     <li>
-                        <a href="<?=ROOT?>admin/feedbacks">
+                    <a href="<?=ROOT?>admin/feedbacks">
                             <span class="icon"><i class="far fa-comments"></i></span>
                             <span class="title">Feedbacks</span>
                         </a>    
@@ -109,11 +109,10 @@
                 <div class="overview">
 
                    <div class="toggle">
-                       <h4>Feedbacks</h4>
+                       <h4>Reports</h4>
                    </div>
 
                    <div class="topbar_side heading">
-                   <i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i>
                    </div>
 
                 </div>
@@ -122,36 +121,39 @@
                    
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
-                            <h3>Feedbacks</h3>
-                            <a href="#" class="btn">View All</a>
+                            <h3>Channeling</h3>
+                            <div class="report"><a class="btn">Generate Report</a><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
                         </div><br>
                         <table>
                            <thead>
                                <tr>
                                    <td>Name of the Doctor</td>
-                                   <td>Name of the Patient</td>
+                                   <td>Patient Name</td>
                                    <td>Date</td>
-                                   <td>Feedback</td>
+                                   <td>Time</td>
+                                   <td>Location</td>
+                                   <td>Doctor Charges</td>
+                                   <td>Commission</td>
                                </tr>
                            </thead> 
                            <tbody>
                                <tr>
                                    <td>Dr.Sunil Perera</td>
-                                   <td>Thush Gamage</td>
-                                   <td>25/10/2021</td>
-                                   <td> He cured my leg pain. very good Doctor</td>
+                                   <td>Manel Perera</td>
+                                   <td>05/11/2021</td>
+                                   <td>09:00 am</td>
+                                   <td>General Hospital,Colombo 05</td>
+                                   <td> LKR 2500</td>
+                                   <td> LKR 200</td>
                                </tr>
-                               <tr>
-                                   <td>Dr.Keerthi Silva</td>
-                                   <td> Theekshana Wickramasinghe</td>
-                                   <td>23/10/2021</td>
-                                   <td>Very friendly doctor</td>
-                               </tr>
-                               <tr>
-                                   <td>Dr.Keshan Gamage</td>
-                                   <td> Keshani Perera</td>
-                                   <td>22/10/2021</td>
-                                   <td>Good doctor for arthritis</td>
+                               
+                                   <td>Dr.Sunil Perera</td>
+                                   <td>Neth Perera</td>
+                                   <td>06/11/2021</td>
+                                   <td>10:00 am</td>
+                                   <td>Weda Madura, Gampaha</td>
+                                   <td> LKR 2800</td>
+                                   <td> LKR 200</td>
                                </tr>
                                
                            </tbody>
@@ -162,6 +164,87 @@
 
                 </div>
 
+                <div class="detailsA">
+                   
+                <div class="upcomingChanneling">
+                        <div class="cardHeader">
+                            <h3>Products</h3>
+                            <div class="report"><a class="btn">Generate Report</a><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
+                        </div><br>
+                        <table>
+                           <thead>
+                               <tr>
+                                   <td>Product Name</td>
+                                   <td>Seller Name</td>
+                                   <td>Product Price</td>
+                                   <td>Category</td>
+                                   <td>address</td>
+                                   <td>tpNumber</td>
+                                   <td>description</td>
+                               </tr>
+                           </thead> 
+                           <tbody>
+                           <?php foreach ($rows as $row):?>
+
+                               <tr>
+                                   <td><?=$row->productName?></td>
+                                   <td><?=$row->sellerName?></td>
+                                   <td><?=$row->productPrice?></td>
+                                   <td><?=$row->category?></td>
+                                   <td><?=$row->address?></td>
+                                   <td><?=$row->tpNumber?></td>
+                                   <td><?=$row->description?></td>
+                               </tr>
+                               <?php endforeach;?>
+
+                               
+                                   
+                               
+                           </tbody>
+                        </table>
+                    </div>
+   
+                    
+
+                </div>
+
+                <div class="detailsA">
+                   
+                   <div class="upcomingChanneling">
+                           <div class="cardHeader">
+                               <h3>Payments</h3>
+                               <div class="report"><a class="btn">Generate Report</a><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
+                           </div><br>
+                           <table>
+                              <thead>
+                                  <tr>
+                                      <td>Type of Payment</td>
+                                      <td>Date</td>
+                                      <td>Method of Payments</td>
+                                      <td>Amount</td>
+                                  </tr>
+                              </thead> 
+                              <tbody>
+                                  <tr>
+                                      <td>Monthly Implimentation cost</td>
+                                      <td>05/11/2021</td>
+                                      <td>Credit card Payment</td>
+                                      <td> LKR 2500</td>
+                                  </tr>
+                                  
+                                      <td>Maintenance Cost</td>
+                                      <td>06/11/2021</td>
+                                      <td> Bank transfer</td>
+                                      <td> LKR 2500</td>
+                                  </tr>
+                                  
+                              </tbody>
+                           </table>
+                       </div>
+      
+                       
+   
+                   </div>
 
                 
 
