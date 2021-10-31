@@ -21,14 +21,14 @@ class sellers extends Model
 		$this->errors2 = array();
 		//validations
 		//for name
-		if(empty($DATA['nameWithInitials']))
+		/*if(empty($DATA['nameWithInitials']))
 		{
 			$this->errors['nameWithInitials'] = "Cannot Keep name empty";
 		}
 		elseif(!preg_match('/^[a-zA-Z\s\.]+$/',$DATA['nameWithInitials']))
 		{
 			$this->errors['nameWithInitials'] = "Only letters allowed in the name";
-		}
+		}*/
 
 		//for registration number
 		if(empty($DATA['registrationNumber']))
@@ -41,7 +41,7 @@ class sellers extends Model
 		}
 
 		//for tp number
-		if(empty($DATA['tpNumber']))
+		/*if(empty($DATA['tpNumber']))
 		{
 			$this->errors['tpNumber'] = "Cannot Keep tp number empty empty";
 		}
@@ -52,7 +52,7 @@ class sellers extends Model
 		elseif(!strlen($DATA['tpNumber'])>10)
 		{
 			$this->errors['tpNumber'] = "Only 10 numbers allowed in the tp number";
-		}
+		}*/
 
 		//for NIC
 		if(empty($DATA['nic']))
