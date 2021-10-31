@@ -54,7 +54,7 @@
     height: auto;
 }
 
-section{
+.A-view{
     background-color:#07616b;
     width: 98%;
 		margin: auto;
@@ -65,7 +65,7 @@ section{
     margin-bottom: 6%;
     padding: 1rem;
 }
-section::-webkit-scrollbar{
+.A-view::-webkit-scrollbar{
   display: none;
 }
 
@@ -200,9 +200,16 @@ section::-webkit-scrollbar{
 
   @media (max-width: 768px) {
     .article-card picture{
-      height: 12rem;
+      height: 8rem;
       margin-bottom: 0;
       padding: 4px;
+    }
+    .article-card h1{
+      font-size: 1rem;
+    }
+
+    .prev,.next{
+      top: 60%;
     }
   }
 /*--------------------------------------------------------------------------------------*/
@@ -212,7 +219,7 @@ section::-webkit-scrollbar{
   display: flex;
   background-color: #e3f5f8;;
   margin-top: 5%;
-  margin-bottom: 2%;
+  margin-bottom: 8%;
   transition: 1s ;
 }
 .Mbtns{

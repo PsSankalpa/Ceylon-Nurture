@@ -12,15 +12,23 @@ class landing extends Controller
       if(Auth::logged_in()){
       $Auth = new Auth;
           $data = $Auth->finduser();
-           
+          $article = new article();
+          $data2 = $article->findAll();
           
           $this->view('home',[
 			    'data'=>$data,
+          'rows' => $data2,
         ]);
       }
       else{
-        $this->view('home');
-      }      
+        $article = new article();
+        $data2 = $article->findAll();
+        $this->view('home',[
+          'rows' => $data2,
+        ]);
+      } 
+      
+      
     
      
 

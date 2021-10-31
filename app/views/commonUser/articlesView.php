@@ -25,7 +25,7 @@
             <?php endif; ?>
         </div>
 
-            <section>
+            <section class="A-view">
                 <span class="prev carousel__button-prev">&#10094;</span>
                 <?php if ($rows) : ?>
                     <?php foreach ($rows as $row) : ?>
