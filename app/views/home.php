@@ -208,23 +208,25 @@
             <?php endif; ?>
 
             <!---------------------------------------------------------------------------------------------->
-            <section class="A-view">
+            <section id="articles">
+            <section class="A-viewA">
                 <span class="prev1 carousel__button-prev">&#10094;</span>
                 <?php if ($rows) : ?>
                     <?php foreach ($rows as $row) : ?>
-                        <div class="article-card product">
+                        <div style="background-color:#75e6db6e;" class="article-card product">
                             <h1><?= $row->articleName ?></h1>
                             <picture>
                                 <img src="<?= ASSETS2 . $row->image ?>" alt="A-herb" style="width:100%">
                             </picture>
                             <p><?= $row->description ?></p>
-                            <p><a href="<?= ROOT ?>/articles/articleDetails/<?= $row->articleid ?>"><button>View Information</button></a></p>
+                            <p><a href="<?= ROOT ?>/articles/articleDetails/<?= $row->articleid ?>"><button style="background-color:#07616b; color:#e3f5f8;">View Information</button></a></p>
                         </div>
                     <?php endforeach; ?>
                 <?php else : ?>
                     <h4>No Articles Yet</h4>
                 <?php endif; ?>
                 <span class="next1 carousel__button-next">&#10095;</span>
+            </section>
             </section>
 
             <!---------------------------------------------------------------------------------------------->
