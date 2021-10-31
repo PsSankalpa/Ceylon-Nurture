@@ -154,12 +154,12 @@ class admin extends Controller
         $errors = array();
         if(count($_POST) > 0)
         {
-            if(trim($_POST['password']) == "")
-            {
-                unset($_POST['password']);
-                unset($_POST['password2']);
+            //if(trim($_POST['password']) == "")
+            //{
+            //    unset($_POST['password']);
+            //    unset($_POST['password2']);
 
-            }
+            //}
 
             if($common_user->validate($_POST,$userid))
             {

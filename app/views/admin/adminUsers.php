@@ -175,7 +175,7 @@
                                <tr>
                                    <td>Name with Initials</td>
                                    <td>Name</td>
-                                   <!--<td>Username</td>-->
+                                   <td>Username</td>
                                    <td>Email</td>
                                    <td>Telephone</td>
                                    <td>Date of Birth</td>
@@ -190,7 +190,7 @@
                                <tr>
                                     <td><?=$row->nameWithInitials?></td>
                                    <td> <?=$row->fname?> <?=$row->lname?></td>
-                                   <!--<td><?=$row->username?></td>-->
+                                   <td><?=$row->username?></td>
                                    <td><?=$row->email?></td>
                                    <td><?=$row->tpNumber?></td>
                                    <td><?=$row->dob?></td>

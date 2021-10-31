@@ -80,6 +80,7 @@
         </form>
     </div>
 
-    
+    <script type="text/javascript" src="<?=ASSETS?>js/sellerJs"></script>        
+
     </body>
 </html>
