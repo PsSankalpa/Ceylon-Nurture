@@ -121,4 +121,11 @@ class channeling extends Controller
 
     }
 
+    function confirmation()
+    {
+
+        $this-> view("patient/channelingConfirmation");
+
+    }
+
 }

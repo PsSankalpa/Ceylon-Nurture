@@ -203,7 +203,7 @@
         </div>
 
         
-        <div class="payButton"><button class="buttonA">Proceed to Pay</button></div>
+        <a href="<?=ROOT?>channeling/confirmation"><div class="payButton"><button class="buttonA">Proceed to Pay</button></div></a>
     </div>
 
     <!--footer-->
