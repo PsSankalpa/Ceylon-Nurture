@@ -6,6 +6,7 @@
         </title>
         <link rel="stylesheet" href="<?=ASSETS?>css/commonStyle.css">
         <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
+        <link rel="stylesheet" href="<?= ASSETS ?>css/articles.css">
 
         <?php $this -> view ("header")?>
     </head>
@@ -207,16 +208,23 @@
             <?php endif; ?>
 
             <!---------------------------------------------------------------------------------------------->
-            <section id="articles">
-                <div class="contentC">
-
-
-
-
-
-                
-
-                </div>
+            <section class="A-view">
+                <span class="prev1 carousel__button-prev">&#10094;</span>
+                <?php if ($rows) : ?>
+                    <?php foreach ($rows as $row) : ?>
+                        <div class="article-card product">
+                            <h1><?= $row->articleName ?></h1>
+                            <picture>
+                                <img src="<?= ASSETS2 . $row->image ?>" alt="A-herb" style="width:100%">
+                            </picture>
+                            <p><?= $row->description ?></p>
+                            <p><a href="<?= ROOT ?>/articles/articleDetails/<?= $row->articleid ?>"><button>View Information</button></a></p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <h4>No Articles Yet</h4>
+                <?php endif; ?>
+                <span class="next1 carousel__button-next">&#10095;</span>
             </section>
 
             <!---------------------------------------------------------------------------------------------->
@@ -260,6 +268,7 @@
         <?php $this->view("footer") ?>
         <!--end of footer-->
     </main>
+    <script type="text/javascript" src="<?= ASSETS ?>js/article.js"></script>
 </body>
 
 </html>
