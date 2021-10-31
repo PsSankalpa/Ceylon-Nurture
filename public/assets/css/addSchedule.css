@@ -32,16 +32,16 @@ body {
   z-index:1;
   top:0;
   left:0;
-  background-color: #05435ec0;
+  background-color: #05435e;
   overflow:hidden;
   transition:0.5s;
-  padding-top:30px;
+  padding-top:20px;
 }
 .sidenav a{
   padding:30px 30px;
   text-decoration: none;
-  font-size:20px;
-  color:#000000;
+  font-size:15px;
+  color:#ffffff;
   display:block;
   transition:0.3s;
 }
@@ -287,17 +287,16 @@ input[type=date]{
   padding: 10px;
 }
 .date-container{
-  width:60%;
+  width:50%;
   display:flex;
   gap:10px;
 }
 .header-container{
   padding:2%;
-  width:100%;
+  width:90%;
   display:flex;
   justify-content: space-between;
 }
-
 .filterA{
   background-color: #75e6db80;
   border-radius:15px;
@@ -305,16 +304,13 @@ input[type=date]{
   margin-bottom: 5px;
 
 }
-.deletebtn{
-  background-color: #b2ebf1;
+.deletebtn input[type="submit"]{
   color: #05445E;
   font-weight: bold;
   padding: 10px;
-  border-radius: 25%;
-  cursor: pointer;
-  width:20%;
-  transform:translate(-80%, -10%);
-  margin-top: 10%;
+  border-radius: 50px;
+  width:90%;
+  text-align: center;
 
 }
 
@@ -323,10 +319,10 @@ input[type=date]{
   color: #05445E;
   font-weight: bold;
   padding: 10px;
-  border-radius: 25%;
+  border-radius: 50px;
   cursor: pointer;
   width:20%;
-  transform:translate(40%, -10%);
+
   margin-top: 10%;
 
 }

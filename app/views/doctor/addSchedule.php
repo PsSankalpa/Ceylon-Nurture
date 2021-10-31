@@ -1,7 +1,6 @@
 <html>
 <head>
 <title>Doctor's Add Schedule</title>
-<?php $this -> view ("header",$data)?>
 <meta name="viewport" content="width=device-width; initial-scale=1.0;">
 
 <link rel="stylesheet" href="<?=ASSETS?>css/addSchedule.css">
@@ -22,23 +21,25 @@
     <div id="content">
         <span class="slide">
         <a href="<?=ROOT?>doctor/docDashboard" class="previous">&#8249;</a>
-          <a href="#" onclick="openSlideMenue()">
+         <a href="#" onclick="openSlideMenue()">
         
             <i class="fa fa-fw fa-bars"></i>
           </a>
           <span class="nav">Add Schedule</span></br>
         </span>
         </br>  
-        <div id="mySidenav" class="sidenav">
+       <div id="mySidenav" class="sidenav">
           <a href="#" class="close" onclick="closeSlideMenue()">
             <i class="fa fa-fw fa-times"></i>
           </a>
-          <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
+          <a  href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-home"></i>&nbsp;&nbsp;  Home</a>
+         <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
           <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
-          <a  href="<?=ROOT?>appointments"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
+          <a  href="<?=ROOT?>articles/articleDetails"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
           <a  href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
+          <a href="<?=ROOT?>logout"><i class="fa fa-fw fa-sign-out icons"></i>&nbsp;&nbsp;  Sign Out</a>
         </div>
         <div class="clearfix"></div>
         <div class="container3">

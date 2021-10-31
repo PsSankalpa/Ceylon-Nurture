@@ -1,7 +1,6 @@
 <html>
 <head>
 <title>Ceylon Nurture|Doctor|Delete Schedule</title>
-<?php $this -> view ("header",$data)?>
 <meta name="viewport" content="width=device-width; initial-scale=1.0;">
 <link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/addSchedule.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,11 +30,12 @@
           <a href="#" class="close" onclick="closeSlideMenue()">
             <i class="fa fa-fw fa-times"></i>
           </a>
-          <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
+          <a  href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-home"></i>&nbsp;&nbsp;  Home</a>
+         <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
           <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
-          <a  href="<?=ROOT?>appointments"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
+          <a  href="<?=ROOT?>articles/articleDetails"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
           <a  href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
         </div>
         <div class="clearfix"></div>
@@ -51,15 +51,16 @@
                             <br/>
                             <hr>
                             <br/>
-                            <div clas="dltSchedule">
-                                <input type="submit" value="Delete">
-                            </div>  
-                            
-                            <div> 
-                                <a href="<?=ROOT?>doctor/viewSchedule/<?=$row->scheduleid?>">
-                                    <button class="nobtn">Reset</button>
-                                </a>
-                            </div> 
+                            <!-- <div class="buttons"> -->
+                              <div class="deletebtn">
+                                  <input type="submit" value="Delete">
+                              </div>  
+                              <!--<div> 
+                                  <a href="<?=ROOT?>doctor/viewSchedule/<?=$row->scheduleid?>">
+                                      <button class="nobtn">Reset</button>
+                                  </a>
+                              </div> 
+                            </div>-->
                           
                         </form>
                     <?php else:?>

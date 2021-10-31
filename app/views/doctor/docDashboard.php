@@ -36,13 +36,15 @@
       
         
         <!--<p class="logo"><span>Ceylon Nurture</span></p>-->
-         
+          <a  href="<?=ROOT?>home/home"><i class="fa fa-fw fa-home"></i>&nbsp;&nbsp;  Home</a>
           <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
           <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
-          <a  href="<?=ROOT?>appointments"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
+          <a  href="<?=ROOT?>header/viewArticles"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
           <a  href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
+          <a href="<?=ROOT?>logout"><i class="fa fa-fw fa-sign-out icons"></i>&nbsp;&nbsp;  Sign Out</a>
+       
         </div>
             <div class="head">
               <div class="col-div-6"></div>
@@ -75,8 +77,9 @@
 
             <div class="reports">
               <h3>Weekly Reports</h3>
+            <div class="cardBox">
               <div class="col-div-3">
-              <div class="box">
+                <div class="box">
                   <p>67<br/><span>Patients</span></p>
                   <i class="fa fa-users box-icon"></i>
                 </div>
@@ -91,10 +94,11 @@
 
               <div class="col-div-3">
                 <div class="box">
-                  <p>58,500<br/><span>Revenue</span></p>
+                  <p>Rs.58,500<br/><span>Revenue</span></p>
                   <i class="fa fa-money box-icon"></i>
                 </div>
               </div>
+            </div>
             </div>
               <div class="clearfix"></div>
                 <div class="col-div-8">

@@ -81,7 +81,7 @@
                             <label for="Hospital">Hospital</label>
                         </div>
                         <div class="col-75">
-                            <h3>Osu Deepa Hospital</h3>
+                            <h3>Osu Deepa </h3>
                         </div>
                         </div>
                     <div class="row">

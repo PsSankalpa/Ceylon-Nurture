@@ -35,16 +35,16 @@ body {
   z-index:1;
   top:0;
   left:0;
-  background-color: #05435ec0;
+  background-color: #05435e;
   overflow:hidden;
   transition:0.5s;
-  padding-top:30px;
+  padding-top:20px;
 }
 .sidenav a{
   padding:30px 30px;
   text-decoration: none;
-  font-size:20px;
-  color:#000000;
+  font-size:15px;
+  color:#ffffff;
   display:block;
   transition:0.3s;
 }
@@ -164,7 +164,12 @@ p{
   width:33%;
   float:left;
 }
-
+.cardBox .box:hover
+{
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        transform: scale(1.05);
+}
 .box{
   width:85%;
   height:100px;
@@ -175,6 +180,7 @@ p{
   margin-left:8%;
   padding:5px;
   cursor:pointer;
+  box-shadow: 8px 8px 5px #d3d2d2d0;
 }
 .box p{
   font-size:35px;
