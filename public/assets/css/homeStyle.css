@@ -158,7 +158,7 @@ background-color:#189AB4;
 .prev1, .next1 {
   cursor: pointer;
   position: absolute;
-  top: 160%;
+  top: 180%;
   width: auto;
   padding: 16px;
   margin-top: -22px;
