@@ -57,6 +57,7 @@ a{
 
 ul{
     color: #189AB4;
+    list-style-type: none;
 }
 
 .button{

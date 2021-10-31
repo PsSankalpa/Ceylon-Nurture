@@ -64,7 +64,7 @@
 
                     <div class="inner_content">
                         <h1 class="h1">Ayurvedha Under One Roof</h1><br>
-                        <p>Online Ayurvedic Platform where you can,</p>
+                        <p><h3>Online Ayurvedic Platform where you can,</h3></p><br>
 
                         <ul>
                             <li>Consult Ayurvedic Doctors</li>
