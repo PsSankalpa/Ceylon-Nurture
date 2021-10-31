@@ -58,7 +58,7 @@ class doctor extends Controller
                // exit(); //Stop uploading the image for the database
 
                 $doctors->insert($arr);
-                $this->redirect('doctor');
+                $this->redirect('home/home');
             }
             else{
                 $errors = $doctors->errors;

@@ -3,68 +3,104 @@
 <title>Doctor Feedback</title>
 <?php $this -> view ("header",$data)?>
 <meta name="viewport" content="width=device-width; initial-scale=1.0;">
-<link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/appointments.css">
+
+<link rel="stylesheet" href="<?=ASSETS?>css/docDashboard.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+      function openSlideMenue(){
+        document.getElementById('mySidenav').style.width = '250px';
+        document.getElementById('content').style.marginLeft = '250px';
+      }
+      function closeSlideMenue(){
+        document.getElementById('mySidenav').style.width = '0';
+        document.getElementById('content').style.marginLeft = '0';
+      }
+    </script>
 </head>
-<body>
-    <div class="background">
-        <div class="container1">
-            <div class="sidebar">
-                <img src="<?=ASSETS?>img/avatar.png" alt="Person" class="pro-pic" width="200" height="100">
-                <?php if($data):?>
-                    <h4><?=$data[0]->nameWithInitials?> </h4>
-                <?php endif;?>
-                <a href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-home"></i>  My Account</a>
-                <a href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>  Schedule</a>
-                <a class="active" href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>  Feedback</a>
-                <a  href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>  Appointments</a>
-                <a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>  Reports</a>
-            </div>
-                <div class="container3">
-                <div class="header">
-                        <div>
-                            <input type="date" id="date" name="date">
-                            <button class="filter">Filter</button>
-                            <h2>Feed Backs from Patients</h2>
-                        </div> 
-                        <div class="slot-container">
-                            <div class="patients">Natasha Perera</div><br> 
-                            <p>He is a good doctor who has lot of skills.I got my treatments for arthritis from him and now i am recovering</p>
-                            <div class="time">10.30am</div> 
-                        </div>
-
-                        <div class="slot-container">
-                            <div class="patients">Sisiliya Kumari</div><br>
-                            <p>I got treatment for asthma from Dr.Sanath Perera.Started my treatmentsa few months ago and now i am feeling better.</p>
-                            <div class="time">2.00 pm</div>
-                        </div>
-
-                        <div class="slot-container">
-                            <div class="patients">Nanda Kumara</div>
-                            <p> <p>I got treatment for asthma from Dr.Sanath Perera.Started my treatmentsa few months ago and now i am feeling better.</p>
-                            <div class="time">5.00 pm</div>
-                        </div>
-
-                        <div class="slot-container">
-                            <div class="patients">Sunil Gunawardhana </div>  <br> 
-                            <p>I was not able to get a good result from the treatments which he does.</p>
-                            <div class="time">8.45 pm</div>
-                        </div>
-                        
-                        <div class="slot-container">
-                            <div class="patients">Nimmi Fernando</div>  <br> 
-                            <p>I highly recommend this doctor.My son was able to recover from a severe digestive problem </p>
-                            <div class="time">9.00 am</div>
-                        </div>
-
-                        <div class="slot-container">
-                            <div class="patients">Kumarika Siriwardhana</div> <br>
-                            <p>Thank you so much doctor for your treatments.So happy to say that i was able to walk like earlier after your treatments.</p> 
-                            <div class="time">11.15 pm</div>
-                        </div>
-                
-            </div>
+<body class="bg">
+    <div id="content">
+        <span class="slide">
+        <a href="<?=ROOT?>doctor/docDashboard" class="previous">&#8249;</a>
+          <a href="#" onclick="openSlideMenue()">
+        
+            <i class="fa fa-fw fa-bars"></i>
+          </a>
+          <span class="nav">Feedbacks</span></br>
+        </span>
+        </br>  
+        <div id="mySidenav" class="sidenav">
+          <a href="#" class="close" onclick="closeSlideMenue()">
+            <i class="fa fa-fw fa-times"></i>
+          </a>
+          <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
+          <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
+          <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
+          <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
+          <a  href="<?=ROOT?>articles/articleDetails"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
+          <a  href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
         </div>
+        <div class="clearfix"></div>
+        <div class="appoint">
+            <button class="filterbtn">Filter</button>
+            <input type="date" id="date" name="date">
+        </div>
+            <div class="clearfix"></div>
+            <div class="col-div-8"><br/>
+                <div class="box-8">
+                    <div class="content-box">   
+                        <div style="overflow-y:auto;">
+                        <table>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Patient Name</th>
+                                <th>Response</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td class="data">16/11/2021</td>
+                                <td class="data">10.30am</td>
+                                <td class="data">Natasha Perera</td>
+                                <td class="data">He is a good doctor who has lot of skills.I got my treatments for arthritis from him and now i am recovering</th>
+                            </tr>
+                            <tr>
+                                <td class="data">16/11/2021</td>
+                                <td class="data">2.00 pm</td>
+                                <td class="data">Sisiliya Kumari</td>
+                                <td class="data">I got treatment for asthma from Dr.Sanath Perera.Started my treatmentsa few months ago and now i am feeling better.</th>
+                            </tr>
+                            <tr>
+                                <td class="data">16/11/2021</td>
+                                <td class="data">5.00 pm</td>
+                                <td class="data">Nanda Kumara</td>
+                                <td class="data">I was not able to get a good result from the treatments which he does.</th>
+                            </tr>
+                            <tr>
+                                <td class="data">16/11/2021</td>
+                                <td class="data">8.45 pm</td>
+                                <td class="data">Sunil Gunawardhana</td>
+                                <td class="data">I got treatment for gastritis from Dr.Sanath Perera.Started my treatmentsa few months ago and now i am feeling better.</th>
+                            </tr>
+                            <tr>
+                                <td class="data">16/11/2021</td>
+                                <td class="data">9.00 am</td>
+                                <td class="data">Nimmi Fernando</td>
+                                <td class="data">I got treatment for gastritis from Dr.Sanath Perera.Started my treatmentsa few months ago and now i am feeling better.</th>
+                            </tr>
+                            <tr>
+                                <td class="data">16/11/2021</td>
+                                <td class="data">11.15pm</td>
+                                <td class="data">Kumarika Siriwardhana</td>
+                                <td class="data">I got treatment for gastritis from Dr.Sanath Perera.Started my treatmentsa few months ago and now i am feeling better.</th>
+                            </tr>
+                        
+                      
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>    
     </div>
 </body>
 </html>
+    

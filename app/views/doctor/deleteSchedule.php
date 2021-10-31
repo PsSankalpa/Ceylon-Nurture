@@ -32,7 +32,6 @@
             <i class="fa fa-fw fa-times"></i>
           </a>
           <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
-          <a  href="<?=ROOT?>doctor/viewAccount"><i class="fa fa-fw fa-user icons"></i> &nbsp;&nbsp; My Account</a>
           <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
@@ -42,7 +41,7 @@
         <div class="clearfix"></div>
         <div class="container4">
                     <?php if($row):?>
-                        <form class="regi_form" enctype="multipart/form-data" method="POST">
+                        <form class="delete_form" enctype="multipart/form-data" method="POST">
                             <h2>Do you want to delete the Slot <?=get_var('slotNumber',$row->slotNumber)?> of the schedule?</h2>
                             <input type="hidden" name="id">
                             <hr>
@@ -52,7 +51,7 @@
                             <br/>
                             <hr>
                             <br/>
-                            <div>
+                            <div clas="dltSchedule">
                                 <input type="submit" value="Delete">
                             </div>  
                             

@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/registrationform.css">
 </head>
 
-<body class="regi">
+<body id=body>
 
     
     <div class="container center">
