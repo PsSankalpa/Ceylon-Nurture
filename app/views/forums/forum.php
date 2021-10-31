@@ -228,5 +228,9 @@
             document.getElementById("defaultOpen").click();
         </script>
 
+        <!--footer-->
+        <?php $this->view("footer") ?>
+        <!--end of footer-->
+
     </body>
 </html>
