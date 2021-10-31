@@ -30,6 +30,9 @@ padding:20px 30px;;
   display: flex;
   margin-top: 10px;
   width:100%;
+  margin-bottom: 100px;
+
+
 }
 
 .col-25, .col-75, input[type=submit],input[type=reset],input[type=file]{
@@ -166,9 +169,15 @@ hr.h1{
   width:90%;
 }
 
-h2{
-  color:rgb(154, 156, 11);
+.errorpage{
+  display: flex;
+  flex-direction: column;
+  gap:50px;
+  justify-content: center;
+  text-align:center;
 }
+
+
 
 
 @media (max-width:1500px){

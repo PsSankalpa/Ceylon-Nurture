@@ -55,8 +55,12 @@
 
 
     </div>
-    <script type="text/javascript" src="<?=ASSETS?>js/sellerJs"></script>
 
     
+    <script type="text/javascript" src="<?=ASSETS?>js/sellerJs"></script>
+
+    <!--footer-->
+    <?php $this->view("footer") ?>
+        <!--end of footer-->
     </body>
 </html>

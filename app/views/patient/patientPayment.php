@@ -206,6 +206,10 @@
         <div class="payButton"><button class="buttonA">Proceed to Pay</button></div>
     </div>
 
+    <!--footer-->
+    <?php $this->view("footer") ?>
+        <!--end of footer-->
+
 
 </body>
 </html>

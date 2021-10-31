@@ -21,10 +21,14 @@
     <br>
     <br>
 
-    <div class="container center_errorpage">
+    <div class="errorpage">
         <h2 class="errorpage_body"> Please Update your account as a patient to Consult Doctors </h2>
-        <a href="<?=ROOT?>patient/registration"><button class="button"> Update as a Patient </button></a>
+        <a href="<?=ROOT?>patient/registration"><button class="button_typeB"> Update as a Patient </button></a>
     </div>
+
+    <!--footer-->
+    <?php $this->view("footer") ?>
+        <!--end of footer-->
 
 </body>
 </html>
