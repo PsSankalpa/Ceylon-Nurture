@@ -69,7 +69,7 @@
                         </div>
                         </div>
 
-                        <div class="row">
+                        <!--<div class="row">
                         <div class="col-25">
                             <label for="hospital">Special Note from the Doctor</label>
                         </div>
@@ -77,7 +77,7 @@
                         <div class="col-75">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
-                        </div>
+                        </div>-->
 
                     </form> 
                     <?php else:?>
@@ -93,12 +93,12 @@
                         <div class="slotHead">
                             <div class="iconBox"><i class="far fa-calendar-alt"></i></div>
                             <div class="date"> 05/11/2021</div>
-                            <div class="patientNo">Number of Patients: 10</div>
+                            <div class="patientNo">Number of Patients: 39</div>
                         </div>
 
                         <div class="slotBody">
                             <div class="card">
-                                <div class="time">09:00 - 10:00 AM</div>
+                                <div class="time">08:00 - 10:00 AM</div>
                                 <div class = "availability"> 
                                 <ol class="switches">
                                         <input type="checkbox" id="1" checked>
@@ -107,12 +107,13 @@
                                         <span></span>
                                         </label>
                                 </ol>
-                                </div>
+                                </div><br>
+                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 15</div>
                                 <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
                             </div>
 
                             <div class="card">
-                                <div class="time">09:00 - 10:00 AM</div>
+                                <div class="time">01:00 - 03:00 PM</div>
                                 <div class = "availability"> 
                                 <ol class="switches">
                                         <input type="checkbox" id="2" checked>
@@ -121,12 +122,13 @@
                                         <span></span>
                                         </label>
                                 </ol>
-                                </div>
+                                </div><br>
+                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 14</div>
                                 <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
                             </div>
 
                             <div class="card">
-                                <div class="time">09:00 - 10:00 AM</div>
+                                <div class="time">04:00 - 07:00 PM</div>
                                 <div class = "availability"> 
                                 <ol class="switches">
                                         <input type="checkbox" id="3">
@@ -135,7 +137,8 @@
                                         <span></span>
                                         </label>
                                 </ol>
-                                </div>
+                                </div><br>
+                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 10</div>
                                 <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
                             </div>
 
@@ -147,7 +150,7 @@
                         <div class="slotHead">
                             <div class="iconBox"><i class="far fa-calendar-alt"></i></div>
                             <div class="date"> 05/11/2021</div>
-                            <div class="patientNo">Number of Patients: 10</div>
+                            <div class="patientNo">Number of Patients: 38</div>
                         </div>
 
                         <div class="slotBody">
@@ -161,12 +164,13 @@
                                         <span></span>
                                         </label>
                                 </ol>
-                                </div>
+                                </div><br>
+                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 11</div>
                                 <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
                             </div>
 
                             <div class="card">
-                                <div class="time">09:00 - 10:00 AM</div>
+                                <div class="time">01:00 - 02:00 PM</div>
                                 <div class = "availability"> 
                                 <ol class="switches">
                                         <input type="checkbox" id="5" >
@@ -175,12 +179,13 @@
                                         <span></span>
                                         </label>
                                 </ol>
-                                </div>
+                                </div><br>
+                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 5</div>
                                 <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
                             </div>
 
                             <div class="card">
-                                <div class="time">09:00 - 10:00 AM</div>
+                                <div class="time">03:00 - 05:00 PM</div>
                                 <div class = "availability"> 
                                 <ol class="switches">
                                         <input type="checkbox" id="6" checked>
@@ -189,12 +194,13 @@
                                         <span></span>
                                         </label>
                                 </ol>
-                                </div>
+                                </div><br>
+                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 10</div>
                                 <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
                             </div>
 
                             <div class="card">
-                                <div class="time">09:00 - 10:00 AM</div>
+                                <div class="time">06:00 - 08:00 PM</div>
                                 <div class = "availability"> 
                                 <ol class="switches">
                                         <input type="checkbox" id="7" checked>
@@ -203,7 +209,8 @@
                                         <span></span>
                                         </label>
                                 </ol>
-                                </div>
+                                </div><br>
+                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 12</div>
                                 <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
                             </div>
 
