@@ -27,17 +27,29 @@ class forumdoctor extends Model
 			$this->errors['name'] = "Only letters allowed in the name";
 		}
 
-        if(isset($data['tpNumber'])){
+        if(!empty($data['tpNumber']))
+		{		
+            if(isset($data['tpNumber'])){
             
-            if(!preg_match('/^[0-9]+$/',$data['tpNumber']))
-            {
-                $this->errors['tpNumber'] = "Only numbers allowed in the tp number";
-            }
-            elseif(strlen($data['tpNumber'])>10)
-            {
-                $this->errors['tpNumber'] = "Only 10 numbers allowed in the tp number";
+                if(!preg_match('/^[0-9]+$/',$data['tpNumber']))
+                {
+                    $this->errors['tpNumber'] = "Only numbers allowed in the tp number";
+                }
+                elseif(strlen($data['tpNumber'])>10)
+                {
+                    $this->errors['tpNumber'] = "Only 10 numbers allowed in the tp number";
+                }
+                elseif(strlen($data['tpNumber'])<9)
+                {
+                    $this->errors['tpNumber'] = "Only 10 numbers allowed in the tp number";
+                }            
             }
         }
+
+        if(empty($data['description']))
+		{
+			$this->errors['description'] = "Please add a description about the Doctor";
+		}
 
          if(count($this->errors) == 0)
          {

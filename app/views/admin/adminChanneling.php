@@ -112,8 +112,9 @@
                        <h4>Channeling</h4>
                    </div>
 
-                   <div class="topbar_side heading">
+                   <div class="topbar_sideA heading">
                    <i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i>
+                   <i class="far fa-money-bill-alt"> Amount LKR 2000-3000</i>
                    </div>
 
                 </div>

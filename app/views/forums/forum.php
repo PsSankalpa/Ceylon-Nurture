@@ -58,9 +58,12 @@
                                             
                                             <br>
                                             <div class="line2"><p style="text-align:left;"><?=esc($row->description)?></p> </div><br> 
-                                            <div class="line3"><p style="text-align:left;">Contact Number: <?=esc($row->tpNumber)?></p></div>
+                                            <?php if ($row->tpNumber) : ?>
+                                            <div class="line3"><p style="text-align:left;">Contact Number:<?=esc($row->tpNumber)?></p></div>
+                                            <?php endif; ?> 
+                                            <?php if ($row->location) : ?>
                                             <div class="line3"><p style="text-align:left;">Location: <?=esc($row->location)?></p></div>
-
+                                            <?php endif; ?> 
                                             <div class="forum_buttons">
                                             <a href="<?=ROOT?>forum/updateForumDoctor/<?=$row->forumDoctorid?>"><button class="forum_button update">Update</button></a>
                                             <a href="<?=ROOT?>forum/deleteForumDoctor/<?=$row->forumDoctorid?>"><button class="forum_button delete">Delete</button></a>

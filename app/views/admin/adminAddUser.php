@@ -9,7 +9,7 @@
     </head>
 
     <body id="body">
-    <button class="backbtn"><a href="<?=ROOT?>home">&times;</a></button>
+    <button class="backbtn"><a href="<?=ROOT?>admin/users">&times;</a></button>
 
     <div class="container center">
             <div class="containerA">

@@ -149,6 +149,12 @@ body{
     display: flex;
 }
 
+.topbar_sideA{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
 .notifications{
     font-size: 20px;
     display: flex;

@@ -96,7 +96,6 @@ class common_user extends Model
         //validation for DOB
         $y=date("Y");
     
-       print_r($y-(intval($data['dob'])));
       
 		if(empty($data['dob']))
 		{
