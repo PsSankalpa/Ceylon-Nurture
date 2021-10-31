@@ -28,13 +28,11 @@ class forum extends Controller
         $errors = array();
         if(count($_POST) > 0)
         {
-
             $forumdoctor = new forumdoctor();
 
             if($forumdoctor->validate($_POST))
             {
                 
-               print_r($forumdoctor);  
                // $arr['date'] = date("Y-m-d H:i:s");
 
                

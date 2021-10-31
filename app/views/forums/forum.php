@@ -45,7 +45,7 @@
                                             <div class="user">
                                                 <div class="user_image"><img class="profile_pic" src="<?=ASSETS?>img/profile_picture1.jpg"/></div>
                                                 <!--<img src="https://img.icons8.com/fluency/48/000000/edit-user-male.png"/>-->
-                                                <div class="user_name">Peter</div>
+                                                <div class="user_name">Name</div>
                                             </div>
                                         </div>
                                         <div class = 'body_container2'>

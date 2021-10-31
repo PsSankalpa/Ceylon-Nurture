@@ -150,7 +150,7 @@ class common_user extends Model
 		{
 			$this->errors['tpNumber'] = "Only numbers allowed in the tp number";
 		}
-		elseif(!strlen($data['tpNumber'])>10)
+		elseif(strlen($data['tpNumber'])>10)
 		{
 			$this->errors['tpNumber'] = "Only 10 numbers allowed in the tp number";
 		}
