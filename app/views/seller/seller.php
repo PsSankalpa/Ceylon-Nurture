@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <div class="buttons_section mg1 btn-group center2">
+        <div class="buttons_section mg1 btn-group center4">
             <?php if ((!$data2 == "seller") || (!$data2 == "doctorAndSeller") || (!$data2 == "sellerAndPatient") || (!$data2 == "allUser")) : ?>
                 <a href="<?= ROOT ?>seller/registration"><button class="">Register</button></a>
             <?php endif; ?>

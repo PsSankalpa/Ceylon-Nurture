@@ -97,6 +97,7 @@
                                    <td>Patient Name</td>
                                    <td>Date</td>
                                    <td>Time</td>
+                                   <td>Line Number</td>
                                    <td>Location</td>
                                    <td>Special Note from the Doctor</td>
                                </tr>
@@ -106,7 +107,8 @@
                                    <td>Dr.Sunil Perera</td>
                                    <td>Manel Perera</td>
                                    <td>05/11/2021</td>
-                                   <td>09:00 am</td>
+                                   <td>08:15 am</td>
+                                   <td>2</td>
                                    <td>General Hospital,Colombo 05</td>
                                    <td> Please make sure to be on time</td>
                                </tr>
@@ -115,6 +117,7 @@
                                    <td>Neth Perera</td>
                                    <td>06/11/2021</td>
                                    <td>10:00 am</td>
+                                   <td>1</td>
                                    <td>Weda Madura, Gampaha</td>
                                    <td> Please note that i will be 5 minutes late </td>
                                </tr>

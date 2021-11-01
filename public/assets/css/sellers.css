@@ -120,6 +120,10 @@ body{
     margin: 6% auto;
   }
 
+  .center4 {
+    margin: 2% auto;
+  }
+
   .img-con img{
     width: 16rem;
     height: 16rem;
