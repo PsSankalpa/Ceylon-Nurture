@@ -44,7 +44,7 @@
                                 <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                             </div>
                             <input type="password" value="<?=get_var('password2')?>" name="password2" placeholder="Re-type Password"  > 
-                            <input type="hidden" name="verify_token" value="12345678">
+                            <input type="hidden" name="verify_token" value="Dummy Data">
                             <button class="submitbtn">Submit</button>
                         </form>
                     </div>

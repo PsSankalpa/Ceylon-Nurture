@@ -8,18 +8,18 @@
       function openSlideMenue(){
         document.getElementById('mySidenav').style.width = '250px';
         document.getElementById('content').style.marginLeft = '250px';
-    }
-    function closeSlideMenue(){
+      }
+      function closeSlideMenue(){
         document.getElementById('mySidenav').style.width = '0';
         document.getElementById('content').style.marginLeft = '0';
-    }
+      }
     </script>
-    </head>
-    <body class="bg">
+</head>
+<body class="bg">
     <div id="content">
         <span class="slide">
-        <a href="<?=ROOT?>doctor/viewSchedule" class="previous">&#8249;</a>
-        <a href="#" onclick="openSlideMenue()">
+        <a href="<?=ROOT?>doctor/addSchedule" class="previous">&#8249;</a>
+          <a href="#" onclick="openSlideMenue()">
         
             <i class="fa fa-fw fa-bars"></i>
           </a>
@@ -30,8 +30,8 @@
           <a href="#" class="close" onclick="closeSlideMenue()">
             <i class="fa fa-fw fa-times"></i>
           </a>
-          <a  href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-home"></i>&nbsp;&nbsp;  Home</a>
-          <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
+          <a  href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-home"></i>&nbsp;&nbsp;Home</a>
+          <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;Dashboard</a>
           <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>

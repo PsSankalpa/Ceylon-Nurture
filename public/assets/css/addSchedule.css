@@ -105,7 +105,7 @@ input{
 
 }
 /*view and add button*/
-.viewbtn{
+.viewbtn,.filterA{
   width:5rem;
   height:2.5rem;
   background-color:#75E6DA;
@@ -291,18 +291,16 @@ input[type=date]{
   display:flex;
   gap:10px;
 }
+.button-container{
+  width:50%;
+  display:flex;
+  gap:10px;
+}
 .header-container{
   padding:2%;
   width:90%;
   display:flex;
   justify-content: space-between;
-}
-.filterA{
-  background-color: #75e6db80;
-  border-radius:15px;
-  padding:10px;
-  margin-bottom: 5px;
-
 }
 .deletebtn input[type="submit"]{
   color: #05445E;

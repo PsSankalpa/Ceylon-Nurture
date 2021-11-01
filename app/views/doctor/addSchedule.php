@@ -53,7 +53,7 @@
                 <?php endforeach;?>
             </div>
             <?php endif;?>
-                <div class="row">
+            <div class="button-container">
                 <a href="<?=ROOT?>doctor/addSchedule"><button class="viewbtn">Add Slots</button></a>
                 <a href="<?=ROOT?>doctor/viewSchedule"><button class="viewbtn">View Slots</button></a>
             </div>

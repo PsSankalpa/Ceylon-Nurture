@@ -9,6 +9,7 @@
         <title>Reset Password </title>
         <meta name="viewport" content="width=device-width; initial-scale=1.0;">
         <link rel="stylesheet" href="<?=ASSETS?>css/resetPasswordStyle.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/addSchedule.css">
        
     </head>
 
@@ -38,15 +39,33 @@
                         }?>">
                         <input type="email" name="email" class="email" placeholder="Email" value="<?php if (isset($_GET['email'])){
                             echo $_GET['email'];
-                        }?>" required>
-                        <input type="password" name="new_password" placeholder="New Password" required > 
-                        <input type="password" name="confirm_password" placeholder="Confirm Password" required > 
-                        
-                        <div class="buttons">
-                        <a href="<?= ROOT ?>login/login">
-                            <button class="button" type="submit" name="password_update">Update</button>
-                        </a>
+                        }?>" required></br>
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="New Password">New Password</label>
+                            </div>
+                            <div class="col-75">
+                            <input type="password" name="new_password" placeholder="New Password" required > </br>
+                            </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="Confirm Password">Confirm Password</label>
+                            </div>
+                            <div class="col-75">
+                            <input type="password" name="confirm_password" placeholder="Confirm Password" required > </br>
+                            </div>
+                        </div>
+                       
+                        <div class="buttons">
+                            <button class="button" type="submit" name="password_update">Update</button>
+                        </div>
+                        </br>
+                        <div class="login-container">
+                            <a href="<?= ROOT ?>login/login">Log In</a>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
