@@ -95,25 +95,23 @@ class common_user extends Model
 	
         //validation for DOB
         $y=date("Y");
-       
+    
+       print_r($y-(intval($data['dob'])));
+      
 		if(empty($data['dob']))
 		{
 			$this->errors['dob'] = "Cannot Keep Date of Birth empty";
 		}
         
-		//elseif (intval($parts[3]) < 1821)
-		//{
-		//	$this->errors['dob'] = "Please check whether your birth year is reasonable";
-		//}
-		//elseif(intval($parts[3]) > 2001)
-		//{
-		//	$this->errors['dob'] = "Please check whether your age is above 20 ";
-		//}
+		elseif ($y-(intval($data['dob'])) < 18)
+		{
+			$this->errors['dob'] = "Please check whether your age is above 18";
+		}
+		elseif($y - (intval($data['dob'])) > 100)
+		{
+			$this->errors['dob'] = "Please check whether your birth year is reasonable ";
+		}
 		
-		
-	
-
-
         //check for email address
         if (empty($_POST["email"])) 
         {
@@ -150,7 +148,7 @@ class common_user extends Model
 		{
 			$this->errors['tpNumber'] = "Only numbers allowed in the tp number";
 		}
-		elseif(!strlen($data['tpNumber'])>10)
+		elseif(strlen($data['tpNumber'])>10)
 		{
 			$this->errors['tpNumber'] = "Only 10 numbers allowed in the tp number";
 		}
