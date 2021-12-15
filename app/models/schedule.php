@@ -91,12 +91,7 @@ class schedule extends Model
 			$this->errors2['doctorCharge'] = "Only numbers allowed in the Doctor Charge";
 		}
 		
-        //Validations for Doctor Note
-        if(empty($DATA['doctorNote']))
-		{
-			$this->errors2['doctorNote'] = "Cannot Keep Doctor Note empty";
-		}
-
+     
         if(count($this->errors2) == 0)
         {
             return true;

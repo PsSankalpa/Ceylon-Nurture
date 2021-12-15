@@ -73,7 +73,7 @@
                             <label for="Departure Time">Departure Time</label>
                         </div>
                         <div class="col-75">
-                            <h5><?=$row->departureTime?> </h5>
+                            <h5><?=$row->departureTime?></h5>
                         </div>
                     </div>
                     <div class="row">
