@@ -19,10 +19,9 @@
     <div id="content">
         <span class="slide">
         <a href="<?=ROOT?>doctor/addSchedule" class="previous">&#8249;</a>
-          <a href="#" onclick="openSlideMenue()">
-        
-            <i class="fa fa-fw fa-bars"></i>
-          </a>
+          <a href="#" onclick="openSlideMenue()">   
+          <i class="fa fa-fw fa-bars"></i></a>
+          
           <span class="nav">View Schedule</span></br>
         </span>
         </br>  
@@ -57,9 +56,11 @@
                             <?php foreach ($row as $row):?>
                                 <div class="cardcolumn">
                                     <div class="card">
-                                        <h3><?="Slot-".$row->slotNumber?> </h3>
+                                        <h4><?="Slot-".$row->slotNumber?> </h4>
                                         <h4><?= $row->dateofSlot?> </h4>
-                                        <p><?="Patients-".$row->noOfPatient?> </p>
+                                       <!-- <p><?="Patients-".$row->noOfPatient?> </p>-->
+                                        <h4><?="Time-".$row->arrivalTime."-".$row->departureTime?> </h4>
+                                        
                                         <div class="div">
                                             <a href="<?=ROOT?>/doctor/scheduleDetails/<?=$row->scheduleid?>">
                                                 <button class="cardbutton">View More</button>

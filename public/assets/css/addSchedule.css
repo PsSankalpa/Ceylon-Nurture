@@ -90,6 +90,7 @@ h4{
   margin:auto;
   height:auto;
   background-color:#f0f6f7;
+  border-radius: 2%;
 }
 
 input{
@@ -200,6 +201,7 @@ input[type=reset]{
   text-align: center;
   padding: 20px 0;
 }  
+
 .doctor-grid-container > h2 {
   text-align: center;
 } 
@@ -207,6 +209,12 @@ h3,h4{
   color:#05445E;
   text-align: center;
 } 
+h2{
+  color:#05445E;
+  padding-top: 1%;
+  text-align: center;
+
+}
 .doctor-grid-container p{
   color:#05445E;
   text-align: justify;
@@ -242,7 +250,7 @@ h3,h4{
   background-color: #f0f6f7;
   width: auto;
   height:50%;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 /* Clear floats after the columns */
@@ -320,7 +328,6 @@ input[type=date]{
   border-radius: 50px;
   cursor: pointer;
   width:20%;
-
   margin-top: 10%;
 
 }
@@ -378,7 +385,6 @@ color:#c2cbcf;
   }
   .regi_form {
     width: 100%;
-    position:relative;right:0px;
   }
   .col-25, .col-75{
     width: 50%;
@@ -389,8 +395,6 @@ color:#c2cbcf;
   input[type=submit]{
       width: 100%;
       height: auto;
-
-    
   }
 }
 @media screen and (max-width: 700px) {
@@ -424,6 +428,9 @@ color:#c2cbcf;
     width:90%;
     display:flex;
     gap:10px;
+  }
+  h2{
+    text-align: center;
   }
 }
 

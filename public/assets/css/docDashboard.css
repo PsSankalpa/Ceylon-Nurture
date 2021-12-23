@@ -368,8 +368,10 @@ label {
 }
 
 /*Making the page mobile responsive*/
-@media screen and (max-height: 400px) {
-  .sidenav {padding-top: 15px;}
+@media screen and (max-height: 600px) {
+  .sidenav {
+    padding-top: 15px;
+  }
   .sidenav a {font-size: 18px;}
 }
 

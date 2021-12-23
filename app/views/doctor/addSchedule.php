@@ -21,17 +21,17 @@
     <div id="content">
         <span class="slide">
         <a href="<?=ROOT?>doctor/docDashboard" class="previous">&#8249;</a>
-         <a href="#" onclick="openSlideMenue()">
-        
-            <i class="fa fa-fw fa-bars"></i>
-          </a>
-          <span class="nav">Add Schedule</span></br>
+            <a href="#" onclick="openSlideMenue()">
+            <i class="fa fa-fw fa-bars"></i></a>
+
+            <span class="nav">Add Schedule</span></br>
         </span>
         </br>  
        <div id="mySidenav" class="sidenav">
-          <a href="#" class="close" onclick="closeSlideMenue()">
-            <i class="fa fa-fw fa-times"></i>
-          </a>
+        <a href="#" onclick="openSlideMenue()">   
+          <i class="fa fa-fw fa-bars"></i></a>
+         
+          
           <a  href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-home"></i>&nbsp;&nbsp;  Home</a>
          <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
           <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
@@ -59,7 +59,7 @@
             </div>
                 <div class="regi_form">
                 <form  enctype="multipart/form-data" method="POST">
-                <div class="row">
+               <div class="row">
                     <div class="col-25">
                         <label for="Slot Number">Slot Number</label>
                     </div>
@@ -82,7 +82,7 @@
                         <label for="Arrival Time">Arrival Time</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" value="<?=get_var('arrivalTime')?>" id="arrivalTime" name="arrivalTime" placeholder="8.00 ">
+                        <input type="time" value="<?=get_var('arrivalTime')?>" id="arrivalTime" name="arrivalTime" placeholder="8.00 ">
                     </div>
                 </div>
 
@@ -91,7 +91,7 @@
                         <label for="Departure Time">Departure Time</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" value="<?=get_var('departureTime')?>" id="departureTime" name="departureTime" placeholder="12.00 ">
+                        <input type="time" value="<?=get_var('departureTime')?>" id="departureTime" name="departureTime" placeholder="12.00 ">
                     </div>
                 </div>
 
@@ -100,7 +100,7 @@
                         <label for="No of patients">Estimated No of patients</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" value="<?=get_var('noOfPatient')?>" id="noOfPatient" name="noOfPatient" placeholder="16">
+                        <input type="number" value="<?=get_var('noOfPatient')?>" id="noOfPatient" name="noOfPatient" placeholder="16">
                     </div>
                 </div>
 

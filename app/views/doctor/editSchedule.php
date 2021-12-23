@@ -23,7 +23,7 @@
         
             <i class="fa fa-fw fa-bars"></i>
           </a>
-          <span class="nav">Edit Schedule</span></br>
+          <!-- <span class="nav">Edit Schedule</span></br>-->
         </span>
         </br>  
         <div id="mySidenav" class="sidenav">
