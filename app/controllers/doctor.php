@@ -471,9 +471,10 @@ class doctor extends Controller
         $this->view('articles/manageArticles', [
             'data' => $data,
         ]);
+        //articles details function is in the articles controller
     }
 
-    //view articles
+    //edit articles
     function editArticles($articleid)
     {
         $Auth = new Auth;
@@ -484,21 +485,67 @@ class doctor extends Controller
             $this->redirect('login/login');
         }
 
+        $errors = array();
         $articles = new article();
 
         if (count($_POST) > 0) {
-            // if($articles->validate())
-            // {
-            //     $this->redirect('doctor/myArticles');
-            // }
 
+            if ($articles->validate($_POST, $_FILES)) {
+                global $des;
+                $arr['articleName'] = htmlspecialchars($_POST['articleName']);
+                $arr['description'] = htmlspecialchars($_POST['description']);
+                $arr['uses'] = htmlspecialchars($_POST['uses']);
+                $arr['sideEffects'] = htmlspecialchars($_POST['sideEffects']);
+                $arr['precautions'] = htmlspecialchars($_POST['precautions']);
+                $arr['interactions'] = htmlspecialchars($_POST['interactions']);
+                $arr['dosing'] = htmlspecialchars($_POST['dosing']);
+                $arr['image'] = $des;
+
+
+                $articles->update($articleid, $arr);
+                
+                $this->redirect('doctor/myArticles');
+            } else {
+                $errors = $articles->errors2;
+            }
         }
         $data = $articles->where('articleid', $articleid);
         if ($data) {
             $data = $data[0];
+            if (file_exists($data->image)) {
+                unlink($data->image);
+            }
         }
         $this->view('articles/editArticles', [
             'data' => $data,
+            'errors' => $errors,
+        ]);
+    }
+
+    //delete aticles
+    function deletearticle($articleId = null)
+    {
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+        }
+
+        $errors = array();
+        $articles = new article();
+
+        if (count($_POST) > 0) {
+
+            $articles->delete($articleId);
+            $this->redirect('seller');
+        }
+        $row = $articles->where('productid', $articleId); //in here row is an array
+        $data = $articles->where('productid', $articleId);
+        if ($row) {
+            $row = $row[0];
+            unlink($row->image);
+        }
+        $this->view('seller/deleteProduct', [
+            'row' => $row,
+            'rows' => $data,
         ]);
     }
 }
