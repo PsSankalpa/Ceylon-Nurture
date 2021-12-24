@@ -8,7 +8,7 @@
 
 </head>
 
-<body class="regi">
+<body class="regi" style="background-color:#D4F1F4 ;">
 
 
     <div class="container center">
@@ -30,36 +30,6 @@
 
         <hr>
         <form class="regi_form" enctype="multipart/form-data" method="POST">
-
-            <div class="row">
-                <div class="col-25">
-                    <label for="nameWithInitials">Name With Initials</label>
-                </div>
-
-                <div class="col-75">
-                    <input type="text" value="<?= get_var('nameWithInitials',$row->nameWithInitials) ?>" id="nameWithInitials" name="nameWithInitials" placeholder="Name With Initials">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-25">
-                    <label for="gender">Gender</label>
-                </div>
-
-                <div class="col-75">
-                    <p class="gender"><input type="radio" name="gender" value="male">Male
-                          <input type="radio" name="gender" value="female">Female</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-25">
-                    <label for="DOB">Date Of Birth</label>
-                </div>
-                <div class="col-75">
-                    <input type="date" id="DOB" name="DOB">
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-25">

@@ -14,35 +14,33 @@
     <div class="m-articles">
 
         <div class="myBtnContainer A-btns">
-            <button class="tablinks active" onclick="changesection(event, 'myArticles')" id="defaultOpen">My Articles</button>
-            <button class="tablinks" onclick="changesection(event, 'addArticles')"> Add Article</button>
+            <button class="tablinks ">My Articles</button>
+            <button class="tablinks active"> Add Article</button>
         </div>
 
-        //articles 
-        <div class="tabcontent" id="myArticles" style="display:block;">
-            <?php if ($data) : ?>
-                <?php foreach ($data as $data) : ?>
-                    <div class="articles-row">
-                        <div class="image"><img src="<?= ASSETS2 . $data->image ?> "></div>
-                        <div class="article-name"><?= $data->articleName ?></div>
-                        <div class="viewbtn"><a href="<?= ROOT ?>/articles/articleDetails/<?= $data->articleid ?>"><button class="A-btn">View</button></a></div>
-                    </div>
-                    <hr class="a-hr">
+        <!--for the errors-->
+        <?php if (count($errors) > 0) : ?>
+            <div class="alertwarning">
+                <button class="closebtn" id="A_closebtn" onclick="closebutton()">&times;</button>
+                <strong>Error!</strong>
+                <?php foreach ($errors as $error) : ?>
+                    <br /><?= $error ?>
                 <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-
-        //article form
-        <div class="tabcontent form-container" id="addArticles" style="display:none;">
+            </div>
+        <?php endif; ?>
+        
+        <!--article form-->
+        <div class="tabcontent form-container" id="addArticles">
             <h2>Add Article</h2>
 
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form enctype="multipart/form-data" method="POST">
+
                 <div class="row">
                     <div class="col-25">
                         <label for="articleName">Article Name</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="articleName" name="articleName" placeholder="Your name..">
+                        <input type="text" value="<?= get_var('articleName') ?>" id="articleName" name="articleName" placeholder="Article name..">
                     </div>
                 </div>
 
@@ -51,7 +49,7 @@
                         <label for="description">Description</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="description" name="description" placeholder="Write something.." style="height:100px"></textarea>
+                        <input type="text" id="description" value="<?= get_var('description') ?>" name="description" placeholder="Write something.." style="height:100px">
                     </div>
                 </div>
 
@@ -60,7 +58,7 @@
                         <label for="uses">Uses</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="uses" name="uses" placeholder="Write something.." style="height:100px"></textarea>
+                        <input type="text" id="uses" name="uses" placeholder="Write something.." style="height:100px"></textarea>
                     </div>
                 </div>
 
@@ -69,7 +67,7 @@
                         <label for="Side Effects">Side Effects</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="Side Effects" name="SideEffects" placeholder="Write something.." style="height:100px"></textarea>
+                        <input type="text" id="Side Effects" name="sideEffects" placeholder="Write something.." style="height:100px"></textarea>
                     </div>
                 </div>
 
@@ -78,7 +76,7 @@
                         <label for="precautions">Precautions</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="precautions" name="precautions" placeholder="Write something.." style="height:100px"></textarea>
+                        <input type="text" id="precautions" name="precautions" placeholder="Write something.." style="height:100px"></textarea>
                     </div>
                 </div>
 
@@ -87,7 +85,7 @@
                         <label for="interaction">Interactions</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="interaction" name="interaction" placeholder="Write something.." style="height:100px"></textarea>
+                        <input type="text" id="interaction" name="interactions" placeholder="Write something.." style="height:100px"></textarea>
                     </div>
                 </div>
 
@@ -96,7 +94,7 @@
                         <label for="dosing">Dosing</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="dosing" name="dosing" placeholder="Write something.." style="height:100px"></textarea>
+                        <input type="text" id="dosing" name="dosing" placeholder="Write something.." style="height:100px"></textarea>
                     </div>
                 </div>
 
@@ -112,14 +110,17 @@
                 <div class="row">
                     <input type="submit" value="Submit">
                 </div>
+
             </form>
+
         </div>
     </div>
 
     <!--footer-->
     <?php $this->view("footer") ?>
     <!--end of footer-->
-    <script type="text/javascript" src="<?= ASSETS ?>js/article.js"></script>
+
+    <script type="text/javascript" src="<?= ASSETS ?>js/sellerJs"></script>
 </body>
 
 </html>
