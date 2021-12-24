@@ -51,7 +51,11 @@
                             <?php if (($data2 == "doctor") || ($data2 == "doctorAndSeller") || ($data2 == "doctorAndPatient") || ($data2 == "allUser")) : ?>
                                 <div class="access-buttons Mbtns">
                                     <div class="editbtn"><a href="<?= ROOT ?>/doctor/editarticles/<?= $row->articleid ?>"><button>Edit</button></a></div>
-                                    <div class="deletebtn"><button>Delete</button></div>
+                                    <form method="POST">
+                                        <input type="hidden" name="null">
+                                        <div class="deletebtn"><button>Delete</button></div>
+                                    </form>
+                                    
                                 </div>
                             <?php endif; ?>
                         <?php endif; ?>

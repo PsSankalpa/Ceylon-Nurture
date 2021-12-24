@@ -16,13 +16,15 @@ class article extends Model
 	];
 
     protected $table = "articles";
+	protected $pk = "articleid";
+	protected $pk2 = "docotrid";
 
     public function validate($DATA,$FILES)
 	{
         //-------------------------------------------------------------------------------------------------------------------------------------
 		//for article
         $this->errors2 = array();
-		print_r($DATA);
+		//print_r($DATA);
 		//for article name
 		if(empty($DATA['articleName']))
 		{
