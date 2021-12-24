@@ -7,7 +7,7 @@
 
     </head>
 
-    <body class="regi">
+    <body class="regi" style="background-color:#D4F1F4 ;">
 
     
     <div class="container center">

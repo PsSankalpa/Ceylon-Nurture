@@ -10,7 +10,7 @@
     <body class="regi">
 
     
-    <div class="container center">
+    <div class="container center" style="background-color:#D4F1F4 ;">
         <h1>Edit Common User Detials</h1>
 
         <?php if($row):?>

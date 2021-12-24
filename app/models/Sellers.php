@@ -2,7 +2,7 @@
 
 class sellers extends Model
 {
-	
+
 	protected $allowedcolumns = [
 		'userid',
 		'nameWithInitials',
@@ -15,7 +15,7 @@ class sellers extends Model
 
 	protected $table = "sellers";
 
-	public function validate($DATA,$FILES)
+	public function validate($DATA, $FILES)
 	{
 		$this->errors = array();
 		$this->errors2 = array();
@@ -31,12 +31,9 @@ class sellers extends Model
 		}*/
 
 		//for registration number
-		if(empty($DATA['registrationNumber']))
-		{
+		if (empty($DATA['registrationNumber'])) {
 			$this->errors['registrationNumber'] = "Cannot Keep registration number empty";
-		}
-		elseif(!preg_match('/^[a-zA-Z-0-9]+$/',$DATA['registrationNumber']))
-		{
+		} elseif (!preg_match('/^[a-zA-Z-0-9]+$/', $DATA['registrationNumber'])) {
 			$this->errors['registrationNumber'] = "Cannot allowed symbols in the registration number";
 		}
 
@@ -55,70 +52,57 @@ class sellers extends Model
 		}*/
 
 		//for NIC
-		if(empty($DATA['nic']))
-		{
+		if (empty($DATA['nic'])) {
 			$this->errors['nic'] = "Cannot Keep nic number empty";
-		}
-		elseif(!preg_match('/^[0-9-vV]+$/',$DATA['nic']))
-		{
+		} elseif (!preg_match('/^[0-9-vV]+$/', $DATA['nic'])) {
 			$this->errors['nic'] = "Cannot allowed symbols in the nic number";
 		}
 
 		//for address
-		if(empty($DATA['address']))
-		{
+		if (empty($DATA['address'])) {
 			$this->errors['address'] = "Cannot Keep address empty";
-		}
-		elseif(!preg_match('/^[A-Za-z0-9\-\/,.\s]+$/',$DATA['address']))
-		{
+		} elseif (!preg_match('/^[A-Za-z0-9\-\/,.\s]+$/', $DATA['address'])) {
 			$this->errors['address'] = "Cannot allowed symbols in the address";
 		}
-		
+
 		//for image
-		
-		if($FILES['image']['size'] == 0 )
-		{
+
+		if ($FILES['image']['size'] == 0) {
 			$this->errors['image'] = "Cannot keep image empty";
-		}
-		else
-        {
-            //upload the file to following dir
-            $folder = "seller_certificates/";
-            if(!file_exists($folder))//if dir doesn't exist,create it like below with file permissions
-            {
-                mkdir($folder,0777,true);
-            }
+		} else {
+			//upload the file to following dir
+			$folder = "seller_certificates/";
+			if (!file_exists($folder)) //if dir doesn't exist,create it like below with file permissions
+			{
+				mkdir($folder, 0777, true);
+			}
 
-            //create the destination 
-            $destination = $folder . $FILES['image']['name'];
-			
-			$imageFileType = strtolower(pathinfo($destination,PATHINFO_EXTENSION));
+			//create the destination 
+			$destination = $folder . $FILES['image']['name'];
+
+			$imageFileType = strtolower(pathinfo($destination, PATHINFO_EXTENSION));
 			$uploadOk = 1;
-			$results = $this->images($FILES,$destination,$imageFileType,$uploadOk);
-			if(!empty($results))
-			{
-				$this->errors['image'] =$results;
-			}
-			else
-			{
+			$results = $this->images($FILES, $destination, $imageFileType, $uploadOk);
+			if (!empty($results)) {
+				$this->errors['image'] = $results;
+			} else {
 				$seller = new seller();
-				$seller->get_destination($destination);//send the address of the file path to seller controller to save in the database 
+				$seller->get_destination($destination); //send the address of the file path to seller controller to save in the database 
 			}
 
-		if(count($this->errors) == 0)
-		{
-			
-			move_uploaded_file($FILES['image']['tmp_name'], $destination);
-			return true;
+			if (count($this->errors) == 0) {
+
+				move_uploaded_file($FILES['image']['tmp_name'], $destination);
+				return true;
+			}
+
+			return false;
 		}
 
-		return false;
-	}
+		//---------------------------------------------------------------------------------------------------------------------------------------
 
-//---------------------------------------------------------------------------------------------------------------------------------------
-	
 
-	/*public function uploadProduct($POST,$FILES)
+		/*public function uploadProduct($POST,$FILES)
 	{
 		$this->errors = array();
 
@@ -152,8 +136,5 @@ class sellers extends Model
             }
         }
 	}*/
-
-	
 	}
-
 }

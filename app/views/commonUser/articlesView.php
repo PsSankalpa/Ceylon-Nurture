@@ -19,7 +19,7 @@
                 <?php if (($rows2 == "doctor") || ($rows2 == "doctorAndSeller") || ($rows2 == "doctorAndPatient") || ($rows2 == "allUser")) : ?>
                     <div class="access-buttons">
                         <a href="<?= ROOT ?>/doctor/myArticles"><button class="my-A">My Articles</button></a>
-                        <a href="<?= ROOT ?>/doctor/myArticles"><button class="add-A">Add Article</button></a>
+                        <a href="<?= ROOT ?>/doctor/addArticles"><button class="add-A">Add Article</button></a>
                     </div>
                 <?php endif; ?>
             <?php endif; ?>

@@ -109,8 +109,8 @@ public function __construct()
 
         $query = "insert into $this->table($columns) values (:$values)";
 		
-		print_r($query);
-		print_r($data);
+		//print_r($query);
+		//print_r($data);
 	
 
 		return $this->query($query,$data);

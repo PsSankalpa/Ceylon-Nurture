@@ -39,7 +39,7 @@
 
             <div class="row">
                 <div class="col-25">
-                    <label for="productPrice">Price(only add the value)</label>
+                    <label for="productPrice">Price(only add the value/LKR)</label>
                 </div>
                 <div class="col-75">
                     <input type="text" value="<?= get_var('productPrice') ?>" id="productPrice" name="productPrice" placeholder="Price">
