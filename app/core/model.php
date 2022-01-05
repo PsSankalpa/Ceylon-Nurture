@@ -109,8 +109,8 @@ public function __construct()
 
         $query = "insert into $this->table($columns) values (:$values)";
 		
-		print_r($query);
-		print_r($data);
+		//print_r($query);
+		//print_r($data);
 	
 
 		return $this->query($query,$data);
@@ -125,13 +125,13 @@ public function __construct()
 		{
 			$str .= $key. "=:" .$key. ",";//by putting . we add new content to the string not replace it
 		}
-		print_r($str);
+		//print_r($str);
 		
         $str = trim($str,",");//trim the "," at the beginin and the end of the string
 		$data['id'] = $id;
 
         $query = "update $this->table set $str where $this->pk = :id";
-        print_r($query);
+       // print_r($query);
 
 
 		return $this->query($query,$data);

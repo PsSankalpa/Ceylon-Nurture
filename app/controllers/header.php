@@ -15,8 +15,19 @@ class header extends Controller
     $products = new products();
     $data = $products->findAll();
 
+    //to the search option
+    if(isset($_GET['search']))
+    {
+      //side that we put % mark it ignore exact matching
+      $search = '%'.$_GET['search'].'%';//by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+      $query = "select * from products where productName like :search order by productid desc";//put like instead of = sign,becasue we cannot search for exact word in the search
+      $arr['search'] = $search;//to pass to the query function
+      $data = $products->query($query,$arr);
+    }
 
-    $this->view('commonUser/ProductsView', ['rows' => $data]);
+    $this->view('commonUser/ProductsView', [
+      'rows' => $data,
+    ]);
   }
 
   function viewArticles()
