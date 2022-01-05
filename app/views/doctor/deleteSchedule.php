@@ -28,8 +28,8 @@
         </br>  
         <div id="mySidenav" class="sidenav">
           <a href="#" class="close" onclick="closeSlideMenue()">
-            <i class="fa fa-fw fa-times"></i>
-          </a>
+            <i class="fa fa-fw fa-times"></i> </a>
+         
           <a  href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-home"></i>&nbsp;&nbsp;  Home</a>
          <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
           <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>

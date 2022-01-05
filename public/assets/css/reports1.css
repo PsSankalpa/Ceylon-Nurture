@@ -1,0 +1,184 @@
+body {
+  margin: 0;
+  padding:0;
+ overflow: auto;
+  font-family: "Lato", sans-serif;
+  background-color: #D4F1F4;
+
+}
+/*New css*/
+
+.regi_form{
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:20px;
+    align-content: center;
+}
+.doctor{
+  display: flex;
+  width:100%;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 20px;
+}
+.patientReport{
+  display: flex;
+  width:60%;
+  margin: auto;
+  flex-direction: column;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  padding:20px;
+  margin-bottom: 100px;
+  box-shadow:5em;
+}
+.patientPayment{
+  display: flex;
+  margin-top: 20px;
+
+}
+.patient{
+  width:50%;
+}
+
+.payment{
+  width:50%;
+}
+
+.payButton{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttonA{
+  width:9.25rem;
+  height:2.5rem;
+  background-color:#75E6DA;
+  border:none;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size:medium;
+  color:#05445E;
+}
+
+.buttonA:hover{
+  background-color: #189AB4;
+}
+label{
+  font-size: small;
+}
+/*End of the new css*/
+  h3{
+    margin-top: 10px;
+    color:#818181;
+    text-align: center;
+    margin-left: 30%;
+  }
+  h4{
+    color:#9c9a9a;
+    text-align: right;
+  }
+  h2{
+    text-align: center;
+    margin-top: 0;
+    color:rgb(255, 254, 254);
+  }
+  h6{
+    text-align: right;
+    color: #05445E;
+  }
+  h5{
+    float: left;
+    margin-left: -10%;
+    margin-top: 10%;
+  }
+  .header{
+    overflow: hidden;
+    background-color: #84bfda;
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color:rgb(255, 254, 254);
+  }
+.logo{
+  width: 70px;
+  height: 80px;
+}
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 60%;
+  margin-top:20px;
+  font-weight: bold;
+} 
+  
+  /* Floating column for inputs: 75% width */
+  .col-75 {
+  float: left;
+  width: 40%;
+  margin-top: 15px;
+ 
+  }
+  /* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  /*Making the page mobile responsive*/
+
+@media screen and (max-width: 1000px) {
+  input[type=date]{
+    width: 100%;
+    margin-top: 1%;
+    float:left;;
+  }
+  .backbtn{
+    width:20%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .container {
+      width: 75%;
+      height: auto;
+  }
+}
+@media screen and (max-width: 700px) {
+  .regi_form {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .row{
+    width: 80%;
+  }
+  .column{
+width:60%;
+  }
+}
+@media screen and (max-width: 700px) {
+  label{
+  font-size: 12px;
+  }
+  h3{
+    font-size: 10px;
+    margin-top:50%;
+  }
+  h2{
+    font-size: 15px;
+
+  }
+  h1{
+    font-size: 15px;
+  }
+}
+
+
+
+
+  
