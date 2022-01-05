@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="<?= ASSETS ?>css/common.css">
     <link rel="stylesheet" href="<?= ASSETS ?>css/sellers.css">
+    <link rel="stylesheet" href="<?= ASSETS ?>css/commonStyle.css">
 </head>
 
 <body>
@@ -35,19 +36,30 @@
         </div>
 
         <div class="product-btns">
-            <div id="img-p"  class="pro-btn c-btns">
+            <div id="img-p" class="pro-btn c-btns">
                 <div class="img-s"><img src="<?= ASSETS ?>img/pro-btn.jpg" alt="img 1"></div>
                 <button id="btns-p">Products</button>
             </div>
             <div id="img-p" class="herb-btn c-btns">
-                <div class="img-s"><img  src="<?= ASSETS ?>img/herb-btn.jpg" alt="img 2"></div>
+                <div class="img-s"><img src="<?= ASSETS ?>img/herb-btn.jpg" alt="img 2"></div>
                 <button id="btns-p">Herbs</button>
             </div>
         </div>
     </div>
 
     <div class="products-section">
+
+        <div class="search-container">
+            <div class="search_bar">
+                <form action="" class="search">
+                    <input type="text" value="<?=isset($_GET['search'])?$_GET['search']:'';?>" placeholder="Search.." name="search"><!--ternary operator use in the value-->
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+
         <div class="cardrow">
+
             <?php if ($rows) : ?>
                 <?php foreach ($rows as $row) : ?>
                     <div class="cardcolumn">
@@ -66,15 +78,17 @@
                     </div>
                 <?php endforeach; ?>
             <?php else : ?>
-                <h4>No Products Yet</h4>
+                <h4>No Products</h4>
             <?php endif; ?>
+
         </div>
+
     </div>
 
     <!--footer-->
     <?php $this->view("footer") ?>
     <!--end of footer-->
-    
+
     <script type="text/javascript" src="<?= ASSETS ?>js/sellerJs.js"></script>
 
 </body>
