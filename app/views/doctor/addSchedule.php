@@ -21,17 +21,17 @@
     <div id="content">
         <span class="slide">
         <a href="<?=ROOT?>doctor/docDashboard" class="previous">&#8249;</a>
-            <a href="#" onclick="openSlideMenue()">
+          <a href="#" onclick="openSlideMenue()">
+        
             <i class="fa fa-fw fa-bars"></i></a>
-
-            <span class="nav">Add Schedule</span></br>
+         
+          <span class="nav">Schedule</span></br>
         </span>
         </br>  
-       <div id="mySidenav" class="sidenav">
-        <a href="#" onclick="openSlideMenue()">   
-          <i class="fa fa-fw fa-bars"></i></a>
-         
-          
+        <div id="mySidenav" class="sidenav">
+          <a href="#" class="close" onclick="closeSlideMenue()">
+            <i class="fa fa-fw fa-times"></i>
+          </a>
           <a  href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-home"></i>&nbsp;&nbsp;  Home</a>
          <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
           <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
@@ -53,9 +53,11 @@
                 <?php endforeach;?>
             </div>
             <?php endif;?>
+            <div class="header-container">
             <div class="button-container">
                 <a href="<?=ROOT?>doctor/addSchedule"><button class="viewbtn">Add Slots</button></a>
                 <a href="<?=ROOT?>doctor/viewSchedule"><button class="viewbtn">View Slots</button></a>
+            </div>
             </div>
                 <div class="regi_form">
                 <form  enctype="multipart/form-data" method="POST">

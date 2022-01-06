@@ -4,6 +4,9 @@
         <title>Ceylon Nurture|Doctor Dashboard</title>
         <meta name="viewport" content="width=device-width; initial-scale=1.0;">
         <link rel="stylesheet" href="<?=ASSETS?>css/docDashboard.css">
+        
+
+   
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
       function openSlideMenue(){
@@ -42,7 +45,7 @@
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
           <a  href="<?=ROOT?>header/viewArticles"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
-          <a  href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
+          <a  href="<?=ROOT?>doctor/reportsview"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
           <a href="<?=ROOT?>logout"><i class="fa fa-fw fa-sign-out icons"></i>&nbsp;&nbsp;  Sign Out</a>
        
         </div>
@@ -109,6 +112,7 @@
                     </div>-->
                   <div class="box-8">
                   <a href="<?=ROOT?>appointments"><button class="dashviewbtn">View</button></a></br>
+           
                   <div class="content-box">
                    <div style="overflow-y:auto;">
                     <table>

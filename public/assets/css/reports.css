@@ -16,12 +16,11 @@ label{
   display: inline-block;
   color: #05445E;
   font-weight:12px;
-  
 }
 
   .container{
     border-radius: 5px;
-   background-color: #bdf7fd;
+   background-color: #fdfdfd;
     padding: 10px 10px;
     width: 80%;
     height: auto;
@@ -30,6 +29,7 @@ label{
   h1{
     color:#05445E;
     text-align: center;
+    margin-top: 10%;
   }
   /*Creating two colums*/
   .row {
@@ -40,7 +40,7 @@ label{
     padding:  15px;
     height: auto;
     width:500px;
-    background-color:#f1f1f1;
+    background-color:#fdfdfd;
   }
   h2{
     color:#05445E;
@@ -67,6 +67,14 @@ label{
     margin-top: 10px;
     color:#818181;
   }
+  h4{
+    color:#9c9a9a;
+    text-align: right;
+  }
+.logo{
+  width: 70px;
+  height: 80px;
+}
 /* Floating column for labels: 25% width */
 .col-25 {
   float: left;

@@ -22,8 +22,8 @@
         <a href="<?=ROOT?>doctor/docDashboard" class="previous">&#8249;</a>
           <a href="#" onclick="openSlideMenue()">
         
-            <i class="fa fa-fw fa-bars"></i>
-          </a>
+            <i class="fa fa-fw fa-bars"></i></a>
+          
           <span class="nav">Feedbacks</span></br>
         </span>
         </br>  

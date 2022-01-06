@@ -383,12 +383,20 @@ class doctor extends Controller
         $doctorid = Auth::userid();
         $doctor = new doctors();
         $data =$doctor->where('userid',$doctorid);
-        //$reports = new reports();
         $this->view('doctor/reports',[
             'data'=>$data,
         ]); 
     }
-    function reportDetails()
+    function reportsview()
+    {
+        $doctorid = Auth::userid();
+        $doctor = new doctors();
+        $data =$doctor->where('userid',$doctorid);
+        $this->view('doctor/reportsview',[
+            'data'=>$data,
+        ]); 
+    }
+    /*function reportDetails()
     {  
       $doctorid = Auth::userid();
       $doctor = new doctors();
@@ -397,6 +405,39 @@ class doctor extends Controller
         $this->view("doctor/reportDetails",[
             'data'=>$data,
         ]); 
+    }*/
+    function reportDetails($userid=null)
+    {
+        $doctors = new doctors();
+        $row=$doctors->where('userid',$userid);
+        if($row)
+        {
+            $row=$row[0];
+        }
+
+        $patients=new patients();
+        $Auth = new Auth;
+        $userid = Auth::userid();
+        $row2=$patients->where('userid',$userid);
+        if($row2)
+        {
+            $row2=$row2[0];
+        }
+
+        $common_user=new common_user();
+        $Auth = new Auth;
+        $userid = Auth::userid();
+        $row3=$common_user->where('userid',$userid);
+        if($row3)
+        {
+            $row3=$row3[0];
+        }
+        $this->view("doctor/reportDetails",[
+            'row'=>$row,
+            'row2'=>$row2,
+            'row3'=>$row3,
+
+        ]);
     }
     
      //function to view appointments
