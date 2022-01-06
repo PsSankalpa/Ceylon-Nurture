@@ -1,16 +1,23 @@
 <html>
-<head>
-<title>Report Details</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0;">
 
-<link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/reports.css">
+<head>
+    <title>Report Details</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <link rel="stylesheet" type="text/css" href="<?= ASSETS ?>css/reports.css">
 </head>
+
 <body>
-<button class="backbtn"><a href="<?=ROOT?>doctor/reports">&times;</a></button>
+
+    <button class="backbtn"><a href="<?= ROOT ?>doctor/reports">&times;</a></button>
+
     <div class="container">
-        <div class="row">     
+
+        <div class="row">
+
             <div class="column">
-            <h1>Appointment Report</h1>
+
+                <h1>Appointment Report</h1>
                 <form class="regi_form" enctype="multipart/form-data" method="POST">
                     <div class="row">
                         <div class="col-25">
@@ -19,7 +26,7 @@
                         <div class="col-75">
                             <h3>W.M.S.Perera</h3>
                         </div>
-                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-25">
                             <label for="Specialities">Specialities</label>
@@ -36,7 +43,7 @@
                         <div class="col-75">
                             <h3>Natasha Perera</h3>
                         </div>
-                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-25">
                             <label for="Symptoms">Symptoms</label>
@@ -52,7 +59,7 @@
                         <div class="col-75">
                             <h3>96601669393</h3>
                         </div>
-                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-25">
                             <label for="Telephone">Telephone</label>
@@ -66,15 +73,16 @@
                             <label for="Prescription">Prescription</label>
                         </div>
                         <div class="col-75">
-                                <img src="<?=ASSETS?>/img/prescription.png" class="prescription" width="50" height="50">
+                            <img src="<?= ASSETS ?>/img/prescription.png" class="prescription" width="50" height="50">
                         </div>
                     </div>
                 </form>
             </div>
+            
             <div class="column">
                 <div></div>
-            <h1>15/11/2021</h1>
-          
+                <h1>15/11/2021</h1>
+
                 <form class="regi_form" enctype="multipart/form-data" method="POST">
                     <div class="row">
                         <div class="col-25">
@@ -83,7 +91,7 @@
                         <div class="col-75">
                             <h3>Osu Deepa </h3>
                         </div>
-                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-25">
                             <label for="Date">Date</label>
@@ -100,7 +108,7 @@
                         <div class="col-75">
                             <h3>Rs.2500</h3>
                         </div>
-                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-25">
                             <label for="Hospital Charges">Hospital Charges</label>
@@ -116,7 +124,7 @@
                         <div class="col-75">
                             <h3>Rs.200</h3>
                         </div>
-                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-25">
                             <label for="Total Amount">Total Amount</label>
@@ -135,4 +143,5 @@
 
     </div>
 </body>
+
 </html>

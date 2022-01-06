@@ -348,23 +348,38 @@ class doctor extends Controller
     }
     function reports()
     {
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+        }
+
         $doctorid = Auth::userid();
         $doctor = new doctors();
 
-        $data =$doctor->where('userid',$doctorid);
-        $this->view('doctor/reports',[
-            'data'=>$data,
-        ]); 
+        $channeling = new channeling();
+        $data = $channeling->findAll();
+        // print_r($data);
+        // die;
+
+        if ($data) {
+            $row = $data[0];
+        }
+
+
+        //$data =$doctor->where('userid',$doctorid);
+        $this->view('doctor/reports', [
+            'data' => $data,
+        ]);
     }
     function reportsview()
     {
         $doctorid = Auth::userid();
         $doctor = new doctors();
-        $data =$doctor->where('userid',$doctorid);
-        $this->view('doctor/reportsview',[
-            'data'=>$data,
-        ]); 
+        $data = $doctor->where('userid', $doctorid);
+        $this->view('doctor/reportsview', [
+            'data' => $data,
+        ]);
     }
+
     /*function reportDetails()
     {  
       $doctorid = Auth::userid();
@@ -375,36 +390,53 @@ class doctor extends Controller
             'data'=>$data,
         ]); 
     }*/
-    function reportDetails($userid=null)
+
+    function reportDetails($patientid = null, $channelingid = null,$scheduleid=null)
     {
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+        }
+
+        $Auth = new Auth;
+        $userid = Auth::userid();
+
         $doctors = new doctors();
-        $row=$doctors->where('userid',$userid);
-        if($row)
-        {
-            $row=$row[0];
-        }
+        $row['doctor'] = $doctors->where('userid', $userid);
+        // if ($row) {
+        //     $row = $row[0];
+        // }
 
-        $patients=new patients();
-        $Auth = new Auth;
-        $userid = Auth::userid();
-        $row2=$patients->where('userid',$userid);
-        if($row2)
-        {
-            $row2=$row2[0];
-        }
+        $channeling = new channeling();
+        $row['channeling'] = $channeling->where('channelingid', $channelingid);
+        // if ($row2) {
+        //     $row2 = $row2[0];
+        // }
 
-        $common_user=new common_user();
-        $Auth = new Auth;
-        $userid = Auth::userid();
-        $row3=$common_user->where('userid',$userid);
-        if($row3)
-        {
-            $row3=$row3[0];
-        }
-        $this->view("doctor/reportDetails",[
-            'row'=>$row,
-            'row2'=>$row2,
-            'row3'=>$row3,
+        $common_user = new common_user();
+        $row['commonuser'] = $common_user->where('userid', $patientid);
+        // if ($row3) {
+        //     $row3 = $row3[0];
+        // }
+
+        $payments = new channelingpayments();
+        $row['payments'] = $payments->where('channelingid', $channelingid);
+        // if ($row4) {
+        //     $row4 = $row4[0];
+        // }
+
+        $schedule = new schedule();
+        $row['schedule']= $schedule->where('scheduleid',$scheduleid); 
+
+        $patient = new patients();
+        $row['patient'] = $patient->where('userid',$patientid);
+
+
+        // print_r($row['schedule']);
+        // die;
+
+        extract($row);
+        $this->view("doctor/reportDetails", [
+            'row' => $row,
         ]);
     }
 
@@ -480,10 +512,10 @@ class doctor extends Controller
                 $arr['date'] = date("Y-m-d");
 
                 //print_r($arr);
-               // die;
+                // die;
 
                 $article->insert($arr);
-                $this->redirect('header/viewArticles');//controller/function name
+                $this->redirect('header/viewArticles'); //controller/function name
             } else {
                 $errors = $article->errors2;
             }
@@ -544,7 +576,7 @@ class doctor extends Controller
 
 
                 $articles->update($articleid, $arr);
-                
+
                 $this->redirect('doctor/myArticles');
             } else {
                 $errors = $articles->errors2;
