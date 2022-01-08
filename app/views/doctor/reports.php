@@ -62,7 +62,7 @@
 
             <div style="overflow-y:auto;">
               <table>
-
+              <?php if ($data) : ?>
                 <tr>
                   <th>Date</th>
                   <th>Patient's Name</th>
@@ -71,7 +71,7 @@
                   <th></th>
                 </tr>
 
-                <?php if ($data) : ?>
+                
                   <?php foreach ($data as $data) : ?>
                     <tr>
                       <td class="data"><?= $data->date ?></td>
