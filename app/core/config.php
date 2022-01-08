@@ -6,7 +6,7 @@ define("WEBSITE_TITLE","my_website");
 define('DB_TYPE','mysql');
 define('DB_NAME','ceylon_nurture_db');
 define('DB_USER','root');
-define('DB_PASS','CNnurture$#G12');
+define('DB_PASS','ceylonG12$$prg');
 define('DB_HOST','localhost');
 
 //protocol type http or https, that we use
