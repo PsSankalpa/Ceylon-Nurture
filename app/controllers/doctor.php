@@ -356,7 +356,14 @@ class doctor extends Controller
         $doctor = new doctors();
 
         $channeling = new channeling();
-        $data = $channeling->findAll();
+        $data = null;
+
+        $payments = new channelingpayments();
+
+        if(null!=($payments->where('doctorid',$doctorid)))
+        { 
+            $data = $channeling->where('doctorid',$doctorid);
+        }
         // print_r($data);
         // die;
 
