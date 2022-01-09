@@ -71,17 +71,14 @@ class products extends Model
 		else
         {
             //upload the file to following dir
-            $folder = "public/seller_products/";
+            $folder = "seller_products/";
             if(!file_exists($folder))//if dir doesn't exist,create it like below with file permissions
             {
                 mkdir($folder,0777,true);
             }
 
             //create the destination 
-			$folder2 = "seller_products/";
-
-            $destination2 = $folder2 . $FILES['image']['name'];//this path is for send to data base
-			$destination = $folder . $FILES['image']['name'];//this path is for ckecking
+            $destination = $folder . $FILES['image']['name'];
 			
 			$imageFileType = strtolower(pathinfo($destination,PATHINFO_EXTENSION));
 			$uploadOk = 1;
@@ -93,7 +90,7 @@ class products extends Model
 			else
 			{
 				$seller = new seller();
-				$seller->get_destination($destination2);//send the address of the file path to seller controller to save in the database 
+				$seller->get_destination($destination);//send the address of the file path to seller controller to save in the database 
 			}
             
         }

@@ -67,17 +67,14 @@ class doctors extends Model
 		else
         {
         //upload the file to following dir
-        $folder = "public/doctor_qualification/";
+        $folder = "doctor_qualification/";
          if(!file_exists($folder))//if dir doesn't exist,create it like below with file permissions
         {
             mkdir($folder,0777,true);
         }
 
         //create the destination 
-		$folder2 = "doctor_qualification/";
-
-        $destination2 = $folder2 . $FILES['image']['name'];
-		$destination = $folder . $FILES['image']['name'];
+        $destination = $folder . $FILES['image']['name'];
 		$imageFileType = strtolower(pathinfo($destination,PATHINFO_EXTENSION));
 		$uploadOk = 1;
 		$results = $this->images($FILES,$destination,$imageFileType,$uploadOk);
@@ -88,7 +85,7 @@ class doctors extends Model
 		else
 		{
 			$doctor = new doctor();
-			$doctor->get_destination($destination2);//send the address of the file path to doctor controller to save in the database 
+			$doctor->get_destination($destination);//send the address of the file path to doctor controller to save in the database 
 		}
 		}
 
@@ -109,16 +106,14 @@ class doctors extends Model
 			else
 			{
 	            //upload the file to following dir
-		        $folder = "public/doctor_profilepic/";
+		        $folder = "doctor_profilepic/";
 				 if(!file_exists($folder))//if dir doesn't exist,create it like below with file permissions
 				 {
 					 mkdir($folder,0777,true);
 				 }
 	 
 				 //create the destination 
-				 $folder2 = "doctor_profilepic/";
 				 $destination = $folder . $FILES['image2']['name'];
-				 $destination2 = $folder2 . $FILES['image2']['name'];
 				 
 				 $imageFileType = strtolower(pathinfo($destination,PATHINFO_EXTENSION));
 				 $uploadOk = 1;
@@ -130,7 +125,7 @@ class doctors extends Model
 				 else
 				 {
 					 $doctor = new doctor();
-					 $doctor->get_destination($destination2);//send the address of the file path to doctor controller to save in the database 
+					 $doctor->get_destination($destination);//send the address of the file path to doctor controller to save in the database 
 				 }
 			 }
 	 

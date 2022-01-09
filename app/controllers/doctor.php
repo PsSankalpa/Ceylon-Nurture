@@ -149,7 +149,7 @@ class doctor extends Controller
         if ($row) {
             $row = $row[0];
             if (file_exists($row->image)) {
-                unlink("public/".$row->image);
+                unlink($row->image);
             }
         }
         $this->view('doctor/editAccount', [
@@ -177,7 +177,7 @@ class doctor extends Controller
         //$data2 = $doctors->findAll();
         if ($row) {
             $row = $row[0];
-            unlink("public/".$row->image);
+            unlink($row->image);
         }
         $doctorid = Auth::userid();
         $doctor = new doctors();
@@ -592,8 +592,9 @@ class doctor extends Controller
         $data = $articles->where('articleid', $articleid);
         if ($data) {
             $data = $data[0];
-            unlink("public/".$data->image);
-            
+            if (file_exists($data->image)) {
+                unlink($data->image);
+            }
         }
         $this->view('articles/editArticles', [
             'data' => $data,
@@ -602,7 +603,7 @@ class doctor extends Controller
     }
 
     //delete aticles
-    function deleteArticle($articleId = null)
+    function deletearticle($articleId = null)
     {
         if (!Auth::logged_in()) {
             $this->redirect('login/login');
@@ -616,16 +617,15 @@ class doctor extends Controller
             $articles->delete($articleId);
             $this->redirect('seller');
         }
-        $row = $articles->where('articleid', $articleId); //in here row is an array
-        $data = $articles->where('articleid', $articleId);
+        $row = $articles->where('productid', $articleId); //in here row is an array
+        $data = $articles->where('productid', $articleId);
         if ($row) {
             $row = $row[0];
-            // print_r("public/".$row->image);
-            // die;
-            unlink("public/".$row->image);
+            unlink($row->image);
         }
-        $this->view('doctor/ myArticles', [
-            
+        $this->view('seller/deleteProduct', [
+            'row' => $row,
+            'rows' => $data,
         ]);
     }
 }
