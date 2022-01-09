@@ -175,7 +175,7 @@ class seller extends Controller
         if ($row) {
             $row = $row[0];
             if (file_exists($row->image)) {
-                unlink($row->image);
+                unlink("public/".$row->image);
             }
         }
         $this->view('seller/editProduct', [
@@ -202,7 +202,7 @@ class seller extends Controller
         $data = $products->where('productid', $productId);
         if ($row) {
             $row = $row[0];
-            unlink($row->image);
+            unlink("public/".$row->image);//made a change here for the url
         }
         $this->view('seller/deleteProduct', [
             'row' => $row,
