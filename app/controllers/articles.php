@@ -26,14 +26,17 @@ class articles extends Controller
 
         if (count($_POST) > 0) {
 
+            $row = $articles->where('articleid', $articleid);
+             //in here row is an array
+             if ($row) {
+                $row = $row[0];
+                unlink("public/".$row->image);
+            }
+
             $articles->delete($articleid);
             $this->redirect('doctor/myArticles');
 
-            $row = $articles->where('articleid', $articleid); //in here row is an array
-            if ($row) {
-                $row = $row[0];
-                unlink($row->image);
-            }
+            
         }
 
         // $this->view('seller/deleteProduct', [

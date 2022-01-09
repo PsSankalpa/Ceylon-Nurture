@@ -38,14 +38,16 @@ class patients extends Model
 		else
         {
             //upload the file to following dir
-            $folder = "medical_records/";
+            $folder = "public/medical_records/";
             if(!file_exists($folder))//if dir doesn't exist,create it like below with file permissions
             {
                 mkdir($folder,0777,true);
             }
 
             //create the destination 
-            $destination = $folder . $FILES['image']['name'];
+			$folder2 = "medical_records/";
+            $destination2 = $folder2 . $FILES['image']['name'];
+			$destination = $folder . $FILES['image']['name'];
 			
 			$imageFileType = strtolower(pathinfo($destination,PATHINFO_EXTENSION));
 			$uploadOk = 1;
@@ -57,7 +59,7 @@ class patients extends Model
 			else
 			{
 				$patient = new patient();
-				$patient->get_destination($destination);//send the address of the file path to patient controller to save in the database 
+				$patient->get_destination($destination2);//send the address of the file path to patient controller to save in the database 
 			}
 
 		if(count($this->errors) == 0)
