@@ -103,14 +103,17 @@ class article extends Model
 		else
         {
             //upload the file to following dir
-            $folder = "articles_images/";
+            $folder = "public/articles_images/";
             if(!file_exists($folder))//if dir doesn't exist,create it like below with file permissions
             {
                 mkdir($folder,0777,true);
             }
 
             //create the destination 
-            $destination = $folder . $FILES['image']['name'];
+			$folder2 ="articles_images/";
+
+            $destination2 = $folder2 . $FILES['image']['name'];
+			$destination = $folder . $FILES['image']['name'];
 			
 			$imageFileType = strtolower(pathinfo($destination,PATHINFO_EXTENSION));
 			$uploadOk = 1;
@@ -122,7 +125,7 @@ class article extends Model
 			else
 			{
 				$seller = new doctor();
-				$seller->get_destination($destination);//send the address of the file path to seller controller to save in the database 
+				$seller->get_destination($destination2);//send the address of the file path to seller controller to save in the database 
 			}
             
         }

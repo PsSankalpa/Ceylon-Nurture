@@ -13,14 +13,21 @@ define('DB_HOST','localhost');
 define('PROTOCAL','http');
 
 //root and assets paths
-$path = str_replace("\\","/",PROTOCAL."://". $_SERVER['SERVER_NAME']. __DIR__."/");//tell what the root folder,shos the path to public folder
+//$path = str_replace("\\","/",PROTOCAL."://". $_SERVER['SERVER_NAME']. __DIR__."/");//tell what the root folder,shos the path to public folder
+//  print_r($path);
+//  die;
  // check the server and check the directory that contain the file form "__DIR__"
-$path = str_replace($_SERVER['DOCUMENT_ROOT'],"",$path);//contain the path for assets folder
+//$path = str_replace($_SERVER['DOCUMENT_ROOT'],"",$path);//contain the path for assets folder
 //server name of the documet root
+//print_r($path);
+// die;
+//define('ROOT',str_replace("app/core","public",$path));
+//define('ASSETS',str_replace("app/core","public/assets",$path));
+//define('ASSETS2',str_replace("app/core","public",$path));
 
-define('ROOT',str_replace("app/core","public",$path));
-define('ASSETS',str_replace("app/core","public/assets",$path));
-define('ASSETS2',str_replace("app/core","public",$path));
+define('ROOT', 'http://localhost/Grp12/');
+define('ASSETS', 'http://localhost/Grp12/public/assets/');
+define('ASSETS2', 'http://localhost/Grp12/public/');
 
 /*set to true to allow error reporting and set to false when you upload online to stop error repoting
 ,this show the errors*/
