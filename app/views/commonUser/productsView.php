@@ -37,22 +37,31 @@
 
         <div class="product-btns">
             <div id="img-p" class="pro-btn c-btns">
-                <div class="img-s"><img src="<?= ASSETS ?>img/pro-btn.jpg" alt="img 1"></div>
-                <button id="btns-p">Products</button>
+                <form action="">
+                    <input type="hidden" value="Product" name="search">
+                    <div class="img-s"><img src="<?= ASSETS ?>img/pro-btn.jpg" alt="img 1"></div>
+                    <button type="submit" id="btns-p">Products</button>
+                </form>
+
             </div>
             <div id="img-p" class="herb-btn c-btns">
+                <form action="">
+                <input type="hidden" value="Herb" name="search">
                 <div class="img-s"><img src="<?= ASSETS ?>img/herb-btn.jpg" alt="img 2"></div>
-                <button id="btns-p">Herbs</button>
+                <button type="submit" id="btns-p">Herbs</button>
+                </form>            
             </div>
         </div>
     </div>
 
     <div class="products-section">
 
+        <!--for the search option-->
         <div class="search-container">
             <div class="search_bar">
                 <form action="" class="search">
-                    <input type="text" value="<?=isset($_GET['search'])?$_GET['search']:'';?>" placeholder="Search.." name="search"><!--ternary operator use in the value-->
+                    <input type="text" value="<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>" placeholder="Search.." name="search">
+                    <!--ternary operator use in the value-->
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>

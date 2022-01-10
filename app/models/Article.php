@@ -40,7 +40,7 @@ class article extends Model
 		{
 			$this->errors2['description'] = "Cannot Keep description empty";
 		}
-		elseif(!preg_match('/^[a-zA-Z\s\.,]+$/',$DATA['description']))
+		elseif(!preg_match('/^[a-zA-Z\s\.,;?\-()\'?,;\\""]+$/',$DATA['description']))
 		{
 			$this->errors2['description'] = "Only letters allowed in the description";
 		}
@@ -48,51 +48,51 @@ class article extends Model
         //for uses
         if(empty($DATA['uses']))
 		{
-			$this->errors2['uses'] = "Cannot Keep description empty";
+			$this->errors2['uses'] = "Cannot Keep uses empty";
 		}
-		elseif(!preg_match('/^[a-zA-Z\s\.,]+$/',$DATA['uses']))
+		elseif(!preg_match('/^[a-zA-Z\s\.,;?\-()\'?,;\\""]+$/',$DATA['uses']))
 		{
-			$this->errors2['uses'] = "Only letters allowed in the description";
+			$this->errors2['uses'] = "Only letters allowed in the uses";
 		}
 
         //for side effects
         if(empty($DATA['sideEffects']))
 		{
-			$this->errors2['sideEffects'] = "Cannot Keep description empty";
+			$this->errors2['sideEffects'] = "Cannot Keep sideEffects empty";
 		}
-		elseif(!preg_match('/^[a-zA-Z\s\.,]+$/',$DATA['sideEffects']))
+		elseif(!preg_match('/^[a-zA-Z\s\.,;?\-()\'?,;\\""]+$/',$DATA['sideEffects']))
 		{
-			$this->errors2['sideEffects'] = "Only letters allowed in the description";
+			$this->errors2['sideEffects'] = "Only letters allowed in the side effects";
 		}
 
         //for precautions
         if(empty($DATA['precautions']))
 		{
-			$this->errors2['precautions'] = "Cannot Keep description empty";
+			$this->errors2['precautions'] = "Cannot Keep precautions empty";
 		}
-		elseif(!preg_match('/^[a-zA-Z\s\.,]+$/',$DATA['precautions']))
+		elseif(!preg_match('/^[a-zA-Z\s\.,;?\-()\'?,;\\""]+$/',$DATA['precautions']))
 		{
-			$this->errors2['precautions'] = "Only letters allowed in the description";
+			$this->errors2['precautions'] = "Only letters allowed in the precautions";
 		}
 
         //for interactions
         if(empty($DATA['interactions']))
 		{
-			$this->errors2['interactions'] = "Cannot Keep description empty";
+			$this->errors2['interactions'] = "Cannot Keep interactions empty";
 		}
-		elseif(!preg_match('/^[a-zA-Z\s\.,]+$/',$DATA['interactions']))
+		elseif(!preg_match('/^[a-zA-Z\s\.,;?\-()\'?,;\\""]+$/',$DATA['interactions']))
 		{
-			$this->errors2['interactions'] = "Only letters allowed in the description";
+			$this->errors2['interactions'] = "Only letters allowed in the interactions";
 		}
 
         //for dosing
         if(empty($DATA['dosing']))
 		{
-			$this->errors2['dosing'] = "Cannot Keep description empty";
+			$this->errors2['dosing'] = "Cannot Keep dosing empty";
 		}
-		elseif(!preg_match('/^[a-zA-Z\s\.,]+$/',$DATA['dosing']))
+		elseif(!preg_match('/^[a-zA-Z\s\.,;?\-()\'?,;\\""]+$/',$DATA['dosing']))
 		{
-			$this->errors2['dosing'] = "Only letters allowed in the description";
+			$this->errors2['dosing'] = "Only letters allowed in the dosing";
 		}
 
         //for image		

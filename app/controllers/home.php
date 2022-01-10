@@ -15,21 +15,23 @@ class home extends Controller
     if (Auth::logged_in()) {
       //changed here
       $Auth = new Auth;
-      $data2 = $Auth->finduser();
+      $data = $Auth->finduser();
+
       $article = new article();
-      $data = $article->findAll();
+      $data2 = $article->findrange(7);
 
       $this->view('home', [
-        'rows' => $data,
-        'rows2' => $data2,
+        'rows' => $data2,
+        'data'=>$data,
       ]);
     } else {
       $article = new article();
-      $data = $article->findAll();
-      $data2 = "";
+      $data2 = $article->findrange(7);
+
+      $data = "";
       $this->view('home', [
-        'rows' => $data,
-        'rows2' => $data2,
+        'rows' => $data2,
+        'data'=>$data,
       ]);
     }
     }

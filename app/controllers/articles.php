@@ -14,26 +14,33 @@ class articles extends Controller
             $data2 = $Auth->finduser();
         }
 
+        $userid = Auth::userid();
         $article = new article();
         $data = $article->where('articleid', $articleid);
-
-        if (!Auth::logged_in()) {
-            $this->redirect('login/login');
+        
+        
+        if(null != ($article->where('doctorid',$userid))){
+            $data3 = 'owner';
+        }
+        else{
+            $data3 = "";
         }
 
+        
         $errors = array();
         $articles = new article();
 
         if (count($_POST) > 0) {
-
-            $articles->delete($articleid);
-            $this->redirect('doctor/myArticles');
 
             $row = $articles->where('articleid', $articleid); //in here row is an array
             if ($row) {
                 $row = $row[0];
                 unlink($row->image);
             }
+
+            $articles->delete($articleid);
+            $this->redirect('doctor/myArticles');
+    
         }
 
         // $this->view('seller/deleteProduct', [
@@ -46,6 +53,7 @@ class articles extends Controller
         $this->view('articles/articleDetails', [
             'rows' => $data,
             'data2' => $data2,
+            'data3' => $data3,
         ]);
     }
 }

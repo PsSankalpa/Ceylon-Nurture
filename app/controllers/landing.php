@@ -14,6 +14,7 @@ class landing extends Controller
           $data = $Auth->finduser();
           $article = new article();
           $data2 = $article->findAll();
+          $data2 = $article->findrange(7);
           
           $this->view('home',[
 			    'data'=>$data,
@@ -22,7 +23,8 @@ class landing extends Controller
       }
       else{
         $article = new article();
-        $data2 = $article->findAll();
+        //$data2 = $article->findAll();
+        $data2 = $article->findrange(7);
         $this->view('home',[
           'rows' => $data2,
         ]);
