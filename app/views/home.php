@@ -5,8 +5,8 @@
             Home   
         </title>
         <link rel="stylesheet" href="<?=ASSETS?>css/commonStyle.css">
-        <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
         <link rel="stylesheet" href="<?= ASSETS ?>css/articles.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
 
         <?php $this -> view ("header")?>
     </head>
@@ -213,7 +213,7 @@
                 <span class="prev1 carousel__button-prev">&#10094;</span>
                 <?php if ($rows) : ?>
                     <?php foreach ($rows as $row) : ?>
-                        <div style="background-color:#75e6db6e;" class="article-card product">
+                        <div style="background-color:#75e6db6e;" id="fixing" class="article-card product fixing">
                             <h1><?= $row->articleName ?></h1>
                             <picture>
                                 <img src="<?= ASSETS2 . $row->image ?>" alt="A-herb" style="width:100%">

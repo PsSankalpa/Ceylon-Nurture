@@ -7,6 +7,25 @@
   background-color: #D4F1F4;
     background-size: 100% 100%;
 }
+
+#fixing p{
+  font-size: 1rem;
+}
+
+#fixing{
+  min-height: 108vh;
+}
+@media screen and (max-width: 900px) {
+  #fixing p{
+    font-size: 0.6rem;
+  }
+  
+  #fixing{
+    min-height: 30vh;
+  }
+}
+
+
 .main-container{
   margin: auto;
   margin-top: 3%;
@@ -81,7 +100,7 @@
 		display: flex;
 		align-items: center;
 		overflow-x: auto;
-    margin-top: 10%;
+    margin-top: 2%;
     margin-bottom: 6%;
     padding: 1rem;
 }
@@ -99,7 +118,8 @@
     background-color: #D4F1F4;
     vertical-align: middle;
     height: 80%;
-    max-height: 150vh;
+    max-height: 100vh;
+    min-height: 100vh;
     border-radius: 0.3rem;
 		position: relative;
 		left: 0;
@@ -210,8 +230,8 @@
     }
     .article-card{
       min-width: 49%;
+      min-height: 55vh;
       margin: 0 10px 0 0 ;
-      height: auto;
     }
     .article-card button{
       font-size: 10px;
@@ -641,5 +661,53 @@
 @media (max-width: 768px) {
   .articles-row {
     flex-direction: column;
+  }
+}
+
+/*--------------------------------------------------------------------------------*/
+/*articles section*/
+.products-section{
+  background-color: #D4F1F4;
+  margin-bottom: 5%;
+  padding: 0 auto;
+}
+
+/*---------------------------------------------------------------------------*/
+
+/*for the cards*/
+/* Float four columns side by side */
+.cardcolumn {
+  float: left;
+  width: 25%;
+  padding: 0 4px;
+  justify-content: center;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.cardrow {
+  margin: 0 auto;
+  width: 95%;
+}
+
+/* Clear floats after the columns */
+.cardrow:after {
+  content: "";
+  display: table;
+  clear: both;
+  justify-content: center;
+}
+
+@media screen and (max-width: 900px) {
+  .cardcolumn{
+    width: 50%;
+    padding: 2px;
+  }
+
+  .cardrow {
+    margin: 0 auto;
+    width: 90%;
+  }
+  .products-section{
+    padding: 0.2rem;
   }
 }

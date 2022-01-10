@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <?php if (($data2) && ($row)) : ?>
-                            <?php if (($data2 == "doctor") || ($data2 == "doctorAndSeller") || ($data2 == "doctorAndPatient") || ($data2 == "allUser")) : ?>
+                            <?php if ($data3 == 'owner') : ?>
                                 <div class="access-buttons Mbtns">
                                     <div class="editbtn"><a href="<?= ROOT ?>/doctor/editarticles/<?= $row->articleid ?>"><button>Edit</button></a></div>
                                     <form method="POST">

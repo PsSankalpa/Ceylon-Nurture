@@ -47,7 +47,7 @@ public function __construct()
 	public function where($column,$value)
 	{
 
-		$column = addslashes($column);//from this it check the column,sanitize iput
+		$column = addslashes($column);//from this it check the column,sanitize input
 		$query = "select * from $this->table where $column = :value";
 		return $this->query($query,[
 			'value'=>$value
@@ -66,6 +66,20 @@ public function __construct()
 			'value2'=>$value2
 		]);
 	}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//to get data for range o days
+	public function findrange($value)
+	{
+
+		//$column = addslashes($column);//from this it check the column,sanitize input
+		$query = "select * from $this->table where date > curdate()-:value order by articleid desc";
+		return $this->query($query,[
+			'value'=>$value
+		]);
+	}
+
 //----------------------------------------------------------------------------------------------------------------
 
 	public function findAll()
