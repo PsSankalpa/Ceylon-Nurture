@@ -29,7 +29,7 @@ class password_reset extends Controller
                 CEYLON NURTURE
         ";
 
-        $headers  = "From:avijayaweera1@gmail.com";
+        $headers  = "From:ceylonnurture@gmail.com";
                                
         if(mail($to_email, $subject, $body, $headers))
         {

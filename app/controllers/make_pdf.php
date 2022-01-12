@@ -19,7 +19,7 @@ class make_pdf extends Controller
         $data['channeling']= $channelingid;
         $data['schedule']= $scheduleid;
 
-        // print_r($data);
+         print_r($data);
         // die;
 
         /*$folder = 'generated_pdfs/';//Creating a new folder

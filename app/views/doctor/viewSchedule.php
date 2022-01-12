@@ -59,8 +59,7 @@
                                         <h4><?="Slot-".$row->slotNumber?> </h4>
                                         <h4><?= $row->dateofSlot?> </h4>
                                        <!-- <p><?="Patients-".$row->noOfPatient?> </p>-->
-                                        <h4><?="Time-".$row->arrivalTime."-".$row->departureTime?> </h4>
-                                        
+                                        <h4><?="Time-". $row->arrivalTime."-".$row->departureTime ?> </h4>
                                         <div class="div">
                                             <a href="<?=ROOT?>/doctor/scheduleDetails/<?=$row->scheduleid?>">
                                                 <button class="cardbutton">View More</button>

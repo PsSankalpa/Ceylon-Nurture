@@ -15,13 +15,7 @@ body {
     gap:20px;
     align-content: center;
 }
-.doctor{
-  display: flex;
-  width:100%;
-  justify-content: center;
-  align-content: center;
-  margin-bottom: 20px;
-}
+
 .patientReport{
   display: flex;
   width:60%;
@@ -34,17 +28,23 @@ body {
   margin-bottom: 100px;
   box-shadow:5em;
 }
-.patientPayment{
+.patientPayment,.doctor{
   display: flex;
   margin-top: 20px;
-
 }
+
 .patient{
   width:50%;
 }
 
 .payment{
   width:50%;
+}
+.d1{
+  width:45%;
+}
+.d2{
+  width:40%;
 }
 
 .payButton{
@@ -121,7 +121,7 @@ label{
   .col-75 {
   float: left;
   width: 40%;
-  margin-top: 15px;
+  margin-top: 10px;
  
   }
   /* Clear floats after the columns */
