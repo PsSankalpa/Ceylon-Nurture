@@ -84,7 +84,7 @@
                         <label for="Arrival Time">Arrival Time</label>
                     </div>
                     <div class="col-75">
-                        <input type="time" value="<?=get_var('arrivalTime')?>" id="arrivalTime" name="arrivalTime" placeholder="8.00 ">
+                    <input type="time" value="<?=get_var('arrivalTime')?>" id="arrivalTime" name="arrivalTime" placeholder="8.00 ">
                     </div>
                 </div>
 
@@ -96,7 +96,35 @@
                         <input type="time" value="<?=get_var('departureTime')?>" id="departureTime" name="departureTime" placeholder="12.00 ">
                     </div>
                 </div>
+                <!--find the time difference-->
+                <div>
+                <label style="padding-top:20px;">Start Date</label><br/>
+                <input type="text" name="arrivalTime" value="<?php if(!empty($_POST["arrivalTime"])) { echo $_POST["arrivalTime"]; } ?>" class="demoInputBox">
+                </div>
+                
+                <div>
+                <label>End Date</label>
+                <span id="userEmail-info" class="info"></span><br>
+                <input type="text" name="departureTime" value="<?php if(!empty($_POST["arrivalTime"])) { echo $_POST["departureTime"]; } ?>" class="demoInputBox">
+                </div>
+                
+                <div>
 
+
+                </div>
+                <input type="submit" name="submit" value="Find Difference" class="btn">
+                <?php
+                function differenceInHours($arrivalTime,$departureTime){
+                    $starttimestamp = strtotime($arrivalTime);
+                    $endtimestamp = strtotime($departureTime);
+                    $difference = abs($endtimestamp - $starttimestamp)/3600;
+                    return $difference;
+                }
+                if(!empty($_POST["submit"])) {
+                    $hours_difference = differenceInHours($_POST["arrivalTime"],$_POST["departureTime"]);	
+                    $message = "The Difference is " . $hours_difference . " hours";
+                }
+                ?>
                 <div class="row">
                     <div class="col-25">
                         <label for="No of patients">Estimated No of patients</label>
