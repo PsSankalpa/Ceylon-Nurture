@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> Patient Reports </title>
+    <title> Reports for Doctor </title>
 
     <?php $this->view("header") ?>
 
@@ -16,7 +16,9 @@
     <button class="backbtn"><a href="<?= ROOT ?>doctor/reports">&times;</a></button>
 
     <div class="patientReport">
-        <h6>15/01/2022</h6>
+        
+    <h6><?php echo "". date("d/m/Y"); ?></h6>
+       
         <div class="header">
             <a href="<?= ROOT ?>home/home"><img class="logo" src="<?= ASSETS ?>img/logo.png"></a>
 
@@ -26,11 +28,15 @@
 
         </div>
         <hr>
-
+<br/>
+      <!--  <div class="doctor">-->
+      <div class="header">
+            <h3>Doctor Details</h3><br>
+        </div>
         <div class="doctor">
-            <div class="search_container">
-
-                <form class="regi_form" enctype="multipart/form-data" method="POST">
+        
+                <div class="d1">
+               
                     <div class="row">
                         <div class="col-25">
                             <label for="Name of the Doctor">Name of the Doctor</label>
@@ -55,56 +61,50 @@
                             <h5><?= $row['doctor'][0]->hospital ?></h5>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="City">City</label>
+                
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="City">City</label>
+                            </div>
+                            <div class="col-75">
+                                <h5><?= $row['doctor'][0]->city ?></h5>
+                            </div>
                         </div>
-                        <div class="col-75">
-                            <h5><?= $row['doctor'][0]->city ?></h5>
+                        </div>
+                        <div class="d2">
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="City">Address</label>
+                            </div>
+                            <div class="col-75">
+                                <h5><?= $row['doctor'][0]->address ?></h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="Date">Date</label>
+                            </div>
+                            <div class="col-75">
+                                <h5><?= $row['schedule'][0]->dateofSlot ?></h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="Time">Time</label>
+                            </div>
+                            <div class="col-75">
+                                <h5><?= $row['schedule'][0]->arrivalTime ?>am - <?= $row['schedule'][0]->departureTime ?>am</h5>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="City">Address</label>
-                        </div>
-                        <div class="col-75">
-                            <h5><?= $row['doctor'][0]->address ?></h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="Date">Date</label>
-                        </div>
-                        <div class="col-75">
-                            <h5><?= $row['schedule'][0]->dateofSlot ?></h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="Time">Time</label>
-                        </div>
-                        <div class="col-75">
-                            <h5><?= $row['schedule'][0]->arrivalTime ?>am - <?= $row['schedule'][0]->departureTime ?>am</h5>
-                        </div>
-                    </div>
-
-
-
-
-                </form>
-
-            </div>
         </div>
-
         <hr>
-
         <div class="patientPayment"><br>
 
             <div class="patient">
                 <div class="header">
                     <h3>Patient Details</h3><br>
                 </div>
-                <form class="regi_form_patient" enctype="multipart/form-data" method="POST">
 
                     <div class="row">
                         <div class="col-25">
@@ -147,7 +147,6 @@
                             <img src="<?= ASSETS ?>/img/prescription.png" class="prescription" width="50" height="50">
                         </div>
                     </div>
-                </form>
             </div>
 
             <div class="payment">

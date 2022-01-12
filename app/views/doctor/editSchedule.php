@@ -81,7 +81,7 @@
                                 <label for="Arrival Time">Arrival Time</label>
                             </div>
                             <div class="col-75">
-                            <input type="text" value="<?=get_var('arrivalTime',$row->arrivalTime)?>" id="arrivalTime" name="arrivalTime" placeholder="Arrival Time">
+                            <input type="time" value="<?=get_var('arrivalTime',$row->arrivalTime)?>" id="arrivalTime" name="arrivalTime" placeholder="Arrival Time">
                             </div>
                         </div>
 
@@ -90,7 +90,7 @@
                                 <label for="Departure Time">Departure Time</label>
                             </div>
                             <div class="col-75">
-                            <input type="text" value="<?=get_var('departureTime',$row->departureTime)?>" id="departureTime" name="departureTime" placeholder="Departure Time">
+                            <input type="time" value="<?=get_var('departureTime',$row->departureTime)?>" id="departureTime" name="departureTime" placeholder="Departure Time">
                             </div>
                         </div>
 
