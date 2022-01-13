@@ -188,6 +188,14 @@ class doctor extends Controller
         ]);
     }
 
+    //get the file destination
+    function get_patientcount($pactientc)
+    {
+        global $coun;
+        $coun = $pactientc;
+        return $coun;
+    }
+
     //function to add schedule
     function addSchedule()
     {
@@ -201,6 +209,7 @@ class doctor extends Controller
             $schedule = new schedule();
             $doctor = new doctors();
             $userid = Auth::userid();
+            global $coun;
             //$row = $doctor->where('userid',$userid); 
             // print_r($_POST);
             if ($schedule->validate($_POST, $_FILES)) {
@@ -209,12 +218,16 @@ class doctor extends Controller
                 $arr['dateofSlot'] = $_POST['dateofSlot'];
                 $arr['arrivalTime'] = $_POST['arrivalTime'];
                 $arr['departureTime'] = $_POST['departureTime'];
-                $arr['noOfPatient'] = $_POST['noOfPatient'];
+                $arr['noOfPatient'] = $coun;//need to change
                 $arr['timePerPatient'] = $_POST['timePerPatient'];
                 $arr['doctorCharge'] = $_POST['doctorCharge'];
                 $arr['doctorNote'] = $_POST['doctorNote'];
                 //$arr['DoctorName'] = $nameWithInitials;
                 //$arr['city'] = $city;
+                
+                // print_r($arr['arrivalTime']);
+                // print_r($arr['departureTime']);
+                // die;
                 $arr['doctorid'] = Auth::userid();
                 // print_r($arr);
                 $schedule->insert($arr);
@@ -249,6 +262,9 @@ class doctor extends Controller
         {
             $row = $row[0];
         }*/
+
+        // print_r($row[0]['arrivalTime']);
+        // die;
 
         $this->view('doctor/viewSchedule', [
             'errors' => $errors,
