@@ -22,6 +22,10 @@ define('ROOT',str_replace("app/core","public",$path));
 define('ASSETS',str_replace("app/core","public/assets",$path));
 define('ASSETS2',str_replace("app/core","public",$path));
 
+// define('ROOT', 'http://localhost/Grp12/public/');
+// define('ASSETS', 'http://localhost/Grp12/public/assets/');
+// define('ASSETS2', 'http://localhost/Grp12/public/');
+
 /*set to true to allow error reporting and set to false when you upload online to stop error repoting
 ,this show the errors*/
 define('DEBUG',true);
