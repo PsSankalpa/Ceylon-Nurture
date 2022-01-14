@@ -13,7 +13,7 @@
 </head>
 
 <body id="body">
-    <button class="backbtn"><a href="<?= ROOT ?>doctor/reports">&times;</a></button>
+    <button class="back"><a href="<?= ROOT ?>doctor/patientReports">&times;</a></button>
 
     <div class="patientReport">
         

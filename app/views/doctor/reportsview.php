@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Doctor's Reports</title>
+<link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0;">
 <link rel="stylesheet" href="<?=ASSETS?>css/reportsview.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,8 +23,8 @@
         <a href="<?=ROOT?>doctor/docDashboard" class="previous">&#8249;</a>
           <a href="#" onclick="openSlideMenue()">
         
-            <i class="fa fa-fw fa-bars"></i>
-          </a>
+            <i class="fa fa-fw fa-bars"></i></a>
+          
           <span class="nav">Reports</span></br>
         </span>
         </br>  
@@ -37,7 +38,7 @@
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
           <a  href="<?=ROOT?>articles/articleDetails"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
-          <a  href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
+          <a  href="<?=ROOT?>doctor/reportsview"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
           <a href="<?=ROOT?>logout"><i class="fa fa-fw fa-sign-out icons"></i>&nbsp;&nbsp;  Sign Out</a>
         </div>
     
@@ -48,7 +49,7 @@
                         <div style="overflow-y:hidden;">
                         <div class="cardBox">
                             <div class="col-div-3">
-                            <a href="<?=ROOT?>doctor/reports">
+                            <a href="<?=ROOT?>doctor/patientReports">
                                 <div class="box">
                                 <h2>Patients Reports</h2>
                                 <i class="fa fa-users box-icon"></i>
@@ -58,6 +59,7 @@
 
 
                             <div class="col-div-3">
+                            <a href="<?=ROOT?>doctor/paymentReports">
                                 <div class="box">
                                 <h2>Payments Reports</h2>
                                 <i class="fa fa-calendar box-icon"></i>

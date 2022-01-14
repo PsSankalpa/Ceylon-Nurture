@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Ceylon Nurture|Doctor|Schedule Details</title>
+        <link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
         <meta name="viewport" content="width=device-width; initial-scale=1.0;">
         <link rel="stylesheet" href="<?=ASSETS?>css/addSchedule.css">
     <script>
@@ -36,7 +37,7 @@
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
           <a  href="<?=ROOT?>articles/articleDetails"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
-          <a  href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
+          <a  href="<?=ROOT?>doctor/reportsview"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
           <a href="<?=ROOT?>logout"><i class="fa fa-fw fa-sign-out icons"></i>&nbsp;&nbsp;  Sign Out</a>
         </div>
         <div class="clearfix"></div>

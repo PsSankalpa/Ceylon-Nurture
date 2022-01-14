@@ -16,7 +16,7 @@
             <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book"></i>  Schedule</a>
             <a href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment"></i>  Feedback</a>
             <a  href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar"></i>  Appointments</a>
-            <a href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book"></i>  Reports</a>
+            <a href="<?=ROOT?>doctor/reportsview"><i class="fa fa-fw fa-book"></i>  Reports</a>
             </div>
                 <div class="container3">
                     <?php if($row):?>
