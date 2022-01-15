@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ceylon Nurture|SignUp Page</title>
+        <title>SignUp Page</title>
+        <link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
         <meta name="viewport" content="width=device-width; initial-scale=1.0;">
         <link rel="stylesheet" href="<?=ASSETS?>css/signupStyle.css">
     </head>

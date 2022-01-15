@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-        Ceylon Nurture|Login Page</title>
-
+        <title>Login Page</title>
+        <link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
         <link rel="stylesheet" href="<?=ASSETS?>css/loginStyle.css">
         <meta name="viewport" content="width=device-width; initial-scale=1.0;">
 

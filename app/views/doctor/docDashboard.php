@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ceylon Nurture|Doctor Dashboard</title>
+        <title>Doctor Dashboard</title>
+            <link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
         <meta name="viewport" content="width=device-width; initial-scale=1.0;">
         <link rel="stylesheet" href="<?=ASSETS?>css/docDashboard.css">
-        
+    
 
    
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,8 +27,8 @@
         <span class="slide">
         <a href="<?=ROOT?>home/home" class="previous">&#8249;</a>
           <a href="#" onclick="openSlideMenue()">
-            <i class="fa fa-fw fa-bars"></i>
-          </a>
+            <i class="fa fa-fw fa-bars"></i></a>
+          
           <span class="nav">Dashboard</span>
         
         </span>

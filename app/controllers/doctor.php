@@ -346,7 +346,7 @@ class doctor extends Controller
             'data' => $data,
         ]);
     }
-    function reports()
+    function patientReports()
     {
         if (!Auth::logged_in()) {
             $this->redirect('login/login');
@@ -373,7 +373,7 @@ class doctor extends Controller
 
 
         //$data =$doctor->where('userid',$doctorid);
-        $this->view('doctor/reports', [
+        $this->view('doctor/patientReports', [
             'data' => $data,
         ]);
     }
@@ -387,16 +387,31 @@ class doctor extends Controller
         ]);
     }
 
-    /*function reportDetails()
+    function paymentReports()
     {  
-      $doctorid = Auth::userid();
-      $doctor = new doctors();
-      $data =$doctor->where('userid',$doctorid);  
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+        }
+        $doctorid = Auth::userid();
+        $doctor = new doctors();
 
-        $this->view("doctor/reportDetails",[
+        $channeling = new channeling();
+        $data = null;
+
+         $payments = new channelingpayments();
+
+      if(null!=($payments->where('doctorid',$doctorid)))
+      { 
+          $data = $channeling->where('doctorid',$doctorid);
+      }
+
+      if ($data) {
+          $row = $data[0];
+      }
+        $this->view("doctor/paymentReports",[
             'data'=>$data,
         ]); 
-    }*/
+    }
 
     function reportDetails($patientid = null, $channelingid = null,$scheduleid=null)
     {

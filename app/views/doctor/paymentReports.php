@@ -24,12 +24,12 @@
   <body class="bg">
     <div id="content">
       <span class="slide">
-        <a href="<?= ROOT ?>doctor/docDashboard" class="previous">&#8249;</a>
+        <a href="<?= ROOT ?>doctor/reportsview" class="previous">&#8249;</a>
         <a href="#" onclick="openSlideMenue()">
 
-          <i class="fa fa-fw fa-bars"></i>
-        </a>
-        <span class="nav">Reports</span></br>
+        <i class="fa fa-fw fa-bars"></i></a>
+       
+        <span class="nav">Payment Reports</span></br>
       </span>
       </br>
       <div id="mySidenav" class="sidenav">
@@ -42,16 +42,22 @@
         <a href="<?= ROOT ?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp; Feedback</a>
         <a href="<?= ROOT ?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp; Appointments</a>
         <a href="<?= ROOT ?>articles/articleDetails"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp; Articles</a>
-        <a href="<?= ROOT ?>doctor/reports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Reports</a>
+        <a href="<?= ROOT ?>doctor/reportsview"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Reports</a>
         <a href="<?= ROOT ?>logout"><i class="fa fa-fw fa-sign-out icons"></i>&nbsp;&nbsp; Sign Out</a>
       </div>
       <div class="clearfix"></div>
 
-      <div class="appoint">
-        <button class="filterbtn">Filter</button>
-        <label>From<input type="date" id="date" name="date"></label>
-        <label>To<input type="date" id="date" name="date"></label>
-      </div>
+       <!--for the search option-->
+       <div class="search-container">
+            <div class="search_bar">
+                <form action="" class="search">
+                    <input type="text" value="<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>" placeholder="Search for a month.." name="search">
+                    <!--ternary operator use in the value-->
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        
       <div class="clearfix"></div>
 
       <div class="col-div-8"><br />
@@ -62,13 +68,51 @@
 
             <div style="overflow-y:auto;">
               <table>
-              <?php if ($data) : ?>
+            
+              <div class="reports">
+                  <h3>Monthly Reports -  <?php echo "". date("F"); ?></h3>
+            <div class="cardBox">
+              <div class="col-div-3">
+                <div class="box">
+                  <p>Rs.150,000<br/><span>Total Payment</span></p>
+                  <i class="fa fa-money box-icon"></i>
+                </div>
+              </div>
+
+              <div class="col-div-3">
+                <div class="box">
+                  <p>Rs.121,500<br/><span>Payment Received</span></p>
+                  <i class="fa fa-money box-icon"></i>
+                </div>
+              </div>
+
+              <div class="col-div-3">
+                <div class="box">
+                  <p>Rs.28,500<br/><span>Payment Arrears</span></p>
+                  <i class="fa fa-money box-icon"></i>
+                </div>
+              </div>
+            </div>
+            </div>
+              <div class="clearfix"></div>
+           
+                <h3>My Payments</h3>
+                  <div class="content-box">
+                   
+                    <table>
+                      <tr>
+                           
+                      </tr>
+                      <?php if ($data) : ?>
                 <tr>
-                  <th>Date</th>
-                  <th>Patient's Name</th>
-                  <th>Symptoms</th>
-                  <th>Total Payment</th>
-                  <th></th>
+                    <th>Date</th>
+                    <th>Patient Number</th>
+                    <th>Patient Name</th>
+                    <th>Doctor Charges</th>
+                    <th>Hospital Charges</th>
+                    <th>Commission</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
                 </tr>
 
                 
@@ -76,16 +120,16 @@
                     <tr>
                       <td class="data"><?= $data->date ?></td>
                       <td class="data"><?= $data->patientName ?></td>
+                      <td class="data"><?= $data->patientName ?></td>
                       <td class="data"><?= $data->category ?></td>
                       <td class="data"><?= $data->amount ?></th>
-                      <td class="data"><a href="<?= ROOT ?>doctor/reportDetails/<?= $data->PatientID ?>/<?= $data->channelingid ?>/<?= $data->scheduleID ?>"><button class="appviewbtn">View Information</button></a></td>
+                      <td class="data"><?= $data->amount ?></th>
+                      <td class="data"><?= $data->amount ?></th>
                     </tr>
                   <?php endforeach; ?>
                 <?php else : ?>
                   <h4>No reports</h4>
                 <?php endif; ?>
-
-              </table>
 
             </div>
 

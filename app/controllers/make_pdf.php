@@ -34,7 +34,7 @@ class make_pdf extends Controller
 
         $mpdf = new \Mpdf\Mpdf();
 
-        $html = file_get_contents(ROOT.'/appoinment_make_pdf/' .$userid. '/' .$patientid. '/' .$channelingid. '/' .$scheduleid.'/');
+        $html = file_get_contents(ROOT.'/appoinment_make_pdf/2/5/1/4');
         $mpdf->WriteHTML($html);
         $mpdf->Output();//This is use to output everything which is in the screen
     }

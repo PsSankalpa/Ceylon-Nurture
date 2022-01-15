@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Doctor's Add Schedule</title>
+<link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0;">
 
 <link rel="stylesheet" href="<?=ASSETS?>css/addSchedule.css">
@@ -38,7 +39,7 @@
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
           <a  href="<?=ROOT?>articles/articleDetails"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
-          <a  href="<?=ROOT?>doctor/reports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
+          <a  href="<?=ROOT?>doctor/reportsview"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
           <a href="<?=ROOT?>logout"><i class="fa fa-fw fa-sign-out icons"></i>&nbsp;&nbsp;  Sign Out</a>
         </div>
         <div class="clearfix"></div>
@@ -96,35 +97,7 @@
                         <input type="time" value="<?=get_var('departureTime')?>" id="departureTime" name="departureTime" placeholder="12.00 ">
                     </div>
                 </div>
-                <!--find the time difference-->
-                <div>
-                <label style="padding-top:20px;">Start Date</label><br/>
-                <input type="text" name="arrivalTime" value="<?php if(!empty($_POST["arrivalTime"])) { echo $_POST["arrivalTime"]; } ?>" class="demoInputBox">
-                </div>
-                
-                <div>
-                <label>End Date</label>
-                <span id="userEmail-info" class="info"></span><br>
-                <input type="text" name="departureTime" value="<?php if(!empty($_POST["arrivalTime"])) { echo $_POST["departureTime"]; } ?>" class="demoInputBox">
-                </div>
-                
-                <div>
-
-
-                </div>
-                <input type="submit" name="submit" value="Find Difference" class="btn">
-                <?php
-                function differenceInHours($arrivalTime,$departureTime){
-                    $starttimestamp = strtotime($arrivalTime);
-                    $endtimestamp = strtotime($departureTime);
-                    $difference = abs($endtimestamp - $starttimestamp)/3600;
-                    return $difference;
-                }
-                if(!empty($_POST["submit"])) {
-                    $hours_difference = differenceInHours($_POST["arrivalTime"],$_POST["departureTime"]);	
-                    $message = "The Difference is " . $hours_difference . " hours";
-                }
-                ?>
+            
                 <div class="row">
                     <div class="col-25">
                         <label for="No of patients">Estimated No of patients</label>

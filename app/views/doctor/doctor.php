@@ -4,7 +4,7 @@
         <title>
             Doctor Home Page
         </title>
-
+        <link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
         <link rel="stylesheet" href="<?=ASSETS?>css/homeStyle.css">
 
     </head>
