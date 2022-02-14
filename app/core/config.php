@@ -26,18 +26,21 @@ $path = str_replace($_SERVER['DOCUMENT_ROOT'],"",$path);//contain the path for a
 // define('ROOT', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/');
 // define('ASSETS', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/assets/');
 // define('ASSETS2', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/');
-if(PROTOCAL=='http')
-{
-    define('ROOT', 'http://localhost/Grp12/public/');
-    define('ASSETS', 'http://localhost/Grp12/public/assets/');
-    define('ASSETS2', 'http://localhost/Grp12/public/');
-}
-elseif(PROTOCAL=='https')
+
+//get the protocol and change the links
+if(isset($_SERVER['HTTPS']))
 {
     define('ROOT', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/');
     define('ASSETS', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/assets/');
     define('ASSETS2', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/');
 }
+else
+{
+    define('ROOT', 'http://localhost/Grp12/public/');
+    define('ASSETS', 'http://localhost/Grp12/public/assets/');
+    define('ASSETS2', 'http://localhost/Grp12/public/');
+}
+
 
 /*set to true to allow error reporting and set to false when you upload online to stop error repoting
 ,this show the errors*/
