@@ -15,9 +15,9 @@
     <div class="form">
         <form method="post" class="payform" action="https://sandbox.payhere.lk/pay/checkout">
             <input type="hidden" name="merchant_id" value="1218919"> <!-- Replace your Merchant ID -->
-            <input type="hidden" name="return_url" value="http://localhost/Grp12/public/header/makeDonations">
-            <input type="hidden" name="cancel_url" value="http://localhost/Grp12/public/landing/home ">
-            <input type="hidden" name="notify_url" value="http://sample.com/notify">
+            <input type="hidden" name="return_url" value="https://ceylon-nurture.live/header/makeDonations">
+            <input type="hidden" name="cancel_url" value="https://ceylon-nurture.live/landing/home ">
+            <input type="hidden" name="notify_url" value="https://ceylon-nurture.live//donationDetails">
 
             <h2 class="h2p txt-col1 topics">Item Details</h2><br>
             <div class="p-details row">
