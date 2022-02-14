@@ -89,16 +89,20 @@
 
             <div class="schedule">
                 <div class="slots">
+                <?php if($rows):?>
+                    <?php foreach ($rows as $row1):?>
+
                     <div class="slot">
+                        
                         <div class="slotHead">
                             <div class="iconBox"><i class="far fa-calendar-alt"></i></div>
-                            <div class="date"> 05/11/2021</div>
+                            <div class="date"> <?=$row1->dateofSlot?></div>
                             <div class="patientNo">Number of Patients: 39</div>
                         </div>
 
                         <div class="slotBody">
                             <div class="card">
-                                <div class="time">08:00 - 10:00 AM</div>
+                                <div class="time"><?=$row1->arrivalTime?> - <?=$row1->departureTime?></div>
                                 <div class = "availability"> 
                                 <ol class="switches">
                                         <input type="checkbox" id="1" checked>
@@ -108,118 +112,17 @@
                                         </label>
                                 </ol>
                                 </div><br>
-                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 15</div>
-                                <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
-                            </div>
-
-                            <div class="card">
-                                <div class="time">01:00 - 03:00 PM</div>
-                                <div class = "availability"> 
-                                <ol class="switches">
-                                        <input type="checkbox" id="2" checked>
-                                        <label for="2">
-                                        <span>Availability </span>
-                                        <span></span>
-                                        </label>
-                                </ol>
-                                </div><br>
-                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 14</div>
-                                <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
-                            </div>
-
-                            <div class="card">
-                                <div class="time">04:00 - 07:00 PM</div>
-                                <div class = "availability"> 
-                                <ol class="switches">
-                                        <input type="checkbox" id="3">
-                                        <label for="3">
-                                        <span>Availability </span>
-                                        <span></span>
-                                        </label>
-                                </ol>
-                                </div><br>
-                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 10</div>
+                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: <?=$row1->noOfPatient?></div>
                                 <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
                             </div>
 
                             
                         </div>
                     </div>
-
-                    <div class="slot">
-                        <div class="slotHead">
-                            <div class="iconBox"><i class="far fa-calendar-alt"></i></div>
-                            <div class="date"> 05/11/2021</div>
-                            <div class="patientNo">Number of Patients: 38</div>
-                        </div>
-
-                        <div class="slotBody">
-                            <div class="card">
-                                <div class="time">09:00 - 10:00 AM</div>
-                                <div class = "availability"> 
-                                <ol class="switches">
-                                        <input type="checkbox" id="4" checked>
-                                        <label for="4">
-                                        <span>Availability </span>
-                                        <span></span>
-                                        </label>
-                                </ol>
-                                </div><br>
-                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 11</div>
-                                <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
-                            </div>
-
-                            <div class="card">
-                                <div class="time">01:00 - 02:00 PM</div>
-                                <div class = "availability"> 
-                                <ol class="switches">
-                                        <input type="checkbox" id="5" >
-                                        <label for="5">
-                                        <span>Availability </span>
-                                        <span></span>
-                                        </label>
-                                </ol>
-                                </div><br>
-                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 5</div>
-                                <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
-                            </div>
-
-                            <div class="card">
-                                <div class="time">03:00 - 05:00 PM</div>
-                                <div class = "availability"> 
-                                <ol class="switches">
-                                        <input type="checkbox" id="6" checked>
-                                        <label for="6">
-                                        <span>Availability </span>
-                                        <span></span>
-                                        </label>
-                                </ol>
-                                </div><br>
-                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 10</div>
-                                <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
-                            </div>
-
-                            <div class="card">
-                                <div class="time">06:00 - 08:00 PM</div>
-                                <div class = "availability"> 
-                                <ol class="switches">
-                                        <input type="checkbox" id="7" checked>
-                                        <label for="7">
-                                        <span>Availability </span>
-                                        <span></span>
-                                        </label>
-                                </ol>
-                                </div><br>
-                                <div class="patientNoA" style="font-weight:lighter;">Number of Patients: 12</div>
-                                <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
-                            </div>
-
-                            
-                        </div>
-                    </div>
-
-                    
-
+                    <?php endforeach;?>
+                    <?php else:?>
+                        There are no slots available!
+                        <?php endif;?>
                 </div>
                 
             </div>
