@@ -71,7 +71,6 @@ class channeling extends Controller
         }
 
 
-
         $this->view("patient/patientPayment",[
             'row'=>$row,
             'row2'=>$row2,
@@ -88,6 +87,7 @@ class channeling extends Controller
 
     function doctors($userid=null)
     {
+        
         $doctors = new doctors();
         $row=$doctors->where('userid',$userid);
         if($row)
@@ -95,14 +95,21 @@ class channeling extends Controller
             $row=$row[0];
         }
 
+        $schedule = new schedule();
+
+        $row1=$schedule->where('doctorid', $userid);
+        
+       
+
         $this->view("patient/doctors",[
             'row'=>$row,
+            'rows'=>$row1,
+
         ]);
     }
 
-    function appointments()
+    function appointments($userid=null)
     {
-
         $this-> view("patient/patientAppointments");
 
     }

@@ -52,7 +52,7 @@
                                             <div class="line1">
                                                 <h3> <?=esc($row->name)?> </h3>
                                                 <div class="available"> 
-                                                    <button class="forum_button view">View Doctor</button> 
+                                                <a href="<?=ROOT?>channeling/doctors/2?"><button class="forum_button view">View Doctor</button> </a>
                                                 </div>
                                             </div>
                                             
@@ -115,7 +115,7 @@
                                                 <div class="line1">
                                                     <h3> Ashwagandha </h3>
                                                     <div class="available"> 
-                                                        <button class="forum_button view">View Article</button> 
+                                                    <a href="<?=ROOT?>articles/articleDetails/2"><button class="forum_button view">View Article</button> </a>
                                                     </div>
                                                 </div>
                                                 
@@ -178,7 +178,7 @@
                                                 <div class="line1">
                                                     <h3> Ashwagandha Root Powder </h3>
                                                     <div class="available">
-                                                    <button class="forum_button view">View Product</button>  
+                                                    <a href="<?=ROOT?>seller/productDetails/1"><button class="forum_button view">View Product</button></a>  
                                                     </div>
                                                 </div>
                                                 
