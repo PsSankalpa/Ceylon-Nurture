@@ -4,7 +4,7 @@ class app
 {
     private $controller = "landing";
     private $method = "index";
-    private $params = [];//values in the url which after controler php name and its method, stores here
+    private $params = array();//values in the url which after controler php name and its method, stores here
 
     //get the url and run specific function inside
     public function __construct()

@@ -18,13 +18,26 @@ $path = str_replace("\\","/",PROTOCAL."://". $_SERVER['SERVER_NAME']. __DIR__."/
 $path = str_replace($_SERVER['DOCUMENT_ROOT'],"",$path);//contain the path for assets folder
 //server name of the documet root
 
-define('ROOT',str_replace("app/core","public",$path));
-define('ASSETS',str_replace("app/core","public/assets",$path));
-define('ASSETS2',str_replace("app/core","public",$path));
+//define('ROOT',str_replace("app/core","public",$path));
+//define('ASSETS',str_replace("app/core","public/assets",$path));
+//define('ASSETS2',str_replace("app/core","public",$path));
 
-// define('ROOT', 'http://localhost/Grp12/public/');
-// define('ASSETS', 'http://localhost/Grp12/public/assets/');
-// define('ASSETS2', 'http://localhost/Grp12/public/');
+// for the server
+// define('ROOT', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/');
+// define('ASSETS', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/assets/');
+// define('ASSETS2', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/');
+if(PROTOCAL=='http')
+{
+    define('ROOT', 'http://localhost/Grp12/public/');
+    define('ASSETS', 'http://localhost/Grp12/public/assets/');
+    define('ASSETS2', 'http://localhost/Grp12/public/');
+}
+elseif(PROTOCAL=='https')
+{
+    define('ROOT', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/');
+    define('ASSETS', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/assets/');
+    define('ASSETS2', PROTOCAL."://". $_SERVER['SERVER_NAME'].'/');
+}
 
 /*set to true to allow error reporting and set to false when you upload online to stop error repoting
 ,this show the errors*/
