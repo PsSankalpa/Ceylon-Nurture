@@ -7,13 +7,13 @@ class common_user extends Model
     protected $table = "common_user";
 
     protected $allowedcolumns = [
-        'nameWithInitials',
+       // 'nameWithInitials',
         'verify_token',
 		'fname',
 		'lname',
         'username',
         'gender',
-        'dob',
+        //'dob',
         'email',
 		'tpNumber',
 		'password',
@@ -30,7 +30,7 @@ class common_user extends Model
     {
         $this->errors = array();
 
-        //validations for namewithInitials
+        /*validations for namewithInitials
         if(empty($data['nameWithInitials']))
         {
             $this->errors['nameWithInitials'] = "Cannot Keep Name With Initials empty";
@@ -38,7 +38,7 @@ class common_user extends Model
         elseif(!preg_match('/^[a-zA-Z\s\.]+$/',$data['nameWithInitials']))
         {
             $this->errors['nameWithInitials'] = "Only letters allowed in the Name With Initials";
-        }
+        }*/
 
         //check for firstname
         if(empty($data['fname']))
@@ -94,7 +94,7 @@ class common_user extends Model
 		}
 	
         //validation for DOB
-        $y=date("Y");
+        /*$y=date("Y");
     
       
 		if(empty($data['dob']))
@@ -109,7 +109,7 @@ class common_user extends Model
 		elseif($y - (intval($data['dob'])) > 100)
 		{
 			$this->errors['dob'] = "Please check whether your birth year is reasonable ";
-		}
+		}*/
 		
         //check for email address
         if (empty($_POST["email"])) 
