@@ -37,6 +37,7 @@
             </div>
         </div>
 
+        <!--for the latest articles-->
         <div class="article-ds">
 
             <div class="div" style="width:100%">
@@ -70,15 +71,13 @@
         </div>
 
 
-        <div class="products-section">
+        <!--for all articles-->
+        <div class="a-s">
+            <div class="articles-section">
 
-            <div class="cardrow">
                 <?php if ($rows3) : ?>
                     <?php foreach ($rows3 as $row) : ?>
-
-                        <div class="cardcolumn">
-
-                        <div class="article-card product">
+                        <div class="article-card">
                             <h1><?= $row->articleName ?></h1>
                             <picture>
                                 <img src="<?= ASSETS2 . $row->image ?>" alt="A-herb" style="width:100%">
@@ -86,16 +85,12 @@
                             <p><?= $row->description ?></p>
                             <p><a href="<?= ROOT ?>/articles/articleDetails/<?= $row->articleid ?>"><button>View Information</button></a></p>
                         </div>
-
-                        </div>
-
                     <?php endforeach; ?>
                 <?php else : ?>
                     <h4>No Articles Yet</h4>
                 <?php endif; ?>
 
             </div>
-
         </div>
 
     </div>
