@@ -32,30 +32,70 @@
                         <button class="btn" onclick="filterSelection('Dosing')"> Dosing</button>
                         <button class="btn" onclick="filterSelection('Reviews')"> Reviews</button>
                     </div>
+
+                    <!--details of the articless-->
                     <div class="container">
+
                         <div class="filterDiv Overview"><?= $row->description ?></div>
                         <div class="filterDiv Uses"><?= $row->uses ?></div>
                         <div class="filterDiv Side effects"><?= $row->sideEffects ?></div>
                         <div class="filterDiv Precautions"><?= $row->precautions ?></div>
                         <div class="filterDiv Interactions"><?= $row->interactions ?></div>
                         <div class="filterDiv Dosing"><?= $row->dosing ?></div>
+
+                        <!--review section-->
                         <div class="filterDiv Reviews">
-                            <div class="pro-image">
-                                <?= $row->reviewOwner ?>
+
+                            <div class="reviews1">
+
+                                <?php if ($data4 != null) : ?>
+
+                                    <?php foreach ($data4 as $data4) : ?>
+                                        <?php if ($data4->ownerid == Auth::userid()) : ?>
+                                            <div class="r-container dark right1">
+                                                <p class="o-name right"><?= $data4->reviewOwner ?></p>
+                                                <p class="review"><?= $data4->review ?></p>
+                                            </div>
+                                        <?php elseif ($data4->ownerid != Auth::userid()) : ?>
+                                            <div class="r-container">
+                                                <p class="o-name"><?= $data4->reviewOwner ?></p>
+                                                <p class="review"><?= $data4->review ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+
+                                <?php else : ?>
+
+                                    <div>
+                                        <p>There are no reviews yet</p>
+                                    </div>
+
+                                <?php endif; ?>
+
                             </div>
-                            <div class="review">
-                                <?= $row->review ?>
+
+                            <!--for the review submit form-->
+                            <div class="r-from">
+                                <form method="POST">
+                                    <input type="text" class="review-t1" id="review" name="review" placeholder="Add review">
+                                    <button class="submit-r">Post</button>
+                                </form>
                             </div>
+
                         </div>
+
+                    </div>
+
+                    <div>
                         <?php if (($data2) && ($row)) : ?>
                             <?php if ($data3 == 'owner') : ?>
                                 <div class="access-buttons Mbtns">
                                     <div class="editbtn"><a href="<?= ROOT ?>/doctor/editarticles/<?= $row->articleid ?>"><button>Edit</button></a></div>
                                     <form method="POST">
-                                        <input type="hidden" name="null">
+                                        <input type="hidden" name="delete">
                                         <div class="deletebtn"><button>Delete</button></div>
                                     </form>
-                                    
+
                                 </div>
                             <?php endif; ?>
                         <?php endif; ?>

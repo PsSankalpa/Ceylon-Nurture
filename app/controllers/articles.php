@@ -26,11 +26,18 @@ class articles extends Controller
             $data3 = "";
         }
 
-        
+        //to get article reviews
+        $reviews = new articleReview();
+        $data4 = $reviews->where('articleid',$articleid);
+        if($data4 == null){
+            $data4 = "";
+        }
+
+           
         $errors = array();
         $articles = new article();
 
-        if (count($_POST) > 0) {
+        if (isset($_POST['delete'])) {
 
             $row = $articles->where('articleid', $articleid); //in here row is an array
             if ($row) {
@@ -41,6 +48,25 @@ class articles extends Controller
             $articles->delete($articleid);
             $this->redirect('doctor/myArticles');
     
+        }
+
+        //to get the username
+        $common_user = new common_user();
+        $data_name = $common_user->where('userid',$userid);
+        if ($data_name) {
+            $data_name = $data_name[0];
+        }
+        $username = $data_name->username;
+
+        if (isset($_POST['review'])) {
+
+                $arr['reviewOwner'] = $username;
+                $arr['review'] = htmlspecialchars($_POST['review']);
+                $arr['articleid'] = $articleid;
+                $arr['ownerid'] = Auth::userid();
+    
+                $reviews->insert($arr);
+                $this->redirect('articles/articleDetails/'.$articleid);//put the function name    
         }
 
         // $this->view('seller/deleteProduct', [
@@ -54,6 +80,18 @@ class articles extends Controller
             'rows' => $data,
             'data2' => $data2,
             'data3' => $data3,
+            'data4' => $data4,
+        ]);
+    }
+
+    //for the article reviews
+    function articlereview($articleid = null)
+    {
+
+        $this->view('articles/articleReviews', [
+            // 'rows' => $data,
+            // 'data2' => $data2,
+            // 'data3' => $data3,
         ]);
     }
 }
