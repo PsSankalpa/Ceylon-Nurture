@@ -14,8 +14,8 @@
     <div class="m-articles">
 
         <div class="myBtnContainer A-btns">
-            <button class="tablinks ">My Articles</button>
-            <button class="tablinks active"> Add Article</button>
+            <a href="<?=ROOT?>/doctor/myArticles"><button class="tablinks ">My Articles</button></a>
+            <a href="<?= ROOT ?>/doctor/addArticles"><button class="tablinks active"> Add Article</button></a>
         </div>
 
         <!--for the errors-->

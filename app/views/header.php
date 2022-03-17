@@ -46,7 +46,7 @@
                 <div class="v"></div>
                 <a class="a_navitem2 items" href="<?= ROOT ?>channeling">CHANNELING</a>
                 <div class="v"></div>
-                <a class="a_navitem2 items" href="<?= ROOT ?>header/viewPoducts">PRODUCTS</a>
+                <a class="a_navitem2 items" href="<?= ROOT ?>header/viewProducts">PRODUCTS</a>
                 <?php if(($data == "seller") || ($data == "doctorAndSeller") || ($data == "sellerAndPatient") || ($data == "allUser")):?>
                 <div class="v"></div>
                 <a class="a_navitem2 items" href="<?= ROOT ?>seller">SELLING</a>

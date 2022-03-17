@@ -17,16 +17,29 @@ class home extends Controller
       $Auth = new Auth;
       $data = $Auth->finduser();
 
+      //to get the latest articles
       $article = new article();
       $data2 = $article->findrange(7);
+      if($data2 == null || count($data2)<4)
+      {
+        $query1 = "select * from articles order by articleid desc limit 6";
+        $data2 = $article->query($query1);
+      }
 
       $this->view('home', [
         'rows' => $data2,
         'data'=>$data,
       ]);
     } else {
+      
+      //to get the latest articles
       $article = new article();
       $data2 = $article->findrange(7);
+      if($data2 == null || count($data2)<4)
+      {
+        $query1 = "select * from articles order by articleid desc limit 6";
+        $data2 = $article->query($query1);
+      }
 
       $data = "";
       $this->view('home', [

@@ -178,7 +178,7 @@ ul{
     background: #ccc;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1000px) {
     .search-container {
       float: none;
     }
@@ -198,11 +198,30 @@ ul{
         text-align: left;
         width: 100%;
         margin: 0;
-        padding: 14px;
+        padding: 10px;
+        font-size: 0.8rem;
       }
       .search-container  input[type=text] {
         border: 1px solid #ccc;  
       }
+}
+
+/*--------for the error page----------------*/
+.error-img{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    margin: 2% 25%;
+    margin-bottom: 0.6%;
+    position: relative;
+    border-radius: 1rem;
+    border:3px solid #189AB4;
+}
+.cover-img1{
+    width: 100%;
+    background-color: #D4F1F4;
+    height: 100%;
 }
   
 

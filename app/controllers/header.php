@@ -9,7 +9,7 @@ class header extends Controller
     $data = "none";
   }
 
-  function viewPoducts()
+  function viewProducts()
   {
 
     $products = new products();
@@ -48,6 +48,12 @@ class header extends Controller
 
       //for make a filtr by date
       $data = $article->findrange(7); //give the data according to range of days
+      
+      if($data == null || count($data)<4)
+      {
+        $query1 = "select * from articles order by articleid desc limit 6";
+        $data = $article->query($query1);
+      }
       //print_r($data);
 
       //to the search option
@@ -71,6 +77,11 @@ class header extends Controller
 
       //for make a filtr by date
       $data = $article->findrange(7); //give the data according to range of days
+      if($data == null || count($data)<4)
+      {
+        $query1 = "select * from articles order by articleid desc limit 6";
+        $data = $article->query($query1);
+      }
 
       //for find the user
       $data2 = "";

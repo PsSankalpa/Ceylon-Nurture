@@ -36,9 +36,9 @@ if(isset($_SERVER['HTTPS']))
 }
 else
 {
-    define('ROOT', 'http://localhost/Grp12/public/');
-    define('ASSETS', 'http://localhost/Grp12/public/assets/');
-    define('ASSETS2', 'http://localhost/Grp12/public/');
+    define('ROOT',str_replace("app/core","public",$path));
+    define('ASSETS',str_replace("app/core","public/assets",$path));
+    define('ASSETS2',str_replace("app/core","public",$path));
 }
 
 
