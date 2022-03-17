@@ -383,22 +383,6 @@
   color: #05445E;
 }
 
-/*for review*/
-.pro-image{
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  padding: 20px;
-  margin: 1rem;
-}
-.review{
-  -webkit-flex: 3;
-  -ms-flex: 3;
-  flex: 3;
-  background: gray;
-  padding: 10px;
-  margin: 1rem;
-}
 @media (max-width: 768px) {
   .article {
     -webkit-flex-direction: column;
@@ -720,4 +704,79 @@
     margin: 0 auto;
     width: 90%;
   }
+}
+
+/*---------------for article reviews-----------*/
+/*for review*/
+.Reviews{
+  width: 100%;
+  max-height: 50rem;
+
+}
+.reviews1{
+  width: 100%;
+  max-height: 20rem;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.r-container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  width: 80%;
+  float: left;
+}
+.r-container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.r-container .o-name {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.r-container .o-name.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+.dark {
+  border-color: #ccc;
+  background-color: #ddd;
+  float: right;
+}
+.r-form{
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0.8rem;
+}
+.review-t1{
+  flex: 75%;
+  padding: 0.8rem;
+  width: 70%;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+.submit-r{
+  flex: 25%;
+  padding: 0.8rem;
+  width: 20%;
+  background-color:#75E6DA;
+  border: 2px solid #05445E;
+  border-radius: 0.5rem;
+  color:#05445E;
+  font-size: 1rem;
+}
+.submit-r:hover{
+  background-color: #05445E;
+  color: #1894B4;
 }
