@@ -7,7 +7,7 @@ class donationDetails extends Controller
         $userid = Auth::userid();
         if (!empty($row = $commonuser->where('userid', $userid))) {
             $row = $row[0];
-            $nameWithInitials = $row->nameWithInitials;
+            $username = $row->username;
         }
 
 
@@ -29,7 +29,7 @@ class donationDetails extends Controller
 
             $arr['date'] = date("Y/m/d");
             $arr['amount'] = $_POST['payhere_amount'];
-            $arr['userName'] = $nameWithInitials;
+            $arr['userName'] = $username;
             $arr['donationNumber'] = $_POST['order_id'];
             $arr['userID'] = Auth::userid();
             $arr['method'] = $_POST['method'];
