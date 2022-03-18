@@ -39,8 +39,9 @@
                     <div class="col-75">
                     <select name="speciality">
                         <option>--Select Speciality--</option>
-                                <option>Ayurvedha Panchakrama Prathikara</option>
-                                <option>General Physician</option>
+                        <?php foreach ($rows as $row):?>
+                                <option><?=$row->hospital?></option>
+                            <?php endforeach;?>
                         </select>
                     </div>
                     </div>
@@ -53,8 +54,10 @@
                     <div class="col-75">
                     <select name="hospital">
                         <option>--Select Hospital--</option>
-                                <option>Arogya Hospital</option>
-                                <option>Osu Sewana</option>
+                            <?php foreach ($rows as $row):?>
+                                <option><?=$row->hospital?></option>
+                            <?php endforeach;?>
+
                         </select>
                     </div>
                     </div>
