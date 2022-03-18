@@ -136,7 +136,7 @@ class seller extends Controller
                 $products->insert($arr);
 
                 //commision for the product
-                $pcommission = $arr['productPrice'] * (4 / 100);
+                $pcommission = $arr['productPrice'] * (15 / 100);
                 $this->redirect('seller/commissionPayment/'.$pcommission);
             } else {
                 $errors = $products->errors2;
