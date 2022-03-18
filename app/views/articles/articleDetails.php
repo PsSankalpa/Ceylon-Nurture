@@ -75,12 +75,14 @@
                             </div>
 
                             <!--for the review submit form-->
-                            <div class="r-from">
-                                <form method="POST">
-                                    <input type="text" class="review-t1" id="review" name="review" placeholder="Add review">
-                                    <button class="submit-r">Post</button>
-                                </form>
-                            </div>
+                            <?php if (Auth::logged_in()) : ?>
+                                <div class="r-from">
+                                    <form method="POST">
+                                        <input type="text" class="review-t1" id="review" name="review" placeholder="Add review">
+                                        <button class="submit-r">Post</button>
+                                    </form>
+                                </div>
+                            <?php endif; ?>
 
                         </div>
 

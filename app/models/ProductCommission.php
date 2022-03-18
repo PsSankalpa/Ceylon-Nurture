@@ -1,16 +1,16 @@
 <?php
 /**
- * Donation Model
+ * Product_commission Model
  */
-class donations extends Model
+class pcommission extends Model
 {
-    protected $table = "donations";
+    protected $table = "productCommission";
 
     protected $allowedcolumns = [
         'date',
         'amount',
 		'userName',
-		'donationNumber',
+		'commissionNumber',
         'userID',
         'method',
         'status_message',

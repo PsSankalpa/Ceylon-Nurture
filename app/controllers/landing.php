@@ -1,42 +1,48 @@
 <?php
 class landing extends Controller
 {
-    function index()
-    {
-      
+  function index()
+  {
+
     //if(!Auth::logged_in())
-       //{
-         //  $this->redirect();
+    //{
+    //  $this->redirect();
 
-      // }
-      if(Auth::logged_in()){
+    // }
+    if (Auth::logged_in()) {
       $Auth = new Auth;
-          $data = $Auth->finduser();
-          $article = new article();
-          $data2 = $article->findAll();
-          $data2 = $article->findrange(7);
-          
-          $this->view('home',[
-			    'data'=>$data,
-          'rows' => $data2,
-        ]);
+      $data = $Auth->finduser();
+
+      //to get the latest articles
+      $article = new article();
+      $data2 = $article->findrange(7);
+      if ($data2 == null || count($data2) < 4) {
+        $query1 = "select * from articles order by articleid desc limit 6";
+        $data2 = $article->query($query1);
       }
-      else{
-        $article = new article();
-        //$data2 = $article->findAll();
-        $data2 = $article->findrange(7);
-        $this->view('home',[
-          'rows' => $data2,
-        ]);
-      } 
-      
-      
-    
-     
 
+      $this->view('home', [
+        'data' => $data,
+        'rows' => $data2,
+      ]);
+    } else {
+      $article = new article();
+      //$data2 = $article->findAll();
+       //to get the latest articles
+       $article = new article();
+       $data2 = $article->findrange(7);
+       if ($data2 == null || count($data2) < 4) {
+         $query1 = "select * from articles order by articleid desc limit 6";
+         $data2 = $article->query($query1);
+       }
+
+      $this->view('home', [
+        'rows' => $data2,
+      ]);
     }
+  }
 
-    /*function home()
+  /*function home()
     {
       
         if(!Auth::logged_in())
@@ -57,6 +63,4 @@ class landing extends Controller
         {
 
         }*/
-
 }
-?>

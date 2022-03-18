@@ -15,18 +15,18 @@
     <div class="form">
         <form method="post" class="payform" action="https://sandbox.payhere.lk/pay/checkout">
             <input type="hidden" name="merchant_id" value="1218919"> <!-- Replace your Merchant ID -->
-            <input type="hidden" name="return_url" value="https://ceylon-nurture.live/header/makeDonations">
-            <input type="hidden" name="cancel_url" value="https://ceylon-nurture.live/landing/home ">
-            <input type="hidden" name="notify_url" value="https://ceylon-nurture.live/donationDetails">
+            <input type="hidden" name="return_url" value="https://ceylon-nurture.live/seller">
+            <input type="hidden" name="cancel_url" value="https://ceylon-nurture.live/seller ">
+            <input type="hidden" name="notify_url" value="https://ceylon-nurture.live/seller/productCommissio">
 
-            <h2 class="h2p txt-col1 topics">Item Details</h2><br>
+            <h2 class="h2p txt-col1 topics">Commission Details</h2><br>
             <div class="p-details row">
                 <h3 class="h2p txt-col1 topics">Payment Type</h3>
                 <div class="p-inputs">
                     <input type="hidden" name="order_id" value="ItemNo12345">
-                    <input type="text" class="col-3 p-in" name="items" value="Donations" disabled><br>
+                    <input type="text" class="col-3 p-in" name="items" value="Commission" disabled><br>
                     <input type="text" class="col-3 p-in" name="currency" value="LKR" disabled>
-                    <input type="text" class="col-3 p-in" name="amount">
+                    <input type="text" class="col-3 p-in" name="amount" value="<?= get_var('amount', $data2) ?>">
                 </div>
             </div>
             <div class="user-detail row">

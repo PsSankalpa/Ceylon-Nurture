@@ -134,14 +134,93 @@ class seller extends Controller
                 $arr['sellerid'] = Auth::userid();
 
                 $products->insert($arr);
-                $this->redirect('seller/seller');
+
+                //commision for the product
+                $pcommission = $arr['productPrice'] * (4 / 100);
+                $this->redirect('seller/commissionPayment/'.$pcommission);
             } else {
                 $errors = $products->errors2;
             }
         }
+
         $this->view('seller/uploadProduct', [
             'errors' => $errors,
         ]);
+    }
+
+    function commissionPayment($commission = "")
+    {
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+          }
+      
+          $commonUser = new common_user();
+          $userid = Auth::userid();
+          $data = $commonUser->where('userid', $userid);
+          if ($data) {
+            $data = $data[0];
+          }
+
+        $this->view('seller/productCommission', [
+            'data' => $data,
+            'data2' => $commission,
+        ]);
+    }
+
+    function productCommission()
+    {
+
+        //-------------------------------for payment details-----------------------------------------------------
+        $commonuser = new common_user();
+        $userid = Auth::userid();
+        if (!empty($row = $commonuser->where('userid', $userid))) {
+            $row = $row[0];
+            $username = $row->username;
+        }
+
+        $merchant_id         = $_POST['merchant_id'];
+        $order_id             = $_POST['order_id'];
+        $payhere_amount     = $_POST['payhere_amount'];
+        $payhere_currency    = $_POST['payhere_currency'];
+        $status_code         = $_POST['status_code'];
+        $md5sig                = $_POST['md5sig'];
+
+        $merchant_secret = '4p6oM65yLel8lzSHKYzqtQ4TwgRmoRLvF49dAyBUptlC'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
+
+        $local_md5sig = strtoupper(md5($merchant_id . $order_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret))));
+
+        if (($local_md5sig === $md5sig) and ($status_code == 2)) {
+            //TODO: Update your database as payment success
+
+            $payments = new pcommission();
+
+            $arr['date'] = date("Y/m/d");
+            $arr['amount'] = $_POST['payhere_amount'];
+            $arr['userName'] = $username;
+            $arr['commissionNumber'] = $_POST['order_id'];
+            $arr['userID'] = Auth::userid();
+            $arr['method'] = $_POST['method'];
+            $arr['status_message'] = $_POST['status_message'];
+            //add the last two parameters to the table
+
+            $payments->insert($arr);
+        }
+         else 
+        {
+            $products = new products();
+            $userid = Auth::userid();
+
+            //to get the last entry of the user
+            $query1 = "select * from products where sellerid = :userid and order by articleid desc limit 1";
+            $data = $products->query($query1);
+            if($data != null){
+                $data = $data[0];
+                $id = $data->productid;
+            }
+
+            $this->deleteProduct($id);
+        }
+        //------------------------end of the payment part---------------------------------------------------------------
     }
 
     function editProduct($productid = null)
