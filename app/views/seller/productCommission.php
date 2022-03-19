@@ -17,7 +17,7 @@
             <input type="hidden" name="merchant_id" value="1218919"> <!-- Replace your Merchant ID -->
             <input type="hidden" name="return_url" value="https://ceylon-nurture.live/seller">
             <input type="hidden" name="cancel_url" value="https://ceylon-nurture.live/seller ">
-            <input type="hidden" name="notify_url" value="https://ceylon-nurture.live/seller/productCommissio">
+            <input type="hidden" name="notify_url" value="https://ceylon-nurture.live/seller/productCommission">
 
             <h2 class="h2p txt-col1 topics">Commission Details</h2><br>
             <div class="p-details row">
