@@ -4,7 +4,7 @@
  */
 class productcommission extends Model
 {
-    protected $table = "productCommission";
+    protected $table = "productcommission";
 
     protected $allowedcolumns = [
         'date',
