@@ -192,16 +192,13 @@ class seller extends Controller
         if (($local_md5sig === $md5sig) and ($status_code == 2)) {
             //TODO: Update your database as payment success
 
-            $payments = new pcommission();
+            $payments = new productcommission();
 
             $arr['date'] = date("Y/m/d");
             $arr['amount'] = $_POST['payhere_amount'];
             $arr['userName'] = $username;
             $arr['commissionNumber'] = $_POST['order_id'];
             $arr['userID'] = Auth::userid();
-            $arr['method'] = $_POST['method'];
-            $arr['status_message'] = $_POST['status_message'];
-            //add the last two parameters to the table
 
             $payments->insert($arr);
         }
@@ -215,10 +212,18 @@ class seller extends Controller
             $data = $products->query($query1);
             if($data != null){
                 $data = $data[0];
-                $id = $data->productid;
+                $$productId = $data->productid;
+
+                $row2 = $products->where('productid', $productId);
+                if ($row2) {
+                    $row2 = $row2[0];
+                    unlink($row2->image);
+                }
+                
+                $products->delete($productId);
             }
 
-            $this->deleteProduct($id);
+            
         }
         //------------------------end of the payment part---------------------------------------------------------------
     }
@@ -296,6 +301,6 @@ class seller extends Controller
         $data = $products->where('productId', $productId);
 
 
-        $this->view('seller/ProductDetails', ['rows' => $data]);
+        $this->view('seller/productDetails', ['rows' => $data]);
     }
 }

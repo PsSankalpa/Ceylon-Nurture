@@ -24,8 +24,8 @@
                 <h3 class="h2p txt-col1 topics">Payment Type</h3>
                 <div class="p-inputs">
                     <input type="hidden" name="order_id" value="ItemNo12345">
-                    <input type="text" class="col-3 p-in" name="items" value="Donations" disabled><br>
-                    <input type="text" class="col-3 p-in" name="currency" value="LKR" disabled>
+                    <input type="text" class="col-3 p-in" name="items" value="Donations"><br>
+                    <input type="text" class="col-3 p-in" name="currency" value="LKR">
                     <input type="text" class="col-3 p-in" name="amount">
                 </div>
             </div>

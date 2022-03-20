@@ -2,7 +2,7 @@
 /**
  * Product_commission Model
  */
-class pcommission extends Model
+class productcommission extends Model
 {
     protected $table = "productCommission";
 
@@ -12,8 +12,6 @@ class pcommission extends Model
 		'userName',
 		'commissionNumber',
         'userID',
-        'method',
-        'status_message',
     ];
 
 	protected $pk = "feesid";

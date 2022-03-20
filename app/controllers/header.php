@@ -24,7 +24,7 @@ class header extends Controller
       $data = $products->query($query, $arr);
     }
 
-    $this->view('commonUser/ProductsView', [
+    $this->view('commonUser/productsView', [
       'rows' => $data,
     ]);
   }
