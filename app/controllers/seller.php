@@ -226,15 +226,7 @@ class seller extends Controller
     {
 
         //-------------------------------for payment details-----------------------------------------------------
-        $commonuser = new common_user();
-        $userid = Auth::userid();
-        if (!empty($row = $commonuser->where('userid', $userid))) {
-            $row = $row[0];
-            $username = $row->username;
-        }
-
-
-
+        
         $merchant_id         = $_POST['merchant_id'];
         $order_id             = $_POST['order_id']; //productid 
         $payhere_amount     = $_POST['payhere_amount'];
@@ -246,12 +238,11 @@ class seller extends Controller
         $arr['date'] = date("Y/m/d");
         $arr['amount'] = $payhere_amount;
         $arr['productid'] = $order_id;
-        $arr['userID'] = Auth::userid();
         $arr['status'] = "completed";
 
         //---------to get the post data to txt file for debuging----------------------------
         $today = date("Y-m-d");
-        file_put_contents("POST_logs/" . $today . ".txt", $arr, FILE_APPEND);
+        //file_put_contents("POST_logs/" . $today . ".txt", $arr, FILE_APPEND);
         //---------------------------------------------------------------------------------
 
         $merchant_secret = '4p6oM65yLel8lzSHKYzqtQ4TwgRmoRLvF49dAyBUptlC'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
@@ -265,20 +256,13 @@ class seller extends Controller
             $payments->update2($order_id, $arr);
         } else {
             $products = new products();
-            $userid = Auth::userid();
 
             //to get the last entry of the user
             $data = $products->where('productid', $order_id);
-            // $query1 = "select * from products where commissionNumber = :order_id and order by articleid desc limit 1";
-            // $data = $products->query($query1);
+
             if ($data != null) {
                 $data = $data[0];
-
-                $row2 = $products->where('productid', $order_id);
-                if ($row2) {
-                    $row2 = $row2[0];
-                    unlink($row2->image);
-                }
+                unlink($data->image);
 
                 $products->delete($order_id);
             }
