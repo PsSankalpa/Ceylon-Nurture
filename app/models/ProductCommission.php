@@ -9,11 +9,12 @@ class productcommission extends Model
     protected $allowedcolumns = [
         'date',
         'amount',
-		'userName',
-		'commissionNumber',
+		'productid',
         'userID',
+        'status',
     ];
 
-	protected $pk = "feesid";
+	protected $pk = "feesID";
+    protected $pk2 = "productid";
 
 }
