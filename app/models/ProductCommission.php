@@ -4,16 +4,17 @@
  */
 class productcommission extends Model
 {
-    protected $table = "productCommission";
+    protected $table = "productcommission";
 
     protected $allowedcolumns = [
         'date',
         'amount',
-		'userName',
-		'commissionNumber',
+		'productid',
         'userID',
+        'status',
     ];
 
-	protected $pk = "feesid";
+	protected $pk = "feesID";
+    protected $pk2 = "productid";
 
 }

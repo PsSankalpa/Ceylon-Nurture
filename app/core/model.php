@@ -150,6 +150,28 @@ public function __construct()
 
 		return $this->query($query,$data);
 	}
+	//-------------------------------------------------------------------------------------------------------------------------
+	//update two
+	public function update2($id,$data)
+	{
+		print_r($data);
+
+		$str = "";
+		foreach($data as $key => $value)
+		{
+			$str .= $key. "=:" .$key. ",";//by putting . we add new content to the string not replace it
+		}
+		//print_r($str);
+		
+        $str = trim($str,",");//trim the "," at the beginin and the end of the string
+		$data['id'] = $id;
+
+        $query = "update $this->table set $str where $this->pk2 = :id";
+       // print_r($query);
+
+
+		return $this->query($query,$data);
+	}
 
 
     public function delete($id)
