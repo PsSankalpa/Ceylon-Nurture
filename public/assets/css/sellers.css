@@ -754,3 +754,23 @@ hr {
     height: 100%;
   } 
 }
+
+/*----------------for the payment details table---------------*/
+.detail-table{
+  width: 100%;
+}
+.detail-table table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.detail-table th, .detail-table td {
+  text-align: left;
+  padding: 16px;
+}
+
+.detail-table tr:nth-child(even) {
+  background-color: #D4F1F4;
+}

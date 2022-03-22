@@ -10,12 +10,12 @@ class donations extends Model
         'date',
         'amount',
 		'userName',
-		'donationNumber',
         'userID',
-        'method',
-        'status_message',
+        'donationID',
+        'status',
     ];
 
-	protected $pk = "feesid";
+	protected $pk = "feesID";
+    protected $pk2 = "donationID";
 
 }

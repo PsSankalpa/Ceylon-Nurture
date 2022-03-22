@@ -13,16 +13,18 @@
         <canvas id="myChart"></canvas>
     </div>
 
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-    //chartbiuld
+    <!--chart1-->
+    <!--chartbiuld-->
     <script>
         const chartdata = <?php echo json_encode($chartdata); ?>;
         const data = {
             labels: ['Sellers', 'Doctors', 'Common Users'],
             datasets: [{
-                label: 'User Details',
+                label: '# User Details',
                 data: chartdata,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)', /*red*/
@@ -50,6 +52,11 @@
                     y: {
                         beginAtZero: true
                     }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                    }
                 }
             }
         };
@@ -58,6 +65,50 @@
         const myChart = new Chart(
             document.getElementById('myChart'),
             config
+        );
+    </script>
+
+    <!--chart2-->
+    <div class="charts" style="width: 40%;float: right;">
+        <canvas id="myChart2"></canvas>
+    </div>
+
+    <!--chartbiuld-->
+    <script>
+        const pcommissiondata = <?php echo json_encode($pcommissiondata); ?>;
+        //below data2 called by the config2
+        const data2 = {
+            labels: ['December', 'January', 'February', 'March'],
+            datasets: [{
+                label: '# Payment Details',
+                data: pcommissiondata,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)', /*red*/
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1
+            }]
+        }; /////
+
+        /*configure the block */
+        const config2 = {
+            type: 'line',
+            data: data2,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        /*render the chart */
+        const myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2
         );
     </script>
 

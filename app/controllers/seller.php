@@ -144,6 +144,7 @@ class seller extends Controller
                 if ($dataid != null) {
                     $dataid = $dataid[0];
                     $productId = $dataid->productid;
+                    $productName = $dataid->productName;
 
                     $payments = new productcommission();
 
@@ -152,6 +153,7 @@ class seller extends Controller
                     $arr4['productid'] = $productId;
                     $arr4['userID'] = Auth::userid();
                     $arr4['status'] = "not_completed";
+                    $arr4['productName'] = $productName;
 
                     $payments->insert($arr4);
                 }
@@ -159,7 +161,7 @@ class seller extends Controller
                 
 
                 //commision for the product
-                $pcommission = $arr['productPrice'] * (15 / 100);
+                $pcommission = $arr['productPrice'] * (30 / 100);
                 $this->redirect('seller/commissionPayment/' . $pcommission);
             } else {
                 $errors = $products->errors2;
@@ -344,5 +346,20 @@ class seller extends Controller
 
 
         $this->view('seller/productDetails', ['rows' => $data]);
+    }
+
+    function productPaymentDetails(){
+
+        $products = new products();
+        $payments = new productcommission();
+
+        $status = "completed";
+        $data1 = $payments->where('status',$status);
+
+
+        $this->view('seller/paymentTable', [
+            // 'row' => $row,
+            'rows' => $data1,
+        ]);
     }
 }
