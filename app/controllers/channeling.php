@@ -29,11 +29,20 @@ class channeling extends Controller
             $data=$doctors->findAll();
             //$data2=$common_user->where('userid',$userid);
 
+            $data1=NULL;
+            
+            if (isset($_GET['search'])) {
+                //side that we put % mark it ignore exact matching
+                $search = '%' . $_GET['search'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+                $query = "select * from doctors where nameWithInitials like :search order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                $arr['search'] = $search; //to pass to the query function
+                $data1 = $doctors->query($query, $arr);
+              }
         
 
         $this->view("patient/channeling",[
             'rows'=>$data,
-            //'rows2'=>$data2
+            'rows1'=>$data1,
 
         ]
     );
@@ -85,10 +94,23 @@ class channeling extends Controller
         $total=$doctorCharge + $commission;
         $nic = $row2->nic;
         //print_r($nic);
-        if (count($_POST) > 0) {
 
-        $appointments = new appointments();
+        if (count($_POST) > 0) {
+        $noOfPatient = $row4->noOfPatient;
+        
+        //$count=0;
+
+        //foreach (count($_POST)>0){
+        //    $count+=$count;
+        //}
+
+        
+        //if ($count<=$noOfPatient){
+
+            $availability = TRUE;
+            $appointments = new appointments();
             $arr['doctorid'] = $userid1;
+            $arr['doctorName'] = $row4->doctorCharge;
             $arr['patientid'] = Auth::userid();
             $arr['scheduleid'] = $scheduleid;
             $arr['patientName'] = Auth::nameWithInitials();
@@ -96,6 +118,7 @@ class channeling extends Controller
             $arr['tpNumber'] = Auth::tpNumber();
             $arr['commission'] = $commission;
             $arr['totalPayment'] = $total;
+            $arr['date'] =  date("Y-m-d H:i:s");
 
             $arr['patientName'] = $_POST['patientName'];
             $arr['symptoms'] =$_POST['symptoms'];
@@ -104,6 +127,13 @@ class channeling extends Controller
             
         $appointments->insert($arr);
         $this->redirect('channeling/confirmation');
+
+       // }
+        else{
+
+            $availability=FALSE;
+        }
+
 
         }
 
@@ -147,10 +177,16 @@ class channeling extends Controller
             if($row2)
             {
             $row2=$row2[0];
-            }
+             }
+            //$params = array();
+
+            // for($i=0;$i<count($row2);$i++){
+            //     $params=$row2[$i];
+            // }
+            //$params = $row;
 
         
-        //print_r($row);
+        //print_r($params);
 
         
     }
@@ -177,12 +213,14 @@ class channeling extends Controller
         $schedule = new schedule();
 
         $row1=$schedule->where('doctorid', $userid);
+
         
-       
+        
 
         $this->view("patient/doctors",[
             'row'=>$row,
             'rows'=>$row1,
+
 
         ]);
 
@@ -225,6 +263,8 @@ class channeling extends Controller
         $this-> view("patient/channelingConfirmation");
 
     }
+
+    
 
     function patientPaymentConfirmation()
     {
