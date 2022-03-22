@@ -13,10 +13,21 @@ class doctor extends Controller
         $schedule = new schedule();
         $userid = Auth::userid();
         $data = $schedule->where('doctorid', $userid);
+        $channeling = new channeling();
+
+        if ($z1 = $channeling->where('doctorid',$userid)){
+            $data3 = count($z1);
+        } else {
+            $data3 = 0;
+        }
+        print_r($data3);
+        die;
+
 
         $this->view("doctor/doctor", [
             'rows' => $data,
-            'data2' => $data2
+            'data2' => $data2,
+            'data3' => $data3,
         ]); //in here put the relevent page name and the path
     }
 

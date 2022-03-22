@@ -30,19 +30,19 @@
 
             <div class="row">
             <div class="col-25">
-                <label for="fname">First Name</label>
+                <label for="fname">Name with Initials</label>
             </div>
             <div class="col-75">
-                <input type="text" value="<?=get_var('fname',$row->fname)?>" id="fname" name="fname" placeholder="Name With Initials">
+                <input type="text" value="<?=get_var('nameWithInitials',$row->nameWithInitials)?>" id="nameWithInitials" name="nameWithInitials" placeholder="Name With Initials">
             </div>
             </div>
 
             <div class="row">
             <div class="col-25">
-                <label for="lname">Last Name</label>
+                <label for="lname">User Name</label>
             </div>
             <div class="col-75">
-                <input type="text" value="<?=get_var('lname',$row->lname)?>" id="lname" name="lname" placeholder="Registration Number">
+                <input type="text" value="<?=get_var('username',$row->username)?>" id="username" name="username" placeholder="User Name">
             </div>
             </div>
 
