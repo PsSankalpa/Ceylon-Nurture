@@ -11,6 +11,7 @@ class commonUser extends Controller
         }
 
        $common_user = new common_user();
+       
         //$data = $common_user->findAll();
 
         $this->view("common_user"); //in here put the relevent page name and the path

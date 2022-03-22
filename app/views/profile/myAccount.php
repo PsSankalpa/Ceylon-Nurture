@@ -21,18 +21,18 @@
                 <h3 class="txt-col1">Common</h3>
                 <div class="row p2">
                     <div class="col-25">
-                        <label for="fname">First Name</label>
+                        <label for="nameWithInitials">Name with Initials</label>
                     </div>
                     <div class="col-50">
-                        <label for="fname"><?= $data4->fname ?></label>
+                    <label for="nameWithInitials"><?= $data4->nameWithInitials ?></label>
                     </div>
                 </div>
                 <div class="row p2">
                     <div class="col-25">
-                        <label for="lname">Last Name</label>
+                        <label for="username">User Name</label>
                     </div>
                     <div class="col-50">
-                        <label for="lname"><?= $data4->lname ?></label>
+                        <label for="username"><?= $data4->username ?></label>
                     </div>
                 </div>
                 <div class="row p2">

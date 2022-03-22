@@ -94,22 +94,20 @@
                             <input type="time" value="<?=get_var('departureTime',$row->departureTime)?>" id="departureTime" name="departureTime" placeholder="Departure Time">
                             </div>
                         </div>
+                        <?php
 
-                        <div class="row">
-                            <div class="col-25">
-                                <label for="No of patients">No of patients</label>
-                            </div>
-                            <div class="col-75">
-                            <input type="text" value="<?=get_var('noOfPatient',$row->noOfPatient)?>" id="noOfPatient" name="noOfPatient" placeholder="No of patients">
-                            </div>
-                        </div>
+                        //format the time using strtotime
+                        $timePerPatient = strtotime($row->timePerPatient);
+                        //$departureTime = date_create($row->departureTime);
 
+                        $t_p = date("g", $timePerPatient);
+                        ?>
                         <div class="row">
                             <div class="col-25">
                                 <label for="Time per patient">Time per patient</label>
                             </div>
                             <div class="col-75">
-                            <input type="text" value="<?=get_var('timePerPatient',$row->timePerPatient)?>" id="timePerPatient" name="timePerPatient" placeholder="Time per patient">
+                            <input type="text" value="<?=get_var('timePerPatient',$t_p)?>" id="timePerPatient" name="timePerPatient" placeholder="Time per patient">
                             </div>
                         </div>
 

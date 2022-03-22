@@ -38,7 +38,6 @@ class myAccount extends Controller
             $data4 = $data4[0];
         }
 
-
         $this->view('profile/myAccount',[
             'row'=>$data,
             'data1'=>$data1,
@@ -160,6 +159,7 @@ class myAccount extends Controller
     function editDoctor()
     {
         $userid = Auth::userid();
+        $errors = array();
         $doctor = new doctors();
         $data2 = $doctor->where('userid',$userid); 
 
@@ -169,8 +169,22 @@ class myAccount extends Controller
         }
 
         $errors = array();
-        if(count($_POST)>0)
-        {
+        if (count($_POST) > 0) {
+
+            // if ($doctors->validate($_POST, $_FILES)) {
+            //     global $des;
+            //     //global $des2;
+            //     $arr['userid'] = AUTH::userid();
+            //     $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
+            //     $arr['gender'] = htmlspecialchars($_POST['gender']);
+            //     $arr['dob'] = htmlspecialchars($_POST['dob']);
+            //     $arr['registrationNumber'] = $_POST['registrationNumber'];
+            //     $arr['specialities'] = $_POST['specialities'];
+            //     $arr['hospital'] = $_POST['hospital'];
+            //     $arr['city'] = $_POST['city'];
+            //     $arr['address'] = $_POST['address'];
+            //     $arr['image'] = $des;
+            // }
             $this->redirect('myAccount');
         }
         $this->view('profile/editDoctor',[
