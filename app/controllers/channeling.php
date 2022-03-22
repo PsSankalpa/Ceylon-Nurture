@@ -129,10 +129,10 @@ class channeling extends Controller
         $this->redirect('channeling/confirmation');
 
        // }
-        else{
+        //else{
 
-            $availability=FALSE;
-        }
+        //    $availability=FALSE;
+        //}
 
 
         }
