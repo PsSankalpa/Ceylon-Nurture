@@ -113,7 +113,7 @@
                                 </ol>
                                 </div><br>
                                 <div class="patientNoA" style="font-weight:lighter;">Number of Patients: <?=$row1->noOfPatient?></div>
-                                <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
+                                <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>/<?=$row1->scheduleid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
                             </div>
 
                             

@@ -103,24 +103,36 @@
                                </tr>
                            </thead> 
                            <tbody>
+                           <?php foreach ($row as $row):?>
+
+                                <?php $doctorid=$row->doctorid;
+                                $doctors = new doctors();
+                                $row1=$doctors->where('userid',$doctorid);
+
+                                if($row1)
+                                {
+                                $row1=$row1[0];
+                                }
+
+                                $scheduleid=$row->scheduleid;
+                                $schedule = new schedule();
+                                $row2=$schedule->where('scheduleid',$scheduleid);
+
+                                if($row2)
+                                {
+                                $row2=$row2[0];
+                                }
+                                ?>
                                <tr>
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>Manel Perera</td>
-                                   <td>05/11/2021</td>
-                                   <td>08:15 am</td>
+                                   <td><?=$row1->nameWithInitials?></td>
+                                   <td><?=$row->patientName?></td>
+                                   <td><?=$row2->dateofSlot?></td>
+                                   <td><?=$row2->arrivalTime?></td>
                                    <td>2</td>
-                                   <td>General Hospital,Colombo 05</td>
-                                   <td> Please make sure to be on time</td>
+                                   <td><?=$row1->hospital?></td>
+                                   <td> e<?=$row2->doctorNote?></td>
                                </tr>
-                               
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>Neth Perera</td>
-                                   <td>06/11/2021</td>
-                                   <td>10:00 am</td>
-                                   <td>1</td>
-                                   <td>Weda Madura, Gampaha</td>
-                                   <td> Please note that i will be 5 minutes late </td>
-                               </tr>
+                               <?php endforeach;?>
                                
                            </tbody>
                         </table>

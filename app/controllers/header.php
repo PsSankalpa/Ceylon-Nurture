@@ -24,7 +24,7 @@ class header extends Controller
       $data = $products->query($query, $arr);
     }
 
-    $this->view('commonUser/ProductsView', [
+    $this->view('commonUser/productsView', [
       'rows' => $data,
     ]);
   }
@@ -48,9 +48,8 @@ class header extends Controller
 
       //for make a filtr by date
       $data = $article->findrange(7); //give the data according to range of days
-      
-      if($data == null || count($data)<4)
-      {
+
+      if ($data == null || count($data) < 4) {
         $query1 = "select * from articles order by articleid desc limit 6";
         $data = $article->query($query1);
       }
@@ -77,8 +76,7 @@ class header extends Controller
 
       //for make a filtr by date
       $data = $article->findrange(7); //give the data according to range of days
-      if($data == null || count($data)<4)
-      {
+      if ($data == null || count($data) < 4) {
         $query1 = "select * from articles order by articleid desc limit 6";
         $data = $article->query($query1);
       }
@@ -108,6 +106,10 @@ class header extends Controller
 
   function makeDonations()
   {
+    if (!Auth::logged_in()) {
+      $this->redirect('login/login');
+    }
+
     $commonUser = new common_user();
     $userid = Auth::userid();
     $data = $commonUser->where('userid', $userid);

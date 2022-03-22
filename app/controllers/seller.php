@@ -134,14 +134,140 @@ class seller extends Controller
                 $arr['sellerid'] = Auth::userid();
 
                 $products->insert($arr);
-                $this->redirect('seller/seller');
+
+                //to get the last entry of the user
+                $query1 = "select * from products where sellerid = :userid order by productid desc limit 1";
+                $arr1['userid'] = $userid;
+                $dataid = $products->query($query1, $arr1);
+                // print_r($dataid);
+                // die;
+                if ($dataid != null) {
+                    $dataid = $dataid[0];
+                    $productId = $dataid->productid;
+
+                    $payments = new productcommission();
+
+                    $arr4['date'] = date("Y/m/d");
+                    $arr4['amount'] = "null";
+                    $arr4['productid'] = $productId;
+                    $arr4['userID'] = Auth::userid();
+                    $arr4['status'] = "not_completed";
+
+                    $payments->insert($arr4);
+                }
+
+                
+
+                //commision for the product
+                $pcommission = $arr['productPrice'] * (15 / 100);
+                $this->redirect('seller/commissionPayment/' . $pcommission);
             } else {
                 $errors = $products->errors2;
             }
         }
+
         $this->view('seller/uploadProduct', [
             'errors' => $errors,
         ]);
+    }
+
+    function commissionPayment($commission = "")
+    {
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+        }
+
+        //need to make a redirection if there is no item
+
+        $commonUser = new common_user();
+
+        $products = new products();
+        $userid = Auth::userid();
+
+        //to get the last entry of the user
+        $query1 = "select * from products where sellerid = :userid order by productid desc limit 1";
+        $arr1['userid'] = $userid;
+        $dataid = $products->query($query1, $arr1);
+        // print_r($dataid);
+        // die;
+        if ($dataid != null) {
+            $dataid = $dataid[0];
+            $productId = $dataid->productid;
+        }
+
+        $data = $commonUser->where('userid', $userid);
+        if ($data) {
+            $data = $data[0];
+        }
+
+        // if (count($_POST) > 0) {
+        //     $payments = new productcommission();
+
+        //     $arr['date'] = date("Y/m/d");
+        //     $arr['amount'] = "null";
+        //     $arr['userName'] = "null";
+        //     $arr['productid'] = $productId;
+        //     $arr['userID'] = Auth::userid();
+
+        //     print_r($arr);
+        //     die;
+
+        //     $payments->insert($arr);
+        // }
+
+        $this->view('seller/productCommission', [
+            'data' => $data,
+            'data2' => $commission,
+            'dataid' => $productId,
+        ]);
+    }
+
+    function productCommission()
+    {
+
+        //-------------------------------for payment details-----------------------------------------------------
+        
+        $merchant_id         = $_POST['merchant_id'];
+        $order_id             = $_POST['order_id']; //productid 
+        $payhere_amount     = $_POST['payhere_amount'];
+        $payhere_currency    = $_POST['payhere_currency'];
+        $status_code         = $_POST['status_code'];
+        $md5sig                = $_POST['md5sig'];
+
+        
+        $arr['date'] = date("Y/m/d");
+        $arr['amount'] = $payhere_amount;
+        $arr['productid'] = $order_id;
+        $arr['status'] = "completed";
+
+        //---------to get the post data to txt file for debuging----------------------------
+        $today = date("Y-m-d");
+        //file_put_contents("POST_logs/" . $today . ".txt", $arr, FILE_APPEND);
+        //---------------------------------------------------------------------------------
+
+        $merchant_secret = '4p6oM65yLel8lzSHKYzqtQ4TwgRmoRLvF49dAyBUptlC'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
+
+        $local_md5sig = strtoupper(md5($merchant_id . $order_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret))));
+
+        if (($local_md5sig === $md5sig) and ($status_code == 2)) {
+            //TODO: Update your database as payment success
+
+            $payments = new productcommission();
+            $payments->update2($order_id, $arr);
+        } else {
+            $products = new products();
+
+            //to get the last entry of the user
+            $data = $products->where('productid', $order_id);
+
+            if ($data != null) {
+                $data = $data[0];
+                unlink($data->image);
+
+                $products->delete($order_id);
+            }
+        }
+        //------------------------end of the payment part---------------------------------------------------------------
     }
 
     function editProduct($productid = null)
@@ -217,6 +343,6 @@ class seller extends Controller
         $data = $products->where('productId', $productId);
 
 
-        $this->view('seller/ProductDetails', ['rows' => $data]);
+        $this->view('seller/productDetails', ['rows' => $data]);
     }
 }

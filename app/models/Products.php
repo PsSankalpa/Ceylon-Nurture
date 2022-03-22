@@ -23,6 +23,7 @@ class products extends Model
 		//for product
         $this->errors2 = array();
 		print_r($DATA);
+		print_r($FILES);
 		//for product name
 		if(empty($DATA['productName']))
 		{

@@ -1,6 +1,6 @@
 <?php
 /**
- * Common User Model
+ * Donation Model
  */
 class donations extends Model
 {
