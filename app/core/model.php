@@ -199,6 +199,17 @@ public function getrange($value,$wtime)
 		return $this->query($query,$data);
 	}
 
+	public function delete2($column,$value)
+
+	{
+		$data['value'] = $value;
+		//$data['column'] = $column;
+
+		$query = "delete from $this->table where $column = :value";
+		
+		return $this->query($query,$data);
+	}
+
 
 	
 }

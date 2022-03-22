@@ -25,7 +25,17 @@ class donationDetails extends Controller
 
             //add the last two parameters to the table
 
-            $donations->update2($order_id,$arr);
+            $donations->update2($order_id, $arr);
+
+            if ($donations->where('status', 'not_completed')) {
+                $donations->delete2('status', 'not_completed');
+            }
+        }
+        else{
+            $donations = new donations();
+            if ($donations->where('status', 'not_completed')) {
+                $donations->delete2('status', 'not_completed');
+            }
         }
     }
 }

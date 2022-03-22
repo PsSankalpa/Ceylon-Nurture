@@ -1,6 +1,6 @@
 <?php
 /**
- * Te3mp Donation Model
+ * Temp Donation Model
  */
 class tempdonations extends Model
 {
