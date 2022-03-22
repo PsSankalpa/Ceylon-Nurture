@@ -296,7 +296,7 @@ class doctor extends Controller
 
         if (count($_POST) > 0) {
 
-            if ($schedule->validate($_POST, $_FILES)) {
+            if ($schedule->validate2($_POST, $_FILES)) {
 
                 $arr['slotNumber'] = $_POST['slotNumber'];
                 $arr['dateofSlot'] = $_POST['dateofSlot'];
@@ -310,7 +310,7 @@ class doctor extends Controller
                 $schedule->update($scheduleid, $arr);
                 $this->redirect('doctor/viewSchedule');
             } else {
-                $errors = $schedule->errors2;
+                $errors = $schedule->errors3;
             }
         }
         $row = $schedule->where('scheduleid', $scheduleid);

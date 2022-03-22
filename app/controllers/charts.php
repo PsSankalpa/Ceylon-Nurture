@@ -17,11 +17,11 @@ class charts extends Controller
         $dCount = count($data3);
         $cCount = count($data4);
 
-        print_r($sCount);
-        print_r(" ");
-        print_r($dCount);
-        print_r(" ");
-        print_r($cCount);
+        //print_r($sCount);
+        //print_r(" ");
+        //print_r($dCount);
+        //print_r(" ");
+        //print_r($cCount);
 
         $chartdata = array($sCount, $dCount,$cCount);
         // Attempt select query execution
