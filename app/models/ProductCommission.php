@@ -12,6 +12,7 @@ class productcommission extends Model
 		'productid',
         'userID',
         'status',
+        'productName',
     ];
 
 	protected $pk = "feesID";

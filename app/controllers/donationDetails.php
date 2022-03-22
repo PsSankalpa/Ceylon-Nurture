@@ -3,14 +3,6 @@ class donationDetails extends Controller
 {
     function index()
     {
-        $commonuser = new common_user();
-        $userid = Auth::userid();
-        if (!empty($row = $commonuser->where('userid', $userid))) {
-            $row = $row[0];
-            $username = $row->username;
-        }
-
-
         $merchant_id         = $_POST['merchant_id'];
         $order_id             = $_POST['order_id'];
         $payhere_amount     = $_POST['payhere_amount'];
@@ -29,14 +21,11 @@ class donationDetails extends Controller
 
             $arr['date'] = date("Y/m/d");
             $arr['amount'] = $_POST['payhere_amount'];
-            $arr['userName'] = $username;
-            $arr['donationNumber'] = $_POST['order_id'];
-            $arr['userID'] = Auth::userid();
-            $arr['method'] = $_POST['method'];
-            $arr['status_message'] = $_POST['status_message'];
+            $arr['status'] = "completed";
+
             //add the last two parameters to the table
 
-            $donations->insert($arr);
+            $donations->update2($order_id,$arr);
         }
     }
 }

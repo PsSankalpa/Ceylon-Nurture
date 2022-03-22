@@ -112,12 +112,47 @@ class header extends Controller
 
     $commonUser = new common_user();
     $userid = Auth::userid();
+
+    $data3 = $commonUser->where('userid',$userid);
+    $username = $data3[0]->username;
+
+    $donations = new donations();
+    $tempdonations = new tempdonations();
+
+    $arr1['date'] = date("Y/m/d");
+    $arr1['userid'] = Auth::userid();
+    $tempdonations->insert($arr1);
+
+    //to get the last entry of the user
+    $query2 = "select * from tempdonations where userid=:userid order by donationid desc limit 1";
+    $arr2['userid'] = $userid;
+    $dataid = $tempdonations->query($query2, $arr2);
+    $orderid = $dataid[0]->donationid;
+
+if(isset($_POST)=='first name'){
+    $arr['date'] = date("Y/m/d");
+    $arr['amount'] = "null";
+    $arr['userName'] = $username;
+    $arr['userID'] = Auth::userid();
+    $arr['donationID'] = $orderid;
+    $arr['status'] = "not_completed";
+
+    $donations->insert($arr);
+    $tempdonations->delete($orderid);
+}
+    //to get the last entry of the user
+    // $query1 = "select * from donations where userID = :userid order by feesID desc limit 1";
+    // $arr1['userid'] = $userid;
+    // $dataid = $donations->query($query1, $arr1);
+
+
     $data = $commonUser->where('userid', $userid);
     if ($data) {
       $data = $data[0];
     }
     $this->view('donations', [
       'data' => $data,
+      'orderid' => $orderid,
     ]);
   }
 }

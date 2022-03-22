@@ -81,6 +81,22 @@ public function __construct()
 	}
 
 //----------------------------------------------------------------------------------------------------------------
+//to get spesific date ranges
+//can get data according to range of months,dates,years
+public function getrange($value,$wtime)
+	{
+		$value = addslashes($value);
+		$wtime = addslashes($wtime);
+
+		//$column = addslashes($column);//from this it check the column,sanitize input
+		$query = "SELECT * FROM  $this->table WHERE MONTH( DATE ) = MONTH( DATE_SUB(CURDATE(),INTERVAL $value $wtime ))";
+		return $this->query($query,[
+			'value'=>$value,
+			'wtime'=>$wtime
+		]);
+	}
+
+//-------------------------------------------------------------------------------------------------------------------------------
 
 	public function findAll()
 	{
