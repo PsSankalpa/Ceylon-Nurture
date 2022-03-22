@@ -10,10 +10,14 @@ class appointments extends Model
 		'symptoms',
         'doctorid',
         'patientName',
-        'nationalID',
+        'nic',
         'tpNumber',
         'totalPayment',
         'commission',
+        'doctorName',
+        'date',
+
+
 
 	];
 
