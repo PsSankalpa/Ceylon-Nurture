@@ -50,8 +50,16 @@
             <a href="<?= ROOT ?>doctor/addSchedule"><button class="viewbtn">Add Slots</button></a>
             <a href="<?= ROOT ?>doctor/viewSchedule"><button class="viewbtn">View Slots</button></a>
           </div>
-          <div class="date-container">
-            <input type="date" id="date" name="date">
+          
+          <div class="date">
+            <label>From</label>
+            <input type="date" id="date" name="fromdate">
+          </div>
+          <div class="date">
+            <label>To</label>
+            <input type="date" id="date" name="todate">
+          </div>  
+          <div>
             <button class="filterA">Filter</button>
           </div>
         </div>
@@ -74,10 +82,8 @@
                   $a_h = date("g:i a", $arrivalTime);
                   $d_p = date("g:i a", $departureTime);
 
-                  
 
                   ?>
-
                   <h4><?= "Time-" . $a_h ."-" . $d_p ?> </h4>
                   <div class="div">
                     <a href="<?= ROOT ?>/doctor/scheduleDetails/<?= $row->scheduleid ?>">

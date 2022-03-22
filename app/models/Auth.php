@@ -56,7 +56,7 @@ class  Auth
      
         if(isset($_SESSION['COMMON_USER']))
         {
-            return $_SESSION['COMMON_USER']->fname;
+            return $_SESSION['COMMON_USER']->username;
         }
         
         return false;
@@ -67,7 +67,7 @@ class  Auth
      
         if(isset($_SESSION['ADMIN']))
         {
-            return $_SESSION['ADMIN']->fname;
+            return $_SESSION['ADMIN']->username;
         }
         
         return false;

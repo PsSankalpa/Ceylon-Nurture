@@ -6,7 +6,7 @@
         About Us
     </title>
     <link rel="stylesheet" href="<?= ASSETS ?>css/aboutStyle.css">
-    <link rel="stylesheet" href="<?= ASSETS ?>css/commonStyle.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <?php $this->view("header") ?>
 </head>
@@ -22,16 +22,18 @@
     <!--beginin of the detail container-->
     <div class="detail-container">
 
-        <form class="contact_form" method="POST">
+        <form class="contact_form" method="POST" action="contact-form-handler">
             <h2>Contact Us</h2>
+            <br/>
+            <br/>
             <div class="row">
                 <input type="text" name="Name" placeholder="Enter your name">
             </div>
             <div class="row">
-                <input type="text" name="Email" placeholder="Enter your email-address">
+                <input type="email" name="Email" placeholder="Enter your email-address">
             </div>
             <div class="row">
-                <input type="text" name="password" placeholder="Enter your message">
+                <input type="text" name="Message" placeholder="Enter your message">
             </div>
             <div class="row">
                 <input type="submit" value="Submit">

@@ -21,7 +21,7 @@
         <div class="doctor">
             <div class="search_container">
 
-                <?php if($row):?>
+                <?php if($row||$row4):?>
 
 
                     <form class="regi_form" enctype="multipart/form-data" method="POST">
@@ -82,7 +82,7 @@
                         </div>
 
                         <div class="col">
-                            05/11/2021
+                            <?=$row4->dateofSlot?>
                         </div>
                         </div>
 
@@ -92,7 +92,7 @@
                         </div>
 
                         <div class="col">
-                            09:00 - 10:00 AM
+                            <?=$row4->arrivalTime?> - <?=$row4->departureTime?>
                         </div>
                         </div>
 
@@ -105,20 +105,21 @@
             </div>  
         </div>
 <hr>
+<form class="regi_form_patient" enctype="multipart/form-data" method="POST">
         <div class="patientPayment"><br>
         <?php if($row2):?>
             <?php if($row3):?>
 
             <div class="patient">
                 <h3>Patient Details</h3><br>
-            <form class="regi_form_patient" enctype="multipart/form-data" method="POST">
+
                         <div class="row">
                         <div class="col-25">
-                            <label class="label" for="name">Name of the Patient</label>
+                            <label class="label" for="patientName">Name of the Patient</label>
                         </div>
 
                         <div class="col-75">
-                        <input type="text" value="<?=get_var('name',$row3->nameWithInitials)?>" id="name" name="name" placeholder="Patient Name">
+                        <input type="text" value="<?=get_var('patientName',$row3->nameWithInitials)?>" id="patientName" name="patientName" placeholder="Patient Name">
                         </div>
                         </div>
 
@@ -153,7 +154,6 @@
                         </div>
                         
 
-                    </form>
                     <?php else:?>
                         The User is not Found!
                     <?php endif;?>
@@ -164,48 +164,51 @@
             <div class="payment">
 
             <h3>Payment Details</h3><br>
-            <form class="regi_form_payment" enctype="multipart/form-data" method="POST">
+            <?php if($row4):?>
                         <div class="row">
                         <div class="col-25">
-                            <label class="label" for="name">Doctor Charge</label>
+                            <label class="label" for="doctorCharge">Doctor Charge</label>
                         </div>
 
                         <div class="col">
-                            Rs.2500
-                        </div>
-                        </div>
-
-                        <div class="row">
-                        <div class="col-25">
-                            <label class="label" for="speciality">Commission</label>
-                        </div>
-
-                        <div class="col">
-                            Rs.200
+                        Rs. <?= $doctorCharge =$row4->doctorCharge;?>
                         </div>
                         </div>
 
                         <div class="row">
                         <div class="col-25">
-                            <label class="label" for="hospital">Total</label>
+                            <label class="label" for="commission">Commission</label>
                         </div>
 
                         <div class="col">
-                            Rs.2700
+                        <input disabled type="text" value="Rs. <?= $commission = 200;?>" id="commission" name="commission" >
+                        </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-25">
+                            <label class="label" for="totalPayment">Total</label>
+                        </div>
+
+                        <div class="col">
+                        <input disabled type="text" value="Rs. <?= $total = $commission + $doctorCharge; ?>" id="commission" name="totalPayment" >
+                            
                         </div>
                         </div>
 
                         
                         
 
-                    </form> 
+                    <?php else:?>
+                        No payment details available!
+                        <?php endif;?>
             </div>
         </div>
 
         
-        <a href="<?=ROOT?>channeling/confirmation"><div class="payButton"><button class="buttonA">Proceed to Pay</button></div></a>
+        <input type="submit" value="Confirm Details">
     </div>
-
+</form>
     <!--footer-->
     <?php $this->view("footer") ?>
         <!--end of footer-->

@@ -61,12 +61,26 @@
                             <h5><?=$row->dateofSlot?> </h5>
                         </div>
                     </div>
+                    <?php
+
+                  //format the time using strtotime
+                  $arrivalTime = strtotime($row->arrivalTime);
+                  $departureTime = strtotime($row->departureTime);
+                  $timePerPatient = strtotime($row->timePerPatient);
+                  //$departureTime = date_create($row->departureTime);
+
+                  $a_h = date("g:i a", $arrivalTime);
+                  $d_p = date("g:i a", $departureTime);
+                  $t_p = date("g", $timePerPatient);
+
+                  ?>
+
                     <div class="row">
                         <div class="col-25">
                             <label for="Arrival Time">Arrival Time</label>
                         </div>
                         <div class="col-75">
-                            <h5><?=$row->arrivalTime?> </h5>
+                            <h5><?=$a_h ?> </h5>
                         </div>
                     </div>
                     <div class="row">
@@ -74,7 +88,7 @@
                             <label for="Departure Time">Departure Time</label>
                         </div>
                         <div class="col-75">
-                            <h5><?=$row->departureTime?></h5>
+                            <h5><?=$d_p?></h5>
                         </div>
                     </div>
                     <div class="row">
@@ -90,7 +104,7 @@
                             <label for="Time per patient">Time per patient</label>
                         </div>
                         <div class="col-75">
-                            <h5><?=$row->timePerPatient."mins"?> </h5>
+                            <h5><?=$t_p." mins"?> </h5>
                         </div>
                     </div>
                     <div class="row">

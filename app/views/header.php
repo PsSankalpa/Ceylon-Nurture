@@ -76,7 +76,7 @@
 
             <?php if (Auth::logged_in()) : ?>
                 <div class="dropdown items last">
-                    <button class="dropbtn"><?= Auth::fname() ?>
+                    <button class="dropbtn"><?= Auth::username() ?>
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">

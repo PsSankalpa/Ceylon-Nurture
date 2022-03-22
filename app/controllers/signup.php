@@ -8,12 +8,16 @@ class signup extends Controller
         if(count($_POST) > 0)
         {
             $common_user = new common_user();
+            print_r($_POST);
+          
 
             if($common_user->validate($_POST))
             {
+                
                // $arr['date'] = date("Y-m-d H:i:s");
                 
                 $common_user->insert($_POST);
+                //print_r($_POST);
                 $this->redirect('login');
             }else
             {

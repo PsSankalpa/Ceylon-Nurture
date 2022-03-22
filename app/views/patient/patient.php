@@ -100,26 +100,33 @@
                             <div class="cardHeaderA">
                                 <h3>My Doctors</h3>
                             </div>
-                            <div class="cardBox">
-                                <div class="card">
-                                    <div>
-                                        <div class="numbers">Dr.Sunil Perera</div>
-                                        <div class="cardName"> General Physician</div>
+                            <?php if($row):?>
+                                    <div class="cardBox">
+                                         
+                                        <div class="card">
+
+                                       
+
+                                            <?php if($row1):?>
+
+                                            <div>
+                                                <div class="numbers"><?=$row1->nameWithInitials?></div>
+                                                <div class="cardName"> <?=$row1->specialities?></div>
+                                            </div>
+                                            <div class="iconBox">
+                                                <img class="doctor" src="<?=ASSETS?>img/doctor7.png">
+                                            </div>
+                                        </div>
+                                        <?php else:?>
+                                        No Doctors available
+                                    <?php endif;?>
+
+
+                            <?php endif;?>
                                     </div>
-                                    <div class="iconBox">
-                                        <img class="doctor" src="<?=ASSETS?>img/doctor7.png">
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div>
-                                        <div class="numbers">Dr.Keerth Silva</div>
-                                        <div class="cardName"> General Physician</div>
-                                    </div>
-                                    <div class="iconBox">
-                                        <img class="doctor" src="<?=ASSETS?>img/doctor8.jpg">
-                                    </div>
-                                 </div>
-                            </div>
+                               
+
+
                     </div>
 
                     <div class="newProducts">
@@ -207,17 +214,10 @@
                            </thead> 
                            <tbody>
                                <tr>
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>05/11/2021</td>
-                                   <td>09:00 am</td>
-                                   <td>General Hospital,Colombo 05</td>
-                                   <td> <button class="viewMore">View</button></td>
-                               </tr>
-                               
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>06/11/2021</td>
-                                   <td>10:00 am</td>
-                                   <td>Weda Madura, Gampaha</td>
+                                   <td><?=$row1->nameWithInitials?></td>
+                                   <td><?=$row2->dateofSlot?></td>
+                                   <td><?=$row2->arrivalTime?></td>
+                                   <td><?=$row1->hospital?></td>
                                    <td> <button class="viewMore">View</button></td>
                                </tr>
                                

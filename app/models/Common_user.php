@@ -7,10 +7,10 @@ class common_user extends Model
     protected $table = "common_user";
 
     protected $allowedcolumns = [
-       // 'nameWithInitials',
+        'nameWithInitials',
         'verify_token',
-		'fname',
-		'lname',
+		//'fname',
+		//'lname',
         'username',
         'gender',
         //'dob',
@@ -30,7 +30,7 @@ class common_user extends Model
     {
         $this->errors = array();
 
-        /*validations for namewithInitials
+        //validations for namewithInitials
         if(empty($data['nameWithInitials']))
         {
             $this->errors['nameWithInitials'] = "Cannot Keep Name With Initials empty";
@@ -38,10 +38,10 @@ class common_user extends Model
         elseif(!preg_match('/^[a-zA-Z\s\.]+$/',$data['nameWithInitials']))
         {
             $this->errors['nameWithInitials'] = "Only letters allowed in the Name With Initials";
-        }*/
+        }
 
         //check for firstname
-        if(empty($data['fname']))
+       /* if(empty($data['fname']))
 		{
 			$this->errors['fname'] = "Cannot Keep first name empty";
         }
@@ -58,7 +58,7 @@ class common_user extends Model
         elseif(!preg_match('/^[a-zA-Z]+$/',$data['lname']))
         {
             $this->errors['lname'] = "The Last name should contain only letters";
-        }
+        }*/
 
         //check for username
         if(empty($data['username']))
@@ -211,161 +211,5 @@ class common_user extends Model
     }
 
 }
-
-
-
-
-
-    /*-----------------------------------------------------------
-
-    
-    public function validate2($data,$id='')
-    {
-        $this->errors = array();
-
-        //validations for namewithInitials
-        if(empty($data['nameWithInitials']))
-        {
-            $this->errors['nameWithInitials'] = "Cannot Keep Name With Initials empty";
-        }
-        elseif(!preg_match('/^[a-zA-Z\s\.]+$/',$data['nameWithInitials']))
-        {
-            $this->errors['nameWithInitials'] = "Only letters allowed in the Name With Initials";
-        }
-
-        //check for firstname
-        if(empty($data['fname']))
-		{
-			$this->errors['fname'] = "Cannot Keep first name empty";
-        }
-        elseif(!preg_match('/^[a-zA-Z]+$/',$data['fname']))
-        {
-            $this->errors['fname'] = "The first name should contain only letters";
-        }
-
-        //check for lastname
-        if(empty($data['lname']))
-		{
-			$this->errors['lname'] = "Cannot Keep last name empty";
-        }
-        elseif(!preg_match('/^[a-zA-Z]+$/',$data['lname']))
-        {
-            $this->errors['lname'] = "The Last name should contain only letters";
-        }
-
-        //check for username
-        if(empty($data['username']))
-		{
-			$this->errors['username'] = "Cannot Keep username empty";
-		}
-		elseif(!preg_match('/^[a-zA-Z0-9\s]+$/',$data['username']))
-		  {
-			$this->errors['username'] = "The Username should contain only letters";
-		  }
-        //check if username exists
-        if(trim($id) == ''){
-            if ($this->where('username',$data['username'])) 
-            {
-                $this->errors['username'] = "The username already existing";
-            }
-        }
-        else{
-            if ($this->query ("select username from $this->table where username=:username && userid !=:userid",['username'=>$data['username'],'id'=>$id])) 
-                {
-                    $this->errors['username'] = "The username already existing";
-                }
-
-        }
-
-        //validation for gender
-        if(empty($data['gender']))
-		{
-			$this->errors['gender'] = "Cannot Keep Gender empty";
-		}
-	
-        //validation for DOB
-		if(empty($data['dob']))
-		{
-			$this->errors['dob'] = "Cannot Keep Date of Birth empty";
-		}
-		/*elseif (intval($parts[3]) < 1821)
-		{
-			$this->errors['dob'] = "Please check whether your birth year is reasonable";
-		}
-		elseif(intval($parts[3]) > 2001)
-		{
-			$this->errors['dob'] = "Please check whether your age is above 20 ";
-		}
-		
-
-        //check for email address
-        if (empty($_POST["email"])) 
-        {
-            $emailErr = "Email is required";
-        }
-        // check if e-mail address is well-formed
-        elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL))
-         {
-            $this->errors['email'] = "Email format is not valid";
-        }
-
-        //check if email exists
-        if(trim($id) == ''){
-            if ($this->where('email',$data['email']))
-                {
-                    $this->errors['email'] = "The email already existing";
-                }
-        }
-        else{
-            if ($this->query ("select email from $this->table where email=:email && userid !=:id",['email'=>$data['email'],'id'=>$id])) 
-                {
-                    $this->errors['email'] = "The email already existing";
-                }
-
-        }
-        
-        //check telephone number
-		if(empty($data['tpNumber']))
-		{
-			$this->errors['tpNumber'] = "Cannot Keep tp number empty empty";
-		}
-		elseif(!preg_match('/^[0-9]+$/',$data['tpNumber']))
-		{
-			$this->errors['tpNumber'] = "Only numbers allowed in the tp number";
-		}
-		elseif(!strlen($data['tpNumber'])>10)
-		{
-			$this->errors['tpNumber'] = "Only 10 numbers allowed in the tp number";
-		}
-
-        //check for password
-        if(empty($data['password']))
-		{
-			$this->errors['password'] = "Cannot Keep password empty";
-		}
-        elseif($data['password'] != $data['password2'])
-        {
-            $this->errors[] = "The passwords do not match";
-        }
-        //check for password length
-        if(strlen($data['password']) <= 8)
-		{
-			$this->errors['password'] = "Password must be at least 8 characters long ";
-		}
-        
-        /*check the checkbox
-		if(empty($data['conditions']))
-		{
-			$this->errors['conditions'] = "Cannot Keep the checkbox unticked";
-		}
-
-        if(count($this->errors) == 0)
-        {
-            return true;
-        }
-        return false;
-
-    }*/
-
 
 

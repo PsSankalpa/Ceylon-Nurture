@@ -11,8 +11,6 @@ class schedule extends Model
 		'timePerPatient',
 		'doctorCharge',
 		'doctorNote',
-		//'doctorName',
-		//'city',
 		'doctorid',
 	];
 	protected $table = "schedule";
@@ -21,7 +19,6 @@ class schedule extends Model
 
 	public function validate($DATA, $FILES)
 	{
-
 		//for schedule
 
 		$this->errors2 = array();
@@ -90,7 +87,7 @@ class schedule extends Model
 				$this->errors2['arrivalTime'] = "Arrival time and departure time is not valid";
 			} 
 			else
-			 {
+			{
 				 //posibilities 3!
 				if ($this->query("select slotNumber  from $this->table where slotNumber=:slotNumber && dateofSlot =:dateofSlot", ['slotNumber' => $DATA['slotNumber'],'dateofSlot' => $DATA['dateofSlot'] ] ) ) 
 				{
@@ -112,6 +109,7 @@ class schedule extends Model
 				{
 					$this->errors2['arrivalTime'] = "invalid depature time";
 				}
+
 				if ($this->query("select slotNumber  from $this->table where dateofSlot =:dateofSlot && (arrivalTime<=:arrivalTime && departureTime>=:arrivalTime || departureTime>=:departureTime)", ['arrivalTime' => $DATA['arrivalTime'], 'departureTime' => $DATA['departureTime'], 'dateofSlot' => $DATA['dateofSlot']])) 
 				{
 					$this->errors2['arrivalTime'] = "invalid arrival time";
@@ -127,15 +125,17 @@ class schedule extends Model
 					$minutes = $difference->days * 24 * 60;
 					$minutes += $difference->h * 60;
 					$minutes += $difference->i;
+					//print_r($minutes);
+					//print_r(" ");
 
 					//taking the appropriate patient count
 					$diff = $minutes / $DATA['timePerPatient'];
-					$patientcount = ceil($diff);
-
-					// print_r($minutes);
-					// print_r("\n");
-					// print_r($arrivalTime);
-
+					$patientcount = ceil($diff); //rounding the number to the nearest number
+					
+					//print_r($diff);
+					//print_r(" ");
+					//print_r($patientcount);
+					
 					// die;
 
 					//send the patient count to doctor controller
@@ -148,6 +148,79 @@ class schedule extends Model
 
 
 		if (count($this->errors2) == 0) {
+			return true;
+		}
+		return false;
+	}
+	//Validateions made for the edit schedule
+	public function validate2($DATA, $FILES)
+	{
+		$this->errors3 = array();
+		//Validations for the fields in the edit schedule
+		if (empty($DATA['arrivalTime']) && empty($DATA['departureTime'])) 
+		{
+			$this->errors3['arrivalTime'] = "Arrival time and departure time cannot be kept empty";
+		}
+		else
+		{
+			if ($this->query("select slotNumber  from $this->table where slotNumber=:slotNumber && dateofSlot =:dateofSlot && arrivalTime=:arrivalTime", ['arrivalTime' => $DATA['arrivalTime'], 'slotNumber' => $DATA['slotNumber'], 'dateofSlot' => $DATA['dateofSlot']])) 
+			{
+				$this->errors3['arrivalTime'] = "cannot put same arrival time on same day";
+			}
+			//if ($this->query("select slotNumber  from $this->table where slotNumber=:slotNumber && dateofSlot =:dateofSlot && (arrivalTime<=:arrivalTime && departureTime>=:arrivalTime || departureTime>=:departureTime)", ['arrivalTime' => $DATA['arrivalTime'], 'departureTime' => $DATA['departureTime'], 'slotNumber' => $DATA['slotNumber'], 'dateofSlot' => $DATA['dateofSlot']])) 
+			//{
+			//	$this->errors3['arrivalTime'] = "invalid arrival time";
+			//}
+			if ($this->query("select slotNumber  from $this->table where dateofSlot =:dateofSlot && arrivalTime=:arrivalTime", ['arrivalTime' => $DATA['arrivalTime'], 'dateofSlot' => $DATA['dateofSlot']])) 
+			{
+				$this->errors3['arrivalTime'] = "cannot put same arrival time on same day in different slots";
+			}
+			//if ($this->query("select slotNumber  from $this->table where dateofSlot =:dateofSlot && (arrivalTime<=:departureTime && departureTime>=:departureTime)", ['departureTime' => $DATA['departureTime'], 'dateofSlot' => $DATA['dateofSlot']])) 
+			//{
+			//	$this->errors3['arrivalTime'] = "invalid depature time";
+			//}
+			//if ($this->query("select slotNumber  from $this->table where dateofSlot =:dateofSlot && (arrivalTime<=:arrivalTime && departureTime>=:arrivalTime || departureTime>=:departureTime)", ['arrivalTime' => $DATA['arrivalTime'], 'departureTime' => $DATA['departureTime'], 'dateofSlot' => $DATA['dateofSlot']])) 
+			//{
+			//	$this->errors3['arrivalTime'] = "invalid arrival time";
+			//}  
+		}
+		//for slotNumber
+		if (empty($DATA['slotNumber'])) {
+			$this->errors3['slotNumber'] = "Cannot Keep Slot Number name empty";
+		} elseif (!preg_match('/^[0-9]+$/', $DATA['slotNumber'])) {
+			$this->errors3['slotNumber'] = "Only numbers allowed in the slot number";
+		}
+
+		//for dateofSlot
+		if (empty($DATA['dateofSlot'])) {
+			$this->errors3['dateofSlot'] = "Cannot Keep Date of Slot empty";
+		}
+
+
+		//Validations for Arrival Time
+		if (!preg_match("#(([0-1])|([1-12]).([0-5])([0-9]))#", $DATA['arrivalTime'])) {
+			$this->errors3['arrivalTime'] = "Wrong Time Format in Arrival Time";
+		}
+
+		//Validations for Departure Time
+		if (!preg_match("#(([0-1])|([1-12]).([0-5])([0-9]))#", $DATA['departureTime'])) {
+			$this->errors3['departureTimearrivalTime'] = "Wrong Time Format in Departure Time";
+		}
+
+		//Validations for Time Per Patient
+		if (empty($DATA['timePerPatient'])) {
+			$this->errors3['timePerPatient'] = "Cannot Keep time per patient empty";
+		} elseif (!preg_match("#(([0-1])|([1-12]).([0-5])([0-9]))#", $DATA['timePerPatient'])) {
+			$this->errors3['timePerPatient'] = "Wrong Time Format in Time Per Patient";
+		}
+
+		//Validations for Doctor Charge
+		if (empty($DATA['doctorCharge'])) {
+			$this->errors3['doctorCharge'] = "Cannot Keep the Doctor Charge empty";
+		} elseif (!preg_match('/^[0-9]+$/', $DATA['doctorCharge'])) {
+			$this->errors3['doctorCharge'] = "Only numbers allowed in the Doctor Charge";
+		}
+		if (count($this->errors3) == 0) {
 			return true;
 		}
 		return false;

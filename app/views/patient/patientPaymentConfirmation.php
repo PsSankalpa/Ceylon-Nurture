@@ -15,18 +15,18 @@
     <div class="form">
         <form method="post" class="payform" action="https://sandbox.payhere.lk/pay/checkout">
             <input type="hidden" name="merchant_id" value="1218919"> <!-- Replace your Merchant ID -->
-            <input type="hidden" name="return_url" value="https://ceylon-nurture.live/seller">
-            <input type="hidden" name="cancel_url" value="https://ceylon-nurture.live/seller ">
-            <input type="hidden" name="notify_url" value="https://ceylon-nurture.live/seller/productCommission">
+            <input type="hidden" name="return_url" value="https://ceylon-nurture.live/header/makeDonations">
+            <input type="hidden" name="cancel_url" value="https://ceylon-nurture.live/landing/home ">
+            <input type="hidden" name="notify_url" value="https://ceylon-nurture.live//donationDetails">
 
-            <h2 class="h2p txt-col1 topics">Commission Details</h2><br>
+            <h2 class="h2p txt-col1 topics">Item Details</h2><br>
             <div class="p-details row">
                 <h3 class="h2p txt-col1 topics">Payment Type</h3>
                 <div class="p-inputs">
-                    <input type="hidden" name="order_id" value="<?= get_var('order_id', $dataid) ?>">
-                    <input type="text" class="col-3 p-in" name="items" value="Commission"><br>
+                    <input type="hidden" name="order_id" value="ItemNo12345">
+                    <input type="text" class="col-3 p-in" name="items" value="Appointments"><br>
                     <input type="text" class="col-3 p-in" name="currency" value="LKR">
-                    <input type="text" class="col-3 p-in" name="amount" value="<?= get_var('amount', $data2) ?>">
+                    <input type="text" class="col-3 p-in" name="amount">
                 </div>
             </div>
             <div class="user-detail row">
@@ -34,8 +34,8 @@
                 <h3 class="txt-col1 topics">Customer Details</h3><br>
                 <div class="p-inputs">
                     <div class="row2">
-                        <input type="text" name="first_name" class="col-3 p-in" value="<?= get_var('first_name', $data->nameWithInitials) ?>">
-                        <input type="text" name="last_name" class="col-3 p-in" value="<?= get_var('last_name', $data->username) ?>">
+                        <input type="text" name="first_name" class="col-3 p-in" value="<?= get_var('first_name', $data->fname) ?>">
+                        <input type="text" name="last_name" class="col-3 p-in" value="<?= get_var('last_name', $data->lname) ?>">
                     </div>
                     <div class="row2">
                         <input type="text" name="email" class="col-3 p-in" value="<?= get_var('email', $data->email) ?>">
