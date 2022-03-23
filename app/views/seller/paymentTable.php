@@ -9,12 +9,11 @@
 
 <body class="regi">
 
-    <div class="container center1">
-
+    <div class="table1">
         <div class="detail-table">
 
             <?php if ($rows) : ?>
-                <table>
+                <table class="paydetails">
                     <tr>
                         <th>Product Name</th>
                         <th>Date</th>
@@ -35,9 +34,7 @@
             <?php endif; ?>
 
         </div>
-
     </div>
-
     <!--footer-->
     <?php $this->view("footer") ?>
     <!--end of footer-->
