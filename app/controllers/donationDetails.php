@@ -7,6 +7,9 @@ class donationDetails extends Controller
     }
 
     public function getdonationdetails(){
+
+        Print_r($qwert);
+        
         $merchant_id         = $_POST['merchant_id'];
         $order_id             = $_POST['order_id'];
         $payhere_amount     = $_POST['payhere_amount'];
