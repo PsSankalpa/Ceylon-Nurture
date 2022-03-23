@@ -756,21 +756,32 @@ hr {
 }
 
 /*----------------for the payment details table---------------*/
+.table1{
+  width: 100%;
+  margin-bottom: 15rem;
+}
 .detail-table{
   width: 100%;
+  padding: 1rem;
 }
-.detail-table table {
+.table1 .paydetails {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
   border: 1px solid #ddd;
 }
 
-.detail-table th, .detail-table td {
+.table1 .paydetails th, .table1 .paydetails td {
   text-align: left;
   padding: 16px;
 }
 
-.detail-table tr:nth-child(even) {
-  background-color: #D4F1F4;
+.table1 .paydetails tr:nth-child(odd) {
+  background-color:#D4F1F4;
+}
+@media screen and (max-width:1000px) {
+  .table1 .paydetails th,.table1 .paydetails td {
+    font-size: 12px;
+    padding: 12px;
+  }
 }
