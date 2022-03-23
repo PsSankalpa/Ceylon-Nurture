@@ -17,7 +17,7 @@
             <input type="hidden" name="merchant_id" value="1218919"> <!-- Replace your Merchant ID -->
             <input type="hidden" name="return_url" value="https://ceylon-nurture.live/home/home">
             <input type="hidden" name="cancel_url" value="https://ceylon-nurture.live/home/home">
-            <input type="hidden" name="notify_url" value="https://ceylon-nurture.live/donationDetails/getdonationdetails">
+            <input type="hidden" name="notify_url" value="https://ceylon-nurture.live/donationdetails/getdonationdetails">
 
             <h2 class="h2p txt-col1 topics">Item Details</h2><br>
             <div class="p-details row">
