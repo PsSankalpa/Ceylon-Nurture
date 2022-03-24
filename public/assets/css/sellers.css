@@ -785,3 +785,28 @@ hr {
     padding: 12px;
   }
 }
+
+/* ---------------for the pdf btn------------------------------- */
+.pdfbtn{
+  background-color: #75E6DA;
+  border: none;
+  color: #05445E;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.pdfbtn:hover{
+  background-color: #05445E;
+  color: #75E6DA;
+}
+@media screen and (max-width:1000px) {
+  .pdfbtn{
+    padding: 4px 6px;
+    font-size: 10px;
+    margin: 4px 2px;
+  }
+}

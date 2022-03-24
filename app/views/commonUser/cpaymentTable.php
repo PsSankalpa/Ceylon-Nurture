@@ -15,17 +15,17 @@
             <?php if ($rows) : ?>
                 <table class="paydetails">
                     <tr>
-                        <th>Product Name</th>
+                        <th>Name</th>
                         <th>Date</th>
-                        <th>Commission</th>
+                        <th>Amount</th>
                         <th>PDF</th>
                     </tr>
                     <?php foreach ($rows as $row) : ?>
                         <tr>
-                            <td><?= $row->productName ?></td>
+                            <td><?= $row->userName ?></td>
                             <td><?= $row->date ?></td>
                             <td><?= $row->amount ?></td>
-                            <td><a href="<?= ROOT ?>seller/generatepdf/<?= $row->productid ?>"><button class="pdfbtn">PDF</button></a></td>
+                            <td><a href="<?= ROOT ?>commonuser/generatepdf/<?= $row->feesID ?>"><button class="pdfbtn">PDF</button></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

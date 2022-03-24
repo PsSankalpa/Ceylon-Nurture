@@ -132,9 +132,9 @@ class header extends Controller
     $orderid = $dataid[0]->donationid;
 
     //if(isset($_POST)=='first name') if (count($_POST['amount'])>0)
-    if(isset($_POST)=='amount') {
+    if (isset($_POST) == 'amount') {
       $arr['date'] = date("Y/m/d");
-      $arr['amount'] = "null";
+      $arr['amount'] = 0;
       $arr['userName'] = $username;
       $arr['userID'] = Auth::userid();
       $arr['donationID'] = $orderid;
@@ -157,4 +157,5 @@ class header extends Controller
       'orderid' => $orderid,
     ]);
   }
+
 }

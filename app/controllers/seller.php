@@ -17,9 +17,23 @@ class seller extends Controller
 
         $products = new products();
         $userid = Auth::userid();
-        $data = $products->where('sellerid', $userid);
+        
         $sellers = new sellers();
         $data3 = $sellers->where('userid', $userid);
+
+        $payments = new productcommission();
+        if ($d_data = $payments->where2('status', 'not_completed','userID',$userid)) {
+            $p_id1 = $d_data[0]->productid;
+            $row_1 = $products->where('productid', $p_id1);
+            if ($row_1) {
+                $row_1 = $row_1[0];
+                unlink($row_1->image);
+            }
+            $products->delete($p_id1);
+            $payments->delete3('status', 'not_completed','userID',$userid);
+        }
+
+        $data = $products->where('sellerid', $userid);
 
         if ($z1 = $products->where2('sellerid', $userid, 'category', $type)) {
             $data4 = count($z1);
@@ -39,8 +53,7 @@ class seller extends Controller
             $data6 = 0;
         }
         //print_r($data5);
-        //die;
-
+        //die;   
 
         $this->view('seller/seller', [
             'rows' => $data,
@@ -152,7 +165,7 @@ class seller extends Controller
                     $payments = new productcommission();
 
                     $arr4['date'] = date("Y/m/d");
-                    $arr4['amount'] = "null";
+                    $arr4['amount'] = 0;
                     $arr4['productid'] = $productId;
                     $arr4['userID'] = Auth::userid();
                     $arr4['status'] = "not_completed";
@@ -204,21 +217,6 @@ class seller extends Controller
         if ($data) {
             $data = $data[0];
         }
-
-        // if (count($_POST) > 0) {
-        //     $payments = new productcommission();
-
-        //     $arr['date'] = date("Y/m/d");
-        //     $arr['amount'] = "null";
-        //     $arr['userName'] = "null";
-        //     $arr['productid'] = $productId;
-        //     $arr['userID'] = Auth::userid();
-
-        //     print_r($arr);
-        //     die;
-
-        //     $payments->insert($arr);
-        // }
 
         $this->view('seller/productCommission', [
             'data' => $data,

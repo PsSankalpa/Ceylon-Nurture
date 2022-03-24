@@ -12,10 +12,11 @@
 </head>
 
 <body>
+<a href="<?= ROOT ?>commonuser/donationdetails"><button class="">Payments</button></a>
     <div class="form">
         <form method="post" class="payform" action="https://sandbox.payhere.lk/pay/checkout">
             <input type="hidden" name="merchant_id" value="1218919"> <!-- Replace your Merchant ID -->
-            <input type="hidden" name="return_url" value="https://ceylon-nurture.live/home/home">
+            <input type="hidden" name="return_url" value="https://ceylon-nurture.live/commonuser/donationdetails">
             <input type="hidden" name="cancel_url" value="https://ceylon-nurture.live/home/home">
             <input type="hidden" name="notify_url" value="https://ceylon-nurture.live/donationdetails/getdonationdetails">
 

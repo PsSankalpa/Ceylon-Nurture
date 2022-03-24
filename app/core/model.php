@@ -210,6 +210,18 @@ public function getrange($value,$wtime)
 		return $this->query($query,$data);
 	}
 
+	public function delete3($column,$value,$column2,$value2)
+
+	{
+		$data['value'] = $value;
+		$data['value2'] = $value2;
+		//$data['column'] = $column;
+
+		$query = "delete from $this->table where $column = :value and $column2 = :value2";
+		
+		return $this->query($query,$data);
+	}
+
 
 	
 }
