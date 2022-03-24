@@ -1,4 +1,7 @@
 <?php
+
+use Mpdf\Tag\H1;
+
 class seller extends Controller
 {
     function index()
@@ -158,7 +161,7 @@ class seller extends Controller
                     $payments->insert($arr4);
                 }
 
-                
+
 
                 //commision for the product
                 $pcommission = $arr['productPrice'] * (30 / 100);
@@ -228,7 +231,7 @@ class seller extends Controller
     {
 
         //-------------------------------for payment details-----------------------------------------------------
-        
+
         $merchant_id         = $_POST['merchant_id'];
         $order_id             = $_POST['order_id']; //productid 
         $payhere_amount     = $_POST['payhere_amount'];
@@ -236,7 +239,7 @@ class seller extends Controller
         $status_code         = $_POST['status_code'];
         $md5sig                = $_POST['md5sig'];
 
-        
+
         $arr['date'] = date("Y/m/d");
         $arr['amount'] = $payhere_amount;
         $arr['productid'] = $order_id;
@@ -340,6 +343,9 @@ class seller extends Controller
 
     function productDetails($productId = null)
     {
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+        }
 
         $products = new products();
         $data = $products->where('productId', $productId);
@@ -348,18 +354,105 @@ class seller extends Controller
         $this->view('seller/productDetails', ['rows' => $data]);
     }
 
-    function productPaymentDetails(){
+    function productPaymentDetails()
+    {
+
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+        }
 
         $products = new products();
         $payments = new productcommission();
 
         $status = "completed";
-        $data1 = $payments->where('status',$status);
+        $data1 = $payments->where('status', $status);
 
 
         $this->view('seller/paymentTable', [
             // 'row' => $row,
             'rows' => $data1,
         ]);
+    }
+
+    public function generatepdf($id)
+    {
+        $userid = Auth::userid();
+        require_once __DIR__ . '/../models/mpdf/autoload.php';
+        $mpdf = new \Mpdf\Mpdf();
+        $html = file_get_contents(ROOT.'/seller/paymentpdf/'.$id.'/'.$userid );
+        // print_r($html);
+        // die;
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+    }
+
+    function paymentpdf($id,$userid)
+    {
+
+        $payments = new productcommission();
+        $seller = new sellers();
+
+        $data1 = $payments->where('productid', $id);
+        $data2 = $seller->where('userid', $userid);
+
+        if ($data1 != null) {
+            $data1 = $data1[0];
+        }
+
+        if ($data2 != null) {
+            $data2 = $data2[0];
+        }
+
+?>
+        <style>
+            th,
+            td {
+                text-align: left;
+                padding: 16px;
+            }
+            .title2{
+                width: 95%;
+                text-align: center;
+            }
+        </style>
+
+        <div class="title1" style="width: 95%;">
+            <div class="logo" style="width: 100%;text-align: center;"><img  src="<?= ASSETS ?>img/logo.png" style="width: 30%;align-items: center;"></div>
+            <div class="mtitle" style="width: 100%;text-align: center;"><h1>Ceylon Nuture</h1></div>
+        </div>
+        <hr>
+        <div class="title2">
+            <h2>Payment Detials</h2>
+        </div>
+        <table style="border-collapse: collapse;border-spacing: 0;width: 85%;border: 1px solid #ddd;margin: 5% auto;">
+            <tr>
+                <td>Name With initials</td>
+                <td>:</td>
+                <td><?= $data2->nameWithInitials ?></td>
+            </tr>
+            <tr>
+                <td>Product Name</td>
+                <td>:</td>
+                <td><?= $data1->productName ?></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>:</td>
+                <td><?= $data1->date ?></td>
+            </tr>
+            <tr>
+                <td>Amount</td>
+                <td>:</td>
+                <td>Rs:<?= $data1->amount ?></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>:</td>
+                <td><?= $data1->status ?></td>
+            </tr>
+        </table>
+
+<?php
+
     }
 }

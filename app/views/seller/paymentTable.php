@@ -25,7 +25,7 @@
                             <td><?= $row->productName ?></td>
                             <td><?= $row->date ?></td>
                             <td><?= $row->amount ?></td>
-                            <td><button>PDF</button></td>
+                            <td><a href="<?= ROOT ?>seller/generatepdf/<?= $row->productid ?>"><button>PDF</button></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
