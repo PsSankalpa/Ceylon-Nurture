@@ -29,7 +29,7 @@ class home extends Controller
       $donations = new donations();
 
       if ($donations->where('status', 'not_completed')) {
-        $donations->delete2('status', 'not_completed');
+        $donations->delete3('status', 'not_completed','userID',$userid);
       }
 
       $this->view('home', [

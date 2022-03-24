@@ -32,17 +32,14 @@ class donationdetails extends Controller
             $donations = new donations();
             $donations->update2($order_id, $arr);
 
-            if ($donations->where('status', 'not_completed')) 
-            {
-                $donations->delete2('status', 'not_completed');
-            }
         } 
         else 
         {
             $donations = new donations();
-            if ($donations->where('status', 'not_completed')) {
-                $donations->delete2('status', 'not_completed');
-            }
+            if ($donations->where2('status', 'not_completed','donationID',$order_id)) {
+                $donations->delete3('status', 'not_completed','donationID',$order_id);
+              }
+        
         }
     }
 }
