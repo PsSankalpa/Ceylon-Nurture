@@ -104,16 +104,53 @@
                             <div class="card">
                                 <div class="time"><?=$row1->arrivalTime?> - <?=$row1->departureTime?></div>
                                 <div class = "availability"> 
-                                <ol class="switches">
-                                        <input type="checkbox" id="1" checked>
-                                        <label for="1">
-                                        <span>Availability </span>
-                                        <span></span>
-                                        </label>
-                                </ol>
+                                        Availability: <br>
+                                        <?php 
+                                        $appointments = new appointments();
+
+                                        $scheduleid=$row1->scheduleid;
+                                
+                                
+                                        $appointmentidrow = "select * from appointments where scheduleid =:scheduleid order by appointmentid desc limit 1";
+                                            $arr2['scheduleid']=$scheduleid;
+                                
+                                
+                                            $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
+
+                                             if($appointmentidrow1):?>
+
+                                                <?php
+                                                    $availability = $appointmentidrow1[0]->availability;
+                                                    //print_r($availability);
+                                                ?>
+                                                <?php if($availability==FALSE):?>
+                                                    <p style="color:red;">Not Available</p>
+                                                    <?php else:?>
+                                                    <p style="color:green;">Available</p>
+                                                    <?php endif;?>
+                                        <?php else:?>
+                                        <p style="color:green;">Available</p>
+   
+                                        <?php endif;?>
+                                        <!--<span></span>-->
+                                        
                                 </div><br>
                                 <div class="patientNoA" style="font-weight:lighter;">Number of Patients: <?=$row1->noOfPatient?></div>
-                                <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>/<?=$row1->scheduleid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
+
+                                <?php if($appointmentidrow1):?>
+
+                                    <?php
+                                        $availability = $appointmentidrow1[0]->availability;
+                                        //print_r($availability);
+                                    ?>
+                                    <?php if($availability==FALSE):?>
+                                        <?php else:?>
+                                        <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>/<?=$row1->scheduleid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
+                                        <?php endif;?>
+                                    <?php else:?>
+                                        <div class="bookSlot"><a href="<?=ROOT?>channeling/payment/<?=$row->userid?>/<?=$row1->scheduleid?>"><button class="bookSlotButton">Book a Slot</button></a></div>                       
+
+                                    <?php endif;?>
                             </div>
 
                             
