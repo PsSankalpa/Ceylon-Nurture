@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<a href="<?= ROOT ?>commonuser/donationdetails"><button class="">Payments</button></a>
+<a href="<?= ROOT ?>commonuser/donationdetails"><button class="detailsbtn1">Payments</button></a>
     <div class="form">
         <form method="post" class="payform" action="https://sandbox.payhere.lk/pay/checkout">
             <input type="hidden" name="merchant_id" value="1218919"> <!-- Replace your Merchant ID -->

@@ -104,7 +104,6 @@ class seller extends Controller
                 $arr['address'] = htmlspecialchars($_POST['address']);
                 $arr['image'] = $des;
 
-
                 $sellers->insert($arr);
                 $this->redirect('home/home');
             } else {
