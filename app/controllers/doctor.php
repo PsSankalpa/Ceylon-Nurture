@@ -102,9 +102,12 @@ class doctor extends Controller
 
         $row=$schedule->where('doctorid', $doctorid);
 
+        $Auth = new Auth;
+        $userid = Auth::userid();
         //Taking the count of patients appointments and revenue
         $patients = new patients();
-        $data3 = $patients->findAll();
+        $appointments = new appointments();
+        $data3 = $appointments->where('doctorid',$userid);
         $pCount = count($data3);
         //to filter by date
         /*$data2 = $patients->findrange(7);
@@ -112,8 +115,7 @@ class doctor extends Controller
             $query1 = "select * from patients order by articleid desc limit 6";
             $data2 = $patients->query($query1);
         }*/
-        $Auth = new Auth;
-        $userid = Auth::userid();
+        
 
         $appointments = new appointments();
         $data4 = $appointments->where('doctorid',$userid);
@@ -127,16 +129,15 @@ class doctor extends Controller
         $patientid=null;
         $scheduleid=null;
 
-        $query1 = "select * from appointments where date > curdate()-7 order by appointmentid desc";
-        $data5 = $appointments->query($query1);
+        $query1 = "select * from appointments where doctorid = :userid and date > curdate()-7 order by date desc";
+        $arr['userid'] = Auth::userid();
+        $data5 = $appointments->query($query1,$arr);
 
-        $query2 = "select * from schedule where scheduleid in (select scheduleid from appointments) order by desc";
-        $data1 = $schedule->query($query2);
-        if ($data1) {
-            $data1 = $data1[0];
-        }
-print_r($data1);
-die;
+       // $query2 = "select * from schedule where scheduleid in (select scheduleid from appointments where doctorid = :userid order by date desc )";
+        //$arr['userid'] = Auth::userid();
+       // $data1 = $schedule->query($query2,$arr);
+       // print_r($data1);
+      
         //$appointments = new appointments();
         //$data5 = $appointments->where2('doctorid',$userid,'scheduleid',$scheduleid);
         //print_r($data5);
@@ -156,7 +157,7 @@ die;
             'pCount' => $pCount,
             'aCount' => $aCount,
             'data5' => $data5,
-            'data1' => $data1,
+            //'data1' => $data1,
         ]);
     }
 
