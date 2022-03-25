@@ -5,7 +5,6 @@ class appointments extends Model
 
 	protected $allowedcolumns = [
 		'scheduleid',
-		'appointmentid',
         'patientid',
 		'symptoms',
         'doctorid',
@@ -16,6 +15,11 @@ class appointments extends Model
         'commission',
         'doctorName',
         'date',
+        'noOfPatients',
+        'patientCount',
+        'availability',
+
+
 
 
 
