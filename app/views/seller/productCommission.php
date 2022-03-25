@@ -24,7 +24,7 @@
                 <h3 class="h2p txt-col1 topics">Payment Type</h3>
                 <div class="p-inputs">
                     <input type="hidden" name="order_id" value="<?= get_var('order_id', $dataid) ?>">
-                    <input type="text" class="col-3 p-in" name="items" value="Commission"><br>
+                    <input type="hidden" class="col-3 p-in" name="items" value="Commission"><br>
                     <input type="text" class="col-3 p-in" name="currency" value="LKR">
                     <input type="text" class="col-3 p-in" name="amount" value="<?= get_var('amount', $data2) ?>">
                 </div>
