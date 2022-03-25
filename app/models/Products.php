@@ -22,8 +22,8 @@ class products extends Model
         //-------------------------------------------------------------------------------------------------------------------------------------
 		//for product
         $this->errors2 = array();
-		print_r($DATA);
-		print_r($FILES);
+		// print_r($DATA);
+		// print_r($FILES);
 		//for product name
 		if(empty($DATA['productName']))
 		{
@@ -49,7 +49,7 @@ class products extends Model
 		{
 			$this->errors2['description'] = "Cannot Keep description empty";
 		}
-		elseif(!preg_match('/^[a-zA-Z\s\.,]+$/',$DATA['description']))
+		elseif(!preg_match('/^[a-zA-Z\s0-9\.,;:?\-()\'?,;\\""]+$/',$DATA['description']))
 		{
 			$this->errors2['description'] = "Only letters allowed in the description";
 		}

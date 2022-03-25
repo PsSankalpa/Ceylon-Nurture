@@ -69,7 +69,7 @@
             </div>
               <div class="container1">
                 <div class="inner_content">
-                  <h1>Welcome,Dr.<?=Auth::fname()?>  </h1> 
+                  <h1>Welcome,Dr.<?=Auth::username()?>  </h1> 
                   <h4>Have a nice day at work</h4>
                 </div>
                 <div class="inner_content_image">
@@ -84,7 +84,8 @@
             <div class="cardBox">
               <div class="col-div-3">
                 <div class="box">
-                  <p>67<br/><span>Patients</span></p>
+                <h2><?= $data3?></h2>
+                  <p><span>Patients</span></p>
                   <i class="fa fa-users box-icon"></i>
                 </div>
               </div>

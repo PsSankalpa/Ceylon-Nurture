@@ -82,7 +82,7 @@
                         <?php elseif (Auth::logged_in()) : ?>
 
                             <div class="inner_contentA">
-                                <h2 class=welcome_h2> Hi <?= ucfirst(Auth::fname()) ?>,</h2>
+                                <h2 class=welcome_h2> Hi <?= ucfirst(Auth::username()) ?>,</h2>
                                 <p class="welcome">Hope you would have an amazing experience with us </p>
                             </div>
 

@@ -13,10 +13,21 @@ class doctor extends Controller
         $schedule = new schedule();
         $userid = Auth::userid();
         $data = $schedule->where('doctorid', $userid);
+        $channeling = new channeling();
+
+        if ($z1 = $channeling->where('doctorid',$userid)){
+            $data3 = count($z1);
+        } else {
+            $data3 = 0;
+        }
+        print_r($data3);
+        die;
+
 
         $this->view("doctor/doctor", [
             'rows' => $data,
-            'data2' => $data2
+            'data2' => $data2,
+            'data3' => $data3,
         ]); //in here put the relevent page name and the path
     }
 
@@ -285,7 +296,7 @@ class doctor extends Controller
 
         if (count($_POST) > 0) {
 
-            if ($schedule->validate($_POST, $_FILES)) {
+            if ($schedule->validate2($_POST, $_FILES)) {
 
                 $arr['slotNumber'] = $_POST['slotNumber'];
                 $arr['dateofSlot'] = $_POST['dateofSlot'];
@@ -299,7 +310,7 @@ class doctor extends Controller
                 $schedule->update($scheduleid, $arr);
                 $this->redirect('doctor/viewSchedule');
             } else {
-                $errors = $schedule->errors2;
+                $errors = $schedule->errors3;
             }
         }
         $row = $schedule->where('scheduleid', $scheduleid);

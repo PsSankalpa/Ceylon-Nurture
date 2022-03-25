@@ -1,7 +1,7 @@
 <?php
 
 /**
- * make pdf for apoinments
+ * make pdf for appoinments
  */
 class make_pdf extends Controller
 {
@@ -34,7 +34,7 @@ class make_pdf extends Controller
 
         $mpdf = new \Mpdf\Mpdf();
 
-        $html = file_get_contents(ROOT.'/appoinment_make_pdf/2/5/1/4');
+        $html = file_get_contents(ROOT.'/appoinment_make_pdf/'.$data['user'].'/'.$data['patient'].'/'.$data['channeling'].'/'.$data['schedule']);
         $mpdf->WriteHTML($html);
         $mpdf->Output();//This is use to output everything which is in the screen
     }
