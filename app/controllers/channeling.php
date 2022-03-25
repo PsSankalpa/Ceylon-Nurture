@@ -153,13 +153,6 @@ class channeling extends Controller
             $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
             $arr2['patientid']=Auth::userid();
 
-            // print_r($appointmentidrow);
-            // if($appointmentidrow)
-            // {
-            // $appointmentidrow=$appointmentidrow[0];
-            // }
-            // print_r($appointmentidrow);
-
             $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
 
             //print_r($appointmentidrow1);
@@ -242,27 +235,12 @@ class channeling extends Controller
              }
 
              
-
-            //$doctorid=$row->doctorid;
-            //$doctors = new doctors();
             $row1=$appointments->where($doctorid,'userid');
             $row2=wheredistinct($row1);
 
             print_r($row2);
                                             
-                                                
-            //$params = array();
-
-            // for($i=0;$i<count($row2);$i++){
-            //     $params=$row2[$i];
-            // }
-            //$params = $row;
-
-        
-        //print_r($params);
-
-        
-    
+           
     $this-> view("patient/patient",[
             'row'=>$row,
             'row2'=>$row2,
@@ -285,18 +263,6 @@ class channeling extends Controller
         $schedule = new schedule();
 
         $row1=$schedule->where('doctorid', $userid);
-
-        
-
-        
-
-            //print_r($appointmentidrow1);
-            //$appointmentid=$appointmentidrow1[0]->appointmentid;
-
-
-       
-
-        
 
         $this->view("patient/doctors",[
             'row'=>$row,
@@ -362,21 +328,20 @@ class channeling extends Controller
         $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
             $arr2['patientid']=Auth::userid();
 
-            // print_r($appointmentidrow);
-            
-            // print_r($appointmentidrow);
+           
 
             $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
             if($appointmentidrow1)
             {
              $appointmentidrow1=$appointmentidrow1[0];
             }
-            //print_r($appointmentidrow1);
-            //$totalPayment=$appointmentidrow1[0]->totalPayment;
-            //print_r($appointmentid);
+           
 
          //-------------------------------for payment details-----------------------------------------------------
-        
+    }
+
+    function patientPaymentConfirmationPayhere(){
+
          if (count($_POST) > 0) {
 
          $merchant_id         = $_POST['merchant_id'];

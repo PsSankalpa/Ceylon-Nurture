@@ -17,7 +17,7 @@
             <input type="hidden" name="merchant_id" value="1218919"> <!-- Replace your Merchant ID -->
             <input type="hidden" name="return_url" value="https://ceylon-nurture.live/channeling/confirmation">
             <input type="hidden" name="cancel_url" value="https://ceylon-nurture.live/landing/home ">
-            <input type="hidden" name="notify_url" value="https://ceylon-nurture.live/channeling/patientPaymentConfirmation">
+            <input type="hidden" name="notify_url" value="https://ceylon-nurture.live/channeling/patientPaymentConfirmationPayhere">
 
             <h2 class="h2p txt-col1 topics">Channeling Details</h2><br>
             <div class="p-details row">
