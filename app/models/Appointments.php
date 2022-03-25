@@ -16,9 +16,6 @@ class appointments extends Model
         'commission',
         'doctorName',
         'date',
-
-
-
 	];
 
 	protected $table = "appointments";

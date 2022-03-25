@@ -68,129 +68,94 @@ class myAccount extends Controller
 		]);
     }
 
-    /*function editDoctor($userid = null)
-    {
-        $doctor = new doctors();
-        $userid = Auth::userid();
-        $data2 = $doctor->where('userid',$userid);
-        if($data2)
-        {
-            $data2 = $data2[0];
-            if(file_exists($data2->image)){
-            unlink($data2->image);
-            }
-        }
-        $errors = array();
-        if(count($_POST)>0)
-        {
-            if($doctor->validate($_POST,$_FILES))
-            {
-                global $des;
-                //global $des2;
-                $arr['userid'] = AUTH::userid();
-                $arr['nameWithInitials'] = $_POST['nameWithInitials'];
-                $arr['gender'] = $_POST['gender'];
-                $arr['dob'] = $_POST['dob'];
-                $arr['registrationNumber'] = $_POST['registrationNumber'];
-                $arr['specialities'] = $_POST['specialities'];
-                $arr['hospital'] = $_POST['hospital'];
-                $arr['city'] = $_POST['city'];
-                $arr['address'] = $_POST['address'];
-                $arr['image'] = $des;
-               // $arr['image2'] = $des2;
-
-                $doctor->update($userid,$arr);
-                $this->redirect('profile/myAccount');
-            }
-            else{
-                $errors = $doctor->errors;
-            }
-        }
-        $this->view('profile/editDoctor',[
-			'errors'=>$errors,
-            'row'=>$data2
-		]);
-    }*/
-    /*function editDoctor($userid = null)
-    {
-        $doctor = new doctors();
-        //$userid = Auth::userid();
-
-        $errors = array();
-        if(count($_POST)>0)
-        {
-            if($doctor->validate($_POST,$_FILES))
-            {
-                global $des;
-                //global $des2;
-                $arr['userid'] = AUTH::userid();
-                $arr['nameWithInitials'] = $_POST['nameWithInitials'];
-                $arr['gender'] = $_POST['gender'];
-                $arr['dob'] = $_POST['dob'];
-                $arr['registrationNumber'] = $_POST['registrationNumber'];
-                $arr['specialities'] = $_POST['specialities'];
-                $arr['hospital'] = $_POST['hospital'];
-                $arr['city'] = $_POST['city'];
-                $arr['address'] = $_POST['address'];
-                $arr['image'] = $des;
-               // $arr['image2'] = $des2;
-
-                $doctor->update($userid,$arr);
-                $this->redirect('profile/myAccount');
-            }
-            else{
-                $errors = $doctor->errors;
-            }
-        }
-        $data2 = $doctor->where('userid',$userid);
-
-        if($data2)
-        {
-            $data2 = $data2[0];
-            if(file_exists($data2->image)){
-            unlink($data2->image);
-            }
-        }
-        $this->view('profile/editDoctor',[
-			'errors'=>$errors,
-            'row'=>$data2
-		]);
-    }*/
-    function editDoctor()
+    function editDoctor($userid = null)
     {
         $userid = Auth::userid();
         $errors = array();
         $doctor = new doctors();
+        
         $data2 = $doctor->where('userid',$userid); 
+        //print_r($data2);
+        
 
         if($data2)
         {
             $data2 = $data2[0];
         }
-
+        //print_r($data2);
         $errors = array();
-        if (count($_POST) > 0) {
+        if (count($_POST) > 0) 
+        {
+            
+            if ($doctor->validate($_POST, $_FILES)) 
+            {
+                print_r($data2);
+                die;
+               
+                global $des;
+                //global $des2;
+                $arr['userid'] = AUTH::userid();
+                $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
+                $arr['gender'] = htmlspecialchars($_POST['gender']);
+                $arr['dob'] = htmlspecialchars($_POST['dob']);
+                $arr['registrationNumber'] = $_POST['registrationNumber'];
+                $arr['specialities'] = $_POST['specialities'];
+                $arr['hospital'] = $_POST['hospital'];
+                $arr['city'] = $_POST['city'];
+                $arr['address'] = $_POST['address'];
+                $arr['image'] = $des; 
 
-            // if ($doctors->validate($_POST, $_FILES)) {
-            //     global $des;
-            //     //global $des2;
-            //     $arr['userid'] = AUTH::userid();
-            //     $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
-            //     $arr['gender'] = htmlspecialchars($_POST['gender']);
-            //     $arr['dob'] = htmlspecialchars($_POST['dob']);
-            //     $arr['registrationNumber'] = $_POST['registrationNumber'];
-            //     $arr['specialities'] = $_POST['specialities'];
-            //     $arr['hospital'] = $_POST['hospital'];
-            //     $arr['city'] = $_POST['city'];
-            //     $arr['address'] = $_POST['address'];
-            //     $arr['image'] = $des;
-            // }
+            $doctor->update($userid, $arr);   
+            print_r($arr);  
+            
+
             $this->redirect('myAccount');
+            } else {
+             $errors = $doctor->errors;
+            }
+        }
+        $row = $doctor->where('userid', $userid);
+            
+        if ($row) {
+            $row = $row[0];
+            if (file_exists($row->image)) {
+                unlink($row->image);
+            }
         }
         $this->view('profile/editDoctor',[
 			'errors'=>$errors,
             'row'=>$data2,
 		]);
+    }
+
+    function deleteAccount($userid = null)
+    {
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+        }
+        $errors = array();
+        $doctors = new doctors();
+
+
+        if (count($_POST) > 0) {
+            //print_r($data);
+            //die;
+            $doctors->delete($userid);
+            $this->redirect('doctor/viewAccount');
+        }
+        $row = $doctors->where('userid', $userid);
+        //$data2 = $doctors->findAll();
+        if ($row) {
+            $row = $row[0];
+            unlink($row->image);
+        }
+        $doctorid = Auth::userid();
+        $doctors = new doctors();
+        $data = $doctors->where('userid', $doctorid);
+        $this->view('doctor/deleteAccount', [
+            'row' => $row,
+            'data' => $data,
+        ]);
     }
 
     function editSeller()

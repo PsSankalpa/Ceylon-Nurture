@@ -50,18 +50,22 @@
             <a href="<?= ROOT ?>doctor/addSchedule"><button class="viewbtn">Add Slots</button></a>
             <a href="<?= ROOT ?>doctor/viewSchedule"><button class="viewbtn">View Slots</button></a>
           </div>
-          
-          <div class="date">
-            <label>From</label>
-            <input type="date" id="date" name="fromdate">
-          </div>
-          <div class="date">
-            <label>To</label>
-            <input type="date" id="date" name="todate">
-          </div>  
-          <div>
-            <button class="filterA">Filter</button>
-          </div>
+
+          <form action="" method="POST">
+            <div class="date">
+              <label>From</label>
+              <input type="date" id="fromdate" name="fromdate">
+            </div>
+            <div class="date">
+              <label>To</label>
+              <input type="date" id="todate" name="todate">
+            </div>  
+            <div>
+              <button type="submit">Filter</button>
+              <!--<input type="submit" value="submit">-->
+            </div>
+          </form>
+
         </div>
         <div class="cardrow">
           <?php if ($row) : ?>

@@ -65,8 +65,8 @@
                     <div class="content-box">   
                         <div style="overflow:auto;">
                         <table>
+                        <thead>
                             <tr>
-                            <th>PatientNo</th>
                             <th>Date</th>
                             <th>Time</th>
                             <th>Slot No</th>
@@ -76,182 +76,20 @@
                             <th>Symptoms</th>
                             <th>Payment</th>
                             </tr>
+                          </thead>
+                            <?php foreach ($data5 as $data5):?>
                             <tr>
-                                <td class="data">01</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">8.00am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Natasha Perera</td>
-                                <td class="data">971234567V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Arthritis</td>
-                                <td class="data">Rs.3200</td>
-                            </tr>
-                            <tr>
-                                <td class="data">02</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">8.15am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Nanda Kumari</td>
-                                <td class="data">871234127V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Gastritis</td>
-                                <td class="data">Rs.2700</td>
-                            </tr>
-                            <tr>
-                                <td class="data">03</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">8.30am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Sunil Gunawardhana</td>
-                                <td class="data">871234127V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Leg Pain</td>
-                                <td class="data">Rs.2150</td>
-                            </tr>
-                            <tr>
-                                <td class="data">04</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">8.45am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Nimmi Fernando</td>
-                                <td class="data">871234127V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Severe Headache</td>
-                                <td class="data">Rs.2450</td>
-                            </tr>
-                            <tr>
-                            <td class="data">05</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">9.00am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Kumarika Siriwardhana</td>
-                                <td class="data">8732525327V</td>
-                                <td class="data">0711232453</td>
-                                <td class="data">Neck Pain</td>
-                                <td class="data">Rs.2860</td>
-                            </tr>
-                            <tr>
-                            <td class="data">06</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">9.15am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Manel Perera</td>
-                                <td class="data">871234127V</td>
-                                <td class="data">0711234243</td>
-                                <td class="data">Hair Fall</td>
-                                <td class="data">Rs.3200</td>
-                            </tr>
-                            <tr>
-                            <td class="data">07</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">9.30am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Santha Kumara</td>
-                                <td class="data">9823647623V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Low Presure</td>
-                                <td class="data">Rs.2200</td>
-                            </tr>
-                            <tr>
-                            <td class="data">08</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">9.45am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Senaka Mendis</td>
-                                <td class="data">8974546723V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Back Pain</td>
-                                <td class="data">Rs.2100</td>
-                            </tr>
-                            <tr>
-                            <td class="data">09</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">10.00am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Nimal Peiris</td>
-                                <td class="data">812344154V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Gastritis</td>
-                                <td class="data">Rs.1200</td>
-                            </tr>
-                            <tr>
-                            <td class="data">10</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">10.15am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Sumana Kanthi</td>
-                                <td class="data">871234454V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Headache</td>
-                                <td class="data">Rs.1500</td>
-                            </tr>
-                            <tr>
-                           <!-- <td class="data">11</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">10.30am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Sisiliya Kumari</td>
-                                <td class="data">871234127V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Gastritis</td>
-                                <td class="data">Rs.2200</td>
-                            </tr>
-                            <tr>
-                            <td class="data">12</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">10.45am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Sisiliya Kumari</td>
-                                <td class="data">871234127V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Gastritis</td>
-                                <td class="data">Rs.2200</td>
-                            <tr>
-                            <td class="data">13</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">11.00am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Sisiliya Kumari</td>
-                                <td class="data">871234127V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Gastritis</td>
-                                <td class="data">Rs.2200</td>
-                            </tr>
-                            <tr>
-                            <td class="data">14</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">11.15am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Sisiliya Kumari</td>
-                                <td class="data">871234127V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Gastritis</td>
-                                <td class="data">Rs.2200</td>
-                            </tr>
-                            <tr>
-                            <td class="data">15</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">11.30am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Sisiliya Kumari</td>
-                                <td class="data">871234127V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Gastritis</td>
-                                <td class="data">Rs.2200</td>
-                            </tr>
+                                <td><?= $data1->dateofSlot?></td>
+                                <td><?= $data1->arrivalTime?>am - <?= $data1->departureTime ?>am</td>
+                                <td><?= $data1->slotNumber?></td>
 
-                            <tr>
-                            <td class="data">16</td>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">11.45am</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">Sisiliya Kumari</td>
-                                <td class="data">871234127V</td>
-                                <td class="data">0711234567</td>
-                                <td class="data">Gastritis</td>
-                                <td class="data">Rs.2200</td>
-                            </tr>-->
+                                <td><?= $data5->patientName?></td>
+                                <td><?= $data5->nic?></td>
+                                <td><?= $data5->tpNumber ?></td>
+                                <td><?= $data5->symptoms ?></td>
+                                <td> Rs.<?= $data5->totalPayment ?></td>
+                            </tr>
+                            <?php endforeach;?>
                         </table>
                         </div>
                     </div>
