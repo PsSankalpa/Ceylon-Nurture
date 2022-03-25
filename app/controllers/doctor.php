@@ -42,8 +42,10 @@ class doctor extends Controller
         if (count($_POST) > 0) {
 
             $doctors = new doctors(); //create the instance of the doctor in model
+            
+            $userName = Auth::username();
 
-            if ($doctors->validate($_POST, $_FILES)) {
+            if ($doctors->validate($_POST, $_FILES,$userName)) {
                 global $des;
                 $arr['userid'] = AUTH::userid();
                 $arr['nameWithInitials'] = Auth::nameWithInitials();
@@ -192,9 +194,11 @@ class doctor extends Controller
         $errors = array();
         $doctors = new doctors();
 
+        $userName = Auth::username();
+
         if (count($_POST) > 0) {
 
-            if ($doctors->validate($_POST, $_FILES)) {
+            if ($doctors->validate($_POST, $_FILES,$userName)) {
                 global $des;
                 //global $des2;
                 $arr['userid'] = AUTH::userid();
@@ -374,7 +378,7 @@ class doctor extends Controller
                 $arr['dateofSlot'] = $_POST['dateofSlot'];
                 $arr['arrivalTime'] = $_POST['arrivalTime'];
                 $arr['departureTime'] = $_POST['departureTime'];
-                $arr['noOfPatient'] = $_POST['noOfPatient'];
+               // $arr['noOfPatient'] = $_POST['noOfPatient'];
                 $arr['timePerPatient'] = $_POST['timePerPatient'];
                 $arr['doctorCharge'] = $_POST['doctorCharge'];
                 $arr['doctorNote'] = $_POST['doctorNote'];
@@ -386,8 +390,8 @@ class doctor extends Controller
             }
         }
         $row = $schedule->where('scheduleid', $scheduleid);
-         print_r($row);
-         die;
+        // print_r($row);
+         //die;
         //in here row is an array
 
         if ($row) {

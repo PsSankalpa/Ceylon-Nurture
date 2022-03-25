@@ -120,8 +120,6 @@
                     <thead>
                             <tr>
                             <th>Date</th>
-                            <th>Time</th>
-                            <th>Slot No</th>
                             <th>Name</th>
                             <th>NIC No</th>
                             <th>Telephone No</th>
@@ -131,10 +129,16 @@
                           </thead>
                           <?php if($data);?>
                             <?php foreach ($data5 as $data5):?>
+                              <?php
+                             // $arrivalTime = strtotime($data1->arrivalTime);
+                             // $departureTime = strtotime($data1->departureTime);
+                             // $a_h = date("g:i a", $arrivalTime);
+                             // $d_p = date("g:i a", $departureTime);
+                             // ?>
                             <tr>
                                 <td><?= $data5->date?></td>
-                               <td><?= $data1->arrivalTime?>am - <?= $data1->departureTime ?>am</td>
-                                <td><?= $data1->slotNumber?></td>
+                              <!-- <td><?= $a_h ."-" . $d_p?></td>
+                                <td><?= $data1->slotNumber?></td>-->
 
                                 <td><?= $data5->patientName?></td>
                                 <td><?= $data5->nic?></td>
@@ -143,49 +147,8 @@
                                 <td> Rs.<?= $data5->totalPayment ?></td>
                             </tr>
                             <?php endforeach;?>
-                    
 
-
-
-
-
-                   <!-- <thead>
-                    <tr>
-                                <th>Date</th>
-                                <th>Slot No</th>
-                                <th>Time</th>
-                                <th>Time per Patient</th>
-                                <th>No of Patients</th>
-                                <th></th>
-                            </tr>                  
-                    <tbody>
-                            <?php if($row);?>
-                            <?php foreach ($row as $row):?>
-                              <?php
-                              $arrivalTime = strtotime($row->arrivalTime);
-                              $departureTime = strtotime($row->departureTime);
-                              $timePerPatient = strtotime($row->timePerPatient);
-                             //$departureTime = date_create($row->departureTime);
-                              $a_h = date("g:i a", $arrivalTime);
-                              $d_p = date("g:i a", $departureTime);
-                              $t_p = date("g", $timePerPatient);
-                              ?>
-
-                              <?php
-                             // for ($x = 0; $x <= $row->noOfPatient ; $x++) {
-                             //   $a_h = $a_h + $t_p;
-                             //   echo "The number is: $a_h <br>";
-                             // }
-                              ?>
-                             <tr>
-                                   <td><?=$row->dateofSlot?></td>
-                                   <td><?=$row->slotNumber?></td>
-                                   <td><?=$a_h ."-" . $d_p?> </td>
-                                   <td><?=$t_p." mins"?></td>
-                                   <td><?=$row->noOfPatient?></td>
-                                  </tr>
-                          <?php endforeach;?>
-                            </tbody>-->
+                            </tbody>
                     </table>
                   </div>
                 </div>

@@ -88,12 +88,14 @@ class seller extends Controller
         }
 
         $errors = array();
+
+        $userName = Auth::username();
         if (count($_POST) > 0) {
 
             $sellers = new sellers(); //create the instance of the seller in model
 
 
-            if ($sellers->validate($_POST, $_FILES)) {
+            if ($sellers->validate($_POST, $_FILES,$userName)) {
                 global $des;
                 $arr['userid'] = Auth::userid();
                 $arr['nameWithInitials'] = $data4->nameWithInitials;

@@ -87,10 +87,10 @@ class common_user extends Model
         
 
         //validation for gender
-        if(empty($data['gender']))
-		{
-			$this->errors['gender'] = "Cannot Keep Gender empty";
-		}
+       // if(empty($data['gender']))
+		//{
+		//	$this->errors['gender'] = "Cannot Keep Gender empty";
+		//}
 	
         //validation for DOB
         /*$y=date("Y");

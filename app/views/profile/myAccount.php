@@ -37,6 +37,14 @@
                 </div>
                 <div class="row p2">
                     <div class="col-25">
+                        <label for="username">Gender</label>
+                    </div>
+                    <div class="col-50">
+                        <label for="username"><?= $data4->gender ?></label>
+                    </div>
+                </div>
+                <div class="row p2">
+                    <div class="col-25">
                         <label for="email">Email</label>
                     </div>
                     <div class="col-50">
@@ -130,14 +138,6 @@
                         </div>
                         <div class="col-50">
                             <label for="gender"><?= $data2->gender ?></label>
-                        </div>
-                    </div>
-                    <div class="row p2">
-                        <div class="col-25">
-                            <label for="dob">DOB</label>
-                        </div>
-                        <div class="col-50">
-                            <label for="dob"><?= $data2->dob ?></label>
                         </div>
                     </div>
                     <div class="row p2">
