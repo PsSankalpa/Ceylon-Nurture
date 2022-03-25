@@ -14,7 +14,7 @@ class doctors extends Model
 		'city',
 		'address',
 		'image',
-		'doctorid'
+
 	];
 
 	protected $table = "doctors";

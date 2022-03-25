@@ -48,13 +48,15 @@ class doctor extends Controller
                 $arr['userid'] = AUTH::userid();
                 $arr['nameWithInitials'] = Auth::nameWithInitials();
                 $arr['gender'] = Auth::gender();
-                $arr['dob'] = Auth::dob();
+               // $arr['dob'] = Auth::dob();
                 $arr['registrationNumber'] = htmlspecialchars($_POST['registrationNumber']);
                 $arr['specialities'] = htmlspecialchars($_POST['specialities']);
                 $arr['hospital'] = htmlspecialchars($_POST['hospital']);
                 $arr['city'] = htmlspecialchars($_POST['city']);
                 $arr['address'] = htmlspecialchars($_POST['address']);
                 $arr['image'] = $des;
+               // print_r($arr);
+               // die;
                 //$arr['image'] = $des2;
 
                 //$orig_file = $_FILES["avatar"]["tmp_name"];
@@ -96,8 +98,66 @@ class doctor extends Controller
         $doctor = new doctors();
         $data = $doctor->where('userid', $doctorid);
 
+        $schedule = new schedule();
+
+        $row=$schedule->where('doctorid', $doctorid);
+
+        $Auth = new Auth;
+        $userid = Auth::userid();
+        //Taking the count of patients appointments and revenue
+        $patients = new patients();
+        $appointments = new appointments();
+        $data3 = $appointments->where('doctorid',$userid);
+        $pCount = count($data3);
+        //to filter by date
+        /*$data2 = $patients->findrange(7);
+        if ($data2 == null || count($data2) < 4) {
+            $query1 = "select * from patients order by articleid desc limit 6";
+            $data2 = $patients->query($query1);
+        }*/
+        
+
+        $appointments = new appointments();
+        $data4 = $appointments->where('doctorid',$userid);
+        $aCount = count($data4);
+        //print_r($data4);
+       // print_r(" ");
+        //die;
+
+        //----------------------------//
+        $channelingid=null;
+        $patientid=null;
+        $scheduleid=null;
+
+        $query1 = "select * from appointments where doctorid = :userid and date > curdate()-7 order by date desc";
+        $arr['userid'] = Auth::userid();
+        $data5 = $appointments->query($query1,$arr);
+
+       // $query2 = "select * from schedule where scheduleid in (select scheduleid from appointments where doctorid = :userid order by date desc )";
+        //$arr['userid'] = Auth::userid();
+       // $data1 = $schedule->query($query2,$arr);
+       // print_r($data1);
+      
+        //$appointments = new appointments();
+        //$data5 = $appointments->where2('doctorid',$userid,'scheduleid',$scheduleid);
+        //print_r($data5);
+        
+       // $schedule = new schedule();
+       // $data1= $schedule->where('scheduleid',$scheduleid);
+        //print_r($data1);
+     
+       // if ($data1) {
+         //   $data1 = $data1[0];
+       // }
+        //print_r($data1);
+
         $this->view("doctor/docDashboard", [
             'data' => $data,
+            'row' => $row,
+            'pCount' => $pCount,
+            'aCount' => $aCount,
+            'data5' => $data5,
+            //'data1' => $data1,
         ]);
     }
 
@@ -199,13 +259,21 @@ class doctor extends Controller
         ]);
     }
 
-    //get the file destination
+    //get the patient count
     function get_patientcount($pactientc)
     {
         global $coun;
         $coun = $pactientc;
         return $coun;
     }
+
+    //get the tim difference for the patient
+    // function get_time($patientcount,$arrivalTime,$timeperPatient){
+        // if (count == 1;count <= $patientcount; count++ ) {
+            // $arrivalTime = $arrivalTime + $DATA['timeperPatient'];
+            // print_r("Hello");
+       // }
+    //}
 
     //function to add schedule
     function addSchedule()
@@ -269,14 +337,18 @@ class doctor extends Controller
 
         //$rows =$schedule->where('scheduleid',$scheduleid);
         $row = $schedule->where('doctorid', $doctorid); // ps changed to remove the slots when another user loged in
-        /*if($row)
-        {
-            $row = $row[0];
-        }*/
-
-        // print_r($row[0]['arrivalTime']);
-        // die;
-
+        //to get the date filter 
+        if(count($_POST)>0){
+            
+                $date1=$_POST['fromdate'];
+                $date2=$_POST['todate'];
+                //print_r($date1);
+              
+                $row= $schedule->finddaterange($date1,$date2);
+                //print_r($row); 
+                
+            
+        }
         $this->view('doctor/viewSchedule', [
             'errors' => $errors,
             'row' => $row,
@@ -314,7 +386,8 @@ class doctor extends Controller
             }
         }
         $row = $schedule->where('scheduleid', $scheduleid);
-        // print_r($row);
+         print_r($row);
+         die;
         //in here row is an array
 
         if ($row) {
@@ -495,21 +568,65 @@ class doctor extends Controller
         $doctorid = Auth::userid();
         $doctor = new doctors();
         $data = $doctor->where('userid', $doctorid);
+        if($data)
+        {
+            $data=$data[0];
+        }
+
+        $schedule = new schedule();
+
+        $row=$schedule->where('doctorid', $doctorid);
 
         $this->view("doctor/viewAppointments", [
             'data' => $data,
+            'row' => $row,
+            
         ]);
     }
 
     //function to view appointment details
-    function appointmentDetails()
+    function appointmentDetails($scheduleid=null)
     {
-        $doctorid = Auth::userid();
-        $doctor = new doctors();
-        $data = $doctor->where('userid', $doctorid);
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+        }
+        $Auth = new Auth;
+        $userid = Auth::userid();
 
+        $channelingid=null;
+        $patientid=null;
+
+        //$doctorid = Auth::userid();
+        //$doctor = new doctors();
+        //$data = $doctor->where('userid', $userid);
+
+        //Comparing the the doctorid and the userid and taking the patient details from the required patient id
+        /*$patient = new patients();
+        $query="select * from patients where userid in (select Patientid from appointments where doctorid = :userid and scheduleid = :scheduleid)";
+        $arr4['userid'] = $userid;
+        $arr4['scheduleid'] = $scheduleid;
+        $data4 = $patient->query($query, $arr4);*/
+        //print_r($data4);
+        
+
+        $appointments = new appointments();
+        $data5 = $appointments->where2('doctorid',$userid,'scheduleid',$scheduleid);
+        //print_r($data5);
+        
+        
+        
+        $schedule = new schedule();
+        $data1= $schedule->where('scheduleid',$scheduleid);
+
+        if ($data1) {
+            $data1 = $data1[0];
+        }
+
+       // print_r($data1);
+        
         $this->view("doctor/appointmentDetails", [
-            'data' => $data,
+            'data5' => $data5,
+            'data1' => $data1,
         ]);
     }
     //function to view feedback
@@ -521,6 +638,7 @@ class doctor extends Controller
 
         $this->view("doctor/feedback", [
             'data' => $data,
+            
         ]);
     }
 
@@ -671,3 +789,4 @@ class doctor extends Controller
         ]);
     }
 }
+

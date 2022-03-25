@@ -189,7 +189,7 @@
                         </div>
                     </div>
                     <div class="m-btns">
-                        <a href="<?= ROOT ?>/myAccount/editDoctor"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
+                        <a href="<?= ROOT ?>/myAccount/editDoctor/<?= $data2->userid ?>"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
                         <a href=""><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
                     </div>
                 <?php endif; ?>

@@ -54,27 +54,45 @@
                     <div class="content-box">   
                         <div style="overflow-y:auto;">
                         <table>
+                          <thead>
                             <tr>
                                 <th>Date</th>
                                 <th>Slot No</th>
                                 <th>Time</th>
+                                <th>Time per Patient</th>
                                 <th>No of Patients</th>
                                 <th></th>
                             </tr>
-                            <tr>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">Slot 01</td>
-                                <td class="data">8.00am - 12.00pm</td>
-                                <td class="data">16</th>
-                                <td class="data"><a href="<?=ROOT?>doctor/appointmentDetails"><button class="appviewbtn">View Information</button></a></td>
-                            </tr>
-                            <tr>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">Slot 02</td>
-                                <td class="data">4.00pm - 7.00pm</td>
-                                <td class="data">12</th>
-                                <td class="data"><a href="<?=ROOT?>doctor/appointmentDetails"><button class="appviewbtn">View Information</button></a></td>
-                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php if($row);?>
+                            <?php foreach ($row as $row):?>
+                              <?php
+                              $arrivalTime = strtotime($row->arrivalTime);
+                              $departureTime = strtotime($row->departureTime);
+                              $timePerPatient = strtotime($row->timePerPatient);
+                             //$departureTime = date_create($row->departureTime);
+                              $a_h = date("g:i a", $arrivalTime);
+                              $d_p = date("g:i a", $departureTime);
+                              $t_p = date("g", $timePerPatient);
+                              ?>
+
+                              <?php
+                             // for ($x = 0; $x <= $row->noOfPatient ; $x++) {
+                             //   $a_h = $a_h + $t_p;
+                             //   echo "The number is: $a_h <br>";
+                             // }
+                              ?>
+                             <tr>
+                                   <td><?=$row->dateofSlot?></td>
+                                   <td><?=$row->slotNumber?></td>
+                                   <td><?=$a_h ."-" . $d_p?> </td>
+                                   <td><?=$t_p." mins"?></td>
+                                   <td><?=$row->noOfPatient?></td>
+                                   <td class="data"><a href="<?=ROOT?>doctor/appointmentDetails/<?=$row->scheduleid?>"><button class="appviewbtn">View Information</button></a></td>
+                                  </tr>
+                          <?php endforeach;?>
+                            </tbody>
                         </table>
                         </div>
                     </div>

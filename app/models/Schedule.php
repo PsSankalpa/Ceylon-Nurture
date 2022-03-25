@@ -135,23 +135,25 @@ class schedule extends Model
 					//print_r($diff);
 					//print_r(" ");
 					//print_r($patientcount);
-					
 					// die;
-
 					//send the patient count to doctor controller
 					$doctor = new doctor();
 					$doctor->get_patientcount($patientcount);
+					
+
 				}
 			}
 		}
 
-
+		
 
 		if (count($this->errors2) == 0) {
 			return true;
 		}
 		return false;
 	}
+
+	
 	//Validateions made for the edit schedule
 	public function validate2($DATA, $FILES)
 	{
@@ -163,18 +165,18 @@ class schedule extends Model
 		}
 		else
 		{
-			if ($this->query("select slotNumber  from $this->table where slotNumber=:slotNumber && dateofSlot =:dateofSlot && arrivalTime=:arrivalTime", ['arrivalTime' => $DATA['arrivalTime'], 'slotNumber' => $DATA['slotNumber'], 'dateofSlot' => $DATA['dateofSlot']])) 
-			{
-				$this->errors3['arrivalTime'] = "cannot put same arrival time on same day";
-			}
+			//if ($this->query("select slotNumber  from $this->table where slotNumber=:slotNumber && dateofSlot =:dateofSlot && arrivalTime=:arrivalTime", ['arrivalTime' => $DATA['arrivalTime'], 'slotNumber' => $DATA['slotNumber'], 'dateofSlot' => $DATA['dateofSlot']])) 
+			//{
+			//	$this->errors3['arrivalTime'] = "cannot put same arrival time on same day";
+			//}
 			//if ($this->query("select slotNumber  from $this->table where slotNumber=:slotNumber && dateofSlot =:dateofSlot && (arrivalTime<=:arrivalTime && departureTime>=:arrivalTime || departureTime>=:departureTime)", ['arrivalTime' => $DATA['arrivalTime'], 'departureTime' => $DATA['departureTime'], 'slotNumber' => $DATA['slotNumber'], 'dateofSlot' => $DATA['dateofSlot']])) 
 			//{
 			//	$this->errors3['arrivalTime'] = "invalid arrival time";
 			//}
-			if ($this->query("select slotNumber  from $this->table where dateofSlot =:dateofSlot && arrivalTime=:arrivalTime", ['arrivalTime' => $DATA['arrivalTime'], 'dateofSlot' => $DATA['dateofSlot']])) 
-			{
-				$this->errors3['arrivalTime'] = "cannot put same arrival time on same day in different slots";
-			}
+			//if ($this->query("select slotNumber  from $this->table where dateofSlot =:dateofSlot && arrivalTime=:arrivalTime", ['arrivalTime' => $DATA['arrivalTime'], 'dateofSlot' => $DATA['dateofSlot']])) 
+			//{
+			//	$this->errors3['arrivalTime'] = "cannot put same arrival time on same day in different slots";
+			//}
 			//if ($this->query("select slotNumber  from $this->table where dateofSlot =:dateofSlot && (arrivalTime<=:departureTime && departureTime>=:departureTime)", ['departureTime' => $DATA['departureTime'], 'dateofSlot' => $DATA['dateofSlot']])) 
 			//{
 			//	$this->errors3['arrivalTime'] = "invalid depature time";
