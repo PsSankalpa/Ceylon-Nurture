@@ -57,6 +57,7 @@
             <?php endif; ?>
             <?php if (($data2 == "seller") || ($data2 == "doctorAndSeller") || ($data2 == "sellerAndPatient") || ($data2 == "allUser")) : ?>
                 <a href="<?= ROOT ?>seller/uploadProduct"><button class="">Add Proucts</button></a>
+                <a href="<?= ROOT ?>seller/productPaymentDetails"><button class="">Payments</button></a>
             <?php endif; ?>
         </div>
     </div>

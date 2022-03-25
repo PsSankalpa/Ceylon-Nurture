@@ -29,10 +29,6 @@
                     <div class="col-75">
                     <input type="text" value="<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>" placeholder="Search.." name="search">
                     </div>
-                    </div>
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </form> 
                 
                     <div class="row">
                     <div class="col-25">
@@ -77,7 +73,11 @@
                     <br>
                     <br>
                     <div class="row">
-                    
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                    </div>
+                </form> 
+
             </div>            
 
             <div class="schedule">
