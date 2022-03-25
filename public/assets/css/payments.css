@@ -26,7 +26,11 @@
 .p-inputs{
     align-items: center;
     margin: 4px auto;
-    margin-left: 33%;
+    margin-left: 15%;
+}
+
+.p-inputs input{
+    width: 40%;
 }
 .payform .btn{
     margin-left: 35%;

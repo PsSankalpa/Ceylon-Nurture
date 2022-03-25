@@ -136,7 +136,9 @@ class seller extends Controller
                 $address = "";
             }
 
-            if ($products->validate($_POST, $_FILES)) {
+            $userName = Auth::username();
+
+            if ($products->validate($_POST, $_FILES,$userName)) {
                 global $des;
                 $arr['productName'] = htmlspecialchars($_POST['productName']);
                 $arr['productPrice'] = htmlspecialchars($_POST['productPrice']);
@@ -278,15 +280,17 @@ class seller extends Controller
             $this->redirect('login/login');
         }
 
+        $userid = Auth::userid();
         $errors = array();
         $products = new products();
 
+        $userName = Auth::username();
+
         if (count($_POST) > 0) {
 
-            if ($products->validate($_POST, $_FILES)) {
+            if ($products->validate2($_POST, $_FILES,$userName)) {
                 global $des;
                 $arr['productName'] = $_POST['productName'];
-                $arr['productPrice'] = $_POST['productPrice'];
                 $arr['description'] = $_POST['description'];
                 $arr['image'] = $des;
                 $arr['category'] = $_POST['category'];
