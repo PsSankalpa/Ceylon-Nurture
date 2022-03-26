@@ -105,17 +105,15 @@
                                          
                                         <div class="card">
                                             <div>
-                                            <?php foreach ($row as $row):?>
                                                 
                                                 
                                                 
-                                                <div class="numbers"><?=$row1[0]->nameWithInitials?></div>
+                                                <div class="numbers">hhhhhh</div>
                                                 <div class="cardName"> gggg</div>
                                             </div>
                                             <div class="iconBox">
                                                 <img class="doctor" src="<?=ASSETS?>img/doctor7.png">
                                             </div>
-                                            <?php endforeach;?>
 
                                         </div>
                                         <?php else:?>
@@ -213,14 +211,39 @@
                                </tr>
                            </thead> 
                            <tbody>
+
+                        
+                           <?php foreach ($row as $row):?>
+                                <?php
+                                $scheduleid=$row->scheduleid;
+
+                                $doctorid =$row->doctorid;
+                                $doctors = new doctors();
+                                $row1=$doctors->where('userid',$doctorid);
+
+                                if($row1)
+                                {
+                                $row1=$row1[0];
+                                }
+
+                                $schedule = new schedule();
+                                $row2=$schedule->where('scheduleid',$scheduleid);
+                    
+                                if($row2)
+                                {
+                                $row2=$row2[0];
+                                }
+                    
+                                ?>
                                <tr>
-                                   <td><?=$row1->nameWithInitials?></td>
+                                   <td><?=$row->doctorName?></td>
                                    <td><?=$row2->dateofSlot?></td>
                                    <td><?=$row2->arrivalTime?></td>
                                    <td><?=$row1->hospital?></td>
                                    <td> <button class="viewMore">View</button></td>
                                </tr>
-                               
+                            <?php endforeach;?>
+
                            </tbody>
                         </table>
                     </div>
@@ -228,7 +251,7 @@
                     <div class="ratings">
                         <div class="cardHeader">
                             <h3>My Ratings</h3>
-                            <a href="#" class="btn">Rate a Doctor</a>
+                            <a href="<?= ROOT ?>channeling/rate"> <button class="btn">Give a Feedback</button></a>
                         </div>
                         <table>
                            <thead>
