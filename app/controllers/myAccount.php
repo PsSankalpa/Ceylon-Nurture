@@ -55,67 +55,67 @@ class myAccount extends Controller
     }
     
 
-    function editDoctor($userid = null)
-    {
-        $userid = Auth::userid();
-        $errors = array();
-        $doctors = new doctors();
+    // function editDoctor($userid = null)
+    // {
+    //     $userid = Auth::userid();
+    //     $errors = array();
+    //     $doctors = new doctors();
         
-        $data2 = $doctors->where('userid',$userid); 
-        //print_r($data2);
+    //     $data2 = $doctors->where('userid',$userid); 
+    //     //print_r($data2);
         
 
-        if($data2)
-        {
-            $data2 = $data2[0];
-        }
-        //print_r($data2);
-        $errors = array();
+    //     if($data2)
+    //     {
+    //         $data2 = $data2[0];
+    //     }
+    //     //print_r($data2);
+    //     $errors = array();
 
-        $userName = Auth::username();
+    //     $userName = Auth::username();
 
-        if (count($_POST) > 0) 
-        {
+    //     if (count($_POST) > 0) 
+    //     {
             
-            if ($doctors->validate($_POST, $_FILES,$userName)) 
-            {
-                print_r($_POST);
+    //         if ($doctors->validate($_POST, $_FILES,$userName)) 
+    //         {
+    //             print_r($_POST);
                
                
-                global $des;
-                //global $des2;
-                $arr['userid'] = AUTH::userid();
-                $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
-                $arr['gender'] = htmlspecialchars($_POST['gender']);
-                $arr['registrationNumber'] = $_POST['registrationNumber'];
-                $arr['specialities'] = $_POST['specialities'];
-                $arr['hospital'] = $_POST['hospital'];
-                $arr['city'] = $_POST['city'];
-                $arr['address'] = $_POST['address'];
-                $arr['image'] = $des; 
+    //             global $des;
+    //             //global $des2;
+    //             $arr['userid'] = AUTH::userid();
+    //             $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
+    //             $arr['gender'] = htmlspecialchars($_POST['gender']);
+    //             $arr['registrationNumber'] = $_POST['registrationNumber'];
+    //             $arr['specialities'] = $_POST['specialities'];
+    //             $arr['hospital'] = $_POST['hospital'];
+    //             $arr['city'] = $_POST['city'];
+    //             $arr['address'] = $_POST['address'];
+    //             $arr['image'] = $des; 
 
-            $doctors->update($userid, $arr);   
-            print_r($arr);  
+    //         $doctors->update($userid, $arr);   
+    //         print_r($arr);  
             
 
-            $this->redirect('myAccount');
-            } else {
-             $errors = $doctors->errors;
-            }
-        }
-        $row = $doctors->where('userid', $userid);
+    //         $this->redirect('myAccount');
+    //         } else {
+    //          $errors = $doctors->errors;
+    //         }
+    //     }
+    //     $row = $doctors->where('userid', $userid);
             
-        if ($row) {
-            $row = $row[0];
-            if (file_exists($row->image)) {
-                unlink($row->image);
-            }
-        }
-        $this->view('profile/editDoctor',[
-			'errors'=>$errors,
-            'row'=>$data2,
-		]);
-    }
+    //     if ($row) {
+    //         $row = $row[0];
+    //         if (file_exists($row->image)) {
+    //             unlink($row->image);
+    //         }
+    //     }
+    //     $this->view('profile/editDoctor',[
+	// 		'errors'=>$errors,
+    //         'row'=>$data2,
+	// 	]);
+    // }
 
     function deleteAccount($userid = null)
     {

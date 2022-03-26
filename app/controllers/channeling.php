@@ -30,14 +30,61 @@ class channeling extends Controller
             //$data2=$common_user->where('userid',$userid);
 
             $data1=NULL;
-            
-            if (isset($_GET['search'])) {
+            $data2=NULL;
+            $data3=NULL;
+            $data4=NULL;
+
+            $data5 = $Auth->finduser();
+
+        
+
+                if ( (isset($_GET['search1'])) ) {
                 //side that we put % mark it ignore exact matching
-                $search = '%' . $_GET['search'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-                $query = "select * from doctors where nameWithInitials like :search order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
-                $arr['search'] = $search; //to pass to the query function
-                $data1 = $doctors->query($query, $arr);
-              }
+                $search1 = '%' . $_GET['search1'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+                $query1 = "select * from doctors where nameWithInitials like :search1 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                $arr1['search1'] = $search1; //to pass to the query function
+                $data1 = $doctors->query($query1, $arr1);
+                //print_r($data1);
+                }
+
+                if ( (isset($_GET['search2'])) ) {
+
+                $search2 = '%' . $_GET['search2'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+                $query2 = "select * from doctors where specialities = :search2 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                $arr2['search2'] = $search2; //to pass to the query function
+                $data2 = $doctors->query($query2, $arr2);
+                //print_r($data2);
+
+                }
+
+                if ( (isset($_GET['search3'])) ) {
+
+                $search3 = '%' . $_GET['search3'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+                $query3 = "select * from doctors where hospital = :search3 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                $arr3['search3'] = $search3; //to pass to the query function
+                $data3 = $doctors->query($query3, $arr3);
+                //print_r($data3);
+
+                }
+
+                if ( (isset($_GET['search4'])) ) {
+
+                $schedule = new schedule;
+                $scheduleid = $schedule->where('doctorid',$userid);
+                
+                if($scheduleid){
+                $search4 = '%' . $_GET['search4'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+                $query4 = "select * from schedule where dateofSlot = :search4 order by scheduleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                $arr4['search4'] = $search4; //to pass to the query function
+                $data4 = $schedule->query($query4, $arr4);
+                //print_r($data4);
+                //die;
+
+                }
+                }
+
+            
+
 
 
         
@@ -45,12 +92,17 @@ class channeling extends Controller
         $this->view("patient/channeling",[
             'rows'=>$data,
             'rows1'=>$data1,
+            'rows2'=>$data2,
+            'rows3'=>$data3,
+            'rows4'=>$data4,
+            'rows5'=>$data5,
+
+
+
 
         ]
     );
 
-
-        //in here put the relevent page name and the path
         }
     }
 
@@ -220,30 +272,18 @@ class channeling extends Controller
         $row=$appointments->where('patientid',$userid);
 
         //print_r($row);
-
+        
          
 
-        $scheduleid=$row[0]->scheduleid;
-
-
-            $schedule = new schedule();
-            $row2=$schedule->where('scheduleid',$scheduleid);
-
-            if($row2)
-            {
-            $row2=$row2[0];
-             }
-
+        
              
-            $row1=$appointments->where($doctorid,'userid');
-            $row2=wheredistinct($row1);
+            //$row3=$appointments->where($doctorid,'userid');
 
-            print_r($row2);
+            //print_r($row2);
                                             
            
     $this-> view("patient/patient",[
             'row'=>$row,
-            'row2'=>$row2,
 
 
 
@@ -263,7 +303,9 @@ class channeling extends Controller
         $schedule = new schedule();
 
         $row1=$schedule->where('doctorid', $userid);
+        //$date=$row1[0]->dateOfSlot;
 
+        
         $this->view("patient/doctors",[
             'row'=>$row,
             'rows'=>$row1,
@@ -336,7 +378,12 @@ class channeling extends Controller
              $appointmentidrow1=$appointmentidrow1[0];
             }
            
-
+            $this-> view("patient/patientPaymentConfirmation",[
+                'row'=>$row,
+                'row1'=>$appointmentidrow1,
+    
+    
+            ]);
          //-------------------------------for payment details-----------------------------------------------------
     }
 
@@ -393,11 +440,45 @@ class channeling extends Controller
         //  }
          //------------------------end of the payment part---------------------------------------------------------------
         }
-        $this-> view("patient/patientPaymentConfirmation",[
+       
+
+    }
+
+    function rate(){
+
+        $doctors = new doctors();
+        $row=$doctors->findAll();
+
+
+        if(count($_POST)>0)
+        {
+            
+            $patientRate = new patientRate();//create the instance of the patientRate in model
+            
+            $arr['doctorName'] = $_POST['name'];
+            $arr['feedback'] = $_POST['feedback'];
+            $arr['userid'] =Auth::userid();
+
+
+            $search1 = '%' .  $_POST['name'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+            $query1 = "select * from doctors where nameWithInitials like :search1 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+            $arr1['search1'] = $search1; //to pass to the query function
+            $data1 = $doctors->query($query1, $arr1);
+
+            $doctorid = $data1[0]->userid;
+            $arr['doctorid'] = $doctorid;
+            $arr['date'] = date("Y/m/d");
+               
+             
+               
+            $patientRate->insert($arr);
+            $this->redirect('channeling/patient');
+            
+            
+        } 
+
+        $this-> view("patient/rate",[
             'row'=>$row,
-            'row1'=>$appointmentidrow1,
-
-
         ]);
 
     }

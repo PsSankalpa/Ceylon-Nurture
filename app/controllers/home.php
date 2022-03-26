@@ -32,6 +32,23 @@ class home extends Controller
         $donations->delete3('status', 'not_completed','userID',$userid);
       }
 
+      $contactus = new contactus();
+
+      if(isset($_POST['submit']))
+      {  
+        // $arr['date'] = date("Y-m-d H:i:s");
+        $arr['fullname'] = htmlspecialchars($_POST['fullname']);
+        $arr['email'] = htmlspecialchars($_POST['email']);
+        $arr['message'] = htmlspecialchars($_POST['message']);
+        print_r($arr);
+        die;
+        $contactus->insert($_POST);
+        print_r($_POST);
+        die;
+        $this->redirect('landing/home');
+      }
+
+
       $this->view('home', [
         'rows' => $data2,
         'data' => $data,
@@ -45,6 +62,23 @@ class home extends Controller
         $query1 = "select * from articles order by articleid desc limit 6";
         $data2 = $article->query($query1);
       }
+      $contactus = new contactus();
+      
+      if(isset($_POST['submit']))
+      {  
+        // $arr['date'] = date("Y-m-d H:i:s");
+        $arr['fullname'] = htmlspecialchars($_POST['fullname']);
+        $arr['email'] = htmlspecialchars($_POST['email']);
+        $arr['message'] = htmlspecialchars($_POST['message']);
+        //print_r($arr);
+        //die;
+        $contactus->insert($_POST);
+        //print_r($_POST);
+       
+        $this->redirect('landing/home');
+      }
+
+
 
       $data = "";
       $this->view('home', [
