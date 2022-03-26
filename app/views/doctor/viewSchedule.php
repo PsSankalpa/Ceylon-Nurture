@@ -1,21 +1,22 @@
 <html>
 
 <head>
-<title>Doctor's View Schedule</title>
- <link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
-<meta name="viewport" content="width=device-width; initial-scale=1.0;">
-<link rel="stylesheet" type="text/css" href="<?=ASSETS?>css/addSchedule.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script>
-      function openSlideMenue(){
-        document.getElementById('mySidenav').style.width = '250px';
-        document.getElementById('content').style.marginLeft = '250px';
-      }
-      function closeSlideMenue(){
-        document.getElementById('mySidenav').style.width = '0';
-        document.getElementById('content').style.marginLeft = '0';
-      }
-    </script>
+  <title>Doctor's View Schedule</title>
+  <link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+  <link rel="stylesheet" type="text/css" href="<?= ASSETS ?>css/addSchedule.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+    function openSlideMenue() {
+      document.getElementById('mySidenav').style.width = '250px';
+      document.getElementById('content').style.marginLeft = '250px';
+    }
+
+    function closeSlideMenue() {
+      document.getElementById('mySidenav').style.width = '0';
+      document.getElementById('content').style.marginLeft = '0';
+    }
+  </script>
 </head>
 
 <body class="bg">
@@ -59,7 +60,7 @@
             <div class="date">
               <label>To</label>
               <input type="date" id="todate" name="todate">
-            </div>  
+            </div>
             <div>
               <button type="submit">Filter</button>
               <!--<input type="submit" value="submit">-->
@@ -88,7 +89,7 @@
 
 
                   ?>
-                  <h4><?= "Time-" . $a_h ."-" . $d_p ?> </h4>
+                  <h4><?= "Time-" . $a_h . "-" . $d_p ?> </h4>
                   <div class="div">
                     <a href="<?= ROOT ?>/doctor/scheduleDetails/<?= $row->scheduleid ?>">
                       <button class="cardbutton">View More</button>

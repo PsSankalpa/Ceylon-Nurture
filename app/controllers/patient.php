@@ -47,5 +47,42 @@ class patient extends Controller
         $des =$destination;
         return $des;
     }
+    function deleteAccount($userid = null)
+    {
+        if (!Auth::logged_in())
+        {
+            $this->redirect('login/login');
+        }
+        $errors = array();
+        $patients = new patients();
+
+
+        if (count($_POST) > 0) 
+        {
+            //print_r($data);
+            //die;
+            $patients->delete($userid);
+            $this->redirect('myAccount');
+        }
+        $row = $patients->where('userid', $userid);
+        //$data2 = $doctors->findAll();
+        if ($row) 
+        {
+            $row = $row[0];
+            unlink($row->image);
+        }
+        $doctorid = Auth::userid();
+        $patient = new patient();
+        $data = $patients->where('userid', $userid);
+        $this->view('profile/deletePatient', [
+            'row' => $row,
+            'data' => $data,
+        ]);
+    }
+
+
+
+
+
 
 }

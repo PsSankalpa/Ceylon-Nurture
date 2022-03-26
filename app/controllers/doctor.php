@@ -164,25 +164,25 @@ class doctor extends Controller
     }
 
     //function to view account
-    function viewAccount($userid = [])
-    {
-        //$doctorid = Auth::userid();
+    // function viewAccount($userid = [])
+    // {
+    //     //$doctorid = Auth::userid();
 
-        $errors = array();
-        $doctors = new doctors();
+    //     $errors = array();
+    //     $doctors = new doctors();
 
-        $userid = Auth::userid();
-        $rows = $doctors->where('userid', $userid); //in here row is an array
-        //$data2 = $doctors->findAll();
-        if ($rows) {
-            $rows = $rows[0];
-        }
-        $this->view('doctor/viewAccount', [
-            'errors' => $errors,
-            'rows' => $rows,
-            //'data2'=>$data2,
-        ]);
-    }
+    //     $userid = Auth::userid();
+    //     $row = $doctors->where('userid', $userid); //in here row is an array
+    //     //$data2 = $doctors->findAll();
+    //     if ($row) {
+    //         $row = $row[0];
+    //     }
+    //     $this->view('profile/myAccount', [
+    //         'errors' => $errors,
+    //         'row' => $row,
+    //         //'data2'=>$data2,
+    //     ]);
+    // }
     //function to edit account
     function editAccount($userid = null)
     {
@@ -204,7 +204,6 @@ class doctor extends Controller
                 $arr['userid'] = AUTH::userid();
                 $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
                 $arr['gender'] = htmlspecialchars($_POST['gender']);
-                $arr['dob'] = htmlspecialchars($_POST['dob']);
                 $arr['registrationNumber'] = $_POST['registrationNumber'];
                 $arr['specialities'] = $_POST['specialities'];
                 $arr['hospital'] = $_POST['hospital'];
@@ -214,10 +213,11 @@ class doctor extends Controller
                 // $arr['image2'] = $des2;
 
                 $doctors->update($userid, $arr);
-                $this->redirect('doctor/viewAccount');
-            } else {
+
+                $this->redirect('myAccount');
+                } else {
                 $errors = $doctors->errors;
-            }
+                }
         }
         $row = $doctors->where('userid', $userid);
         // print_r($row);      
@@ -227,7 +227,7 @@ class doctor extends Controller
                 unlink($row->image);
             }
         }
-        $this->view('doctor/editAccount', [
+        $this->view('profile/editDoctor', [
             'errors' => $errors,
             'row' => $row,
         ]);
@@ -246,7 +246,7 @@ class doctor extends Controller
             //print_r($data);
             //die;
             $doctors->delete($userid);
-            $this->redirect('doctor/viewAccount');
+            $this->redirect('myAccount');
         }
         $row = $doctors->where('userid', $userid);
         //$data2 = $doctors->findAll();
@@ -257,7 +257,7 @@ class doctor extends Controller
         $doctorid = Auth::userid();
         $doctor = new doctors();
         $data = $doctor->where('userid', $doctorid);
-        $this->view('doctor/deleteAccount', [
+        $this->view('profile/deleteDoctor', [
             'row' => $row,
             'data' => $data,
         ]);
@@ -349,9 +349,7 @@ class doctor extends Controller
                 //print_r($date1);
               
                 $row= $schedule->finddaterange($date1,$date2);
-                //print_r($row); 
-                
-            
+                //print_r($row);  
         }
         $this->view('doctor/viewSchedule', [
             'errors' => $errors,

@@ -38,7 +38,7 @@ class patients extends Model
 				mkdir($folder, 0777, true);
 			}
 
-			//renaming the image with a username which doctor uploads
+			//renaming the image with a username which patient uploads
 			$temp = explode("-", $FILES['image']['name']);
 			$newfilename = $UName . '-' . end($temp);
 

@@ -112,7 +112,7 @@ if (isset($_POST['password_reset_link'])) {
 
         if ($update_token_run) {
 
-            send_password_reset(/*$get_name,*/$get_email, $token);
+           // send_password_reset(/*$get_name,*/$get_email, $token);
 
             $_SESSION['status'] = "We have sent an email containing a password reset link";
             header("password_reset");
