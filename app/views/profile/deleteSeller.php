@@ -1,19 +1,18 @@
 <html>
 
 <head>
-    <title>Delete Patient Account</title>
+    <title>Delete Seller Account</title>
     <?php $this->view("header", $data) ?>
-    <link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width; initial-scale=1.0;">
     <link rel="stylesheet" type="text/css" href="<?= ASSETS ?>css/registrationform.css">
 </head>
 
 <body class="regi" style="background-color:#D4F1F4 ;">
     <div class="container center">
-        <h1>Delete Patient Account</h1>
+        <h1>Delete Seller Account</h1>
         <?php if ($row) : ?>
             <form class="regi_form" enctype="multipart/form-data" method="POST">
-                <h2>Do you want to delete the account <?= get_var('nic',$row->nic) ?></h2>
+                <h2>Do you want to delete the account <?= get_var('nameWithInitials', $row->nameWithInitials) ?></h2>
                 <input type="hidden" name="id">
                 <hr>
                 <br>

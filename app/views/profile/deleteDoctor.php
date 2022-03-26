@@ -2,6 +2,7 @@
 
 <head>
     <title>Delete Doctor Account</title>
+    <?php $this->view("header", $data) ?>
     <meta name="viewport" content="width=device-width; initial-scale=1.0;">
     <link rel="stylesheet" type="text/css" href="<?= ASSETS ?>css/registrationform.css">
 </head>
