@@ -444,7 +444,7 @@ class channeling extends Controller
 
     }
 
-    function rate($userid=NULL){
+    function rate(){
 
         $doctors = new doctors();
         $row=$doctors->findAll();
@@ -461,18 +461,18 @@ class channeling extends Controller
 
 
             $search1 = '%' .  $_POST['name'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-            $query1 = "select * from doctors where nameWithInitials =:search1 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+            $query1 = "select * from doctors where nameWithInitials like :search1 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
             $arr1['search1'] = $search1; //to pass to the query function
             $data1 = $doctors->query($query1, $arr1);
 
             $doctorid = $data1[0]->userid;
-            $arr['doctorid'] = $userid;
+            $arr['doctorid'] = $doctorid;
             $arr['date'] = date("Y/m/d");
                
              
                
             $patientRate->insert($arr);
-            $this->redirect('home/home');
+            $this->redirect('channeling/patient');
             
             
         } 
