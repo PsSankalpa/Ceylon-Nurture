@@ -17,12 +17,12 @@ class seller extends Controller
 
         $products = new products();
         $userid = Auth::userid();
-        
+
         $sellers = new sellers();
         $data3 = $sellers->where('userid', $userid);
 
         $payments = new productcommission();
-        if ($d_data = $payments->where2('status', 'not_completed','userID',$userid)) {
+        if ($d_data = $payments->where2('status', 'not_completed', 'userID', $userid)) {
             $p_id1 = $d_data[0]->productid;
             $row_1 = $products->where('productid', $p_id1);
             if ($row_1) {
@@ -30,7 +30,7 @@ class seller extends Controller
                 unlink($row_1->image);
             }
             $products->delete($p_id1);
-            $payments->delete3('status', 'not_completed','userID',$userid);
+            $payments->delete3('status', 'not_completed', 'userID', $userid);
         }
 
         $data = $products->where('sellerid', $userid);
@@ -95,7 +95,7 @@ class seller extends Controller
             $sellers = new sellers(); //create the instance of the seller in model
 
 
-            if ($sellers->validate($_POST, $_FILES,$userName)) {
+            if ($sellers->validate($_POST, $_FILES, $userName)) {
                 global $des;
                 $arr['userid'] = Auth::userid();
                 $arr['nameWithInitials'] = $data4->nameWithInitials;
@@ -117,6 +117,54 @@ class seller extends Controller
         ]);
     }
 
+    //function for seller registration
+    function editSeller()
+    {
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+        }
+
+        $sellers = new sellers();
+
+        $commonUser = new common_user();
+        $userid = Auth::userid();
+
+        $errors = array();
+        $sellers = new sellers(); //create the instance of the seller in model
+        $data1 = $sellers->where('userid', $userid);
+        if ($data1) {
+            $data1 = $data1[0];
+        }
+
+        $dest = $data1->image;
+
+        $userName = Auth::username();
+        if (count($_POST) > 0) {
+
+            if ($sellers->validate2($_POST, $_FILES, $userName,$userid,$dest)) {
+                global $des;
+                $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
+                $arr['registrationNumber'] = htmlspecialchars($_POST['registrationNumber']);
+                $arr['tpNumber'] = htmlspecialchars($_POST['tpNumber']);
+                $arr['nic'] = htmlspecialchars($_POST['nic']);
+                $arr['address'] = htmlspecialchars($_POST['address']);
+                $arr['image'] = $des;
+
+                $sellers->update($userid, $arr);
+                $this->redirect('myAccount');
+                
+            } else {
+                $errors = $sellers->errors;
+            }
+        }
+        
+        $this->view('profile/editSeller', [
+            'errors' => $errors,
+            'row' => $data1,
+        ]);
+    }
+
+    //for upload products
     function uploadProduct()
     {
         if (!Auth::logged_in()) {
@@ -140,7 +188,7 @@ class seller extends Controller
 
             $userName = Auth::username();
 
-            if ($products->validate($_POST, $_FILES,$userName)) {
+            if ($products->validate($_POST, $_FILES, $userName)) {
                 global $des;
                 $arr['productName'] = htmlspecialchars($_POST['productName']);
                 $arr['productPrice'] = htmlspecialchars($_POST['productPrice']);
@@ -192,6 +240,7 @@ class seller extends Controller
         ]);
     }
 
+    //for payments of the products
     function commissionPayment($commission = "")
     {
         if (!Auth::logged_in()) {
@@ -276,6 +325,7 @@ class seller extends Controller
         //------------------------end of the payment part---------------------------------------------------------------
     }
 
+    //for edit products
     function editProduct($productid = null)
     {
         if (!Auth::logged_in()) {
@@ -287,10 +337,15 @@ class seller extends Controller
         $products = new products();
 
         $userName = Auth::username();
+        $data1 = $products->where('productid', $productid);
+        if ($data1) {
+            $data1 = $data1[0];
+        }
+        $dest = $data1->image;
 
         if (count($_POST) > 0) {
 
-            if ($products->validate2($_POST, $_FILES,$userName)) {
+            if ($products->validate2($_POST, $_FILES, $userName,$productid,$dest)) {
                 global $des;
                 $arr['productName'] = $_POST['productName'];
                 $arr['description'] = $_POST['description'];
@@ -308,9 +363,6 @@ class seller extends Controller
 
         if ($row) {
             $row = $row[0];
-            if (file_exists($row->image)) {
-                unlink($row->image);
-            }
         }
         $this->view('seller/editProduct', [
             'errors' => $errors,
@@ -318,6 +370,7 @@ class seller extends Controller
         ]);
     }
 
+    //for delete products
     function deleteProduct($productId = null)
     {
         if (!Auth::logged_in()) {
@@ -329,6 +382,12 @@ class seller extends Controller
 
         if (count($_POST) > 0) {
 
+            $row = $products->where('productid', $productId);
+            if ($row) {
+                $row = $row[0];
+                unlink($row->image);
+            }
+
             $products->delete($productId);
             $this->redirect('seller');
         }
@@ -336,7 +395,6 @@ class seller extends Controller
         $data = $products->where('productid', $productId);
         if ($row) {
             $row = $row[0];
-            unlink($row->image);
         }
         $this->view('seller/deleteProduct', [
             'row' => $row,
@@ -344,11 +402,9 @@ class seller extends Controller
         ]);
     }
 
+    //for product details
     function productDetails($productId = null)
     {
-        if (!Auth::logged_in()) {
-            $this->redirect('login/login');
-        }
 
         $products = new products();
         $data = $products->where('productId', $productId);
@@ -357,6 +413,7 @@ class seller extends Controller
         $this->view('seller/productDetails', ['rows' => $data]);
     }
 
+    //for payment details
     function productPaymentDetails()
     {
 
@@ -377,19 +434,20 @@ class seller extends Controller
         ]);
     }
 
+    //for generate pdf---------------------------------------------------------------------
     public function generatepdf($id)
     {
         $userid = Auth::userid();
         require_once __DIR__ . '/../models/mpdf/autoload.php';
         $mpdf = new \Mpdf\Mpdf();
-        $html = file_get_contents(ROOT.'/seller/paymentpdf/'.$id.'/'.$userid );
+        $html = file_get_contents(ROOT . '/seller/paymentpdf/' . $id . '/' . $userid);
         // print_r($html);
         // die;
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }
 
-    function paymentpdf($id,$userid)
+    function paymentpdf($id, $userid)
     {
 
         $payments = new productcommission();
@@ -413,15 +471,18 @@ class seller extends Controller
                 text-align: left;
                 padding: 16px;
             }
-            .title2{
+
+            .title2 {
                 width: 95%;
                 text-align: center;
             }
         </style>
 
         <div class="title1" style="width: 95%;">
-            <div class="logo" style="width: 100%;text-align: center;"><img  src="<?= ASSETS ?>img/logo.png" style="width: 30%;align-items: center;"></div>
-            <div class="mtitle" style="width: 100%;text-align: center;"><h1>Ceylon Nuture</h1></div>
+            <div class="logo" style="width: 100%;text-align: center;"><img src="<?= ASSETS ?>img/logo.png" style="width: 30%;align-items: center;"></div>
+            <div class="mtitle" style="width: 100%;text-align: center;">
+                <h1>Ceylon Nuture</h1>
+            </div>
         </div>
         <hr>
         <div class="title2">

@@ -87,7 +87,7 @@ class products extends Model
 		return false;
 	}
 
-	public function validate2($DATA, $FILES,$UName)
+	public function validate2($DATA, $FILES,$UName, $productid,$dest)
 	{
 		//-------------------------------------------------------------------------------------------------------------------------------------
 		//for product
@@ -117,13 +117,27 @@ class products extends Model
 		//for image
 
 		if ($FILES['image']['size'] == 0) {
-			$this->errors2['image'] = "Cannot keep image empty";
+			$seller = new seller();
+			$seller->get_destination($dest);
+
+			if (count($this->errors) == 0) {
+				return true;
+			}
 		} else {
 			//upload the file to following dir
 			$folder = "seller_products/";
 			if (!file_exists($folder)) //if dir doesn't exist,create it like below with file permissions
 			{
 				mkdir($folder, 0777, true);
+			}
+
+			//renaming the image with a username which doctor uploads
+			$row = $this->where('productid', $productid); //in here row is an array
+			if ($row) {
+				$row = $row[0];
+				if (file_exists($row->image)) {
+					unlink($row->image);
+				}
 			}
 
 			$temp = explode("-", $FILES['image']['name']);
@@ -141,12 +155,14 @@ class products extends Model
 				$seller = new seller();
 				$seller->get_destination($destination); //send the address of the file path to seller controller to save in the database 
 			}
+
+			if (count($this->errors2) == 0) {
+				move_uploaded_file($FILES['image']['tmp_name'], $destination);
+				return true;
+			}
+			
 		}
 
-		if (count($this->errors2) == 0) {
-			move_uploaded_file($FILES['image']['tmp_name'], $destination);
-			return true;
-		}
 		return false;
 	}
 }

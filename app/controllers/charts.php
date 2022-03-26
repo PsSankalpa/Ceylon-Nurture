@@ -1,4 +1,6 @@
 <?php
+
+/*this is a testing controller for charts */
 class charts extends Controller
 {
     function index()
