@@ -154,20 +154,21 @@ input[type=reset]:hover{
   .seller-grid-container > h2 {
     text-align: center;
   }
-  h2{
-
-  }
+  
   .container center > h1{
     text-align: left;
     font-size: 32px;
     color:#05445E;
   }
   
-  h3,h4{
+  h4{
     color:#A7D129;
     text-align: center;
   }
-  
+  h3{
+    color:#e02f0f;
+    text-align: center;
+  }
   .seller-grid-container p{
     color:#A7D129;
     text-align: justify;

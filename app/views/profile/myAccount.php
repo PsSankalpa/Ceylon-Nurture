@@ -60,8 +60,8 @@
                     </div>
                 </div>
                 <div class="m-btns">
-                    <a href="<?= ROOT ?>/myAccount/editCommonUser"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
-                    <a href=""><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
+                    <a href="<?= ROOT ?>/myAccount/editCommonUser/<?= $data4->userid ?>"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
+                    <a href="<?= ROOT ?>/myAccount/deleteCommonUser/<?= $data4->userid ?>"><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
                 </div>
                 <?php if (($row == "seller") || ($row == "doctorAndSeller") || ($row == "sellerAndPatient") || ($row == "allUser")) : ?>
                     <!----------------------seller---------------------------------------------------------------------------->
@@ -117,7 +117,7 @@
                     </div>
                     <div class="m-btns">
                         <a href="<?= ROOT ?>/myAccount/editSeller"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
-                        <a href=""><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
+                        <a href="<?= ROOT ?>/seller/deleteAccount/<?= $data1->userid ?>"><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
                     </div>
                 <?php endif; ?>
                 <?php if (($row == "doctor") || ($row == "doctorAndSeller") || ($row == "doctorAndPatient") || ($row == "allUser")) : ?>

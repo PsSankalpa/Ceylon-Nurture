@@ -74,99 +74,6 @@ class myAccount extends Controller
 		]);
     }
     
-
-    // function editDoctor($userid = null)
-    // {
-    //     $userid = Auth::userid();
-    //     $errors = array();
-    //     $doctors = new doctors();
-        
-    //     $data2 = $doctors->where('userid',$userid); 
-    //     //print_r($data2);
-        
-
-    //     if($data2)
-    //     {
-    //         $data2 = $data2[0];
-    //     }
-    //     //print_r($data2);
-    //     $errors = array();
-
-    //     $userName = Auth::username();
-
-    //     if (count($_POST) > 0) 
-    //     {
-            
-    //         if ($doctors->validate($_POST, $_FILES,$userName)) 
-    //         {
-    //             print_r($_POST);
-               
-               
-    //             global $des;
-    //             //global $des2;
-    //             $arr['userid'] = AUTH::userid();
-    //             $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
-    //             $arr['gender'] = htmlspecialchars($_POST['gender']);
-    //             $arr['registrationNumber'] = $_POST['registrationNumber'];
-    //             $arr['specialities'] = $_POST['specialities'];
-    //             $arr['hospital'] = $_POST['hospital'];
-    //             $arr['city'] = $_POST['city'];
-    //             $arr['address'] = $_POST['address'];
-    //             $arr['image'] = $des; 
-
-    //         $doctors->update($userid, $arr);   
-    //         print_r($arr);  
-            
-
-    //         $this->redirect('myAccount');
-    //         } else {
-    //          $errors = $doctors->errors;
-    //         }
-    //     }
-    //     $row = $doctors->where('userid', $userid);
-            
-    //     if ($row) {
-    //         $row = $row[0];
-    //         if (file_exists($row->image)) {
-    //             unlink($row->image);
-    //         }
-    //     }
-    //     $this->view('profile/editDoctor',[
-	// 		'errors'=>$errors,
-    //         'row'=>$data2,
-	// 	]);
-    // }
-
-    function deleteAccount($userid = null)
-    {
-        if (!Auth::logged_in()) {
-            $this->redirect('login/login');
-        }
-        $errors = array();
-        $doctors = new doctors();
-
-
-        if (count($_POST) > 0) {
-            //print_r($data);
-            //die;
-            $doctors->delete($userid);
-            $this->redirect('doctor/viewAccount');
-        }
-        $row = $doctors->where('userid', $userid);
-        //$data2 = $doctors->findAll();
-        if ($row) {
-            $row = $row[0];
-            unlink($row->image);
-        }
-        $doctorid = Auth::userid();
-        $doctors = new doctors();
-        $data = $doctors->where('userid', $doctorid);
-        $this->view('doctor/deleteAccount', [
-            'row' => $row,
-            'data' => $data,
-        ]);
-    }
-
     function editSeller()
     {
         $userid = Auth::userid();
@@ -240,4 +147,39 @@ class myAccount extends Controller
             'row'=>$data4
 		]);
     }
+    function deleteCommonUser($userid = null)
+    {
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
+        }
+        $errors = array();
+        $commonUser = new common_user();
+        $userid = Auth::userid();
+
+        if (count($_POST) > 0) {
+            $row = $commonUser->where('userid', $userid);
+            if ($row) {
+                $row = $row[0];
+                if(file_exists($row->image)){
+                    unlink($row->image);
+                    }
+            }
+            //print_r($data);
+            //die;
+            $commonUser->delete($userid);
+            $this->redirect('logout');
+        }
+        $row = $commonUser->where('userid', $userid);
+        //$data2 = $doctors->findAll();
+        $doctorid = Auth::userid();
+        $data = $commonUser->where('userid', $userid);
+        $this->view('profile/deleteCommonUser', [
+            'row' => $row,
+            'data' => $data,
+        ]);
+    }
+
+
+
+
 }

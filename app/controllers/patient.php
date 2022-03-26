@@ -59,19 +59,20 @@ class patient extends Controller
 
         if (count($_POST) > 0) 
         {
+            $row = $patients->where('userid', $userid);
+            if ($row) {
+                $row = $row[0];
+                if(file_exists($row->image)){
+                    unlink($row->image);
+                    }
+            }
             //print_r($data);
             //die;
             $patients->delete($userid);
             $this->redirect('myAccount');
         }
         $row = $patients->where('userid', $userid);
-        //$data2 = $doctors->findAll();
-        if ($row) 
-        {
-            $row = $row[0];
-            unlink($row->image);
-        }
-        $doctorid = Auth::userid();
+        
         $patient = new patient();
         $data = $patients->where('userid', $userid);
         $this->view('profile/deletePatient', [

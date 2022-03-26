@@ -117,6 +117,44 @@ class seller extends Controller
         ]);
     }
 
+     //function to delete account
+     function deleteAccount($userid = null)
+     {
+         if (!Auth::logged_in()) {
+             $this->redirect('login/login');
+         }
+         $errors = array();
+         $sellers = new sellers();
+ 
+ 
+         if (count($_POST) > 0) {
+            $row = $sellers->where('userid', $userid);
+            if ($row) {
+                $row = $row[0];
+                if(file_exists($row->image)){
+                    unlink($row->image);
+                    }
+            }
+             //print_r($data);
+             //die;
+             $sellers->delete($userid);
+             $this->redirect('myAccount');
+         }
+         $row = $sellers->where('userid', $userid);
+
+         $sellerid = Auth::userid();
+         $sellers = new sellers();
+         $data = $sellers->where('userid', $sellerid);
+         $this->view('profile/deleteSeller', [
+             'row' => $row,
+             'data' => $data,
+         ]);
+     }
+ 
+
+
+
+
     function uploadProduct()
     {
         if (!Auth::logged_in()) {
