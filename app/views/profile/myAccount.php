@@ -116,8 +116,10 @@
                         </div>
                     </div>
                     <div class="m-btns">
-                        <a href="<?= ROOT ?>/myAccount/editSeller"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
+
+                        <a href="<?= ROOT ?>/seller/editSeller"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
                         <a href="<?= ROOT ?>/seller/deleteAccount/<?= $data1->userid ?>"><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
+                                     
                     </div>
                 <?php endif; ?>
                 <?php if (($row == "doctor") || ($row == "doctorAndSeller") || ($row == "doctorAndPatient") || ($row == "allUser")) : ?>
@@ -215,8 +217,10 @@
                         </div>
                     </div>
                     <div class="m-btns">
-                        <a href="<?= ROOT ?>/myAccount/editPatient"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
+
+                        <a href="<?= ROOT ?>/patient/patientUpdate"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
                         <a href="<?= ROOT ?>/patient/deleteAccount/<?= $data3->userid ?>"><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
+
                     </div>
                 <?php endif; ?>
                 <!-------------------------------------------------------------------------------------------------->

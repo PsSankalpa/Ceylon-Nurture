@@ -19,7 +19,7 @@
             <div class="search">
             <h1>Channel a Doctor</h1>
             
-                <form class="regi_form" enctype="multipart/form-data" method="POST" action="">
+                <form class="regi_form" enctype="multipart/form-data" method="GET" action="">
 
                     <div class="row">
                     <div class="col-25">
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="col-75">
-                    <input type="text" value="<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>" placeholder="Search.." name="search">
+                    <input type="text" value="<?= isset($_GET['search1']) ? $_GET['search1'] : ''; ?>" placeholder="Search.." name="search1">
                     </div>
                 
                     <div class="row">
@@ -36,10 +36,10 @@
                     </div>
 
                     <div class="col-75">
-                    <select name="speciality">
-                        <option>--Select Speciality--</option>
+                    <select name="search2">
+                        <option value="<?= isset($_GET['search2']) ? $_GET['search2'] : ''; ?>" >--Select Speciality--</option>
                         <?php foreach ($rows as $row):?>
-                                <option><?=$row->hospital?></option>
+                                <option><?=$row->specialities?></option>
                             <?php endforeach;?>
                         </select>
                     </div>
@@ -51,8 +51,8 @@
                     </div>
 
                     <div class="col-75">
-                    <select name="hospital">
-                        <option>--Select Hospital--</option>
+                    <select name="search3">
+                        <option value="<?= isset($_GET['search3']) ? $_GET['search3'] : ''; ?>" >--Select Hospital--</option>
                             <?php foreach ($rows as $row):?>
                                 <option><?=$row->hospital?></option>
                             <?php endforeach;?>
@@ -67,7 +67,7 @@
                         <label  class="label" for="date">Date</label>
                     </div>
                     <div class="col-75">
-                    <input type="date" id="date" name="date" >
+                    <input type="date" value="<?= isset($_GET['search4']) ? $_GET['search4'] : ''; ?>" placeholder="Search.." name="search4">
                     </div>
                     </div>
                     <br>
@@ -81,26 +81,68 @@
             </div>            
 
             <div class="schedule">
-            <?php if ($rows1) : ?>
-                <?php foreach ($rows1 as $row) : ?>
+            <?php if ( ((isset($_GET['search1'])) || (isset($_GET['search2'])) || (isset($_GET['search3'])) || (isset($_GET['search4']))) ): ?>
 
-                    <form class=scheduling_form enctype="multipart/form-data" action="<?=ROOT?>channeling/doctors/<?=$row->userid?>">
+            <?php 
+            
+            while( ((isset($_GET['search1'])) || (isset($_GET['search2'])) || (isset($_GET['search3'])) || (isset($_GET['search4']))) ){
+            
+                if ($rows1){
+                    $row = $rows1;
+                    break;
 
-        
-                        <div class="item">
-                        <div class="doc_image_container"><img class="doctor_image" src="<?=ASSETS?>img/doctor.jpg"></div>
-
-                        <div class="doc_details_container"><h3><?=$row->nameWithInitials?> </h3><br>
-                        Hospital:<?=$row->hospital?> <br>Speciality:<?=$row->specialities?></div>
+                }
+                elseif ($rows2){
+                    $row = $rows2;
+                    break;
 
 
-                        <div class="button_container"><a href="<?=ROOT?>channeling/doctors/<?=$row->userid?>"><input type="submit" value="Book Now"></a></div>
-                        </div>
-                    </form>
-                <?php endforeach;?>
-            <?php endif;?>
+                }
+                elseif ((isset($_GET['search3']))){
+                    $row = $rows3;
+                    break;
+
+
+                }
+                elseif ((isset($_GET['search4']))){
+                    $row = $rows4;
+                    break;
+
+
+                }
+        }
+            ?> 
+
+                <?php if ($row) : ?>
+                        <?php foreach ($row as $row) : ?>
+                            <?php if ($rows5) : ?>
+                                <?php if ($rows5 != "doctorAndPatient"): ?>
+
+                            <form class=scheduling_form enctype="multipart/form-data" action="<?=ROOT?>channeling/doctors/<?=$row->userid?>">
+
+                
+                                <div class="item">
+                                <div class="doc_image_container"><img class="doctor_image" src="<?=ASSETS?>img/doctor.jpg"></div>
+
+                                <div class="doc_details_container"><h3><?=$row->nameWithInitials?> </h3><br>
+                                Hospital:<?=$row->hospital?> <br>Speciality:<?=$row->specialities?></div>
+
+
+                                <div class="button_container"><a href="<?=ROOT?>channeling/doctors/<?=$row->userid?>"><input type="submit" value="Book Now"></a></div>
+                                </div>
+                            </form>
+                            <?php endif;?>
+                            <?php endif;?>
+
+                        <?php endforeach;?>
+                    <?php endif;?>
+
+            
                     
-            <?php if (!$rows1) : ?>
+                    <?php if (!($rows1||$rows2||$rows3||$rows4)) : ?>
+                            No search results!
+                    <?php endif;?>
+                <?php else:?>
 
                 <?php foreach ($rows as $row):?>
                 <form class=scheduling_form enctype="multipart/form-data" action="<?=ROOT?>channeling/doctors/<?=$row->userid?>">
@@ -119,6 +161,7 @@
 
                     <?php endforeach;?>
                     <?php endif;?>
+
 
             </div>
 

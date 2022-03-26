@@ -732,11 +732,17 @@ class doctor extends Controller
         }
 
         $errors = array();
+        $userName = Auth::username();
         $articles = new article();
+        $data1 = $articles->where('articleid', $articleid);
+        if ($data1) {
+            $data1 = $data1[0];
+        }
+        $dest = $data1->image;
 
         if (count($_POST) > 0) {
 
-            if ($articles->validate($_POST, $_FILES)) {
+            if ($articles->validate2($_POST, $_FILES, $userName,$articleid,$dest)) {
                 global $des;
                 $arr['articleName'] = htmlspecialchars($_POST['articleName']);
                 $arr['description'] = htmlspecialchars($_POST['description']);
@@ -758,9 +764,6 @@ class doctor extends Controller
         $data = $articles->where('articleid', $articleid);
         if ($data) {
             $data = $data[0];
-            if (file_exists($data->image)) {
-                unlink($data->image);
-            }
         }
         $this->view('articles/editArticles', [
             'data' => $data,
@@ -780,6 +783,12 @@ class doctor extends Controller
 
         if (count($_POST) > 0) {
 
+            $row = $articles->where('productid', $articleId);
+            if ($row) {
+                $row = $row[0];
+                unlink($row->image);
+            }
+
             $articles->delete($articleId);
             $this->redirect('seller');
         }
@@ -787,7 +796,6 @@ class doctor extends Controller
         $data = $articles->where('productid', $articleId);
         if ($row) {
             $row = $row[0];
-            unlink($row->image);
         }
         $this->view('seller/deleteProduct', [
             'row' => $row,

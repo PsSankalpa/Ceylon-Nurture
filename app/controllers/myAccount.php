@@ -53,69 +53,8 @@ class myAccount extends Controller
         $des = $destination;
         return $des;
     }
-
-    function editPatient()
-    {
-        $patient = new patients();
-        $userid = Auth::userid();
-        $data3 = $patient->where('userid',$userid);
-        if($data3)
-        {
-            $data3 = $data3[0];
-        }
-        $errors = array();
-        if(count($_POST)>0)
-        {
-            $this->redirect('myAccount');
-        }
-        $this->view('profile/editPatient',[
-			'errors'=>$errors,
-            'row'=>$data3,
-		]);
-    }
     
-    function editSeller()
-    {
-        $userid = Auth::userid();
-        $sellers = new sellers();
-        $data1 = $sellers->where('userid',$userid); 
-
-        if($data1)
-        {
-            $data1 = $data1[0];
-        }
-
-        $errors = array();
-
-        $userName = Auth::username();
-
-        $sellerid = Auth::userid();
-        
-        if(count($_POST)>0)
-        {
-            if ($sellers->validate($_POST, $_FILES,$userName)) {
-                global $des;
-              //  $arr['userid'] = Auth::userid();
-                $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
-                $arr['registrationNumber'] = htmlspecialchars($_POST['registrationNumber']);
-                $arr['tpNumber'] = htmlspecialchars($_POST['tpNumber']);
-                $arr['nic'] = htmlspecialchars($_POST['nic']);
-                $arr['address'] = htmlspecialchars($_POST['address']);
-                $arr['image'] = $des;
-
-
-                $sellers->update($sellerid,$arr);
-                $this->redirect('home/home');
-            } else {
-                $errors = $sellers->errors;
-            }
-            $this->redirect('myAccount');
-        }
-        $this->view('profile/editSeller',[
-			'errors'=>$errors,
-            'row'=>$data1,
-		]);
-    }
+   }
 
     function editCommonUser()
     {
