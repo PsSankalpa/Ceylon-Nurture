@@ -78,9 +78,16 @@
                             </tr>
                           </thead>
                             <?php foreach ($data5 as $data5):?>
+                              <?php
+                              $arrivalTime = strtotime($data1->arrivalTime);
+                              $departureTime = strtotime($data1->departureTime);
+                              $a_h = date("g:i a", $arrivalTime);
+                              $d_p = date("g:i a", $departureTime);
+                              ?>
+
                             <tr>
                                 <td><?= $data1->dateofSlot?></td>
-                                <td><?= $data1->arrivalTime?>am - <?= $data1->departureTime ?>am</td>
+                                <td><?= $a_h ."-" . $d_p?></td>
                                 <td><?= $data1->slotNumber?></td>
 
                                 <td><?= $data5->patientName?></td>

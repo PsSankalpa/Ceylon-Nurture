@@ -13,12 +13,14 @@ class patient extends Controller
     function registration()
     {
         $errors = array();
+        $userName = Auth::username();
+
         if(count($_POST)>0)
         {
             
             $patients = new patients();//create the instance of the patient in model
             
-            if($patients->validate($_POST,$_FILES))
+            if($patients->validate($_POST,$_FILES,$userName))
             {
                 global $des;
                 $arr['userid'] = Auth::userid();

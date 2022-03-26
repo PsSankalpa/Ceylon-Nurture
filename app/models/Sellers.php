@@ -15,7 +15,7 @@ class sellers extends Model
 
 	protected $table = "sellers";
 
-	public function validate($DATA, $FILES)
+	public function validate($DATA, $FILES,$UName)
 	{
 		$this->errors = array();
 		$this->errors2 = array();
@@ -77,8 +77,15 @@ class sellers extends Model
 				mkdir($folder, 0777, true);
 			}
 
+			//renaming the image with a username which doctor uploads
+			$temp = explode("-", $FILES['image']['name']);
+			$newfilename = $UName . '-' . end($temp);
+
 			//create the destination 
-			$destination = $folder . $FILES['image']['name'];
+			$destination = $folder . $newfilename;
+
+			//create the destination 
+			//$destination = $folder . $FILES['image']['name'];
 
 			$imageFileType = strtolower(pathinfo($destination, PATHINFO_EXTENSION));
 			$uploadOk = 1;
