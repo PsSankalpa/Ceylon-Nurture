@@ -3,6 +3,6 @@ class about extends Controller
 {
     function index()
     {
-        $this->view("about"); 
+        $this->view("aboutUs"); 
     }
 }

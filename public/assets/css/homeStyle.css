@@ -264,6 +264,17 @@ background-color:#189AB4;
   resize: vertical;
   margin-bottom: 1%;
 }
+
+.column1 input[type=email]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-bottom: 1%;
+}
+
 .column1 textarea{
   width: 100%;
   padding: 12px;
