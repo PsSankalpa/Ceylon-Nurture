@@ -5,6 +5,7 @@
     <title>
         Admin Dashboard
     </title>
+    <link rel="icon" href="<?= ASSETS ?>img/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="<?= ASSETS ?>css/commonStyle.css">
     <link rel="stylesheet" href="<?= ASSETS ?>css/adminStyle.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -408,7 +409,47 @@
 
                     </div>
                     <br>
-                    <img class="forum" src="<?= ASSETS ?>img/admin_chart1.png">
+                    <!--------------------chart1--for payment counts--------------------------------->
+                    <div class="charts">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+                    <!--chartbiuld-->
+                    <script>
+                        const forums = <?php echo json_encode($forums); ?>;
+                        //below data3 called by the config3
+                        const data3 = {
+                            labels: [
+                                'Products',
+                                'herbs',
+                                'doctors'
+                            ],
+                            datasets: [{
+                                label: 'Products Payment Details',
+                                data: forums,
+                                backgroundColor: [
+                                    'rgb(255, 205, 86)', //yellow
+                                    'rgba(75, 192, 192)', //green
+                                    'rgb(54, 162, 235)', //blue
+                                    
+                                ],
+                                hoverOffset: 4
+                            }]
+                        }; /////
+
+                        /*configure the block */
+                        const config3 = {
+                            type: 'doughnut',
+                            data: data3,
+                        };
+
+                        /*render the chart */
+                        const myChart3 = new Chart(
+                            document.getElementById('myChart3'),
+                            config3
+                        );
+                    </script>
+                    <!---------------------------------------end of the payment details chart---------------------------------->
+
 
                 </div>
 

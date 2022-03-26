@@ -142,7 +142,7 @@ class admin extends Controller
             $patients = new patientpayment();
 
             $details3 = $patients->findAll();
-            print_r(count($details3));
+            //print_r(count($details3));
 
             for ($z = 0; $z < 4; $z++) {
 
@@ -167,7 +167,39 @@ class admin extends Controller
 
             //-------------------end of getting appointment payment details monthlyvise----------------------
 
+            //---------------------------to get forum details---------------------------------------------------------
+            $fproducts = new forumproduct();
+            $fherbs = new forumherb();
+            $fdoctors = new forumdoctor();
 
+            $pfdata1 = $fproducts->findAll();
+            $pfdata2 = $fherbs->findAll();
+            $pfdata3 = $fdoctors->findAll();
+
+            if($pfdata1 != null){
+                $d1 = count($pfdata1);
+            }
+            else
+            {
+                $d1 = 0;
+            }
+            if($pfdata2 != null){
+                $d2 = count($pfdata2);
+            }
+            else
+            {
+                $d2 = 0;
+            }
+            if($pfdata3 != null){
+                $d3 = count($pfdata3);
+            }
+            else
+            {
+                $d3 = 0;
+            }
+            $forums = array($d1,$d2,$d3);
+            // print_r($forums);
+            // die;
 
 
             $this->view("admin/admin", [
@@ -178,7 +210,8 @@ class admin extends Controller
                 'paymentdates' => $paymentdates,
                 'donations' => $donations,
                 'appointments' => $appointments,
-                'cCount'=> $cCount,
+                'cCount' => $cCount,
+                'forums' => $forums,
                 //'data'=>$data2,
             ]);
         }
