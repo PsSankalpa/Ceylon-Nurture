@@ -61,17 +61,18 @@ class patient extends Controller
             $data = $data[0];
         }
 
+        $dest = $data->image;
+
         if(count($_POST)>0)
         {
             
             $patients = new patients();//create the instance of the patient in model
             
-            if($patients->validate($_POST,$_FILES,$userName))
+            if($patients->validate2($_POST,$_FILES,$userName,$userid,$dest))
             {
                 global $des;
                 $arr['nic'] = htmlspecialchars($_POST['nic']);
                 $arr['image'] = $des;
-             
                
                 $patients->update($userid,$arr);
                 $this->redirect('myAccount');
@@ -85,6 +86,7 @@ class patient extends Controller
             'row'=>$data,
 		]);
     }
+
     function deleteAccount($userid = null)
     {
         if (!Auth::logged_in())
