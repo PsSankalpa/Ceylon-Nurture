@@ -38,6 +38,8 @@ class channeling extends Controller
                 $arr['search'] = $search; //to pass to the query function
                 $data1 = $doctors->query($query, $arr);
               }
+
+
         
 
         $this->view("patient/channeling",[
@@ -84,6 +86,7 @@ class channeling extends Controller
         $schedule = new schedule();
 
         $row4=$schedule->where('scheduleid', $scheduleid);
+        //print_r($row4);
         if($row4)
         {
             $row4=$row4[0];
@@ -96,21 +99,35 @@ class channeling extends Controller
         //print_r($nic);
 
         if (count($_POST) > 0) {
+
         $noOfPatient = $row4->noOfPatient;
-        
-        //$count=0;
 
-        //foreach (count($_POST)>0){
-        //    $count+=$count;
-        //}
+        $patientCount=1;
 
-        
-        //if ($count<=$noOfPatient){
+        $appointments = new appointments;
+        $row5=$appointments->where('scheduleid',$scheduleid);
+
+        if($row5){
+
+            $patientCountrow2 = "select * from appointments where scheduleid =:scheduleid order by appointmentid desc limit 1";
+            $arr3['scheduleid']=$row4->scheduleid;
+
+            $patientCountrow3 = $appointments->query($patientCountrow2,$arr3);
+
+            //print_r($appointmentidrow1);
+            $patientCount=$patientCountrow3[0]->patientCount;
+            //print_r($patientCount);
+            $patientCount++;
+            //print_r($patientCount);
+            
+        }
+
+        if ($patientCount<=$noOfPatient){
 
             $availability = TRUE;
             $appointments = new appointments();
             $arr['doctorid'] = $userid1;
-            $arr['doctorName'] = $row4->doctorCharge;
+            $arr['doctorName'] = $row->nameWithInitials;
             $arr['patientid'] = Auth::userid();
             $arr['scheduleid'] = $scheduleid;
             $arr['patientName'] = Auth::nameWithInitials();
@@ -119,20 +136,63 @@ class channeling extends Controller
             $arr['commission'] = $commission;
             $arr['totalPayment'] = $total;
             $arr['date'] =  date("Y-m-d H:i:s");
+            $arr['noOfPatients'] =  $noOfPatient;
+            $arr['patientCount'] =  $patientCount; 
+            $arr['availability'] = $availability;
+
+
 
             $arr['patientName'] = $_POST['patientName'];
             $arr['symptoms'] =$_POST['symptoms'];
             $arr['nic'] = $_POST['nic'];
             $arr['tpNumber'] = $_POST['tpNumber'];
+
+            $appointments->insert($arr);
+
             
-        $appointments->insert($arr);
-        $this->redirect('channeling/confirmation');
+            $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
+            $arr2['patientid']=Auth::userid();
 
-       // }
-        //else{
+            $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
 
-        //    $availability=FALSE;
-        //}
+            //print_r($appointmentidrow1);
+            $appointmentid=$appointmentidrow1[0]->appointmentid;
+            //print_r($appointmentid);
+
+            $arr1['appointmentid'] = $appointmentid;
+            $arr1['commission'] = $commission;
+            $arr1['doctorCharge'] = $row4->doctorCharge;
+            $arr1['totalPayment'] = NULL;
+            $arr1['patientName'] = Auth::nameWithInitials();
+            $arr1['doctorName'] = $row->nameWithInitials;
+            $arr1['date'] =  date("Y-m-d H:i:s");
+            $arr1['status'] = "not_completed";
+
+
+            
+
+        $patientPayment = new patientPayment();
+        $patientPayment->insert($arr1);
+        $this->redirect('channeling/patientPaymentConfirmation');
+
+        }
+        else{
+
+            $availability=FALSE;
+            $arr['availability'] = $availability;
+
+            $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
+            $arr2['patientid']=Auth::userid();
+
+            $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
+
+            //print_r($appointmentidrow1);
+            $appointmentid=$appointmentidrow1[0]->appointmentid;
+
+            $appointments->update($appointmentid,$arr);
+
+
+        }
 
 
         }
@@ -143,6 +203,7 @@ class channeling extends Controller
             'row2'=>$row2,
             'row3'=>$row3,
             'row4'=>$row4,
+
 
 
         ]);
@@ -159,18 +220,12 @@ class channeling extends Controller
         $row=$appointments->where('patientid',$userid);
 
         //print_r($row);
-        foreach ($row as $row){
 
-            $doctorid=$row->doctorid;
-            $doctors = new doctors();
-            $row1=$doctors->where('userid',$doctorid);
+         
 
-            if($row1)
-            {
-            $row1=$row1[0];
-            }
+        $scheduleid=$row[0]->scheduleid;
 
-            $scheduleid=$row->scheduleid;
+
             $schedule = new schedule();
             $row2=$schedule->where('scheduleid',$scheduleid);
 
@@ -178,21 +233,16 @@ class channeling extends Controller
             {
             $row2=$row2[0];
              }
-            //$params = array();
 
-            // for($i=0;$i<count($row2);$i++){
-            //     $params=$row2[$i];
-            // }
-            //$params = $row;
+             
+            $row1=$appointments->where($doctorid,'userid');
+            $row2=wheredistinct($row1);
 
-        
-        //print_r($params);
-
-        
-    }
+            print_r($row2);
+                                            
+           
     $this-> view("patient/patient",[
             'row'=>$row,
-            'row1'=>$row1,
             'row2'=>$row2,
 
 
@@ -214,13 +264,9 @@ class channeling extends Controller
 
         $row1=$schedule->where('doctorid', $userid);
 
-        
-        
-
         $this->view("patient/doctors",[
             'row'=>$row,
             'rows'=>$row1,
-
 
         ]);
 
@@ -269,45 +315,90 @@ class channeling extends Controller
     function patientPaymentConfirmation()
     {
 
-
-
-        $commonuser = new common_user();
         $userid = Auth::userid();
-        if (!empty($row = $commonuser->where('userid', $userid))) {
-            $row = $row[0];
-            $nameWithInitials = $row->nameWithInitials;
+
+        $common_user = new common_user();
+        $row=$common_user->where('userid',$userid);
+        if($row)
+        {
+            $row=$row[0];
         }
 
+        $appointments = new appointments;
+        $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
+            $arr2['patientid']=Auth::userid();
 
-        $merchant_id         = $_POST['merchant_id'];
-        $order_id             = $_POST['order_id'];
-        $payhere_amount     = $_POST['payhere_amount'];
-        $payhere_currency    = $_POST['payhere_currency'];
-        $status_code         = $_POST['status_code'];
-        $md5sig                = $_POST['md5sig'];
+           
 
-        $merchant_secret = '4p6oM65yLel8lzSHKYzqtQ4TwgRmoRLvF49dAyBUptlC'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
+            $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
+            if($appointmentidrow1)
+            {
+             $appointmentidrow1=$appointmentidrow1[0];
+            }
+           
 
-        $local_md5sig = strtoupper(md5($merchant_id . $order_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret))));
+         //-------------------------------for payment details-----------------------------------------------------
+    }
 
-        if (($local_md5sig === $md5sig) and ($status_code == 2)) {
-            //TODO: Update your database as payment success
+    function patientPaymentConfirmationPayhere(){
 
-            $donations = new donations();
+         if (count($_POST) > 0) {
 
-            $arr['date'] = date("Y/m/d");
-            $arr['amount'] = $_POST['payhere_amount'];
-            $arr['userName'] = $nameWithInitials;
-            $arr['donationNumber'] = $_POST['order_id'];
-            $arr['userID'] = Auth::userid();
-            $arr['method'] = $_POST['method'];
-            $arr['status_message'] = $_POST['status_message'];
-            //add the last two parameters to the table
+         $merchant_id         = $_POST['merchant_id'];
+         $order_id             = $_POST['order_id']; //paymentid 
+         $payhere_amount     = $_POST['payhere_amount'];
+         $payhere_currency    = $_POST['payhere_currency'];
+         $status_code         = $_POST['status_code'];
+         $md5sig                = $_POST['md5sig'];
+ 
+         print_r($order_id);
+         die;
+         
+         $arr['date'] = date("Y/m/d");
+         $arr['totalPayment'] = $payhere_amount;
+         $arr['paymentid'] = $order_id;
+         $arr['status'] = "completed";
+ 
+         print_r($arr);
+         //---------to get the post data to txt file for debuging----------------------------
+         $today = date("Y-m-d");
+         //file_put_contents("POST_logs/" . $today . ".txt", $arr, FILE_APPEND);
+         //---------------------------------------------------------------------------------
+ 
+         $merchant_secret = '4p6oM65yLel8lzSHKYzqtQ4TwgRmoRLvF49dAyBUptlC'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
+ 
+         $local_md5sig = strtoupper(md5($merchant_id . $order_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret))));
+ 
+         if (($local_md5sig === $md5sig) and ($status_code == 2)) {
+             //TODO: Update your database as payment success
+ 
+             $payments = new patientpayment();
+             $payments->update2($order_id, $arr);
+             $this->redirect('channeling/confirmation');
 
-            $donations->insert($arr);
+         } 
+         
+        //  else {
+        //      $appointments = new appointments();
+ 
+        //      //to get the last entry of the user
+        //      $data = $patientpayment->where('paymentid', $order_id);
+ 
+        //      if ($data != null) {
+        //          $data = $data[0];
+        //          unlink($data->image);
+ 
+        //          $patientpayment->delete($order_id);
+        //      }
+        //  }
+         //------------------------end of the payment part---------------------------------------------------------------
         }
-        
-        $this-> view("patient/patientPaymentConfirmation");
+        $this-> view("patient/patientPaymentConfirmation",[
+            'row'=>$row,
+            'row1'=>$appointmentidrow1,
+
+
+        ]);
 
     }
 

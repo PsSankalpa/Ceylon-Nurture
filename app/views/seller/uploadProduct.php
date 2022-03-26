@@ -6,6 +6,14 @@
     <?php $this->view("header", $data) ?>
     <link rel="stylesheet" href="<?= ASSETS ?>css/registrationform.css">
     <link rel="stylesheet" href="<?= ASSETS ?>css/sellers.css">
+
+    <script>
+        function comm(value) {
+            var x;
+            x = value * (30 / 100);
+            document.getElementById('commission').value = x;
+        }
+    </script>
 </head>
 
 <body class="regi">
@@ -42,7 +50,16 @@
                     <label for="productPrice">Price(only add the value/LKR)</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" value="<?= get_var('productPrice') ?>" id="productPrice" name="productPrice" placeholder="Price">
+                    <input type="text" value="<?= get_var('productPrice') ?>" id="productPrice" onkeyup="comm(this.value);" name="productPrice" placeholder="Price">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label for="productPrice">Commission</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" value="" id="commission" name="commision" placeholder="commision" disabled>
                 </div>
             </div>
 
@@ -58,7 +75,6 @@
             <div class="row">
                 <div class="col-25">
                     <label for="image">Image of the product <br>
-                        <p style="font-size:14px; color:#05445E;"> (Format:UserName_ProductName)</p>
                     </label>
                 </div>
                 <div class="col-75">

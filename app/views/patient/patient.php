@@ -104,25 +104,25 @@
                                     <div class="cardBox">
                                          
                                         <div class="card">
-
-                                       
-
-                                            <?php if($row1):?>
-
                                             <div>
-                                                <div class="numbers"><?=$row1->nameWithInitials?></div>
-                                                <div class="cardName"> <?=$row1->specialities?></div>
+                                            <?php foreach ($row as $row):?>
+                                                
+                                                
+                                                
+                                                <div class="numbers"><?=$row1[0]->nameWithInitials?></div>
+                                                <div class="cardName"> gggg</div>
                                             </div>
                                             <div class="iconBox">
                                                 <img class="doctor" src="<?=ASSETS?>img/doctor7.png">
                                             </div>
+                                            <?php endforeach;?>
+
                                         </div>
                                         <?php else:?>
                                         No Doctors available
-                                    <?php endif;?>
 
 
-                            <?php endif;?>
+                            <?php endif;?>   
                                     </div>
                                
 

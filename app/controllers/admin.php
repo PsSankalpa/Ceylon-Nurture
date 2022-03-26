@@ -98,11 +98,49 @@ class admin extends Controller
     }
 
     function users($userid=null){
+
+        //to get the user count
+        $sellers = new sellers();
+        $data2 = $sellers->findAll();
+        $doctor = new doctors();
+        $data3 = $doctor->findAll();
+        $commonUser = new common_user();
+        $data4 = $commonUser->findAll();
+        $patient = new patients();
+        $data5 = $patient->findAll();
+
+        $uCount['sellers'] = count($data2);
+        $uCount['doctors'] = count($data3);
+        $uCount['commonusers'] = count($data4);
+        $uCount['patients'] = count($data5);
+
+        // print_r($uCount['doctors']);
+        // die;
+
         $common_user = new common_user();
         //userid=null
         //$userid=1;
         $data=$common_user->findAll();//where('userid',$userid);
         
+        if (isset($_POST['search'])) {
+            $search = $_POST['search'];
+            //side that we put % mark it ignore exact matching
+            if($search == 'commonuser'){
+                $data=$common_user->findAll();
+            }
+            elseif($search == 'sellers'){
+                $query = "select * from common_user where userid in (select userid from sellers)";
+                $data = $common_user->query($query);
+            }
+            elseif($search == 'patients'){
+                $query = "select * from common_user where userid in (select userid from patients)";
+                $data = $common_user->query($query);
+            }
+            elseif($search == 'doctors'){
+                $query = "select * from common_user where userid in (select userid from doctors)";
+                $data = $common_user->query($query);
+            }
+        }
         
         $row=$common_user->where('userid',$userid);
         if($row)
@@ -113,6 +151,7 @@ class admin extends Controller
         $this->view("admin/adminUsers",[
             'rows'=>$data,
             'row'=>$row,
+            'uCount'=>$uCount,
         ]);
 
     }

@@ -13,29 +13,25 @@
         <canvas id="myChart"></canvas>
     </div>
 
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-    //chartbiuld
+    <!--chart1-->
+    <!--chartbiuld-->
     <script>
         const chartdata = <?php echo json_encode($chartdata); ?>;
+        const registerdates = <?php echo json_encode($registerdates); ?>;
         const data = {
-            labels: ['Sellers', 'Doctors', 'Common Users'],
+            labels: registerdates,
             datasets: [{
-                label: 'User Details',
+                label: 'User Count',
                 data: chartdata,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', /*red*/
-                    'rgba(54, 162, 235, 0.2)', /*blue*/
-                    'rgba(255, 206, 86, 0.2)', /*yellow*/
-                    /*'rgba(75, 192, 192, 0.2)', green*/
-                    /*'rgba(153, 102, 255, 0.2)', purple*/
-                    /*'rgba(255, 159, 64, 0.2)' orange*/
+                    'rgba(153, 102, 255, 0.2)' /*red*/
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
+                    'rgba(153, 102, 255, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -50,6 +46,11 @@
                     y: {
                         beginAtZero: true
                     }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                    }
                 }
             }
         };
@@ -58,6 +59,62 @@
         const myChart = new Chart(
             document.getElementById('myChart'),
             config
+        );
+    </script>
+
+    <!--------------------chart2----------------------------------------------->
+    <div class="charts" style="width: 40%;float: right;">
+        <canvas id="myChart2"></canvas>
+    </div>
+
+    <!--chartbiuld-->
+    <script>
+        const pcommissiondata = <?php echo json_encode($pcommissiondata); ?>;
+        const paymentdates = <?php echo json_encode($paymentdates); ?>;
+        const donations = <?php echo json_encode($donations); ?>;
+        //below data2 called by the config2
+        const data2 = {
+            labels: paymentdates,
+            datasets: [{
+                label: 'Products Payment Details',
+                data: pcommissiondata,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)', /*red*/
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1
+            },{
+                label: 'Donation Payment Details',
+                data: donations,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)', /*blue*/
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)', /*blue*/
+                ],
+                borderWidth: 1
+            }]
+        }; /////
+
+        /*configure the block */
+        const config2 = {
+            type: 'line',
+            data: data2,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        /*render the chart */
+        const myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2
         );
     </script>
 

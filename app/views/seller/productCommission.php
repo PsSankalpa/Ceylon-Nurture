@@ -24,7 +24,7 @@
                 <h3 class="h2p txt-col1 topics">Payment Type</h3>
                 <div class="p-inputs">
                     <input type="hidden" name="order_id" value="<?= get_var('order_id', $dataid) ?>">
-                    <input type="text" class="col-3 p-in" name="items" value="Commission"><br>
+                    <input type="hidden" class="col-3 p-in" name="items" value="Commission"><br>
                     <input type="text" class="col-3 p-in" name="currency" value="LKR">
                     <input type="text" class="col-3 p-in" name="amount" value="<?= get_var('amount', $data2) ?>">
                 </div>
@@ -34,8 +34,8 @@
                 <h3 class="txt-col1 topics">Customer Details</h3><br>
                 <div class="p-inputs">
                     <div class="row2">
-                        <input type="text" name="first_name" class="col-3 p-in" value="<?= get_var('first_name', $data->fname) ?>">
-                        <input type="text" name="last_name" class="col-3 p-in" value="<?= get_var('last_name', $data->lname) ?>">
+                        <input type="text" name="first_name" class="col-3 p-in" value="<?= get_var('first_name', $data->nameWithInitials) ?>">
+                        <input type="text" name="last_name" class="col-3 p-in" value="<?= get_var('last_name', $data->username) ?>">
                     </div>
                     <div class="row2">
                         <input type="text" name="email" class="col-3 p-in" value="<?= get_var('email', $data->email) ?>">

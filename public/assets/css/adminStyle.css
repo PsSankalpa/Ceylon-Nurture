@@ -233,6 +233,17 @@ h6{
     color:#999;
 }
 
+.u-btns{
+background-color:white;
+  border: none;
+  color: #05445E;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 .cardBox .card .iconBox{
     font-size: 2.5em;
     color:#189AB4;
