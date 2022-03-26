@@ -12,7 +12,7 @@
         <h1>Delete Seller Account</h1>
         <?php if ($row) : ?>
             <form class="regi_form" enctype="multipart/form-data" method="POST">
-                <h2>Do you want to delete the account <?= get_var('nameWithInitials', $row->nameWithInitials) ?></h2>
+                <h2>Do you want to delete the account <?= get_var('nameWithInitials', $row[0]->nameWithInitials) ?></h2>
                 <input type="hidden" name="id">
                 <hr>
                 <br>

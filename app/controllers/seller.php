@@ -118,12 +118,11 @@ class seller extends Controller
     }
 
      //function to delete account
-     function deleteAccount($userid = null)
+     function deleteSeller($userid = null)
      {
          if (!Auth::logged_in()) {
              $this->redirect('login/login');
          }
-         $errors = array();
          $sellers = new sellers();
  
  
@@ -146,8 +145,7 @@ class seller extends Controller
          $sellers = new sellers();
          $data = $sellers->where('userid', $sellerid);
          $this->view('profile/deleteSeller', [
-             'row' => $row,
-             'data' => $data,
+             'row' => $data,
          ]);
      }
 
@@ -456,11 +454,12 @@ class seller extends Controller
             $this->redirect('login/login');
         }
 
+        $userid = Auth::userid();
         $products = new products();
         $payments = new productcommission();
 
         $status = "completed";
-        $data1 = $payments->where('status', $status);
+        $data1 = $payments->where2('status', $status,'userid',$userid);
 
 
         $this->view('seller/paymentTable', [

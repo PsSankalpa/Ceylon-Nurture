@@ -243,13 +243,6 @@ class doctor extends Controller
 
 
         if (count($_POST) > 0) {
-            $row = $doctors->where('userid', $userid);
-            if ($row) {
-                $row = $row[0];
-                if(file_exists($row->image)){
-                    unlink($row->image);
-                    }
-            }
             //print_r($data);
             //die;
             $doctors->delete($userid);
@@ -257,7 +250,10 @@ class doctor extends Controller
         }
         $row = $doctors->where('userid', $userid);
         //$data2 = $doctors->findAll();
-        
+        if ($row) {
+            $row = $row[0];
+            unlink($row->image);
+        }
         $doctorid = Auth::userid();
         $doctor = new doctors();
         $data = $doctor->where('userid', $doctorid);
