@@ -183,36 +183,36 @@
                                </tr>
                            </thead> 
                            <tbody>
+                        <?php foreach ($rows1 as $row):?>
+                                <?php
+                                $scheduleid=$row->scheduleid;
+
+                                $doctorid =$row->doctorid;
+                                $doctors = new doctors();
+                                $row1=$doctors->where('userid',$doctorid);
+
+                                if($row1)
+                                {
+                                $row1=$row1[0];
+                                }
+
+                                $schedule = new schedule();
+                                $row2=$schedule->where('scheduleid',$scheduleid);
+                    
+                                if($row2)
+                                {
+                                $row2=$row2[0];
+                                }
+                    
+                                ?>
                                <tr>
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>05/11/2021</td>
+                                   <td><?=$row->doctorName?></td>
+                                   <td><?=$row2->dateofSlot?></td>
+                                   <td><?=$row2->arrivalTime?></td>
+                                   <td><?=$row1->hospital?></td>
                                    <td> <button class="viewMore">View</button></td>
                                </tr>
-                               <tr>
-                                   <td>Dr.Keerthi Wickramasinghe</td>
-                                   <td>05/11/2021</td>
-                                   <td> <button class="viewMore">View</button></td>
-                               </tr>
-                               <tr>
-                                   <td>Dr.Sangeeth Perera</td>
-                                   <td>06/11/2021</td>
-                                   <td> <button class="viewMore">View</button></td>
-                               </tr>
-                               <tr>
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>06/11/2021</td>
-                                   <td> <button class="viewMore">View</button></td>
-                               </tr>
-                               <tr>
-                                   <td>Dr.Thush Gamage</td>
-                                   <td>07/11/2021</td>
-                                   <td> <button class="viewMore">View</button></td>
-                               </tr>
-                               <tr>
-                                   <td>Dr.Keerthi Perera</td>
-                                   <td>07/11/2021</td>
-                                   <td> <button class="viewMore">View</button></td>
-                               </tr>
+                            <?php endforeach;?>
                            </tbody>
                         </table>
                     </div>
@@ -244,30 +244,13 @@
                                </tr>
                            </thead> 
                            <tbody>
-                               <tr>
-                                   <td>Keerthi Perera</td>
-                                   <td>Ashwagandha Powder</td>
-                               </tr>
-                               <tr>
-                                   <td>Amal Wickramasinghe</td>
-                                   <td>Gold Turmeric Skin Cream</td>
-                               </tr>
-                               <tr>
-                                   <td>Sunil Mendis</td>
-                                   <td>Amalaki</td>
-                               </tr>
-                               <tr>
-                                   <td>Samani Silva</td>
-                                   <td>Neem Oil</td>
-                               </tr>
-                               <tr>
-                                   <td>Thush Perera</td>
-                                   <td>Vicco Ayurvedic Tooth paste</td>
-                               </tr>
-                               <tr>
-                                   <td>Sunil Mendis</td>
-                                   <td>Amla Hair Oil</td>
-                               </tr>
+                           <?php foreach ($rows2 as $row):?>
+
+                                <tr>
+                                    <td><?=$row->productName?></td>
+                                    <td><?=$row->sellerName?></td>
+                                </tr>
+                                <?php endforeach;?>
                            </tbody>
                         </table>
                     </div>

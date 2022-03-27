@@ -128,7 +128,7 @@
                                    <td><?=$row->patientName?></td>
                                    <td><?=$row2->dateofSlot?></td>
                                    <td><?=$row2->arrivalTime?></td>
-                                   <td>2</td>
+                                   <td><?=$row->patientCount?></td>
                                    <td><?=$row1->hospital?></td>
                                    <td> e<?=$row2->doctorNote?></td>
                                </tr>
