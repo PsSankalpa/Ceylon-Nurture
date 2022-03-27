@@ -231,6 +231,7 @@ class channeling extends Controller
             $arr1['doctorName'] = $row->nameWithInitials;
             $arr1['date'] =  date("Y-m-d H:i:s");
             $arr1['status'] = "not_completed";
+            $arr1['doctorid'] = $userid1;
 
 
             
@@ -488,6 +489,12 @@ class channeling extends Controller
             $arr['doctorName'] = $_POST['name'];
             $arr['feedback'] = $_POST['feedback'];
             $arr['userid'] =Auth::userid();
+            $userid=Auth::userid();
+            $common_user=new common_user();
+            $usernamerow=$common_user->where('userid',$userid);
+            $username=$usernamerow[0]->nameWithInitials;
+            $arr['patientName'] =$username;
+
 
 
             $search1 = '%' .  $_POST['name'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET

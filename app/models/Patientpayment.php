@@ -13,6 +13,7 @@ class patientpayment extends Model
         'date',
         'doctorCharge',
         'status',
+        'doctorid',
 
 
 
