@@ -468,6 +468,8 @@ h6{
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap:20px;
+  overflow: hidden;
+  max-height: 20rem;
 }
 
 .details .newProducts{
@@ -476,6 +478,7 @@ h6{
   padding:20px;
   border-radius: 10px;
   border:2px solid #75E6DA;
+  
 
 
 }

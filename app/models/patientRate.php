@@ -10,6 +10,7 @@ class patientRate extends Model
 		'feedback',
 		'doctorid',
 		'doctorName',
+		'patientName',
 
 
 	];

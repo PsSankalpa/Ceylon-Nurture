@@ -82,9 +82,9 @@
 
             <div class="schedule">
             
-                <?php if ($rows3) : ?>
+                <?php if ($rows) : ?>
                         
-                <?php foreach ($rows3 as $row):?>
+                <?php foreach ($rows as $row):?>
                 <form class=scheduling_form enctype="multipart/form-data" action="<?=ROOT?>channeling/doctors/<?=$row->userid?>">
 
         
