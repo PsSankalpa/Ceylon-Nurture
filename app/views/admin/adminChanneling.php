@@ -133,29 +133,24 @@
                                    <td>Date</td>
                                    <td>Time</td>
                                    <td>Location</td>
-                                   <td>Doctor Charges</td>
+                                   <td>Total Payment</td>
                                    <td>Commission</td>
                                </tr>
                            </thead> 
                            <tbody>
-                               <tr>
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>Manel Perera</td>
-                                   <td>05/11/2021</td>
-                                   <td>09:00 am</td>
-                                   <td>General Hospital,Colombo 05</td>
-                                   <td> LKR 2500</td>
-                                   <td> LKR 200</td>
-                               </tr>
-                               
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>Neth Perera</td>
-                                   <td>06/11/2021</td>
-                                   <td>10:00 am</td>
-                                   <td>Weda Madura, Gampaha</td>
-                                   <td> LKR 2800</td>
-                                   <td> LKR 200</td>
-                               </tr>
+                           <?php foreach ($row as $row):?>
+
+                                <tr>
+                                    <td><?=$row->doctorName?></td>
+                                    <td><?=$row->patientName?></td>
+                                    <td><?=$row->date?></td>
+                                    <td><?=$row->scheduleid?></td>
+                                    <td><?=$row->doctorid?></td>
+                                    <td><?=$row->totalPayment?></td>
+                                    <td><?=$row->commission?></td>
+
+                                </tr>
+                            <?php endforeach;?>
                                
                            </tbody>
                         </table>

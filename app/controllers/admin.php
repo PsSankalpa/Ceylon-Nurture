@@ -31,10 +31,20 @@ class admin extends Controller
         //userid=null
         //$userid=1;
         $data=$common_user->findAll();//where('userid',$userid);
+
+        $appointments= new appointments();
+        
+        $data1=$appointments->findAll();
+
+        $products = new products();
+        $data2=$products->findAll();
+
+        
         
         $this->view("admin/admin",[
             'rows'=>$data,
-            //'data'=>$data2,
+            'rows1'=>$data1,
+            'rows2'=>$data2,
         ]);
         
         }
@@ -56,21 +66,64 @@ class admin extends Controller
 
     function channeling(){
 
-        $this->view("admin/adminChanneling");
+        $appointments= new appointments();
+        
+        $data=$appointments->findAll();
+
+        $this->view("admin/adminChanneling",[
+            'row'=>$data,
+        ]);
 
 
     }
 
     function payments(){
 
-        $this->view("admin/adminpayments");
+        $admin = new admin();
+        $this->view("admin/adminpayments",[
+        ]);
 
 
     }
 
+    function adminPayment(){
+
+        if(!Auth::logged_in_admin())  
+        {
+          $this->redirect('login/login');
+        }
+        else
+        {
+
+        $adminid=Auth::userid();
+
+        if(count($_POST) > 0){
+
+        $arr['type'] = $_POST['type'];
+        $arr['amount'] = $_POST['amount'];
+        $arr['date'] = date("Y-m-d H:i:s");
+
+        $adminpayment = new adminPayment();
+        $adminpayment->insert($arr); 
+        $this->redirect('admin/payments');
+ 
+        }
+
+        $this->view("admin/adminpayment");
+    }
+
+    }
+
+
+
     function feedbacks(){
 
-        $this->view("admin/adminFeedbacks");
+        $patientrate = new patientrate();
+        $row=$patientrate->findAll();
+        $this->view("admin/adminFeedbacks",[
+            'row'=>$row,
+        ]
+        );
 
 
     }

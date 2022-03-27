@@ -6,6 +6,8 @@
         </title>
         <link rel="stylesheet" href="<?=ASSETS?>css/commonStyle.css">
         <link rel="stylesheet" href="<?=ASSETS?>css/adminStyle.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/channelingStyle.css">
+
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
     </head>
@@ -109,11 +111,13 @@
                 <div class="overview">
 
                    <div class="toggle">
-                       <h4>Feedbacks</h4>
+                       <h4>Payments</h4>
+                       
                    </div>
 
-                   <div class="topbar_side heading">
+                   <div class="topbar_sideA heading">
                    <i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i>
+                   <i class="far fa-money-bill-alt"> Amount LKR 2000-2500</i>
                    </div>
 
                 </div>
@@ -122,31 +126,43 @@
                    
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
-                            <h3>Feedbacks</h3>
-                            <a href="#" class="btn">View All</a>
+                            <h3>Payments</h3>
                         </div><br>
-                        <table>
-                           <thead>
-                               <tr>
-                                   <td>Name of the Doctor</td>
-                                   <td>Name of the Patient</td>
-                                   <td>Date</td>
-                                   <td>Feedback</td>
-                               </tr>
-                           </thead> 
-                           <tbody>
-                           <?php foreach ($row as $row):?>
-                                <tr>
-                                    <td><?=$row->doctorName?></td>
-                                    <td><?=$row->userid?></td>
-                                    <td><?=$row->date?></td>
-                                    <td><?=$row->feedback?></td>
+                        <form class="regi_form" enctype="multipart/form-data" method="POST">
 
-                                </tr>
-                            <?php endforeach;?>
-                               
-                           </tbody>
-                        </table>
+                            <div class="row">
+                            <div class="col-25">
+                                <label for="type">Type of payment</label>
+                            </div>
+                            <div class="col-75">
+                            <select name="type">
+                        <option value="<?=get_var('type')?>" >--Select Payment Type--</option>
+                                <option>Implementation Cost</option>
+                                <option>Maintenance Cost</option>
+                                <option>Security certification Cost</option>
+
+                        </select>
+                            </div>
+                            </div>
+
+                       
+
+                            <div class="row">
+                            <div class="col-25">
+                                <label for="amount">Payment Amount</label>
+                            </div>
+                            <div class="col-75">
+                            <input type="number" value="<?=get_var('amount')?>" id="amount" name="amount" placeholder="Amount">
+                            </div>
+                            </div>
+
+                            
+
+                            <div class="row">
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Reset">
+                            </div>
+                        </form>    
                     </div>
    
                     
