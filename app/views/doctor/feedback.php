@@ -52,20 +52,23 @@
                     <div class="content-box">   
                         <div style="overflow-y:auto;">
                         <table>
+                        <tbody>
+                            <?php if($row);?>
+                            <?php foreach ($row as $row):?>
                             <tr>
                                 <th>Date</th>
-                                <th>Time</th>
                                 <th>Patient Name</th>
                                 <th>Response</th>
                                 <th></th>
                             </tr>
                             <tr>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">10.30am</td>
-                                <td class="data">Natasha Perera</td>
-                                <td class="data">He is a good doctor who has lot of skills.I got my treatments for arthritis from him and now i am recovering</th>
+                                   <td><?=$row->date?></td>
+                                   <td><?=$row->userid?></td>
+                                   <td><?=$row->feedback?></td>
                             </tr>
-                            <tr>
+                            <?php endforeach;?>
+  
+                           <!-- <tr>
                                 <td class="data">16/11/2021</td>
                                 <td class="data">2.00 pm</td>
                                 <td class="data">Sisiliya Kumari</td>
@@ -94,9 +97,7 @@
                                 <td class="data">11.15pm</td>
                                 <td class="data">Kumarika Siriwardhana</td>
                                 <td class="data">I got treatment for gastritis from Dr.Sanath Perera.Started my treatmentsa few months ago and now i am feeling better.</th>
-                            </tr>
-                        
-                      
+                            </tr>-->
                         </table>
                         </div>
                     </div>
