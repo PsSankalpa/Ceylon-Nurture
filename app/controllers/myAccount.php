@@ -54,7 +54,6 @@ class myAccount extends Controller
         return $des;
     }
     
- 
 
     function editCommonUser()
     {
@@ -117,8 +116,5 @@ class myAccount extends Controller
             'data' => $data,
         ]);
     }
-
-
-
 
 }

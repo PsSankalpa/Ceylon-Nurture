@@ -118,7 +118,7 @@
                     <div class="m-btns">
 
                         <a href="<?= ROOT ?>/seller/editSeller"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
-                        <a href="<?= ROOT ?>/seller/deleteAccount/<?= $data1->userid ?>"><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
+                        <a href="<?= ROOT ?>/seller/deleteSeller/<?= $data1->userid ?>"><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
                                      
                     </div>
                 <?php endif; ?>
