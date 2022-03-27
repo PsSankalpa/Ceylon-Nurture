@@ -17,12 +17,6 @@ class appointments extends Model
         'date',
 
 
-
-
-
-
-
-
 	];
 
 	protected $table = "appointments";

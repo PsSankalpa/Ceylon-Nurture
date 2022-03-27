@@ -31,7 +31,7 @@
                             <form method="post" action="forgot.php?mode=enter_code">
                             <h2>Forgot Password</h2>
                             <h3>Enter your code sent to your email address</h3>
-                            <input type="text" name="text" placeholder="12345"><br>
+                            <input type="text" name="code" placeholder="12345"><br>
                             <input type="submit" value="Next" style="float: right;">
                             <a href="forgotpassword.php">
                             <input type="button" value="Start Over">

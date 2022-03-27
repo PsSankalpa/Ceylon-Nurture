@@ -54,7 +54,7 @@ class myAccount extends Controller
         return $des;
     }
     
-   }
+ 
 
     function editCommonUser()
     {

@@ -98,7 +98,7 @@
 
               <div class="col-div-3">
                 <div class="box">
-                  <p>Rs.58,500<br/><span>Revenue</span></p>
+                  <p><?= $rcount?><br/><span>Revenue</span></p>
                   <i class="fa fa-money box-icon"></i>
                 </div>
               </div>

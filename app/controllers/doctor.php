@@ -20,8 +20,8 @@ class doctor extends Controller
         } else {
             $data3 = 0;
         }
-        print_r($data3);
-        die;
+       // print_r($data3);
+       // die;
 
 
         $this->view("doctor/doctor", [
@@ -107,10 +107,19 @@ class doctor extends Controller
         $Auth = new Auth;
         $userid = Auth::userid();
         //Taking the count of patients appointments and revenue
-        $patients = new patients();
+        $patient = new patients();
+        $query="select * from patients where userid in (select Patientid from appointments where doctorid = :userid)";
+        $arr4['userid'] = $userid;
+        $data3 = $patient->query($query, $arr4);
         $appointments = new appointments();
-        $data3 = $appointments->where('doctorid',$userid);
-        $pCount = count($data3);
+
+//$data3 = $appointments->where('doctorid',$userid);
+        if($data3){
+            $pCount = count($data3);
+        }
+        else{
+            $pCount = 0;
+        }
         //to filter by date
         /*$data2 = $patients->findrange(7);
         if ($data2 == null || count($data2) < 4) {
@@ -121,10 +130,44 @@ class doctor extends Controller
 
         $appointments = new appointments();
         $data4 = $appointments->where('doctorid',$userid);
-        $aCount = count($data4);
+        if($data4){
+            $aCount = count($data4);
+        }
+        else{
+            $aCount = 0;
+        }
         //print_r($data4);
        // print_r(" ");
         //die;
+
+        $patientpayment = new patientpayment();
+        $query="select totalPayment from patientPayment where appointmentid in (select appointmentid from appointments where doctorid = :userid)";
+       
+        $arr5['userid'] = $userid;
+        $rcount = 0;
+        $data7 = $patientpayment->query($query, $arr5);
+        if($data7){
+            $rvalue = count($data7);
+            for($i = 0; $i<$rvalue;$i++){
+                $rcount = $rcount + $data7[0]->totalPayment;
+            }
+        }
+        else{
+            $rcount = 0;
+        }
+
+        //print_r($rcount);
+        //die;
+        if($data7)
+        {
+            $rCount = count ($data7);
+           // $rCount = $patientpayment->query($query, $arr5)
+        }
+        else{
+            $rCount = 0;
+        }
+        
+        //$query="select totalPayment from patientPayment where doctorid = :userid in (select * from appointments where doctorid = :userid)"
 
         //----------------------------//
         $channelingid=null;
@@ -158,7 +201,9 @@ class doctor extends Controller
             'row' => $row,
             'pCount' => $pCount,
             'aCount' => $aCount,
+            'rcount' => $rcount,
             'data5' => $data5,
+
             //'data1' => $data1,
         ]);
     }
