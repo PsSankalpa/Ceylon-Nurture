@@ -294,20 +294,19 @@ class channeling extends Controller
         $doctors=array_unique($arr);
         $doctorid=array_unique($arr1);
         //print_r($doctorid);
-
-        
-
-        
         
         }
             
         $row=$appointments->where('patientid',$userid);
+        $patientRate = new patientRate();
+        $row2=$patientRate->findAll();
 
            
     $this-> view("patient/patient",[
             'row'=>$row,
             'row1'=>$doctors,
             'row2'=>$doctorid,
+            'row3'=>$row2,
 
 
 

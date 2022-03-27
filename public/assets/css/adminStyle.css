@@ -270,7 +270,9 @@ background-color:white;
     background-color:#49a0c5d3;
     padding:20px;
     border-radius: 10px;
-
+    overflow-y:scroll;
+    overflow-x:scroll;
+    max-height: 20rem;
 
 }
 
@@ -388,6 +390,10 @@ background-color:white;
     background-color: rgba(255, 255, 255, 0.61);
     padding:20px;
     border-radius: 10px;
+    overflow-y:scroll;
+    overflow-y:scroll;
+    max-height: 20rem;
+
 
 }
 
