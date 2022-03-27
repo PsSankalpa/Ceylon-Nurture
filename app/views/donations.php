@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<a href="<?= ROOT ?>commonuser/donationdetails"><button class="">Payments</button></a>
+<a href="<?= ROOT ?>commonuser/donationdetails"><button class="detailsbtn1">Payments</button></a>
     <div class="form">
         <form method="post" class="payform" action="https://sandbox.payhere.lk/pay/checkout">
             <input type="hidden" name="merchant_id" value="1218919"> <!-- Replace your Merchant ID -->
@@ -25,7 +25,7 @@
                 <h3 class="h2p txt-col1 topics">Payment Type</h3>
                 <div class="p-inputs">
                     <input type="hidden" name="order_id" value="<?= get_var('order_id', $orderid) ?>">
-                    <input type="text" class="col-3 p-in" name="items" value="Donations"><br>
+                    <input type="hidden" class="col-3 p-in" name="items" value="Donations"><br>
                     <input type="text" class="col-3 p-in" name="currency" value="LKR">
                     <input type="text" class="col-3 p-in" name="amount">
                 </div>

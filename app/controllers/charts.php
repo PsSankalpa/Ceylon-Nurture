@@ -1,4 +1,6 @@
 <?php
+
+/*this is a testing controller for charts */
 class charts extends Controller
 {
     function index()
@@ -37,7 +39,7 @@ class charts extends Controller
         $details0 = $commonUser->findAll();
         //print_r(count($details0));
 
-        for ($z = 0; $z < count($details0); $z++) {
+        for ($z = 0; $z < 4; $z++) {
 
             $cmonth[$z] = $commonUser->getrange($z, 'MONTH');
             $ccount[$z] = 0;
@@ -59,9 +61,6 @@ class charts extends Controller
 
         //-------------------end of getting user count monthlyvise----------------------
 
-
-
-        //$chartdata = array($sCount, $dCount, $cCount);
         //----------------------------------------------------------------------------------------------------
 
         //-----------------------getting product payment details monthlyvise----------------------------------------------------
@@ -75,7 +74,7 @@ class charts extends Controller
         $details1 = $commission->findAll();
         //print_r(count($details1));
 
-        for ($z = 0; $z < count($details1); $z++) {
+        for ($z = 0; $z < 4; $z++) {
 
             $month[$z] = $commission->getrange($z, 'MONTH');
             $count[$z] = 0;
@@ -106,7 +105,7 @@ class charts extends Controller
         $details2 = $dcommission->findAll();
         //print_r(count($details2));
 
-        for ($z = 0; $z < count($details2); $z++) {
+        for ($z = 0; $z < 4; $z++) {
 
             $dmonth[$z] = $dcommission->getrange($z, 'MONTH');
             $dcount[$z] = 0;
@@ -127,39 +126,41 @@ class charts extends Controller
 
         //-------------------end of getting donation payment details monthlyvise----------------------
 
-                //-----------------------getting appointmen payment details monthlyvise----------------------------------------------------
+        //-----------------------getting appointmen payment details monthlyvise----------------------------------------------------
 
-                $appointments = array();
-                $amonth = array();
-                $acount = array();
-                //for the range of month data
-                $dcommission = new donations();
-        
-                $details2 = $dcommission->findAll();
-                //print_r(count($details2));
-        
-                for ($z = 0; $z < count($details2); $z++) {
-        
-                    $dmonth[$z] = $dcommission->getrange($z, 'MONTH');
-                    $dcount[$z] = 0;
-                    if (($dmonth[$z]) != null) {
-                        $ddate[$z] = $dmonth[$z][0]->date;
-                        for ($j = 0; $j < count($dmonth[$z]); $j++) {
-                            if (isset($dmonth[$z][$j]->amount)) {
-                                $dcount[$z] = $dcount[$z] + $dmonth[$z][$j]->amount;
-                            }
-                        }
+        $appointments = array();
+        $amonth = array();
+        $acount = array();
+        //for the range of month data
+        $patients = new patientpayment();
+
+        $details3 = $patients->findAll();
+        print_r(count($details3));
+
+        for ($z = 0; $z < 4; $z++) {
+
+            $amonth[$z] = $patients->getrange($z, 'MONTH');
+            $acount[$z] = 0;
+            if (($amonth[$z]) != null) {
+                $adate[$z] = $amonth[$z][0]->date;
+                for ($j = 0; $j < count($amonth[$z]); $j++) {
+                    if (isset($amonth[$z][$j]->totalPayment)) {
+                        $acount[$z] = $acount[$z] + $amonth[$z][$j]->totalPayment;
                     }
                 }
-        
-        
-                // print_r($dcount[3]);
-                // print_r($dmonth[0]);
-                $appointments = array($dcount[3], $dcount[2], $dcount[1], $dcount[0]);
-        
-                //-------------------end of getting appointment payment details monthlyvise----------------------
+            }
+        }
 
-                
+
+        // print_r($dcount[3]);
+        // print_r($dmonth[0]);
+        $appointments = array($acount[3], $acount[2], $acount[1], $acount[0]);
+        // print_r($appointments);
+        // die;
+
+        //-------------------end of getting appointment payment details monthlyvise----------------------
+
+
 
         // print_r($pcommissiondata);
         // print_r(" ");
@@ -167,10 +168,11 @@ class charts extends Controller
 
         $this->view('chartst', [
             'chartdata' => $chartdata,
-            'registerdates'=> $registerdates,
+            'registerdates' => $registerdates,
             'pcommissiondata' => $pcommissiondata,
             'paymentdates' => $paymentdates,
             'donations' => $donations,
+            'appointments'=> $appointments,
         ]);
     }
 }

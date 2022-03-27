@@ -19,28 +19,29 @@ class ResetPasswords{
     {
         $this->resetModel = new ResetPasswords;
         $this->userModel  = new common_user;
-        $this-> mail = new PHPMailer();
-        $this->hpmailer->isSMTP();
-        $this->Host = 'smtp.mailtrap.io';
-        $this->SMTPAuth = true;
-        $this->Port = 2525;
-        $this->Username = 'fd0f062a7ad592';
-        $this->Password = 'a4109516d7f235';
+        $this->mail = new PHPMailer();
+        $this->mail->isSMTP();
+        $this->mail->Host = 'smtp.mailtrap.io';
+        $this->mail->SMTPAuth = true;
+        $this->mail->Port = 2525;
+        $this->mail->Username = '4bb96c18776356';
+        $this->mail->Password = '45a854d2d60f4c';
+        
     }
 
     public function sendEmail(){
         //Santize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+       /* $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $userEmail = trim($_POST['email']);
 
-        /*if(empty($userEmail)){
+        if(empty($userEmail)){
             flash("reset", "Please input email");
-            redirect("../reset-password.php");
+            $this->redirect('admin/users');
         }
 
-        //if(!filter_var($userEmail,FILTER_VALIDATE_EMAIL)){
+        if(!filter_var($userEmail,FILTER_VALIDATE_EMAIL)){
             flash("reset", "Please input email");
-            redirect("../reset-password.php");  
+            redirect("../password_reset.php");  
         }*/
     }
 }

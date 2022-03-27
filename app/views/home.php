@@ -253,14 +253,14 @@
                     <img class="cont-img" src="<?= ASSETS ?>/img/contactform-img.png" style="width:100%">
                 </div>
                 <div class="column1">
-                    <form action="">
-                        <label for="fname">First Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Your name..">
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                        <label for="subject">Subject</label>
-                        <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
-                        <input type="submit" value="Submit">
+                    <form action="" method="POST">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Your  full name..">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your email..">
+                        <label for="message">Subject</label>
+                        <textarea id="message" name="message" placeholder="Write something.." style="height:170px"></textarea>
+                        <input type="submit" name="submit" value="Submit">
                     </form>
                 </div>
             </div>

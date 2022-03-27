@@ -73,11 +73,11 @@
 
         <!--for all articles-->
         <div class="a-s">
-            <div class="articles-section">
+            <?php if ($rows3) : ?>
 
-                <?php if ($rows3) : ?>
+                <div class="articles-section">
                     <?php foreach ($rows3 as $row) : ?>
-                        <div class="article-card">
+                        <div class="detail-card">
                             <h1><?= $row->articleName ?></h1>
                             <picture>
                                 <img src="<?= ASSETS2 . $row->image ?>" alt="A-herb" style="width:100%">
@@ -86,11 +86,12 @@
                             <p><a href="<?= ROOT ?>/articles/articleDetails/<?= $row->articleid ?>"><button>View Information</button></a></p>
                         </div>
                     <?php endforeach; ?>
-                <?php else : ?>
-                    <h4>No Articles Yet</h4>
-                <?php endif; ?>
+                </div>
 
-            </div>
+            <?php else : ?>
+                <h4>No Articles Yet</h4>
+            <?php endif; ?>
+
         </div>
 
     </div>

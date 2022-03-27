@@ -7,12 +7,34 @@ class password_reset extends Controller
   function index()
   {
 
-    $password_reset = new password_reset();  
+    $password_reset = new password_reset(); 
+    
+    $mode = "enter email";
+    if(isset($_GET['mode'])){
+        $mode = $_GET['mode'];
+    }
+    //something is posted
+    if(count($_POST) > 0){
+        switch ($mode){
+            case 'enter_email':
+                //code
+                break;
+            case 'enter_code':
+                //code
+                break;
+            case 'enter_password':
+                //code
+                break;
+        }
+    }
+    
+
+
     $this->view("password_reset");
   }
 
 }
-  //require_once("core/database.php");
+  /*require_once("core/database.php");
   require "../app/dbcon.php";
 
 
@@ -63,7 +85,7 @@ class password_reset extends Controller
                 if($update_token_run)
                 {
 
-                    send_password_reset(/*$get_name,*/$get_email,$token);
+                    send_password_reset(/*$get_name,*$get_email,$token);
 
                     $_SESSION['status'] = "We have sent an email containing a password reset link";
                      header("password_reset");
@@ -131,6 +153,6 @@ class password_reset extends Controller
             $_SESSION['status'] = "All fields are required";
             // header("location: ../changePassword.php?token=$token&email=$email");                       
         }
-    }
+    }*/
 
 ?>

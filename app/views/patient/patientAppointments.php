@@ -105,7 +105,8 @@
                            <tbody>
                            <?php foreach ($row as $row):?>
 
-                                <?php $doctorid=$row->doctorid;
+                                <?php 
+                                $doctorid=$row->doctorid;
                                 $doctors = new doctors();
                                 $row1=$doctors->where('userid',$doctorid);
 
@@ -124,6 +125,14 @@
                                 }
                                 ?>
                                <tr>
+                                   <td><?=$row1->nameWithInitials?></td>
+                                   <td><?=$row->patientName?></td>
+                                   <td><?=$row2->dateofSlot?></td>
+                                   <td><?=$row2->arrivalTime?></td>
+                                   <td>2</td>
+                                   <td><?=$row1->hospital?></td>
+                                   <td> e<?=$row2->doctorNote?></td>
+                               </tr> <tr>
                                    <td><?=$row1->nameWithInitials?></td>
                                    <td><?=$row->patientName?></td>
                                    <td><?=$row2->dateofSlot?></td>

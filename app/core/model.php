@@ -87,6 +87,21 @@ public function __construct()
 		]);
 	}
 
+//----------------------------------------------------------------------------------------------------------------------
+	//to get data for range o days
+	public function finddaterange($date1,$date2)
+	{
+
+		//$column = addslashes($column);//from this it check the column,sanitize input
+		$query = "SELECT * FROM $this->table WHERE dateofSlot BETWEEN '$date1' AND '$date2' ";
+		//print_r($query);
+		
+		return $this->query($query,[
+			'date1'=>$date1,
+			'date2'=>$date2
+		]);
+	}
+
 //----------------------------------------------------------------------------------------------------------------
 //to get spesific date ranges
 //can get data according to range of months,dates,years
