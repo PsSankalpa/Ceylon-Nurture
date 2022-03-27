@@ -7,7 +7,10 @@ class forumdoctor extends Model
 		'name',
 		'description',
         'tpNumber',
-		'location'
+		'location',
+        'userid',
+        'date',
+
 	];
 
 	protected $table = "forumdoctor";
