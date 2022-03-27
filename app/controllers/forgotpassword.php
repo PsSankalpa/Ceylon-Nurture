@@ -14,14 +14,17 @@ class forgotpassword extends Controller
             switch($mode) {
                 case 'enter_email':
                     //code
+                    $this->redirect('myAccount');
                 break;
 
                 case 'enter_code':
                     //code
+                    $this->redirect('myAccount');
                 break;
 
                 case 'enter_password':
                     //code
+                    $this->redirect('myAccount');
                 break;
 
                 default:
