@@ -165,11 +165,24 @@ class channeling extends Controller
         if (count($_POST) > 0) {
 
         $noOfPatient = $row4->noOfPatient;
+        $scheduleid = $row4->scheduleid;
+        $Timerow=$schedule->where('scheduleid',$scheduleid);
+        $arrivalTime=$Timerow[0]->arrivalTime;
+        $departureTime=$Timerow[0]->departureTime;
+
+
 
         $patientCount=1;
 
         $appointments = new appointments;
         $row5=$appointments->where('scheduleid',$scheduleid);
+        
+        $slots = getTimeSlot(15, $arrivalTime, $departureTime);
+            $slotCount = count($slots);
+            //print_r($slotCount);
+            // foreach($slots as $slot){
+            //     //print_r($slot);
+            // }
 
         if($row5){
 
@@ -182,7 +195,10 @@ class channeling extends Controller
             $patientCount=$patientCountrow3[0]->patientCount;
             //print_r($patientCount);
             $patientCount++;
+
+            //print_r($slottime);
             //print_r($patientCount);
+            
             
         }
 
@@ -203,6 +219,17 @@ class channeling extends Controller
             $arr['noOfPatients'] =  $noOfPatient;
             $arr['patientCount'] =  $patientCount; 
             $arr['availability'] = $availability;
+            $slottime=$slots[$patientCount];
+            // foreach($slottime as $time){
+            //     //print_r($time);
+            // }
+            // print_r($slottime);
+            // print_r($slottime['slot_start_time']);
+            $arr['slotTimeStart'] = $slottime['slot_start_time'];
+            $arr['slotTimeEnd'] = $slottime['slot_end_time'];
+
+
+            
 
 
 
@@ -234,11 +261,12 @@ class channeling extends Controller
             $arr1['doctorid'] = $userid1;
 
 
+
             
 
         $patientPayment = new patientPayment();
         $patientPayment->insert($arr1);
-        $this->redirect('channeling/patientPaymentConfirmation');
+        $this->redirect('channeling/Confirmation');
 
         }
         else{
@@ -259,6 +287,8 @@ class channeling extends Controller
 
         }
 
+
+        
 
         }
 
@@ -377,8 +407,16 @@ class channeling extends Controller
 
     function confirmation()
     {
+        $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
+            $arr2['patientid']=Auth::userid();
+            $appointments = new appointments();
+            $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
 
-        $this-> view("patient/channelingConfirmation");
+            
+
+        $this-> view("patient/channelingConfirmation",[
+            'appointmentidrow1'=>$appointmentidrow1,
+        ]);
 
     }
 

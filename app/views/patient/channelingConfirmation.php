@@ -22,8 +22,11 @@
     <br>
 
     <div class="errorpage">
-        <h2 class="errorpage_body"> Payment Succesful <br>Your Channeling is Confirmed<br>Your time slot is at 8.15am on 15/11/2021<br>Your line number is 2 </h2>
+                
+         <?php if ($appointmentidrow1):?>   
+        <h2 class="errorpage_body"> Payment Succesful <br>Your Channeling is Confirmed<br>Your time slot is from <?= $appointmentidrow1[0]->slotTimeStart;?> to <?= $appointmentidrow1[0]->slotTimeEnd;?>  on  <?= $appointmentidrow1[0]->date;?><br>Your line number is <?=$appointmentidrow1[0]->patientCount;?> </h2>
         <a href="<?=ROOT?>channeling/appointments"><button class="button_typeB"> View Channelings </button></a>
+        <?php endif; ?>
     </div>
 
     <!--footer-->

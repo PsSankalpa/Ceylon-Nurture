@@ -21,6 +21,7 @@
                 <div class="search_container">
 
                 <?php if($row):?>
+                    
 
                 <h2><?=$row->nameWithInitials?></h2><br>
                 <div class="doc_image_container"><img class="doctor_image" src="<?=ASSETS?>img/doctor.jpg"></div>
