@@ -36,9 +36,9 @@ class channeling extends Controller
 
             $data5 = $Auth->finduser();
 
-        
 
                 if ( (isset($_GET['search1'])) ) {
+
                 //side that we put % mark it ignore exact matching
                 $search1 = '%' . $_GET['search1'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
                 $query1 = "select * from doctors where nameWithInitials like :search1 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
@@ -269,21 +269,34 @@ class channeling extends Controller
 
         $userid = Auth::userid();
 
+        $row1=$appointments->where('patientid',$userid);
+
+        if($row1){
+        foreach ($row1 as $row){
+            $doctorName=$row->doctorName;
+            $doctorid=$row->doctorid;
+            $arr[]=$doctorName;
+            $arr1[]=$doctorid;
+        }
+        $doctors=array_unique($arr);
+        $doctorid=array_unique($arr1);
+        //print_r($doctorid);
+
+        
+
+        
+        
+        }
+            
         $row=$appointments->where('patientid',$userid);
 
-        //print_r($row);
-        
-         
-
-        
-             
-            //$row3=$appointments->where($doctorid,'userid');
-
-            //print_r($row2);
-                                            
            
     $this-> view("patient/patient",[
             'row'=>$row,
+            'row1'=>$doctors,
+            'row2'=>$doctorid,
+
+
 
 
 
@@ -340,8 +353,13 @@ class channeling extends Controller
 
     function reports()
     {
+        $userid=Auth::userid();
+        $appointments = new appointments();
+        $row=$appointments->where('patientid',$userid);
 
-        $this-> view("patient/patientReports");
+        $this-> view("patient/patientReports",[
+            'row'=>$row,
+        ]);
 
     }
 
@@ -483,6 +501,88 @@ class channeling extends Controller
 
     }
 
+    public function generatepdf($id)
+    {
+        $userid = Auth::userid();
+        require_once __DIR__ . '/../models/mpdf/autoload.php';
+        $mpdf = new \Mpdf\Mpdf();
+        $html = file_get_contents(ROOT . '/channeling/channelingpdf/' . $id . '/' . $userid);
+        //  print_r($html);
+        //   die;
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+    }
+
+    function channelingpdf($id, $userid)
+    {
+        $userid=Auth::userid();
+        $appointments = new appointments();
+        
+        $row=$appointments->where('appointmentid',$id);
+
+        if ($row != null) {
+            $row=$row[0];
+        }
+
+       
+?>
+
+        <style>
+            th,
+            td {
+                text-align: left;
+                padding: 16px;
+            }
+
+            .title2 {
+                width: 95%;
+                text-align: center;
+            }
+        </style>
+
+        <div class="title1" style="width: 95%;">
+            <div class="logo" style="width: 100%;text-align: center;"><img src="<?= ASSETS ?>img/logo.png" style="width: 30%;align-items: center;"></div>
+            <div class="mtitle" style="width: 100%;text-align: center;">
+                <h1>Ceylon Nuture</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="title2">
+            <h2>Channeling Details</h2>
+        </div>
+        <table style="border-collapse: collapse;border-spacing: 0;width: 85%;border: 1px solid #ddd;margin: 5% auto;">
+            <tr>
+                <td>Name of the Doctor</td>
+                <td>:</td>
+                <td><?= $row->doctorName ?></td>
+            </tr>
+            <tr>
+                <td>Patient Name</td>
+                <td>:</td>
+                <td><?= $row->patientName ?></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>:</td>
+                <td><?= $row->date ?></td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>:</td>
+                <td>Rs:<?= $row->nic ?></td>
+            </tr>
+            <tr>
+                <td>Total Payment</td>
+                <td>:</td>
+                <td><?= $row->totalPayment ?></td>
+            </tr>
+        </table>
+
+<?php
+    }
+    
+}
+
    
 
-}
+
