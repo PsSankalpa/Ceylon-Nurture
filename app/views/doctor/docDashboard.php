@@ -84,22 +84,21 @@
             <div class="cardBox">
               <div class="col-div-3">
                 <div class="box">
-                <h2><?= $data3?></h2>
-                  <p><span>Patients</span></p>
+                  <p><?= $pCount?><br/><span>Patients</span></p>
                   <i class="fa fa-users box-icon"></i>
                 </div>
               </div>
 
               <div class="col-div-3">
                 <div class="box">
-                  <p>20<br/><span>Appointments</span></p>
+                  <p><?= $aCount?><br/><span>Appointments</span></p>
                   <i class="fa fa-calendar box-icon"></i>
                 </div>
               </div>
 
               <div class="col-div-3">
                 <div class="box">
-                  <p>Rs.58,500<br/><span>Revenue</span></p>
+                  <p><?= $rcount?><br/><span>Revenue</span></p>
                   <i class="fa fa-money box-icon"></i>
                 </div>
               </div>
@@ -118,40 +117,38 @@
                   <div class="content-box">
                    <div style="overflow-y:auto;">
                     <table>
-                   
-                      <tr>
-                        <th>PatientNo</th>
-                          <th>Date</th>
-                            <th>Time</th>
-                            <th>Slot No</th>
+                    <thead>
+                            <tr>
+                            <th>Date</th>
                             <th>Name</th>
                             <th>NIC No</th>
                             <th>Telephone No</th>
                             <th>Symptoms</th>
                             <th>Payment</th>
-                      </tr>
-                      <tr>
-                      <td class="data">01</td>
-                        <td class="data">16/11/2021</td>
-                        <td class="data">8.00am</td>
-                        <td class="data">Slot 01</td>
-                        <td class="data">Natasha Perera</td>
-                        <td class="data">971234567V</td>
-                        <td class="data">0711234567</td>
-                        <td class="data">Arthritis</td>
-                        <td class="data">Rs.3200</td>
-                      </tr>
-                      <tr>
-                      <td class="data">02</td>
-                        <td class="data">16/11/2021</td>
-                        <td class="data">8.15am</td>
-                        <td class="data">Slot 01</td>
-                        <td class="data">Sisiliya Kumari</td>
-                        <td class="data">871234127V</td>
-                        <td class="data">0711234567</td>
-                        <td class="data">Gastritis</td>
-                        <td class="data">Rs.2200</td>
-                      </tr>
+                            </tr>
+                          </thead>
+                          <?php if($data);?>
+                            <?php foreach ($data5 as $data5):?>
+                              <?php
+                             // $arrivalTime = strtotime($data1->arrivalTime);
+                             // $departureTime = strtotime($data1->departureTime);
+                             // $a_h = date("g:i a", $arrivalTime);
+                             // $d_p = date("g:i a", $departureTime);
+                             // ?>
+                            <tr>
+                                <td><?= $data5->date?></td>
+                              <!-- <td><?= $a_h ."-" . $d_p?></td>
+                                <td><?= $data1->slotNumber?></td>-->
+
+                                <td><?= $data5->patientName?></td>
+                                <td><?= $data5->nic?></td>
+                                <td><?= $data5->tpNumber ?></td>
+                                <td><?= $data5->symptoms ?></td>
+                                <td> Rs.<?= $data5->totalPayment ?></td>
+                            </tr>
+                            <?php endforeach;?>
+
+                            </tbody>
                     </table>
                   </div>
                 </div>

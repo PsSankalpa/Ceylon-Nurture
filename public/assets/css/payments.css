@@ -26,7 +26,11 @@
 .p-inputs{
     align-items: center;
     margin: 4px auto;
-    margin-left: 33%;
+    margin-left: 15%;
+}
+
+.p-inputs input{
+    width: 40%;
 }
 .payform .btn{
     margin-left: 35%;
@@ -72,3 +76,27 @@ input[type=text]{
         margin-left: 25%;
     }
 }
+/* ------------for the payment fetails btn------------------- */
+.detailsbtn1{
+    background-color: #75E6DA;
+    border: none;
+    color: #05445E;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .detailsbtn1:hover{
+    background-color: #05445E;
+    color: #75E6DA;
+  }
+  @media screen and (max-width:1000px) {
+    .detailsbtn1{
+      padding: 4px 6px;
+      font-size: 10px;
+      margin: 4px 2px;
+    }
+  }

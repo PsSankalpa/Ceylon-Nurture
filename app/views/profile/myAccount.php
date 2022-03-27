@@ -37,6 +37,14 @@
                 </div>
                 <div class="row p2">
                     <div class="col-25">
+                        <label for="username">Gender</label>
+                    </div>
+                    <div class="col-50">
+                        <label for="username"><?= $data4->gender ?></label>
+                    </div>
+                </div>
+                <div class="row p2">
+                    <div class="col-25">
                         <label for="email">Email</label>
                     </div>
                     <div class="col-50">
@@ -52,8 +60,8 @@
                     </div>
                 </div>
                 <div class="m-btns">
-                    <a href="<?= ROOT ?>/myAccount/editCommonUser"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
-                    <a href=""><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
+                    <a href="<?= ROOT ?>/myAccount/editCommonUser/<?= $data4->userid ?>"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
+                    <a href="<?= ROOT ?>/myAccount/deleteCommonUser/<?= $data4->userid ?>"><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
                 </div>
                 <?php if (($row == "seller") || ($row == "doctorAndSeller") || ($row == "sellerAndPatient") || ($row == "allUser")) : ?>
                     <!----------------------seller---------------------------------------------------------------------------->
@@ -108,8 +116,10 @@
                         </div>
                     </div>
                     <div class="m-btns">
-                        <a href="<?= ROOT ?>/myAccount/editSeller"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
-                        <a href=""><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
+
+                        <a href="<?= ROOT ?>/seller/editSeller"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
+                        <a href="<?= ROOT ?>/seller/deleteSeller/<?= $data1->userid ?>"><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
+                                     
                     </div>
                 <?php endif; ?>
                 <?php if (($row == "doctor") || ($row == "doctorAndSeller") || ($row == "doctorAndPatient") || ($row == "allUser")) : ?>
@@ -130,14 +140,6 @@
                         </div>
                         <div class="col-50">
                             <label for="gender"><?= $data2->gender ?></label>
-                        </div>
-                    </div>
-                    <div class="row p2">
-                        <div class="col-25">
-                            <label for="dob">DOB</label>
-                        </div>
-                        <div class="col-50">
-                            <label for="dob"><?= $data2->dob ?></label>
                         </div>
                     </div>
                     <div class="row p2">
@@ -189,8 +191,8 @@
                         </div>
                     </div>
                     <div class="m-btns">
-                        <a href="<?= ROOT ?>/myAccount/editDoctor"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
-                        <a href=""><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
+                        <a href="<?= ROOT ?>/doctor/editAccount/<?= $data2->userid ?>"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
+                        <a href="<?= ROOT ?>/doctor/deleteAccount/<?= $data2->userid ?>"><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
                     </div>
                 <?php endif; ?>
                 <?php if (($row == "patient") || ($row == "doctorAndSeller") || ($row == "sellerAndPatient") || ($row == "allUser")) : ?>
@@ -215,8 +217,10 @@
                         </div>
                     </div>
                     <div class="m-btns">
-                        <a href="<?= ROOT ?>/myAccount/editPatient"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
-                        <a href=""><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
+
+                        <a href="<?= ROOT ?>/patient/patientUpdate"><button class="editbtn txt-col1 bg-col4">Edit</button></a>
+                        <a href="<?= ROOT ?>/patient/deleteAccount/<?= $data3->userid ?>"><button class="deletebtn txt-col1 bg-col3">Delete</button></a>
+
                     </div>
                 <?php endif; ?>
                 <!-------------------------------------------------------------------------------------------------->

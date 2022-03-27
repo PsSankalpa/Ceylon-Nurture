@@ -15,12 +15,6 @@ class appointments extends Model
         'commission',
         'doctorName',
         'date',
-        'noOfPatients',
-        'patientCount',
-        'availability',
-
-
-
 
 
 	];

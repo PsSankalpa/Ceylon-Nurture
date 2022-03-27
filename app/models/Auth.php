@@ -84,7 +84,6 @@ class  Auth
         if(isset($_SESSION['COMMON_USER']))
         {
             return $_SESSION['COMMON_USER']->$prop;
-            die;
         }
         //if(isset($_SESSION['ADMIN']))
         //{

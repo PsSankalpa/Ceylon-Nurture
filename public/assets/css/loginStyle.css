@@ -33,12 +33,13 @@ h2{
 .container{
    margin:0 auto;
     max-width:800px;
+    justify-content: center;
 }
 
 .Login-form .main{
     position:relative;
     display:flex;
-    margin:30px 0;
+    margin:100px 0;
 }
 .content{
     flex-basis:50%;

@@ -9,14 +9,13 @@ class common_user extends Model
     protected $allowedcolumns = [
         'nameWithInitials',
         'verify_token',
-		//'fname',
-		//'lname',
         'username',
         'gender',
-        //'dob',
         'email',
 		'tpNumber',
 		'password',
+        'date',
+
     ];
 
 	protected $pk = "userid";
@@ -88,10 +87,10 @@ class common_user extends Model
         
 
         //validation for gender
-        if(empty($data['gender']))
-		{
-			$this->errors['gender'] = "Cannot Keep Gender empty";
-		}
+       // if(empty($data['gender']))
+		//{
+		//	$this->errors['gender'] = "Cannot Keep Gender empty";
+		//}
 	
         //validation for DOB
         /*$y=date("Y");
@@ -147,7 +146,7 @@ class common_user extends Model
 		{
 			$this->errors['tpNumber'] = "Only numbers allowed in the tp number";
 		}
-		elseif(strlen($data['tpNumber'])>10)
+		elseif(strlen($data['tpNumber'])>10 || strlen($data['tpNumber'])<10 )
 		{
 			$this->errors['tpNumber'] = "Only 10 numbers allowed in the tp number";
 		}

@@ -15,7 +15,17 @@ class signup extends Controller
             {
                 
                // $arr['date'] = date("Y-m-d H:i:s");
-                
+               $arr['userid'] = AUTH::userid();
+                $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
+                $arr['verify_token'] = 'none';
+                $arr['username'] = htmlspecialchars($_POST['username']);
+                $arr['gender'] = htmlspecialchars($_POST['gender']);
+                $arr['email'] = htmlspecialchars($_POST['email']);
+                $arr['tpNumber'] = htmlspecialchars($_POST['tpNumber']);
+                $arr['password'] = htmlspecialchars($_POST['password']);
+                $arr['date'] = date("Y/m/d");
+               // print_r($arr);
+               // die;
                 $common_user->insert($_POST);
                 //print_r($_POST);
                 $this->redirect('login');

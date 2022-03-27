@@ -14,14 +14,14 @@ class doctors extends Model
 		'city',
 		'address',
 		'image',
-		'doctorid'
+
 	];
 
 	protected $table = "doctors";
 	protected $pk = "userid";
 	//protected $pk2 = "doctorid";
 
-	public function validate($DATA,$FILES)
+	public function validate($DATA,$FILES,$UName)
 	{
 		$this->errors = array();		
 		//validation for registration number
@@ -73,8 +73,14 @@ class doctors extends Model
             mkdir($folder,0777,true);
         }
 
-        //create the destination 
-        $destination = $folder . $FILES['image']['name'];
+		//renaming the image with a username which doctor uploads
+		$temp = explode("-", $FILES['image']['name']);
+			$newfilename = $UName . '-' . end($temp);
+
+		//create the destination 
+		$destination = $folder . $newfilename;
+
+
 		$imageFileType = strtolower(pathinfo($destination,PATHINFO_EXTENSION));
 		$uploadOk = 1;
 		$results = $this->images($FILES,$destination,$imageFileType,$uploadOk);

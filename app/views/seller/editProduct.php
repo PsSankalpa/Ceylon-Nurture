@@ -40,15 +40,6 @@
 
                 <div class="row">
                     <div class="col-25">
-                        <label for="productPrice">Price(only add the value/LKR)</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" value="<?= get_var('productPrice', $row->productPrice) ?>" id="productPrice" name="productPrice" placeholder="Price">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-25">
                         <label for="description">Description</label>
                     </div>
                     <div class="col-75">

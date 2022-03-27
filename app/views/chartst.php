@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- this is testing view for the charts -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-    <!--chart1-->
+    <!--chart1 for user count-->
     <!--chartbiuld-->
     <script>
         const chartdata = <?php echo json_encode($chartdata); ?>;
@@ -62,7 +62,7 @@
         );
     </script>
 
-    <!--------------------chart2----------------------------------------------->
+    <!--------------------chart2--for payment counts--------------------------------->
     <div class="charts" style="width: 40%;float: right;">
         <canvas id="myChart2"></canvas>
     </div>
@@ -72,6 +72,7 @@
         const pcommissiondata = <?php echo json_encode($pcommissiondata); ?>;
         const paymentdates = <?php echo json_encode($paymentdates); ?>;
         const donations = <?php echo json_encode($donations); ?>;
+        const appointments = <?php echo json_encode($appointments); ?>;
         //below data2 called by the config2
         const data2 = {
             labels: paymentdates,
@@ -79,10 +80,10 @@
                 label: 'Products Payment Details',
                 data: pcommissiondata,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', /*red*/
+                    'rgba(255, 99, 132, 0.2)', /*purple*/
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)',/*purple*/
                 ],
                 borderWidth: 1
             },{
@@ -93,6 +94,16 @@
                 ],
                 borderColor: [
                     'rgba(54, 162, 235, 1)', /*blue*/
+                ],
+                borderWidth: 1
+            },{
+                label: 'appointments Payment Details',
+                data: appointments,
+                backgroundColor: [
+                    'rgba(255, 159, 64, 0.2)' /*orange*/
+                ],
+                borderColor: [
+                    'rgba(255, 159, 64,1)' /*orange*/
                 ],
                 borderWidth: 1
             }]
