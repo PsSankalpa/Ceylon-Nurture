@@ -36,8 +36,17 @@ class channeling extends Controller
 
             $data5 = $Auth->finduser();
 
-            if ( (isset($_GET['search'])) ){
+            if (isset($_GET['Search'])){
+                $query ="SELECT doctors.nameWithInitials,hospital,specialities, schedule.arrivalTime FROM doctors JOIN schedule on doctors.userid=schedule.doctorid"; 
+                
+                $query.= "order by userid desc";
 
+                $arr['userid'] = $doctorid; //to pass to the query function
+
+                 $data3 = $doctors->query($query, $arr);
+                 
+
+                
             }
 
                 // if ( (isset($_GET['search1'])) ) {
