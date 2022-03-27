@@ -17,6 +17,23 @@ class admin extends Controller
             //$this->load_model('common_user');
             //$data=$common_user->findAll();
 
+        //$this->view("admin/admin");//,['rows'=>$data]); //in here put the relevent page name and the path
+        $common_user = new common_user();
+        //userid=null
+        //$userid=1;
+        $data=$common_user->findAll();//where('userid',$userid);
+
+        $appointments= new appointments();
+        
+        $data1=$appointments->findAll();
+
+        $products = new products();
+        $data2=$products->findAll();
+
+        
+        
+        
+        
             // $data=$common_user->where('fname','cham');
 
             //$common_user->insert($data);
@@ -227,6 +244,16 @@ class admin extends Controller
 
         // $this->view("admin/admin",['data'=>$data]);
 
+    function channeling(){
+
+        $appointments= new appointments();
+        
+        $data=$appointments->findAll();
+
+        $this->view("admin/adminChanneling",[
+            'row'=>$data,
+        ]);
+
 
 
     }
@@ -234,8 +261,7 @@ class admin extends Controller
     function channeling()
     {
 
-        $this->view("admin/adminChanneling");
-    }
+
 
     function payments()
     {
@@ -243,10 +269,47 @@ class admin extends Controller
         $this->view("admin/adminpayments");
     }
 
-    function feedbacks()
-    {
+    function adminPayment(){
 
-        $this->view("admin/adminFeedbacks");
+        if(!Auth::logged_in_admin())  
+        {
+          $this->redirect('login/login');
+        }
+        else
+        {
+
+        $adminid=Auth::userid();
+
+        if(count($_POST) > 0){
+
+        $arr['type'] = $_POST['type'];
+        $arr['amount'] = $_POST['amount'];
+        $arr['date'] = date("Y-m-d H:i:s");
+
+        $adminpayment = new adminPayment();
+        $adminpayment->insert($arr); 
+        $this->redirect('admin/payments');
+ 
+        }
+
+        $this->view("admin/adminpayment");
+    }
+
+    }
+
+
+
+    function feedbacks(){
+
+        $patientrate = new patientrate();
+        $row=$patientrate->findAll();
+        $this->view("admin/adminFeedbacks",[
+            'row'=>$row,
+        ]
+        );
+
+
+
     }
 
     function reports()
