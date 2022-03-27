@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="col-75">
-                    <input type="text" value="<?= isset($_GET['search1']) ? $_GET['search1'] : ''; ?>" placeholder="Search.." name="search1">
+                    <input type="text" value="<?= isset($_GET['nameWithInitials']) ? $_GET['nameWithInitials'] : ''; ?>" placeholder="Search.." name="nameWithInitials">
                     </div>
                 
                     <div class="row">
@@ -36,8 +36,8 @@
                     </div>
 
                     <div class="col-75">
-                    <select name="search2">
-                        <option value="<?= isset($_GET['search2']) ? $_GET['search2'] : ''; ?>" >--Select Speciality--</option>
+                    <select name="specialities">
+                        <option value="<?= isset($_GET['specialities']) ? $_GET['specialities'] : ''; ?>" >--Select Speciality--</option>
                         <?php foreach ($rows as $row):?>
                                 <option><?=$row->specialities?></option>
                             <?php endforeach;?>
@@ -51,8 +51,8 @@
                     </div>
 
                     <div class="col-75">
-                    <select name="search3">
-                        <option value="<?= isset($_GET['search3']) ? $_GET['search3'] : ''; ?>" >--Select Hospital--</option>
+                    <select name="hospital">
+                        <option value="<?= isset($_GET['hospital']) ? $_GET['hospital'] : ''; ?>" >--Select Hospital--</option>
                             <?php foreach ($rows as $row):?>
                                 <option><?=$row->hospital?></option>
                             <?php endforeach;?>
@@ -67,13 +67,13 @@
                         <label  class="label" for="date">Date</label>
                     </div>
                     <div class="col-75">
-                    <input type="date" value="<?= isset($_GET['search4']) ? $_GET['search4'] : ''; ?>" placeholder="Search.." name="search4">
+                    <input type="date" value="<?= isset($_GET['date']) ? $_GET['date'] : ''; ?>" placeholder="Search.." name="date">
                     </div>
                     </div>
                     <br>
                     <br>
                     <div class="row">
-                    <button type="submit"><i class="fa fa-search"></i></button>
+                    <input  value="Search"  type="submit"> 
                     </div>
                     </div>
                 </form> 
@@ -81,70 +81,10 @@
             </div>            
 
             <div class="schedule">
-            <?php if ( ((isset($_GET['search1'])) || (isset($_GET['search2'])) || (isset($_GET['search3'])) || (isset($_GET['search4']))) ): ?>
-
-            <?php 
             
-            while( ((isset($_GET['search1'])) || (isset($_GET['search2'])) || (isset($_GET['search3'])) || (isset($_GET['search4']))) ){
-            
-                if ($rows1){
-                    $row = $rows1;
-                    break;
-
-                }
-                elseif ($rows2){
-                    $row = $rows2;
-                    break;
-
-
-                }
-                elseif ((isset($_GET['search3']))){
-                    $row = $rows3;
-                    break;
-
-
-                }
-                elseif ((isset($_GET['search4']))){
-                    $row = $rows4;
-                    break;
-
-
-                }
-        }
-            ?> 
-
-                <?php if ($row) : ?>
-                        <?php foreach ($row as $row) : ?>
-                            <?php if ($rows5) : ?>
-                                <?php if ($rows5 != "doctorAndPatient"): ?>
-
-                            <form class=scheduling_form enctype="multipart/form-data" action="<?=ROOT?>channeling/doctors/<?=$row->userid?>">
-
-                
-                                <div class="item">
-                                <div class="doc_image_container"><img class="doctor_image" src="<?=ASSETS?>img/doctor.jpg"></div>
-
-                                <div class="doc_details_container"><h3><?=$row->nameWithInitials?> </h3><br>
-                                Hospital:<?=$row->hospital?> <br>Speciality:<?=$row->specialities?></div>
-
-
-                                <div class="button_container"><a href="<?=ROOT?>channeling/doctors/<?=$row->userid?>"><input type="submit" value="Book Now"></a></div>
-                                </div>
-                            </form>
-                            <?php endif;?>
-                            <?php endif;?>
-
-                        <?php endforeach;?>
-                    <?php endif;?>
-
-            
-                    
-                    <?php if (!($rows1||$rows2||$rows3||$rows4)) : ?>
-                            No search results!
-                    <?php endif;?>
-                <?php else:?>
-
-                <?php foreach ($rows as $row):?>
+                <?php if ($rows3) : ?>
+                        
+                <?php foreach ($rows3 as $row):?>
                 <form class=scheduling_form enctype="multipart/form-data" action="<?=ROOT?>channeling/doctors/<?=$row->userid?>">
 
         
