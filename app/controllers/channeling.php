@@ -333,7 +333,7 @@ class channeling extends Controller
             $arr[]=$doctorName;
             $arr1[]=$doctorid;
         }
-        $doctors=array_unique($arr);
+        $doctors1=array_unique($arr);
         $doctorid=array_unique($arr1);
         //print_r($doctorid);
         
@@ -343,12 +343,17 @@ class channeling extends Controller
         $patientRate = new patientRate();
         $row2=$patientRate->findAll();
 
+        $doctors = new doctors();
+        $row3=$doctors->findAll();
+
            
     $this-> view("patient/patient",[
             'row'=>$row,
-            'row1'=>$doctors,
+            'row1'=>$doctors1,
             'row2'=>$doctorid,
             'row3'=>$row2,
+            'row4'=>$row3,
+
 
 
 
