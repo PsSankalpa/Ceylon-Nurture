@@ -52,17 +52,13 @@
                         <tr>
                             <td><?= $row->doctorName ?></td>
                             <td><?= $row->patientName ?></td>
-                            <td><?= $row->category ?> </td>
+                            <td><?= $row->symptoms ?> </td>
                             <td><?= $row->date ?></td>
                             <td><?= $row->nic ?></td>
                             <td><?= $row->totalPayment ?></td>
-                            <td class="data"><a href="<?= ROOT ?>doctor/appointmentDetails/<?= $row->scheduleid ?>"><button class="appviewbtn">View Information</button></a></td>
                         </tr>
         </table>
-
-        <a href="<?= ROOT ?>make_pdf">
-            <div class="payButton"><a href="<?= ROOT ?>make_pdf/<?= $row['patient'][0]->userid ?>/<?= $row['channeling'][0]->channelingid ?>/<?= $row['schedule'][0]->scheduleid ?>"><button class="buttonA">Generate PDF</button></a>
-        </a>
+        <div class="payButton"><a href="<?= ROOT ?>doctor/generatepdf/<?= $row->appointmentid ?>"><button class="buttonA">Generate PDF</button></a>
     </div>
 
     </div>

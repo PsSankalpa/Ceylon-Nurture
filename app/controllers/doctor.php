@@ -141,24 +141,24 @@ class doctor extends Controller
         //die;
 
         $patientpayment = new patientpayment();
-        $query = "select totalPayment from patientPayment where appointmentid in (select appointmentid from appointments where doctorid = :userid)";
+        $query = "select totalPayment from patientpayment where doctorid in (select doctorid from appointments where doctorid = :userid)";
 
         $arr5['userid'] = $userid;
         $rcount = 0;
         $data7 = $patientpayment->query($query, $arr5);
-        
+
         if ($data7) {
             $rvalue = count($data7);
-           
+
             for ($i = 0; $i < $rvalue; $i++) {
                 $rcount = $rcount + $data7[0]->totalPayment;
-                print_r($data7);
+                // print_r($data7);
             }
         } else {
             $rcount = 0;
         }
 
-       // print_r($rcount);
+        // print_r($rcount);
         //die;
         if ($data7) {
             $rCount = count($data7);
@@ -486,16 +486,16 @@ class doctor extends Controller
         $doctorid = Auth::userid();
         $doctor = new doctors();
 
-        $channeling = new channeling();
+        // $channeling = new channeling();
         //$data = null;
-
+        $appointments = new appointments();
         //$payments = new channelingpayments();
 
-        
-       $data = $channeling->where('DoctorID', $doctorid);
-      
-       // print_r($data);
-        // die;
+
+        $data = $appointments->where('doctorid', $doctorid);
+
+        // print_r($data);
+        //  die;
 
 
         //$data =$doctor->where('userid',$doctorid);
@@ -539,61 +539,62 @@ class doctor extends Controller
         ]);
     }
 
-    function reportDetails($id)
+    function reportDetails($appointmentid = null)
     {
+        // print_r($appointmentid);
+        // die;
         if (!Auth::logged_in()) {
             $this->redirect('login/login');
         }
 
-        $userid=Auth::userid();
+        $userid = Auth::userid();
         $appointments = new appointments();
-        $row=$appointments->where('appointmentid',$id);
-
-        if ($row != null) {
-            $row=$row[0];
-        }
+        $row = $appointments->where('appointmentid', $appointmentid);
+       // print_r($row);
+        //die;
+        
 
         $this->view("doctor/reportDetails", [
             'row' => $row,
         ]);
     }
 
-        // $doctors = new doctors();
-        // $row['doctor'] = $doctors->where('userid', $userid);
-        // // if ($row) {
-        // //     $row = $row[0];
-        // // }
+    // $doctors = new doctors();
+    // $row['doctor'] = $doctors->where('userid', $userid);
+    // // if ($row) {
+    // //     $row = $row[0];
+    // // }
 
-        // $channeling = new channeling();
-        // $row['channeling'] = $channeling->where('channelingid', $channelingid);
-        // // if ($row2) {
-        // //     $row2 = $row2[0];
-        // // }
+    // $channeling = new channeling();
+    // $row['channeling'] = $channeling->where('channelingid', $channelingid);
+    // // if ($row2) {
+    // //     $row2 = $row2[0];
+    // // }
 
-        // $common_user = new common_user();
-        // $row['commonuser'] = $common_user->where('userid', $patientid);
-        // // if ($row3) {
-        // //     $row3 = $row3[0];
-        // // }
+    // $common_user = new common_user();
+    // $row['commonuser'] = $common_user->where('userid', $patientid);
+    // // if ($row3) {
+    // //     $row3 = $row3[0];
+    // // }
 
-        // $payments = new channelingpayments();
-        // $row['payments'] = $payments->where('channelingid', $channelingid);
-        // // if ($row4) {
-        // //     $row4 = $row4[0];
-        // // }
+    // $payments = new channelingpayments();
+    // $row['payments'] = $payments->where('channelingid', $channelingid);
+    // // if ($row4) {
+    // //     $row4 = $row4[0];
+    // // }
 
-        // $schedule = new schedule();
-        // $row['schedule'] = $schedule->where('scheduleid', $scheduleid);
+    // $schedule = new schedule();
+    // $row['schedule'] = $schedule->where('scheduleid', $scheduleid);
 
-        // $patient = new patients();
-        // $row['patient'] = $patient->where('userid', $patientid);
+    // $patient = new patients();
+    // $row['patient'] = $patient->where('userid', $patientid);
 
 
-        // // print_r($row['schedule']);
-        // // die;
+    // // print_r($row['schedule']);
+    // // die;
 
-        // extract($row);
-     
+    // extract($row);
+
 
     //function to view appointments
     function viewAppointments()
@@ -852,29 +853,30 @@ class doctor extends Controller
         ]);
     }
 
-    public function generatepdf($id,$userid,$channelingid,$scheduleid)
+    public function generatepdf($appointmentid)
     {
-        $userid = Auth::userid();
+        
         require_once __DIR__ . '/../models/mpdf/autoload.php';
         $mpdf = new \Mpdf\Mpdf();
-        $html = file_get_contents(ROOT . '/doctor/doctorpdf/' . $id . '/' . $userid . '/' . $channelingid . '/' .$scheduleid );
-        //  print_r($html);
-        //   die;
+        $html = file_get_contents(ROOT . '/doctor/doctorpdf/' . $appointmentid);
+        
+        print_r($html);
+          die;
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }
 
-    function doctorpdf($id, $userid, $channelingid, $scheduleid)
+    function doctorpdf($appointmentid)
     {
-        $userid=Auth::userid();
+       
         $appointments = new appointments();
-        $row=$appointments->where('appointmentid',$id);
-
+        $row = $appointments->where('appointmentid', $appointmentid);
+print_r($row);
+die;
         if ($row != null) {
-            $row=$row[0];
+            $row = $row[0];
         }
 
-       
 ?>
 
         <style>
@@ -914,7 +916,7 @@ class doctor extends Controller
             <tr>
                 <td>Symptoms</td>
                 <td>:</td>
-                <td><?= $row->category ?></td>
+                <td><?= $row->symptoms ?></td>
             </tr>
             <tr>
                 <td>Date</td>
@@ -935,6 +937,4 @@ class doctor extends Controller
 
 <?php
     }
-    
 }
-
