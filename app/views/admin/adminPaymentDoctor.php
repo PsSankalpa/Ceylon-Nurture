@@ -6,6 +6,8 @@
         </title>
         <link rel="stylesheet" href="<?=ASSETS?>css/commonStyle.css">
         <link rel="stylesheet" href="<?=ASSETS?>css/adminStyle.css">
+        <link rel="stylesheet" href="<?=ASSETS?>css/channelingStyle.css">
+
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
     </head>
@@ -125,71 +127,49 @@
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
                             <h3>Doctor Payments</h3>
-                            <a href="<?=ROOT?>admin/adminPaymentDoctor" class="btn">Make a payment</a>
                         </div><br>
-                        <table>
-                           <thead>
-                               <tr>
-                                   <td>Doctor Name</td>
-                                   <td>Doctor id</td>
-                                   <td>Date</td>
-                                   <td>Amount</td>
-                               </tr>
-                           </thead> 
-                           <tbody>
-                            <?php if ($row):?>
-                                <?php foreach ($row as $row):?>
+                        <form class="regi_form" enctype="multipart/form-data" method="POST">
 
-                               <tr>
-                                   <td><?=$row->doctorName?></td>
-                                   <td><?=$row->doctorid?></td>
-                                   <td><?=$row->date?></td>
-                                   <td><?=$row->amount?></td>
-                               </tr>
-                               <?php endforeach;?>
-                            <?php endif;?>
-                               
-                                   
-                               
-                           </tbody>
-                        </table>
-                    </div>
-   
-                    
+                            <div class="row">
+                            <div class="col-25">
+                                <label for="name">Name of the Doctor</label>
+                            </div>
+                            <div class="col-75">
+                            <select name="name">
+                        <option value="<?=get_var('name')?>" >Name of the Doctor </option>
+                        <?print_r($row);?>
+                        <?php if($row):?>
+                            <?php foreach($row as $row):?>
+                                <?php
+                                $common_user=new common_user();
+                                $usernamerow=$common_user->where('userid',$row);
+                                print_r($usernamerow);
+                                ?>
+                                <option><?= $username=$usernamerow[0]->username ?></option>
+                            <?php endforeach;?>
+                        <?php endif;?>
+                        </select>
+                            </div>
+                            </div>
+                       
 
-                </div>
+                            <div class="row">
+                            <div class="col-25">
+                                <label for="amount">Payment Amount</label>
+                                <?php ?>
+                            </div>
+                            <div class="col-75">
+                            <input type="number" value="<?=get_var('amount')?>" id="amount" name="amount" placeholder="Amount">
+                            </div>
+                            </div>
 
+                            
 
-                <div class="detailsA">
-                   
-                <div class="upcomingChanneling">
-                        <div class="cardHeader">
-                            <h3>Other Payments</h3>
-                            <a href="<?=ROOT?>admin/adminPayment" class="btn">Make a payment</a>
-                        </div><br>
-                        <table>
-                           <thead>
-                               <tr>
-                                   <td>Type of Payment</td>
-                                   <td>Date</td>
-                                   <td>Amount</td>
-                               </tr>
-                           </thead> 
-                           <tbody>
-                           <?php if ($row1):?>
-                                <?php foreach ($row1 as $row):?>
-
-                               <tr>
-                                   <td><?=$row->type?></td>
-                                   <td><?=$row->date?></td>
-                                   <td><?=$row->amount?></td>
-                               </tr>
-                               <?php endforeach;?>
-                            <?php endif;?>
-
-                               
-                           </tbody>
-                        </table>
+                            <div class="row">
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Reset">
+                            </div>
+                        </form>    
                     </div>
    
                     
