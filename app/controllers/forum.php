@@ -251,13 +251,20 @@ class forum extends Controller
         $forumproduct = new forumproduct();
 
 		$errors = array();
+        $userName = Auth::username();
+        
+
 		if(count($_POST) > 0 )
  		{
 
-			if($forumproduct->validate($_POST))
+			if($forumproduct->validate2($_POST,$_FILES,$dest=NULL,$forumProductid,$userName))
  			{
+                global $des;
+                $arr['name'] = htmlspecialchars($_POST['name']);
+                $arr['description'] = htmlspecialchars($_POST['description']);
+                $arr['image'] =$des;
  				
- 				$forumproduct->update($forumProductid,$_POST);
+ 				$forumproduct->update($forumProductid,$arr);
  				$this->redirect('forum');
  			}else
  			{
@@ -355,15 +362,20 @@ class forum extends Controller
         }
 
         $forumherb = new forumherb();
+        $userName = Auth::username();
 
 		$errors = array();
 		if(count($_POST) > 0 )
  		{
 
-			if($forumherb->validate($_POST))
+			if($forumherb->validate2($_POST,$_FILES,$dest=NULL,$forumHerbid,$userName))
  			{
+                global $des;
+                $arr['name'] = htmlspecialchars($_POST['name']);
+                $arr['description'] = htmlspecialchars($_POST['description']);
+                $arr['image'] =$des;
  				
- 				$forumherb->update($forumHerbid,$_POST);
+ 				$forumherb->update($forumHerbid,$arr);
  				$this->redirect('forum');
  			}else
  			{
@@ -372,7 +384,7 @@ class forum extends Controller
  			}
  		}
 
- 		$row = $forumdoctor->where('forumHerbid',$forumHerbid);
+ 		$row = $forumherb->where('forumHerbid',$forumHerbid);
 
 
         $this->view("forums/updateForumHerb",[
@@ -399,7 +411,7 @@ class forum extends Controller
  		 
  		}
 
- 		$row = $forumdoctor->where('forumHerbid',$forumHerbid);
+ 		$row = $forumherb->where('forumHerbid',$forumHerbid);
 
 			$this->view("forums/deleteForumHerb",[
 				'row'=>$row,
