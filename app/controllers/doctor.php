@@ -15,13 +15,13 @@ class doctor extends Controller
         $data = $schedule->where('doctorid', $userid);
         $channeling = new channeling();
 
-        if ($z1 = $channeling->where('doctorid',$userid)){
+        if ($z1 = $channeling->where('doctorid', $userid)) {
             $data3 = count($z1);
         } else {
             $data3 = 0;
         }
-       // print_r($data3);
-       // die;
+        // print_r($data3);
+        // die;
 
 
         $this->view("doctor/doctor", [
@@ -31,6 +31,14 @@ class doctor extends Controller
         ]); //in here put the relevent page name and the path
     }
 
+
+    //get the file destination of the image
+    function get_destination($destination)
+    {
+        global $des;
+        $des = $destination;
+        return $des;
+    }
     //function for registration
     function registration()
     {
@@ -42,23 +50,23 @@ class doctor extends Controller
         if (count($_POST) > 0) {
 
             $doctors = new doctors(); //create the instance of the doctor in model
-            
+
             $userName = Auth::username();
 
-            if ($doctors->validate($_POST, $_FILES,$userName)) {
+            if ($doctors->validate($_POST, $_FILES, $userName)) {
                 global $des;
                 $arr['userid'] = AUTH::userid();
                 $arr['nameWithInitials'] = Auth::nameWithInitials();
                 $arr['gender'] = Auth::gender();
-               // $arr['dob'] = Auth::dob();
+                // $arr['dob'] = Auth::dob();
                 $arr['registrationNumber'] = htmlspecialchars($_POST['registrationNumber']);
                 $arr['specialities'] = htmlspecialchars($_POST['specialities']);
                 $arr['hospital'] = htmlspecialchars($_POST['hospital']);
                 $arr['city'] = htmlspecialchars($_POST['city']);
                 $arr['address'] = htmlspecialchars($_POST['address']);
                 $arr['image'] = $des;
-               // print_r($arr);
-               // die;
+                // print_r($arr);
+                // die;
                 //$arr['image'] = $des2;
 
                 //$orig_file = $_FILES["avatar"]["tmp_name"];
@@ -78,13 +86,7 @@ class doctor extends Controller
             'errors' => $errors,
         ]);
     }
-    //get the file destination of the image
-    function get_destination($destination)
-    {
-        global $des;
-        $des = $destination;
-        return $des;
-    }
+
 
     //get the file destination of the image2
     /*function get_destination($destination)
@@ -102,22 +104,21 @@ class doctor extends Controller
 
         $schedule = new schedule();
 
-        $row=$schedule->where('doctorid', $doctorid);
+        $row = $schedule->where('doctorid', $doctorid);
 
         $Auth = new Auth;
         $userid = Auth::userid();
         //Taking the count of patients appointments and revenue
         $patient = new patients();
-        $query="select * from patients where userid in (select Patientid from appointments where doctorid = :userid)";
+        $query = "select * from patients where userid in (select Patientid from appointments where doctorid = :userid)";
         $arr4['userid'] = $userid;
         $data3 = $patient->query($query, $arr4);
         $appointments = new appointments();
 
-//$data3 = $appointments->where('doctorid',$userid);
-        if($data3){
+        //$data3 = $appointments->where('doctorid',$userid);
+        if ($data3) {
             $pCount = count($data3);
-        }
-        else{
+        } else {
             $pCount = 0;
         }
         //to filter by date
@@ -126,74 +127,70 @@ class doctor extends Controller
             $query1 = "select * from patients order by articleid desc limit 6";
             $data2 = $patients->query($query1);
         }*/
-        
+
 
         $appointments = new appointments();
-        $data4 = $appointments->where('doctorid',$userid);
-        if($data4){
+        $data4 = $appointments->where('doctorid', $userid);
+        if ($data4) {
             $aCount = count($data4);
-        }
-        else{
+        } else {
             $aCount = 0;
         }
         //print_r($data4);
-       // print_r(" ");
+        // print_r(" ");
         //die;
 
         $patientpayment = new patientpayment();
-        $query="select totalPayment from patientPayment where appointmentid in (select appointmentid from appointments where doctorid = :userid)";
-       
+        $query = "select doctorCharge from patientPayment where appointmentid in (select appointmentid from appointments where doctorid = :userid)";
+
         $arr5['userid'] = $userid;
         $rcount = 0;
         $data7 = $patientpayment->query($query, $arr5);
-        if($data7){
+        if ($data7) {
             $rvalue = count($data7);
-            for($i = 0; $i<$rvalue;$i++){
-                $rcount = $rcount + $data7[0]->totalPayment;
+            for ($i = 0; $i < $rvalue; $i++) {
+                $rcount = $rcount + $data7[0]->doctorCharge;
             }
-        }
-        else{
+        } else {
             $rcount = 0;
         }
 
         //print_r($rcount);
         //die;
-        if($data7)
-        {
-            $rCount = count ($data7);
-           // $rCount = $patientpayment->query($query, $arr5)
-        }
-        else{
+        if ($data7) {
+            $rCount = count($data7);
+            // $rCount = $patientpayment->query($query, $arr5)
+        } else {
             $rCount = 0;
         }
-        
+
         //$query="select totalPayment from patientPayment where doctorid = :userid in (select * from appointments where doctorid = :userid)"
 
         //----------------------------//
-        $channelingid=null;
-        $patientid=null;
-        $scheduleid=null;
+        $channelingid = null;
+        $patientid = null;
+        $scheduleid = null;
 
         $query1 = "select * from appointments where doctorid = :userid and date > curdate()-7 order by date desc";
         $arr['userid'] = Auth::userid();
-        $data5 = $appointments->query($query1,$arr);
+        $data5 = $appointments->query($query1, $arr);
 
-       // $query2 = "select * from schedule where scheduleid in (select scheduleid from appointments where doctorid = :userid order by date desc )";
+        // $query2 = "select * from schedule where scheduleid in (select scheduleid from appointments where doctorid = :userid order by date desc )";
         //$arr['userid'] = Auth::userid();
-       // $data1 = $schedule->query($query2,$arr);
-       // print_r($data1);
-      
+        // $data1 = $schedule->query($query2,$arr);
+        // print_r($data1);
+
         //$appointments = new appointments();
         //$data5 = $appointments->where2('doctorid',$userid,'scheduleid',$scheduleid);
         //print_r($data5);
-        
-       // $schedule = new schedule();
-       // $data1= $schedule->where('scheduleid',$scheduleid);
+
+        // $schedule = new schedule();
+        // $data1= $schedule->where('scheduleid',$scheduleid);
         //print_r($data1);
-     
-       // if ($data1) {
-         //   $data1 = $data1[0];
-       // }
+
+        // if ($data1) {
+        //   $data1 = $data1[0];
+        // }
         //print_r($data1);
 
         $this->view("doctor/docDashboard", [
@@ -208,27 +205,6 @@ class doctor extends Controller
         ]);
     }
 
-    //function to view account
-    // function viewAccount($userid = [])
-    // {
-    //     //$doctorid = Auth::userid();
-
-    //     $errors = array();
-    //     $doctors = new doctors();
-
-    //     $userid = Auth::userid();
-    //     $row = $doctors->where('userid', $userid); //in here row is an array
-    //     //$data2 = $doctors->findAll();
-    //     if ($row) {
-    //         $row = $row[0];
-    //     }
-    //     $this->view('profile/myAccount', [
-    //         'errors' => $errors,
-    //         'row' => $row,
-    //         //'data2'=>$data2,
-    //     ]);
-    // }
-    //function to edit account
     function editAccount($userid = null)
     {
         if (!Auth::logged_in())  //checking if the user is logged in if not redirect to the login page
@@ -238,12 +214,17 @@ class doctor extends Controller
 
         $errors = array();
         $doctors = new doctors();
+        $data2 = $doctors->where('userid', $userid);
+        if ($data2) {
+            $data2 = $data2[0];
+        }
 
+        $dest = $data2->image;
         $userName = Auth::username();
 
         if (count($_POST) > 0) {
 
-            if ($doctors->validate($_POST, $_FILES,$userName)) {
+            if ($doctors->validate2($_POST, $_FILES, $userName, $userid, $dest)) {
                 global $des;
                 //global $des2;
                 $arr['userid'] = AUTH::userid();
@@ -260,9 +241,9 @@ class doctor extends Controller
                 $doctors->update($userid, $arr);
 
                 $this->redirect('myAccount');
-                } else {
+            } else {
                 $errors = $doctors->errors;
-                }
+            }
         }
         $row = $doctors->where('userid', $userid);
         // print_r($row);      
@@ -318,10 +299,10 @@ class doctor extends Controller
 
     //get the tim difference for the patient
     // function get_time($patientcount,$arrivalTime,$timeperPatient){
-        // if (count == 1;count <= $patientcount; count++ ) {
-            // $arrivalTime = $arrivalTime + $DATA['timeperPatient'];
-            // print_r("Hello");
-       // }
+    // if (count == 1;count <= $patientcount; count++ ) {
+    // $arrivalTime = $arrivalTime + $DATA['timeperPatient'];
+    // print_r("Hello");
+    // }
     //}
 
     //function to add schedule
@@ -346,13 +327,13 @@ class doctor extends Controller
                 $arr['dateofSlot'] = $_POST['dateofSlot'];
                 $arr['arrivalTime'] = $_POST['arrivalTime'];
                 $arr['departureTime'] = $_POST['departureTime'];
-                $arr['noOfPatient'] = $coun;//need to change
+                $arr['noOfPatient'] = $coun; //need to change
                 $arr['timePerPatient'] = $_POST['timePerPatient'];
                 $arr['doctorCharge'] = $_POST['doctorCharge'];
                 $arr['doctorNote'] = $_POST['doctorNote'];
                 //$arr['DoctorName'] = $nameWithInitials;
                 //$arr['city'] = $city;
-                
+
                 // print_r($arr['arrivalTime']);
                 // print_r($arr['departureTime']);
                 // die;
@@ -387,14 +368,14 @@ class doctor extends Controller
         //$rows =$schedule->where('scheduleid',$scheduleid);
         $row = $schedule->where('doctorid', $doctorid); // ps changed to remove the slots when another user loged in
         //to get the date filter 
-        if(count($_POST)>0){
-            
-                $date1=$_POST['fromdate'];
-                $date2=$_POST['todate'];
-                //print_r($date1);
-              
-                $row= $schedule->finddaterange($date1,$date2);
-                //print_r($row);  
+        if (count($_POST) > 0) {
+
+            $date1 = $_POST['fromdate'];
+            $date2 = $_POST['todate'];
+            //print_r($date1);
+
+            $row = $schedule->finddaterange($date1, $date2);
+            //print_r($row);  
         }
         $this->view('doctor/viewSchedule', [
             'errors' => $errors,
@@ -421,7 +402,7 @@ class doctor extends Controller
                 $arr['dateofSlot'] = $_POST['dateofSlot'];
                 $arr['arrivalTime'] = $_POST['arrivalTime'];
                 $arr['departureTime'] = $_POST['departureTime'];
-               // $arr['noOfPatient'] = $_POST['noOfPatient'];
+                // $arr['noOfPatient'] = $_POST['noOfPatient'];
                 $arr['timePerPatient'] = $_POST['timePerPatient'];
                 $arr['doctorCharge'] = $_POST['doctorCharge'];
                 $arr['doctorNote'] = $_POST['doctorNote'];
@@ -434,7 +415,7 @@ class doctor extends Controller
         }
         $row = $schedule->where('scheduleid', $scheduleid);
         // print_r($row);
-         //die;
+        //die;
         //in here row is an array
 
         if ($row) {
@@ -507,12 +488,12 @@ class doctor extends Controller
 
         $payments = new channelingpayments();
 
-        if(null!=($payments->where('doctorid',$doctorid)))
-        { 
-            $data = $channeling->where('doctorid',$doctorid);
+        if (null != ($payments->where('doctorid', $doctorid)))
+        {
+            $data = $channeling->where('doctorid', $doctorid);
         }
-        // print_r($data);
-        // die;
+        print_r($data);
+         die;
 
         if ($data) {
             $row = $data[0];
@@ -535,7 +516,7 @@ class doctor extends Controller
     }
 
     function paymentReports()
-    {  
+    {
         if (!Auth::logged_in()) {
             $this->redirect('login/login');
         }
@@ -545,22 +526,21 @@ class doctor extends Controller
         $channeling = new channeling();
         $data = null;
 
-         $payments = new channelingpayments();
+        $payments = new channelingpayments();
 
-      if(null!=($payments->where('doctorid',$doctorid)))
-      { 
-          $data = $channeling->where('doctorid',$doctorid);
-      }
+        if (null != ($payments->where('doctorid', $doctorid))) {
+            $data = $channeling->where('doctorid', $doctorid);
+        }
 
-      if ($data) {
-          $row = $data[0];
-      }
-        $this->view("doctor/paymentReports",[
-            'data'=>$data,
-        ]); 
+        if ($data) {
+            $row = $data[0];
+        }
+        $this->view("doctor/paymentReports", [
+            'data' => $data,
+        ]);
     }
 
-    function reportDetails($patientid = null, $channelingid = null,$scheduleid=null)
+    function reportDetails($patientid = null, $channelingid = null, $scheduleid = null)
     {
         if (!Auth::logged_in()) {
             $this->redirect('login/login');
@@ -594,10 +574,10 @@ class doctor extends Controller
         // }
 
         $schedule = new schedule();
-        $row['schedule']= $schedule->where('scheduleid',$scheduleid); 
+        $row['schedule'] = $schedule->where('scheduleid', $scheduleid);
 
         $patient = new patients();
-        $row['patient'] = $patient->where('userid',$patientid);
+        $row['patient'] = $patient->where('userid', $patientid);
 
 
         // print_r($row['schedule']);
@@ -615,24 +595,24 @@ class doctor extends Controller
         $doctorid = Auth::userid();
         $doctor = new doctors();
         $data = $doctor->where('userid', $doctorid);
-        if($data)
-        {
-            $data=$data[0];
+        if ($data) {
+            $data = $data[0];
         }
 
         $schedule = new schedule();
 
-        $row=$schedule->where('doctorid', $doctorid);
-
+        $row = $schedule->where('doctorid', $doctorid);
+        print_r($row);
+        die;
         $this->view("doctor/viewAppointments", [
             'data' => $data,
             'row' => $row,
-            
+
         ]);
     }
 
     //function to view appointment details
-    function appointmentDetails($scheduleid=null)
+    function appointmentDetails($scheduleid = null)
     {
         if (!Auth::logged_in()) {
             $this->redirect('login/login');
@@ -640,8 +620,8 @@ class doctor extends Controller
         $Auth = new Auth;
         $userid = Auth::userid();
 
-        $channelingid=null;
-        $patientid=null;
+        $channelingid = null;
+        $patientid = null;
 
         //$doctorid = Auth::userid();
         //$doctor = new doctors();
@@ -654,23 +634,23 @@ class doctor extends Controller
         $arr4['scheduleid'] = $scheduleid;
         $data4 = $patient->query($query, $arr4);*/
         //print_r($data4);
-        
+
 
         $appointments = new appointments();
-        $data5 = $appointments->where2('doctorid',$userid,'scheduleid',$scheduleid);
+        $data5 = $appointments->where2('doctorid', $userid, 'scheduleid', $scheduleid);
         //print_r($data5);
-        
-        
-        
+
+
+
         $schedule = new schedule();
-        $data1= $schedule->where('scheduleid',$scheduleid);
+        $data1 = $schedule->where('scheduleid', $scheduleid);
 
         if ($data1) {
             $data1 = $data1[0];
         }
 
-       // print_r($data1);
-        
+        // print_r($data1);
+
         $this->view("doctor/appointmentDetails", [
             'data5' => $data5,
             'data1' => $data1,
@@ -680,12 +660,33 @@ class doctor extends Controller
     function feedback()
     {
         $doctorid = Auth::userid();
-        $doctor = new doctors();
-        $data = $doctor->where('userid', $doctorid);
+        $doctors = new doctors();
+        $data = $doctors->where('userid', $doctorid);
+        //if($data)
+        //{
+        //    $data=$data[0];
+        // }
+        // print_r($patientRate);
+        // die;
+        $patientRate = new  patientRate();
+
+        $row = $patientRate->where('doctorid', $doctorid);
+
+        $common_user = new common_user();
+        $userid = Auth::userid();
+        //$query="select nameWithInitials from common_user where userid in (select userid from patientRate where userid = :userid)";
+        //$query="select nameWithInitials from common_user c JOIN patientRate p ON c.userid=p.userid";; 
+        // print_r($query);
+        // die;         
+        $arr2['userid'] = $userid;
+        // $row2 = $common_user->query($query, $arr2);
 
         $this->view("doctor/feedback", [
             'data' => $data,
-            
+            'row' => $row,
+            // 'row2' => $row2,
+
+
         ]);
     }
 
@@ -783,7 +784,7 @@ class doctor extends Controller
 
         if (count($_POST) > 0) {
 
-            if ($articles->validate2($_POST, $_FILES, $userName,$articleid,$dest)) {
+            if ($articles->validate2($_POST, $_FILES, $userName, $articleid, $dest)) {
                 global $des;
                 $arr['articleName'] = htmlspecialchars($_POST['articleName']);
                 $arr['description'] = htmlspecialchars($_POST['description']);
@@ -844,4 +845,3 @@ class doctor extends Controller
         ]);
     }
 }
-
