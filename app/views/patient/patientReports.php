@@ -126,7 +126,7 @@
                                    <td><?= $location[0]->hospital ?></td>
                                    <td> Rs. <?= $row->totalPayment ?></td>
                                    <td>Rs. <?= $row->commission ?></td>
-                                   <td><a href="<?=ROOT?>channeling/generatepdf/<?= $row->appointmentid ?>" class="btn">View Report</a></td>
+                                   <td><a href="<?=ROOT?>channeling/generatepdf/<?= $row->appointmentid ?>" class="btn">Generate PDF</a></td>
 
                                </tr>
                                <?php endforeach ;?>

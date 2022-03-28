@@ -124,7 +124,47 @@
                    
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
-                            <h3>Payments</h3>
+                            <h3>Doctor Payments</h3>
+                            <a href="<?=ROOT?>admin/adminPaymentDoctor" class="btn">Make a payment</a>
+                        </div><br>
+                        <table>
+                           <thead>
+                               <tr>
+                                   <td>Doctor Name</td>
+                                   <td>Doctor id</td>
+                                   <td>Date</td>
+                                   <td>Amount</td>
+                               </tr>
+                           </thead> 
+                           <tbody>
+                            <?php if ($row):?>
+                                <?php foreach ($row as $row):?>
+
+                               <tr>
+                                   <td><?=$row->doctorName?></td>
+                                   <td><?=$row->doctorid?></td>
+                                   <td><?=$row->date?></td>
+                                   <td><?=$row->amount?></td>
+                               </tr>
+                               <?php endforeach;?>
+                            <?php endif;?>
+                               
+                                   
+                               
+                           </tbody>
+                        </table>
+                    </div>
+   
+                    
+
+                </div>
+
+
+                <div class="detailsA">
+                   
+                <div class="upcomingChanneling">
+                        <div class="cardHeader">
+                            <h3>Other Payments</h3>
                             <a href="<?=ROOT?>admin/adminPayment" class="btn">Make a payment</a>
                         </div><br>
                         <table>
@@ -132,23 +172,21 @@
                                <tr>
                                    <td>Type of Payment</td>
                                    <td>Date</td>
-                                   <td>Method of Payments</td>
                                    <td>Amount</td>
                                </tr>
                            </thead> 
                            <tbody>
+                           <?php if ($row1):?>
+                                <?php foreach ($row1 as $row):?>
+
                                <tr>
-                                   <td>Monthly Implimentation cost</td>
-                                   <td>05/11/2021</td>
-                                   <td>Credit card Payment</td>
-                                   <td> LKR 2500</td>
+                                   <td><?=$row->type?></td>
+                                   <td><?=$row->date?></td>
+                                   <td><?=$row->amount?></td>
                                </tr>
-                               
-                                   <td>Maintenance Cost</td>
-                                   <td>06/11/2021</td>
-                                   <td> Bank transfer</td>
-                                   <td> LKR 2500</td>
-                               </tr>
+                               <?php endforeach;?>
+                            <?php endif;?>
+
                                
                            </tbody>
                         </table>

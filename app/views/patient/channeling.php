@@ -83,8 +83,17 @@
             <div class="schedule">
             
                 <?php if ($rows) : ?>
-                        
-                <?php foreach ($rows as $row):?>
+                    <?php foreach ($rows as $row):?>
+
+                    <?php
+                    
+                    $doctorid=$row->userid;
+                    $userid=Auth::userid();
+                    
+
+                    ?>
+                <?php if($userid != $doctorid):?>
+                      
                 <form class=scheduling_form enctype="multipart/form-data" action="<?=ROOT?>channeling/doctors/<?=$row->userid?>">
 
         
@@ -98,8 +107,10 @@
                     <div class="button_container"><a href="<?=ROOT?>channeling/doctors/<?=$row->userid?>"><input type="submit" value="Book Now"></a></div>
                     </div>
                     </form>
+                    <?php endif;?>
 
                     <?php endforeach;?>
+                    
                     <?php endif;?>
 
 

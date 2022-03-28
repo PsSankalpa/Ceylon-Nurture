@@ -17,18 +17,18 @@ class admin extends Controller
             //$this->load_model('common_user');
             //$data=$common_user->findAll();
 
-        //$this->view("admin/admin");//,['rows'=>$data]); //in here put the relevent page name and the path
-        $common_user = new common_user();
-        //userid=null
-        //$userid=1;
-        $data=$common_user->findAll();//where('userid',$userid);
+            //$this->view("admin/admin");//,['rows'=>$data]); //in here put the relevent page name and the path
+            $common_user = new common_user();
+            //userid=null
+            //$userid=1;
+            $data=$common_user->findAll();//where('userid',$userid);
 
-        $appointments= new appointments();
-        
-        $data1=$appointments->findAll();
+            $appointments= new appointments();
+            
+            $data1=$appointments->findAll();
 
-        $products = new products();
-        $data2=$products->findAll();
+            $products = new products();
+            $data2=$products->findAll();
 
         
         
@@ -67,6 +67,7 @@ class admin extends Controller
 
                 $cmonth[$z] = $commonUser->getrange($z, 'MONTH');
                 $ccount[$z] = 0;
+                $cdate[$z] = 0;
                 if (($cmonth[$z]) != null) {
                     $cdate[$z] = date('Y/m', strtotime($cmonth[$z][0]->date));
                     for ($j = 0; $j < count($cmonth[$z]); $j++) {
@@ -102,6 +103,7 @@ class admin extends Controller
 
                 $month[$z] = $commission->getrange($z, 'MONTH');
                 $count[$z] = 0;
+                $date[$z] = 0;
                 if (($month[$z]) != null) {
                     $date[$z] = date('Y/m', strtotime($month[$z][0]->date));
                     for ($j = 0; $j < count($month[$z]); $j++) {
@@ -232,6 +234,7 @@ class admin extends Controller
                 //'data'=>$data2,
             ]);
         }
+    }
 
 
         //$Auth = new Auth;
@@ -253,20 +256,25 @@ class admin extends Controller
         $this->view("admin/adminChanneling",[
             'row'=>$data,
         ]);
-
-
-
     }
 
-    function channeling()
-    {
+
+    function payments(){
+    
+
+        $admin = new admin();
+        $adminpaymentdoctor = new adminPaymentDoctor();
+        $row=$adminpaymentdoctor->findAll();
+
+        $adminpayment= new adminPayment();
+        $row2=$adminpayment->findAll();
+
+        $this->view("admin/adminpayments",[
+                'row'=>$row,
+                'row1'=>$row2,
+        ]);
 
 
-
-    function payments()
-    {
-
-        $this->view("admin/adminpayments");
     }
 
     function adminPayment(){
@@ -278,21 +286,72 @@ class admin extends Controller
         else
         {
 
-        $adminid=Auth::userid();
+            $adminid=Auth::userid();
+
+            if(count($_POST) > 0)
+            {
+                $arr['type'] = $_POST['type'];
+                $arr['amount'] = $_POST['amount'];
+                $arr['date'] = date("Y-m-d H:i:s");
+
+                $adminpayment = new adminPayment();
+                $adminpayment->insert($arr); 
+                $this->redirect('admin/payments');
+            }
+
+            $this->view("admin/adminpayment");
+        }
+    }
+
+    function adminPaymentDoctor(){
+
+        if(!Auth::logged_in_admin())  
+        {
+          $this->redirect('login/login');
+        }
+        else
+        {
+
+        $doctors = new doctors();
+        $common_user = new common_user();
+        $doctorids=$doctors->findAll();
+
+        foreach($doctorids as $doctorid){
+        $doctoridarray=$doctorid->userid;
+        $array[]=$doctoridarray;
+        
+        }
+        //print_r($array);
+        // foreach($doctoridarray as $doctorid){
+        // $data=$common_user->where('userid',$doctorid);
+
+        // }
+
 
         if(count($_POST) > 0){
 
-        $arr['type'] = $_POST['type'];
+        $arr['doctorName'] = $_POST['name'];
         $arr['amount'] = $_POST['amount'];
         $arr['date'] = date("Y-m-d H:i:s");
+        $name = $_POST['name'];
 
-        $adminpayment = new adminPayment();
-        $adminpayment->insert($arr); 
+        $common_user = new common_user();
+        $doctoridrow=$common_user->where('username',$name);
+        $doctorid=$doctoridrow[0]->userid;
+        $doctorchargerow=$doctors->where('userid',$doctorid);
+        $doctorcharge=$doctorchargerow->doctorCharge;
+        //print_r($doctorcharge);
+        $arr['doctorid'] = $doctorid;
+
+        $adminpaymentdoctor = new adminPaymentdoctor();
+        $adminpaymentdoctor->insert($arr); 
         $this->redirect('admin/payments');
  
         }
 
-        $this->view("admin/adminpayment");
+        $this->view("admin/adminPaymentDoctor",[
+            'row'=>$array,
+        ]);
     }
 
     }
@@ -305,23 +364,52 @@ class admin extends Controller
         $row=$patientrate->findAll();
         $this->view("admin/adminFeedbacks",[
             'row'=>$row,
-        ]
-        );
-
-
-
+        ]);
     }
 
-    function reports()
-    {
-        $products = new products;
+    function reports(){
+        $products=new products;
 
-        $data = $products->findAll();
-        $this->view(
-            "admin/adminReports",
-            [
-                'rows' => $data,
-            ]
+        $data=$products->findAll();
+        $data1=NULL;
+        $data3=NULL;
+
+        $appointments = new appointments();
+        $data2=$appointments->findAll();
+
+        if(count($_POST)>0){
+
+            
+
+        if(isset($_POST['name'])){
+
+        $name = '%' . $_POST['name'] . '%';;
+
+        $query= "select * from appointments where patientName like :name order by appointmentid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+        $arr['name'] = $name; //to pass to the query function
+        $data1 = $appointments->query($query, $arr);
+        }
+
+        if(isset($_POST['productName'])){
+
+            $productName = '%' . $_POST['productName'] . '%';;
+
+        $query= "select * from products where productName like :productName order by productid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+        $arr['productName'] = $productName; //to pass to the query function
+        $data3 = $appointments->query($query, $arr);
+        }
+
+        
+        }
+
+        $this->view("admin/adminReports",[
+            'rows'=>$data,
+            'rows1'=>$data1,
+            'rows2'=>$data2,
+            'rows3'=>$data3,
+
+
+        ]
         );
     }
 
@@ -429,13 +517,8 @@ class admin extends Controller
             //    unset($_POST['password2']);
 
             //}
-
             if ($common_user->validate($_POST, $userid)) {
-
-
                 // $arr['date'] = date("Y-m-d H:i:s");
-
-
                 $common_user->update($userid, $_POST);
                 $this->redirect('admin/users');
             } else {
@@ -476,103 +559,176 @@ class admin extends Controller
         ]);
     }
 
-
-
-
-
-
-
-
-    /* function findUser($userid=null)
+    public function generatepdfChanneling($id)
     {
-        $common_user = new common_user();
-        $userid=1;
-        $data=$common_user->where('userid',$userid);
-        
-        $this->view("admin/admin",['rows'=>$data]);
-    }*/
+        $appointments = new appointments();
+        //$useridrow=$appointments->where('appointmentid',$id);
+        //print_r($useridrow);
 
-    /*public function findRank()
-    {
-        foreach ($rows as $row):
-
-        $seller = new sellers();
-        $doctor = new doctors();
-        $patient = new patients();
-
-        $userid = $row->userid;
-
-        //sellerid
-        if(!empty($row = $seller->where('userid',$userid) ))
-        {
-           $row = $row[0];
-           $sellerid = $row->userid;
-        }
-        else{
-           $sellerid = "";
-        }
-
-        //dotctorid
-        if(!empty($row2 = $doctor->where('userid',$userid) ))
-        {
-           $row2 = $row2[0];
-           $doctorid = $row2->userid;
-        }
-        else{
-           $doctorid = "";
-        }
-
-        //patientid
-        if(!empty($row3 = $patient->where('userid',$userid) ))
-        {
-           $row3 = $row3[0];
-           $patientid = $row3->userid;
-        }
-        else{
-           $patientid = "";
-        }
-        
-        $userid = $_SESSION['COMMON_USER']->userid;
-
-        
-        $data="none";
-
-        if(isset($_SESSION['COMMON_USER']))
-        {
-            if($sellerid == $userid )
-            {
-                $data = "seller";
-            }
-            if($doctorid == $userid)
-            {
-                $data = "doctor";
-            }
-            if($patientid == $userid)
-            {
-                $data = "patient";
-            }
-            if( ($doctorid == $userid) &&($sellerid == $userid ))
-            {
-                $data = "doctorAndSeller";
-            }
-            if( ($doctorid == $userid )&& ($patientid == $userid ))
-            {
-                $data = "doctorAndPatient";
-            }
-            if( ($sellerid == $userid) && ($patientid == $userid ))
-            {
-                $data = "sellerAndPatient";
-            }
-            if(($sellerid == $userid)&& ($patientid == $userid)&& ($doctorid == $userid))
-            {
-                $data = "allUser";
-            }
-            
-            return $data;
-        }
-        endforeach;
-
-    }*/
-}
+        //$userid = $useridrow[0]->patientid;
+        //print_r($userid);
+        require_once __DIR__ . '/../models/mpdf/autoload.php';
+        $mpdf = new \Mpdf\Mpdf();
+        $html = file_get_contents(ROOT . '/admin/channelingpdf/' . $id  );
+        //   print_r($html);
+        //    die;
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
     }
+
+    function channelingpdf($id)
+    {
+        $appointments = new appointments();
+
+        $row=$appointments->where('appointmentid',$id);
+        // print_r($row);
+        // die;
+        //$row1=$appointments->where('appointmentid',$id);
+        //$date=$row1->slotTimeStart;
+
+
+
+        if ($row != null) {
+            $row=$row[0];
+        }
+
+       
+?>
+
+        <style>
+            th,
+            td {
+                text-align: left;
+                padding: 16px;
+            }
+
+            .title2 {
+                width: 95%;
+                text-align: center;
+            }
+        </style>
+
+        <div class="title1" style="width: 95%;">
+            <div class="logo" style="width: 100%;text-align: center;"><img src="<?= ASSETS ?>img/logo.png" style="width: 30%;align-items: center;"></div>
+            <div class="mtitle" style="width: 100%;text-align: center;">
+                <h1>Ceylon Nuture</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="title2">
+            <h2>Channeling Details</h2>
+        </div>
+        <table style="border-collapse: collapse;border-spacing: 0;width: 85%;border: 1px solid #ddd;margin: 5% auto;">
+            <tr>
+                <td>Name of the Doctor</td>
+                <td>:</td>
+                <td><?= $row->doctorName ?></td>
+            </tr>
+            <tr>
+                <td>Patient Name</td>
+                <td>:</td>
+                <td><?= $row->patientName ?></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>:</td>
+                <td><?= $row->date ?></td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>:</td>
+                <td>Rs:<?= $row->nic ?></td>
+            </tr>
+            <tr>
+                <td>Total Payment</td>
+                <td>:</td>
+                <td><?= $row->totalPayment ?></td>
+            </tr>
+        </table>
+
+<?php
+    }
+
+    public function generatepdfProducts($id)
+    {
+        require_once __DIR__ . '/../models/mpdf/autoload.php';
+        $mpdf = new \Mpdf\Mpdf();
+        $html = file_get_contents(ROOT . '/admin/productpdf/' . $id );
+        //  print_r($html);
+        //  die;
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+    }
+
+    function productpdf($id)
+    {
+        $products = new products();
+
+        $row=$products->where('productid',$id);
+        //$row1=$appointments->where('appointmentid',$id);
+        //$date=$row1->slotTimeStart;
+
+
+
+        if ($row != null) {
+            $row=$row[0];
+        }
+
+       
+?>
+
+        <style>
+            th,
+            td {
+                text-align: left;
+                padding: 16px;
+            }
+
+            .title2 {
+                width: 95%;
+                text-align: center;
+            }
+        </style>
+
+        <div class="title1" style="width: 95%;">
+            <div class="logo" style="width: 100%;text-align: center;"><img src="<?= ASSETS ?>img/logo.png" style="width: 30%;align-items: center;"></div>
+            <div class="mtitle" style="width: 100%;text-align: center;">
+                <h1>Ceylon Nuture</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="title2">
+            <h2>Channeling Details</h2>
+        </div>
+        <table style="border-collapse: collapse;border-spacing: 0;width: 85%;border: 1px solid #ddd;margin: 5% auto;">
+            <tr>
+                <td>Product Name</td>
+                <td>:</td>
+                <td><?= $row->productName ?></td>
+            </tr>
+            <tr>
+                <td>Seller Name</td>
+                <td>:</td>
+                <td><?= $row->sellerName ?></td>
+            </tr>
+            <tr>
+                <td>category</td>
+                <td>:</td>
+                <td><?= $row->category ?></td>
+            </tr>
+            <tr>
+                <td>Product Price</td>
+                <td>:</td>
+                <td>Rs:<?= $row->productPrice ?></td>
+            </tr>
+            <tr>
+                <td>Telephone Number</td>
+                <td>:</td>
+                <td><?= $row->tpNumber ?></td>
+            </tr>
+        </table>
+
+<?php
+    }
+
 }

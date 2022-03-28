@@ -90,9 +90,18 @@
                         <div class="col-25">
                             <label class="label" for="hospital">Time</label>
                         </div>
+                        <?php 
+                            //format the time using strtotime
+                            $arrivalTime = strtotime($row4->arrivalTime);
+                            $departureTime = strtotime($row4->departureTime);
+                            //$departureTime = date_create($row->departureTime);
+
+                            $arrivalTime= date("g:i a", $arrivalTime);
+                            $departureTime = date("g:i a", $departureTime);
+                        ?>
 
                         <div class="col">
-                            <?=$row4->arrivalTime?> - <?=$row4->departureTime?>
+                            <?=$arrivalTime?> - <?=$departureTime?>
                         </div>
                         </div>
 

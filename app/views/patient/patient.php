@@ -247,7 +247,7 @@
                                <tr>
                                    <td><?=$row->doctorName?></td>
                                    <td><?=$row2[0]->dateofSlot?></td>
-                                   <td><?=$row2[0]->arrivalTime?></td>
+                                   <td><?=$row->slotTimeStart?></td>
                                    <td><?=$row1[0]->hospital?></td>
                                    <td> <button class="viewMore">View</button></td>
                                </tr>
@@ -271,17 +271,15 @@
                                </tr>
                            </thead> 
                            <tbody>
+                               <?php if($row3):?>
+                           <?php foreach ($row3 as $row):?>
                                <tr>
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>05/11/2021</td>
-                                   <td> He cured my leg pain. very good Doctor</td>
+                                   <td><?=$row->doctorName?></td>
+                                   <td><?=$row->date?></td>
+                                   <td> <?=$row->feedback?></td>
                                </tr>
-                               
-                                   <td>Dr.Keerthi Perera</td>
-                                   <td>06/11/2021</td>
-                                   <td>Very friendly doctor</td>
-                               </tr>
-                               
+                               <?php endforeach;?>
+                               <?php endif;?>                             
                            </tbody>
                         </table>
                     </div>

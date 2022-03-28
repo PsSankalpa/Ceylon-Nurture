@@ -126,7 +126,7 @@
                    
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
-                            <h3>Payments</h3>
+                            <h3>Other Payments</h3>
                         </div><br>
                         <form class="regi_form" enctype="multipart/form-data" method="POST">
 

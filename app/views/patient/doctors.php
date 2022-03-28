@@ -21,6 +21,7 @@
                 <div class="search_container">
 
                 <?php if($row):?>
+                    
 
                 <h2><?=$row->nameWithInitials?></h2><br>
                 <div class="doc_image_container"><img class="doctor_image" src="<?=ASSETS?>img/doctor.jpg"></div>
@@ -88,30 +89,51 @@
           
 
             <div class="schedule">
-            <?php if($rows):?>
+            <?php if($row1):?>
 
 
                 <div class="slots">
                 <div class="slotHead">
-                            <div class="iconBox"><i class="far fa-calendar-alt"> Filter by date </i></div>
+                            <div class="iconBox"><i class="far fa-calendar-alt"> </i>
+                                <form action="" method="POST">
+                                    <input type="date" id="fromdate" name="fromdate">
+                                    </div>
+                                    <div class="date">
+                                    <input type="date" id="todate" name="todate">
+                                    </div>
+                                    <div>
+                                    <button type="submit" class="filterA">Filter</button>
+                                    <!--<input type="submit" value="submit">-->
+                                    </div>
+                                </form>
+         </div>
                             
                         </div>
 
                     <div class="slot">
-
-                    
-                        
-
-                        
-                        
-
                         <div class="slotBody">
-                        <?php foreach ($rows as $row1):?>
+                            <?php if($row2):?>
+                                
+                                    <?php 
+                                    //print_r($row2);
+                                    $row1=$row2;
+                                    ?>
+                            <?php endif;?>
+
+                        <?php foreach ($row1 as $row1):?>
 
                             <div class="card">
+                                <?php //format the time using strtotime
+                                    $arrivalTime = strtotime($row1->arrivalTime);
+                                    $departureTime = strtotime($row1->departureTime);
+                                    //$departureTime = date_create($row->departureTime);
+
+                                    $arrivalTime= date("g:i a", $arrivalTime);
+                                    $departureTime = date("g:i a", $departureTime);
+                                ?>
+
                             <div class="date"> <?=$row1->dateofSlot?></div>
-                            <div class="patientNo">Number of Patients: 39</div>
-                                <div class="time"><?=$row1->arrivalTime?> - <?=$row1->departureTime?></div>
+                                <div class="time"><?=$arrivalTime?> - <?=$departureTime?></div>
                                 <div class = "availability"> 
                                         Availability: <br>
                                         <?php 
@@ -162,11 +184,14 @@
                                     <?php endif;?>
                             </div>
 
+                            
                             <?php endforeach;?>
+
 
                         </div>
 
                     </div>
+
                     <?php else:?>
                         There are no slots available!
                         <?php endif;?>
