@@ -381,6 +381,12 @@ class admin extends Controller
         $appointments = new appointments();
         $data2=$appointments->findAll();
 
+        $adminpaymentdoctor = new adminPaymentDoctor();
+        $data4=$adminpaymentdoctor->findAll();
+
+        $adminpayment= new adminPayment();
+        $data5=$adminpayment->findAll();
+
         if(count($_POST)>0){
 
             
@@ -402,13 +408,29 @@ class admin extends Controller
         $arr['productName'] = $productName; //to pass to the query function
         $data3 = $appointments->query($query, $arr);
         }
+
+        if(isset($_POST['doctorPaymentName'])){
+
+            $doctorPaymentName = '%' . $_POST['doctorPaymentName'] . '%';;
+
+        $query= "select * from adminpaymentdoctor where doctorName like :doctorPaymentName order by adminpaymentid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+        $arr['doctorPaymentName'] = $doctorPaymentName; //to pass to the query function
+        $data4 = $adminpaymentdoctor->query($query, $arr);
         }
 
-        $adminpaymentdoctor = new adminPaymentDoctor();
-        $data4=$adminpaymentdoctor->findAll();
+        if(isset($_POST['paymentName'])){
 
-        $adminpayment= new adminPayment();
-        $data5=$adminpayment->findAll();
+            $paymentName = '%' . $_POST['paymentName'] . '%';;
+
+        $query= "select * from adminpayment where type like :paymentName order by adminPaymentid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+        $arr['paymentName'] = $paymentName; //to pass to the query function
+        $data5 = $adminpayment->query($query, $arr);
+        }
+
+
+        }
+
+        
 
 
 
@@ -502,9 +524,18 @@ class admin extends Controller
 
 
                 // $arr['date'] = date("Y-m-d H:i:s");
-
-
-                $common_user->insert($_POST);
+               $arr['userid'] = AUTH::userid();
+               $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
+               $arr['verify_token'] = 'none';
+               $arr['username'] = htmlspecialchars($_POST['username']);
+               $arr['gender'] = htmlspecialchars($_POST['gender']);
+               $arr['email'] = htmlspecialchars($_POST['email']);
+               $arr['tpNumber'] = htmlspecialchars($_POST['tpNumber']);
+               $arr['password'] = htmlspecialchars($_POST['password']);
+               $arr['date'] = date("Y/m/d");
+              // print_r($arr);
+              // die;
+               $common_user->insert($_POST);
                 $this->redirect('admin/users');
             } else {
                 //errors
@@ -793,34 +824,104 @@ class admin extends Controller
         </div>
         <hr>
         <div class="title2">
-            <h2>Channeling Details</h2>
+            <h2>Doctor Payment Details</h2>
         </div>
         <table style="border-collapse: collapse;border-spacing: 0;width: 85%;border: 1px solid #ddd;margin: 5% auto;">
             <tr>
-                <td>Product Name</td>
+                <td>Doctor Name</td>
                 <td>:</td>
-                <td><?= $row->productName ?></td>
+                <td><?= $row->doctorName ?></td>
             </tr>
             <tr>
-                <td>Seller Name</td>
+                <td>Doctor id</td>
                 <td>:</td>
-                <td><?= $row->sellerName ?></td>
+                <td><?= $row->doctorid ?></td>
             </tr>
             <tr>
-                <td>category</td>
+                <td>Payment Date</td>
                 <td>:</td>
-                <td><?= $row->category ?></td>
+                <td><?= $row->date ?></td>
             </tr>
             <tr>
-                <td>Product Price</td>
+                <td>Payment Amount</td>
                 <td>:</td>
-                <td>Rs:<?= $row->productPrice ?></td>
+                <td>Rs:<?= $row->amount ?></td>
+            </tr>
+            
+        </table>
+
+<?php
+    }
+
+    public function generatepdfPayment($id)
+    {
+        require_once __DIR__ . '/../models/mpdf/autoload.php';
+        $mpdf = new \Mpdf\Mpdf();
+        $html = file_get_contents(ROOT . '/admin/paymentpdf/' . $id );
+        //  print_r($html);
+        //  die;
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+    }
+
+    function paymentpdf($id)
+    {
+        $adminpayment = new adminpayment();
+
+        $row=$adminpayment->where('adminPaymentid',$id);
+        //$row1=$appointments->where('appointmentid',$id);
+        //$date=$row1->slotTimeStart;
+
+
+
+        if ($row != null) {
+            $row=$row[0];
+        }
+
+       
+?>
+
+        <style>
+            th,
+            td {
+                text-align: left;
+                padding: 16px;
+            }
+
+            .title2 {
+                width: 95%;
+                text-align: center;
+            }
+        </style>
+
+        <div class="title1" style="width: 95%;">
+            <div class="logo" style="width: 100%;text-align: center;"><img src="<?= ASSETS ?>img/logo.png" style="width: 30%;align-items: center;"></div>
+            <div class="mtitle" style="width: 100%;text-align: center;">
+                <h1>Ceylon Nuture</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="title2">
+            <h2> Payment Details</h2>
+        </div>
+        <table style="border-collapse: collapse;border-spacing: 0;width: 85%;border: 1px solid #ddd;margin: 5% auto;">
+            <tr>
+                <td>Type of Payment</td>
+                <td>:</td>
+                <td><?= $row->type ?></td>
             </tr>
             <tr>
-                <td>Telephone Number</td>
+                <td>Date Of Payment</td>
                 <td>:</td>
-                <td><?= $row->tpNumber ?></td>
+                <td><?= $row->date ?></td>
             </tr>
+            <tr>
+                <td>Payment Amount</td>
+                <td>:</td>
+                <td><?= $row->amount ?></td>
+            </tr>
+           
+            
         </table>
 
 <?php
