@@ -8,6 +8,10 @@ class admin extends Controller
         } else {
             $admin = new admin();
 
+            //$adminid = Auth::adminid();
+            // print_r($adminid);
+            // die;
+
             // $data2=$admin->where('adminid',$adminid);
 
             //$data = $common_user->findAll();

@@ -17,7 +17,7 @@ class landing extends Controller
       $article = new article();
       $data2 = $article->findrange(7);
       if ($data2 == null || count($data2) < 4) {
-        $query1 = "select * from articles order by articleid desc limit 6";
+        $query1 = "select * from articles where status = 1 order by articleid desc limit 6";
         $data2 = $article->query($query1);
       }
       $contactus = new contactus();
@@ -46,7 +46,7 @@ class landing extends Controller
        $article = new article();
        $data2 = $article->findrange(7);
        if ($data2 == null || count($data2) < 4) {
-         $query1 = "select * from articles order by articleid desc limit 6";
+         $query1 = "select * from articles where status = 1 order by articleid desc limit 6";
          $data2 = $article->query($query1);
        }
        $contactus = new contactus();
