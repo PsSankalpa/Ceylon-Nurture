@@ -358,25 +358,43 @@ class channeling extends Controller
         $schedule = new schedule();
 
         $row1=$schedule->where('doctorid', $userid);
+        
         //$date=$row1[0]->dateOfSlot;
 
-    
         //to get the date filter 
+        $row2=NULL;
+        $row3=NULL;
+        $array=NULL;
         if (count($_POST) > 0) {
 
-            $date1 = $_POST['fromdate'];
+           $date1 = $_POST['fromdate'];
             $date2 = $_POST['todate'];
-            //print_r($date1);
+            //  print_r($date1);
+            //  print_r($date2);
+           
 
-            $row1 = $schedule->finddaterange($date1, $date2);
-            //print_r($row);  
+
+
+            $row2 = $schedule->finddaterange($date1, $date2);
+            //print_r($row2);
+             foreach($row2 as $row2){
+                if(($row2->doctorid) == $userid){
+                    $array[]=$row2;
+                }
+            }
+            //print_r($array);
+
+             
         }
         
     
         
         $this->view("patient/doctors",[
             'row'=>$row,
-            'rows'=>$row1,
+            'row1'=>$row1,
+            'row2'=>$array,
+
+
 
         ]);
 

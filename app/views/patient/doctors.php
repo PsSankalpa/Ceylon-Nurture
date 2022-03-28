@@ -89,7 +89,7 @@
           
 
             <div class="schedule">
-            <?php if($rows):?>
+            <?php if($row1):?>
 
 
                 <div class="slots">
@@ -111,17 +111,16 @@
                         </div>
 
                     <div class="slot">
-
-                    
-                        
-
-                        
-                        
-
                         <div class="slotBody">
-                            <?php if ($rows):?>
+                            <?php if($row2):?>
                                 
-                        <?php foreach ($rows as $row1):?>
+                                    <?php 
+                                    //print_r($row2);
+                                    $row1=$row2;
+                                    ?>
+                            <?php endif;?>
+
+                        <?php foreach ($row1 as $row1):?>
 
                             <div class="card">
                                 <?php //format the time using strtotime
@@ -185,11 +184,14 @@
                                     <?php endif;?>
                             </div>
 
+                            
                             <?php endforeach;?>
-                        <?php endif;?>
+
+
                         </div>
 
                     </div>
+
                     <?php else:?>
                         There are no slots available!
                         <?php endif;?>

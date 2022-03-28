@@ -88,12 +88,12 @@ public function __construct()
 	{
 
 		//$column = addslashes($column);//from this it check the column,sanitize input
-		$query = "SELECT * FROM $this->table WHERE dateofSlot BETWEEN $date1 AND $date2 ";
+		$query = "SELECT * FROM $this->table WHERE dateofSlot BETWEEN '$date1' AND '$date2' ";
 		//print_r($query);
 		
 		return $this->query($query,[
-			// 'date1'=>$date1,
-			// 'date2'=>$date2
+			//  'date1'=>$date1,
+			//  'date2'=>$date2
 		]);
 	}
 
