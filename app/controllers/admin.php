@@ -17,18 +17,18 @@ class admin extends Controller
             //$this->load_model('common_user');
             //$data=$common_user->findAll();
 
-        //$this->view("admin/admin");//,['rows'=>$data]); //in here put the relevent page name and the path
-        $common_user = new common_user();
-        //userid=null
-        //$userid=1;
-        $data=$common_user->findAll();//where('userid',$userid);
+            //$this->view("admin/admin");//,['rows'=>$data]); //in here put the relevent page name and the path
+            $common_user = new common_user();
+            //userid=null
+            //$userid=1;
+            $data=$common_user->findAll();//where('userid',$userid);
 
-        $appointments= new appointments();
-        
-        $data1=$appointments->findAll();
+            $appointments= new appointments();
+            
+            $data1=$appointments->findAll();
 
-        $products = new products();
-        $data2=$products->findAll();
+            $products = new products();
+            $data2=$products->findAll();
 
         
         
@@ -232,6 +232,7 @@ class admin extends Controller
                 //'data'=>$data2,
             ]);
         }
+    }
 
 
         //$Auth = new Auth;
@@ -253,14 +254,7 @@ class admin extends Controller
         $this->view("admin/adminChanneling",[
             'row'=>$data,
         ]);
-
-
-
     }
-
-    function channeling()
-    {
-
 
 
     function payments()
@@ -278,24 +272,24 @@ class admin extends Controller
         else
         {
 
-        $adminid=Auth::userid();
+            $adminid=Auth::userid();
 
-        if(count($_POST) > 0){
+            if(count($_POST) > 0)
+            {
+                $arr['type'] = $_POST['type'];
+                $arr['amount'] = $_POST['amount'];
+                $arr['date'] = date("Y-m-d H:i:s");
 
-        $arr['type'] = $_POST['type'];
-        $arr['amount'] = $_POST['amount'];
-        $arr['date'] = date("Y-m-d H:i:s");
+                $adminpayment = new adminPayment();
+                $adminpayment->insert($arr); 
+                $this->redirect('admin/payments');
+            }
 
-        $adminpayment = new adminPayment();
-        $adminpayment->insert($arr); 
-        $this->redirect('admin/payments');
- 
+            $this->view("admin/adminpayment");
         }
-
-        $this->view("admin/adminpayment");
     }
 
-    }
+
 
 
 
@@ -305,11 +299,7 @@ class admin extends Controller
         $row=$patientrate->findAll();
         $this->view("admin/adminFeedbacks",[
             'row'=>$row,
-        ]
-        );
-
-
-
+        ]);
     }
 
     function reports()
@@ -317,12 +307,9 @@ class admin extends Controller
         $products = new products;
 
         $data = $products->findAll();
-        $this->view(
-            "admin/adminReports",
-            [
+        $this->view( "admin/adminReports",[
                 'rows' => $data,
-            ]
-        );
+            ]);
     }
 
     function products()
@@ -429,13 +416,8 @@ class admin extends Controller
             //    unset($_POST['password2']);
 
             //}
-
             if ($common_user->validate($_POST, $userid)) {
-
-
                 // $arr['date'] = date("Y-m-d H:i:s");
-
-
                 $common_user->update($userid, $_POST);
                 $this->redirect('admin/users');
             } else {
@@ -476,103 +458,4 @@ class admin extends Controller
         ]);
     }
 
-
-
-
-
-
-
-
-    /* function findUser($userid=null)
-    {
-        $common_user = new common_user();
-        $userid=1;
-        $data=$common_user->where('userid',$userid);
-        
-        $this->view("admin/admin",['rows'=>$data]);
-    }*/
-
-    /*public function findRank()
-    {
-        foreach ($rows as $row):
-
-        $seller = new sellers();
-        $doctor = new doctors();
-        $patient = new patients();
-
-        $userid = $row->userid;
-
-        //sellerid
-        if(!empty($row = $seller->where('userid',$userid) ))
-        {
-           $row = $row[0];
-           $sellerid = $row->userid;
-        }
-        else{
-           $sellerid = "";
-        }
-
-        //dotctorid
-        if(!empty($row2 = $doctor->where('userid',$userid) ))
-        {
-           $row2 = $row2[0];
-           $doctorid = $row2->userid;
-        }
-        else{
-           $doctorid = "";
-        }
-
-        //patientid
-        if(!empty($row3 = $patient->where('userid',$userid) ))
-        {
-           $row3 = $row3[0];
-           $patientid = $row3->userid;
-        }
-        else{
-           $patientid = "";
-        }
-        
-        $userid = $_SESSION['COMMON_USER']->userid;
-
-        
-        $data="none";
-
-        if(isset($_SESSION['COMMON_USER']))
-        {
-            if($sellerid == $userid )
-            {
-                $data = "seller";
-            }
-            if($doctorid == $userid)
-            {
-                $data = "doctor";
-            }
-            if($patientid == $userid)
-            {
-                $data = "patient";
-            }
-            if( ($doctorid == $userid) &&($sellerid == $userid ))
-            {
-                $data = "doctorAndSeller";
-            }
-            if( ($doctorid == $userid )&& ($patientid == $userid ))
-            {
-                $data = "doctorAndPatient";
-            }
-            if( ($sellerid == $userid) && ($patientid == $userid ))
-            {
-                $data = "sellerAndPatient";
-            }
-            if(($sellerid == $userid)&& ($patientid == $userid)&& ($doctorid == $userid))
-            {
-                $data = "allUser";
-            }
-            
-            return $data;
-        }
-        endforeach;
-
-    }*/
-}
-    }
 }
