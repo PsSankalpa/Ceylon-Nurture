@@ -225,6 +225,7 @@ class admin extends Controller
             // die;
 
 
+
             $this->view("admin/admin", [
                 'rows' => $data,
                 'chartdata' => $chartdata,
@@ -235,6 +236,8 @@ class admin extends Controller
                 'appointments' => $appointments,
                 'cCount' => $cCount,
                 'forums' => $forums,
+                'rows1'=>$data1,
+                'rows2'=>$data2,
                 //'data'=>$data2,
             ]);
         }
