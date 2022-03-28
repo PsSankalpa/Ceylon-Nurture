@@ -104,7 +104,6 @@ class header extends Controller
           $query1 = "select * from articles order by articleid desc limit 6";
           $data = $article->query($query1);
         }
-
       } else {
         //for make a filtr by date
         $data = $article->findrange2(7); //give the data according to range of days
@@ -119,7 +118,7 @@ class header extends Controller
       $data2 = "";
 
       if ($A_status == "Admin") {
-        
+
         //to the search option
         if (isset($_GET['search'])) {
           //side that we put % mark it ignore exact matching
@@ -130,6 +129,23 @@ class header extends Controller
           $display = "hide";
         }
 
+        //to the search option
+        if (isset($_GET['search1'])) {
+          //side that we put % mark it ignore exact matching
+          $search = 0; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+          $query = "select * from articles where status = 0 order by articleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+          $arr['search'] = $search; //to pass to the query function
+          $data3 = $article->query($query, $arr);
+          $display = "hide";
+        }
+        //to the search option
+        if (isset($_GET['search2'])) {
+
+          $query0 = "select * from articles where status = 1";
+          $data3 = $article->query($query0);
+          $display = "hide";
+        }
+        
       } else {
 
         //to the search option
@@ -141,7 +157,6 @@ class header extends Controller
           $data3 = $article->query($query, $arr);
           $display = "hide";
         }
-
       }
 
       $this->view('commonUser/articlesView', [

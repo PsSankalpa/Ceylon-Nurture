@@ -550,9 +550,9 @@ class doctor extends Controller
         $userid = Auth::userid();
         $appointments = new appointments();
         $row = $appointments->where('appointmentid', $appointmentid);
-       // print_r($row);
+        // print_r($row);
         //die;
-        
+
 
         $this->view("doctor/reportDetails", [
             'row' => $row,
@@ -764,6 +764,19 @@ class doctor extends Controller
         $doctorid = Auth::userid();
         $article = new article();
         $data = $article->where('doctorid', $doctorid);
+
+        if (isset($_GET['search'])) {
+            //side that we put % mark it ignore exact matching
+            $search = 0; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+            $query = "select * from articles where status = 0 order by articleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+            $arr['search'] = $search; //to pass to the query function
+            $data = $article->query($query, $arr);
+        }
+        if (isset($_GET['search2'])) {
+
+            $data = $article->where('doctorid', $doctorid);
+        }
+
         $this->view('articles/manageArticles', [
             'data' => $data,
         ]);
@@ -855,24 +868,24 @@ class doctor extends Controller
 
     public function generatepdf($appointmentid)
     {
-        
+
         require_once __DIR__ . '/../models/mpdf/autoload.php';
         $mpdf = new \Mpdf\Mpdf();
         $html = file_get_contents(ROOT . '/doctor/doctorpdf/' . $appointmentid);
-        
-        print_r($html);
-          die;
+
+        // print_r($html);
+        //   die;
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }
 
     function doctorpdf($appointmentid)
     {
-       
+
         $appointments = new appointments();
         $row = $appointments->where('appointmentid', $appointmentid);
-print_r($row);
-die;
+        // print_r($row);
+        // die;
         if ($row != null) {
             $row = $row[0];
         }
