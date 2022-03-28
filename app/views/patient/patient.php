@@ -144,64 +144,32 @@
 
                     <div class="newProducts">
                         <div class="cardHeaderA">
-                            <h3>Channel a doctor</h3><br>
                         </div>
-                            <form class="regi_form" enctype="multipart/form-data" method="POST" action="<?=ROOT?>channeling">   
-
-                                <div class="row">
-                                <div class="col-25">
-                                    <label for="name">Name</label>
-                                </div>
-
-                                <div class="col-75">
-                                    <input type="text" value="<?=get_var('name')?>" id="name" name="name" placeholder="Name of the Doctor">
-                                </div>
-                                </div>
-
-                                <div class="row">
-                                <div class="col-25">
-                                    <label for="speciality">Speciality</label>
-                                </div>
-
-                                <div class="col-75">
-                                <select name="speciality">
-                                    <option>--Select Speciality--</option>
-                                            <option>Ayurvedha Panchakrama Prathikara</option>
-                                            <option>General Physician</option>
-                                    </select>
-                                </div>
-                                </div>
-
-                                <div class="row">
-                                <div class="col-25">
-                                    <label for="hospital">Hospital</label>
-                                </div>
-
-                                <div class="col-75">
-                                <select name="hospital">
-                                    <option>--Select Hospital--</option>
-                                            <option>Arogya Hospital</option>
-                                            <option>Osu Sewana</option>
-                                    </select>
-                                </div>
-                                </div>
-
-
-                                <div class="row">
-                                <div class="col-25">
-                                    <label for="date">Date</label>
-                                </div>
-                                <div class="col-75">
-                                <input type="date" id="date" name="date" >
-                                </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                <a href="<?= ROOT ?>channeling"><input type="submit" value="Search"/></a>
-                                <input type="reset" value="Reset">
-                                </div>
-                            </form>   
-                    </div>
+                        <div class="cardHeader">
+                            <h3>Available Doctors</h3>
+                            <a href="<?= ROOT ?>channeling/rate"> </a>
+                        </div>
+                        <table>
+                           <thead>
+                               <tr>
+                                   <td>Name of the Doctor</td>
+                                   <td>Speciality</td>
+                                   <td>Hospital</td>
+                               </tr>
+                           </thead> 
+                           <tbody>
+                               <?php if($row4):?>
+                           <?php foreach ($row4 as $row4):?>
+                               <tr>
+                                   <td><?=$row4->nameWithInitials?></td>
+                                   <td><?=$row4->specialities?></td>
+                                   <td> <?=$row4->hospital?></td>
+                               </tr>
+                               <?php endforeach;?>
+                               <?php endif;?>                             
+                           </tbody>
+                        </table>
+                    </div>                   
 
                     
                    
@@ -222,12 +190,12 @@
                                    <td>Date</td>
                                    <td>Time</td>
                                    <td>Location</td>
-                                   <td>Options</td>
                                </tr>
                            </thead> 
                            <tbody>
 
-                        
+                           <?php if($row):?>
+
                            <?php foreach ($row as $row):?>
                                 <?php
 
@@ -249,9 +217,9 @@
                                    <td><?=$row2[0]->dateofSlot?></td>
                                    <td><?=$row->slotTimeStart?></td>
                                    <td><?=$row1[0]->hospital?></td>
-                                   <td> <button class="viewMore">View</button></td>
                                </tr>
                             <?php endforeach;?>
+                            <?php endif;?>                             
 
                            </tbody>
                         </table>

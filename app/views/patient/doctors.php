@@ -94,21 +94,31 @@
 
                 <div class="slots">
                 <div class="slotHead">
-                            <div class="iconBox"><i class="far fa-calendar-alt"> </i>
+                            <div class="searchbox">
                                 <form action="" method="POST">
-                                    <input type="date" id="fromdate" name="fromdate">
+                                    <div class="searchform">
+                                    <div class="date">
+                                    <i class="far fa-calendar-alt"> </i>
                                     </div>
                                     <div class="date">
+                                        From
+                                    <input type="date" id="fromdate" name="fromdate">
+                                    </div>
+
+                                    <div class="date">
+                                        To
                                     <input type="date" id="todate" name="todate">
                                     </div>
-                                    <div>
-                                    <button type="submit" class="filterA">Filter</button>
+
+                                    <div class="date">
+                                    <button type="submit" class="filter">Filter</button>
                                     <!--<input type="submit" value="submit">-->
                                     </div>
+                                    </div>
                                 </form>
-         </div>
+                             </div>
                             
-                        </div>
+                </div>
 
                     <div class="slot">
                         <div class="slotBody">
