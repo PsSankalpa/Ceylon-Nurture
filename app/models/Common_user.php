@@ -19,6 +19,7 @@ class common_user extends Model
     ];
 
 	protected $pk = "userid";
+    protected $pk2 = "email";
 
     protected $prefunctions = [
         'make_common_user_id',
@@ -173,6 +174,35 @@ class common_user extends Model
 		{
 			$this->errors['conditions'] = "Cannot Keep the checkbox unticked";
 		}*/
+
+        if(count($this->errors) == 0)
+        {
+            return true;
+        }
+        return false;
+
+    }
+
+    public function validate3($data,$id=" ")
+    {
+        $this->errors = array();
+
+        //check for password
+        if(isset($data['new_password'])){
+            if(empty($data['new_password']))
+            {
+                $this->errors['new_password'] = "Cannot Keep password empty";
+            }
+            elseif($data['new_password'] != $data['confirm_password'])
+            {
+                $this->errors[] = "The passwords do not match";
+            }
+            //check for password length
+            if(strlen($data['new_password']) <= 8)
+            {
+                $this->errors['new_password'] = "Password must be at least 8 characters long ";
+            }
+        }
 
         if(count($this->errors) == 0)
         {
