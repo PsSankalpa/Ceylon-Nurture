@@ -33,7 +33,7 @@
                             <input type="password" name="password" value="<?=get_var('password')?>" placeholder="Password">
                             <button class="btn" type="submit">Log In</button>
                         </form>
-                        <p class="account"><a href="<?=ROOT?>password_reset">Forgot password?</a></p>    
+                        <p class="account"><a href="<?=ROOT?>resetpwd">Forgot password?</a></p>    
                         </br>
                         <p class="account"><b>Don't have an account?</b> <a href="<?=ROOT?>signup">Sign Up</a></p>
                     </div>

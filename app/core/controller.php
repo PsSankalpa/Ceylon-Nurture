@@ -31,6 +31,12 @@ class Controller
         header("location:".ROOT.trim($link,"/"));
         die;
     }
+
+    protected function redirect2($link)
+    {
+        header("refresh:5; url=".ROOT.trim($link,"/"));
+        die;
+    }
 }
 
 ?>
