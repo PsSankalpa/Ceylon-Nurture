@@ -398,15 +398,24 @@ class admin extends Controller
         $arr['productName'] = $productName; //to pass to the query function
         $data3 = $appointments->query($query, $arr);
         }
-
-        
         }
+
+        $adminpaymentdoctor = new adminPaymentDoctor();
+        $data4=$adminpaymentdoctor->findAll();
+
+        $adminpayment= new adminPayment();
+        $data5=$adminpayment->findAll();
+
+
 
         $this->view("admin/adminReports",[
             'rows'=>$data,
             'rows1'=>$data1,
             'rows2'=>$data2,
             'rows3'=>$data3,
+            'rows4'=>$data4,
+            'rows5'=>$data5,
+
 
 
         ]
@@ -665,6 +674,88 @@ class admin extends Controller
         $products = new products();
 
         $row=$products->where('productid',$id);
+        //$row1=$appointments->where('appointmentid',$id);
+        //$date=$row1->slotTimeStart;
+
+
+
+        if ($row != null) {
+            $row=$row[0];
+        }
+
+       
+?>
+
+        <style>
+            th,
+            td {
+                text-align: left;
+                padding: 16px;
+            }
+
+            .title2 {
+                width: 95%;
+                text-align: center;
+            }
+        </style>
+
+        <div class="title1" style="width: 95%;">
+            <div class="logo" style="width: 100%;text-align: center;"><img src="<?= ASSETS ?>img/logo.png" style="width: 30%;align-items: center;"></div>
+            <div class="mtitle" style="width: 100%;text-align: center;">
+                <h1>Ceylon Nuture</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="title2">
+            <h2>Channeling Details</h2>
+        </div>
+        <table style="border-collapse: collapse;border-spacing: 0;width: 85%;border: 1px solid #ddd;margin: 5% auto;">
+            <tr>
+                <td>Product Name</td>
+                <td>:</td>
+                <td><?= $row->productName ?></td>
+            </tr>
+            <tr>
+                <td>Seller Name</td>
+                <td>:</td>
+                <td><?= $row->sellerName ?></td>
+            </tr>
+            <tr>
+                <td>category</td>
+                <td>:</td>
+                <td><?= $row->category ?></td>
+            </tr>
+            <tr>
+                <td>Product Price</td>
+                <td>:</td>
+                <td>Rs:<?= $row->productPrice ?></td>
+            </tr>
+            <tr>
+                <td>Telephone Number</td>
+                <td>:</td>
+                <td><?= $row->tpNumber ?></td>
+            </tr>
+        </table>
+
+<?php
+    }
+
+    public function generatepdfDoctorPayment($id)
+    {
+        require_once __DIR__ . '/../models/mpdf/autoload.php';
+        $mpdf = new \Mpdf\Mpdf();
+        $html = file_get_contents(ROOT . '/admin/doctorPaymentpdf/' . $id );
+        //  print_r($html);
+        //  die;
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+    }
+
+    function doctorPaymentpdf($id)
+    {
+        $adminpaymentDoctor = new adminPaymentDoctor();
+
+        $row=$adminpaymentDoctor->where('adminpaymentid',$id);
         //$row1=$appointments->where('appointmentid',$id);
         //$date=$row1->slotTimeStart;
 

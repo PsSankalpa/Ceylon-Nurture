@@ -254,41 +254,85 @@
 
                 <div class="detailsA">
                    
-                   <div class="upcomingChanneling">
-                           <div class="cardHeader">
-                               <h3>Payments</h3>
-                               <div class="report"><a class="btn">Generate Report</a><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
-                           </div><br>
-                           <table>
-                              <thead>
-                                  <tr>
-                                      <td>Type of Payment</td>
-                                      <td>Date</td>
-                                      <td>Method of Payments</td>
-                                      <td>Amount</td>
-                                  </tr>
-                              </thead> 
-                              <tbody>
-                                  <tr>
-                                      <td>Monthly Implimentation cost</td>
-                                      <td>05/11/2021</td>
-                                      <td>Credit card Payment</td>
-                                      <td> LKR 2500</td>
-                                  </tr>
-                                  
-                                      <td>Maintenance Cost</td>
-                                      <td>06/11/2021</td>
-                                      <td> Bank transfer</td>
-                                      <td> LKR 2500</td>
-                                  </tr>
-                                  
-                              </tbody>
-                           </table>
-                       </div>
-      
-                       
+                <div class="upcomingChanneling">
+                        <div class="cardHeader">
+                            <h3>Doctor Payments</h3>
+                        </div><br>
+                        <table>
+                           <thead>
+                               <tr>
+                                   <td>Doctor Name</td>
+                                   <td>Doctor id</td>
+                                   <td>Date</td>
+                                   <td>Amount</td>
+                                   <td>Generate PDF</td>
+
+                               </tr>
+                           </thead> 
+                           <tbody>
+                            <?php if ($rows4):?>
+                                <?php foreach ($rows4 as $row):?>
+
+                               <tr>
+                                   <td><?=$row->doctorName?></td>
+                                   <td><?=$row->doctorid?></td>
+                                   <td><?=$row->date?></td>
+                                   <td><?=$row->amount?></td>
+                                   <td><a href="<?=ROOT?>admin/generatepdfDoctorPayment/<?= $row->adminpaymentid ?>" class="btn" style="font-size:0.7rem;"><b>Generate PDF</b></a></td>
+
+                               </tr>
+                               <?php endforeach;?>
+                            <?php endif;?>
+                               
+                                   
+                               
+                           </tbody>
+                        </table>
+                    </div>
    
-                   </div>
+                    
+
+                </div>
+
+
+                <div class="detailsA">
+                   
+                <div class="upcomingChanneling">
+                        <div class="cardHeader">
+                            <h3>Other Payments</h3>
+                        </div><br>
+                        <table>
+                           <thead>
+                               <tr>
+                                   <td>Type of Payment</td>
+                                   <td>Date</td>
+                                   <td>Amount</td>
+                                   <td>Generate PDF</td>
+
+                               </tr>
+                           </thead> 
+                           <tbody>
+                           <?php if ($rows5):?>
+                                <?php foreach ($rows5 as $row):?>
+
+                               <tr>
+                                   <td><?=$row->type?></td>
+                                   <td><?=$row->date?></td>
+                                   <td><?=$row->amount?></td>
+                                   <td><a href="<?=ROOT?>admin/generatepdfProducts/<?= $row->adminPaymentid ?>" class="btn" style="font-size:0.7rem;"><b>Generate PDF</b></a></td>
+
+                               </tr>
+                               <?php endforeach;?>
+                            <?php endif;?>
+
+                               
+                           </tbody>
+                        </table>
+                    </div>
+   
+                    
+
+                </div>
 
                 
 
