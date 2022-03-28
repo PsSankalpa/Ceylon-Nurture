@@ -123,8 +123,7 @@
                         <div class="cardHeader">
                             <h3>Channeling</h3>
                             
-                            <div class="report"><a class="btn">Generate Report</a><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
-                        </div><br>
+                            <div class="report"><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
                         <form method="POST">
                             <div class="row">
                             <div class="col-25">
@@ -137,9 +136,10 @@
 
                             <div class="row">
                             <input type="submit" value="Submit">
-                            <input type="reset" value="Reset">
                             </div>
                             </form>
+                            </div><br>
+
                         <table>
                             
                            <thead>
@@ -151,12 +151,16 @@
                                    <td>Location</td>
                                    <td>Total Payments</td>
                                    <td>Commission</td>
+                                   <td>Generate PDF</td>
                                </tr>
                            </thead> 
                            <tbody>
+                           <?php if($rows2):?>
                            <?php if($rows1):?>
-                            <?php $row = $rows1;?>
-                                <?php foreach($row as $row):?>
+                            <?php $rows2 = $rows1;?>
+                            <?php endif;?>  
+
+                                <?php foreach($rows2 as $row):?>
                                <tr>
                                    <td><?=$row->doctorName?></td>
                                    <td><?=$row->patientName?></td>
@@ -165,9 +169,12 @@
                                    <td>General Hospital,Colombo 05</td>
                                    <td> <?=$row->totalPayment?></td>
                                    <td><?=$row->commission?></td>
+                                   <td><a href="<?=ROOT?>admin/generatepdfChanneling/<?= $row->appointmentid ?>" class="btn" style="font-size:0.7rem;"><b>Generate PDF</b></a></td>
+
                                </tr>
                                <?php endforeach; ?>
                              <?php endif;?>  
+
                                    
                                
                            </tbody>
@@ -183,8 +190,24 @@
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
                             <h3>Products</h3>
-                            <div class="report"><a class="btn">Generate Report</a><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
+
+                            <div class="report"><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
+                            <form method="POST">
+                            <div class="row">
+                            <div class="col-25">
+                                <label for="nic">Filter by Product Name</label>
+                            </div>
+                            <div class="col-75">
+                            <input type="text" value="<?=get_var('productName')?>" id="productName" name="productName" placeholder="Product Name">
+                            </div>
+                            </div>
+
+                            <div class="row">
+                            <input type="submit" value="Submit">
+                            </div>
+                            </form>
                         </div><br>
+
                         <table>
                            <thead>
                                <tr>
@@ -194,10 +217,15 @@
                                    <td>Category</td>
                                    <td>address</td>
                                    <td>tpNumber</td>
-                                   <td>description</td>
+                                   <td>Generate PDF</td>
+
                                </tr>
                            </thead> 
                            <tbody>
+                           <?php if($rows):?>
+                           <?php if($rows3):?>
+                            <?php $rows = $rows3;?>
+                            <?php endif;?> 
                            <?php foreach ($rows as $row):?>
 
                                <tr>
@@ -207,9 +235,11 @@
                                    <td><?=$row->category?></td>
                                    <td><?=$row->address?></td>
                                    <td><?=$row->tpNumber?></td>
-                                   <td><?=$row->description?></td>
+                                   <td><a href="<?=ROOT?>admin/generatepdfProducts/<?= $row->productid ?>" class="btn" style="font-size:0.7rem;"><b>Generate PDF</b></a></td>
+
                                </tr>
                                <?php endforeach;?>
+                               <?php endif;?> 
 
                                
                                    
