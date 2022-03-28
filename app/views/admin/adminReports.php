@@ -127,10 +127,10 @@
                         <form method="POST">
                             <div class="row">
                             <div class="col-25">
-                                <label for="nic">Filter by User Name</label>
+                                <label for="nic">Filter by Patient Name</label>
                             </div>
                             <div class="col-75">
-                            <input type="text" value="<?=get_var('name')?>" id="name" name="name" placeholder="User Name">
+                            <input type="text" value="<?=get_var('name')?>" id="name" name="name" placeholder="Patient Name">
                             </div>
                             </div>
 
@@ -257,6 +257,20 @@
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
                             <h3>Doctor Payments</h3>
+                            <form method="POST">
+                            <div class="row">
+                            <div class="col-25">
+                                <label for="nic">Filter by Doctor Name</label>
+                            </div>
+                            <div class="col-75">
+                            <input type="text" value="<?=get_var('doctorPaymentName')?>" id="doctorPaymentName" name="doctorPaymentName" placeholder="Doctor Name">
+                            </div>
+                            </div>
+
+                            <div class="row">
+                            <input type="submit" value="Submit">
+                            </div>
+                            </form>
                         </div><br>
                         <table>
                            <thead>
@@ -300,6 +314,20 @@
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
                             <h3>Other Payments</h3>
+                            <form method="POST">
+                            <div class="row">
+                            <div class="col-25">
+                                <label for="nic">Filter by Payment Type</label>
+                            </div>
+                            <div class="col-75">
+                            <input type="text" value="<?=get_var('paymentName')?>" id="paymentName" name="paymentName" placeholder="Payment Type">
+                            </div>
+                            </div>
+
+                            <div class="row">
+                            <input type="submit" value="Submit">
+                            </div>
+                            </form>
                         </div><br>
                         <table>
                            <thead>
@@ -319,7 +347,7 @@
                                    <td><?=$row->type?></td>
                                    <td><?=$row->date?></td>
                                    <td><?=$row->amount?></td>
-                                   <td><a href="<?=ROOT?>admin/generatepdfProducts/<?= $row->adminPaymentid ?>" class="btn" style="font-size:0.7rem;"><b>Generate PDF</b></a></td>
+                                   <td><a href="<?=ROOT?>admin/generatepdfPayment/<?= $row->adminPaymentid ?>" class="btn" style="font-size:0.7rem;"><b>Generate PDF</b></a></td>
 
                                </tr>
                                <?php endforeach;?>
