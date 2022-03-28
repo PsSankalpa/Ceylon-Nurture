@@ -149,7 +149,7 @@
                                    <td><?=$row->address?></td>
                                    <td><?=$row->tpNumber?></td>
                                    <td><?=$row->description?></td>
-                                   <td><img src="<?= ASSETS2 . $row->image ?> "></td>
+                                   <td><img style="height:10rem; width:8rem;"src="<?= ASSETS2 . $row->image ?> "></td>
                                </tr>
                                <?php endforeach;?>
 

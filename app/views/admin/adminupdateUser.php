@@ -28,15 +28,12 @@
                         <?php if($row):?>
                         <form method="post">
                             <input  type="text" value="<?=get_var('nameWithInitials',$row->nameWithInitials)?>" name="nameWithInitials" placeholder="Name with Initials" > 
-                            <input  type="text" value="<?=get_var('fname',$row->fname)?>" name="fname" placeholder="First Name"  > 
-                            <input  type="text" value="<?=get_var('lname',$row->lname)?>" name="lname" placeholder="Last Name" > 
                             <input  type="text" value="<?=get_var('username',$row->username)?>" name="username" placeholder="User Name"  > 
                             <select name="gender">
                             <option <?=get_select('gender',$row->gender)?> value="<?=$row->gender?>"><?=ucwords($row->gender)?></option>  
                             <option>Male</option>
                             <option>Female</option>                                 
                             </select>
-                            <input type="date" value="<?=get_var('dob',$row->dob)?>" id="dob" name="dob" >
                             <input  type="email" value="<?=get_var('email',$row->email)?>" name="email" placeholder="E-mail address"  >
                             <input  type="tel" value="<?=get_var('tpNumber',$row->tpNumber)?>" name="tpNumber" placeholder="Telephone Number" > 
                             <!--<input type="password" value="<?=get_var('password')?>"  id="psw" name="password" placeholder="Password"  > 

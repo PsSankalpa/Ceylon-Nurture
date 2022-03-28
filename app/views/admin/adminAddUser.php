@@ -27,15 +27,12 @@
                         <?php endif;?>
                         <form method="post">
                             <input  type="text" value="<?=get_var('nameWithInitials')?>" name="nameWithInitials" placeholder="Name with Initials" > 
-                            <input  type="text" value="<?=get_var('fname')?>" name="fname" placeholder="First Name"  > 
-                            <input  type="text" value="<?=get_var('lname')?>" name="lname" placeholder="Last Name" > 
                             <input  type="text" value="<?=get_var('username')?>" name="username" placeholder="User Name"  > 
                             <select name="gender">
                                 <option>--Select a Gender--</option>
                                 <option>Male</option>
                                 <option>Female</option>
                             </select>
-                            <input type="date" value="<?=get_var('dob')?>" id="dob" name="dob" >
                             <input  type="email" value="<?=get_var('email')?>" name="email" placeholder="E-mail address"  >
                             <input  type="tel" value="<?=get_var('tpNumber')?>" name="tpNumber" placeholder="Telephone Number" > 
                             <input type="password" value="<?=get_var('password')?>"  id="psw" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required placeholder="Password"  > 
