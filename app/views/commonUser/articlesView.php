@@ -37,6 +37,29 @@
             </div>
         </div>
 
+        <?php if (Auth::logged_in_admin()) : ?>
+
+            <div class="search-container">
+
+                <div class="myBtnContainer status1">
+
+                    <form action="" id="status">
+                        <input type="hidden" value="0" name="search1">
+                        <!--ternary operator use in the value-->
+                        <button type="submit">Disabled Articles</button>
+                    </form>
+                    <form action="" id="status">
+                        <input type="hidden" value="0" name="search2">
+                        <!--ternary operator use in the value-->
+                        <button type="submit">All Articles</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        <?php endif; ?>
+
         <!--for the latest articles-->
         <?php if ($display == "view") : ?>
             <div class="article-ds">
