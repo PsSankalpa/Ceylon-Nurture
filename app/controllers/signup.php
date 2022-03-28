@@ -15,19 +15,21 @@ class signup extends Controller
             {
                 
                // $arr['date'] = date("Y-m-d H:i:s");
-               $arr['userid'] = AUTH::userid();
+               // $arr['userid'] = AUTH::userid();
                 $arr['nameWithInitials'] = htmlspecialchars($_POST['nameWithInitials']);
-                $arr['verify_token'] = 'none';
+                //$arr['verify_token'] = 'none';
                 $arr['username'] = htmlspecialchars($_POST['username']);
                 $arr['gender'] = htmlspecialchars($_POST['gender']);
                 $arr['email'] = htmlspecialchars($_POST['email']);
                 $arr['tpNumber'] = htmlspecialchars($_POST['tpNumber']);
                 $arr['password'] = htmlspecialchars($_POST['password']);
+                $arr['image'] = 'none';
                 $arr['date'] = date("Y/m/d");
-               // print_r($arr);
+                //print_r($arr);
                // die;
-                $common_user->insert($_POST);
-                //print_r($_POST);
+                $common_user->insert($arr);
+                //print_r($arr);
+               // die;
                 $this->redirect('login');
             }else
             {
@@ -39,6 +41,12 @@ class signup extends Controller
         $this->view('signup',[
            'errors'=>$errors,
         ]);
+    }
+    function get_destination($destination)
+    {
+        global $des;
+        $des = $destination;
+        return $des;
     }
 }
 

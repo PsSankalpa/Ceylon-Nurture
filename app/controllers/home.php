@@ -40,12 +40,12 @@ class home extends Controller
         $arr['fullname'] = htmlspecialchars($_POST['fullname']);
         $arr['email'] = htmlspecialchars($_POST['email']);
         $arr['message'] = htmlspecialchars($_POST['message']);
-        print_r($arr);
-        die;
+       // print_r($arr);
+       // die;
         $contactus->insert($_POST);
-        print_r($_POST);
-        die;
-        $this->redirect('landing/home');
+        //print_r($_POST);
+        //die;
+        $this->redirect('home');
       }
 
 
@@ -75,7 +75,7 @@ class home extends Controller
         $contactus->insert($_POST);
         //print_r($_POST);
        
-        $this->redirect('landing/home');
+        $this->redirect('home');
       }
 
 

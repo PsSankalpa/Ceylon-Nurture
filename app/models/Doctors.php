@@ -57,7 +57,7 @@ class doctors extends Model
 			$this->errors['image'] = "Cannot keep image empty";
 		} else {
 			//upload the file to following dir
-			$folder = "doctor_qualification/";
+			$folder = "doctor_certificates/";
 			if (!file_exists($folder)) //if dir doesn't exist,create it like below with file permissions
 			{
 				mkdir($folder, 0777, true);
@@ -84,39 +84,6 @@ class doctors extends Model
 
 		if (count($this->errors) == 0) {
 			move_uploaded_file($FILES['image']['tmp_name'], $destination);
-			return true;
-		}
-
-		return false;
-
-		//validation for Profile Pic
-
-		if ($FILES['image2']['size'] == 0) {
-			$this->errors['image2'] = "Cannot keep image empty";
-		} else {
-			//upload the file to following dir
-			$folder = "doctor_profilepic/";
-			if (!file_exists($folder)) //if dir doesn't exist,create it like below with file permissions
-			{
-				mkdir($folder, 0777, true);
-			}
-
-			//create the destination 
-			$destination = $folder . $FILES['image2']['name'];
-
-			$imageFileType = strtolower(pathinfo($destination, PATHINFO_EXTENSION));
-			$uploadOk = 1;
-			$results = $this->images($FILES, $destination, $imageFileType, $uploadOk);
-			if (!empty($results)) {
-				$this->errors['image2'] = $results;
-			} else {
-				$doctor = new doctor();
-				$doctor->get_destination($destination); //send the address of the file path to doctor controller to save in the database 
-			}
-		}
-
-		if (count($this->errors) == 0) {
-			move_uploaded_file($FILES['image2']['tmp_name'], $destination);
 			return true;
 		}
 

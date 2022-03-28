@@ -14,9 +14,9 @@
 <body>
   <div class="about-section">
     <h1>About Ceylon Nurture</h1>
-    <p>The main goal of this online Ayurvedic platform is to provide patients an easy way to channel ayurvedic doctors,
-      find ayurvedic herbs and to find ayurvedic products.Here we give the opportunity to the sellers to market their products through
-      our platform and the doctors can register with our system to make it easy to connect with their patients.</p>
+    <p>We was able to identify some of the difficulties whicch people have to face with the current ayurvedic system so our main goal of this online Ayurvedic platform is to provide patients an easy way to channel ayurvedic doctors,
+      users to find ayurvedic herbs and to find ayurvedic products and also here we give the opportunity to the sellers to market their products through
+      our platform and the doctors can register with our system to make it easy to connect with their patients.The system will consist of fully functional components like channelling,selling,appointments,articles,forums</p>
   </div>
   </br>
   <h2 style="text-align:center">Our Team</h2>
@@ -27,7 +27,7 @@
         <div class="container">
           <h2>Piyum Sankalpa</h2>
           <p class="title">Developer</p>
-          <p>jane@example.com</p>
+          <p>piyumsankalpaps@gmail.com</p>
           <!--<p><button class="button">Contact</button></p>-->
         </div>
       </div>
@@ -39,7 +39,7 @@
         <div class="container">
           <h2>Chamodhi Dilshani</h2>
           <p class="title">Developer</p>
-          <p>mike@example.com</p>
+          <p>cham.dil333@gmail.com</p>
           <!-- <p><button class="button">Contact</button></p>-->
         </div>
       </div>

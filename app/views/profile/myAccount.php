@@ -14,6 +14,10 @@
     <div class="profile">
         <div class="main-profile row">
             <div class="left">
+            <div class="row">
+            
+           
+            </div>
                 <img src="<?= ASSETS ?>img/avatar.png" class="pro-img" alt="profile-img">
             </div>
             <div class="right">
