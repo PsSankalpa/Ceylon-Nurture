@@ -725,6 +725,7 @@ class doctor extends Controller
                 $arr['image'] = $des;
                 $arr['doctorid'] = Auth::userid();
                 $arr['date'] = date("Y-m-d");
+                $arr['status'] = 1;
 
                 //print_r($arr);
                 // die;

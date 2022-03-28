@@ -9,21 +9,33 @@ class articles extends Controller
     function articleDetails($articleid = null)
     {
         $data2 = "";
+        $data3 = "";
         if (Auth::logged_in()) {
             $Auth = new Auth;
             $data2 = $Auth->finduser();
+            $userid = Auth::userid();
+
+            $article = new article();
+            //to find the ownership
+            if (null != ($article->where('doctorid', $userid))) {
+                $data3 = 'owner';
+            } else {
+                $data3 = "";
+            }
         }
 
-        $userid = Auth::userid();
+        $A_status = " ";
+        //to disable or enable articles from admin
+        if (Auth::logged_in_admin()) {
+            $A_status = "Admin";
+        }
+
+        //to get relevant article details
         $article = new article();
         $data = $article->where('articleid', $articleid);
 
-
-        if (null != ($article->where('doctorid', $userid))) {
-            $data3 = 'owner';
-        } else {
-            $data3 = "";
-        }
+        // print_r($data);
+        // die;
 
         //to get article reviews
         $reviews = new articleReview();
@@ -48,6 +60,33 @@ class articles extends Controller
             $this->redirect('doctor/myArticles');
         }
 
+        // print_r($A_status);
+        // die;
+
+        // if($_POST)
+        // {
+        //     print_r($_POST);
+        //     die;
+        // }
+
+        //to the admin, to enable the article
+        if (isset($_POST['enable'])) {
+
+            $arr4['status'] = 1;
+            $articles->update($articleid, $arr4);
+            $this->redirect('articles/articleDetails/' . $articleid);
+        }
+
+        //to the admin, to disable the article
+
+        if (isset($_POST['disable'])) {
+
+            $arr4['status'] = 0;
+            $articles->update($articleid, $arr4);
+            $this->redirect('articles/articleDetails/' . $articleid);
+        }
+
+        //----------for review part-------------------------------------------
         //to get the username
         $username = "";
         if (Auth::logged_in()) {
@@ -57,23 +96,27 @@ class articles extends Controller
                 $data_name = $data_name[0];
             }
             $username = $data_name->username;
-        }
-        else{
+        } else {
             $username = "";
         }
 
 
         //for add review
-        if (isset($_POST['review'])) {
+        if (Auth::logged_in()) {
+            if (isset($_POST['review'])) {
 
-            $arr['reviewOwner'] = $username;
-            $arr['review'] = htmlspecialchars($_POST['review']);
-            $arr['articleid'] = $articleid;
-            $arr['ownerid'] = Auth::userid();
+                $arr['reviewOwner'] = $username;
+                $arr['review'] = htmlspecialchars($_POST['review']);
+                $arr['articleid'] = $articleid;
+                $arr['ownerid'] = Auth::userid();
 
-            $reviews->insert($arr);
-            $this->redirect('articles/articleDetails/' . $articleid); //put the function name    
+
+                $reviews->insert($arr);
+                $this->redirect('articles/articleDetails/' . $articleid); //put the function name    
+            }
         }
+
+        //------------end of review part-----------------------------------------------------------
 
         // $this->view('seller/deleteProduct', [
         //     'row' => $row,
@@ -87,6 +130,7 @@ class articles extends Controller
             'data2' => $data2,
             'data3' => $data3,
             'data4' => $data4,
+            'A_status' => $A_status,
         ]);
     }
 
