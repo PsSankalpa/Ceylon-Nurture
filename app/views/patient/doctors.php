@@ -94,7 +94,19 @@
 
                 <div class="slots">
                 <div class="slotHead">
-                            <div class="iconBox"><i class="far fa-calendar-alt"> Filter by date </i></div>
+                            <div class="iconBox"><i class="far fa-calendar-alt"> </i>
+                                <form action="" method="POST">
+                                    <input type="date" id="fromdate" name="fromdate">
+                                    </div>
+                                    <div class="date">
+                                    <input type="date" id="todate" name="todate">
+                                    </div>
+                                    <div>
+                                    <button type="submit" class="filterA">Filter</button>
+                                    <!--<input type="submit" value="submit">-->
+                                    </div>
+                                </form>
+         </div>
                             
                         </div>
 
@@ -107,12 +119,22 @@
                         
 
                         <div class="slotBody">
+                            <?php if ($rows):?>
+                                
                         <?php foreach ($rows as $row1):?>
 
                             <div class="card">
+                                <?php //format the time using strtotime
+                                    $arrivalTime = strtotime($row1->arrivalTime);
+                                    $departureTime = strtotime($row1->departureTime);
+                                    //$departureTime = date_create($row->departureTime);
+
+                                    $arrivalTime= date("g:i a", $arrivalTime);
+                                    $departureTime = date("g:i a", $departureTime);
+                                ?>
+
                             <div class="date"> <?=$row1->dateofSlot?></div>
-                            <div class="patientNo">Number of Patients: 39</div>
-                                <div class="time"><?=$row1->arrivalTime?> - <?=$row1->departureTime?></div>
+                                <div class="time"><?=$arrivalTime?> - <?=$departureTime?></div>
                                 <div class = "availability"> 
                                         Availability: <br>
                                         <?php 
@@ -164,7 +186,7 @@
                             </div>
 
                             <?php endforeach;?>
-
+                        <?php endif;?>
                         </div>
 
                     </div>

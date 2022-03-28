@@ -264,8 +264,8 @@ class channeling extends Controller
 
             
 
-        $patientPayment = new patientPayment();
-        $patientPayment->insert($arr1);
+        $patientpayment = new patientpayment();
+        $patientpayment->insert($arr1);
         $this->redirect('channeling/Confirmation');
 
         }
@@ -360,6 +360,19 @@ class channeling extends Controller
         $row1=$schedule->where('doctorid', $userid);
         //$date=$row1[0]->dateOfSlot;
 
+    
+        //to get the date filter 
+        if (count($_POST) > 0) {
+
+            $date1 = $_POST['fromdate'];
+            $date2 = $_POST['todate'];
+            //print_r($date1);
+
+            $row1 = $schedule->finddaterange($date1, $date2);
+            //print_r($row);  
+        }
+        
+    
         
         $this->view("patient/doctors",[
             'row'=>$row,
@@ -556,6 +569,8 @@ class channeling extends Controller
         ]);
 
     }
+
+   
 
     public function generatepdf($id)
     {

@@ -24,7 +24,21 @@
     <div class="errorpage">
                 
          <?php if ($appointmentidrow1):?>   
-        <h2 class="errorpage_body"> Payment Succesful <br>Your Channeling is Confirmed<br>Your time slot is from <?= $appointmentidrow1[0]->slotTimeStart;?> to <?= $appointmentidrow1[0]->slotTimeEnd;?>  on  <?= $appointmentidrow1[0]->date;?><br>Your line number is <?=$appointmentidrow1[0]->patientCount;?> </h2>
+            <?php //format the time using strtotime
+                                    $slotTimeStart = strtotime($appointmentidrow1[0]->slotTimeStart);
+                                    $slotTimeEnd = strtotime($appointmentidrow1[0]->slotTimeEnd);
+                                    //$departureTime = date_create($row->departureTime);
+
+                                    $slotTimeStart= date("g:i a", $slotTimeStart);
+                                    $slotTimeEnd = date("g:i a", $slotTimeEnd);
+
+                                    $scheduleid=$appointmentidrow1[0]->scheduleid;
+                                    $schedule = new schedule();
+                                    $daterow=$schedule->where('scheduleid',$scheduleid);
+                                    $date=$daterow[0]->dateofSlot;
+
+                                ?>
+        <h2 class="errorpage_body"> Payment Succesful <br>Your Channeling is Confirmed<br>Your time slot is from <?= $slotTimeStart;?> to <?= $slotTimeEnd;?>  on  <?= $date;?><br>Your line number is <?=$appointmentidrow1[0]->patientCount;?> </h2>
         <a href="<?=ROOT?>channeling/appointments"><button class="button_typeB"> View Channelings </button></a>
         <?php endif; ?>
     </div>

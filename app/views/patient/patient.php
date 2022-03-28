@@ -247,7 +247,7 @@
                                <tr>
                                    <td><?=$row->doctorName?></td>
                                    <td><?=$row2[0]->dateofSlot?></td>
-                                   <td><?=$row2[0]->arrivalTime?></td>
+                                   <td><?=$row->slotTimeStart?></td>
                                    <td><?=$row1[0]->hospital?></td>
                                    <td> <button class="viewMore">View</button></td>
                                </tr>
