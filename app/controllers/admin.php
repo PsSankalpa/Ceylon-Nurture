@@ -259,10 +259,22 @@ class admin extends Controller
     }
 
 
-    function payments()
-    {
+    function payments(){
+    
 
-        $this->view("admin/adminpayments");
+        $admin = new admin();
+        $adminpaymentdoctor = new adminPaymentDoctor();
+        $row=$adminpaymentdoctor->findAll();
+
+        $adminpayment= new adminPayment();
+        $row2=$adminpayment->findAll();
+
+        $this->view("admin/adminpayments",[
+                'row'=>$row,
+                'row1'=>$row2,
+        ]);
+
+
     }
 
     function adminPayment(){
@@ -291,7 +303,58 @@ class admin extends Controller
         }
     }
 
+    function adminPaymentDoctor(){
 
+        if(!Auth::logged_in_admin())  
+        {
+          $this->redirect('login/login');
+        }
+        else
+        {
+
+        $doctors = new doctors();
+        $common_user = new common_user();
+        $doctorids=$doctors->findAll();
+
+        foreach($doctorids as $doctorid){
+        $doctoridarray=$doctorid->userid;
+        $array[]=$doctoridarray;
+        
+        }
+        //print_r($array);
+        // foreach($doctoridarray as $doctorid){
+        // $data=$common_user->where('userid',$doctorid);
+
+        // }
+
+
+        if(count($_POST) > 0){
+
+        $arr['doctorName'] = $_POST['name'];
+        $arr['amount'] = $_POST['amount'];
+        $arr['date'] = date("Y-m-d H:i:s");
+        $name = $_POST['name'];
+
+        $common_user = new common_user();
+        $doctoridrow=$common_user->where('username',$name);
+        $doctorid=$doctoridrow[0]->userid;
+        $doctorchargerow=$doctors->where('userid',$doctorid);
+        $doctorcharge=$doctorchargerow->doctorCharge;
+        //print_r($doctorcharge);
+        $arr['doctorid'] = $doctorid;
+
+        $adminpaymentdoctor = new adminPaymentdoctor();
+        $adminpaymentdoctor->insert($arr); 
+        $this->redirect('admin/payments');
+ 
+        }
+
+        $this->view("admin/adminPaymentDoctor",[
+            'row'=>$array,
+        ]);
+    }
+
+    }
 
 
 
@@ -304,14 +367,29 @@ class admin extends Controller
         ]);
     }
 
-    function reports()
-    {
-        $products = new products;
+    function reports(){
+        $products=new products;
 
-        $data = $products->findAll();
-        $this->view( "admin/adminReports",[
-                'rows' => $data,
-            ]);
+        $data=$products->findAll();
+        $data1=NULL;
+        $appointments = new appointments();
+
+        if(count($_POST)>0){
+
+        $name = '%' . $_POST['name'] . '%';;
+
+        $query= "select * from appointments where patientName like :name order by appointmentid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+        $arr['name'] = $name; //to pass to the query function
+        $data1 = $appointments->query($query, $arr);
+
+        
+        }
+
+        $this->view("admin/adminReports",[
+            'rows'=>$data,
+            'rows1'=>$data1,
+        ]
+        );
     }
 
     function products()
@@ -458,6 +536,89 @@ class admin extends Controller
             'row' => $row,
 
         ]);
+    }
+
+    public function generatepdf($id)
+    {
+        $userid = Auth::userid();
+        require_once __DIR__ . '/../models/mpdf/autoload.php';
+        $mpdf = new \Mpdf\Mpdf();
+        $html = file_get_contents(ROOT . '/channeling/channelingpdf/' . $id . '/' . $userid);
+        //  print_r($html);
+        //   die;
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+    }
+
+    function channelingpdf($id, $userid)
+    {
+        $appointments = new appointments();
+
+        $row=$common_user->where('userid',$userid);
+        //$row1=$appointments->where('appointmentid',$id);
+        //$date=$row1->slotTimeStart;
+
+
+
+        if ($row != null) {
+            $row=$row[0];
+        }
+
+       
+?>
+
+        <style>
+            th,
+            td {
+                text-align: left;
+                padding: 16px;
+            }
+
+            .title2 {
+                width: 95%;
+                text-align: center;
+            }
+        </style>
+
+        <div class="title1" style="width: 95%;">
+            <div class="logo" style="width: 100%;text-align: center;"><img src="<?= ASSETS ?>img/logo.png" style="width: 30%;align-items: center;"></div>
+            <div class="mtitle" style="width: 100%;text-align: center;">
+                <h1>Ceylon Nuture</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="title2">
+            <h2>Channeling Details</h2>
+        </div>
+        <table style="border-collapse: collapse;border-spacing: 0;width: 85%;border: 1px solid #ddd;margin: 5% auto;">
+            <tr>
+                <td>Name of the Doctor</td>
+                <td>:</td>
+                <td><?= $row->doctorName ?></td>
+            </tr>
+            <tr>
+                <td>Patient Name</td>
+                <td>:</td>
+                <td><?= $row->patientName ?></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>:</td>
+                <td><?= $row->date ?></td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>:</td>
+                <td>Rs:<?= $row->nic ?></td>
+            </tr>
+            <tr>
+                <td>Total Payment</td>
+                <td>:</td>
+                <td><?= $row->totalPayment ?></td>
+            </tr>
+        </table>
+
+<?php
     }
 
 }
