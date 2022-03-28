@@ -54,12 +54,7 @@ public function __construct()
 		]);
 	}
 
-	public function wheredistinct($list)
-	{
-
-		$query = array_values(array_unique($list));
-		return $this->query($query);
-	}
+	
 
 	//below query is for use when we need to find a row that matchs two columns
 	public function where2($column1,$value1,$column2,$value2)

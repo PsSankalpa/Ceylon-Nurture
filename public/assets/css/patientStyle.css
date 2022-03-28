@@ -260,6 +260,8 @@ h6{
   border-radius: 10px;
   border:2px solid #75E6DA;
   background-color: rgba(255, 255, 255, 0.61);
+  overflow-y:scroll;
+  height: 20rem;
 }
 
 
@@ -409,6 +411,9 @@ h6{
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.61);
   border:2px solid #75E6DA;
+  overflow-y:scroll;
+  max-height: 20rem;
+  overflow-x: auto;
 
 
 }
@@ -457,6 +462,8 @@ h6{
 .details .salesReport{
   padding:20px;
   border-radius: 10px;
+  overflow-y:scroll;
+  max-height: 20rem;
   
 }
 
@@ -468,6 +475,8 @@ h6{
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap:20px;
+  
+
 }
 
 .details .newProducts{
@@ -476,6 +485,8 @@ h6{
   padding:20px;
   border-radius: 10px;
   border:2px solid #75E6DA;
+  
+  
 
 
 }
@@ -738,6 +749,8 @@ input[type=reset]:hover{
 
 .detailsBottom .upcomingChanneling{
   overflow-x:auto;
+  
+  
 }
 
 .detailsBottom .upcomingChanneling table{

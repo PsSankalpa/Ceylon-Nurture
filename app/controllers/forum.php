@@ -19,6 +19,39 @@ class forum extends Controller
         $userid = Auth::userid();
         $doctors = new doctors;
         $data3=$doctors->where('userid',$userid);
+
+        $forumreplydoctor = new forumreplydoctor();
+        
+        // $newest = "SELECT TOP 10 * FROM forumdoctor ORDER BY forumDoctorid DESC";
+
+        // $newestrow = $forumdoctor->query($newest);
+
+
+        // if($newestrow){
+        //     $data = $newestrow;
+        // }
+
+        // if(isset($_GET['search'])){}
+
+        if(count($_POST) > 0 ){
+
+            $arr['forumDoctorid'] = htmlspecialchars($_POST['doctorid']);
+            $arr['reply'] = htmlspecialchars($_POST['reply']);
+            $arr['userid'] = $userid;
+
+            $forumreplydoctor->insert($arr);
+            
+
+            $this->redirect('forum');
+
+
+        }
+
+       
+
+
+
+
         
         //print_r($data);
     
@@ -29,11 +62,39 @@ class forum extends Controller
             'rows3'=>$data3,
 
 
+
         
         ]);
     
         
     
+    }
+
+    function verification($forumHerbid){
+
+            $userid = Auth::userid();
+            //print_r($userid);
+            $arr['verifiedDoctorid']=$userid;
+
+            $doctors = new doctors;
+            $data=$doctors->where('userid',$userid);
+            
+            $arr['verifiedDoctorName']=$data[0]->nameWithInitials;
+            $arr['verification']=TRUE;
+            $arr['VerifiedDate'] = date("Y-m-d H:i:s");
+
+
+            $forumherb = new forumherb;
+            $forumherb->update($forumHerbid,$arr);
+
+            $this->view("forums/verified");
+
+        
+
+
+
+
+
     }
 
     function addForumDoctor(){
@@ -53,9 +114,14 @@ class forum extends Controller
             {
                 
                // $arr['date'] = date("Y-m-d H:i:s");
-
+               $arr['userid'] = Auth::userid();
+               $arr['name'] = htmlspecialchars($_POST['name']);
+               $arr['description'] = htmlspecialchars($_POST['description']);
+               $arr['tpNumber'] = htmlspecialchars($_POST['tpNumber']);
+               $arr['location'] = htmlspecialchars($_POST['location']);
+               $arr['date'] = date("Y-m-d H:i:s");
                
-                $forumdoctor->insert($_POST);
+                $forumdoctor->insert($arr);
                 $this->redirect('forum');
             }else
             {
@@ -261,6 +327,8 @@ class forum extends Controller
                $arr['name'] = htmlspecialchars($_POST['name']);
                $arr['description'] = htmlspecialchars($_POST['description']);
                $arr['image'] = $des;
+               $arr['verification']=FALSE;
+
                
                 $forumherb->insert($arr);
                 $this->redirect('forum');
@@ -347,5 +415,7 @@ class forum extends Controller
         $des =$destination;
         return $des;
     }
+
+   
 
 }

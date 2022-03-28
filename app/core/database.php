@@ -2,7 +2,6 @@
 
 class Database
 {
-	
 	private function connect()
 	{
 		$string = DB_TYPE . ":host=".DB_HOST.";dbname=".DB_NAME;

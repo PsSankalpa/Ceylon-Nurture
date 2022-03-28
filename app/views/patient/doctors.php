@@ -21,6 +21,7 @@
                 <div class="search_container">
 
                 <?php if($row):?>
+                    
 
                 <h2><?=$row->nameWithInitials?></h2><br>
                 <div class="doc_image_container"><img class="doctor_image" src="<?=ASSETS?>img/doctor.jpg"></div>
@@ -88,20 +89,29 @@
           
 
             <div class="schedule">
-                <div class="slots">
-                <?php if($rows):?>
-                    <?php foreach ($rows as $row1):?>
+            <?php if($rows):?>
 
-                    <div class="slot">
-                        
-                        <div class="slotHead">
-                            <div class="iconBox"><i class="far fa-calendar-alt"></i></div>
-                            <div class="date"> <?=$row1->dateofSlot?></div>
-                            <div class="patientNo">Number of Patients: 39</div>
+
+                <div class="slots">
+                <div class="slotHead">
+                            <div class="iconBox"><i class="far fa-calendar-alt"> Filter by date </i></div>
+                            
                         </div>
 
+                    <div class="slot">
+
+                    
+                        
+
+                        
+                        
+
                         <div class="slotBody">
+                        <?php foreach ($rows as $row1):?>
+
                             <div class="card">
+                            <div class="date"> <?=$row1->dateofSlot?></div>
+                            <div class="patientNo">Number of Patients: 39</div>
                                 <div class="time"><?=$row1->arrivalTime?> - <?=$row1->departureTime?></div>
                                 <div class = "availability"> 
                                         Availability: <br>
@@ -153,10 +163,11 @@
                                     <?php endif;?>
                             </div>
 
-                            
+                            <?php endforeach;?>
+
                         </div>
+
                     </div>
-                    <?php endforeach;?>
                     <?php else:?>
                         There are no slots available!
                         <?php endif;?>

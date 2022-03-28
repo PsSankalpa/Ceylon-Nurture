@@ -110,6 +110,7 @@
 
                    <div class="toggle">
                        <h4>Payments</h4>
+                       
                    </div>
 
                    <div class="topbar_sideA heading">
@@ -124,6 +125,7 @@
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
                             <h3>Payments</h3>
+                            <a href="<?=ROOT?>admin/adminPayment" class="btn">Make a payment</a>
                         </div><br>
                         <table>
                            <thead>

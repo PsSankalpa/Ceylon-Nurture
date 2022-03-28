@@ -88,7 +88,8 @@
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
                             <h3>Channeling</h3>
-                            <div class="report"><a class="btn">View Report</a><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
+                            <div class="report"><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
+
                         </div><br>
                         <table>
                            <thead>
@@ -97,30 +98,40 @@
                                    <td>Patient Name</td>
                                    <td>Date</td>
                                    <td>Time</td>
+                                   <td>Line Number</td>
                                    <td>Location</td>
-                                   <td>Doctor Charges</td>
+                                   <td>Total Payment</td>
                                    <td>Commission</td>
+                                   <td>Generate Pdf</td>
+
                                </tr>
                            </thead> 
                            <tbody>
+                           <?php foreach ($row as $row):?>
+
                                <tr>
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>Manel Perera</td>
-                                   <td>05/11/2021</td>
-                                   <td>09:00 am</td>
-                                   <td>General Hospital,Colombo 05</td>
-                                   <td> LKR 2500</td>
-                                   <td> LKR 200</td>
+                                   <td><?= $row->doctorName ?></td>
+                                   <td><?= $row->patientName ?></td>
+                                   <td><?= $row->date ?></td>
+                                   <?php
+                                        $doctors = new doctors();
+                                        $schedule = new schedule();
+                                        $doctorid=$row->doctorid;
+                                        $scheduleid=$row->scheduleid;
+                                        $time=$schedule->where('scheduleid',$scheduleid);
+                                        $location=$doctors->where('userid',$doctorid);
+                                   ?>
+                                   <td><?= $time[0]->arrivalTime ?></td>
+                                   <td> <?= $row->patientCount ?></td>
+                                   <td><?= $location[0]->hospital ?></td>
+                                   <td> Rs. <?= $row->totalPayment ?></td>
+                                   <td>Rs. <?= $row->commission ?></td>
+                                   <td><a href="<?=ROOT?>channeling/generatepdf/<?= $row->appointmentid ?>" class="btn">Generate PDF</a></td>
+
                                </tr>
-                               
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>Neth Perera</td>
-                                   <td>06/11/2021</td>
-                                   <td>10:00 am</td>
-                                   <td>Weda Madura, Gampaha</td>
-                                   <td> LKR 2800</td>
-                                   <td> LKR 200</td>
-                               </tr>
+                               <?php endforeach ;?>
+
+                                   
                                
                            </tbody>
                         </table>

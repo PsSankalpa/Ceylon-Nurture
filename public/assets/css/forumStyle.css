@@ -274,6 +274,30 @@ input[type=search]{
   border: 2px solid white;
 }
 
+.reply_area textarea{
+  width:100%;
+  min-height:5rem;
+  margin-top: 1rem;
+  padding:0.5rem;
+  border-radius: 0.5rem;
+  display: block;
+  
+}
+
+.reply_area{
+  display: block;
+}
+
+.reply_area input{
+  float: right;
+  padding:0.5rem;
+  cursor: pointer;
+
+}
+
+.reply_area input:hover{
+  border: solid 1px white
+}
 
 
   .alertwarning{

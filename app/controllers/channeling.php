@@ -36,52 +36,64 @@ class channeling extends Controller
 
             $data5 = $Auth->finduser();
 
-        
-
-                if ( (isset($_GET['search1'])) ) {
-                //side that we put % mark it ignore exact matching
-                $search1 = '%' . $_GET['search1'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-                $query1 = "select * from doctors where nameWithInitials like :search1 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
-                $arr1['search1'] = $search1; //to pass to the query function
-                $data1 = $doctors->query($query1, $arr1);
-                //print_r($data1);
-                }
-
-                if ( (isset($_GET['search2'])) ) {
-
-                $search2 = '%' . $_GET['search2'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-                $query2 = "select * from doctors where specialities = :search2 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
-                $arr2['search2'] = $search2; //to pass to the query function
-                $data2 = $doctors->query($query2, $arr2);
-                //print_r($data2);
-
-                }
-
-                if ( (isset($_GET['search3'])) ) {
-
-                $search3 = '%' . $_GET['search3'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-                $query3 = "select * from doctors where hospital = :search3 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
-                $arr3['search3'] = $search3; //to pass to the query function
-                $data3 = $doctors->query($query3, $arr3);
-                //print_r($data3);
-
-                }
-
-                if ( (isset($_GET['search4'])) ) {
-
-                $schedule = new schedule;
-                $scheduleid = $schedule->where('doctorid',$userid);
+            if (isset($_GET['Search'])){
+                $query ="SELECT doctors.nameWithInitials,hospital,specialities, schedule.arrivalTime FROM doctors JOIN schedule on doctors.userid=schedule.doctorid"; 
                 
-                if($scheduleid){
-                $search4 = '%' . $_GET['search4'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-                $query4 = "select * from schedule where dateofSlot = :search4 order by scheduleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
-                $arr4['search4'] = $search4; //to pass to the query function
-                $data4 = $schedule->query($query4, $arr4);
-                //print_r($data4);
-                //die;
+                $query.= "order by userid desc";
 
-                }
-                }
+                $arr['userid'] = $doctorid; //to pass to the query function
+
+                 $data3 = $doctors->query($query, $arr);
+                 
+
+                
+            }
+
+                // if ( (isset($_GET['search1'])) ) {
+
+                // //side that we put % mark it ignore exact matching
+                // $search1 = '%' . $_GET['search1'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+                // $query1 = "select * from doctors where nameWithInitials like :search1 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                // $arr1['search1'] = $search1; //to pass to the query function
+                // $data1 = $doctors->query($query1, $arr1);
+                // //print_r($data1);
+                // }
+
+                // if ( (isset($_GET['search2'])) ) {
+
+                // $search2 = '%' . $_GET['search2'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+                // $query2 = "select * from doctors where specialities = :search2 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                // $arr2['search2'] = $search2; //to pass to the query function
+                // $data2 = $doctors->query($query2, $arr2);
+                // //print_r($data2);
+
+                // }
+
+                // if ( (isset($_GET['search3'])) ) {
+
+                // $search3 = '%' . $_GET['search3'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+                // $query3 = "select * from doctors where hospital = :search3 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                // $arr3['search3'] = $search3; //to pass to the query function
+                // $data3 = $doctors->query($query3, $arr3);
+                // //print_r($data3);
+
+                // }
+
+                // if ( (isset($_GET['search4'])) ) {
+
+                // $schedule = new schedule;
+                // $scheduleid = $schedule->where('doctorid',$userid);
+                
+                // if($scheduleid){
+                // $search4 = '%' . $_GET['search4'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+                // $query4 = "select * from schedule where dateofSlot = :search4 order by scheduleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                // $arr4['search4'] = $search4; //to pass to the query function
+                // $data4 = $schedule->query($query4, $arr4);
+                // //print_r($data4);
+                // //die;
+
+                // }
+                //}
 
             
 
@@ -153,11 +165,24 @@ class channeling extends Controller
         if (count($_POST) > 0) {
 
         $noOfPatient = $row4->noOfPatient;
+        $scheduleid = $row4->scheduleid;
+        $Timerow=$schedule->where('scheduleid',$scheduleid);
+        $arrivalTime=$Timerow[0]->arrivalTime;
+        $departureTime=$Timerow[0]->departureTime;
+
+
 
         $patientCount=1;
 
         $appointments = new appointments;
         $row5=$appointments->where('scheduleid',$scheduleid);
+        
+        $slots = getTimeSlot(15, $arrivalTime, $departureTime);
+            $slotCount = count($slots);
+            //print_r($slotCount);
+            // foreach($slots as $slot){
+            //     //print_r($slot);
+            // }
 
         if($row5){
 
@@ -170,7 +195,10 @@ class channeling extends Controller
             $patientCount=$patientCountrow3[0]->patientCount;
             //print_r($patientCount);
             $patientCount++;
+
+            //print_r($slottime);
             //print_r($patientCount);
+            
             
         }
 
@@ -191,6 +219,17 @@ class channeling extends Controller
             $arr['noOfPatients'] =  $noOfPatient;
             $arr['patientCount'] =  $patientCount; 
             $arr['availability'] = $availability;
+            $slottime=$slots[$patientCount];
+            // foreach($slottime as $time){
+            //     //print_r($time);
+            // }
+            // print_r($slottime);
+            // print_r($slottime['slot_start_time']);
+            $arr['slotTimeStart'] = $slottime['slot_start_time'];
+            $arr['slotTimeEnd'] = $slottime['slot_end_time'];
+
+
+            
 
 
 
@@ -219,13 +258,15 @@ class channeling extends Controller
             $arr1['doctorName'] = $row->nameWithInitials;
             $arr1['date'] =  date("Y-m-d H:i:s");
             $arr1['status'] = "not_completed";
+            $arr1['doctorid'] = $userid1;
+
 
 
             
 
         $patientPayment = new patientPayment();
         $patientPayment->insert($arr1);
-        $this->redirect('channeling/patientPaymentConfirmation');
+        $this->redirect('channeling/Confirmation');
 
         }
         else{
@@ -246,6 +287,8 @@ class channeling extends Controller
 
         }
 
+
+        
 
         }
 
@@ -269,21 +312,33 @@ class channeling extends Controller
 
         $userid = Auth::userid();
 
+        $row1=$appointments->where('patientid',$userid);
+
+        if($row1){
+        foreach ($row1 as $row){
+            $doctorName=$row->doctorName;
+            $doctorid=$row->doctorid;
+            $arr[]=$doctorName;
+            $arr1[]=$doctorid;
+        }
+        $doctors=array_unique($arr);
+        $doctorid=array_unique($arr1);
+        //print_r($doctorid);
+        
+        }
+            
         $row=$appointments->where('patientid',$userid);
+        $patientRate = new patientRate();
+        $row2=$patientRate->findAll();
 
-        //print_r($row);
-        
-         
-
-        
-             
-            //$row3=$appointments->where($doctorid,'userid');
-
-            //print_r($row2);
-                                            
            
     $this-> view("patient/patient",[
             'row'=>$row,
+            'row1'=>$doctors,
+            'row2'=>$doctorid,
+            'row3'=>$row2,
+
+
 
 
 
@@ -340,15 +395,28 @@ class channeling extends Controller
 
     function reports()
     {
+        $userid=Auth::userid();
+        $appointments = new appointments();
+        $row=$appointments->where('patientid',$userid);
 
-        $this-> view("patient/patientReports");
+        $this-> view("patient/patientReports",[
+            'row'=>$row,
+        ]);
 
     }
 
     function confirmation()
     {
+        $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
+            $arr2['patientid']=Auth::userid();
+            $appointments = new appointments();
+            $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
 
-        $this-> view("patient/channelingConfirmation");
+            
+
+        $this-> view("patient/channelingConfirmation",[
+            'appointmentidrow1'=>$appointmentidrow1,
+        ]);
 
     }
 
@@ -458,6 +526,12 @@ class channeling extends Controller
             $arr['doctorName'] = $_POST['name'];
             $arr['feedback'] = $_POST['feedback'];
             $arr['userid'] =Auth::userid();
+            $userid=Auth::userid();
+            $common_user=new common_user();
+            $usernamerow=$common_user->where('userid',$userid);
+            $username=$usernamerow[0]->nameWithInitials;
+            $arr['patientName'] =$username;
+
 
 
             $search1 = '%' .  $_POST['name'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
@@ -483,6 +557,88 @@ class channeling extends Controller
 
     }
 
+    public function generatepdf($id)
+    {
+        $userid = Auth::userid();
+        require_once __DIR__ . '/../models/mpdf/autoload.php';
+        $mpdf = new \Mpdf\Mpdf();
+        $html = file_get_contents(ROOT . '/channeling/channelingpdf/' . $id . '/' . $userid);
+        //  print_r($html);
+        //   die;
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+    }
+
+    function channelingpdf($id, $userid)
+    {
+        $userid=Auth::userid();
+        $appointments = new appointments();
+        
+        $row=$appointments->where('appointmentid',$id);
+
+        if ($row != null) {
+            $row=$row[0];
+        }
+
+       
+?>
+
+        <style>
+            th,
+            td {
+                text-align: left;
+                padding: 16px;
+            }
+
+            .title2 {
+                width: 95%;
+                text-align: center;
+            }
+        </style>
+
+        <div class="title1" style="width: 95%;">
+            <div class="logo" style="width: 100%;text-align: center;"><img src="<?= ASSETS ?>img/logo.png" style="width: 30%;align-items: center;"></div>
+            <div class="mtitle" style="width: 100%;text-align: center;">
+                <h1>Ceylon Nuture</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="title2">
+            <h2>Channeling Details</h2>
+        </div>
+        <table style="border-collapse: collapse;border-spacing: 0;width: 85%;border: 1px solid #ddd;margin: 5% auto;">
+            <tr>
+                <td>Name of the Doctor</td>
+                <td>:</td>
+                <td><?= $row->doctorName ?></td>
+            </tr>
+            <tr>
+                <td>Patient Name</td>
+                <td>:</td>
+                <td><?= $row->patientName ?></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>:</td>
+                <td><?= $row->date ?></td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>:</td>
+                <td>Rs:<?= $row->nic ?></td>
+            </tr>
+            <tr>
+                <td>Total Payment</td>
+                <td>:</td>
+                <td><?= $row->totalPayment ?></td>
+            </tr>
+        </table>
+
+<?php
+    }
+    
+}
+
    
 
-}
+

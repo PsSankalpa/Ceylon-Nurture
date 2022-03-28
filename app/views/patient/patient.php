@@ -100,22 +100,37 @@
                             <div class="cardHeaderA">
                                 <h3>My Doctors</h3>
                             </div>
-                            <?php if($row):?>
-                                    <div class="cardBox">
-                                         
+
+                                    <div class="cardBox"> 
+                                    <?php if($row1):?>
+                                       
+
+                                        <?php foreach ($row1 as $doctor):?>    
+                                                                          
                                         <div class="card">
-                                            <div>
-                                                
-                                                
-                                                
-                                                <div class="numbers">hhhhhh</div>
-                                                <div class="cardName"> gggg</div>
+                                            <div>                                               
+                                                <div class="numbers"><?= $doctor?></div>
+                                                <?php foreach($row2 as $doctorid):?>
+                                                    
+                                                <?php
+                                                $doctors=new doctors();
+                                                $specialitiesrow=$doctors->where('userid',$doctorid);
+                                                //print_r($specialitiesrow);
+                                            
+                                            
+                                            ?> 
+                                                <!--<div class="cardName"> <?= $specialitiesrow[0]->specialities?></div>-->
+
+                                                <?php endforeach;?>
+
                                             </div>
                                             <div class="iconBox">
                                                 <img class="doctor" src="<?=ASSETS?>img/doctor7.png">
                                             </div>
 
                                         </div>
+
+                                        <?php endforeach;?>
                                         <?php else:?>
                                         No Doctors available
 
@@ -215,31 +230,25 @@
                         
                            <?php foreach ($row as $row):?>
                                 <?php
-                                $scheduleid=$row->scheduleid;
 
+                                $scheduleid=$row->scheduleid;
                                 $doctorid =$row->doctorid;
+
                                 $doctors = new doctors();
                                 $row1=$doctors->where('userid',$doctorid);
 
-                                if($row1)
-                                {
-                                $row1=$row1[0];
-                                }
-
+                                
                                 $schedule = new schedule();
                                 $row2=$schedule->where('scheduleid',$scheduleid);
-                    
-                                if($row2)
-                                {
-                                $row2=$row2[0];
-                                }
-                    
+                                
+
                                 ?>
+                                
                                <tr>
                                    <td><?=$row->doctorName?></td>
-                                   <td><?=$row2->dateofSlot?></td>
-                                   <td><?=$row2->arrivalTime?></td>
-                                   <td><?=$row1->hospital?></td>
+                                   <td><?=$row2[0]->dateofSlot?></td>
+                                   <td><?=$row2[0]->arrivalTime?></td>
+                                   <td><?=$row1[0]->hospital?></td>
                                    <td> <button class="viewMore">View</button></td>
                                </tr>
                             <?php endforeach;?>
@@ -262,17 +271,15 @@
                                </tr>
                            </thead> 
                            <tbody>
+                               <?php if($row3):?>
+                           <?php foreach ($row3 as $row):?>
                                <tr>
-                                   <td>Dr.Sunil Perera</td>
-                                   <td>05/11/2021</td>
-                                   <td> He cured my leg pain. very good Doctor</td>
+                                   <td><?=$row->doctorName?></td>
+                                   <td><?=$row->date?></td>
+                                   <td> <?=$row->feedback?></td>
                                </tr>
-                               
-                                   <td>Dr.Keerthi Perera</td>
-                                   <td>06/11/2021</td>
-                                   <td>Very friendly doctor</td>
-                               </tr>
-                               
+                               <?php endforeach;?>
+                               <?php endif;?>                             
                            </tbody>
                         </table>
                     </div>

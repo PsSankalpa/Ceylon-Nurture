@@ -183,6 +183,54 @@
                     <div class="cardHeader">
                         <h3>Payments</h3>
                     </div>
+<<<<<<< HEAD
+                    <div class="upcomingChanneling">
+                        <div class="cardHeader">
+                            <h3>Upcoming Channelings</h3>
+                            <a href="<?=ROOT?>admin/channeling" class="btn">View All</a>
+                        </div>
+                        <table>
+                           <thead>
+                               <tr>
+                                   <td>Name of the Doctor</td>
+                                   <td>Date</td>
+                                   <td>Options</td>
+                               </tr>
+                           </thead> 
+                           <tbody>
+                        <?php foreach ($rows1 as $row):?>
+                                <?php
+                                $scheduleid=$row->scheduleid;
+
+                                $doctorid =$row->doctorid;
+                                $doctors = new doctors();
+                                $row1=$doctors->where('userid',$doctorid);
+
+                                if($row1)
+                                {
+                                $row1=$row1[0];
+                                }
+
+                                $schedule = new schedule();
+                                $row2=$schedule->where('scheduleid',$scheduleid);
+                    
+                                if($row2)
+                                {
+                                $row2=$row2[0];
+                                }
+                    
+                                ?>
+                               <tr>
+                                   <td><?=$row->doctorName?></td>
+                                   <td><?=$row2->dateofSlot?></td>
+                                   <td><?=$row2->arrivalTime?></td>
+                                   <td><?=$row1->hospital?></td>
+                                   <td> <button class="viewMore">View</button></td>
+                               </tr>
+                            <?php endforeach;?>
+                           </tbody>
+                        </table>
+=======
                     <!--------------------chart1--for payment counts--------------------------------->
                     <div class="charts">
                         <canvas id="myChart2"></canvas>
@@ -255,6 +303,7 @@
                     <div class="cardHeader">
                         <h3>Upcoming Channelings</h3>
                         <a href="<?= ROOT ?>admin/channeling" class="btn">View All</a>
+>>>>>>> f1de2dee7ec4c7519f90ae6b7c4ae0c9019cd89e
                     </div>
                     <table>
                         <thead>
@@ -310,11 +359,35 @@
                         </div>
 
                     </div>
+<<<<<<< HEAD
+                    <div class="newProducts">
+                        <div class="cardHeaderA">
+                            <h3>New Products</h3>
+                        </div>
+                        <table>
+                           <thead>
+                               <tr>
+                                   <td>Seller Name</td>
+                                   <td>Product</td>
+                               </tr>
+                           </thead> 
+                           <tbody>
+                           <?php foreach ($rows2 as $row):?>
+
+                                <tr>
+                                    <td><?=$row->productName?></td>
+                                    <td><?=$row->sellerName?></td>
+                                </tr>
+                                <?php endforeach;?>
+                           </tbody>
+                        </table>
+=======
                     <h3 style="text-align:left; font-size:30px;"><?= $cCount ?></h3><br>
 
                     <!---------------------------chart2 for user count------------------------------------------->
                     <div class="charts">
                         <canvas id="myChart"></canvas>
+>>>>>>> f1de2dee7ec4c7519f90ae6b7c4ae0c9019cd89e
                     </div>
 
                     <!--chartbiuld-->

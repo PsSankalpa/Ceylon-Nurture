@@ -14,13 +14,12 @@ class appointments extends Model
         'totalPayment',
         'commission',
         'doctorName',
+        'noOfPatients',
+        'patientCount',
+        'availability',
         'date',
-
-
-
-
-
-
+        'slotTimeStart',
+        'slotTimeEnd',
 
 
 	];

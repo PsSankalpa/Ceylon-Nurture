@@ -98,7 +98,7 @@
 
               <div class="col-div-3">
                 <div class="box">
-                  <p>Rs.58,500<br/><span>Revenue</span></p>
+                  <p>Rs.<?= $rcount?><br/><span>Revenue</span></p>
                   <i class="fa fa-money box-icon"></i>
                 </div>
               </div>
@@ -119,7 +119,7 @@
                     <table>
                     <thead>
                             <tr>
-                            <th>Date</th>
+                            <th>Date</th> 
                             <th>Name</th>
                             <th>NIC No</th>
                             <th>Telephone No</th>
@@ -127,7 +127,7 @@
                             <th>Payment</th>
                             </tr>
                           </thead>
-                          <?php if($data);?>
+                          <?php if($data):?>
                             <?php foreach ($data5 as $data5):?>
                               <?php
                              // $arrivalTime = strtotime($data1->arrivalTime);
@@ -147,7 +147,9 @@
                                 <td> Rs.<?= $data5->totalPayment ?></td>
                             </tr>
                             <?php endforeach;?>
-
+                           <?php else :?> 
+                            <h4>No appointments</h4>
+                            <?php endif?>  
                             </tbody>
                     </table>
                   </div>
