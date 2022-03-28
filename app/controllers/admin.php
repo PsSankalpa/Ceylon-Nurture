@@ -67,6 +67,7 @@ class admin extends Controller
 
                 $cmonth[$z] = $commonUser->getrange($z, 'MONTH');
                 $ccount[$z] = 0;
+                $cdate[$z] = 0;
                 if (($cmonth[$z]) != null) {
                     $cdate[$z] = date('Y/m', strtotime($cmonth[$z][0]->date));
                     for ($j = 0; $j < count($cmonth[$z]); $j++) {
@@ -102,6 +103,7 @@ class admin extends Controller
 
                 $month[$z] = $commission->getrange($z, 'MONTH');
                 $count[$z] = 0;
+                $date[$z] = 0;
                 if (($month[$z]) != null) {
                     $date[$z] = date('Y/m', strtotime($month[$z][0]->date));
                     for ($j = 0; $j < count($month[$z]); $j++) {
