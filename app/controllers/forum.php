@@ -21,9 +21,6 @@ class forum extends Controller
         $data3=$doctors->where('userid',$userid);
 
         $forumreplydoctor = new forumreplydoctor();
-        $forumreplyherb = new forumreplyherb();
-        $forumreplyproduct = new forumreplyproduct();
-
         
         // $newest = "SELECT TOP 10 * FROM forumdoctor ORDER BY forumDoctorid DESC";
 
@@ -38,41 +35,14 @@ class forum extends Controller
 
         if(count($_POST) > 0 ){
 
-            if(isset($_POST['reply1'])){
-
             $arr['forumDoctorid'] = htmlspecialchars($_POST['doctorid']);
-            $arr['reply'] = htmlspecialchars($_POST['reply1']);
+            $arr['reply'] = htmlspecialchars($_POST['reply']);
             $arr['userid'] = $userid;
 
             $forumreplydoctor->insert($arr);
             
 
             $this->redirect('forum');
-        }
-
-        if(isset($_POST['reply2'])){
-
-            $arr['forumHerbid'] = htmlspecialchars($_POST['herbid']);
-            $arr['reply'] = htmlspecialchars($_POST['reply2']);
-            $arr['userid'] = $userid;
-
-            $forumreplydoctor->insert($arr);
-            
-
-            $this->redirect('forum');
-        }
-
-        if(isset($_POST['reply3'])){
-
-            $arr['forumProductid'] = htmlspecialchars($_POST['productid']);
-            $arr['reply'] = htmlspecialchars($_POST['reply3']);
-            $arr['userid'] = $userid;
-
-            $forumreplyproduct->insert($arr);
-            
-
-            $this->redirect('forum');
-        }
 
 
         }
