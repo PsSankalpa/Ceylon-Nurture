@@ -149,7 +149,7 @@
                                 ?>
                             
                             
-                            <?php if($timestamp1<$timestamp2):?>
+                            <!--<?php if($timestamp1<$timestamp2):?>-->
                                 <div class="card">
 
                             <div class="date"> <?=$row1->dateofSlot?></div>

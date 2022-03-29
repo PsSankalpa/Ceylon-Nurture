@@ -88,7 +88,7 @@
                 <div class="upcomingChanneling">
                         <div class="cardHeader">
                             <h3>Channeling</h3>
-                            <div class="report"><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
+                            <div class="report"></div>
 
                         </div><br>
                         <table>
@@ -146,7 +146,7 @@
                    <div class="upcomingChanneling">
                            <div class="cardHeader">
                                <h3>Payments</h3>
-                               <div class="report"><a class="btn">View Report</a><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
+                               <div class="report"></div>
                            </div><br>
                            <table>
                               <thead>
@@ -156,6 +156,8 @@
                                       <td>Doctor Charges</td>
                                       <td>Commission</td>
                                       <td>Amount</td>
+                                      <td>Generate Pdf</td>
+
                                   </tr>
                               </thead> 
                               <tbody>
@@ -165,6 +167,8 @@
                                       <td> LKR 2500</td>
                                       <td> LKR 200</td>
                                       <td> LKR 2700</td>
+                                      <td><a href="<?=ROOT?>channeling/generatepdf/<?= $row->appointmentid ?>" class="btn">Generate PDF</a></td>
+
 
                                   </tr>
                                   
@@ -173,6 +177,8 @@
                                       <td> LKR 2800</td>
                                       <td> LKR 200</td>
                                       <td> LKR 3000</td>
+                                      <td><a href="<?=ROOT?>channeling/generatepdf/<?= $row->appointmentid ?>" class="btn">Generate PDF</a></td>
+
 
                                   </tr>
                                   

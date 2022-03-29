@@ -29,9 +29,7 @@
 
                         <div  class="body_content">
                             <div> <a href="<?=ROOT?>forum/addForumDoctor"><button class="add">Start a new discussion<i class="fas fa-long-arrow-alt-right"></i></button></a></div><br>
-                            <div> <button class="add A"> <i class="far fa-comment-alt"></i>All discussions</button></a></div>
-                            <div> <button class="add A"><i class="fas fa-forward"></i> Newest discussions</button></a></div>
-                            <div> <button class="add A"><i class="far fa-star"></i> Following</button></a></div>
+                            
 
 
                         </div>
@@ -156,10 +154,7 @@
 
                             <div  class="body_content">
                                 <div> <a href="<?=ROOT?>forum/addForumHerb"><button class="add">Start a new discussion<i class="fas fa-long-arrow-alt-right"></i></button></a></div><br>
-                                <div> <button class="add A"> <i class="far fa-comment-alt"></i>All discussions</button></a></div>
-                                <div> <button class="add A"><i class="fas fa-forward"></i> Newest discussions</button></a></div>
-                                <div> <button class="add A"><i class="fas fa-certificate"></i> Verified discussions</button></a></div>
-                                <div> <button class="add A"><i class="far fa-star"></i> Following</button></a></div>
+                               
 
 
                             </div>
@@ -215,47 +210,6 @@
 
                                             <button class="forum_button">reply</button>
                                             </div>
-
-                                            <!--reply input-->
-                                            <div class="reply_area" id="reply_area">
-                                                <?php
-                                                $forumHerbid = $row->forumHerbid;
-
-                                                $forumreplyherb = new forumreplyherb();
-                                                $data4=$forumreplyherb->where('forumHerbid',$forumHerbid);
-                                                ?>
-                                                <br>
-                                                <?php if ($data4):?>
-                                                    <?php foreach($data4 as $row):?>
-                                                        <?php
-                                                    $userid = Auth::userid();
-                                                    $useridforum = $row->userid;
-
-                                                    ?>
-
-                                                <?php if ($userid == $useridforum) : ?>
-                                                <input style="background-color:white; float:right; width:80%; border:none" disabled type="text" value="<?=get_var('herbid',$row->reply)?>">
-                                                <?php else : ?>
-                                                <input style="background-color:#90e7f8; float:left; width:80%; border:none" disabled type="text" value="<?=get_var('herbid',$row->reply)?>">
-                                                <?php endif;?>
-
-                                                <?php endforeach;?>
-                                            <?php endif;?>   
-                                            
-                                            <form class="regi_form" enctype="multipart/form-data" method="POST">
-
-                                                <div class="col-75">
-                                                    <input type="text" style=" float:right; width:80%" value="<?=get_var('reply')?>" id="reply" name="reply" placeholder="Add your reply here ...">
-                                                    <input hidden type="number" value="<?=get_var('herbidid',$row->forumHerbid)?>" id="herbid" name="herbid">
-
-                                                </div>
-                                                <div class="row">
-                                                <input type="submit" value="Submit">
-                                                <input type="reset" value="Reset">
-                                                </div>
-                                            </form>
-
-                                            </div>
                                         </div>
 
                                     </div>
@@ -282,9 +236,7 @@
 
                             <div  class="body_content">
                                 <div> <a href="<?=ROOT?>forum/addForumProduct"><button class="add">Start a new discussion<i class="fas fa-long-arrow-alt-right"></i></button></a></div><br>
-                                <div> <button class="add A"> <i class="far fa-comment-alt"></i>All discussions</button></a></div>
-                                <div> <button class="add A"><i class="fas fa-forward"></i> Newest discussions</button></a></div>
-                                <div> <button class="add A"><i class="far fa-star"></i> Following</button></a></div>
+                                
 
 
                             </div>
@@ -326,47 +278,6 @@
                                             <?php endif; ?> 
 
                                             <button class="forum_button">reply</button>
-                                            </div>
-
-                                            <!--reply input-->
-                                            <div class="reply_area" id="reply_area">
-                                                <?php
-                                                $forumProductid = $row->forumProductid;
-
-                                                $forumreplyproduct = new forumreplyproduct();
-                                                $data4=$forumreplyproduct->where('forumProductid',$forumProductid);
-                                                ?>
-                                                <br>
-                                                <?php if ($data4):?>
-                                                    <?php foreach($data4 as $row):?>
-                                                        <?php
-                                                    $userid = Auth::userid();
-                                                    $useridforum = $row->userid;
-
-                                                    ?>
-
-                                                <?php if ($userid == $useridforum) : ?>
-                                                <input style="background-color:white; float:right; width:80%; border:none" disabled type="text" value="<?=get_var('productid',$row->reply)?>">
-                                                <?php else : ?>
-                                                <input style="background-color:#90e7f8; float:left; width:80%; border:none" disabled type="text" value="<?=get_var('productid',$row->reply)?>">
-                                                <?php endif;?>
-
-                                                <?php endforeach;?>
-                                            <?php endif;?>   
-                                            
-                                            <form class="regi_form" enctype="multipart/form-data" method="POST">
-
-                                                <div class="col-75">
-                                                    <input type="text" style=" float:right; width:80%" value="<?=get_var('reply')?>" id="reply" name="reply" placeholder="Add your reply here ...">
-                                                    <input hidden type="number" value="<?=get_var('productid',$row->forumProductid)?>" id="herbid" name="productid">
-
-                                                </div>
-                                                <div class="row">
-                                                <input type="submit" value="Submit">
-                                                <input type="reset" value="Reset">
-                                                </div>
-                                            </form>
-
                                             </div>
                                         </div>
 

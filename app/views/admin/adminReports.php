@@ -123,7 +123,7 @@
                         <div class="cardHeader">
                             <h3>Channeling</h3>
                             
-                            <div class="report"><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
+                            <div class="report"></div>
                         <form method="POST">
                             <div class="row">
                             <div class="col-25">
@@ -191,7 +191,7 @@
                         <div class="cardHeader">
                             <h3>Products</h3>
 
-                            <div class="report"><i class="far fa-calendar-alt">  2021/04/01 - 2021/06/30</i></div>
+                            <div class="report"></div>
                             <form method="POST">
                             <div class="row">
                             <div class="col-25">
