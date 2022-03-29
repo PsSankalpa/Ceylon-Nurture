@@ -50,7 +50,7 @@
       <div class="clearfix"></div>
 
       <div class="date">
-          <form action="" method="POST">
+          <!--<form action="" method="POST">
               <input type="date" id="fromdate" name="fromdate">
             </div>
             <div class="date">
@@ -58,9 +58,9 @@
             </div>
             <div>
               <button type="submit" class="filterA">Filter</button>
-              <!--<input type="submit" value="submit">-->
+              <input type="submit" value="submit">
             </div>
-          </form>
+          </form>-->
           </div>
       <div class="clearfix"></div>
 

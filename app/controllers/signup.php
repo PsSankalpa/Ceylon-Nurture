@@ -8,7 +8,7 @@ class signup extends Controller
         if(count($_POST) > 0)
         {
             $common_user = new common_user();
-            print_r($_POST);
+            //print_r($_POST);
           
 
             if($common_user->validate($_POST))
