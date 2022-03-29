@@ -65,8 +65,8 @@
             </div>
           </form>
 
-       
-        <div class="cardrow">
+  </div>
+        <div class=" cardrow " >
           <?php if ($row) : ?>
             <?php foreach ($row as $row) : ?>
               <div class="cardcolumn">
