@@ -13,6 +13,7 @@ class article extends Model
 		'image',
 		'doctorid',
 		'date',
+		'status',
 	];
 
 	protected $table = "articles";

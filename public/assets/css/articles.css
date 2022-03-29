@@ -876,3 +876,26 @@
   background-color: #05445E;
   color: #1894B4;
 }
+
+#status1{
+  width: 60%;
+}
+#status button{
+  background-color: #75E6DA; /* Green */
+  border: none;
+  color: #05445E;
+  font-size: 1.5rem;
+  margin: 0.8rem;
+}
+#status button:hover{
+  background-color: #05445E; /* Green */
+  color: #75E6DA;
+}
+@media screen and (max-width: 900px) {
+#status{
+  width: 20%;
+}
+#status button{
+  font-size: 0.85rem;
+}
+}

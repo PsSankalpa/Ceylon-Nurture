@@ -29,28 +29,32 @@ class header extends Controller
     ]);
   }
 
+  //---------------------------for view articles-----------------------------------
   function viewArticles()
   {
-    $userid = Auth::userid();
+    // $userid = Auth::userid();
     $doctor = new doctors();
 
     $article = new article();
-    $data = $article->findAll();
-
+    // $data = $article->findAll();
 
     if (Auth::logged_in()) {
       //changed here
       $Auth = new Auth;
       $data2 = $Auth->finduser();
-      $article = new article();
-      $data3 = $article->findAll();
-      //$data = $article->findAll();
+
+      $query0 = "select * from articles where status = 1";
+      $data3 = $article->query($query0);
+      //$data3 = $article->findAll();
+
+      //to display option
+      $display = "view";
 
       //for make a filtr by date
-      $data = $article->findrange(7); //give the data according to range of days
+      $data = $article->findrange2(7); //give the data according to range of days
 
       if ($data == null || count($data) < 4) {
-        $query1 = "select * from articles order by articleid desc limit 6";
+        $query1 = "select * from articles where status = 1 order by articleid desc limit 6";
         $data = $article->query($query1);
       }
       //print_r($data);
@@ -59,44 +63,107 @@ class header extends Controller
       if (isset($_GET['search'])) {
         //side that we put % mark it ignore exact matching
         $search = '%' . $_GET['search'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-        $query = "select * from articles where articleName like :search order by articleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+        $query = "select * from articles where articleName like :search and status = 1 order by articleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
         $arr['search'] = $search; //to pass to the query function
         $data3 = $article->query($query, $arr);
+        $display = "hide";
       }
 
       $this->view('commonUser/articlesView', [
         'rows' => $data,
         'rows2' => $data2,
         'rows3' => $data3,
+        'display' => $display,
       ]);
     } else {
+      //when log out or admin logged in-------------------------------
+
+      $A_status = "";
+      if (Auth::logged_in_admin()) {
+        $A_status = "Admin";
+      }
+
+      //to get the articles
+      $article = new article();
+      if ($A_status == "Admin") {
+        $data3 = $article->findAll();
+      } else {
+        $query0 = "select * from articles where status = 1";
+        $data3 = $article->query($query0);
+      }
+
+      //to display option
+      $display = "view";
 
       $article = new article();
-      $data3 = $article->findAll();
+      if ($A_status == "Admin") {
 
-      //for make a filtr by date
-      $data = $article->findrange(7); //give the data according to range of days
-      if ($data == null || count($data) < 4) {
-        $query1 = "select * from articles order by articleid desc limit 6";
-        $data = $article->query($query1);
+        //for make a filtr by date
+        $data = $article->findrange(7); //give the data according to range of days
+        if ($data == null || count($data) < 4) {
+          $query1 = "select * from articles order by articleid desc limit 6";
+          $data = $article->query($query1);
+        }
+      } else {
+        //for make a filtr by date
+        $data = $article->findrange2(7); //give the data according to range of days
+        if ($data == null || count($data) < 4) {
+          $query1 = "select * from articles where status = 1 order by articleid desc limit 6";
+          $data = $article->query($query1);
+        }
       }
+
 
       //for find the user
       $data2 = "";
 
-      //to the search option
-      if (isset($_GET['search'])) {
-        //side that we put % mark it ignore exact matching
-        $search = '%' . $_GET['search'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-        $query = "select * from articles where articleName like :search order by articleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
-        $arr['search'] = $search; //to pass to the query function
-        $data3 = $article->query($query, $arr);
+      if ($A_status == "Admin") {
+
+        //to the search option
+        if (isset($_GET['search'])) {
+          //side that we put % mark it ignore exact matching
+          $search = '%' . $_GET['search'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+          $query = "select * from articles where articleName like :search order by articleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+          $arr['search'] = $search; //to pass to the query function
+          $data3 = $article->query($query, $arr);
+          $display = "hide";
+        }
+
+        //to the search option
+        if (isset($_GET['search1'])) {
+          //side that we put % mark it ignore exact matching
+          $search = 0; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+          $query = "select * from articles where status = 0 order by articleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+          $arr['search'] = $search; //to pass to the query function
+          $data3 = $article->query($query, $arr);
+          $display = "hide";
+        }
+        //to the search option
+        if (isset($_GET['search2'])) {
+
+          $query0 = "select * from articles where status = 1";
+          $data3 = $article->query($query0);
+          $display = "hide";
+        }
+        
+      } else {
+
+        //to the search option
+        if (isset($_GET['search'])) {
+          //side that we put % mark it ignore exact matching
+          $search = '%' . $_GET['search'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+          $query = "select * from articles where articleName like :search and status = 1 order by articleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+          $arr['search'] = $search; //to pass to the query function
+          $data3 = $article->query($query, $arr);
+          $display = "hide";
+        }
       }
 
       $this->view('commonUser/articlesView', [
         'rows' => $data,
         'rows2' => $data2,
         'rows3' => $data3,
+        'display' => $display,
       ]);
     }
 
@@ -157,5 +224,4 @@ class header extends Controller
       'orderid' => $orderid,
     ]);
   }
-
 }

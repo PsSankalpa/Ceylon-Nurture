@@ -749,6 +749,7 @@ class doctor extends Controller
                 $arr['image'] = $des;
                 $arr['doctorid'] = Auth::userid();
                 $arr['date'] = date("Y-m-d");
+                $arr['status'] = 1;
 
                 //print_r($arr);
                 // die;
@@ -780,6 +781,19 @@ class doctor extends Controller
         $doctorid = Auth::userid();
         $article = new article();
         $data = $article->where('doctorid', $doctorid);
+
+        if (isset($_GET['search'])) {
+            //side that we put % mark it ignore exact matching
+            $search = 0; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+            $query = "select * from articles where status = 0 order by articleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+            $arr['search'] = $search; //to pass to the query function
+            $data = $article->query($query, $arr);
+        }
+        if (isset($_GET['search2'])) {
+
+            $data = $article->where('doctorid', $doctorid);
+        }
+
         $this->view('articles/manageArticles', [
             'data' => $data,
         ]);
@@ -876,8 +890,11 @@ class doctor extends Controller
         $mpdf = new \Mpdf\Mpdf();
         $html = file_get_contents(ROOT . '/doctor/doctorpdf/' . $appointmentid);
 
-        print_r($html);
-        die;
+
+       // print_r($html);
+       // die;
+
+
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }
@@ -887,8 +904,10 @@ class doctor extends Controller
 
         $appointments = new appointments();
         $row = $appointments->where('appointmentid', $appointmentid);
-        print_r($row);
-        die;
+
+        // print_r($row);
+        // die;
+
         if ($row != null) {
             $row = $row[0];
         }

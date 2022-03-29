@@ -18,71 +18,78 @@
 
             <div class="search">
             <h1>Channel a Doctor</h1>
-            
-                <form class="regi_form" enctype="multipart/form-data" method="GET" action="">
+           
+                <div class="regi_form">
 
                     <div class="row">
-                    <div class="col-25">
-                        <label class="label" for="name">Name</label>
+                        <div class="col-25">
+                            <label class="label" for="name">Search by Doctor Name</label>
+                        </div>
+
+                    <form method="POST">
+                    <div class="row">
+
+                        <div class="col-75">
+                            <input type="text" value="<?=get_var('name')?>" id="name" name="name" placeholder="Doctor Name">
+                         </div>
+                    </div>
                     </div>
 
-                    <div class="col-75">
-                    <input type="text" value="<?= isset($_GET['nameWithInitials']) ? $_GET['nameWithInitials'] : ''; ?>" placeholder="Search.." name="nameWithInitials">
+                    <div class="row">
+                    <input type="submit" value="Submit">
                     </div>
+                    </form>
                 
                     <div class="row">
-                    <div class="col-25">
-                        <label class="label" for="speciality">Speciality</label>
-                    </div>
-
-                    <div class="col-75">
-                    <select name="specialities">
-                        <option value="<?= isset($_GET['specialities']) ? $_GET['specialities'] : ''; ?>" >--Select Speciality--</option>
-                        <?php foreach ($rows as $row):?>
-                                <option><?=$row->specialities?></option>
-                            <?php endforeach;?>
-                        </select>
-                    </div>
-                    </div>
+                        
 
                     <div class="row">
-                    <div class="col-25">
-                        <label class="label" for="hospital">Hospital</label>
+                        <div class="col-25">
+                            <label class="label" for="hospital">Hospital</label>
+                        </div>
+
+                    <form method="POST">
+                            
+                        <div class="col-75">
+                            <select name="hospital">
+                                <option value="<?=get_var('hospital')?>" >--Select Hospital--</option>
+                                <?php foreach ($rows as $row):?>
+                                        <option><?=$row->hospital?></option>
+                                    <?php endforeach;?>
+                                </select>
+                        </div>
                     </div>
 
-                    <div class="col-75">
-                    <select name="hospital">
-                        <option value="<?= isset($_GET['hospital']) ? $_GET['hospital'] : ''; ?>" >--Select Hospital--</option>
-                            <?php foreach ($rows as $row):?>
-                                <option><?=$row->hospital?></option>
-                            <?php endforeach;?>
-
-                        </select>
-                    </div>
-                    </div>
+                <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+                </div>
+            </form>
 
 
-                    <div class="row">
-                    <div class="col-25">
-                        <label  class="label" for="date">Date</label>
-                    </div>
-                    <div class="col-75">
-                    <input type="date" value="<?= isset($_GET['date']) ? $_GET['date'] : ''; ?>" placeholder="Search.." name="date">
-                    </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="row">
-                    <input  value="Search"  type="submit"> 
-                    </div>
-                    </div>
-                </form> 
+                    
+
+                                </div> 
+
+                
 
             </div>            
 
             <div class="schedule">
             
                 <?php if ($rows) : ?>
+                    <?php if ($rows1) : ?>
+                        <?php 
+                            $rows=$rows1;
+                            //print_r($rows);
+                        ?>
+                        <?php endif;?>
+                        <?php if ($rows2) : ?>
+                        <?php 
+                            $rows=$rows2;
+                            //print_r($rows);
+                        ?>
+                        <?php endif;?>
                     <?php foreach ($rows as $row):?>
 
                     <?php
@@ -110,6 +117,8 @@
                     <?php endif;?>
 
                     <?php endforeach;?>
+                    <?php else:?>
+                        No results Found
                     
                     <?php endif;?>
 

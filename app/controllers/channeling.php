@@ -36,17 +36,29 @@ class channeling extends Controller
 
             $data5 = $Auth->finduser();
 
-            if (isset($_GET['Search'])){
-                $query ="SELECT doctors.nameWithInitials,hospital,specialities, schedule.arrivalTime FROM doctors JOIN schedule on doctors.userid=schedule.doctorid"; 
+            if(count($_POST)>0){
+
+            
+
+                if(isset($_POST['name'])){
+        
+                $name = '%' . $_POST['name'] . '%';;
+        
+                $query= "select * from doctors where nameWithInitials like :name order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                $arr['name'] = $name; //to pass to the query function
+                $data1 = $doctors->query($query, $arr);
                 
-                $query.= "order by userid desc";
+                }
 
-                $arr['userid'] = $doctorid; //to pass to the query function
-
-                 $data3 = $doctors->query($query, $arr);
-                 
-
-                
+                if(isset($_POST['hospital'])){
+        
+                    $hospital = '%' . $_POST['hospital'] . '%';;
+            
+                    $query= "select * from doctors where hospital like :hospital order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                    $arr['hospital'] = $hospital; //to pass to the query function
+                    $data2 = $doctors->query($query, $arr);
+                    
+                    }
             }
 
                 // if ( (isset($_GET['search1'])) ) {
@@ -321,7 +333,7 @@ class channeling extends Controller
             $arr[]=$doctorName;
             $arr1[]=$doctorid;
         }
-        $doctors=array_unique($arr);
+        $doctors1=array_unique($arr);
         $doctorid=array_unique($arr1);
         //print_r($doctorid);
         
@@ -331,12 +343,17 @@ class channeling extends Controller
         $patientRate = new patientRate();
         $row2=$patientRate->findAll();
 
+        $doctors = new doctors();
+        $row3=$doctors->findAll();
+
            
     $this-> view("patient/patient",[
             'row'=>$row,
-            'row1'=>$doctors,
+            'row1'=>$doctors1,
             'row2'=>$doctorid,
             'row3'=>$row2,
+            'row4'=>$row3,
+
 
 
 

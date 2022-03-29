@@ -13,12 +13,32 @@
 
     <div class="m-articles">
 
+        <!--for the search option-->
+        <div class="search-container">
+
+            <div class="myBtnContainer status1">
+
+                <form action="" id="status">
+                    <input type="hidden" value="0" name="search">
+                    <!--ternary operator use in the value-->
+                    <button type="submit">Disabled Articles</button>
+                </form>
+                <form action="" id="status">
+                    <input type="hidden" value="0" name="search2">
+                    <!--ternary operator use in the value-->
+                    <button type="submit">All Articles</button>
+                </form>
+
+            </div>
+
+        </div>
+
         <div class="myBtnContainer A-btns">
             <button class="tablinks active" onclick="changesection(event, 'myArticles')" id="defaultOpen">My Articles</button>
             <a href="<?= ROOT ?>/doctor/addArticles"><button class="tablinks" onclick="changesection(event, 'addArticles')"> Add Article</button></a>
         </div>
 
-        <!--articles--> 
+        <!--articles-->
         <div class="tabcontent" id="myArticles" style="display:block;">
             <?php if ($data) : ?>
                 <?php foreach ($data as $data) : ?>
@@ -31,6 +51,7 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
+
     </div>
 
     <!--footer-->
