@@ -201,10 +201,60 @@
                                             <?php if (($rows3) && (($row->verification) == FALSE)) : ?>
                                             <a href="<?=ROOT?>forum/verification/<?=$row->forumHerbid?>"><button class="forum_button update">Verify</button></a>
                                             <?php endif; ?> 
-
+                                            <?php 
+                                            $forumherb = new forumherb();
+                                            $forumid=$row->forumHerbid;
+                                            $useridforumrow=$forumherb->where('forumHerbid',$forumid);
+                                            $useridforum=$useridforumrow[0]->userid;
+                                            $userid=Auth::userid();
+                                            ?>
+                                            <?php if ($userid == $useridforum) : ?>
                                             <a href="<?=ROOT?>forum/updateForumHerb/<?=$row->forumHerbid?>"><button class="forum_button update">Update</button></a>
                                             <a href="<?=ROOT?>forum/deleteForumHerb/<?=$row->forumHerbid?>"><button class="forum_button delete">Delete</button></a>
+                                            <?php endif; ?> 
+
                                             <button class="forum_button">reply</button>
+                                            </div>
+
+                                            <!--reply input-->
+                                            <div class="reply_area" id="reply_area">
+                                                <?php
+                                                $forumHerbid = $row->forumHerbid;
+
+                                                $forumreplyherb = new forumreplyherb();
+                                                $data4=$forumreplyherb->where('forumHerbid',$forumHerbid);
+                                                ?>
+                                                <br>
+                                                <?php if ($data4):?>
+                                                    <?php foreach($data4 as $row):?>
+                                                        <?php
+                                                    $userid = Auth::userid();
+                                                    $useridforum = $row->userid;
+
+                                                    ?>
+
+                                                <?php if ($userid == $useridforum) : ?>
+                                                <input style="background-color:white; float:right; width:80%; border:none" disabled type="text" value="<?=get_var('herbid',$row->reply)?>">
+                                                <?php else : ?>
+                                                <input style="background-color:#90e7f8; float:left; width:80%; border:none" disabled type="text" value="<?=get_var('herbid',$row->reply)?>">
+                                                <?php endif;?>
+
+                                                <?php endforeach;?>
+                                            <?php endif;?>   
+                                            
+                                            <form class="regi_form" enctype="multipart/form-data" method="POST">
+
+                                                <div class="col-75">
+                                                    <input type="text" style=" float:right; width:80%" value="<?=get_var('reply')?>" id="reply" name="reply" placeholder="Add your reply here ...">
+                                                    <input hidden type="number" value="<?=get_var('herbidid',$row->forumHerbid)?>" id="herbid" name="herbid">
+
+                                                </div>
+                                                <div class="row">
+                                                <input type="submit" value="Submit">
+                                                <input type="reset" value="Reset">
+                                                </div>
+                                            </form>
+
                                             </div>
                                         </div>
 
@@ -263,9 +313,60 @@
                                             <div class="line2"><p style="text-align:left;"><?=esc($row->description)?></p> </div>
                                             <div class="image"><img class="image_forum" src="<?= ASSETS2 . $row->image ?> "></div><br> 
                                             <div class="forum_buttons">
+                                            <?php 
+                                            $forumproduct = new forumproduct();
+                                            $forumid=$row->forumProductid;
+                                            $useridforumrow=$forumproduct->where('forumProductid',$forumid);
+                                            $useridforum=$useridforumrow[0]->userid;
+                                            $userid=Auth::userid();
+                                            ?>
+                                            <?php if ($userid == $useridforum) : ?>
                                             <a href="<?=ROOT?>forum/updateForumProduct/<?=$row->forumProductid?>"><button class="forum_button update">Update</button></a>
                                             <a href="<?=ROOT?>forum/deleteForumProduct/<?=$row->forumProductid?>"><button class="forum_button delete">Delete</button></a>
+                                            <?php endif; ?> 
+
                                             <button class="forum_button">reply</button>
+                                            </div>
+
+                                            <!--reply input-->
+                                            <div class="reply_area" id="reply_area">
+                                                <?php
+                                                $forumProductid = $row->forumProductid;
+
+                                                $forumreplyproduct = new forumreplyproduct();
+                                                $data4=$forumreplyproduct->where('forumProductid',$forumProductid);
+                                                ?>
+                                                <br>
+                                                <?php if ($data4):?>
+                                                    <?php foreach($data4 as $row):?>
+                                                        <?php
+                                                    $userid = Auth::userid();
+                                                    $useridforum = $row->userid;
+
+                                                    ?>
+
+                                                <?php if ($userid == $useridforum) : ?>
+                                                <input style="background-color:white; float:right; width:80%; border:none" disabled type="text" value="<?=get_var('productid',$row->reply)?>">
+                                                <?php else : ?>
+                                                <input style="background-color:#90e7f8; float:left; width:80%; border:none" disabled type="text" value="<?=get_var('productid',$row->reply)?>">
+                                                <?php endif;?>
+
+                                                <?php endforeach;?>
+                                            <?php endif;?>   
+                                            
+                                            <form class="regi_form" enctype="multipart/form-data" method="POST">
+
+                                                <div class="col-75">
+                                                    <input type="text" style=" float:right; width:80%" value="<?=get_var('reply')?>" id="reply" name="reply" placeholder="Add your reply here ...">
+                                                    <input hidden type="number" value="<?=get_var('productid',$row->forumProductid)?>" id="herbid" name="productid">
+
+                                                </div>
+                                                <div class="row">
+                                                <input type="submit" value="Submit">
+                                                <input type="reset" value="Reset">
+                                                </div>
+                                            </form>
+
                                             </div>
                                         </div>
 

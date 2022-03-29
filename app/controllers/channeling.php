@@ -340,8 +340,8 @@ class channeling extends Controller
         }
             
         $row=$appointments->where('patientid',$userid);
-        $patientRate = new patientRate();
-        $row2=$patientRate->findAll();
+        $patientrate = new patientrate();
+        $row2=$patientrate->findAll();
 
         $doctors = new doctors();
         $row3=$doctors->findAll();

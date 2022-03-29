@@ -100,8 +100,6 @@
 
                 <div class="topbar_side">
                     <div class="notifications">
-                        <div><i class="far fa-bell"></i> </div>
-                        <div><i class="fas fa-sliders-h"></i></i></div>
                     </div>
                     <div class="profile">
                         <img class="profile_pic" src="<?= ASSETS ?>img/profile_picture1.jpg">
@@ -120,7 +118,6 @@
                 </div>
 
                 <div class="topbar_side heading">
-                    <i class="far fa-calendar-alt"> 2021/04/01 - 2021/06/30</i>
                 </div>
 
             </div>
@@ -293,7 +290,6 @@
                                    <td><?=$row2->dateofSlot?></td>
                                    <td><?=$row2->arrivalTime?></td>
                                    <td><?=$row1->hospital?></td>
-                                   <td> <button class="viewMore">View</button></td>
                                </tr>
                             <?php endforeach;?>
                            </tbody>
