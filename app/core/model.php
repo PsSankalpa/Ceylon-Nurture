@@ -93,6 +93,23 @@ public function __construct()
 		]);
 	}
 //----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//to get data for range of days for articles
+public function findrange2($value)
+{
+
+	//$column = addslashes($column);//from this it check the column,sanitize input
+	$query = "select * from $this->table where date > curdate()-:value and status = 1 order by articleid desc";
+	return $this->query($query,[
+		'value'=>$value
+	]);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	//to get data for range o days
 	public function finddaterange($date1,$date2)
 	{

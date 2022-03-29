@@ -263,8 +263,8 @@
                                             <div class="line2"><p style="text-align:left;"><?=esc($row->description)?></p> </div>
                                             <div class="image"><img class="image_forum" src="<?= ASSETS2 . $row->image ?> "></div><br> 
                                             <div class="forum_buttons">
-                                            <a href="<?=ROOT?>forum/updateForumDoctor/<?=$row->forumProductid?>"><button class="forum_button update">Update</button></a>
-                                            <a href="<?=ROOT?>forum/deleteForumDoctor/<?=$row->forumProductid?>"><button class="forum_button delete">Delete</button></a>
+                                            <a href="<?=ROOT?>forum/updateForumProduct/<?=$row->forumProductid?>"><button class="forum_button update">Update</button></a>
+                                            <a href="<?=ROOT?>forum/deleteForumProduct/<?=$row->forumProductid?>"><button class="forum_button delete">Delete</button></a>
                                             <button class="forum_button">reply</button>
                                             </div>
                                         </div>
