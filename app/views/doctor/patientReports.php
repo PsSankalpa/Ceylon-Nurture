@@ -85,9 +85,9 @@
                     <tr>
                       <td class="data"><?= $data->date ?></td>
                       <td class="data"><?= $data->patientName ?></td>
-                      <td class="data"><?= $data->category ?></td>
-                      <td class="data"><?= $data->amount ?></th>
-                      <td class="data"><a href="<?= ROOT ?>doctor/reportDetails/<?= $data->PatientID ?>/<?= $data->channelingid ?>/<?= $data->scheduleID ?>"><button class="appviewbtn">View Information</button></a></td>
+                      <td class="data"><?= $data->symptoms ?></td>
+                      <td class="data"><?= $data->totalPayment ?></th>
+                      <td class="data"><a href="<?= ROOT ?>doctor/reportDetails/<?= $data->appointmentid ?>"><button class="appviewbtn">View Information</button></a></td>
                     </tr>
                   <?php endforeach; ?>
                 <?php else : ?>
