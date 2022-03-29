@@ -12,7 +12,7 @@
         <h1>Delete Common User Account</h1>
         <?php if ($row) : ?>
             <form class="regi_form" enctype="multipart/form-data" method="POST">
-                <h2>Do you want to delete the account <?= get_var('nameWithInitials', $row->nameWithInitials) ?></h2>
+                <h2>Do you want to delete the account <?= get_var('nameWithInitials', $row->username) ?></h2>
                 <input type="hidden" name="id">
                 <hr>
                 <br>

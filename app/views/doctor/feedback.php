@@ -32,13 +32,14 @@
           <a href="#" class="close" onclick="closeSlideMenue()">
             <i class="fa fa-fw fa-times"></i>
           </a>
-          <a  href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-home"></i>&nbsp;&nbsp;  Home</a>
-         <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
+          <a  href="<?=ROOT?>home/home"><i class="fa fa-fw fa-home"></i>&nbsp;&nbsp;  Home</a>
+          <a class="active" href="<?=ROOT?>doctor/docDashboard"><i class="fa fa-fw fa-dashboard"></i>&nbsp;&nbsp;  Dashboard</a>
           <a  href="<?=ROOT?>doctor/addschedule"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp; Schedule</a>
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
           <a  href="<?=ROOT?>articles/articleDetails"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
-          <a  href="<?=ROOT?>doctor/reportsview"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
+          <a  href="<?=ROOT?>forum"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Forums</a>
+          <a  href="<?=ROOT?>doctor/patientReports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
           <a href="<?=ROOT?>logout"><i class="fa fa-fw fa-sign-out icons"></i>&nbsp;&nbsp;  Sign Out</a>
         </div>
         <div class="clearfix"></div>
@@ -53,7 +54,7 @@
                         <div style="overflow-y:auto;">
                         <table>
                         <tbody>
-                            <?php if($row);?>
+                            <?php if($row):?>
                             <?php foreach ($row as $row):?>
                             <tr>
                                 <th>Date</th>
@@ -63,41 +64,13 @@
                             </tr>
                             <tr>
                                    <td><?=$row->date?></td>
-                                   <td><?=$row->userid?></td>
+                                   <td><?=$row->patientName?></td>
                                    <td><?=$row->feedback?></td>
                             </tr>
                             <?php endforeach;?>
-  
-                           <!-- <tr>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">2.00 pm</td>
-                                <td class="data">Sisiliya Kumari</td>
-                                <td class="data">I got treatment for asthma from Dr.Sanath Perera.Started my treatmentsa few months ago and now i am feeling better.</th>
-                            </tr>
-                            <tr>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">5.00 pm</td>
-                                <td class="data">Nanda Kumara</td>
-                                <td class="data">I was not able to get a good result from the treatments which he does.</th>
-                            </tr>
-                            <tr>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">8.45 pm</td>
-                                <td class="data">Sunil Gunawardhana</td>
-                                <td class="data">I got treatment for gastritis from Dr.Sanath Perera.Started my treatmentsa few months ago and now i am feeling better.</th>
-                            </tr>
-                            <tr>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">9.00 am</td>
-                                <td class="data">Nimmi Fernando</td>
-                                <td class="data">I got treatment for gastritis from Dr.Sanath Perera.Started my treatmentsa few months ago and now i am feeling better.</th>
-                            </tr>
-                            <tr>
-                                <td class="data">16/11/2021</td>
-                                <td class="data">11.15pm</td>
-                                <td class="data">Kumarika Siriwardhana</td>
-                                <td class="data">I got treatment for gastritis from Dr.Sanath Perera.Started my treatmentsa few months ago and now i am feeling better.</th>
-                            </tr>-->
+                            <?php else : ?>
+                              <h4>No Feedbacks Yet</h4>
+                            <?php endif; ?>
                         </table>
                         </div>
                     </div>

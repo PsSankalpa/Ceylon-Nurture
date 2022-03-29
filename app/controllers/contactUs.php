@@ -19,8 +19,8 @@ class contactus extends Controller
                 //print_r($arr);
                 //die;
                 $contactus->insert($_POST);
-                print_r($_POST);
-                die;
+               // print_r($_POST);
+               // die;
                 $this->redirect('landing/home');
             }else
             {

@@ -20,7 +20,21 @@ class landing extends Controller
         $query1 = "select * from articles order by articleid desc limit 6";
         $data2 = $article->query($query1);
       }
-
+      $contactus = new contactus();
+      
+      if(isset($_POST['submit']))
+      {  
+        // $arr['date'] = date("Y-m-d H:i:s");
+        $arr['fullname'] = htmlspecialchars($_POST['fullname']);
+        $arr['email'] = htmlspecialchars($_POST['email']);
+        $arr['message'] = htmlspecialchars($_POST['message']);
+        //print_r($arr);
+        //die;
+        $contactus->insert($_POST);
+        //print_r($_POST);
+       
+        $this->redirect('home');
+      }
       $this->view('home', [
         'data' => $data,
         'rows' => $data2,
@@ -35,7 +49,21 @@ class landing extends Controller
          $query1 = "select * from articles order by articleid desc limit 6";
          $data2 = $article->query($query1);
        }
-
+       $contactus = new contactus();
+      
+       if(isset($_POST['submit']))
+       {  
+         // $arr['date'] = date("Y-m-d H:i:s");
+         $arr['fullname'] = htmlspecialchars($_POST['fullname']);
+         $arr['email'] = htmlspecialchars($_POST['email']);
+         $arr['message'] = htmlspecialchars($_POST['message']);
+         //print_r($arr);
+         //die;
+         $contactus->insert($_POST);
+         //print_r($_POST);
+        
+         $this->redirect('home');
+       }
       $this->view('home', [
         'rows' => $data2,
       ]);

@@ -25,7 +25,7 @@ class login extends Controller
                 {
 
                     Auth::authenticate($row);//creating a class,by putting "::" this run in static mode,from this we authinticate the user
-                    $this->redirect('landing/home');//in here we put the controller claas or it's function
+                    $this->redirect('home');//in here we put the controller claas or it's function
                     die;
                 }
             }

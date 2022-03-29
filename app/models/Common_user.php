@@ -8,14 +8,13 @@ class common_user extends Model
 
     protected $allowedcolumns = [
         'nameWithInitials',
-        'verify_token',
         'username',
         'gender',
         'email',
 		'tpNumber',
+        'image',
 		'password',
         'date',
-
     ];
 
 	protected $pk = "userid";
@@ -38,26 +37,6 @@ class common_user extends Model
         {
             $this->errors['nameWithInitials'] = "Only letters allowed in the Name With Initials";
         }
-
-        //check for firstname
-       /* if(empty($data['fname']))
-		{
-			$this->errors['fname'] = "Cannot Keep first name empty";
-        }
-        elseif(!preg_match('/^[a-zA-Z]+$/',$data['fname']))
-        {
-            $this->errors['fname'] = "The first name should contain only letters";
-        }
-
-        //check for lastname
-        if(empty($data['lname']))
-		{
-			$this->errors['lname'] = "Cannot Keep last name empty";
-        }
-        elseif(!preg_match('/^[a-zA-Z]+$/',$data['lname']))
-        {
-            $this->errors['lname'] = "The Last name should contain only letters";
-        }*/
 
         //check for username
         if(empty($data['username']))
@@ -87,10 +66,10 @@ class common_user extends Model
         
 
         //validation for gender
-       // if(empty($data['gender']))
-		//{
-		//	$this->errors['gender'] = "Cannot Keep Gender empty";
-		//}
+        if(empty($data['gender']))
+		{
+			$this->errors['gender'] = "Cannot Keep Gender empty";
+		}
 	
         //validation for DOB
         /*$y=date("Y");
@@ -133,10 +112,8 @@ class common_user extends Model
                 {
                    $this->errors['email'] = "The email already existing";
                 }
-
         }
         
-
         //check telephone number
 		if(empty($data['tpNumber']))
 		{
@@ -174,6 +151,7 @@ class common_user extends Model
 			$this->errors['conditions'] = "Cannot Keep the checkbox unticked";
 		}*/
 
+
         if(count($this->errors) == 0)
         {
             return true;
@@ -181,7 +159,47 @@ class common_user extends Model
         return false;
 
     }
+    public function validate2($DATA, $FILES, $UName, $userid,$dest)
+	{
+        $this->errors = array();
+		$this->errors2 = array();
 
+    /*validations for profile image*/
+    if ($FILES['image']['size'] == 0) {
+        $myAccount = new myAccount();
+        $myAccount->get_destination($dest);
+
+        if (count($this->errors) == 0) {
+            return true;
+        }
+    } else {
+        //upload the file to following dir
+        $folder = "profile_pictures/";
+        if (!file_exists($folder)) //if dir doesn't exist,create it like below with file permissions
+        {
+            mkdir($folder, 0777, true);
+        }
+
+        //renaming the image with a username which doctor uploads
+        $temp = explode("-", $FILES['image']['name']);
+        $newfilename = $UName . '-' . end($temp);
+
+        //create the destination 
+        $destination = $folder . $newfilename;
+
+
+        $imageFileType = strtolower(pathinfo($destination, PATHINFO_EXTENSION));
+        $uploadOk = 1;
+        $results = $this->images($FILES, $destination, $imageFileType, $uploadOk);
+        if (!empty($results)) {
+            $this->errors['image'] = $results;
+        } else {
+            $myAccount = new myAccount();
+            $myAccount->get_destination($destination); //send the address of the file path to doctor controller to save in the database 
+        }
+    }
+		return false;
+	}
 
     public function make_common_user_id($data)
     {

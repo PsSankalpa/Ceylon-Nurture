@@ -141,21 +141,24 @@ class doctor extends Controller
         //die;
 
         $patientpayment = new patientpayment();
-        $query = "select doctorCharge from patientPayment where appointmentid in (select appointmentid from appointments where doctorid = :userid)";
+        $query = "select totalPayment from patientPayment where appointmentid in (select appointmentid from appointments where doctorid = :userid)";
 
         $arr5['userid'] = $userid;
         $rcount = 0;
         $data7 = $patientpayment->query($query, $arr5);
+        
         if ($data7) {
             $rvalue = count($data7);
+           
             for ($i = 0; $i < $rvalue; $i++) {
-                $rcount = $rcount + $data7[0]->doctorCharge;
+                $rcount = $rcount + $data7[0]->totalPayment;
+                print_r($data7);
             }
         } else {
             $rcount = 0;
         }
 
-        //print_r($rcount);
+       // print_r($rcount);
         //die;
         if ($data7) {
             $rCount = count($data7);
@@ -484,25 +487,21 @@ class doctor extends Controller
         $doctor = new doctors();
 
         $channeling = new channeling();
-        $data = null;
+        //$data = null;
 
-        $payments = new channelingpayments();
+        //$payments = new channelingpayments();
 
-        if (null != ($payments->where('doctorid', $doctorid)))
-        {
-            $data = $channeling->where('doctorid', $doctorid);
-        }
-        print_r($data);
-         die;
-
-        if ($data) {
-            $row = $data[0];
-        }
+        
+       $data = $channeling->where('DoctorID', $doctorid);
+      
+       // print_r($data);
+        // die;
 
 
         //$data =$doctor->where('userid',$doctorid);
         $this->view('doctor/patientReports', [
             'data' => $data,
+
         ]);
     }
     function reportsview()
@@ -540,54 +539,61 @@ class doctor extends Controller
         ]);
     }
 
-    function reportDetails($patientid = null, $channelingid = null, $scheduleid = null)
+    function reportDetails($id)
     {
         if (!Auth::logged_in()) {
             $this->redirect('login/login');
         }
 
-        $Auth = new Auth;
-        $userid = Auth::userid();
+        $userid=Auth::userid();
+        $appointments = new appointments();
+        $row=$appointments->where('appointmentid',$id);
 
-        $doctors = new doctors();
-        $row['doctor'] = $doctors->where('userid', $userid);
-        // if ($row) {
-        //     $row = $row[0];
-        // }
+        if ($row != null) {
+            $row=$row[0];
+        }
 
-        $channeling = new channeling();
-        $row['channeling'] = $channeling->where('channelingid', $channelingid);
-        // if ($row2) {
-        //     $row2 = $row2[0];
-        // }
-
-        $common_user = new common_user();
-        $row['commonuser'] = $common_user->where('userid', $patientid);
-        // if ($row3) {
-        //     $row3 = $row3[0];
-        // }
-
-        $payments = new channelingpayments();
-        $row['payments'] = $payments->where('channelingid', $channelingid);
-        // if ($row4) {
-        //     $row4 = $row4[0];
-        // }
-
-        $schedule = new schedule();
-        $row['schedule'] = $schedule->where('scheduleid', $scheduleid);
-
-        $patient = new patients();
-        $row['patient'] = $patient->where('userid', $patientid);
-
-
-        // print_r($row['schedule']);
-        // die;
-
-        extract($row);
         $this->view("doctor/reportDetails", [
             'row' => $row,
         ]);
     }
+
+        // $doctors = new doctors();
+        // $row['doctor'] = $doctors->where('userid', $userid);
+        // // if ($row) {
+        // //     $row = $row[0];
+        // // }
+
+        // $channeling = new channeling();
+        // $row['channeling'] = $channeling->where('channelingid', $channelingid);
+        // // if ($row2) {
+        // //     $row2 = $row2[0];
+        // // }
+
+        // $common_user = new common_user();
+        // $row['commonuser'] = $common_user->where('userid', $patientid);
+        // // if ($row3) {
+        // //     $row3 = $row3[0];
+        // // }
+
+        // $payments = new channelingpayments();
+        // $row['payments'] = $payments->where('channelingid', $channelingid);
+        // // if ($row4) {
+        // //     $row4 = $row4[0];
+        // // }
+
+        // $schedule = new schedule();
+        // $row['schedule'] = $schedule->where('scheduleid', $scheduleid);
+
+        // $patient = new patients();
+        // $row['patient'] = $patient->where('userid', $patientid);
+
+
+        // // print_r($row['schedule']);
+        // // die;
+
+        // extract($row);
+     
 
     //function to view appointments
     function viewAppointments()
@@ -844,4 +850,90 @@ class doctor extends Controller
             'rows' => $data,
         ]);
     }
+
+    public function generatepdf($id,$userid,$channelingid,$scheduleid)
+    {
+        $userid = Auth::userid();
+        require_once __DIR__ . '/../models/mpdf/autoload.php';
+        $mpdf = new \Mpdf\Mpdf();
+        $html = file_get_contents(ROOT . '/doctor/doctorpdf/' . $id . '/' . $userid . '/' . $channelingid . '/' .$scheduleid );
+        //  print_r($html);
+        //   die;
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+    }
+
+    function doctorpdf($id, $userid, $channelingid, $scheduleid)
+    {
+        $userid=Auth::userid();
+        $appointments = new appointments();
+        $row=$appointments->where('appointmentid',$id);
+
+        if ($row != null) {
+            $row=$row[0];
+        }
+
+       
+?>
+
+        <style>
+            th,
+            td {
+                text-align: left;
+                padding: 16px;
+            }
+
+            .title2 {
+                width: 95%;
+                text-align: center;
+            }
+        </style>
+
+        <div class="title1" style="width: 95%;">
+            <div class="logo" style="width: 100%;text-align: center;"><img src="<?= ASSETS ?>img/logo.png" style="width: 30%;align-items: center;"></div>
+            <div class="mtitle" style="width: 100%;text-align: center;">
+                <h1>Ceylon Nuture</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="title2">
+            <h2>Channeling Details</h2>
+        </div>
+        <table style="border-collapse: collapse;border-spacing: 0;width: 85%;border: 1px solid #ddd;margin: 5% auto;">
+            <tr>
+                <td>Name of the Doctor</td>
+                <td>:</td>
+                <td><?= $row->doctorName ?></td>
+            </tr>
+            <tr>
+                <td>Patient Name</td>
+                <td>:</td>
+                <td><?= $row->patientName ?></td>
+            </tr>
+            <tr>
+                <td>Symptoms</td>
+                <td>:</td>
+                <td><?= $row->category ?></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>:</td>
+                <td><?= $row->date ?></td>
+            </tr>
+            <tr>
+                <td>NIC</td>
+                <td>:</td>
+                <td><?= $row->nic ?></td>
+            </tr>
+            <tr>
+                <td>Total Payment</td>
+                <td>:</td>
+                <td>Rs:<?= $row->totalPayment ?></td>
+            </tr>
+        </table>
+
+<?php
+    }
+    
 }
+

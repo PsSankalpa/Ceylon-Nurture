@@ -46,7 +46,8 @@
           <a  href="<?=ROOT?>doctor/feedback"><i class="fa fa-fw fa-comment icons"></i>&nbsp;&nbsp;  Feedback</a>
           <a   href="<?=ROOT?>appointments"><i class="fa fa-fw fa-calendar icons"></i>&nbsp;&nbsp;  Appointments</a>
           <a  href="<?=ROOT?>header/viewArticles"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Articles</a>
-          <a  href="<?=ROOT?>doctor/reportsview"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
+          <a  href="<?=ROOT?>forum"><i class="fa fa-fw fa-list icons"></i>&nbsp;&nbsp;  Forums</a>
+          <a  href="<?=ROOT?>doctor/patientReports"><i class="fa fa-fw fa-book icons"></i>&nbsp;&nbsp;  Reports</a>
           <a href="<?=ROOT?>logout"><i class="fa fa-fw fa-sign-out icons"></i>&nbsp;&nbsp;  Sign Out</a>
        
         </div>
@@ -80,7 +81,7 @@
             <div class="clearfix"></div>
 
             <div class="reports">
-              <h3>Weekly Reports</h3>
+              <h3></h3>
             <div class="cardBox">
               <div class="col-div-3">
                 <div class="box">
@@ -134,7 +135,8 @@
                              // $departureTime = strtotime($data1->departureTime);
                              // $a_h = date("g:i a", $arrivalTime);
                              // $d_p = date("g:i a", $departureTime);
-                             // ?>
+                             //
+                              ?>
                             <tr>
                                 <td><?= $data5->date?></td>
                               <!-- <td><?= $a_h ."-" . $d_p?></td>
@@ -149,7 +151,7 @@
                             <?php endforeach;?>
                            <?php else :?> 
                             <h4>No appointments</h4>
-                            <?php endif?>  
+                            <?php endif;?>  
                             </tbody>
                     </table>
                   </div>

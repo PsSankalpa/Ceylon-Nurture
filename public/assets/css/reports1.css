@@ -6,6 +6,16 @@ body {
   background-color: #D4F1F4;
 
 }
+th,
+td {
+    text-align: left;
+    padding: 16px;
+}
+
+.title2 {
+    width: 95%;
+    text-align: center;
+}
 /*New css*/
 
 .regi_form{
@@ -97,9 +107,7 @@ label{
     text-align: right;
   }
   h2{
-    text-align: center;
-    margin-top: 0;
-    color:rgb(255, 254, 254);
+    color: #05445E;
   }
   h6{
     text-align: right;
