@@ -1,0 +1,424 @@
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    background-color: #D4F1F4;
+  }
+  .clearfix{
+    clear:both;
+    overflow: auto;
+  }
+  .previous {
+    background-color: #f9fafa;
+    color: #75E6DA;
+    width:1%;
+    margin-top:-10px;
+  }
+  .logo{
+    margin-top:-50px;
+    margin-left: 1rem;
+    font-weight:bold;
+    color:white;
+    margin-bottom: 3rem;
+    font-size:22px;
+  }
+  .logo span{
+    color:#D4F1F4;
+    text-align: center;
+  }
+  .sidenav {
+    height:100%;
+    width:0;
+    position:fixed;
+    z-index:1;
+    top:0;
+    left:0;
+    background-color: #05435e;
+    overflow:hidden;
+    transition:0.5s;
+    padding-top:20px;
+  }
+  .sidenav a{
+    padding:30px 30px;
+    text-decoration: none;
+    font-size:15px;
+    color:#ffffff;
+    display:block;
+    transition:0.3s;
+  }
+  .sidenav a:hover{
+    color:#f1f1f1;
+    background-color: #1b203d;
+  }
+  .close{
+    position:absolute;
+    top:1%;
+    right:1%;
+  }
+  .slide a{
+    color:#05445E;
+    font-size: 30px;
+  
+  }
+  p{
+    color:#05445E;
+    font-weight:bold;
+    margin-left: 20px;
+    font-size: 15px;
+  }
+  .profile p{
+    margin-top: 5px;
+    margin-left: 30%;
+  }
+  .nav{
+    color:#05445E;
+    font-size: 30px;
+    margin:auto;
+  }
+  
+  h4{
+    color:#265a07;
+    text-align: center;
+    }
+    h5{
+      color:#05435ea2;
+      font-weight:bolder;
+      padding-top: 3%;
+    }
+  .container3{
+    width:51%;
+    margin-top: -100%;
+    margin:auto;
+    height:auto;
+    background-color:#f0f6f7;
+    border-radius: 2%;
+  }
+  
+  input{
+    margin-bottom:15px;
+    font-stretch:16px;
+    text-align:left;
+    padding:14px 20px;
+    width:90%;
+    margin-left: 5%;
+    background:#05435e44;
+    border: 2px solid #05445E;
+    border-radius:50px;
+  
+  }
+  /*view and add button*/
+  .viewbtn,.filterA{
+    width:5rem;
+    height:2.5rem;
+    background-color:#75E6DA;
+    border:none;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: 14px;
+    color:#05445E;
+    margin-right:10px;
+  
+  }
+  .viewbtn:hover,.addbtn:hover,.btn:hover{
+    color: #fafdfd80;
+  }
+  .btn{
+    float:right;
+    width:5rem;
+    height:2.5rem;
+    margin-left:2%;
+    margin-bottom:1%;
+    background-color:#75E6DA;
+    border:none;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: 14px;
+    color:#05445E;
+  
+  }
+  /*error button*/
+  .alertwarning{
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+  }
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    background-color: #f44336;
+    transition: 0.3s;
+  }
+  .closebtn:hover {
+    color: black;
+  }
+  /* Style the label to display next to the inputs */
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    color: #05445E;
+    font-weight:700;
+    padding-left: 10%;
+    font-size: 15px;
+  }
+  /* Style the submit and cancel button */
+  .row input[type=submit]{
+    font-size:18px;
+    margin-left: 25%;
+    text-align: center;
+    font-weight: bold;
+    color:#05445E;
+    width:50%;
+    background-color:#75E6DA;
+    border-radius:50px;
+    padding:14px 15px;
+    transition:0.3s ease;
+  }
+  input[type=reset]{
+    font-size:18px;
+    text-align: center;
+      font-weight: bold;
+      color:#05445E;
+      width:50%;
+      background-color:#75E6DA;
+      border-radius:50px;
+      padding:14px 15px;
+      transition:0.3s ease;
+      transform:translate(45%, -10%);
+  }
+  .doctor-grid-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  .doctor-grid-container > div {
+    text-align: center;
+    padding: 20px 0;
+  }  
+  
+  .doctor-grid-container > h2 {
+    text-align: center;
+  } 
+  h3,h4{
+    color:#05445E;
+    text-align: center;
+  } 
+  h2{
+    color:#05445E;
+    padding-top: 1%;
+    text-align: center;
+  
+  }
+  .doctor-grid-container p{
+    color:#05445E;
+    text-align: justify;
+  }
+  /* Floating column for labels: 25% width */
+  .col-25 {
+    float: left;
+    width: 35%;
+    margin-top: 6px;
+  } 
+  /* Floating column for inputs: 75% width */
+  .col-75 {
+    float: left;
+    width: 65%;
+    margin-top: 1px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  /*View Schedule*/
+  .cardcolumn {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+    justify-content: center;
+  }
+  
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2); /* this adds the "card" effect */
+    padding: 15px;
+    text-align: center;
+    background-color: #b2ebf1;;
+    height: auto;
+    margin: 1rem;
+    border-radius: 1rem;
+  }
+  
+  /*buttons of the cards*/
+  .cardbutton {
+    background-color: #05445E;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    width:100%;
+  }
+  
+  .cardbutton:hover{
+    opacity: 1;
+  }
+  input[type=date]{
+    width:90%;
+    padding: 15px;
+  }
+  .date-container{
+    width:50%;
+    display:flex;
+    gap:10px;
+  }
+  .button-container{
+    width:50%;
+    display:flex;
+    gap:10px;
+  }
+  .header-container{
+    padding:2%;
+    width:90%;
+    display:flex;
+    justify-content: space-between;
+  }
+  .deletebtn input[type="submit"]{
+    color: #05445E;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 50px;
+    width:90%;
+    text-align: center;
+  
+  }
+  
+  .nobtn{
+    background-color: #b2ebf1;
+    color: #05445E;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    width:20%;
+    margin-top: 10%;
+  
+  }
+  .container4{
+    width:51%;
+    margin-top: -100%;
+    margin:auto;
+    height:300px;
+    background-color:#f0f6f7;
+  }
+  .dltSchedule input[type=submit]{
+  color:#c2cbcf;
+  }
+  
+  
+  /*Making the page mobile responsive*/
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .container1 {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .container3 {
+        width: 100%;
+        height: auto;
+        position: relative;right:0px;top:-10px
+      
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .addbtn,.viewbtn,input[type=text],input[type=date]{
+      width: 90%;
+      margin-top: 1%;
+      margin-left:5%;
+      float:center;
+      position:relative;right:0px;
+    }
+    .regi_form {
+      width: 100%;
+    }
+    .col-25, .col-75{
+      width: 50%;
+     
+    }
+  }
+  @media screen and (max-width: 700px) {
+    input[type=submit]{
+        width: 100%;
+        height: auto;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .cardcolumn {
+      float: left;
+      width: 50%;
+      padding: 0 8px;
+      justify-content: center;
+    }
+    .filter{
+      background-color: #75e6db80;
+      border-radius:5px;
+      margin-left:10%;
+      padding:10px;
+    }
+    .filterA{
+      background-color: #75e6db80;
+      border-radius:5px;
+      padding:10px;
+    }
+    
+    .container4{
+      width:80%;
+      height:auto;
+    }
+    .header-container{
+      padding:1%;
+      flex-direction: column;
+    }
+    .date-container{
+      width:90%;
+      display:flex;
+      gap:10px;
+    }
+    h2{
+      text-align: center;
+    }
+  }
+  
+  
+  
+  
