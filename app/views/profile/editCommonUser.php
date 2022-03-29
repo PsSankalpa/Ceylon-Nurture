@@ -84,7 +84,9 @@
 
                 <div class="row">
                     <input type="submit" value="Submit">
-                    <input type="reset" value="Reset">
+                    <a href="<?=ROOT?>myAccount/">
+                        <button class="btn">Back</button>
+                    </a>
                 </div>
             </form>
         <?php endif; ?>

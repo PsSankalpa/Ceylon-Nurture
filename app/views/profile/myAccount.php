@@ -18,7 +18,8 @@
             
            
             </div>
-                <img src="<?= ASSETS ?>img/avatar.png" class="pro-img" alt="profile-img">
+                <img src="<?= ASSETS2 . $data4->image ?>" class="pro-img" alt="profile-img">
+               
             </div>
             <div class="right">
 

@@ -65,7 +65,7 @@
             </div>
           </form>
 
-        </div>
+       
         <div class="cardrow">
           <?php if ($row) : ?>
             <?php foreach ($row as $row) : ?>

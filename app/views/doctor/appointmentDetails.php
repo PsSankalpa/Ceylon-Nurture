@@ -50,16 +50,6 @@
             <input type="text" id="slotNumber" name="slotNumber" placeholder="Slot No">
             <input type="date" id="date" name="date">
         </div>-->
-
-        <!--Search Bar-->
-        <div class="search-container">
-            <div class="search_bar">
-                <form action="" class="search">
-                    <input type="text" value="<?=isset($_GET['search'])?$_GET['search']:'';?>" placeholder="Find the Slot No.." name="search"><!--ternary operator use in the value-->
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-        </div>
             <div class="clearfix"></div>
             <div class="col-div-8"><br/>
                 <div class="box-8">

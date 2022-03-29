@@ -114,50 +114,48 @@
                   <input type="date" id="date" name="date">
                   <button class="filterbtn">Filter</button>
                     </div>-->
-    <div class="box-8">
-      <a href="<?= ROOT ?>appointments"><button class="dashviewbtn">View</button></a></br>
 
-      <div class="content-box">
-        <div style="overflow-y:auto;">
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Name</th>
-                <th>NIC No</th>
-                <th>Telephone No</th>
-                <th>Symptoms</th>
-                <th>Payment</th>
-              </tr>
-            </thead>
-            <?php if ($data5) : ?>
-              <?php foreach ($data5 as $data5) : ?>
-                <?php
-                // $arrivalTime = strtotime($data1->arrivalTime);
-                // $departureTime = strtotime($data1->departureTime);
-                // $a_h = date("g:i a", $arrivalTime);
-                // $d_p = date("g:i a", $departureTime);
-                //
-                ?>
-                <tr>
-                  <td><?= $data5->date ?></td>
-                  <!-- <td><?= $a_h . "-" . $d_p ?></td>
-                                <td><?= $data1->slotNumber ?></td>-->
-
-                  <td><?= $data5->patientName ?></td>
-                  <td><?= $data5->nic ?></td>
-                  <td><?= $data5->tpNumber ?></td>
-                  <td><?= $data5->symptoms ?></td>
-                  <td> Rs.<?= $data5->totalPayment ?></td>
-                </tr>
-              <?php endforeach; ?>
-            <?php else : ?>
-              <h4>No appointments</h4>
-            <?php endif; ?>
-            </tbody>
-          </table>
-        </div>
-      </div>
+                  <div class="box-8">
+                  <a href="<?=ROOT?>appointments"><button class="dashviewbtn">View</button></a></br>
+           
+                  <div class="content-box">
+                   <div style="overflow-y:auto;">
+                    <table>
+                    <thead>
+                            <th>Date</th> 
+                            <th>Name</th>
+                            <th>NIC No</th>
+                            <th>Telephone No</th>
+                            <th>Symptoms</th>
+                            <th>Payment</th>
+                            </tr>
+                          </thead>
+                          <?php if($data5):?>
+                            <?php foreach ($data5 as $data5):?>
+                              <?php
+                             // $arrivalTime = strtotime($data1->arrivalTime);
+                             // $departureTime = strtotime($data1->departureTime);
+                             // $a_h = date("g:i a", $arrivalTime);
+                             // $d_p = date("g:i a", $departureTime);
+                             //
+                              ?>
+                            <tr>
+                                <td><?= $data5->date?></td>
+                                <td><?= $data5->patientName?></td>
+                                <td><?= $data5->nic?></td>
+                                <td><?= $data5->tpNumber ?></td>
+                                <td><?= $data5->symptoms ?></td>
+                                <td> Rs.<?= $data5->totalPayment ?></td>
+                            </tr>
+                            <?php endforeach;?>
+                         
+                            <?php endif;?>  
+                            </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            <div class="clearfix"></div>
     </div>
     <div class="clearfix"></div>
   </div>
