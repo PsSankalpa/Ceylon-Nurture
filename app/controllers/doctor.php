@@ -785,7 +785,7 @@ class doctor extends Controller
         if (isset($_GET['search'])) {
             //side that we put % mark it ignore exact matching
             $search = 0; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-            $query = "select * from articles where status = 0 order by articleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+            $query = "select * from articles where status = 0 and doctorid = $doctorid order by articleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
             $arr['search'] = $search; //to pass to the query function
             $data = $article->query($query, $arr);
         }
