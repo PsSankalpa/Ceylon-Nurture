@@ -119,7 +119,6 @@
                 </div>
 
                 <div class="topbar_side heading">
-                    <i class="far fa-calendar-alt"> 2021/04/01 - 2021/06/30</i>
                 </div>
 
             </div>

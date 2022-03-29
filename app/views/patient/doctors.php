@@ -132,7 +132,7 @@
 
                         <?php foreach ($row1 as $row1):?>
 
-                            <div class="card">
+
                                 <?php //format the time using strtotime
                                     $arrivalTime = strtotime($row1->arrivalTime);
                                     $departureTime = strtotime($row1->departureTime);
@@ -140,7 +140,17 @@
 
                                     $arrivalTime= date("g:i a", $arrivalTime);
                                     $departureTime = date("g:i a", $departureTime);
+
+                                    $currentdate=date('y-m-d') ;
+                                    $timestamp1=strtotime($currentdate);
+                                    $timestamp2=strtotime($row1->dateofSlot);
+                                    
+
                                 ?>
+                            
+                            
+                            <?php if($timestamp1<$timestamp2):?>
+                                <div class="card">
 
                             <div class="date"> <?=$row1->dateofSlot?></div>
                                 <div class="time"><?=$arrivalTime?> - <?=$departureTime?></div>
@@ -194,8 +204,10 @@
                                     <?php endif;?>
                             </div>
 
-                            
+                            <?php endif;?>
+
                             <?php endforeach;?>
+
 
 
                         </div>
