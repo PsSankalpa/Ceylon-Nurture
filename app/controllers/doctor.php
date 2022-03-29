@@ -95,6 +95,7 @@ class doctor extends Controller
          $des2 =$destination2;
          return $des2;
     }*/
+
     //function of the Doctor Dashboard
     function docDashboard()
     {
@@ -128,6 +129,7 @@ class doctor extends Controller
             $data2 = $patients->query($query1);
         }*/
 
+        //$data9 = Auth::image();
 
         $appointments = new appointments();
         $data4 = $appointments->where('doctorid', $userid);
@@ -174,9 +176,17 @@ class doctor extends Controller
         $patientid = null;
         $scheduleid = null;
 
-        $query1 = "select * from appointments where doctorid = :userid and date > curdate()-7 order by date desc";
+        $query1 = "select * from appointments where doctorid = $doctorid and date > curdate()-7 order by appointmentid desc";
         $arr['userid'] = Auth::userid();
-        $data5 = $appointments->query($query1, $arr);
+        $data5 = $appointments->findrange3(7, $userid);
+        // print_r($data5);
+        // die;
+
+        $rcount = 0;
+        $count1 = count($data5);
+        for ($i = 0; $i < $count1; $i++) {
+            $rcount = $rcount + $data5[$i]->totalPayment;
+        }
 
         // $query2 = "select * from schedule where scheduleid in (select scheduleid from appointments where doctorid = :userid order by date desc )";
         //$arr['userid'] = Auth::userid();
@@ -490,17 +500,24 @@ class doctor extends Controller
         //$data = null;
         $appointments = new appointments();
         //$payments = new channelingpayments();
-
-
         $data = $appointments->where('doctorid', $doctorid);
 
         // print_r($data);
         //  die;
+        if (count($_POST) > 0) {
 
+            $date1 = $_POST['fromdate'];
+            $date2 = $_POST['todate'];
+            //print_r($date1);
+
+            $row = $appointments->finddaterange($date1, $date2);
+            //print_r($row);  
+        }
 
         //$data =$doctor->where('userid',$doctorid);
         $this->view('doctor/patientReports', [
             'data' => $data,
+            'row' => $row,
 
         ]);
     }
@@ -550,9 +567,9 @@ class doctor extends Controller
         $userid = Auth::userid();
         $appointments = new appointments();
         $row = $appointments->where('appointmentid', $appointmentid);
-       // print_r($row);
+        // print_r($row);
         //die;
-        
+
 
         $this->view("doctor/reportDetails", [
             'row' => $row,
@@ -854,24 +871,24 @@ class doctor extends Controller
 
     public function generatepdf($appointmentid)
     {
-        
+
         require_once __DIR__ . '/../models/mpdf/autoload.php';
         $mpdf = new \Mpdf\Mpdf();
         $html = file_get_contents(ROOT . '/doctor/doctorpdf/' . $appointmentid);
-        
+
         print_r($html);
-          die;
+        die;
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }
 
     function doctorpdf($appointmentid)
     {
-       
+
         $appointments = new appointments();
         $row = $appointments->where('appointmentid', $appointmentid);
-print_r($row);
-die;
+        print_r($row);
+        die;
         if ($row != null) {
             $row = $row[0];
         }

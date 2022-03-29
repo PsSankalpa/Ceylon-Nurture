@@ -82,6 +82,16 @@ public function __construct()
 		]);
 	}
 
+	//to get data for range o days
+	public function findrange3($value,$id)
+	{
+
+		//$column = addslashes($column);//from this it check the column,sanitize input
+		$query = "select * from $this->table where  $this->pk2 = $id  order by $this->pk desc";
+		return $this->query($query,[
+			// 'value'=>$value
+		]);
+	}
 //----------------------------------------------------------------------------------------------------------------------
 	//to get data for range o days
 	public function finddaterange($date1,$date2)

@@ -26,4 +26,5 @@ class appointments extends Model
 
 	protected $table = "appointments";
 	protected $pk = "appointmentid";
+    protected $pk2 = "doctorid";
 }

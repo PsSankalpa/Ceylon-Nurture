@@ -28,7 +28,7 @@ body {
     box-shadow: 0 10px 20px 0 rgba(255, 255, 255, 0.2); /* this adds the "card" effect */
     text-align: center;
     background-image: linear-gradient(to right, #1894B4 , #05445E);
-    height: 500px;
+    height: auto;
     width:auto;
     margin: 4rem;
     border-radius: 0.5rem;

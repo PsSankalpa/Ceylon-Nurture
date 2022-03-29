@@ -35,7 +35,7 @@
 
     <div class="column">
       <div class="card">
-        <img src="<?= ASSETS ?>img/chamodi.jpeg" alt="Mike" style="width:100%">
+        <img src="<?= ASSETS ?>img/chamodi.jpg" alt="Mike" style="width:100%">
         <div class="container">
           <h2>Chamodhi Dilshani</h2>
           <p class="title">Developer</p>

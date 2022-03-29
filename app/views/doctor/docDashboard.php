@@ -119,7 +119,6 @@
                    <div style="overflow-y:auto;">
                     <table>
                     <thead>
-                            <tr>
                             <th>Date</th> 
                             <th>Name</th>
                             <th>NIC No</th>
@@ -128,7 +127,7 @@
                             <th>Payment</th>
                             </tr>
                           </thead>
-                          <?php if($data):?>
+                          <?php if($data5):?>
                             <?php foreach ($data5 as $data5):?>
                               <?php
                              // $arrivalTime = strtotime($data1->arrivalTime);
@@ -139,9 +138,6 @@
                               ?>
                             <tr>
                                 <td><?= $data5->date?></td>
-                              <!-- <td><?= $a_h ."-" . $d_p?></td>
-                                <td><?= $data1->slotNumber?></td>-->
-
                                 <td><?= $data5->patientName?></td>
                                 <td><?= $data5->nic?></td>
                                 <td><?= $data5->tpNumber ?></td>
@@ -149,8 +145,7 @@
                                 <td> Rs.<?= $data5->totalPayment ?></td>
                             </tr>
                             <?php endforeach;?>
-                           <?php else :?> 
-                            <h4>No appointments</h4>
+                         
                             <?php endif;?>  
                             </tbody>
                     </table>
