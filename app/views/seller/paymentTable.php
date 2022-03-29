@@ -17,14 +17,14 @@
                     <tr>
                         <th>Product Name</th>
                         <th>Date</th>
-                        <th>Commission</th>
+                        <th>Price</th>
                         <th>PDF</th>
                     </tr>
                     <?php foreach ($rows as $row) : ?>
                         <tr>
                             <td><?= $row->productName ?></td>
                             <td><?= $row->date ?></td>
-                            <td><?= $row->amount ?></td>
+                            <td><?= "Rs.".$row->amount ?></td>
                             <td><a href="<?= ROOT ?>seller/generatepdf/<?= $row->productid ?>"><button class="pdfbtn">PDF</button></a></td>
                         </tr>
                     <?php endforeach; ?>
