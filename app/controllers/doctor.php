@@ -504,20 +504,21 @@ class doctor extends Controller
 
         // print_r($data);
         //  die;
-        if (count($_POST) > 0) {
+        // if (count($_POST) > 0) {
 
-            $date1 = $_POST['fromdate'];
-            $date2 = $_POST['todate'];
-            //print_r($date1);
+        //     $date1 = $_POST['fromdate'];
+        //     $date2 = $_POST['todate'];
+        //     //print_r($date1);
 
-            $row = $appointments->finddaterange($date1, $date2);
-            //print_r($row);  
-        }
+        //     $row = $appointments->finddaterange($date1, $date2);
+        //     //print_r($row);  
+        // }
 
+        $row = "";
         //$data =$doctor->where('userid',$doctorid);
         $this->view('doctor/patientReports', [
             'data' => $data,
-            'row' => $row,
+            
 
         ]);
     }
