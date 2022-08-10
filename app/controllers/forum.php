@@ -10,7 +10,11 @@ class forum extends Controller
         $data=$forumdoctor->findAll();
 
         $forumherb = new forumherb();
+        if($forumherb->findAll()){
         $data1= $forumherb->findAll();
+        }else{
+            $data1 = null;
+        }
 
         $forumproduct = new forumproduct();
         $data2= $forumproduct->findAll();

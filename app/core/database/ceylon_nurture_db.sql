@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 10, 2022 at 01:13 PM
+-- Generation Time: Aug 10, 2022 at 08:35 AM
 -- Server version: 8.0.21
--- PHP Version: 7.4.9
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,42 +51,167 @@ INSERT INTO `admin` (`adminid`, `nameWithInitials`, `fname`, `lname`, `email`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `adminpayment`
+--
+
+DROP TABLE IF EXISTS `adminpayment`;
+CREATE TABLE IF NOT EXISTS `adminpayment` (
+  `adminPaymentid` int NOT NULL AUTO_INCREMENT,
+  `type` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `amount` int NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`adminPaymentid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `adminpaymentdoctor`
+--
+
+DROP TABLE IF EXISTS `adminpaymentdoctor`;
+CREATE TABLE IF NOT EXISTS `adminpaymentdoctor` (
+  `adminpaymentid` int NOT NULL AUTO_INCREMENT,
+  `doctorName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `amount` int NOT NULL,
+  `date` date NOT NULL,
+  `doctorid` int NOT NULL,
+  `doctorCharge` int NOT NULL,
+  PRIMARY KEY (`adminpaymentid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `adminpaymentdoctor`
+--
+
+INSERT INTO `adminpaymentdoctor` (`adminpaymentid`, `doctorName`, `amount`, `date`, `doctorid`, `doctorCharge`) VALUES
+(1, 'Avishi', 1000, '2022-06-25', 4, 0),
+(2, 'SanathP', 2500, '2022-06-26', 6, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointments`
+--
+
+DROP TABLE IF EXISTS `appointments`;
+CREATE TABLE IF NOT EXISTS `appointments` (
+  `appointmentid` int NOT NULL AUTO_INCREMENT,
+  `doctorName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `patientName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `tpNumber` int NOT NULL,
+  `totalPayment` double NOT NULL,
+  `date` date NOT NULL,
+  `symptoms` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `nic` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `doctorid` int NOT NULL,
+  `Patientid` int NOT NULL,
+  `scheduleid` int NOT NULL,
+  `commission` int NOT NULL,
+  `patientCount` int NOT NULL,
+  `availability` tinyint(1) NOT NULL,
+  `noOfPatients` int NOT NULL,
+  `slotTimeStart` time NOT NULL,
+  `slotTimeEnd` time NOT NULL,
+  PRIMARY KEY (`appointmentid`),
+  KEY `DoctorID` (`doctorid`),
+  KEY `PatientID` (`Patientid`),
+  KEY `scheduleID` (`scheduleid`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`appointmentid`, `doctorName`, `patientName`, `tpNumber`, `totalPayment`, `date`, `symptoms`, `nic`, `doctorid`, `Patientid`, `scheduleid`, `commission`, `patientCount`, `availability`, `noOfPatients`, `slotTimeStart`, `slotTimeEnd`) VALUES
+(21, 'B.A.Sankalpa', 'A.K.Cham Dil', 777846877, 2700, '2022-03-29', 'cholera', '986012303V', 2, 22, 9, 200, 1, 1, 3, '08:00:00', '08:15:00'),
+(22, 'B.A.Sankalpa', 'A.K.Cham Dil', 777846877, 2700, '2022-03-29', 'cholera', '986012303V', 2, 22, 9, 200, 2, 1, 3, '08:15:00', '08:30:00'),
+(23, 'B.A.Sankalpa', 'A.K.Cham Dil', 777846877, 2700, '2022-03-29', 'cholera', '986012303V', 2, 22, 9, 200, 3, 1, 3, '08:30:00', '08:45:00'),
+(24, 'A.U.Jayaweera', 'B.A.Sankalpa', 1124857385, 2200, '2022-03-29', 'Leg Pain', '98302044v', 4, 2, 14, 200, 1, 1, 10, '09:00:00', '09:15:00'),
+(25, 'A.U.Jayaweera', 'B.A.Sankalpa', 1124857385, 2200, '2022-03-29', 'Leg Pain', '98302044v', 4, 2, 16, 200, 1, 1, 18, '08:00:00', '08:15:00'),
+(26, 'A.U.Jayaweera', 'Z.E.Zen', 761234566, 2200, '2022-03-29', 'Leg Pain', '950739281891', 4, 5, 14, 200, 2, 1, 10, '09:15:00', '09:30:00'),
+(27, 'A.U.Jayaweera', 'A.K.Cham Dil', 777846877, 2200, '2022-03-29', 'cholera', '986012303V', 4, 22, 14, 200, 3, 1, 10, '09:30:00', '09:45:00'),
+(28, 'A.U.Jayaweera', 'A.K.Cham Dil', 777846877, 1700, '2022-03-29', 'cholera', '986012303V', 4, 22, 15, 200, 1, 1, 24, '13:00:00', '13:15:00'),
+(29, 'A.U.Jayaweera', 'B.A.Sankalpa', 1124857385, 2200, '2022-06-25', '', '98302044v', 4, 2, 14, 200, 4, 1, 10, '09:45:00', '10:00:00'),
+(30, 'A.U.Jayaweera', 'B.A.Sankalpa', 1124857385, 1700, '2022-06-25', '', '98302044v', 4, 2, 15, 200, 2, 1, 24, '13:15:00', '13:30:00'),
+(31, 'A.U.Jayaweera', 'B.A.Sankalpa', 1124857385, 1700, '2022-06-25', '', '98302044v', 4, 2, 15, 200, 3, 1, 24, '13:30:00', '13:45:00'),
+(32, 'A.U.Jayaweera', 'B.A.Sankalpa', 1124857385, 2200, '2022-06-26', 'cholera', '98302044v', 4, 2, 14, 200, 5, 1, 10, '10:00:00', '10:15:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `articlereviews`
+--
+
+DROP TABLE IF EXISTS `articlereviews`;
+CREATE TABLE IF NOT EXISTS `articlereviews` (
+  `reviewid` int NOT NULL AUTO_INCREMENT,
+  `reviewOwner` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `review` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `articleid` int NOT NULL,
+  `ownerid` int NOT NULL,
+  PRIMARY KEY (`reviewid`),
+  KEY `articleid` (`articleid`),
+  KEY `ownerid` (`ownerid`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `articlereviews`
+--
+
+INSERT INTO `articlereviews` (`reviewid`, `reviewOwner`, `review`, `articleid`, `ownerid`) VALUES
+(1, 'PsSanka2', 'This is good', 2, 2),
+(2, 'Avishi', 'These are good information', 2, 4),
+(3, 'Cham dil', 'This is a useful herb', 2, 12),
+(4, 'Avishi', 'Learn a lot of information from this', 2, 4),
+(5, 'PsSanka2', 'Useful herb', 2, 2),
+(6, 'Cham dil', 'Information is very accurate', 2, 12),
+(7, 'Pssanka2', 'Good information', 27, 2),
+(8, 'Pssanka2', 'This is a useful herb', 2, 2),
+(9, 'Pssanka2', 'Good information', 2, 2),
+(10, 'cham dil', 'awesome', 2, 22),
+(11, 'Pssanka2', 'Good information', 27, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `articles`
 --
 
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE IF NOT EXISTS `articles` (
   `articleid` int NOT NULL AUTO_INCREMENT,
-  `articleName` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `uses` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `sideEffects` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `precautions` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `interactions` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `dosing` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `articleName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `uses` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `sideEffects` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `precautions` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `interactions` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `dosing` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `doctorid` int NOT NULL,
   `date` date NOT NULL,
+  `status` int NOT NULL,
   PRIMARY KEY (`articleid`),
   KEY `doctorid` (`doctorid`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `articles`
 --
 
-INSERT INTO `articles` (`articleid`, `articleName`, `description`, `uses`, `sideEffects`, `precautions`, `interactions`, `dosing`, `image`, `doctorid`, `date`) VALUES
-(2, 'Ashwagandha', 'Ashwagandha is an evergreen shrub that grows in Asia and Africa. It is commonly used for stress. There is little evidence for its use as an \"adaptogen.\"\r\nAshwagandha contains chemicals that might help', 'Possibly Effective for,\r\nStress. Taking ashwagandha by mouth seems to help reduce stress in some people. It might also help reduce stress-related weight gain.\r\nThere is interest in using ashwagandha f', 'When taken by mouth: \r\nAshwagandha is possibly safe when used for up to 3 months. The long-term safety of ashwagandha is not known. Large doses of ashwagandha might cause stomach upset, diarrhea, and ', 'Pregnancy: It is likely unsafe to use ashwagandha when pregnant. There is some evidence that ashwagandha might cause miscarriages.\r\nBreastfeeding: There isn\'t enough reliable information to know if as', 'Moderate Interaction\r\nBe cautious with this combination\r\nMedications that decrease the immune system (Immunosuppressants) interacts with ASHWAGANDHA\r\nAshwagandha seems to increase the immune system. T', 'Ashwagandha has most often been used by adults in doses up to 1000 mg daily, for up to 12 weeks. Speak with a healthcare provider to find out what dose might be best for a specific condition.\r\n', 'articles_images/ashwagandha-.jpg', 2, '2021-12-26'),
-(3, 'Boswellia', 'Boswellia, also known as Indian frankincense or olibanum, is made from the resin of the Boswellia serrata tree. It’s known for its easily recognizable spicy, woody aroma.', '', '', '', '', '', 'articles_images/boswellia-serrata-planet.jpg', 2, '2021-12-26'),
-(4, 'Triphala', 'Triphala is an Ayurvedic remedy consisting of the following three small medicinal fruits (26Trusted Source):\r\namla (Emblica officinalis, or Indian gooseberry)\r\nbibhitaki (Terminalia bellirica)\r\nharita', '', '', '', '', '', 'articles_images/triphala-herbal-plant.jpg', 2, '2021-12-26'),
-(5, 'Brahmi', 'Brahmi (Bacopa monieri) is a staple herb in Ayurvedic medicine.\r\nAccording to test-tube and animal studies, brahmi appears to have strong anti-inflammatory properties that are as effective as common NSAIDs', '', '', '', '', '', 'articles_images/Brahmi-Oil1.jpg', 4, '2021-12-26'),
-(6, 'Calendula', 'Calendula (Calendula officinalis) is a plant known as pot marigold. It is not the same as ornamental marigolds of the Tagetes genus grown in vegetable gardens.Calendula is native to Asia and southern Europe\r\n', 'We currently have no information for CALENDULA Uses.', 'When taken by mouth: Preparations of calendula flower are likely safe for most people.\r\nWhen applied to the skin: Preparations of calendula flower are likely safe for most people.', 'Pregnancy: Don\'t take calendula by mouth if you are pregnant. It is likely unsafe. There is a concern that it might cause a miscarriage. It\'s best to avoid topical use as well until more is known.\r\nBreastfeeding: There isn\'t enough reliable information to know if calendula is safe to use when breast-feeding. Stay on the safe side and avoid use.', 'Calendula might cause sleepiness and drowsiness. Medications that cause sleepiness are called sedatives. Taking calendula along with sedative medications might cause too much sleepiness.\r\nSome sedative medications include clonazepam (Klonopin), lorazepam (Ativan), phenobarbital (Donnatal), zolpidem (Ambien), and others.', 'There isn\'t enough reliable information to know what an appropriate dose of calendula might be. Keep in mind that natural products are not always necessarily safe and dosages can be important. Be sure to follow relevant directions on product labels and consult a healthcare professional before using.', 'articles_images/Calendula.jpg', 2, '2022-01-04'),
-(22, 'Cumin', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that ', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that cumin may boost the activity of digestive   enzymes and facilitate the release of bile from the liver,  speeding digestion and easing the digestion of fats', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that cumin may boost the activity of digestive   enzymes and facilitate the release of bile from the liver,  speeding digestion and easing the digestion of fats', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that cumin may boost the activity of digestive   enzymes and facilitate the release of bile from the liver,  speeding digestion and easing the digestion of fats', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that cumin may boost the activity of digestive   enzymes and facilitate the release of bile from the liver,  speeding digestion and easing the digestion of fats', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that cumin may boost the activity of digestive   enzymes and facilitate the release of bile from the liver,  speeding digestion and easing the digestion of fats', 'articles_images/Cumin.jpg', 2, '2022-01-05'),
-(23, ' Turmeric', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.   Test-tube research shows that it may be equally', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.   Test-tube research shows that it may be equally', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.   Test-tube research shows that it may be equally', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.   Test-tube research shows that it may be equally', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.   Test-tube research shows that it may be equally', 'articles_images/Turmeric.jpg', 2, '2022-01-06'),
-(24, ' Licorice root', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', 'articles_images/Licorice root.jpg', 2, '2022-01-07'),
-(25, ' Gotu kola', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', 'articles_images/Gotu kola.jpg', 2, '2022-01-08'),
-(26, ' Bitter melon', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', 'articles_images/Bitter melon.jpg', 2, '2022-01-09'),
-(27, ' Cardamom', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.  Research suggests that cardamom powder may help reduce blood pressure in people with ', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.  Research suggests that cardamom powder may help reduce blood pressure in people with ', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.  Research suggests that cardamom powder may help reduce blood pressure in people with ', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.  Research suggests that cardamom powder may help reduce blood pressure in people with ', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.  Research suggests that cardamom powder may help reduce blood pressure in people with ', 'articles_images/Cardamom.jpg', 2, '2022-01-10');
+INSERT INTO `articles` (`articleid`, `articleName`, `description`, `uses`, `sideEffects`, `precautions`, `interactions`, `dosing`, `image`, `doctorid`, `date`, `status`) VALUES
+(2, 'Ashwagandha', 'Ashwagandha is an evergreen shrub that grows in Asia and Africa. It is commonly used for stress. There is little evidence for its use as an ', 'Possibly Effective for,Stress. Taking ashwagandha by mouth seems to help reduce stress in some people. It might also help reduce stress-related weight gain.There is interest in using ashwagandha f', 'When taken by mouth Ashwagandha is possibly safe when used for up to 3 months. The longterm safety of ashwagandha is not known. Large doses of ashwagandha might cause stomach upset diarrhea and ', 'Pregnancy It is likely unsafe to use ashwagandha when pregnant. There is some evidence that ashwagandha might cause miscarriages.Breastfeeding: There is not enough reliable information to know if as', 'Moderate InteractionBe cautious with this combinationMedications that decrease the immune system (Immunosuppressants) interacts with ASHWAGANDHAAshwagandha seems to increase the immune system. T', 'Ashwagandha has most often been used by adults in doses up to 1000 mg daily for up to 12 weeks. Speak with a healthcare provider to find out what dose might be best for a specific condition.', 'articles_images/ashwagandha-root-extract-withania-somnifera.jpg', 2, '2021-12-26', 1),
+(3, 'Boswellia', 'Boswellia, also known as Indian frankincense or olibanum, is made from the resin of the Boswellia serrata tree. It’s known for its easily recognizable spicy, woody aroma.', '', '', '', '', '', 'articles_images/boswellia-serrata-planet.jpg', 2, '2021-12-26', 1),
+(4, 'Triphala', 'Triphala is an Ayurvedic remedy consisting of the following three small medicinal fruits (26Trusted Source):\r\namla (Emblica officinalis, or Indian gooseberry)\r\nbibhitaki (Terminalia bellirica)\r\nharita', '', '', '', '', '', 'articles_images/triphala-herbal-plant.jpg', 2, '2021-12-26', 1),
+(5, 'Brahmi', 'Brahmi (Bacopa monieri) is a staple herb in Ayurvedic medicine.\r\nAccording to test-tube and animal studies, brahmi appears to have strong anti-inflammatory properties that are as effective as common NSAIDs', '', '', '', '', '', 'articles_images/Brahmi-Oil1.jpg', 4, '2021-12-26', 1),
+(6, 'Calendula', 'Calendula (Calendula officinalis) is a plant known as pot marigold. It is not the same as ornamental marigolds of the Tagetes genus grown in vegetable gardens.Calendula is native to Asia and southern Europe\r\n', 'We currently have no information for CALENDULA Uses.', 'When taken by mouth: Preparations of calendula flower are likely safe for most people.\r\nWhen applied to the skin: Preparations of calendula flower are likely safe for most people.', 'Pregnancy: Don\'t take calendula by mouth if you are pregnant. It is likely unsafe. There is a concern that it might cause a miscarriage. It\'s best to avoid topical use as well until more is known.\r\nBreastfeeding: There isn\'t enough reliable information to know if calendula is safe to use when breast-feeding. Stay on the safe side and avoid use.', 'Calendula might cause sleepiness and drowsiness. Medications that cause sleepiness are called sedatives. Taking calendula along with sedative medications might cause too much sleepiness.\r\nSome sedative medications include clonazepam (Klonopin), lorazepam (Ativan), phenobarbital (Donnatal), zolpidem (Ambien), and others.', 'There isn\'t enough reliable information to know what an appropriate dose of calendula might be. Keep in mind that natural products are not always necessarily safe and dosages can be important. Be sure to follow relevant directions on product labels and consult a healthcare professional before using.', 'articles_images/Calendula.jpg', 2, '2022-01-04', 1),
+(22, 'Cumin', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that ', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that cumin may boost the activity of digestive   enzymes and facilitate the release of bile from the liver,  speeding digestion and easing the digestion of fats', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that cumin may boost the activity of digestive   enzymes and facilitate the release of bile from the liver,  speeding digestion and easing the digestion of fats', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that cumin may boost the activity of digestive   enzymes and facilitate the release of bile from the liver,  speeding digestion and easing the digestion of fats', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that cumin may boost the activity of digestive   enzymes and facilitate the release of bile from the liver,  speeding digestion and easing the digestion of fats', 'Cumin is a spice native to the Mediterranean and Southwest Asia.  It is made from the seeds of the Cuminum cyminum plant,  which are known for their distinctive earthy, nutty, and spicy flavor.   Research shows that cumin may boost the activity of digestive   enzymes and facilitate the release of bile from the liver,  speeding digestion and easing the digestion of fats', 'articles_images/Cumin.jpg', 2, '2022-01-05', 1),
+(23, ' Turmeric', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.   Test-tube research shows that it may be equally', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.   Test-tube research shows that it may be equally', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.   Test-tube research shows that it may be equally', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.   Test-tube research shows that it may be equally', ' Turmeric, the spice that gives curry its characteristic yellow color, is another popular   Ayurvedic remedy.  Curcumin, its main active compound, has powerful antioxidant and anti-inflammatory properties.   Test-tube research shows that it may be equally', 'articles_images/Turmeric.jpg', 2, '2022-01-06', 1),
+(24, ' Licorice root', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', ' Licorice root, which is native to Europe and Asia,  comes from the Glycyrrhiza glabra plant and holds a central place in Ayurvedic medicine.  Test-tube and human studies suggest that licorice root may help reduce inflammation', 'articles_images/Licorice root.jpg', 2, '2022-01-07', 1),
+(25, ' Gotu kola', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', ' Gotu kola (Centella asiatica), or \'the-herb of longevity,\'   is another popular Ayurvedic remedy. It is made from a tasteless,  odorless plant with fan-shaped green leaves that grows in and around water.', 'articles_images/Gotu kola.jpg', 2, '2022-01-08', 1),
+(26, ' Bitter melon', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', ' Bitter melon (Momordica charantia) is a tropical vine   closely related to zucchini, squash, cucumber, and pumpkin. It is considered   a staple in Asian cuisine and packed with nutrients and powerful antioxidants.', 'articles_images/Bitter melon.jpg', 2, '2022-01-09', 1),
+(27, ' Cardamom', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.  Research suggests that cardamom powder may help reduce blood pressure in people with ', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.  Research suggests that cardamom powder may help reduce blood pressure in people with ', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.  Research suggests that cardamom powder may help reduce blood pressure in people with ', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.  Research suggests that cardamom powder may help reduce blood pressure in people with ', ' Cardamom (Elettaria cardamomum), which is sometimes referred to as the queen of spices,  has been part of Ayurvedic medicine since ancient times.  Research suggests that cardamom powder may help reduce blood pressure in people with ', 'articles_images/Cardamom.jpg', 2, '2022-01-10', 1);
 
 -- --------------------------------------------------------
 
@@ -102,24 +227,13 @@ CREATE TABLE IF NOT EXISTS `channeling` (
   `recordNumber` int NOT NULL,
   `amount` double NOT NULL,
   `date` date NOT NULL,
-  `category` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `DoctorID` int NOT NULL,
+  `category` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `DocotorID` int NOT NULL,
   `PatientID` int NOT NULL,
   `scheduleID` int NOT NULL,
-  PRIMARY KEY (`channelingid`),
-  KEY `DoctorID` (`DoctorID`),
-  KEY `PatientID` (`PatientID`),
-  KEY `scheduleID` (`scheduleID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `channeling`
---
-
-INSERT INTO `channeling` (`channelingid`, `doctorName`, `patientName`, `recordNumber`, `amount`, `date`, `category`, `description`, `DoctorID`, `PatientID`, `scheduleID`) VALUES
-(1, 'B.A.Sankalpa', 'Natasha Perera', 1, 3500, '2021-12-09', 'Arthritis', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed viverra sapien. Vestibulum congue rutrum velit, ut dapibus diam facilisis quis. Phase', 2, 5, 4),
-(6, 'W.M.S.Perera\r\n', 'B.A.Sankalpa', 2, 2300, '2021-12-22', 'Handi', 'no description', 6, 3, 3);
+  PRIMARY KEY (`channelingid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -142,13 +256,6 @@ CREATE TABLE IF NOT EXISTS `channelingpayments` (
   KEY `channelinpayments_ibfk_2` (`patientid`),
   KEY `channelingid` (`channelingid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `channelingpayments`
---
-
-INSERT INTO `channelingpayments` (`paymentid`, `doctorCharges`, `hospitalCharges`, `commision`, `amount`, `doctorid`, `patientid`, `channelingid`) VALUES
-(1, 2500, 800, 200, 3500, 2, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -200,39 +307,48 @@ DROP TABLE IF EXISTS `common_user`;
 CREATE TABLE IF NOT EXISTS `common_user` (
   `userid` int NOT NULL AUTO_INCREMENT,
   `nameWithInitials` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `verify_token` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `fname` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `lname` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `gender` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `dob` date NOT NULL,
   `common_user_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `tpNumber` int NOT NULL,
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `common_user`
 --
 
-INSERT INTO `common_user` (`userid`, `nameWithInitials`, `verify_token`, `fname`, `lname`, `username`, `gender`, `dob`, `common_user_id`, `email`, `tpNumber`, `password`) VALUES
-(1, 'g.h.k.piyummmm', '', 'Piyum', 'Sankalpa', 'PsSanka', 'Male', '2021-10-12', 'Ep6JzzmGIQkJlSZYfkJjiFXDDP7h8MZYkrtxIi6W1LjIgQWN0H', 'ps@gmail.com', 113253627, '$2y$10$FXQiTH5vWeioK5sfFMRIJOtUXC8wfHZve29dqX15mSFq/8M.aFxje'),
-(2, 'B.A.Sankalpa', '89ef68ceecd05addb2e8129c3b797b00', 'Piyum', 'Sankalpa', 'Pssanka2', 'Male', '0000-00-00', 'BBTv9NYPL4ydsSDSXw3WxynaPVtkh1yCEWsFIdzCbxLduHVwGM', 'piyumsankalpaps@gmail.com', 1124857385, '$2y$10$VLmMzQah/ePr1V9eM4BttekUNRymXoJ0vZr4xzImW3bDcXcFAJoOS'),
-(3, 'B.A.Sankalpa', '', 'PSSanka', 'Sanka', 'PSSankaps', '', '0000-00-00', '1lObAnUEI9U4DaAWf2Bn4MGivjyxlh3FtjlBHA5Jf0PfHauvp4', 'PSSanka@gmail.com', 118372648, '$2y$10$1D9ZFE0eKkoqJ4m9KPeWR.LHBMK2M0o4n7pllB3taWMCOZGNRXxyy'),
-(4, '', 'f317bfd94e96b1032d632deefee53030', 'Avishi', 'Jayaweera', 'Avishi', '', '0000-00-00', 'TQO7ihOxFUBA0bDOMvVKlJiKD4EGxstg0vM1U2imq1p46nhdLl', 'avijayaweera1@gmail.com', 761234567, '$2y$10$kL2SHzWDi.lysU562uCR7uVd7QGAptEBIGuaIHwu89VFDF8DP1uW6'),
-(5, '', '', 'Zen', 'Singh', 'ZenS', '', '0000-00-00', 'zl79aHzFCxD71JmcekpQMt5o7HHS9ADH3uw2d4YIXBfUFoMdIm', 'zen@gmail.com', 761234566, '$2y$10$bsff4dG.wEcGkQ.jLh8q..r5VY7KYsGb/eFdlprdRWvSHOo/j8eba'),
-(6, '', '', 'Sanath', 'Perera', 'SanathP', '', '0000-00-00', '8mixHJLXTH3kN3O8zJc2mHw2ZTNRuCruEsNW8BprnhyJ1eWVfw', 'sanath@gmail.com', 761234566, '$2y$10$orsCbxjYk71gFRyXv.Vw0uWB9gUCqcJVd/HbzoYS9bIZRrOavrDra'),
-(7, '', '', 'Nihal', 'Kumara', 'NihalK', '', '0000-00-00', 'TfBsSZfbHPPRXqRssQ9JCKmO2EoQqzrwCJEjC0El9hWuVyIgcG', 'nihal@gmail.com', 711234567, '$2y$10$E18n2ToCZcKHBnM9ruNdJu0npjtMb5OdW1RXAfj9quStKNfvViDpC'),
-(8, 'J.Mary Kyle', '', 'Mary', 'Kyle', 'MaryK', 'Female', '1995-03-13', 'jsTrFLP5M0UJNEP7uNerOsFXHeuyH5xj9i1EecrGkZksiyDQgb', 'maryk@gmail.com', 711234567, '$2y$10$SjeB8q3wk04mXcQrkp9WwepXbNY6uF2BgEM4r65H9HcsYpG/QESB.'),
-(12, 'A.K.Cham Dil', '', 'cham', 'Dil', 'Cham Dil', 'Female', '2021-10-07', 'KsfE85T6uXp5MdmPpqwc6h0P84pn7QFgHhWnR0sqDkXvBulMxG', 'cham.dil@gmail.com', 2147483647, '$2y$10$NODjFVH4.xNzxVBdvp9h2Ot3zzVp.iK/vgHbEGEnVNEHrJrioluk.'),
-(13, 'A.K.Cham Dil', '', 'cham', 'Dil', 'gggggggggg', 'Female', '2021-10-06', 'M5ZgB6PNRX1rPCq5ddqAfhN5Eshkic3PfS1deem303QPrX9b1W', 'ssss@gmail.com', 2147483647, '$2y$10$9MKyWp494oByL3SNvOeFDOtjelrrc4MAhMTZ1URQ7NgjfdCDsGIY6'),
-(14, 'A.K.Cham Dil', '', 'cham', 'Dil', 'fgbsfhbgdhn', '--Select a Gender--', '2021-10-13', 'rEaOyGEB1g0L0S6cG98TiSqGCffmmBs8uAeNHXquIMH3CW6dqS', 'thushariperera333@gmail.com', 36537368, '$2y$10$QgCQROJByBauOk6issKUgePVAwsrrG8R8AA1EnmkzxiyjpmO63vpa'),
-(15, 'A.K.Cham Dil', '', 'cham', 'Dil', 'ssss', 'Male', '2021-10-13', 'Lwgvbfih3fF0lAaY7UJXOj99VpRYno3ZpwO0nt216UTawZBZoC', 'ssss1@gmail.com', 2147483647, '$2y$10$DE8swX4BVeC1UZ0vpIMZF.de0S7ivljqoC3vfCf7bU6qkLBzf8bCG'),
-(16, 'A.K.Cham Dil', '', 'Dil', 'nnh', 'wwwwwwwwww', 'Male', '2021-10-12', 'BNemEXXGpW7VSqoEHVbFLw4nXlS5ccYoh3g8CTTJFW1YjLIOMV', 'ssss22@gmail.com', 2147483647, '$2y$10$IbGr7zvBGd3L8Ph9oLH7ge1nrlkkNHcpViI2jazliq4f0ucxIGM4i'),
-(17, 'J.S.John', '', 'John', 'Smith', 'JS', 'Male', '1998-12-06', 'yzNG3hL3dGf0nIgDobylUBihE4p0HycLb0rYWXf0hkbaU5RLmf', 'js@gmail.com', 112748593, '$2y$10$HMQPdHpHB3MtrG.a2xBqqOeSj61kY1tnI13u1Cj4mwAaCk4U3cb46'),
-(20, 'Sankalpa', 'Dummy Data', 'pps', 'sd', 'PsSankasss', '--Select a Gender--', '1994-10-09', 'rICI4eBRDqbTXtxgh6kAExSs6KDyZZCGBpRrcaGP9McVZOf8VE', 'pss@gmail.com', 76496212, '$2y$10$nIsI0690d/bYHbjjoEBvRelXucL7zyL7pXYSYMZP5eIGtDoopalzm');
+INSERT INTO `common_user` (`userid`, `nameWithInitials`, `username`, `gender`, `common_user_id`, `email`, `tpNumber`, `image`, `password`, `date`) VALUES
+(1, 'g.h.k.piyummmm', 'PsSanka', 'Male', 'Ep6JzzmGIQkJlSZYfkJjiFXDDP7h8MZYkrtxIi6W1LjIgQWN0H', 'ps@gmail.com', 777846877, '', '$2y$10$FXQiTH5vWeioK5sfFMRIJOtUXC8wfHZve29dqX15mSFq/8M.aFxje', '2021-12-03'),
+(2, 'B.A.Sankalpa', 'Pssanka2', 'Male', 'BBTv9NYPL4ydsSDSXw3WxynaPVtkh1yCEWsFIdzCbxLduHVwGM', 'piyumsankalpaps@gmail.com', 1124857385, '', '$2y$10$VLmMzQah/ePr1V9eM4BttekUNRymXoJ0vZr4xzImW3bDcXcFAJoOS', '2021-12-06'),
+(3, 'B.A.Sankalpa', 'PSSankaps', '', '1lObAnUEI9U4DaAWf2Bn4MGivjyxlh3FtjlBHA5Jf0PfHauvp4', 'PSSanka@gmail.com', 118372648, '', '$2y$10$1D9ZFE0eKkoqJ4m9KPeWR.LHBMK2M0o4n7pllB3taWMCOZGNRXxyy', '2022-01-15'),
+(4, 'A.U.Jayaweera', 'Avishi', 'Female', 'TQO7ihOxFUBA0bDOMvVKlJiKD4EGxstg0vM1U2imq1p46nhdLl', 'avijayaweera1@gmail.com', 761234567, '', '$2y$10$kL2SHzWDi.lysU562uCR7uVd7QGAptEBIGuaIHwu89VFDF8DP1uW6', '2022-01-20'),
+(5, 'Z.E.Zen', 'ZenS', 'Male', 'zl79aHzFCxD71JmcekpQMt5o7HHS9ADH3uw2d4YIXBfUFoMdIm', 'zen@gmail.com', 761234566, '', '$2y$10$bsff4dG.wEcGkQ.jLh8q..r5VY7KYsGb/eFdlprdRWvSHOo/j8eba', '2022-01-25'),
+(6, '', 'SanathP', 'Male', '8mixHJLXTH3kN3O8zJc2mHw2ZTNRuCruEsNW8BprnhyJ1eWVfw', 'sanath@gmail.com', 761234566, '', '$2y$10$orsCbxjYk71gFRyXv.Vw0uWB9gUCqcJVd/HbzoYS9bIZRrOavrDra', '2022-02-02'),
+(7, '', 'NihalK', '', 'TfBsSZfbHPPRXqRssQ9JCKmO2EoQqzrwCJEjC0El9hWuVyIgcG', 'nihal@gmail.com', 711234567, '', '$2y$10$E18n2ToCZcKHBnM9ruNdJu0npjtMb5OdW1RXAfj9quStKNfvViDpC', '2022-02-10'),
+(17, 'J.S.John', 'JS', 'Male', 'yzNG3hL3dGf0nIgDobylUBihE4p0HycLb0rYWXf0hkbaU5RLmf', 'js@gmail.com', 112748593, '', '$2y$10$HMQPdHpHB3MtrG.a2xBqqOeSj61kY1tnI13u1Cj4mwAaCk4U3cb46', '2022-03-02'),
+(20, 'Sankalpa', 'PsSankasss', 'Male', 'rICI4eBRDqbTXtxgh6kAExSs6KDyZZCGBpRrcaGP9McVZOf8VE', 'pss@gmail.com', 76496212, '', '$2y$10$nIsI0690d/bYHbjjoEBvRelXucL7zyL7pXYSYMZP5eIGtDoopalzm', '2022-03-07'),
+(21, 'Piyum Sankalpa', 'PSSank', 'Male', 'GAdtYeF4Fg2OzEn9IN9oA2UtS76do5tUjv3ab8sWwAKtIafAf7', 'piyumsankalpa@gmail.com', 764962123, '', '$2y$10$0wBA3wNLGnn4LbdZ4lR7wenInrh2vTO9fZk819YyBGJefDAEIeaBW', '2022-03-15'),
+(22, 'A.K.Cham Dil', 'cham dil', 'Female', 'Vy3rheW4efFjfM83NgRapKk4k1PznSEnyhxTcn3EylSW1hPwtQ', 'cham.dil333@gmail.com', 777846877, '', '$2y$10$W8AE775keO5dLvESLE3C1eZ0MYRtt1.vCZwBhu.8e14pW9LVf0ldy', '2022-03-20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactus`
+--
+
+DROP TABLE IF EXISTS `contactus`;
+CREATE TABLE IF NOT EXISTS `contactus` (
+  `contactusid` int NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `message` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`contactusid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -264,7 +380,6 @@ CREATE TABLE IF NOT EXISTS `doctors` (
   `userid` int NOT NULL,
   `nameWithInitials` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `gender` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `dob` date NOT NULL,
   `registrationNumber` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `specialities` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `hospital` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -278,15 +393,12 @@ CREATE TABLE IF NOT EXISTS `doctors` (
 -- Dumping data for table `doctors`
 --
 
-INSERT INTO `doctors` (`userid`, `nameWithInitials`, `gender`, `dob`, `registrationNumber`, `specialities`, `hospital`, `city`, `address`, `image`) VALUES
-(2, 'B.A.Sankalpa', 'male', '1998-04-06', '435636363hg56', 'Handi', 'Ambagaha yata sewana', 'Homagama', '404/A3,ewewerw,rwrwrw,rwrwrw', 'doctor_qualification/depositphotos_102710504-stock-illustration-natural-wellness-logo.jpg'),
-(4, 'A.U.Jayaweera', 'female', '2000-05-14', '1234567', 'Internal Medicine', 'Nuga Uyana', 'Rathnapura', 'No 12,Main Street,Rathnapura', 'doctor_qualification/doctor certificate.jpg'),
-(6, 'W.M.S.Perera', 'male', '1957-03-12', 'RGS045876', 'Internal Medicine', 'Osu Sewana', 'Kandy', 'No 12,Park Street,Ahungalla', 'doctor_qualification/certificat_03.jpg'),
-(8, 'J.Mary Kyle', 'Female', '1995-03-13', 'RGS0175642', 'Salakya Chikitsa', 'Osu Wimana', 'Kurunegala', 'No 21/A Main Street Kurunegala', 'doctor_qualification/certificate 2.jpg'),
-(12, 'A.K.Cham Dil', 'Female', '2021-10-07', '7685757', 'dbgdb', 'gggggg', 'vgyjh', 'jfhjhfj', 'doctor_qualification/depositphotos_83302214-stock-photo-happy-doctor-man-smiling.jpg'),
-(15, 'A.K.Cham Dil', 'Male', '2021-10-13', '7685757', 'general physician', 'General Hospital', 'Colombo', '24456dq', 'doctor_qualification/admin_chart2.png'),
-(16, 'A.K.Cham Dil', 'Male', '2021-10-12', '7685757', 'general physician', 'General Hospital', 'piliyandala', '24456dq', 'doctor_qualification/1.jpg'),
-(20, 'Sankalpa', '--Select a Gender--', '1994-10-09', 'fafafaf12', 'Handi', 'ABC', 'Homagama', '610/05,3rd Lane, Gabadawaththa ii, Pitipana City, Homagama.', 'doctor_qualification/Gotu kola.jpg');
+INSERT INTO `doctors` (`userid`, `nameWithInitials`, `gender`, `registrationNumber`, `specialities`, `hospital`, `city`, `address`, `image`) VALUES
+(2, 'B.A.Sankalpa', 'male', '435636363hg56', 'Handi', 'Ambagaha yata sewana', 'Homagama', '404/A3,ewewerw,rwrwrw,rwrwrw', 'doctor_qualification/depositphotos_102710504-stock-illustration-natural-wellness-logo.jpg'),
+(4, 'A.U.Jayaweera', 'female', '1234567', 'Internal Medicine', 'Nuga Uyana', 'Rathnapura', 'No 12,Main Street,Rathnapura', 'doctor_qualification/doctor certificate.jpg'),
+(6, 'W.M.S.Perera', 'male', 'RGS045876', 'Internal Medicine', 'Osu Sewana', 'Kandy', 'No 12,Park Street,Ahungalla', 'doctor_qualification/certificat_03.jpg'),
+(20, 'Sankalpa', 'male', 'fafafaf12', 'Handi', 'ABC', 'Homagama', '610/05,3rd Lane, Gabadawaththa ii, Pitipana City, Homagama.', 'doctor_qualification/Gotu kola.jpg'),
+(22, 'A.K.Cham Dil', 'Female', '7685757', 'general physician', 'General Hospital', 'Colombo', 'jfhjhfj', 'doctor_qualification/cham dil-doctor2.jpg');
 
 -- --------------------------------------------------------
 
@@ -298,13 +410,30 @@ DROP TABLE IF EXISTS `donations`;
 CREATE TABLE IF NOT EXISTS `donations` (
   `feesID` int NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
-  `amount` double NOT NULL,
+  `amount` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `userName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `donationNumber` int NOT NULL,
   `userID` int NOT NULL,
+  `donationID` int NOT NULL,
+  `status` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`feesID`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `donations`
+--
+
+INSERT INTO `donations` (`feesID`, `date`, `amount`, `userName`, `userID`, `donationID`, `status`) VALUES
+(6, '2021-12-09', '100', 'B.A Sankalpa', 2, 1, 'completed'),
+(7, '2021-12-28', '120', 'Avishi', 1, 2, 'completed'),
+(8, '2022-01-08', '50', 'Sankalpa', 6, 3, 'completed'),
+(9, '2022-01-17', '120', 'Chamodi', 4, 4, 'completed'),
+(10, '2022-02-03', '200', 'B.A.Sankalpa', 2, 5, 'completed'),
+(11, '2022-02-16', '100', 'Chamodi', 3, 6, 'completed'),
+(12, '2022-03-03', '120', 'Avishi', 4, 7, 'completed'),
+(13, '2022-03-12', '200', 'Chamodi', 3, 8, 'completed'),
+(31, '2022-03-25', '1000.00', 'Pssanka2', 2, 28, 'completed'),
+(36, '2022-06-26', '0', 'Pssanka2', 2, 33, 'not_completed');
 
 -- --------------------------------------------------------
 
@@ -314,11 +443,13 @@ CREATE TABLE IF NOT EXISTS `donations` (
 
 DROP TABLE IF EXISTS `forumdoctor`;
 CREATE TABLE IF NOT EXISTS `forumdoctor` (
-  `name` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `tpNumber` int NOT NULL,
   `location` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `forumDoctorid` int NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `userid` int NOT NULL,
   PRIMARY KEY (`forumDoctorid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -326,10 +457,117 @@ CREATE TABLE IF NOT EXISTS `forumdoctor` (
 -- Dumping data for table `forumdoctor`
 --
 
-INSERT INTO `forumdoctor` (`name`, `description`, `tpNumber`, `location`, `forumDoctorid`) VALUES
-('Dr. Sunil Perera', 'I went to Dr. Sunil Perera to get treatments for my leg pain and he diagonised the problem very well and now i am getting well. so i would like to recommend him.', 2147483647, ' General Hospital, Anuradhapura', 8),
-('Chamodi Dilshani', 'amazing doctor', 2147483647, 'Colombo 5', 9),
-('A.K.CHAMODI DILSHANI', 'amazing doctor', 2147483647, 'Colombo 5', 10);
+INSERT INTO `forumdoctor` (`name`, `description`, `tpNumber`, `location`, `forumDoctorid`, `date`, `userid`) VALUES
+('Cham Dil', ' General Hospital, Anuradhapura', 2147483647, ' General Hospital, Anuradhapura', 8, '2022-03-08', 1),
+('Sankalpa', 'good for diabetics', 777846877, 'colombo', 9, '2022-06-25', 2),
+('cham', 'good doctor', 764962891, 'colombo', 10, '2022-06-26', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forumherb`
+--
+
+DROP TABLE IF EXISTS `forumherb`;
+CREATE TABLE IF NOT EXISTS `forumherb` (
+  `forumHerbid` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `verification` int NOT NULL,
+  `verificationDoctorid` int NOT NULL,
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `userid` int NOT NULL,
+  `replyid` int NOT NULL,
+  `date` date NOT NULL,
+  `verifiedDoctorName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`forumHerbid`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `forumherb`
+--
+
+INSERT INTO `forumherb` (`forumHerbid`, `name`, `description`, `verification`, `verificationDoctorid`, `image`, `userid`, `replyid`, `date`, `verifiedDoctorName`) VALUES
+(6, 'ashwaganda', 'very good for nervous system', 1, 2, 'forum_herb/iStock-473454180.jpg', 22, 1, '2022-03-08', 'B.A.Sankalpa');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forumproduct`
+--
+
+DROP TABLE IF EXISTS `forumproduct`;
+CREATE TABLE IF NOT EXISTS `forumproduct` (
+  `forumproductid` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `description` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `replyid` int NOT NULL,
+  `userid` int NOT NULL,
+  PRIMARY KEY (`forumproductid`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `forumproduct`
+--
+
+INSERT INTO `forumproduct` (`forumproductid`, `name`, `date`, `description`, `image`, `replyid`, `userid`) VALUES
+(5, 'hair oil', '2022-03-08', 'good for hair growth', 'forum_product/cham dil-272050473_2070591639765939_4953144688621902852_n.jpg', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forumreplydoctor`
+--
+
+DROP TABLE IF EXISTS `forumreplydoctor`;
+CREATE TABLE IF NOT EXISTS `forumreplydoctor` (
+  `forumDoctorid` int NOT NULL,
+  `reply` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `replyid` int NOT NULL AUTO_INCREMENT,
+  `userid` int NOT NULL,
+  PRIMARY KEY (`replyid`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `forumreplydoctor`
+--
+
+INSERT INTO `forumreplydoctor` (`forumDoctorid`, `reply`, `replyid`, `userid`) VALUES
+(8, 'good information', 1, 22),
+(8, 'very good', 2, 2),
+(8, 'good information', 3, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forumreplydproduct`
+--
+
+DROP TABLE IF EXISTS `forumreplydproduct`;
+CREATE TABLE IF NOT EXISTS `forumreplydproduct` (
+  `forumProductid` int NOT NULL,
+  `reply` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `replyid` int NOT NULL AUTO_INCREMENT,
+  `userid` int NOT NULL,
+  PRIMARY KEY (`replyid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forumreplyherb`
+--
+
+DROP TABLE IF EXISTS `forumreplyherb`;
+CREATE TABLE IF NOT EXISTS `forumreplyherb` (
+  `forumHerbid` int NOT NULL,
+  `reply` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `replyid` int NOT NULL AUTO_INCREMENT,
+  `userid` int NOT NULL,
+  PRIMARY KEY (`replyid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -354,6 +592,54 @@ CREATE TABLE IF NOT EXISTS `herbsforum` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `patientpayment`
+--
+
+DROP TABLE IF EXISTS `patientpayment`;
+CREATE TABLE IF NOT EXISTS `patientpayment` (
+  `paymentid` int NOT NULL AUTO_INCREMENT,
+  `appointmentid` int NOT NULL,
+  `commission` int NOT NULL,
+  `totalPayment` int NOT NULL,
+  `doctorCharge` int NOT NULL,
+  `patientName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `DoctorName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `status` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `doctorid` int NOT NULL,
+  PRIMARY KEY (`paymentid`),
+  KEY `patientPayment_ibfk_1` (`appointmentid`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patientrate`
+--
+
+DROP TABLE IF EXISTS `patientrate`;
+CREATE TABLE IF NOT EXISTS `patientrate` (
+  `patientRateid` int NOT NULL AUTO_INCREMENT,
+  `feedback` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `userid` int NOT NULL,
+  `doctorid` int NOT NULL,
+  `doctorName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `patientName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`patientRateid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `patientrate`
+--
+
+INSERT INTO `patientrate` (`patientRateid`, `feedback`, `userid`, `doctorid`, `doctorName`, `date`, `patientName`) VALUES
+(1, 'very friendly', 22, 4, 'A.U.Jayaweera', '2022-03-27', ''),
+(2, 'he was nice', 22, 6, 'W.M.S.Perera', '2022-03-27', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `patients`
 --
 
@@ -374,8 +660,8 @@ INSERT INTO `patients` (`userid`, `nic`, `image`) VALUES
 (3, '983456124v', 'medical_records/unnamed (1).jpg'),
 (4, '200063502850', 'medical_records/pdf.png'),
 (5, '950739281891', 'medical_records/pdf.png'),
-(12, '678388V', 'medical_records/65210920-black-wood-panels-background.jpg'),
-(16, '678388V', 'medical_records/240_F_437556982_qpg2D5yVDYnQaqttF3uzTiuLqQ7bxuud.jpg');
+(21, '980730245v', 'medical_records/ayurveda.jpg'),
+(22, '986012303V', 'medical_records/DSC_5703.jpg');
 
 -- --------------------------------------------------------
 
@@ -400,12 +686,46 @@ CREATE TABLE IF NOT EXISTS `paymenthistory` (
   KEY `paymentID` (`paymentID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `paymenthistory`
+-- Table structure for table `productcommission`
 --
 
-INSERT INTO `paymenthistory` (`paymentHistoryNumber`, `date`, `channelingID`, `paymentID`, `amount`, `userName`, `doctorID`, `patientID`) VALUES
-(1, '2021-12-09', 1, 1, 3500, '', 2, 5);
+DROP TABLE IF EXISTS `productcommission`;
+CREATE TABLE IF NOT EXISTS `productcommission` (
+  `feesID` int NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `amount` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `productid` int NOT NULL,
+  `userID` int NOT NULL,
+  `status` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `productName` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`feesID`),
+  KEY `userID` (`userID`),
+  KEY `productcommission_ibfk_2` (`productid`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `productcommission`
+--
+
+INSERT INTO `productcommission` (`feesID`, `date`, `amount`, `productid`, `userID`, `status`, `productName`) VALUES
+(3, '2021-12-09', '35', 33, 2, 'completed', 'Product One'),
+(4, '2021-12-23', '40', 34, 2, 'completed', 'Product two'),
+(5, '2022-01-05', '40', 35, 2, 'completed', 'Product three'),
+(6, '2022-01-06', '54', 36, 2, 'completed', 'Product Four'),
+(7, '2022-01-08', '52.50', 37, 2, 'completed', 'Product Five'),
+(8, '2022-01-17', '52.50', 38, 2, 'completed', 'Product Six'),
+(9, '2022-02-09', '30.00', 39, 2, 'completed', 'Product Seven'),
+(10, '2022-02-12', '37.50', 40, 2, 'completed', 'Product Eight'),
+(11, '2022-02-14', '30.00', 41, 3, 'completed', 'Product Five two'),
+(12, '2022-02-16', '105.00', 42, 2, 'completed', 'Product Nine'),
+(13, '2022-03-09', '100', 46, 2, 'completed', 'Product Five three'),
+(14, '2022-03-16', '105', 50, 2, 'completed', 'Product Five'),
+(21, '2022-03-29', '67.50', 57, 2, 'completed', 'Nawarathna Oil'),
+(22, '2022-06-25', '0', 58, 2, 'not_completed', 'Product Eight t'),
+(23, '2022-06-26', '0', 59, 2, 'not_completed', 'Product Five two');
 
 -- --------------------------------------------------------
 
@@ -418,31 +738,33 @@ CREATE TABLE IF NOT EXISTS `products` (
   `productid` int NOT NULL AUTO_INCREMENT,
   `productName` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `productPrice` int NOT NULL,
-  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `category` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `sellerName` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `address` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(800) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `category` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `sellerName` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `tpNumber` int NOT NULL,
   `sellerid` int NOT NULL,
   PRIMARY KEY (`productid`),
   KEY `sellerid` (`sellerid`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`productid`, `productName`, `productPrice`, `description`, `image`, `category`, `sellerName`, `address`, `tpNumber`, `sellerid`) VALUES
-(1, 'Product One', 400, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet reiciendis, dignissimos omnis vel mole', 'seller_products/images (1).jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
-(3, 'Product Two', 250, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet reiciendis, dignissimos omnis vel mole', 'seller_products/images (2).jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
+(1, 'Venivel Body Wash', 400, 'Antibacterial Cleanser Satkara Venivel Body Wash 300ml Product of Ayurvedic Drugs Corporation', 'seller_products/Pssanka2-images (4).jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
+(3, 'Dharani Oil', 250, 'Dharani Oil is a variant of a classical recipe, Dharani oil is an invigorating blend of herbs including Himalayan Cedar, Ginger and Rasna processed in the juice of tamarind leaves, in sesame oil base. This energizing blend of herbs is vital for balancing kapha dosha.', 'seller_products/Pssanka2-images (2).jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
 (4, 'Product One seller two', 350, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet reiciendis, dignissimos omnis vel mole', 'seller_products/images (3).jpg', 'Product', 'P.S.Sankalpa', 'ffdafafaf/fadfaf/afadfad', 113253627, 1),
-(5, 'Product Three', 200, 'dsdsf fsffsfds gfgdfgdf dghdghdgh dghdghdghdg dfhdfh dfhdf dfghdf', 'seller_products/images (4).jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
-(6, 'Product Four', 120, 'dsfsdg hgjfj fjfjfgj afrete dgsrgrhyrvv dsfgsgsfh d eredfd gsdgsvsdgtsd dfgsd sdg', 'seller_products/images (5).jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
-(8, 'Product Five', 301, 'fdfsgs sgsgsg sgsgsg sgsgs ssgsgsg sgssgsfgsfg sfg sfgs gs gs', 'seller_products/images (7).jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
-(9, 'Product Six', 500, 'fhghdh jfgjfgjfg grtgeter vbfdgdfhdf dfh dfhdfhfsd fgsdgsgsgs', 'seller_products/images.jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
-(10, 'Product Seven', 240, 'fdfgsdgs gfdhgjh jkkfhjgdhdfhf hdghdghdgj gjfjfgjfjfg fgj fgj fgjfg', 'seller_products/image(8).jpeg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
-(16, 'Herb one', 200, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet reiciendis, dignissimos omnis vel mole', 'seller_products/Cumin.jpg', 'Herb', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2);
+(5, 'Karela Jamun Juice', 200, 'This bottle purifies blood,control blood sugar level,improves liver function,beneficial for skin health,aids in weight management', 'seller_products/Pssanka2-images.jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
+(6, 'Ashwagandha ', 120, 'This product contains chemicals that might help calm the brain,reduce swelling,lower blood pressure and alter the imune system', 'seller_products/Pssanka2-images (5).jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
+(8, 'Gotu Kola', 301, 'Gotu kola is a perennial plant native to India Japan China Indonesia South Africa Srilanka and the Soth Pacific.It thrives in and around water', 'seller_products/Pssanka2-Gotu kola.jpg', 'Herb', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
+(9, 'Maha Neelyadi Thailaya', 500, 'This oil bottle have been used as an important self-care regimen since Vedic times.', 'seller_products/Pssanka2-ayur_head_massag.jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
+(10, 'Product Seven', 240, 'Bala Thailam is a widely used effective Ayurvedic oil for various neurological diseases andrheunatoid disorder', 'seller_products/Pssanka2-images (4).jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
+(16, 'Cumin Seeds', 200, 'Cumin seeds are actually dry fruits known as schizocarps.They are thin yellowish brown elongated ovals about 6 mm long', 'seller_products/Pssanka2-Cumin.jpg', 'Herb', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
+(17, 'SLIMDERM', 123, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet reiciendis, dignissimos omnis vel mole', 'seller_products/Pssanka2-images (5).jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2),
+(57, 'Nawarathna Oil', 225, 'Navratna Oil is a multi-benefit cooling oil that is enriched with herbal extracts. It is used for head and body massage and is effective for both men and women. A massage with Navratna oil relaxes the muscles. It imparts a cooling effect on the scalp and body.', 'seller_products/Pssanka2-images (3).jpg', 'Product', 'B.A.Sankalpa', '404/A1/13,pitipana north,Homagama', 1124857385, 2);
 
 -- --------------------------------------------------------
 
@@ -500,6 +822,22 @@ CREATE TABLE IF NOT EXISTS `reply` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `resetpassword`
+--
+
+DROP TABLE IF EXISTS `resetpassword`;
+CREATE TABLE IF NOT EXISTS `resetpassword` (
+  `resetid` int NOT NULL AUTO_INCREMENT,
+  `resetEmail` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `resetSelector` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `restTocken` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `resetExpires` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`resetid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reviews`
 --
 
@@ -526,7 +864,7 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `scheduleid` int NOT NULL AUTO_INCREMENT,
   `slotNumber` int NOT NULL,
   `dateofSlot` date NOT NULL,
-  `arrivalTime` time(4) NOT NULL,
+  `arrivalTime` time(1) NOT NULL,
   `departureTime` time(6) NOT NULL,
   `noOfPatient` int NOT NULL,
   `timePerPatient` time(6) NOT NULL,
@@ -535,17 +873,24 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `doctorid` int NOT NULL,
   PRIMARY KEY (`scheduleid`),
   KEY `doctorid` (`doctorid`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `schedule`
 --
 
 INSERT INTO `schedule` (`scheduleid`, `slotNumber`, `dateofSlot`, `arrivalTime`, `departureTime`, `noOfPatient`, `timePerPatient`, `doctorCharge`, `doctorNote`, `doctorid`) VALUES
-(1, 1, '2021-10-20', '00:00:08.0000', '00:00:12.000000', 12, '00:00:16.000000', '1500', 'Rs.500 off  from the second visit', 4),
-(3, 1, '2021-10-23', '00:00:08.3000', '12:00:00.000000', 12, '00:00:16.000000', '1500', 'Be on Time for the Appointment', 6),
-(4, 2, '2021-10-23', '08:00:00.0000', '09:00:00.000000', 12, '00:00:16.000000', '2500', 'Be on Time for the Appointment', 2),
-(5, 1, '2021-10-24', '00:00:09.0000', '12:00:00.000000', 10, '00:00:16.000000', '2000', 'Rs.500 off  from the second visit', 6);
+(3, 1, '2022-06-27', '00:00:00.0', '12:00:00.000000', 12, '00:00:16.000000', '1500', 'Be on Time for the Appointment', 6),
+(4, 2, '2022-06-27', '00:00:00.0', '09:00:00.000000', 12, '00:00:16.000000', '2500', 'Be on Time for the Appointment', 2),
+(5, 1, '2022-06-27', '00:00:00.0', '12:00:00.000000', 10, '00:00:16.000000', '2000', 'Rs.500 off  from the second visit', 6),
+(8, 21, '2022-06-27', '08:00:00.0', '09:00:00.000000', 8, '00:00:16.000000', '2500', 'gdfjlhjlg', 2),
+(9, 32, '2022-06-27', '08:00:00.0', '09:00:00.000000', 3, '00:00:15.000000', '2500', 'lofrkpgsmpvsfkpg rgfsfsvfs', 2),
+(11, 121, '2022-06-27', '09:47:00.0', '10:47:00.000000', 4, '00:00:16.000000', '2400', 'gdfjlhjlg', 2),
+(13, 12, '2022-06-27', '10:50:00.0', '11:50:00.000000', 4, '00:00:15.000000', '2400', 'gdfjlhjlg', 2),
+(14, 1, '2022-06-27', '09:00:00.0', '11:00:00.000000', 10, '00:00:12.000000', '2000', 'Rs.500 off  from the second visit', 4),
+(15, 2, '2022-06-27', '13:00:00.0', '17:00:00.000000', 24, '00:00:10.000000', '1500', 'Rs.500 off  from the second visit', 4),
+(16, 1, '2022-06-27', '08:00:00.0', '11:00:00.000000', 18, '00:00:10.000000', '2000', 'Doctor\'s Payment', 4),
+(17, 3, '2022-06-27', '08:00:00.0', '22:22:00.000000', 54, '00:00:16.000000', '2500', 'Note', 2);
 
 -- --------------------------------------------------------
 
@@ -573,12 +918,39 @@ INSERT INTO `sellers` (`userid`, `nameWithInitials`, `registrationNumber`, `tpNu
 (1, 'P.S.Sankalpa', '323443ertwet', 112748352, '980439294', 'ffdafafaf/fadfaf/afadfad', 'seller_certificates/images.png'),
 (2, 'B.A.Sankalpa', '2141415say', 112847583, '983949582', '404/A1/13,pitipana north,Homagama', 'seller_certificates/content-co'),
 (4, 'A.U.Jayaweera', 'RGS0175642', 765640123, '200063502850', 'No 12,Main Street,Rathnapura', 'seller_certificates/certificate 2.jpg'),
-(7, 'J.Nihal Kumara', 'RGS0175642', 711234567, '681234512V', 'No 26/B ,Main Road,Matara', 'seller_certificates/certificat_03.jpg'),
-(16, 'A.K.Cham Dil', '7685757', 2147483647, '678388V', '24456', 'seller_certificates/landing.jpg');
+(7, 'J.Nihal Kumara', 'RGS0175642', 711234567, '681234512V', 'No 26/B ,Main Road,Matara', 'seller_certificates/certificat_03.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tempdonations`
+--
+
+DROP TABLE IF EXISTS `tempdonations`;
+CREATE TABLE IF NOT EXISTS `tempdonations` (
+  `donationid` int NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `userid` int NOT NULL,
+  PRIMARY KEY (`donationid`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `appointments`
+--
+ALTER TABLE `appointments`
+  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`doctorid`) REFERENCES `doctors` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`Patientid`) REFERENCES `patients` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `appointments_ibfk_3` FOREIGN KEY (`scheduleid`) REFERENCES `schedule` (`scheduleid`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `articlereviews`
+--
+ALTER TABLE `articlereviews`
+  ADD CONSTRAINT `articlereviews_ibfk_1` FOREIGN KEY (`articleid`) REFERENCES `articles` (`articleid`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `articles`
@@ -587,26 +959,18 @@ ALTER TABLE `articles`
   ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`doctorid`) REFERENCES `doctors` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `channeling`
---
-ALTER TABLE `channeling`
-  ADD CONSTRAINT `channeling_ibfk_1` FOREIGN KEY (`DoctorID`) REFERENCES `doctors` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `channeling_ibfk_2` FOREIGN KEY (`PatientID`) REFERENCES `patients` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `channeling_ibfk_3` FOREIGN KEY (`scheduleID`) REFERENCES `schedule` (`scheduleid`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `channelingpayments`
 --
 ALTER TABLE `channelingpayments`
-  ADD CONSTRAINT `channelingpayments_ibfk_1` FOREIGN KEY (`doctorid`) REFERENCES `doctors` (`userid`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `channelingpayments_ibfk_2` FOREIGN KEY (`patientid`) REFERENCES `patients` (`userid`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `channelingpayments_ibfk_3` FOREIGN KEY (`channelingid`) REFERENCES `channeling` (`channelingid`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `channelingpayments_ibfk_1` FOREIGN KEY (`doctorid`) REFERENCES `doctors` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `channelingpayments_ibfk_2` FOREIGN KEY (`patientid`) REFERENCES `patients` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `channelingpayments_ibfk_3` FOREIGN KEY (`channelingid`) REFERENCES `appointments` (`appointmentid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `channeling_history`
 --
 ALTER TABLE `channeling_history`
-  ADD CONSTRAINT `channeling_history_ibfk_1` FOREIGN KEY (`channelingID`) REFERENCES `channeling` (`channelingid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `channeling_history_ibfk_1` FOREIGN KEY (`channelingID`) REFERENCES `appointments` (`appointmentid`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `channeling_history_ibfk_2` FOREIGN KEY (`doctorID`) REFERENCES `doctors` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `channeling_history_ibfk_3` FOREIGN KEY (`patientID`) REFERENCES `patients` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -643,6 +1007,12 @@ ALTER TABLE `herbsforum`
   ADD CONSTRAINT `herbsforum_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `common_user` (`userid`) ON UPDATE CASCADE;
 
 --
+-- Constraints for table `patientpayment`
+--
+ALTER TABLE `patientpayment`
+  ADD CONSTRAINT `patientPayment_ibfk_1` FOREIGN KEY (`appointmentid`) REFERENCES `appointments` (`appointmentid`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `patients`
 --
 ALTER TABLE `patients`
@@ -654,8 +1024,8 @@ ALTER TABLE `patients`
 ALTER TABLE `paymenthistory`
   ADD CONSTRAINT `paymenthistory_ibfk_1` FOREIGN KEY (`doctorID`) REFERENCES `doctors` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `paymenthistory_ibfk_2` FOREIGN KEY (`patientID`) REFERENCES `patients` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `paymenthistory_ibfk_3` FOREIGN KEY (`channelingID`) REFERENCES `channeling` (`channelingid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `paymenthistory_ibfk_4` FOREIGN KEY (`paymentID`) REFERENCES `channelingpayments` (`paymentid`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `paymenthistory_ibfk_3` FOREIGN KEY (`channelingID`) REFERENCES `appointments` (`appointmentid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `paymenthistory_ibfk_4` FOREIGN KEY (`paymentID`) REFERENCES `channelingpayments` (`paymentid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `products`

@@ -35,10 +35,11 @@
             </div>
         </div>
 
+        <!-- for the search option category vise -->
         <div class="product-btns">
             <div id="img-p" class="pro-btn c-btns">
                 <form action="">
-                    <input type="hidden" value="Product" name="search">
+                    <input type="hidden" value="Product" name="search2">
                     <div class="img-s"><img src="<?= ASSETS ?>img/pro-btn.jpg" alt="img 1"></div>
                     <button type="submit" id="btns-p">Products</button>
                 </form>
@@ -46,12 +47,13 @@
             </div>
             <div id="img-p" class="herb-btn c-btns">
                 <form action="">
-                <input type="hidden" value="Herb" name="search">
-                <div class="img-s"><img src="<?= ASSETS ?>img/herb-btn.jpg" alt="img 2"></div>
-                <button type="submit" id="btns-p">Herbs</button>
-                </form>            
+                    <input type="hidden" value="Herb" name="search2">
+                    <div class="img-s"><img src="<?= ASSETS ?>img/herb-btn.jpg" alt="img 2"></div>
+                    <button type="submit" id="btns-p">Herbs</button>
+                </form>
             </div>
         </div>
+
     </div>
 
     <div class="products-section">
@@ -67,7 +69,29 @@
             </div>
         </div>
 
+
+
         <div class="cardrow">
+
+            <!-- <div class="uses1">
+
+                <form action="" class="usesform">
+                    <input type="hidden" value="Hair" name="search2">
+                    <button class="btn4" type="submit">Hair</button>
+                </form>
+
+                <form action="" class="usesform">
+                    <input type="hidden" value="Nail" name="search2">
+                    <button class="btn4" type="submit">Nail</button>
+                </form>
+
+
+                <form action="" class="usesform">
+                    <input type="hidden" value="Foot" name="search2">
+                    <button class="btn4" type="submit">Foot</button>
+                </form>
+
+            </div> -->
 
             <?php if ($rows) : ?>
                 <?php foreach ($rows as $row) : ?>

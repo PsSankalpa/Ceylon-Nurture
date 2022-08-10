@@ -11,6 +11,7 @@ class sellers extends Model
 		'nic',
 		'address',
 		'image',
+		
 	];
 
 	protected $table = "sellers";

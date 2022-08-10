@@ -25,6 +25,8 @@
                             <h4>Price : <?= "RS." . $row->productPrice ?></h4>
                             <p><?= $row->sellerName ?></p>
                             <p><?= $row->description ?></p>
+                            <br />
+                            <!-- <p><?= $row->uses ?></p> -->
                         </div>
                         <div class="contact-details1">
                             <p><?= $row->address ?></p>

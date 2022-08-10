@@ -3,472 +3,449 @@ class channeling extends Controller
 {
     function index()
     {
-      
-       $channeling = new channeling();
-        if(!Auth::logged_in())
-        {
-         $this->redirect('login/login');
+
+        $channeling = new channeling();
+        if (!Auth::logged_in()) {
+            $this->redirect('login/login');
         }
 
         $Auth = new Auth;
         $patients = new patients;
         $data = $Auth->finduser();
         $userid = Auth::userid();
-        $data = $patients->where('userid',$userid); 
+        $data = $patients->where('userid', $userid);
 
-        if(!$data){
+        if (!$data) {
 
             $this->view('patient/errorpage');
-
-        }
-        else{
+        } else {
 
             $doctors = new doctors();
             //$common_user = new common_user();
-               
-            $data=$doctors->findAll();
+
+            $data = $doctors->findAll();
             //$data2=$common_user->where('userid',$userid);
 
-            $data1=NULL;
-            $data2=NULL;
-            $data3=NULL;
-            $data4=NULL;
+            $data1 = NULL;
+            $data2 = NULL;
+            $data3 = NULL;
+            $data4 = NULL;
 
             $data5 = $Auth->finduser();
 
-            if(count($_POST)>0){
+            if (count($_POST) > 0) {
 
-            
 
-                if(isset($_POST['name'])){
-        
-                $name = '%' . $_POST['name'] . '%';;
-        
-                $query= "select * from doctors where nameWithInitials like :name order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
-                $arr['name'] = $name; //to pass to the query function
-                $data1 = $doctors->query($query, $arr);
-                
+
+                if (isset($_POST['name'])) {
+
+                    $name = '%' . $_POST['name'] . '%';;
+
+                    $query = "select * from doctors where nameWithInitials like :name order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+                    $arr['name'] = $name; //to pass to the query function
+                    $data1 = $doctors->query($query, $arr);
                 }
 
-                if(isset($_POST['hospital'])){
-        
+                if (isset($_POST['hospital'])) {
+
                     $hospital = '%' . $_POST['hospital'] . '%';;
-            
-                    $query= "select * from doctors where hospital like :hospital order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+
+                    $query = "select * from doctors where hospital like :hospital order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
                     $arr['hospital'] = $hospital; //to pass to the query function
                     $data2 = $doctors->query($query, $arr);
-                    
-                    }
+                }
             }
 
-                // if ( (isset($_GET['search1'])) ) {
+            // if ( (isset($_GET['search1'])) ) {
 
-                // //side that we put % mark it ignore exact matching
-                // $search1 = '%' . $_GET['search1'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-                // $query1 = "select * from doctors where nameWithInitials like :search1 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
-                // $arr1['search1'] = $search1; //to pass to the query function
-                // $data1 = $doctors->query($query1, $arr1);
-                // //print_r($data1);
-                // }
+            // //side that we put % mark it ignore exact matching
+            // $search1 = '%' . $_GET['search1'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+            // $query1 = "select * from doctors where nameWithInitials like :search1 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+            // $arr1['search1'] = $search1; //to pass to the query function
+            // $data1 = $doctors->query($query1, $arr1);
+            // //print_r($data1);
+            // }
 
-                // if ( (isset($_GET['search2'])) ) {
+            // if ( (isset($_GET['search2'])) ) {
 
-                // $search2 = '%' . $_GET['search2'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-                // $query2 = "select * from doctors where specialities = :search2 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
-                // $arr2['search2'] = $search2; //to pass to the query function
-                // $data2 = $doctors->query($query2, $arr2);
-                // //print_r($data2);
+            // $search2 = '%' . $_GET['search2'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+            // $query2 = "select * from doctors where specialities = :search2 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+            // $arr2['search2'] = $search2; //to pass to the query function
+            // $data2 = $doctors->query($query2, $arr2);
+            // //print_r($data2);
 
-                // }
+            // }
 
-                // if ( (isset($_GET['search3'])) ) {
+            // if ( (isset($_GET['search3'])) ) {
 
-                // $search3 = '%' . $_GET['search3'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-                // $query3 = "select * from doctors where hospital = :search3 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
-                // $arr3['search3'] = $search3; //to pass to the query function
-                // $data3 = $doctors->query($query3, $arr3);
-                // //print_r($data3);
+            // $search3 = '%' . $_GET['search3'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+            // $query3 = "select * from doctors where hospital = :search3 order by userid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+            // $arr3['search3'] = $search3; //to pass to the query function
+            // $data3 = $doctors->query($query3, $arr3);
+            // //print_r($data3);
 
-                // }
+            // }
 
-                // if ( (isset($_GET['search4'])) ) {
+            // if ( (isset($_GET['search4'])) ) {
 
-                // $schedule = new schedule;
-                // $scheduleid = $schedule->where('doctorid',$userid);
-                
-                // if($scheduleid){
-                // $search4 = '%' . $_GET['search4'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
-                // $query4 = "select * from schedule where dateofSlot = :search4 order by scheduleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
-                // $arr4['search4'] = $search4; //to pass to the query function
-                // $data4 = $schedule->query($query4, $arr4);
-                // //print_r($data4);
-                // //die;
+            // $schedule = new schedule;
+            // $scheduleid = $schedule->where('doctorid',$userid);
 
-                // }
-                //}
+            // if($scheduleid){
+            // $search4 = '%' . $_GET['search4'] . '%'; //by putting % mark, it ignore the words or letters in the beginin and the end, only consider what's in the GET
+            // $query4 = "select * from schedule where dateofSlot = :search4 order by scheduleid desc"; //put like instead of = sign,becasue we cannot search for exact word in the search
+            // $arr4['search4'] = $search4; //to pass to the query function
+            // $data4 = $schedule->query($query4, $arr4);
+            // //print_r($data4);
+            // //die;
 
-            
-
-
-
-        
-
-        $this->view("patient/channeling",[
-            'rows'=>$data,
-            'rows1'=>$data1,
-            'rows2'=>$data2,
-            'rows3'=>$data3,
-            'rows4'=>$data4,
-            'rows5'=>$data5,
+            // }
+            //}
 
 
 
 
-        ]
-    );
 
+
+
+            $this->view(
+                "patient/channeling",
+                [
+                    'rows' => $data,
+                    'rows1' => $data1,
+                    'rows2' => $data2,
+                    'rows3' => $data3,
+                    'rows4' => $data4,
+                    'rows5' => $data5,
+
+
+
+
+                ]
+            );
         }
     }
 
-    function payment($userid1=null,$scheduleid=null)
+    function payment($userid1 = null, $scheduleid = null)
     {
         $doctors = new doctors();
-        $row=$doctors->where('userid',$userid1);
-        if($row)
-        {
-            $row=$row[0];
+        $row = $doctors->where('userid', $userid1);
+        if ($row) {
+            $row = $row[0];
         }
 
-        $patients=new patients();
+        $patients = new patients();
         $Auth = new Auth;
         $userid = Auth::userid();
 
-        $row2=$patients->where('userid',$userid);
-        if($row2)
-        {
-            $row2=$row2[0];
+        $row2 = $patients->where('userid', $userid);
+        if ($row2) {
+            $row2 = $row2[0];
         }
 
-        $common_user=new common_user();
+        $common_user = new common_user();
         $Auth = new Auth;
         $userid = Auth::userid();
-        $row3=$common_user->where('userid',$userid);
-        if($row3)
-        {
-            $row3=$row3[0];
+        $row3 = $common_user->where('userid', $userid);
+        if ($row3) {
+            $row3 = $row3[0];
         }
 
-        
+
         $schedule = new schedule();
 
-        $row4=$schedule->where('scheduleid', $scheduleid);
+        $row4 = $schedule->where('scheduleid', $scheduleid);
         //print_r($row4);
-        if($row4)
-        {
-            $row4=$row4[0];
+        if ($row4) {
+            $row4 = $row4[0];
         }
 
         $doctorCharge = $row4->doctorCharge;
         $commission = 200;
-        $total=$doctorCharge + $commission;
+        $total = $doctorCharge + $commission;
         $nic = $row2->nic;
         //print_r($nic);
 
         if (count($_POST) > 0) {
 
-        $noOfPatient = $row4->noOfPatient;
-        $scheduleid = $row4->scheduleid;
-        $Timerow=$schedule->where('scheduleid',$scheduleid);
-        $arrivalTime=$Timerow[0]->arrivalTime;
-        $departureTime=$Timerow[0]->departureTime;
+            $noOfPatient = $row4->noOfPatient;
+            $scheduleid = $row4->scheduleid;
+            $Timerow = $schedule->where('scheduleid', $scheduleid);
+            $arrivalTime = $Timerow[0]->arrivalTime;
+            $departureTime = $Timerow[0]->departureTime;
 
 
 
-        $patientCount=1;
+            $patientCount = 1;
 
-        $appointments = new appointments;
-        $row5=$appointments->where('scheduleid',$scheduleid);
-        
-        $slots = getTimeSlot(15, $arrivalTime, $departureTime);
+            $appointments = new appointments;
+            $row5 = $appointments->where('scheduleid', $scheduleid);
+
+            $slots = getTimeSlot(15, $arrivalTime, $departureTime);
             $slotCount = count($slots);
             //print_r($slotCount);
             // foreach($slots as $slot){
             //     //print_r($slot);
             // }
 
-        if($row5){
+            if ($row5) {
 
-            $patientCountrow2 = "select * from appointments where scheduleid =:scheduleid order by appointmentid desc limit 1";
-            $arr3['scheduleid']=$row4->scheduleid;
+                $patientCountrow2 = "select * from appointments where scheduleid =:scheduleid order by appointmentid desc limit 1";
+                $arr3['scheduleid'] = $row4->scheduleid;
 
-            $patientCountrow3 = $appointments->query($patientCountrow2,$arr3);
+                $patientCountrow3 = $appointments->query($patientCountrow2, $arr3);
 
-            //print_r($appointmentidrow1);
-            $patientCount=$patientCountrow3[0]->patientCount;
-            //print_r($patientCount);
-            $patientCount++;
+                //print_r($appointmentidrow1);
+                $patientCount = $patientCountrow3[0]->patientCount;
+                //print_r($patientCount);
+                $patientCount++;
 
-            //print_r($slottime);
-            //print_r($patientCount);
-            
-            
-        }
-
-        if ($patientCount<=$noOfPatient){
-
-            $availability = TRUE;
-            $appointments = new appointments();
-            $arr['doctorid'] = $userid1;
-            $arr['doctorName'] = $row->nameWithInitials;
-            $arr['patientid'] = Auth::userid();
-            $arr['scheduleid'] = $scheduleid;
-            $arr['patientName'] = Auth::nameWithInitials();
-            $arr['nic'] = $nic;
-            $arr['tpNumber'] = Auth::tpNumber();
-            $arr['commission'] = $commission;
-            $arr['totalPayment'] = $total;
-            $arr['date'] =  date("Y-m-d H:i:s");
-            $arr['noOfPatients'] =  $noOfPatient;
-            $arr['patientCount'] =  $patientCount; 
-            $arr['availability'] = $availability;
-            $slottime=$slots[$patientCount];
-            // foreach($slottime as $time){
-            //     //print_r($time);
-            // }
-            // print_r($slottime);
-            // print_r($slottime['slot_start_time']);
-            $arr['slotTimeStart'] = $slottime['slot_start_time'];
-            $arr['slotTimeEnd'] = $slottime['slot_end_time'];
+                //print_r($slottime);
+                //print_r($patientCount);
 
 
-            
+            }
+
+            if ($patientCount <= $noOfPatient) {
+
+                $availability = TRUE;
+                $appointments = new appointments();
+                $arr['doctorid'] = $userid1;
+                $arr['doctorName'] = $row->nameWithInitials;
+                $arr['patientid'] = Auth::userid();
+                $arr['scheduleid'] = $scheduleid;
+                $arr['patientName'] = Auth::nameWithInitials();
+                $arr['nic'] = $nic;
+                $arr['tpNumber'] = Auth::tpNumber();
+                $arr['commission'] = $commission;
+                $arr['totalPayment'] = $total;
+                $arr['date'] =  date("Y-m-d H:i:s");
+                $arr['noOfPatients'] =  $noOfPatient;
+                $arr['patientCount'] =  $patientCount;
+                $arr['availability'] = $availability;
+                $slottime = $slots[$patientCount];
+                // foreach($slottime as $time){
+                //     //print_r($time);
+                // }
+                // print_r($slottime);
+                // print_r($slottime['slot_start_time']);
+                $arr['slotTimeStart'] = $slottime['slot_start_time'];
+                $arr['slotTimeEnd'] = $slottime['slot_end_time'];
 
 
 
-            $arr['patientName'] = $_POST['patientName'];
-            $arr['symptoms'] =$_POST['symptoms'];
-            $arr['nic'] = $_POST['nic'];
-            $arr['tpNumber'] = $_POST['tpNumber'];
-
-            $appointments->insert($arr);
-
-            
-            $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
-            $arr2['patientid']=Auth::userid();
-
-            $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
-
-            //print_r($appointmentidrow1);
-            $appointmentid=$appointmentidrow1[0]->appointmentid;
-            //print_r($appointmentid);
-
-            $arr1['appointmentid'] = $appointmentid;
-            $arr1['commission'] = $commission;
-            $arr1['doctorCharge'] = $row4->doctorCharge;
-            $arr1['totalPayment'] = NULL;
-            $arr1['patientName'] = Auth::nameWithInitials();
-            $arr1['doctorName'] = $row->nameWithInitials;
-            $arr1['date'] =  date("Y-m-d H:i:s");
-            $arr1['status'] = "not_completed";
-            $arr1['doctorid'] = $userid1;
 
 
 
-            
+                $arr['patientName'] = $_POST['patientName'];
+                $arr['symptoms'] = $_POST['symptoms'];
+                $arr['nic'] = $_POST['nic'];
+                $arr['tpNumber'] = $_POST['tpNumber'];
 
-        $patientpayment = new patientpayment();
-        $patientpayment->insert($arr1);
-        $this->redirect('channeling/Confirmation');
-
-        }
-        else{
-
-            $availability=FALSE;
-            $arr['availability'] = $availability;
-
-            $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
-            $arr2['patientid']=Auth::userid();
-
-            $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
-
-            //print_r($appointmentidrow1);
-            $appointmentid=$appointmentidrow1[0]->appointmentid;
-
-            $appointments->update($appointmentid,$arr);
+                $appointments->insert($arr);
 
 
+                $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
+                $arr2['patientid'] = Auth::userid();
+
+                $appointmentidrow1 = $appointments->query($appointmentidrow, $arr2);
+
+                //print_r($appointmentidrow1);
+                $appointmentid = $appointmentidrow1[0]->appointmentid;
+                //print_r($appointmentid);
+
+                $arr1['appointmentid'] = $appointmentid;
+                $arr1['commission'] = $commission;
+                $arr1['doctorCharge'] = $row4->doctorCharge;
+                $arr1['totalPayment'] = NULL;
+                $arr1['patientName'] = Auth::nameWithInitials();
+                $arr1['doctorName'] = $row->nameWithInitials;
+                $arr1['date'] =  date("Y-m-d H:i:s");
+                $arr1['status'] = "not_completed";
+                $arr1['doctorid'] = $userid1;
+
+
+
+
+
+                $patientpayment = new patientpayment();
+                $patientpayment->insert($arr1);
+                $this->redirect('channeling/Confirmation');
+            } else {
+
+                $availability = FALSE;
+                $arr['availability'] = $availability;
+
+                $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
+                $arr2['patientid'] = Auth::userid();
+
+                $appointmentidrow1 = $appointments->query($appointmentidrow, $arr2);
+
+                //print_r($appointmentidrow1);
+                $appointmentid = $appointmentidrow1[0]->appointmentid;
+
+                $appointments->update($appointmentid, $arr);
+            }
         }
 
 
-        
-
-        }
-
-
-        $this->view("patient/patientPayment",[
-            'row'=>$row,
-            'row2'=>$row2,
-            'row3'=>$row3,
-            'row4'=>$row4,
+        $this->view("patient/patientPayment", [
+            'row' => $row,
+            'row2' => $row2,
+            'row3' => $row3,
+            'row4' => $row4,
 
 
 
         ]);
-
     }
 
     function patient()
     {
-        $appointments= new appointments();
+        $appointments = new appointments();
         $Auth = new Auth;
 
         $userid = Auth::userid();
 
-        $row1=$appointments->where('patientid',$userid);
+        if ($appointments->where('patientid', $userid)) {
+            $row1 = $appointments->where('patientid', $userid);
 
-        if($row1){
-        foreach ($row1 as $row){
-            $doctorName=$row->doctorName;
-            $doctorid=$row->doctorid;
-            $arr[]=$doctorName;
-            $arr1[]=$doctorid;
+            if ($row1 != null) {
+                foreach ($row1 as $row) {
+                    $doctorName = $row->doctorName;
+                    $doctorid = $row->doctorid;
+                    $arr[] = $doctorName;
+                    $arr1[] = $doctorid;
+                }
+                $doctors1 = array_unique($arr);
+                $doctorid = array_unique($arr1);
+                //print_r($doctorid);
+
+            }
+        } else {
+            $doctors1 = null;
+            $doctorid = null;
         }
-        $doctors1=array_unique($arr);
-        $doctorid=array_unique($arr1);
-        //print_r($doctorid);
-        
-        }
-            
-        $row=$appointments->where('patientid',$userid);
+
+        $row = $appointments->where('patientid', $userid);
         $patientrate = new patientrate();
-        $row2=$patientrate->findAll();
+        $row2 = $patientrate->findAll();
 
         $doctors = new doctors();
-        $row3=$doctors->findAll();
-
-           
-    $this-> view("patient/patient",[
-            'row'=>$row,
-            'row1'=>$doctors1,
-            'row2'=>$doctorid,
-            'row3'=>$row2,
-            'row4'=>$row3,
+        $row3 = $doctors->findAll();
 
 
-
-
-
-
+        $this->view("patient/patient", [
+            'row' => $row,
+            'row1' => $doctors1,
+            'row2' => $doctorid,
+            'row3' => $row2,
+            'row4' => $row3,
         ]);
     }
 
-    function doctors($userid=null)
+    function doctors($userid = null)
     {
-        
+
         $doctors = new doctors();
-        $row=$doctors->where('userid',$userid);
-        if($row)
-        {
-            $row=$row[0];
+        $row = $doctors->where('userid', $userid);
+        if ($row) {
+            $row = $row[0];
         }
 
         $schedule = new schedule();
 
-        $row1=$schedule->where('doctorid', $userid);
-        
+        $row1 = $schedule->where('doctorid', $userid);
+
         //$date=$row1[0]->dateOfSlot;
 
         //to get the date filter 
-        $row2=NULL;
-        $row3=NULL;
-        $array=NULL;
+        $row2 = NULL;
+        $row3 = NULL;
+        $array = NULL;
         if (count($_POST) > 0) {
 
-           $date1 = $_POST['fromdate'];
+            $date1 = $_POST['fromdate'];
             $date2 = $_POST['todate'];
             //  print_r($date1);
             //  print_r($date2);
-           
-
-
 
             $row2 = $schedule->finddaterange($date1, $date2);
             //print_r($row2);
-             foreach($row2 as $row2){
-                if(($row2->doctorid) == $userid){
-                    $array[]=$row2;
+            foreach ($row2 as $row2) {
+                if (($row2->doctorid) == $userid) {
+                    $array[] = $row2;
                 }
             }
             //print_r($array);
-
-             
         }
-        
-    
-        
-        $this->view("patient/doctors",[
-            'row'=>$row,
-            'row1'=>$row1,
-            'row2'=>$array,
 
-
+        $this->view("patient/doctors", [
+            'row' => $row,
+            'row1' => $row1,
+            'row2' => $array,
 
         ]);
-
-      
     }
 
-    function appointments($userid=null)
+    function appointments($userid = null)
     {
-        $appointments= new appointments();
+        $appointments = new appointments();
         $Auth = new Auth;
 
         $userid = Auth::userid();
 
-        $row=$appointments->where('patientid',$userid);
+        if($appointments->where('patientid', $userid)){
+            $row = $appointments->where('patientid', $userid);
+        }else{
+            $row =null;
+        }
+        
 
 
-        $this-> view("patient/patientAppointments",[
-            'row'=>$row,
+        $this->view("patient/patientAppointments", [
+            'row' => $row,
         ]);
-
     }
 
     function payments()
     {
 
-        $this-> view("patient/patientPayments");
-
+        $this->view("patient/patientPayments");
     }
 
     function reports()
     {
-        $userid=Auth::userid();
+        $userid = Auth::userid();
         $appointments = new appointments();
-        $row=$appointments->where('patientid',$userid);
 
-        $this-> view("patient/patientReports",[
-            'row'=>$row,
+        if($appointments->where('patientid', $userid)){
+            $row = $appointments->where('patientid', $userid);
+        }else{
+            $row = null;
+        }
+        
+
+        $this->view("patient/patientReports", [
+            'row' => $row,
         ]);
-
     }
 
     function confirmation()
     {
         $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
-            $arr2['patientid']=Auth::userid();
-            $appointments = new appointments();
-            $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
+        $arr2['patientid'] = Auth::userid();
+        $appointments = new appointments();
+        $appointmentidrow1 = $appointments->query($appointmentidrow, $arr2);
 
-            
 
-        $this-> view("patient/channelingConfirmation",[
-            'appointmentidrow1'=>$appointmentidrow1,
+
+        $this->view("patient/channelingConfirmation", [
+            'appointmentidrow1' => $appointmentidrow1,
         ]);
-
     }
 
-    
+
 
     function patientPaymentConfirmation()
     {
@@ -476,109 +453,105 @@ class channeling extends Controller
         $userid = Auth::userid();
 
         $common_user = new common_user();
-        $row=$common_user->where('userid',$userid);
-        if($row)
-        {
-            $row=$row[0];
+        $row = $common_user->where('userid', $userid);
+        if ($row) {
+            $row = $row[0];
         }
 
         $appointments = new appointments;
         $appointmentidrow = "select * from appointments where patientid =:patientid order by appointmentid desc limit 1";
-            $arr2['patientid']=Auth::userid();
+        $arr2['patientid'] = Auth::userid();
 
-           
 
-            $appointmentidrow1 = $appointments->query($appointmentidrow,$arr2);
-            if($appointmentidrow1)
-            {
-             $appointmentidrow1=$appointmentidrow1[0];
-            }
-           
-            $this-> view("patient/patientPaymentConfirmation",[
-                'row'=>$row,
-                'row1'=>$appointmentidrow1,
-    
-    
-            ]);
-         //-------------------------------for payment details-----------------------------------------------------
-    }
 
-    function patientPaymentConfirmationPayhere(){
-
-         if (count($_POST) > 0) {
-
-         $merchant_id         = $_POST['merchant_id'];
-         $order_id             = $_POST['order_id']; //paymentid 
-         $payhere_amount     = $_POST['payhere_amount'];
-         $payhere_currency    = $_POST['payhere_currency'];
-         $status_code         = $_POST['status_code'];
-         $md5sig                = $_POST['md5sig'];
- 
-         print_r($order_id);
-         die;
-         
-         $arr['date'] = date("Y/m/d");
-         $arr['totalPayment'] = $payhere_amount;
-         $arr['paymentid'] = $order_id;
-         $arr['status'] = "completed";
- 
-         print_r($arr);
-         //---------to get the post data to txt file for debuging----------------------------
-         $today = date("Y-m-d");
-         //file_put_contents("POST_logs/" . $today . ".txt", $arr, FILE_APPEND);
-         //---------------------------------------------------------------------------------
- 
-         $merchant_secret = '4p6oM65yLel8lzSHKYzqtQ4TwgRmoRLvF49dAyBUptlC'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
- 
-         $local_md5sig = strtoupper(md5($merchant_id . $order_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret))));
- 
-         if (($local_md5sig === $md5sig) and ($status_code == 2)) {
-             //TODO: Update your database as payment success
- 
-             $payments = new patientpayment();
-             $payments->update2($order_id, $arr);
-             $this->redirect('channeling/confirmation');
-
-         } 
-         
-        //  else {
-        //      $appointments = new appointments();
- 
-        //      //to get the last entry of the user
-        //      $data = $patientpayment->where('paymentid', $order_id);
- 
-        //      if ($data != null) {
-        //          $data = $data[0];
-        //          unlink($data->image);
- 
-        //          $patientpayment->delete($order_id);
-        //      }
-        //  }
-         //------------------------end of the payment part---------------------------------------------------------------
+        $appointmentidrow1 = $appointments->query($appointmentidrow, $arr2);
+        if ($appointmentidrow1) {
+            $appointmentidrow1 = $appointmentidrow1[0];
         }
-       
 
+        $this->view("patient/patientPaymentConfirmation", [
+            'row' => $row,
+            'row1' => $appointmentidrow1,
+
+
+        ]);
+        //-------------------------------for payment details-----------------------------------------------------
     }
 
-    function rate(){
+    function patientPaymentConfirmationPayhere()
+    {
+
+        if (count($_POST) > 0) {
+
+            $merchant_id         = $_POST['merchant_id'];
+            $order_id             = $_POST['order_id']; //paymentid 
+            $payhere_amount     = $_POST['payhere_amount'];
+            $payhere_currency    = $_POST['payhere_currency'];
+            $status_code         = $_POST['status_code'];
+            $md5sig                = $_POST['md5sig'];
+
+            print_r($order_id);
+            die;
+
+            $arr['date'] = date("Y/m/d");
+            $arr['totalPayment'] = $payhere_amount;
+            $arr['paymentid'] = $order_id;
+            $arr['status'] = "completed";
+
+            print_r($arr);
+            //---------to get the post data to txt file for debuging----------------------------
+            $today = date("Y-m-d");
+            //file_put_contents("POST_logs/" . $today . ".txt", $arr, FILE_APPEND);
+            //---------------------------------------------------------------------------------
+
+            $merchant_secret = '4p6oM65yLel8lzSHKYzqtQ4TwgRmoRLvF49dAyBUptlC'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
+
+            $local_md5sig = strtoupper(md5($merchant_id . $order_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret))));
+
+            if (($local_md5sig === $md5sig) and ($status_code == 2)) {
+                //TODO: Update your database as payment success
+
+                $payments = new patientpayment();
+                $payments->update2($order_id, $arr);
+                $this->redirect('channeling/confirmation');
+            }
+
+            //  else {
+            //      $appointments = new appointments();
+
+            //      //to get the last entry of the user
+            //      $data = $patientpayment->where('paymentid', $order_id);
+
+            //      if ($data != null) {
+            //          $data = $data[0];
+            //          unlink($data->image);
+
+            //          $patientpayment->delete($order_id);
+            //      }
+            //  }
+            //------------------------end of the payment part---------------------------------------------------------------
+        }
+    }
+
+    function rate()
+    {
 
         $doctors = new doctors();
-        $row=$doctors->findAll();
+        $row = $doctors->findAll();
 
 
-        if(count($_POST)>0)
-        {
-            
-            $patientRate = new patientRate();//create the instance of the patientRate in model
-            
+        if (count($_POST) > 0) {
+
+            $patientRate = new patientRate(); //create the instance of the patientRate in model
+
             $arr['doctorName'] = $_POST['name'];
             $arr['feedback'] = $_POST['feedback'];
-            $arr['userid'] =Auth::userid();
-            $userid=Auth::userid();
-            $common_user=new common_user();
-            $usernamerow=$common_user->where('userid',$userid);
-            $username=$usernamerow[0]->nameWithInitials;
-            $arr['patientName'] =$username;
+            $arr['userid'] = Auth::userid();
+            $userid = Auth::userid();
+            $common_user = new common_user();
+            $usernamerow = $common_user->where('userid', $userid);
+            $username = $usernamerow[0]->nameWithInitials;
+            $arr['patientName'] = $username;
 
 
 
@@ -590,22 +563,19 @@ class channeling extends Controller
             $doctorid = $data1[0]->userid;
             $arr['doctorid'] = $doctorid;
             $arr['date'] = date("Y/m/d");
-               
-             
-               
+
+
+
             $patientRate->insert($arr);
             $this->redirect('channeling/patient');
-            
-            
-        } 
+        }
 
-        $this-> view("patient/rate",[
-            'row'=>$row,
+        $this->view("patient/rate", [
+            'row' => $row,
         ]);
-
     }
 
-   
+
 
     public function generatepdf($id)
     {
@@ -621,16 +591,16 @@ class channeling extends Controller
 
     function channelingpdf($id, $userid)
     {
-        $userid=Auth::userid();
+        $userid = Auth::userid();
         $appointments = new appointments();
-        
-        $row=$appointments->where('appointmentid',$id);
+
+        $row = $appointments->where('appointmentid', $id);
 
         if ($row != null) {
-            $row=$row[0];
+            $row = $row[0];
         }
 
-       
+
 ?>
 
         <style>
@@ -686,9 +656,4 @@ class channeling extends Controller
 
 <?php
     }
-    
 }
-
-   
-
-

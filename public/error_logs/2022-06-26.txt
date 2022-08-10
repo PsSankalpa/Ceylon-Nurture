@@ -1,0 +1,6 @@
+Error: Undefined property: stdClass::$verifiedDoctorid in C:\wamp64\www\Grp12\app\views\forums\forum.php at 202
+Error: Undefined property: stdClass::$verifiedDoctorid in C:\wamp64\www\Grp12\app\views\forums\forum.php at 202
+Error: Undefined property: stdClass::$verifiedDoctorid in C:\wamp64\www\Grp12\app\views\forums\forum.php at 202
+Error: Trying to get property 'doctorCharge' of non-object in C:\wamp64\www\Grp12\app\controllers\admin.php at 349
+Error: Undefined property: stdClass::$uses in C:\wamp64\www\Grp12\app\views\seller\productDetails.php at 29
+Error: Undefined property: stdClass::$uses in C:\wamp64\www\Grp12\app\views\seller\productDetails.php at 29

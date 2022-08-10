@@ -94,6 +94,19 @@
                 </div>
             </div>
 
+            <!-- <div class="row">
+                <div class="col-25">
+                    <label for="category">Uses</label>
+                </div>
+                <div class="col-75">
+                    <select id="category" name="uses">
+                        <option value="Hair">Hair</option>
+                        <option value="Nails">Nails</option>
+                        <option value="Foot">Foot</option>
+                    </select>
+                </div>
+            </div> -->
+
             <div class="row">
                 <input type="submit" value="Submit">
                 <input type="reset" value="Reset">
