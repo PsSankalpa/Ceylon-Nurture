@@ -682,14 +682,14 @@ class admin extends Controller
                 <td><?= $row->date ?></td>
             </tr>
             <tr>
-                <td>Location</td>
+                <td>NIC</td>
                 <td>:</td>
-                <td>Rs:<?= $row->nic ?></td>
+                <td><?= $row->nic ?></td>
             </tr>
             <tr>
                 <td>Total Payment</td>
                 <td>:</td>
-                <td><?= $row->totalPayment ?></td>
+                <td>Rs. <?= $row->totalPayment ?></td>
             </tr>
         </table>
 

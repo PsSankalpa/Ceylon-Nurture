@@ -810,3 +810,27 @@ hr {
     margin: 4px 2px;
   }
 }
+
+.uses{
+  display:grid;
+  gap: 5px;
+}
+.btn4{
+  flex: 30%;
+  background-color: #75E6DA;
+  border: #05445E;
+  border-radius: 10px;
+  color: #05445E;
+  font: 1.5rem;
+  padding: 1rem;
+  margin: 0.4rem;
+  width: 30%;
+}
+.btn4:hover{
+  color: #75E6DA;
+  background-color: #05445E;
+}
+.usesform{
+  width: 100%;
+  margin: 0 auto;
+}

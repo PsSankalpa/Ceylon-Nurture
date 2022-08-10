@@ -182,11 +182,14 @@ class doctor extends Controller
         // print_r($data5);
         // die;
 
-        $rcount = 0;
-        $count1 = count($data5);
-        for ($i = 0; $i < $count1; $i++) {
-            $rcount = $rcount + $data5[$i]->totalPayment;
+        if ($data5) {
+            $rcount = 0;
+            $count1 = count($data5);
+            for ($i = 0; $i < $count1; $i++) {
+                $rcount = $rcount + $data5[$i]->totalPayment;
+            }
         }
+
 
         // $query2 = "select * from schedule where scheduleid in (select scheduleid from appointments where doctorid = :userid order by date desc )";
         //$arr['userid'] = Auth::userid();
@@ -518,7 +521,7 @@ class doctor extends Controller
         //$data =$doctor->where('userid',$doctorid);
         $this->view('doctor/patientReports', [
             'data' => $data,
-            
+
 
         ]);
     }
@@ -892,8 +895,8 @@ class doctor extends Controller
         $html = file_get_contents(ROOT . '/doctor/doctorpdf/' . $appointmentid);
 
 
-       // print_r($html);
-       // die;
+        // print_r($html);
+        // die;
 
 
         $mpdf->WriteHTML($html);

@@ -1,0 +1,1 @@
+Error: Undefined property: stdClass::$verifiedDoctorid in C:\wamp64\www\Grp12\app\views\forums\forum.php at 202

@@ -21,20 +21,21 @@ class seller extends Controller
         $sellers = new sellers();
         $data3 = $sellers->where('userid', $userid);
 
-        $payments = new productcommission();
-        if ($d_data = $payments->where2('status', 'not_completed', 'userID', $userid)) {
-            $p_id1 = $d_data[0]->productid;
-            $row_1 = $products->where('productid', $p_id1);
-            if ($row_1) {
-                $row_1 = $row_1[0];
-                unlink($row_1->image);
-            }
-            $products->delete($p_id1);
-            $payments->delete3('status', 'not_completed', 'userID', $userid);
-        }
+        // $payments = new productcommission();
+        // if ($d_data = $payments->where2('status', 'not_completed', 'userID', $userid)) {
+        //     $p_id1 = $d_data[0]->productid;
+        //     $row_1 = $products->where('productid', $p_id1);
+        //     if ($row_1) {
+        //         $row_1 = $row_1[0];
+        //         unlink($row_1->image);
+        //     }
+        //     $products->delete($p_id1);
+        //     $payments->delete3('status', 'not_completed', 'userID', $userid);
+        // }
 
         $data = $products->where('sellerid', $userid);
 
+        //for the count
         if ($z1 = $products->where2('sellerid', $userid, 'category', $type)) {
             $data4 = count($z1);
         } else {
@@ -198,6 +199,7 @@ class seller extends Controller
 
     //for upload products
 
+    //--------------------------upload products----------------------------------------------------
     function uploadProduct()
     {
         if (!Auth::logged_in()) {
@@ -221,6 +223,8 @@ class seller extends Controller
 
             $userName = Auth::username();
 
+            // print_r($_POST);
+            // die;
             if ($products->validate($_POST, $_FILES, $userName)) {
                 global $des;
                 $arr['productName'] = htmlspecialchars($_POST['productName']);
@@ -232,7 +236,10 @@ class seller extends Controller
                 $arr['address'] = $address;
                 $arr['tpNumber'] = Auth::tpNumber();
                 $arr['sellerid'] = Auth::userid();
+                // $arr['uses'] = htmlspecialchars($_POST['uses']);
 
+            //     print_r($arr);
+            // die;
                 $products->insert($arr);
 
                 //to get the last entry of the user
@@ -241,6 +248,8 @@ class seller extends Controller
                 $dataid = $products->query($query1, $arr1);
                 // print_r($dataid);
                 // die;
+
+                //to send to commission table
                 if ($dataid != null) {
                     $dataid = $dataid[0];
                     $productId = $dataid->productid;
@@ -268,10 +277,12 @@ class seller extends Controller
             }
         }
 
+
         $this->view('seller/uploadProduct', [
             'errors' => $errors,
         ]);
     }
+    //-------------------------------upload products---------------------------------------------------------
 
     //for payments of the products
     function commissionPayment($commission = "")
@@ -435,7 +446,7 @@ class seller extends Controller
         ]);
     }
 
-    //for product details
+    //for product details--------------------------------------------------
     function productDetails($productId = null)
     {
 
@@ -445,6 +456,8 @@ class seller extends Controller
 
         $this->view('seller/productDetails', ['rows' => $data]);
     }
+
+
 
     //for payment details
     function productPaymentDetails()
